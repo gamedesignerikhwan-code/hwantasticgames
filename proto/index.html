@@ -64,11 +64,11 @@
             background-size: 24px 24px;
             color: var(--text-main);
             font-family: var(--font-body);
-            line-height: 1.55;
+            line-height: 1.5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 36px 20px 60px;
+            padding: 30px 20px 50px;
         }
 
         .proto-wrapper {
@@ -80,24 +80,24 @@
         /* Compact Hero Title Section */
         .proto-hero {
             text-align: center;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .proto-hero-title {
             font-family: var(--font-heading);
-            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            font-size: clamp(1.9rem, 3vw, 2.4rem);
             font-weight: 800;
             color: var(--text-main);
-            letter-spacing: -0.6px;
-            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
         .proto-hero-desc {
-            max-width: 720px;
-            margin: 0 auto 18px;
-            font-size: 0.98rem;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         /* Category Filter Bar */
@@ -107,7 +107,7 @@
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 26px;
+            margin-bottom: 22px;
         }
 
         .filter-btn {
@@ -115,15 +115,15 @@
             border: 1px solid var(--glass-border);
             color: var(--text-muted);
             font-family: var(--font-body);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            padding: 7px 16px;
+            padding: 6px 15px;
             border-radius: 999px;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 7px;
+            gap: 6px;
         }
 
         .filter-btn:hover {
@@ -144,7 +144,7 @@
             background: rgba(0, 0, 0, 0.06);
             padding: 2px 7px;
             border-radius: 10px;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             font-family: var(--font-mono);
         }
 
@@ -152,16 +152,16 @@
         .proto-list {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 14px;
         }
 
-        /* Wide Prototype Card */
+        /* Compact Wide Prototype Card */
         .proto-card-row {
             background: #ffffff;
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 4px 18px rgba(100, 80, 50, 0.06);
+            box-shadow: 0 3px 14px rgba(100, 80, 50, 0.05);
             display: flex;
             flex-direction: row;
             align-items: stretch;
@@ -170,20 +170,20 @@
 
         .proto-card-row:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(100, 80, 50, 0.11);
+            box-shadow: 0 8px 24px rgba(100, 80, 50, 0.1);
             border-color: rgba(232, 115, 74, 0.4);
         }
 
         /* 1. Left Thumbnail Column */
         .proto-card-thumb {
-            width: 170px;
-            min-width: 170px;
+            width: 150px;
+            min-width: 150px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 10px;
         }
 
         .thumb-tamers {
@@ -194,91 +194,118 @@
             background: radial-gradient(circle at 60% 40%, #567d58 0%, #29422a 100%);
         }
 
+        /* Category badge inside the thumbnail box */
+        .thumb-category-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.94);
+            color: var(--text-main);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 999px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            z-index: 5;
+        }
+
+        .thumb-category-badge i {
+            color: var(--accent-coral);
+            font-size: 0.68rem;
+        }
+
         /* Fanned Mini Art (Tamers) */
         .mini-tamers-art {
             position: relative;
             width: 100%;
-            height: 110px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 6px;
         }
 
         .mini-card {
             position: absolute;
-            width: 48px;
-            height: 70px;
+            width: 44px;
+            height: 64px;
             border-radius: 6px;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 4px 6px;
-            font-size: 0.75rem;
+            padding: 3px 5px;
+            font-size: 0.72rem;
             transition: transform 0.3s ease;
         }
 
         .mini-card.c1 {
             background: linear-gradient(145deg, #e8734a, #d45025);
             color: #fff;
-            transform: translateX(-24px) rotate(-14deg);
+            transform: translateX(-22px) rotate(-14deg);
             z-index: 1;
         }
 
         .mini-card.c2 {
             background: linear-gradient(145deg, #5a9e8f, #3c776a);
             color: #fff;
-            transform: translateY(-4px) rotate(0deg);
+            transform: translateY(-3px) rotate(0deg);
             z-index: 2;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 7px 16px rgba(0, 0, 0, 0.45);
         }
 
         .mini-card.c3 {
             background: linear-gradient(145deg, #f0c040, #d9a016);
             color: #2a2215;
-            transform: translateX(24px) rotate(14deg);
+            transform: translateX(22px) rotate(14deg);
             z-index: 1;
         }
 
         .proto-card-row:hover .mini-card.c1 {
-            transform: translateX(-30px) rotate(-18deg);
+            transform: translateX(-28px) rotate(-18deg);
         }
         .proto-card-row:hover .mini-card.c2 {
-            transform: translateY(-8px) scale(1.05);
+            transform: translateY(-7px) scale(1.05);
         }
         .proto-card-row:hover .mini-card.c3 {
-            transform: translateX(30px) rotate(18deg);
+            transform: translateX(28px) rotate(18deg);
         }
 
         /* Doore Tile Art (Doore) */
         .mini-doore-art {
             position: relative;
             width: 100%;
-            height: 110px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 6px;
         }
 
         .doore-tile-cluster {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 72px;
+            height: 72px;
         }
 
         .doore-tile {
             position: absolute;
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
             background: #e9e4d4;
             border: 2px solid #8c7853;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
 
@@ -298,26 +325,26 @@
         }
 
         .doore-tile-icon {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
         }
 
         .doore-tile-label {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-weight: 700;
             color: #4a3820;
             line-height: 1;
         }
 
         .proto-card-row:hover .doore-tile.t1 {
-            transform: translate(-4px, -4px);
+            transform: translate(-3px, -3px);
         }
         .proto-card-row:hover .doore-tile.t2 {
-            transform: translate(4px, 4px);
+            transform: translate(3px, 3px);
         }
 
-        /* 2. Middle Content Column (Wide) */
+        /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
-            padding: 18px 24px;
+            padding: 14px 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -325,79 +352,34 @@
             min-width: 0;
         }
 
-        .proto-card-top-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 6px;
-            flex-wrap: wrap;
-        }
-
-        .category-badge {
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 999px;
-            background: var(--bg-warm-alt);
-            color: var(--text-main);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .category-badge i {
-            color: var(--accent-coral);
-            font-size: 0.72rem;
-        }
-
-        .status-badge {
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 3px 9px;
-            border-radius: 999px;
-            background: rgba(16, 185, 129, 0.12);
-            color: #0d8a60;
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .status-badge .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background: #10b981;
-            border-radius: 50%;
-        }
-
         .proto-card-title-line {
             display: flex;
             align-items: baseline;
-            gap: 10px;
-            margin-bottom: 6px;
+            gap: 8px;
+            margin-bottom: 4px;
             flex-wrap: wrap;
         }
 
         .proto-card-title {
             font-family: var(--font-heading);
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-main);
             line-height: 1.2;
         }
 
         .proto-card-subtitle {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--accent-coral);
         }
 
         /* Wide 2-line Description */
         .proto-card-desc {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 12px;
+            line-height: 1.48;
+            margin-bottom: 8px;
         }
 
         /* Meta Chips */
@@ -411,9 +393,9 @@
             background: var(--bg-warm);
             border: 1px solid var(--glass-border);
             color: var(--text-main);
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             font-weight: 600;
-            padding: 3px 9px;
+            padding: 2px 8px;
             border-radius: 6px;
             display: inline-flex;
             align-items: center;
@@ -422,40 +404,40 @@
 
         .meta-chip i {
             color: var(--accent-coral);
-            font-size: 0.72rem;
+            font-size: 0.7rem;
         }
 
         /* 3. Right Action Column */
         .proto-card-actions {
-            width: 175px;
-            min-width: 175px;
-            padding: 18px 20px 18px 0;
+            width: 160px;
+            min-width: 160px;
+            padding: 14px 18px 14px 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 8px;
+            gap: 7px;
         }
 
         .btn-play-proto {
             background: linear-gradient(135deg, #e8734a 0%, #d4613a 100%);
             color: #ffffff !important;
             font-weight: 700;
-            font-size: 0.9rem;
-            padding: 10px 16px;
+            font-size: 0.86rem;
+            padding: 9px 14px;
             border-radius: var(--radius-sm);
             text-align: center;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 7px;
-            box-shadow: 0 3px 10px rgba(232, 115, 74, 0.28);
+            gap: 6px;
+            box-shadow: 0 3px 10px rgba(232, 115, 74, 0.25);
             transition: var(--transition);
         }
 
         .btn-play-proto:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(232, 115, 74, 0.4);
+            box-shadow: 0 5px 14px rgba(232, 115, 74, 0.38);
             background: linear-gradient(135deg, #ed825b 0%, #dc6a44 100%);
         }
 
@@ -463,16 +445,16 @@
             background: transparent;
             border: 1px solid var(--glass-border);
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            padding: 8px 14px;
+            padding: 7px 12px;
             border-radius: var(--radius-sm);
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .btn-info-proto:hover {
@@ -490,17 +472,17 @@
             .proto-card-thumb {
                 width: 100%;
                 min-width: 100%;
-                height: 130px;
+                height: 120px;
             }
 
             .proto-card-content {
-                padding: 16px 18px;
+                padding: 14px 16px;
             }
 
             .proto-card-actions {
                 width: 100%;
                 min-width: 100%;
-                padding: 0 18px 18px 18px;
+                padding: 0 16px 16px 16px;
                 flex-direction: row;
             }
 
@@ -663,7 +645,7 @@
 
             <!-- 1. TAMERS (Card Game) -->
             <article class="proto-card-row" data-category="card-game" id="card-tamers">
-                <!-- Left Thumbnail -->
+                <!-- Left Thumbnail with Integrated Category Badge -->
                 <div class="proto-card-thumb thumb-tamers">
                     <div class="mini-tamers-art">
                         <div class="mini-card c1">
@@ -682,14 +664,11 @@
                             <span style="font-size:0.5rem;">SOLAR</span>
                         </div>
                     </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
                 </div>
 
                 <!-- Middle Content -->
                 <div class="proto-card-content">
-                    <div class="proto-card-top-row">
-                        <span class="category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
-                        <span class="status-badge"><span class="pulse-dot"></span> Playable Online</span>
-                    </div>
                     <div class="proto-card-title-line">
                         <h2 class="proto-card-title">Tamers</h2>
                         <span class="proto-card-subtitle">Trick-Taking & Prediction Card Game</span>
@@ -718,7 +697,7 @@
 
             <!-- 2. DOORE / 두레 (Board Game) -->
             <article class="proto-card-row" data-category="board-game" id="card-doore">
-                <!-- Left Thumbnail -->
+                <!-- Left Thumbnail with Integrated Category Badge -->
                 <div class="proto-card-thumb thumb-doore">
                     <div class="mini-doore-art">
                         <div class="doore-tile-cluster">
@@ -732,14 +711,11 @@
                             </div>
                         </div>
                     </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
                 </div>
 
                 <!-- Middle Content -->
                 <div class="proto-card-content">
-                    <div class="proto-card-top-row">
-                        <span class="category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
-                        <span class="status-badge"><span class="pulse-dot"></span> Playable Online</span>
-                    </div>
                     <div class="proto-card-title-line">
                         <h2 class="proto-card-title">Doore</h2>
                         <span class="proto-card-subtitle">Tile-Placement & Village Farming Board Game</span>
