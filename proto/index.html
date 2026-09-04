@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Prototypes | Hwantastic Games</title>
+    <title>Board Game Prototypes | Hwantastic Games</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../assets/brand/icon-small.svg">
@@ -14,43 +14,208 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="../style.css">
+    <!-- Dedicated Stylesheet -->
     <link rel="stylesheet" href="proto.css">
 </head>
-<body class="dreamhome-theme proto-page">
+<body class="proto-page">
 
-    <div class="proto-container">
-        <!-- Minimal Header -->
-        <header class="proto-header">
-            <div>
-                <h1>Prototypes</h1>
+    <div class="proto-wrapper">
+        <!-- Hero Title Section -->
+        <header class="proto-hero">
+            <h1 class="proto-hero-title">Board Game Prototypes</h1>
+            <p class="proto-hero-desc">
+                Hwantastic Games에서 기획 및 개발 중인 오리지널 보드게임·카드게임 프로토타입들을 온라인으로 직접 플레이해보세요. 실시간 웹 멀티플레이어 환경에서 테스트하고 즉각적인 피드백을 나눌 수 있습니다.
+            </p>
+
+            <!-- Category Filter Bar -->
+            <div class="proto-filter-bar">
+                <button type="button" class="filter-btn active" data-filter="all">
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge">1</span>
+                </button>
+                <button type="button" class="filter-btn" data-filter="card-game">
+                    <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">1</span>
+                </button>
+                <button type="button" class="filter-btn" data-filter="board-game">
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">Soon</span>
+                </button>
             </div>
-            <span class="proto-badge">Hwantastic Games</span>
         </header>
 
-        <!-- Category: Card Game -->
-        <section class="proto-category-section">
-            <h2 class="proto-category-title">Card Game</h2>
-            <ul class="proto-list">
-                <li class="proto-item">
-                    <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="proto-link">
-                        <span class="proto-item-name">Tamers</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square proto-item-icon"></i>
-                    </a>
-                </li>
-            </ul>
-        </section>
+        <!-- Prototypes Catalog Grid -->
+        <main class="proto-grid">
 
-        <!-- Simple Footer -->
-        <footer class="proto-footer-simple">
-            &copy; Hwantastic Games
-        </footer>
+            <!-- 1. TAMERS (Card Game) -->
+            <article class="proto-card" data-category="card-game" id="card-tamers">
+                <!-- Card Media -->
+                <div class="proto-card-media">
+                    <span class="card-floating-category">
+                        <i class="fa-solid fa-layer-group"></i> Card Game
+                    </span>
+                    <span class="card-floating-status">
+                        <span class="pulse-dot"></span> Playable Online
+                    </span>
+
+                    <!-- Fanned Card Art -->
+                    <div class="tamers-art-wrapper">
+                        <div class="card-graphic c1">
+                            <span class="card-number">8</span>
+                            <i class="fa-solid fa-fire card-icon"></i>
+                            <span class="card-bottom-label">Flame</span>
+                        </div>
+                        <div class="card-graphic c2">
+                            <span class="card-number">12</span>
+                            <i class="fa-solid fa-paw card-icon"></i>
+                            <span class="card-bottom-label">Beast</span>
+                        </div>
+                        <div class="card-graphic c3">
+                            <span class="card-number">5</span>
+                            <i class="fa-solid fa-sun card-icon"></i>
+                            <span class="card-bottom-label">Solar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="proto-card-body">
+                    <h2 class="proto-card-title">Tamers</h2>
+                    <div class="proto-card-subtitle">Trick-Taking & Prediction Card Game</div>
+                    <p class="proto-card-desc">
+                        동물 테이머들의 치열한 심리전! 각 라운드 자신이 따낼 트릭 수를 정밀하게 예측하고, 수트 규칙과 특수 능력 카드를 활용하여 예측을 완벽히 적중시키는 감각적인 트릭 테이킹 게임입니다.
+                    </p>
+
+                    <!-- Meta Chips -->
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-brain"></i> Trick-Taking</span>
+                        <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Prediction / Bidding</span>
+                        <span class="meta-chip"><i class="fa-solid fa-network-wired"></i> Online Multiplayer</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="proto-card-actions">
+                        <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                            <i class="fa-solid fa-play"></i> Play Prototype
+                        </a>
+                        <button type="button" class="btn-info-proto" id="btnTamersInfo" title="Game Overview & Rules">
+                            <i class="fa-solid fa-circle-info"></i> Info
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 2. TEASER (More Prototypes in the Lab) -->
+            <article class="proto-card teaser-card" data-category="board-game">
+                <div class="teaser-icon-box">
+                    <i class="fa-solid fa-dice-d20"></i>
+                </div>
+                <h3 class="teaser-title">More Prototypes in the Lab</h3>
+                <p class="teaser-desc">
+                    독창적인 테마와 혁신적인 메커니즘을 가진 새로운 보드게임 & 카드게임 프로토타입들이 차례대로 공개될 예정입니다.
+                </p>
+            </article>
+
+        </main>
     </div>
 
+    <!-- Tamers Info & Rules Modal -->
+    <div class="proto-modal-overlay" id="tamersInfoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title" id="modalTitle">
+                    <i class="fa-solid fa-layer-group" style="color: var(--accent-coral);"></i> Tamers — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" id="btnCloseModal" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🎯 게임 개요</h4>
+                <p>
+                    <strong>Tamers</strong>는 예측(Bidding)과 수싸움이 결합된 2~4인용 트릭 테이킹 카드 게임입니다. 플레이어는 손패를 확인한 후 이번 라운드에서 자신이 몇 개의 트릭을 획득할 것인지를 선언합니다.
+                </p>
+
+                <h4>🃏 핵심 메커니즘</h4>
+                <ul>
+                    <li><strong>정밀한 예측 (Exact Bidding)</strong>: 정확히 예측한 트릭 수만큼 따내야만 높은 보너스 점수를 획득합니다. 과도하거나 부족하면 페널티가 부여됩니다.</li>
+                    <li><strong>리드 수트 & 트럼프</strong>: 선 플레이어가 낸 카드의 수트를 따라야 하는 머스트 팔로우(Must Follow) 규칙과 상황을 뒤집는 트럼프 카드.</li>
+                    <li><strong>특수 능력 카드</strong>: 단순한 숫자 싸움을 넘어 전황을 통제할 수 있는 전략적 특수 카드 활용.</li>
+                </ul>
+
+                <h4>🌐 온라인 플레이 안내</h4>
+                <p>
+                    현재 제공되는 버전은 <strong>Render</strong> 서버에서 구동되는 실시간 웹 멀티플레이어 프로토타입입니다. 별도 설치 없이 브라우저에서 방을 생성하거나 링크를 공유하여 다른 플레이어들과 즉시 테스트할 수 있습니다.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" id="btnCloseModalFooter">닫기</button>
+                <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 지금 플레이하기
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('tamersInfoModal');
+        const btnOpen = document.getElementById('btnTamersInfo');
+        const btnClose = document.getElementById('btnCloseModal');
+        const btnCloseFooter = document.getElementById('btnCloseModalFooter');
+
+        function openModal() {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            setTimeout(() => { modal.style.display = 'none'; }, 250);
+            document.body.style.overflow = '';
+        }
+
+        if (btnOpen) btnOpen.addEventListener('click', openModal);
+        if (btnClose) btnClose.addEventListener('click', closeModal);
+        if (btnCloseFooter) btnCloseFooter.addEventListener('click', closeModal);
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.proto-grid .proto-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                cards.forEach(card => {
+                    const cat = card.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter || card.classList.contains('teaser-card')) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
