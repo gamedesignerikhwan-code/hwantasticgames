@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/proto", "destination": "/proto/index.html" },
-    { "source": "/proto/", "destination": "/proto/index.html" }
+    { "source": "/proto/", "destination": "/proto/index.html" },
+    { "source": "/proto.css", "destination": "/proto/proto.css" }
   ]
 }
