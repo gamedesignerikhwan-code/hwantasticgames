@@ -342,6 +342,49 @@
             transform: translate(3px, 3px);
         }
 
+        /* Waffle Pop Art (Waffle Pop!) */
+        .thumb-waffle {
+            background: radial-gradient(circle at 60% 40%, #8c5b2b 0%, #42260f 100%);
+        }
+
+        .mini-waffle-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .waffle-grid-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #e8a961, #c47c32);
+            border: 2.5px solid #854e19;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 4px;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .waffle-cell {
+            background: rgba(60, 30, 8, 0.22);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .proto-card-row:hover .waffle-grid-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+
         /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
             padding: 14px 20px;
@@ -629,13 +672,13 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">2</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">3</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">1</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">1</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">2</span>
                 </button>
             </div>
         </header>
@@ -742,6 +785,49 @@
                 </div>
             </article>
 
+            <!-- 3. WAFFLE POP! (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-waffle-pop">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-waffle">
+                    <div class="mini-waffle-art">
+                        <div class="waffle-grid-icon">
+                            <div class="waffle-cell">🍓</div>
+                            <div class="waffle-cell">🫐</div>
+                            <div class="waffle-cell">🍯</div>
+                            <div class="waffle-cell">🍫</div>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Waffle Pop!</h2>
+                        <span class="proto-card-subtitle">3D Topping & Pattern Fulfilling Dessert Board Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        A charming tactical dessert board game! Draft coordinate cards, match spatial pattern missions on a 3-layered 4×4 waffle plate, and harvest sweet toppings with varied scoring combos.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Pattern Building</span>
+                        <span class="meta-chip"><i class="fa-solid fa-layer-group"></i> Set Collection</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #d48032 0%, #b35f19 100%);">
+                        <i class="fa-solid fa-play"></i> Play Prototype
+                    </a>
+                    <button type="button" class="btn-info-proto" onclick="openModal('waffleModal')">
+                        <i class="fa-solid fa-circle-info"></i> Info
+                    </button>
+                </div>
+            </article>
+
         </main>
     </div>
 
@@ -815,6 +901,45 @@
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('dooreModal')">Close</button>
                 <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #4d8258 0%, #35623e 100%);">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Waffle Pop Info -->
+    <div class="proto-modal-overlay" id="waffleModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-cake-candles" style="color: #c47c32;"></i> Waffle Pop! — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('waffleModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🧇 Game Overview</h4>
+                <p>
+                    <strong>Waffle Pop!</strong> is a delightful tactical dessert board game for 2 to 4 players. On a 4×4 waffle plate stacked with 3 layers of delicious topping tiles (48 tiles total), players compete to fulfill spatial pattern mission cards and harvest high-scoring toppings.
+                </p>
+
+                <h4>🧩 Core Mechanics</h4>
+                <ul>
+                    <li><strong>3D Grid & Spatial Pattern Matching</strong>: Draft coordinate cards to match 3, 4, or 5-cell pattern missions on the waffle plate (full support for rotations and mirrored reflections).</li>
+                    <li><strong>Multi-Tiered Topping Harvest</strong>: Fulfilling a mission lets you claim the top topping from each matched coordinate, gradually revealing deeper layers and creating dynamic board shifts.</li>
+                    <li><strong>Asymmetric Topping Scoring</strong>: Strategic variety across 7 topping types—from first-come first-served VIP ribbons and Golden Cherry sets to quadratic Strawberry combos and shared dividends.</li>
+                    <li><strong>Equal-Turn Endgame</strong>: Triggered when 5 or more spots on the 4×4 waffle plate are fully cleared of all 3 layers.</li>
+                </ul>
+
+                <h4>🌐 Online Playtest</h4>
+                <p>
+                    Fully playable digital prototype with zero installation required. Includes intelligent solo AI bot testing modes as well as real-time multiplayer rooms via browser peer connections.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('waffleModal')">Close</button>
+                <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #d48032 0%, #b35f19 100%);">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
