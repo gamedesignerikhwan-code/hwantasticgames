@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hwantastic Games — 액센트 셀 시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--panel:#11141b;--line:rgba(255,255,255,.09);
+        --ink:#f8fafc;--muted:#94a3b8;--dim:#64748b;--cyan:#4fffdb;--pink:#ff2a75;--sky:#38bdf8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,'Segoe UI',sans-serif;
+       padding:44px 32px 90px;line-height:1.55}
+  .wrap{max-width:1240px;margin:0 auto}
+  h1{font-size:21px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:880px}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+     margin:54px 0 6px;font-weight:700}
+  .h2sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;max-width:920px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .row{display:grid;gap:16px}
+  .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+  .stage{background:#08090d;border-radius:10px;padding:22px;display:flex;
+         align-items:center;justify-content:center}
+  .lbl{font-size:13.5px;font-weight:700}
+  .lbl small{display:block;font-weight:500;font-size:10.5px;color:var(--dim);
+             margin-top:4px;font-family:'Fira Code',monospace}
+  .pill{display:inline-block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+        font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:9px}
+  .pill.y{background:rgba(79,255,219,.13);color:var(--cyan)}
+  .pill.n{background:rgba(255,42,117,.14);color:var(--pink)}
+  .pill.m{background:rgba(255,255,255,.06);color:var(--muted)}
+  .win{border-color:rgba(79,255,219,.45)}.bad{border-color:rgba(255,42,117,.32)}
+  .note{font-size:11.5px;color:var(--muted);margin-top:13px;padding-top:11px;
+        border-top:1px dashed var(--line)}
+  .note b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+  td.k{color:var(--ink);font-weight:600}
+  td.v{color:var(--muted)}
+  td.n{font-family:'Fira Code',monospace;font-size:11.5px;text-align:right;color:var(--muted)}
+  .sw{display:inline-block;width:11px;height:11px;border-radius:3px;
+      vertical-align:-1px;margin-right:7px}
+  code{font-family:'Fira Code',monospace;font-size:11.5px;color:var(--cyan);
+       background:rgba(79,255,219,.08);padding:1px 5px;border-radius:4px}
+  .alpha{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .al{width:38px;height:44px;border-radius:5px;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;font-family:'Fira Code',monospace;
+      font-weight:700;font-size:16px;border:1.5px solid}
+  .al small{font-size:7.5px;font-weight:500;margin-top:2px;letter-spacing:.02em}
+  .al.ok{border-color:rgba(79,255,219,.5);color:var(--cyan);background:rgba(79,255,219,.07)}
+  .al.dup{border-color:rgba(148,163,184,.45);color:#cbd5e1;background:rgba(255,255,255,.04)}
+  .al.no{border-color:rgba(255,42,117,.28);color:rgba(255,42,117,.65);background:rgba(255,42,117,.05)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>액센트 셀 시스템 — "작품이 글자를 점등한다"</h1>
+  <div class="sub">아이디어 자체는 강하다. 그리드가 단순 로고가 아니라 <b>작품 목록</b>이 된다.
+  다만 그대로 가면 두 군데서 막히는데, 둘 다 구조를 조금 바꾸면 해결된다.</div>
+
+  <h2>1 · 먼저 좋은 점</h2>
+  <div class="card">
+    <table>
+      <tr><td class="k" style="width:190px">그리드에 존재 이유가 생긴다</td>
+        <td class="v">지금까지 그리드는 "형태"였다. 여기서 <b>기능</b>이 된다 — 각 칸이 작품의 자리.
+        스튜디오 로고가 포트폴리오를 겸하는 사례는 드물고, 그래서 소유 가능한 아이디어다.</td></tr>
+      <tr><td class="k">완전정보 컨셉과 맞는다</td>
+        <td class="v">모든 칸이 열려 있고, 채워진 칸이 "이미 낸 카드". 신작이 나올 때마다 한 칸씩 점등되는 건
+        <b>정보가 공개되는 것</b>과 같은 제스처다.</td></tr>
+      <tr><td class="k">마케팅 리듬이 생긴다</td>
+        <td class="v">"세 번째 글자에 불이 들어왔습니다" 하나로 티저가 성립한다. 로고가 콘텐츠가 된다.</td></tr>
+      <tr><td class="k">이미 두 작품이 맞아떨어진다</td>
+        <td class="v"><b>H</b>earts → 1번 칸 · <b>M</b>inesweeper → 13번 칸. 둘 다 존재한다.</td></tr>
+    </table>
+  </div>
+
+  <h2>2 · 문제 ① — H는 스튜디오의 글자이기도 하다</h2>
+  <div class="h2sub"><b>H</b>wantastic과 <b>H</b>earts가 같은 글자다. H를 Hearts 핑크로 영구히 칠하면,
+  스튜디오의 앵커 칸을 한 작품이 가져가버린다. 폰트에서 "Outfit을 게임 전용으로 남긴" 것과 정확히 반대되는 일이 벌어진다.</div>
+  <div class="row c2">
+    <div class="card bad"><div class="pill n">이대로 가면</div>
+      <div class="lbl">H = Hearts 핑크 고정<small>기본 로고 자체가 핑크</small></div>
+      <div class="stage" id="p-bad" style="min-height:210px"></div>
+      <div class="note">Hearts가 대표작이 아니게 되는 순간 로고가 발이 묶인다.
+      Minesweeper 페이지에 이 로고를 얹으면 <b>왜 핑크인지 설명이 안 된다.</b></div></div>
+    <div class="card win"><div class="pill y">해결</div>
+      <div class="lbl">기본은 흰색 · 색은 맥락에서만<small>H = 앵커, 색은 정보</small></div>
+      <div class="stage" id="p-good" style="min-height:210px"></div>
+      <div class="note">기본 로고의 H는 <b>흰색으로 채운다.</b> 색이 아니라 "채움"이 앵커다.
+      게임 맥락에 놓일 때만 그 작품의 색이 들어온다. <b>색은 장식이 아니라 정보</b>가 된다 — 컨셉과도 맞는다.</div></div>
+  </div>
+
+  <h2>3 · 문제 ② — 알파벳 26자 중 11자만 있다</h2>
+  <div class="h2sub">그리드가 가진 글자는 <b>H W A N T S I C G M E</b> 11종.
+  나머지 15자는 칸이 없다. 향후 타이틀의 절반 정도가 <b>자리가 없을 수 있다</b>는 뜻이다.</div>
+  <div class="card">
+    <div class="alpha" id="alpha"></div>
+    <div class="note">
+      <b>중복 칸 규칙이 필요하다.</b> A는 3번·6번·12번, T는 5번·8번, S는 7번·15번에 있다 —
+      <b>읽는 순서상 첫 번째 칸을 쓴다.</b> 규칙이 결정론적이어야 브랜드가 흔들리지 않는다.<br><br>
+      <b>없는 글자는?</b> Poker(P) · Blackjack(B) · Reversi(R) · Dominoes(D) · Othello(O) 처럼
+      고전 게임 이름에 흔한 글자가 대거 빠져 있다. 두 가지 선택지 —<br>
+      · <b>ⓐ 권장 — 그냥 칸이 없다.</b> 점등은 <b>편집용 모드에서만</b> 쓰므로 로고는 아무 문제 없다.
+      전 작품에 칸을 보장하려 들면 규칙이 억지스러워진다.<br>
+      · ⓑ 타이틀에서 <b>그리드에 존재하는 첫 글자</b>를 쓴다. Poker→<b>E</b>, Blackjack→<b>A</b>, Reversi→<b>E</b>.
+      전 작품을 커버하지만 충돌이 잦고 연상이 약하다.
+    </div>
+  </div>
+
+  <h2>4 · 확정 — 3가지 모드</h2>
+  <div class="h2sub">하나의 규칙으로 다 하려 하면 깨진다. <b>용도를 셋으로 쪼개면</b> 아이디어를 온전히 살리면서 브랜드 항상성도 지킨다.</div>
+  <div class="row c3">
+    <div class="card win"><div class="pill y">Canonical · 기본</div>
+      <div class="lbl">H 흰색 채움<small>절대 안 바뀜</small></div>
+      <div class="stage" id="m1" style="min-height:200px"></div>
+      <div class="note">Steam 퍼블리셔 페이지, 파비콘, 계약서, 크레딧, 프레스킷 표지.
+      <b>브랜드의 상수.</b> 여기엔 게임 색이 절대 안 들어간다.</div></div>
+
+    <div class="card"><div class="pill m">Contextual · 맥락</div>
+      <div class="lbl">해당 작품 칸이 그 색<small>작품 안 / 작품 페이지</small></div>
+      <div class="stage" id="m2" style="min-height:200px"></div>
+      <div class="note">Hearts 스플래시·스토어면 <b>H가 핑크</b>. Minesweeper면 <b>M이 스카이</b>이고 H는 흰색 유지 —
+      앵커 + 현재 작품이 같이 보인다. Hearts는 글자가 H라 <b>앵커를 그대로 물려받는</b> 특별 케이스가 된다.</div></div>
+
+    <div class="card"><div class="pill m">Editorial · 편집</div>
+      <div class="lbl">전 작품 동시 점등<small>포트폴리오 · 기념</small></div>
+      <div class="stage" id="m3" style="min-height:200px"></div>
+      <div class="note">사이트 "우리 게임" 섹션, 스튜디오 소개, 창립 기념 아트.
+      <b>로고가 아니라 그래픽</b>이므로 여기서만 여러 칸이 켜진다. 알파벳 공백 문제도 여기서만 발생하고,
+      편집물이라 티가 안 난다.</div></div>
+  </div>
+
+  <h2>5 · 색 규칙 — 아무 색이나 못 넣는다</h2>
+  <div class="h2sub">채운 칸에는 어두운 글자(<code>#08090d</code>)가 올라간다.
+  테마색이 어두우면 글자가 안 읽힌다. <b>기준 휘도 0.187</b> — 이보다 어두우면 채우지 말고 테두리로 처리한다.</div>
+  <div class="card">
+    <table>
+      <tr><th>테마색</th><th class="n">상대휘도</th><th class="n">vs 어두운 글자</th>
+          <th class="n">vs 흰 글자</th><th>처리</th></tr>
+      <tr><td class="k"><span class="sw" style="background:#ff2a75"></span>Hearts <code>#ff2a75</code></td>
+          <td class="n">0.242</td><td class="n" style="color:#4fffdb">5.53:1</td><td class="n">3.44:1</td>
+          <td class="v">채운 셀 + 어두운 글자 ✓</td></tr>
+      <tr><td class="k"><span class="sw" style="background:#38bdf8"></span>Minesweeper <code>#38bdf8</code></td>
+          <td class="n">0.440</td><td class="n" style="color:#4fffdb">9.29:1</td><td class="n">2.05:1</td>
+          <td class="v">채운 셀 + 어두운 글자 ✓</td></tr>
+      <tr><td class="k"><span class="sw" style="background:#10b981"></span>가정 — 그린</td>
+          <td class="n">0.364</td><td class="n" style="color:#4fffdb">7.85:1</td><td class="n">2.42:1</td>
+          <td class="v">채운 셀 ✓</td></tr>
+      <tr><td class="k"><span class="sw" style="background:#f59e0b"></span>가정 — 앰버</td>
+          <td class="n">0.439</td><td class="n" style="color:#4fffdb">9.27:1</td><td class="n">2.05:1</td>
+          <td class="v">채운 셀 ✓</td></tr>
+      <tr><td class="k"><span class="sw" style="background:#7c3aed"></span>가정 — 바이올렛</td>
+          <td class="n">0.134</td><td class="n" style="color:#ff2a75">3.49:1</td><td class="n">5.45:1</td>
+          <td class="v"><b style="color:#ff2a75">채우면 안 됨</b> → 테두리 + 색 글자</td></tr>
+      <tr><td class="k"><span class="sw" style="background:#4338ca"></span>가정 — 인디고</td>
+          <td class="n">0.083</td><td class="n" style="color:#ff2a75">2.52:1</td><td class="n">7.55:1</td>
+          <td class="v"><b style="color:#ff2a75">채우면 안 됨</b> → 테두리 + 색 글자</td></tr>
+    </table>
+    <div class="note">즉 <b>신작 테마색을 정할 때 휘도 0.19 이상을 가이드로 두면</b> 로고 점등이 항상 같은 방식으로 작동한다.
+    어두운 색을 쓰고 싶다면 아래 대체 처리를 쓴다.</div>
+  </div>
+  <div class="row c2" style="margin-top:16px">
+    <div class="card"><div class="lbl">밝은 색 — 채운 셀<small>휘도 ≥ 0.19</small></div>
+      <div class="stage" id="c-fill" style="min-height:150px;gap:16px"></div></div>
+    <div class="card"><div class="lbl">어두운 색 — 테두리 + 색 글자<small>휘도 &lt; 0.19</small></div>
+      <div class="stage" id="c-out" style="min-height:150px;gap:16px"></div></div>
+  </div>
+
+  <h2>6 · 규격 추가분</h2>
+  <div class="card">
+<pre style="font-family:'Fira Code',monospace;font-size:12px;color:#cbd5e1;line-height:1.75;overflow-x:auto">칸 번호       1  H   2  W   3  A   4  N   5  T
+              6  A   7  S   8  T   9  I  10  C
+             11  G  12  A  13  M  14  E  15  S
+
+배정          작품 제목의 첫 글자 → 같은 글자 칸
+중복 처리      A·T·S 는 <span style="color:#4fffdb">읽는 순서상 첫 칸</span> (A→3, T→5, S→7)
+없는 글자      B D F J K L O P Q R U V X Y Z <span style="color:#64748b">— 칸 없음. 점등하지 않는다</span>
+
+기본(Canonical)   H = 흰색 채움 <span style="color:#64748b">#f8fafc</span> · 나머지 테두리 · <span style="color:#ff2a75">게임색 금지</span>
+맥락(Contextual)  해당 작품 칸 = 테마색 · H는 흰색 유지
+                  <span style="color:#64748b">단, Hearts는 글자가 H라 H가 핑크로 대체된다</span>
+편집(Editorial)   전 작품 칸 동시 점등 — <span style="color:#64748b">로고가 아닌 그래픽으로만</span>
+
+색 조건        상대휘도 ≥ 0.187 → 채운 셀 + 글자 <span style="color:#64748b">#08090d</span>
+              상대휘도 &lt; 0.187 → 테두리(2.5px) + 글자를 테마색으로
+동시 점등 상한   편집 모드에서도 <span style="color:#4fffdb">최대 4칸</span> — 그 이상은 그리드가 산만해진다</pre>
+  </div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const ROWS=['HWANT','ASTIC','GAMES'];
+const FIRA="'Fira Code',monospace";
+const CAP=0.70, FS=44;
+
+const lin=c=>{c/=255;return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4);};
+const lum=hex=>{const n=parseInt(hex.slice(1),16);
+  return 0.2126*lin(n>>16&255)+0.7152*lin(n>>8&255)+0.0722*lin(n&255);};
+
+/* accents: {index(1-based): color} */
+function grid(accents,px){
+  const CW=50,CH=70,G=6,W=CW*5+G*4,H=CH*3+G*2;
+  const s=el('svg',{viewBox:`0 0 ${W+4} ${H+4}`});
+  s.style.width=px+'px';s.style.height='auto';
+  let i=0;
+  ROWS.forEach((r,ri)=>[...r].forEach((c,ci)=>{
+    i++;
+    const x=2+ci*(CW+G),y=2+ri*(CH+G);
+    const col=accents[i];
+    let fill='none',stroke='rgba(255,255,255,.34)',txt='#f8fafc',sw=1.5;
+    if(col){
+      if(lum(col)>=0.187){fill=col;stroke=col;txt='#08090d';}
+      else{fill='none';stroke=col;txt=col;sw=2.5;}
+    }
+    s.appendChild(el('rect',{x,y,width:CW,height:CH,rx:4,fill,stroke,'stroke-width':sw}));
+    const t=el('text',{x:x+CW/2,y:y+CH/2+FS*CAP/2,'text-anchor':'middle',
+      'font-family':FIRA,'font-size':FS,'font-weight':700,fill:txt});
+    t.textContent=c;s.appendChild(t);
+  }));
+  return s;
+}
+function oneCell(letter,col,px){
+  const CW=50,CH=70;
+  const s=el('svg',{viewBox:`0 0 ${CW+4} ${CH+4}`});
+  s.style.width=px+'px';s.style.height='auto';
+  let fill='none',stroke=col,txt='#08090d',sw=1.5;
+  if(lum(col)<0.187){fill='none';txt=col;sw=2.5;}else{fill=col;}
+  s.appendChild(el('rect',{x:2,y:2,width:CW,height:CH,rx:4,fill,stroke,'stroke-width':sw}));
+  const t=el('text',{x:2+CW/2,y:2+CH/2+FS*CAP/2,'text-anchor':'middle',
+    'font-family':FIRA,'font-size':FS,'font-weight':700,fill:txt});
+  t.textContent=letter;s.appendChild(t);
+  return s;
+}
+const put=(id,n)=>document.getElementById(id).appendChild(n);
+
+const PINK='#ff2a75',SKY='#38bdf8',WHITE='#f8fafc';
+put('p-bad', grid({1:PINK},250));
+put('p-good',grid({1:WHITE},250));
+put('m1',    grid({1:WHITE},235));
+put('m2',    grid({1:WHITE,13:SKY},235));
+put('m3',    grid({1:PINK,13:SKY},235));
+
+/* alphabet map */
+const GRIDLETTERS={H:[1],W:[2],A:[3,6,12],N:[4],T:[5,8],S:[7,15],I:[9],C:[10],G:[11],M:[13],E:[14]};
+const ab=document.getElementById('alpha');
+[..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].forEach(ch=>{
+  const pos=GRIDLETTERS[ch];
+  const d=document.createElement('div');
+  d.className='al '+(!pos?'no':(pos.length>1?'dup':'ok'));
+  d.innerHTML=`${ch}<small>${!pos?'없음':(pos.length>1?pos.join('·'):pos[0]+'번')}</small>`;
+  ab.appendChild(d);
+});
+
+['#ff2a75','#38bdf8','#10b981','#f59e0b'].forEach((c,i)=>
+  put('c-fill',oneCell('HMGE'[i],c,84)));
+['#7c3aed','#4338ca','#334155'].forEach((c,i)=>
+  put('c-out',oneCell('WNC'[i],c,84)));
+
+Promise.all([700].flatMap(w=>[44].map(s=>
+  document.fonts.load(`${w} ${s}px "Fira Code"`).catch(()=>{}))));
+</script>
+</body>
+</html>

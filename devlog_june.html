@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[DevLog #02] Hearts Extreme: Development Journey Until June | Hwantastic Games</title>
+    <meta name="description" content="Development Log #02: Reflections on career anxieties, tabletop board game design, discovering Vibe Coding, and designing Hearts Extreme up to June.">
+    <link rel="icon" type="image/svg+xml" href="assets/brand/icon-small.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .devlog-article-container {
+            max-width: 860px;
+            margin: 40px auto 80px auto;
+            padding: 48px;
+        }
+        
+        .devlog-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .devlog-article-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .devlog-hero-img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: 36px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--glass-border-neon);
+        }
+
+        .devlog-body-text {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #e2e8f0;
+        }
+
+        .devlog-body-text p {
+            margin-bottom: 24px;
+        }
+
+        .devlog-body-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin: 40px 0 16px 0;
+            color: var(--neon-cyan);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+        }
+
+        .devlog-body-text ul {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        .devlog-body-text li {
+            margin-bottom: 8px;
+        }
+
+        .devlog-body-text blockquote {
+            background: rgba(79, 255, 219, 0.05);
+            border-left: 4px solid var(--neon-cyan);
+            padding: 20px 24px;
+            margin: 32px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 1.05rem;
+            color: #f1f5f9;
+        }
+
+        .devlog-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .devlog-back-btn:hover {
+            transform: translateX(-4px);
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="megacrit-theme">
+
+    <!-- Header -->
+    <header class="site-header" id="masthead">
+        <div class="header-content container">
+            <a href="index.html" class="brand-logo" title="Hwantastic Games Homepage">
+                <span class="brand-name square-logo">
+                    <span class="logo-line">HWANT</span>
+                    <span class="logo-line">ASTIC</span>
+                    <span class="logo-line">GAMES</span>
+                </span>
+            </a>
+
+            <nav class="main-navigation" id="siteNavigation">
+                <div class="menu-container" id="navMenu">
+                    <ul class="primary-menu">
+                        <li><a href="index.html#news" class="nav-link active">News</a></li>
+                        <li><a href="index.html#community" class="nav-link">Community</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Article Body -->
+    <main class="container">
+        <article class="devlog-article-container glass-panel">
+            <a href="index.html#news" class="devlog-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back to News & DevLogs
+            </a>
+
+            <div class="devlog-meta-bar">
+                <span class="tag-pill tag-hearts">Hearts Extreme</span>
+                <span class="tag-pill tag-patch">Studio DevLog</span>
+                <span style="color: var(--text-muted); font-size: 0.9rem;"><i class="fa-regular fa-calendar" style="margin-right: 6px;"></i>August 05, 2026</span>
+            </div>
+
+            <h1 class="devlog-article-title">
+                [DevLog #02] Hearts Extreme: Development Journey Until June
+            </h1>
+
+            <div class="devlog-body-text">
+                <p>
+                    Welcome to the second official development note for <strong>Hearts Extreme</strong>! This log covers my background as a game developer, board game designer, and the early development milestones leading up to June 2026.
+                </p>
+
+                <h3>1. Career Anxieties & The Pursuit of Side Projects</h3>
+                <p>
+                    I have been creating games as a side passion for a very long time. Globally, the gaming industry does not have as long of a history compared to traditional industries, and South Korea is no exception. Throughout my career, choosing to work at video game studios instead of joining large corporate conglomerates left me plagued by constant anxiety—the quiet fear of not knowing how many years I could stay employed always followed me.
+                </p>
+                <p>
+                    To South Koreans of my generation, game companies were often perceived as offering lower salaries than major conglomerates, but carrying the alluring dream of a massive hit. However, through years of corporate work, I realized this was largely an illusion. Such mega-hits ultimately benefited only a handful of founders, while regular employees remained just corporate workers. Recognizing this reality, I constantly strived to create my own games outside of work hours with like-minded colleagues. In my early 30s, a side project succeeded enough that we established an official startup. However, our Facebook-based game company failed to keep pace with the market's rapid shift toward mobile, and closed down within three years.
+                </p>
+
+                <h3>2. Transitioning to Tabletop Board Game Design</h3>
+                <p>
+                    After that closure, I returned to corporate jobs, but refused to abandon my drive to build games. While anxiety lingered, looking back, I think I am simply someone who cannot stop creating. I wanted to gather people to build games together again, but as my close colleagues entered their mid-30s, they naturally lost the energy to pursue side projects after work. Around that time, a new colleague introduced me to modern tabletop board games, and I was instantly captivated. I realized that here was a genre where I could create complete games entirely on my own!
+                </p>
+                <p>
+                    For nearly ten years since then, I designed board games as a side career and successfully published around 10 titles. The greatest charm of designing board games is collaborating with diverse teams to bring various creative visions to life. Knowing that players in distant countries are enjoying games born from my ideas is truly fantastic—collecting every single language edition of my published games remains one of my greatest pleasures.
+                </p>
+                <div style="margin: 28px 0; text-align: center;">
+                    <img src="assets/devlog/devlog_02_published_boardgames.png" alt="Published Board Games (Alice's Garden, Pyramido, Surfosaurus Max)" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Published Tabletop Board Games (Alice's Garden, Pyramido, Surfosaurus Max)</p>
+                </div>
+
+                <h3>3. Discovering Vibe Coding & Early Digital Prototypes</h3>
+                <p>
+                    While publishing 10 board games was a proud milestone, I was not entirely satisfied because none became the breakout hit I envisioned. Then, in the spring of this year, I discovered <strong>Vibe Coding</strong>. Wow! A brand new world opened up where I could build full video games completely by myself. I began by automating routine tasks at my day job, quickly becoming proficient with AI development tools.
+                </p>
+                <p>
+                    As confidence grew, excitement built up: <em>What should I build first?</em> When designing board games, playtest groups often provide feedback. Hearing comments like "This feels more like a single-player PC game" is usually a failing grade for a commercial tabletop game. However, to me at that moment, it felt like an incredible opportunity. I took one of my puzzle board game concepts and attempted to build it as a mobile game in early May. But after two weeks, I scrapped the project because the game proved far too complex for casual mobile puzzle players. I learned that while digital tools make execution easier, they don't erase inherent design complexity.
+                </p>
+                <p>
+                    My second attempt was a word-association puzzle game. However, deep into development, I discovered that a nearly identical game had already been published on the market.
+                </p>
+                <div style="margin: 28px 0; text-align: center;">
+                    <img src="assets/devlog/devlog_02_cancelled_prototype.png" alt="Remains of Cancelled Early Digital Prototypes" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Remains of Cancelled Early Digital Prototypes</p>
+                </div>
+
+                <h3>4. Finding Inspiration: Balatro, Mighty, and The Crew</h3>
+                <p>
+                    Despite these early setbacks, I kept drafting candidate ideas. When I first encountered Vibe Coding, the game that captured my imagination most was <em>Balatro</em>—I loved how a simple card game framework could deliver tremendous depth and replayability. My very first candidate was digitizing a classic board game called <em>Mighty</em> (a traditional Korean 5-player trick-taking game). However, I concluded that Mighty alone couldn't provide enough content volume for a commercial release.
+                </p>
+                <p>
+                    Revisiting my candidate list, I re-evaluated cooperative board game mechanics. Designing physical cooperative board games is notoriously difficult because managing artificial rules manually can be cumbersome. However, in digital video games where solo play is standard, cooperative systems offer a huge advantage. That led me to <em>The Crew</em>. I realized that adapting mission objectives from <em>The Crew</em> into a single-player card game could create a captivating experience.
+                </p>
+                <div style="margin: 28px 0; text-align: center;">
+                    <img src="assets/devlog/devlog_02_balatro_thecrew.png" alt="Core Design Inspirations: Balatro & The Crew" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Core Design Inspirations: Balatro & The Crew</p>
+                </div>
+
+                <h3>5. Designing Hearts Extreme & Level Objectives</h3>
+                <p>
+                    Starting in June, I began full implementation with two core goals:
+                </p>
+                <ul>
+                    <li>A trick-taking game where players complete specific mission challenges (inspired by <em>The Crew</em>).</li>
+                    <li>A game offering varied deck compositions where clearing missions unlocks more content (inspired by <em>Balatro</em>).</li>
+                </ul>
+                <p>
+                    Recognizing that deck-building combo mechanics wouldn't fit this puzzle design, I focused on crafting diverse level objectives within fixed deck structures:
+                </p>
+                <ul>
+                    <li>Reaching target trick-win counts</li>
+                    <li>Winning tricks with specific designated cards</li>
+                    <li>Capturing specific target cards</li>
+                    <li>Avoiding penalty point cards</li>
+                    <li>Predicting exact trick wins and hitting the target</li>
+                    <li>Predicting wins while capturing designated cards</li>
+                    <li>Achieving consecutive win predictions</li>
+                </ul>
+                <p>
+                    I named the project <strong>Hearts Extreme</strong> from day one. In Korea, trick-taking board games are considered complex due to unfamiliarity, whereas in Western markets, <em>Hearts</em> is a beloved classic. The title clearly communicates a fresh, single-player trick-taking experience built on familiar grounds.
+                </p>
+
+                <h3>6. 100% Open Hands: Transforming Card Games into Puzzles</h3>
+                <p>
+                    Playtesting existing mobile <em>Hearts</em> games revealed that team-based AI mechanics caused player frustration when AI teammates made poor moves. Therefore, as a single-player experience, Level 1 focused on hitting target trick wins.
+                </p>
+                <blockquote>
+                    <i class="fa-solid fa-quote-left" style="color: var(--neon-cyan); margin-right: 8px;"></i>
+                    While programming the target-win mode, the signature mechanics of <strong>Hearts Extreme</strong> was born: <strong>100% Open Hands</strong>! By displaying all NPC cards on screen, the game shifted from card luck into a pure deterministic puzzle. This unique identity gave me complete confidence that the game possessed strong commercial appeal.
+                </blockquote>
+
+                <h3>7. June Refinements & Studio Foundation</h3>
+                <p>
+                    Development progressed smoothly through June. To provide long-term replayability, I designed <strong>Ranked Leaderboard Mode</strong> as the endgame challenge. Toward late June, I streamlined level structures—merging complex multi-stage levels and trimming standalone single-stage levels to maintain tight pacing across 5-life runs.
+                </p>
+                <p>
+                    With the core game shape firmly established, launch felt tangible. I registered our Steamworks developer account, incorporated <strong>Hwantastic Games</strong>, and secured our official domain name.
+                </p>
+                <p>
+                    Around July, I transitioned to using Claude Code and tools like Fable, which proved invaluable in diagnosing subtle edge cases. I highly recommend Claude Code to anyone taking on Vibe Coding projects.
+                </p>
+                <p>
+                    This wraps up our development journey up to June 2026. In our next update, I will share the story of July and our upcoming playtester recruitment. I hope this retrospective inspires fellow indie developers!
+                </p>
+            </div>
+
+            <div style="margin-top: 48px; border-top: 1px solid var(--glass-border); padding-top: 24px;">
+                <a href="index.html#news" class="devlog-back-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to News & DevLogs
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <span class="brand-name square-logo">
+                        <span class="logo-line">HWANT</span>
+                        <span class="logo-line">ASTIC</span>
+                        <span class="logo-line">GAMES</span>
+                    </span>
+                </a>
+                <p>An indie game studio dedicated to crafting deep, engaging card and puzzle games for Steam.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Hwantastic Games. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

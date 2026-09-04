@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[DevLog #02] Steam Early Access & 16 Language Localization | Hwantastic Games</title>
+    <meta name="description" content="DevLog #02: Status on localizing Hearts Extreme into 16 languages alongside Steam Achievements and Cloud Save integration.">
+    <link rel="icon" type="image/svg+xml" href="assets/brand/icon-small.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon-180.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .devlog-article-container {
+            max-width: 860px;
+            margin: 40px auto 80px auto;
+            padding: 48px;
+        }
+
+        .devlog-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .devlog-article-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .devlog-hero-img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: 36px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--glass-border-neon);
+        }
+
+        .devlog-body-text {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #e2e8f0;
+        }
+
+        .devlog-body-text p {
+            margin-bottom: 24px;
+        }
+
+        .devlog-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .devlog-back-btn:hover {
+            transform: translateX(-4px);
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="megacrit-theme">
+
+    <!-- Header -->
+    <header class="site-header" id="masthead">
+        <div class="header-content container">
+            <a href="index.html" class="brand-logo" title="Hwantastic Games Homepage">
+                <span class="brand-name square-logo">
+                    <span class="logo-line">HWANT</span>
+                    <span class="logo-line">ASTIC</span>
+                    <span class="logo-line">GAMES</span>
+                </span>
+            </a>
+
+            <nav class="main-navigation" id="siteNavigation">
+                <div class="menu-container" id="navMenu">
+                    <ul class="primary-menu">
+                        <li><a href="index.html#news" class="nav-link active">News</a></li>
+                        <li><a href="index.html#community" class="nav-link">Community</a></li>
+                        <li><a href="index.html#about" class="nav-link">About</a></li>
+                        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Article Body -->
+    <main class="container">
+        <article class="devlog-article-container glass-panel">
+            <a href="index.html#news" class="devlog-back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Back to News & DevLogs
+            </a>
+
+            <div class="devlog-meta-bar">
+                <span class="tag-pill tag-hearts">Hearts Extreme</span>
+                <span class="tag-pill tag-steam">Steam Release</span>
+                <span style="color: var(--text-muted); font-size: 0.9rem;"><i class="fa-regular fa-calendar" style="margin-right: 6px;"></i>July 18, 2026</span>
+            </div>
+
+            <h1 class="devlog-article-title">
+                [DevLog #02] Steam Early Access & 16 Language Localization
+            </h1>
+
+            <img src="assets/store_assets/screenshot_1_title.png" alt="Steam Screenshot" class="devlog-hero-img">
+
+            <div class="devlog-body-text">
+                <p>
+                    We are thrilled to update our community on the Steam integration progress for <strong>Hearts Extreme</strong>!
+                </p>
+
+                <h3>Full 16 Language Localization</h3>
+                <p>
+                    Card game players around the world deserve a native experience. Hearts Extreme is localized into 16 languages:
+                    English, 한국어, Deutsch, 日本語, 简体中文, 繁體中文, Français, Español, Italiano, Русский, Português, Türkçe, Nederlands, Polski, हिन्दी, and العربية.
+                </p>
+
+                <h3>Steam Features Integration</h3>
+                <p>
+                    We have successfully integrated Steam Cloud Save, Steam Achievements, and Daily Leaderboard Sync. Players can compete daily on global leaderboards and track their personal puzzle solving records.
+                </p>
+            </div>
+
+            <div style="margin-top: 48px; border-top: 1px solid var(--glass-border); padding-top: 24px;">
+                <a href="index.html#news" class="devlog-back-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to News & DevLogs
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <span class="brand-name square-logo">
+                        <span class="logo-line">HWANT</span>
+                        <span class="logo-line">ASTIC</span>
+                        <span class="logo-line">GAMES</span>
+                    </span>
+                </a>
+                <p>An indie game studio dedicated to crafting deep, engaging card and puzzle games for Steam.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Hwantastic Games. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

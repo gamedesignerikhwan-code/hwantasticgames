@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hwantastic Games — Brand Assets</title>
+<style>
+  :root{--bg:#0f172a;--panel:#151c2c;--line:rgba(255,255,255,.09);
+        --ink:#f8fafc;--muted:#94a3b8;--dim:#64748b;--pink:#ff2a75}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+       font-family:Inter,'Segoe UI',sans-serif;padding:44px 32px 80px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:20px;font-weight:700}
+  .sub{color:var(--muted);font-size:12.5px;margin-top:5px}
+  h2{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);
+     margin:46px 0 14px;font-weight:700}
+  .row{display:grid;gap:16px}
+  .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px}
+  .fn{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--dim);margin-bottom:12px}
+  .dark{background:#0a0c10;border-radius:9px;padding:24px;display:flex;
+        align-items:center;justify-content:center;min-height:150px}
+  .light{background:#f1f5f9;border-radius:9px;padding:24px;display:flex;
+         align-items:center;justify-content:center;min-height:150px}
+  .dark img,.light img{max-width:100%;height:auto}
+  .scale{display:flex;align-items:flex-end;gap:20px;justify-content:center;
+         background:#0a0c10;border-radius:9px;padding:20px}
+  .scale div{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .scale span{font-size:9px;color:var(--dim)}
+  .ctx{border-radius:9px;padding:22px;display:flex;align-items:center;
+       justify-content:center;min-height:130px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Hwantastic Games — 브랜드 에셋</h1>
+  <div class="sub">Fira Code 700 아웃라인. 폰트 설치 없이 동일하게 렌더된다.</div>
+
+  <h2>Tier 1 · Primary</h2>
+  <div class="row c2">
+    <div class="card"><div class="fn">logo-primary.svg</div>
+      <div class="dark"><img src="logo-primary.svg" style="width:300px"></div></div>
+    <div class="card"><div class="fn">logo-primary-light.svg</div>
+      <div class="light"><img src="logo-primary-light.svg" style="width:300px"></div></div>
+  </div>
+
+  <h2>Tier 2 · Horizontal</h2>
+  <div class="row c2">
+    <div class="card"><div class="fn">logo-horizontal.svg</div>
+      <div class="dark"><img src="logo-horizontal.svg" style="width:330px"></div></div>
+    <div class="card"><div class="fn">logo-horizontal-light.svg</div>
+      <div class="light"><img src="logo-horizontal-light.svg" style="width:330px"></div></div>
+  </div>
+
+  <h2>Tier 3 · Icon</h2>
+  <div class="row c2">
+    <div class="card"><div class="fn">icon.svg — 축소 테스트</div>
+      <div class="scale">
+        <div><img src="icon.svg" style="width:128px"><span>128</span></div>
+        <div><img src="icon.svg" style="width:64px"><span>64</span></div>
+        <div><img src="icon.svg" style="width:32px"><span>32</span></div>
+        <div><img src="icon.svg" style="width:16px"><span>16</span></div>
+      </div></div>
+    <div class="card"><div class="fn">icon-bare.svg — 판 없음 (임의 배경 위)</div>
+      <div class="row c3" style="gap:10px">
+        <div class="ctx" style="background:#0a0c10"><img src="icon-bare.svg" style="width:76px"></div>
+        <div class="ctx" style="background:#f1f5f9"><img src="icon-bare.svg" style="width:76px"></div>
+        <div class="ctx" style="background:#1e293b"><img src="icon-bare.svg" style="width:76px"></div>
+      </div></div>
+  </div>
+
+  <h2>파비콘 · 좁은 크롭</h2>
+  <div class="row c2">
+    <div class="card"><div class="fn">icon.svg — 여백 넓음 · 64px 이상용</div>
+      <div class="scale">
+        <div><img src="icon.svg" style="width:64px"><span>64</span></div>
+        <div><img src="icon.svg" style="width:32px"><span>32</span></div>
+        <div><img src="icon.svg" style="width:16px"><span>16</span></div>
+      </div></div>
+    <div class="card"><div class="fn">icon-small.svg / favicon-*.png — 32px 이하용</div>
+      <div class="scale">
+        <div><img src="favicon-64.png" style="width:64px"><span>64</span></div>
+        <div><img src="favicon-32.png" style="width:32px"><span>32</span></div>
+        <div><img src="favicon-16.png" style="width:16px"><span>16</span></div>
+      </div></div>
+  </div>
+
+  <h2>Mono · 단색 (currentColor)</h2>
+  <div class="row c3">
+    <div class="card"><div class="fn">인라인 · color:#f8fafc</div>
+      <div class="dark" style="color:#f8fafc"><span class="mono" style="width:230px"></span></div></div>
+    <div class="card"><div class="fn">인라인 · color:#0f172a</div>
+      <div class="light" style="color:#0f172a"><span class="mono" style="width:230px"></span></div></div>
+    <div class="card"><div class="fn">인라인 · color:#ff2a75</div>
+      <div class="dark" style="color:#ff2a75"><span class="mono" style="width:230px"></span></div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="fn" style="margin:0;color:#94a3b8;line-height:1.7">
+      mono는 <code style="color:#ff2a75">currentColor</code>를 쓴다 — <b style="color:#f8fafc">반드시 인라인 SVG</b>로 넣어야
+      CSS <code style="color:#ff2a75">color</code>가 상속된다. <code style="color:#ff2a75">&lt;img src&gt;</code>로 불러오면
+      별도 문서로 격리돼서 검정으로 렌더된다(= 인쇄 기본값). 단색 인쇄·자수·1도 실크스크린용.
+    </div>
+  </div>
+</div>
+<script>
+fetch('logo-mono.svg').then(r=>r.text()).then(t=>{
+  document.querySelectorAll('.mono').forEach(el=>{
+    el.innerHTML=t;
+    const s=el.querySelector('svg');
+    s.removeAttribute('width');s.removeAttribute('height');
+    s.style.width='100%';s.style.height='auto';s.style.display='block';
+  });
+});
+</script>
+</body>
+</html>

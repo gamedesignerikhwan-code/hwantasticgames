@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hearts Extreme 폰트 식별 + 스튜디오 마크 분리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800;900&family=Montserrat:wght@800;900&family=Poppins:wght@800;900&family=Inter:wght@800;900&family=Fira+Code:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--panel:#11141b;--line:rgba(255,255,255,.09);
+        --ink:#f8fafc;--muted:#94a3b8;--dim:#64748b;--cyan:#4fffdb;--pink:#ff2a75}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,'Segoe UI',sans-serif;
+       padding:44px 32px 90px;line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:21px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:840px}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+     margin:52px 0 6px;font-weight:700}
+  .h2sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;max-width:880px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .row{display:grid;gap:16px}
+  .c2{grid-template-columns:1fr 1fr}
+  .spec{background:#08090d;border-radius:10px;padding:22px 20px;text-align:center;overflow:hidden}
+  .spec .word{font-size:62px;line-height:1;color:#f8fafc;white-space:nowrap}
+  .lbl{font-size:12px;font-weight:700;margin-bottom:3px}
+  .lbl small{display:block;font-weight:400;font-size:10.5px;color:var(--dim);margin-top:3px}
+  .hit{border-color:rgba(79,255,219,.45)}
+  .pill{display:inline-block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+        font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:9px}
+  .pill.y{background:rgba(79,255,219,.13);color:var(--cyan)}
+  .pill.n{background:rgba(255,255,255,.06);color:var(--muted)}
+  .zoom{display:flex;gap:14px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+  .zoom div{background:#08090d;border-radius:8px;padding:8px 14px;font-size:52px;
+            line-height:1.1;color:#cbd5e1}
+  .zoom span{display:block;font-family:Inter,sans-serif;font-size:9px;color:var(--dim);
+             text-align:center;font-weight:600;letter-spacing:.08em}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+  td.k{color:var(--ink);font-weight:600;width:130px}
+  td.v{color:var(--muted)}
+  .stage{background:#08090d;border-radius:10px;padding:26px;display:flex;
+         align-items:center;justify-content:center;min-height:160px}
+  .neon{color:#fff;text-shadow:0 0 12px rgba(255,42,117,.9),0 0 34px rgba(255,42,117,.55)}
+  .note{font-size:12px;color:var(--muted);margin-top:14px;padding-top:12px;
+        border-top:1px dashed var(--line)}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Hearts Extreme 폰트 식별 — 그리고 결론이 바뀌는가</h1>
+  <div class="sub">보내주신 로고와 후보 폰트를 같은 크기로 조판해 대조. 아래로 스튜디오 마크와 게임 타이틀의 관계를 정리했다.</div>
+
+  <h2>1 · 후보 대조 — "HEARTS"</h2>
+  <div class="h2sub">판별 포인트는 <b>R의 다리</b>(직선 사선인가 곡선인가), <b>S의 개폐</b>, <b>E 가운데 팔 길이</b>, <b>터미널이 수평으로 잘렸는가</b>.</div>
+  <div class="row c2">
+    <div class="card hit"><div class="pill y">일치 유력</div>
+      <div class="lbl">Outfit 900<small>Minesweeper Extreme H1과 동일 — w900</small></div>
+      <div class="spec"><div class="word" style="font-family:Outfit;font-weight:900;letter-spacing:-1px">HEARTS</div></div>
+      <div class="zoom">
+        <div style="font-family:Outfit;font-weight:900">R<span>다리 직선 사선</span></div>
+        <div style="font-family:Outfit;font-weight:900">S<span>개구부 좁음</span></div>
+        <div style="font-family:Outfit;font-weight:900">E<span>팔 길이 균등</span></div>
+        <div style="font-family:Outfit;font-weight:900">G<span>턱 없음</span></div>
+      </div>
+      <div class="note">지오메트릭 그로테스크. 터미널이 전부 수평/수직으로 잘리고 볼이 정원에 가깝다.
+      <b>보내주신 이미지와 골격이 일치한다.</b></div></div>
+
+    <div class="card"><div class="pill n">불일치</div>
+      <div class="lbl">Montserrat 900<small>현 스튜디오 사이트 헤딩</small></div>
+      <div class="spec"><div class="word" style="font-family:Montserrat;font-weight:900;letter-spacing:-1px">HEARTS</div></div>
+      <div class="zoom">
+        <div style="font-family:Montserrat;font-weight:900">R<span>다리 직선</span></div>
+        <div style="font-family:Montserrat;font-weight:900">S<span>개구부 넓음</span></div>
+        <div style="font-family:Montserrat;font-weight:900">E<span>팔 짧음</span></div>
+        <div style="font-family:Montserrat;font-weight:900">G<span>턱 있음</span></div>
+      </div>
+      <div class="note">전체 폭이 더 넓고 자간이 성기다. 이미지보다 훨씬 옆으로 퍼진다.</div></div>
+
+    <div class="card"><div class="pill n">불일치</div>
+      <div class="lbl">Poppins 900<small>참고 — 대표적 지오메트릭</small></div>
+      <div class="spec"><div class="word" style="font-family:Poppins;font-weight:900;letter-spacing:-1px">HEARTS</div></div>
+      <div class="note">완전 기하학적 원형. R 다리가 더 짧고 S가 더 열려 있다.</div></div>
+
+    <div class="card"><div class="pill n">불일치</div>
+      <div class="lbl">Inter 900<small>게임 Body 폰트</small></div>
+      <div class="spec"><div class="word" style="font-family:Inter;font-weight:900;letter-spacing:-1px">HEARTS</div></div>
+      <div class="note">그로테스크라 볼이 타원이고 터미널이 사선. 이미지의 기하학적 인상과 다르다.</div></div>
+  </div>
+
+  <h2>2 · 그래서 — 같은 폰트인가</h2>
+  <div class="card">
+    <table>
+      <tr><th></th><th>확인</th></tr>
+      <tr><td class="k">HEARTS</td><td class="v"><b style="color:#4fffdb">Outfit 900</b>으로 보인다.
+        Minesweeper Extreme H1(<code>Outfit, w900, letter-spacing:-1px</code>)과 같은 설정.
+        <b style="color:#f8fafc">두 게임이 같은 Display 폰트를 쓰는 게 맞다.</b></td></tr>
+      <tr><td class="k">EXTREME</td><td class="v">같은 계열을 가늘게(600대) 쓰고 트래킹을 크게 벌린 것.
+        시안 글로우는 폰트가 아니라 <b>효과</b>다.</td></tr>
+      <tr><td class="k">단, 이건 폰트가 아니라 <b style="color:#f8fafc">로고타입</b></td>
+        <td class="v">A를 하트 글리프로 치환, 네온 글로우, 그라디언트, 밑줄 룰.
+        <b>폰트를 그대로 쓴 게 아니라 손을 댄 결과물</b>이다. 스튜디오 마크의 근거로 삼을 수 없다.</td></tr>
+    </table>
+  </div>
+
+  <h2>3 · 결론은 바뀌지 않는다 — 오히려 강해진다</h2>
+  <div class="h2sub">이유는 셋.</div>
+  <div class="row c2">
+    <div class="card">
+      <div class="lbl">① 스튜디오 마크와 게임 타이틀은 달라야 한다</div>
+      <div class="stage" style="flex-direction:column;gap:16px;min-height:200px">
+        <div style="font-family:Outfit;font-weight:900;font-size:40px;letter-spacing:-1px" class="neon">HEARTS</div>
+        <div style="font-family:Inter;font-size:9.5px;color:#64748b;letter-spacing:.14em">게임 타이틀 — 표현적 · 장르별</div>
+        <div style="width:60%;height:1px;background:rgba(255,255,255,.1)"></div>
+        <div id="mark"></div>
+        <div style="font-family:Inter;font-size:9.5px;color:#64748b;letter-spacing:.14em">스튜디오 마크 — 중립적 · 시스템</div>
+      </div>
+      <div class="note">Mega Crit도 마찬가지다. 스튜디오 마크(각진 프레임+슬랩)와 Slay the Spire 타이틀(판타지 장식체)은
+      <b>공통점이 하나도 없다.</b> 스튜디오 마크는 여러 게임 위에 얹히는 상위 레이어라, 특정 게임의 인상을 빌리면
+      <b>두 번째 게임에서 무너진다.</b> 이미 Hearts(네온 핑크)와 Minesweeper 둘을 갖고 있다.</div>
+    </div>
+
+    <div class="card">
+      <div class="lbl">② Hearts 로고가 이미 "표현" 역할을 하고 있다</div>
+      <div class="stage" style="min-height:200px">
+        <div style="text-align:center">
+          <div style="font-family:Outfit;font-weight:900;font-size:34px;letter-spacing:-1px" class="neon">HEARTS</div>
+          <div style="width:100%;height:1px;background:rgba(255,42,117,.5);margin:12px 0 9px"></div>
+          <div style="font-family:Outfit;font-weight:600;font-size:13px;letter-spacing:9px;color:#dbeafe;
+                      text-shadow:0 0 10px rgba(79,255,219,.7)">EXTREME</div>
+        </div>
+      </div>
+      <div class="note">글로우·하트 치환·그라디언트로 이미 꽉 차 있다. 스튜디오 마크까지 표현적으로 가면 <b>둘이 싸운다.</b>
+      조용하고 체계적인 대비축이 필요한데, 그게 카드 그리드 + 모노스페이스다.</div>
+    </div>
+
+    <div class="card" style="grid-column:1/-1">
+      <div class="lbl">③ 계측 근거는 폰트가 같아도 그대로다</div>
+      <div class="stage" style="gap:36px;flex-wrap:wrap">
+        <div style="text-align:center">
+          <div id="g-outfit"></div>
+          <div style="font-family:Inter;font-size:10px;color:#ff2a75;margin-top:9px;font-weight:600">Outfit — 셀 채움률 편차 72%</div>
+        </div>
+        <div style="text-align:center">
+          <div id="g-fira"></div>
+          <div style="font-family:Inter;font-size:10px;color:#4fffdb;margin-top:9px;font-weight:600">Fira Code — 편차 0%</div>
+        </div>
+      </div>
+      <div class="note">Hearts 로고는 글자가 <b>가로로 붙어 흐르는</b> 자유 조판이라 Outfit의 비례가 아무 문제가 안 된다.
+      우리 그리드는 글자가 <b>같은 크기 칸에 하나씩 갇히는</b> 기계적 조판이다. 같은 폰트라도 조판 문제가 전혀 다르다 —
+      <b>Outfit이 Hearts에서 잘 작동한다는 사실은 그리드에서의 근거가 되지 못한다.</b></div>
+    </div>
+  </div>
+
+  <h2>4 · 그럼 스튜디오와 게임은 무엇으로 이어지는가</h2>
+  <div class="h2sub">폰트가 아니라 <b>시스템</b>으로 잇는다. 아래 넷이 공유 자산.</div>
+  <div class="card">
+    <table>
+      <tr><th>공유 요소</th><th>스튜디오</th><th>게임</th></tr>
+      <tr><td class="k">어두운 바탕</td><td class="v"><code>#0f172a</code></td><td class="v">동일</td></tr>
+      <tr><td class="k">트래킹 벌린 보조어</td><td class="v"><code>G A M E S</code></td><td class="v"><code>E X T R E M E</code> — 이미 같은 제스처를 쓰고 있다</td></tr>
+      <tr><td class="k">카드/셀 기하</td><td class="v">5:7 셀</td><td class="v">인게임 카드·타일</td></tr>
+      <tr><td class="k">액센트 1색 규칙</td><td class="v">시안 셀 1개</td><td class="v">게임별 고유색(Hearts=핑크)</td></tr>
+      <tr><td class="k"><b style="color:#f8fafc">Outfit</b></td><td class="v">쓰지 않음</td>
+          <td class="v"><b style="color:#f8fafc">게임 타이틀 전용으로 유지</b> — 이게 게임 레이어의 시그니처가 된다</td></tr>
+    </table>
+  </div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const ROWS=['HWANT','ASTIC','GAMES'];
+function grid(fam,weight,px,accent){
+  const CW=50,CH=70,G=6,W=CW*5+G*4,H=CH*3+G*2;
+  const s=el('svg',{viewBox:`0 0 ${W+4} ${H+4}`});
+  s.style.width=px+'px';s.style.height='auto';
+  ROWS.forEach((r,ri)=>[...r].forEach((c,ci)=>{
+    const x=2+ci*(CW+G),y=2+ri*(CH+G),hot=accent&&ri===0&&ci===0;
+    s.appendChild(el('rect',{x,y,width:CW,height:CH,rx:4,
+      fill:hot?'#4fffdb':'none',stroke:hot?'#4fffdb':'rgba(255,255,255,.34)','stroke-width':1.5}));
+    const t=el('text',{x:x+CW/2,y:y+CH/2,'text-anchor':'middle','dominant-baseline':'central',
+      'font-family':fam,'font-size':27,'font-weight':weight,fill:hot?'#08090d':'#f8fafc'});
+    t.textContent=c;s.appendChild(t);
+  }));
+  return s;
+}
+document.getElementById('mark').appendChild(grid("'Fira Code',monospace",600,190,true));
+document.getElementById('g-outfit').appendChild(grid("Outfit,sans-serif",600,230,false));
+document.getElementById('g-fira').appendChild(grid("'Fira Code',monospace",600,230,true));
+</script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Fira Code 크기·굵기 조정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;600;700;800&family=Outfit:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--panel:#11141b;--line:rgba(255,255,255,.09);
+        --ink:#f8fafc;--muted:#94a3b8;--dim:#64748b;--cyan:#4fffdb;--pink:#ff2a75}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,'Segoe UI',sans-serif;
+       padding:44px 32px 90px;line-height:1.55}
+  .wrap{max-width:1240px;margin:0 auto}
+  h1{font-size:21px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:860px}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+     margin:52px 0 6px;font-weight:700}
+  .h2sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;max-width:900px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .row{display:grid;gap:16px}
+  .c2{grid-template-columns:1fr 1fr}
+  .c4{grid-template-columns:repeat(4,1fr)}
+  .stage{background:#08090d;border-radius:10px;padding:20px;display:flex;
+         align-items:center;justify-content:center}
+  .lbl{font-size:13.5px;font-weight:700}
+  .lbl small{display:block;font-weight:500;font-size:10.5px;color:var(--dim);
+             margin-top:4px;font-family:'Fira Code',monospace}
+  .pill{display:inline-block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+        font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:9px}
+  .pill.y{background:rgba(79,255,219,.13);color:var(--cyan)}
+  .pill.n{background:rgba(255,42,117,.14);color:var(--pink)}
+  .pill.m{background:rgba(255,255,255,.06);color:var(--muted)}
+  .win{border-color:rgba(79,255,219,.45)}.bad{border-color:rgba(255,42,117,.3)}
+  .note{font-size:11.5px;color:var(--muted);margin-top:13px;padding-top:11px;
+        border-top:1px dashed var(--line)}
+  .note b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+  td.k{color:var(--ink);font-weight:600}
+  td.v{color:var(--muted)}
+  td.n{font-family:'Fira Code',monospace;font-size:11.5px;color:var(--muted);text-align:right}
+  tr.hl td{background:rgba(79,255,219,.05)}
+  tr.hl td.n,tr.hl td.k{color:var(--cyan)}
+  code{font-family:'Fira Code',monospace;font-size:11.5px;color:var(--cyan);
+       background:rgba(79,255,219,.08);padding:1px 5px;border-radius:4px}
+  .scale{display:flex;align-items:flex-end;gap:20px;justify-content:center;
+         border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+  .scale div{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .scale span{font-size:9.5px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>지적하신 공백 문제 — 원인과 조정안</h1>
+  <div class="sub">셀 50×70 기준으로 Fira Code의 실제 잉크 면적을 측정했다.
+  결론부터 — <b>폭이 아니라 높이가 문제였고, 굵기보다 크기가 훨씬 큰 지렛대다.</b></div>
+
+  <h2>원인 — 세로가 비어 있었다</h2>
+  <div class="h2sub">기존 설정(27px)은 대문자 높이가 셀 높이의 <b>27%</b>밖에 안 됐다. 셀 70px 중 51px이 빈 공간.
+  가로(32%)보다 세로가 훨씬 심했는데, 카드 비율(5:7 세로)이라 세로 여백이 더 눈에 띈다.</div>
+  <div class="card">
+    <table>
+      <tr><th>font-size</th><th class="n">글자 advance / 셀폭</th><th class="n">가장 넓은 글자 잉크</th>
+          <th class="n">가장 좁은 글자 잉크</th><th class="n">대문자높이 / 셀높이</th><th>판정</th></tr>
+      <tr><td class="k">27 (기존)</td><td class="n">32%</td><td class="n">36%</td><td class="n">28%</td><td class="n">27%</td><td class="v">너무 비었다</td></tr>
+      <tr><td class="k">34</td><td class="n">41%</td><td class="n">46%</td><td class="n">34%</td><td class="n">34%</td><td class="v">아직 부족</td></tr>
+      <tr><td class="k">40</td><td class="n">48%</td><td class="n">52%</td><td class="n">40%</td><td class="n">40%</td><td class="v">무난</td></tr>
+      <tr class="hl"><td class="k">44</td><td class="n">53%</td><td class="n">58%</td><td class="n">42%</td><td class="n">44%</td><td class="v"><b style="color:#4fffdb">권장</b></td></tr>
+      <tr><td class="k">48</td><td class="n">58%</td><td class="n">62%</td><td class="n">46%</td><td class="n">49%</td><td class="v">셀 프레임이 약해지기 시작</td></tr>
+    </table>
+    <div class="note">전부 <b>weight 700</b> 기준. 모노스페이스라 <b>굵기를 올려도 advance는 안 변한다</b> —
+    400→700으로 올려서 얻는 잉크는 4%p 정도다. 즉 <b>공백 해결의 주 지렛대는 크기고, 굵기는 보조다.</b></div>
+  </div>
+
+  <h2>눈으로 — 4단계 비교</h2>
+  <div class="h2sub">같은 셀(50×70)에 글자 크기만 바꿨다.</div>
+  <div class="row c4" id="sizes"></div>
+
+  <h2>굵기 — 500 / 600 / 700</h2>
+  <div class="h2sub">크기는 44 고정. 차이가 작아 보이지만 <b>작은 크기에서 갈린다</b>(하단 축소 테스트).</div>
+  <div class="row c2" id="weights"></div>
+
+  <h2>덤 — Fira Code의 I는 세리프가 있다</h2>
+  <div class="h2sub">모노스페이스는 좁은 글자가 빈약해 보이지 않도록 <b>I에 위아래 가로획</b>을 넣는다.
+  Outfit에서 <code>ASTIC</code>의 I가 텅 비던 문제가 여기서는 저절로 해결된다.</div>
+  <div class="row c2">
+    <div class="card bad"><div class="pill n">Outfit</div>
+      <div class="stage" id="i-outfit" style="min-height:150px"></div>
+      <div class="note">I 잉크 = 셀폭의 <b>14%</b>, W = <b>80%</b>. 나란히 놓으면 리듬이 무너진다 —
+      편차 <b style="color:#ff2a75">83%</b>.</div></div>
+    <div class="card win"><div class="pill y">Fira Code 700 / 44px</div>
+      <div class="stage" id="i-fira" style="min-height:150px"></div>
+      <div class="note">I 잉크 = 셀폭의 <b>42%</b>로 Outfit의 <b>3배</b>. 가장 넓은 A(58%)와의 편차가
+      <b style="color:#4fffdb">28%</b>까지 줄어든다. <b>advance뿐 아니라 잉크량까지 고르다.</b></div></div>
+  </div>
+
+  <h2>최종안</h2>
+  <div class="row c2">
+    <div class="card win"><div class="pill y">확정 권장</div>
+      <div class="lbl">Fira Code 700 · 44px<small>= 셀 폭의 88% · 대문자높이 셀높이의 44%</small></div>
+      <div class="stage" style="min-height:250px" id="final"></div>
+      <div class="scale" id="finalscale"></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Tier 3 아이콘도 같은 비율로<small>H 대문자높이 = 셀높이의 50%</small></div>
+      <div class="stage" style="min-height:250px;gap:22px" id="icons"></div>
+      <div class="note">아이콘은 글자가 하나뿐이라 조금 더 키워도 된다.
+      <b>단일 셀에서는 대문자높이 50%</b>까지 올린 값을 적용했다 — 16px에서 H가 뭉개지지 않는다.</div>
+    </div>
+  </div>
+
+  <h2>수정된 규격</h2>
+  <div class="card">
+<pre style="font-family:'Fira Code',monospace;font-size:12px;color:#cbd5e1;line-height:1.75;overflow-x:auto">셀            50 × 70   (5:7)
+셀 간격        6         (셀폭의 12%)
+모서리        4         (셀폭의 8%)
+셀 획         1.5       (셀폭의 3%)
+
+<span style="color:#ff2a75">글자 크기      27  →  44</span>   <span style="color:#64748b">(셀폭의 54% → 88%)</span>
+<span style="color:#ff2a75">글자 굵기      600 →  700</span>  <span style="color:#64748b">(Fira Code 최대 굵기)</span>
+
+정렬          셀 광학중심 — 대문자 기준 세로 중앙
+              <span style="color:#64748b">baseline = 셀중심 + (fontSize × 0.70) / 2</span>
+              <span style="color:#64748b">Fira Code 실측 capHeight = 0.70em</span>
+아이콘        단일 셀은 글자 크기 50 <span style="color:#64748b">(대문자높이 셀의 50%)</span></pre>
+  </div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const ROWS=['HWANT','ASTIC','GAMES'];
+const FIRA="'Fira Code',monospace";
+
+/* capHeight ratio measured from rendered Fira Code = 0.70em → optical vertical centering */
+const CAP=0.70;
+function grid(o){
+  const {fam=FIRA,w=700,fs=44,px=250,accent=true}=o;
+  const CW=50,CH=70,G=6,W=CW*5+G*4,H=CH*3+G*2;
+  const s=el('svg',{viewBox:`0 0 ${W+4} ${H+4}`});
+  s.style.width=px+'px';s.style.height='auto';
+  ROWS.forEach((r,ri)=>[...r].forEach((c,ci)=>{
+    const x=2+ci*(CW+G),y=2+ri*(CH+G),hot=accent&&ri===0&&ci===0;
+    s.appendChild(el('rect',{x,y,width:CW,height:CH,rx:4,
+      fill:hot?'#4fffdb':'none',stroke:hot?'#4fffdb':'rgba(255,255,255,.34)','stroke-width':1.5}));
+    const t=el('text',{x:x+CW/2,y:y+CH/2+fs*CAP/2,'text-anchor':'middle',
+      'font-family':fam,'font-size':fs,'font-weight':w,fill:hot?'#08090d':'#f8fafc'});
+    t.textContent=c;s.appendChild(t);
+  }));
+  return s;
+}
+function oneCell(o){
+  const {fam=FIRA,w=700,fs=44,px=150,ch='I',cap=CAP,label}=o;
+  const CW=50,CH=70;
+  const s=el('svg',{viewBox:`0 0 ${CW+4} ${CH+4}`});
+  s.style.width=px+'px';s.style.height='auto';
+  s.appendChild(el('rect',{x:2,y:2,width:CW,height:CH,rx:4,fill:'none',
+    stroke:'rgba(255,255,255,.34)','stroke-width':1.5}));
+  const t=el('text',{x:2+CW/2,y:2+CH/2+fs*cap/2,'text-anchor':'middle',
+    'font-family':fam,'font-size':fs,'font-weight':w,fill:'#f8fafc'});
+  t.textContent=ch;s.appendChild(t);
+  return s;
+}
+function icon(px,fs){
+  const S=192,CW=104,CH=146;
+  const s=el('svg',{viewBox:`0 0 ${S} ${S}`});
+  s.style.width=px+'px';s.style.height=px+'px';
+  s.appendChild(el('rect',{x:0,y:0,width:S,height:S,rx:26,fill:'#0f1218'}));
+  s.appendChild(el('rect',{x:(S-CW)/2,y:(S-CH)/2,width:CW,height:CH,rx:9,
+    fill:'#4fffdb',stroke:'#4fffdb','stroke-width':3.4}));
+  const t=el('text',{x:S/2,y:S/2+fs*CAP/2,'text-anchor':'middle',
+    'font-family':FIRA,'font-size':fs,'font-weight':700,fill:'#08090d'});
+  t.textContent='H';s.appendChild(t);
+  return s;
+}
+function pane(host,cls,pill,pillcls,title,small,node,note){
+  const c=document.createElement('div');c.className='card '+cls;
+  c.innerHTML=(pill?`<div class="pill ${pillcls}">${pill}</div>`:'')+
+    `<div class="lbl">${title}<small>${small}</small></div>`;
+  const st=document.createElement('div');st.className='stage';st.style.minHeight='210px';
+  st.appendChild(node);c.appendChild(st);
+  if(note){const n=document.createElement('div');n.className='note';n.innerHTML=note;c.appendChild(n);}
+  host.appendChild(c);return c;
+}
+function scaleRow(fn,sizes){
+  const b=document.createElement('div');b.className='scale';
+  sizes.forEach(px=>{const d=document.createElement('div');d.appendChild(fn(px));
+    const s=document.createElement('span');s.textContent=px+'px';d.appendChild(s);b.appendChild(d);});
+  return b;
+}
+
+const sz=document.getElementById('sizes');
+[[27,'기존','n','너무 비었다 — 대문자높이 셀의 27%'],
+ [34,'','m','아직 부족 — 34%'],
+ [44,'권장','y','<b>딱 맞다 — 44%.</b> 카드 프레임과 글자가 균형'],
+ [48,'','m','글자가 이기기 시작 — 49%. 셀이 테두리로 후퇴']]
+.forEach(([fs,pill,pc,note])=>{
+  pane(sz, fs===44?'win':(fs===27?'bad':''), pill, pc,
+    `${fs}px`, `weight 700`, grid({fs,px:225}), note);
+});
+
+const wt=document.getElementById('weights');
+[[500,'','m','가늘어서 16px에서 획이 끊긴다'],
+ [700,'권장','y','<b>Fira Code 최대 굵기.</b> 작은 크기에서 안전']]
+.forEach(([w,pill,pc,note])=>{
+  const c=pane(wt, w===700?'win':'', pill, pc, `weight ${w}`, `44px`, grid({w,fs:44,px:300}), note);
+  c.appendChild(scaleRow(px=>grid({w,fs:44,px,accent:true}),[160,90,60]));
+});
+
+/* I comparison */
+const io=document.getElementById('i-outfit'),ifi=document.getElementById('i-fira');
+[['I'],['W']].forEach(([ch])=>{
+  io.appendChild(oneCell({fam:'Outfit,sans-serif',w:600,fs:40,ch,cap:.70,px:105}));
+  ifi.appendChild(oneCell({ch,fs:44,px:105}));
+});
+io.style.gap='18px';ifi.style.gap='18px';
+
+document.getElementById('final').appendChild(grid({fs:44,px:300}));
+document.getElementById('finalscale').replaceWith(
+  scaleRow(px=>grid({fs:44,px,accent:true}),[190,120,80]));
+const ic=document.getElementById('icons');
+[128,64,32,16].forEach(px=>{
+  const d=document.createElement('div');
+  d.style.cssText='display:flex;flex-direction:column;align-items:center;gap:7px';
+  d.appendChild(icon(px,72));
+  const l=document.createElement('span');
+  l.style.cssText='font-size:9.5px;color:#64748b';l.textContent=px+'px';
+  d.appendChild(l);ic.appendChild(d);
+});
+
+/* re-render once webfonts are actually in */
+Promise.all([400,500,600,700].flatMap(w=>[27,34,40,44,48,50,72]
+  .map(s=>document.fonts.load(`${w} ${s}px "Fira Code"`).catch(()=>{}))))
+ .then(()=>document.fonts.ready);
+</script>
+</body>
+</html>

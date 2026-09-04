@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hwantastic Games — Logo System (B + C)</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#11141b; --line:rgba(255,255,255,.09);
+    --ink:#f8fafc; --muted:#94a3b8; --dim:#64748b;
+    --cyan:#4fffdb; --pink:#ff2a75;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+       font-family:'Segoe UI',Inter,Helvetica,Arial,sans-serif;
+       padding:48px 32px 90px;line-height:1.55}
+  .wrap{max-width:1200px;margin:0 auto}
+  h1{font-size:22px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:760px}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+     color:var(--dim);margin:54px 0 6px;font-weight:700}
+  .h2sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;max-width:820px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .row{display:grid;gap:20px}
+  .c2{grid-template-columns:1fr 1fr}
+  .c3{grid-template-columns:repeat(3,1fr)}
+  .tier{display:grid;grid-template-columns:118px 1fr;gap:22px;align-items:center}
+  .tierlab{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:700}
+  .tierlab b{display:block;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
+  .tierlab i{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:6px;line-height:1.45}
+  .stage{background:#08090d;border-radius:10px;display:flex;align-items:center;
+         justify-content:center;padding:26px;min-height:150px}
+  .name{font-size:14.5px;font-weight:700;margin-bottom:6px}
+  .desc{font-size:12.5px;color:var(--muted)}
+  .scale{display:flex;align-items:flex-end;gap:22px;justify-content:center;
+         border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+  .scale div{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .scale span{font-size:9.5px;color:var(--dim);letter-spacing:.06em}
+  .warn{border-color:rgba(255,42,117,.35)}
+  .ok{border-color:rgba(79,255,219,.35)}
+  .pill{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+        font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+  .pill.no{background:rgba(255,42,117,.14);color:var(--pink)}
+  .pill.yes{background:rgba(79,255,219,.13);color:var(--cyan)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+  td.k{color:var(--ink);font-weight:600;width:190px}
+  td.v{color:var(--muted)}
+  code{font-family:Consolas,monospace;font-size:11.5px;color:var(--cyan);
+       background:rgba(79,255,219,.08);padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Hwantastic Games — 로고 시스템 (B + C 확정안)</h1>
+  <div class="sub">Mega Crit 검증 결과 반영. 워드마크 1개가 아니라 <b>용도별 3단</b> 락업으로 간다.
+  아이콘은 새로 그리는 게 아니라 <b>주 로고를 잘라낸 것</b>이어야 한다.</div>
+
+  <h2>Mega Crit이 실제로 하는 것</h2>
+  <div class="h2sub">헤더 로고는 <code>mega-crit.svg</code> 409×349를 <b>70×60px로</b> 표시. 파비콘은 <code>cropped-favicon</code> —
+  이름 그대로 같은 로고를 M 한 글자로 <b>크롭</b>한 것. 핵심은 M이 아니라 <b>M을 감싼 프레임</b>이 두 곳에 공통으로 남는다는 점이다.</div>
+  <div class="row c2">
+    <div class="card"><div class="name">주 로고 = 프레임 + 2행 8글자</div>
+      <div class="desc">MEGA / CRIT. 행당 4글자뿐이라 70×60에서도 버틴다.</div>
+      <div class="stage" id="mc1"></div></div>
+    <div class="card"><div class="name">아이콘 = 같은 프레임 + 첫 글자</div>
+      <div class="desc">프레임이 상수(常數)라 16px에서도 브랜드가 유지된다.</div>
+      <div class="stage" id="mc2"></div></div>
+  </div>
+
+  <h2>주의 — 우리는 15글자다</h2>
+  <div class="h2sub">Mega Crit은 2행×4글자(8자), 우리는 3행×5글자(15자). 같은 70×60에 넣으면 글자당 면적이 <b>절반 이하</b>다.
+  즉 5×3 그리드를 헤더용 주 로고로 쓰는 건 불가능하다. 이게 3단 구성이 필요한 이유.</div>
+  <div class="row c2">
+    <div class="card warn"><div class="pill no">불가</div>
+      <div class="name">5×3 그리드를 헤더 크기로</div>
+      <div class="stage" id="bad"></div>
+      <div class="desc">70×60 실제 크기. 글자가 뭉갠다.</div></div>
+    <div class="card ok"><div class="pill yes">가능</div>
+      <div class="name">가로형 1행 락업을 헤더로</div>
+      <div class="stage" id="good"></div>
+      <div class="desc">같은 높이에서 읽힌다. HWAN도 살아난다.</div></div>
+  </div>
+
+  <h2>확정 시스템 — 3단 락업</h2>
+  <div class="h2sub">셋 다 같은 셀 문법(카드 비율 5:7, 동일 라운드, 동일 획 두께)을 공유한다.</div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="tier">
+      <div class="tierlab">Tier 1 · Primary<b>카드 그리드</b>
+        <i>프레스킷, 스플래시, Steam 캡슐, 명함, 크레딧</i></div>
+      <div class="stage" id="t1"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="tier">
+      <div class="tierlab">Tier 2 · Horizontal<b>가로 락업</b>
+        <i>웹 헤더, 영상 하단자막, 배너, 이메일 서명</i></div>
+      <div class="stage" id="t2"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tier">
+      <div class="tierlab">Tier 3 · Icon<b>단일 카드 셀</b>
+        <i>파비콘, Steam 클라이언트 아이콘, Discord·X 아바타</i></div>
+      <div class="stage" id="t3"></div>
+    </div>
+    <div class="scale" id="t3scale"></div>
+  </div>
+
+  <h2>정사각 문제와 해법</h2>
+  <div class="h2sub">카드 비율(5:7 세로)은 정사각 슬롯에 그대로 안 들어간다. 위아래로 약 28% 빈 공간이 생긴다.
+  Mega Crit도 프레임을 정사각 판(plate) 위에 여백을 두고 얹는 방식으로 푼다. 3안 중 <b>1안 권장</b>.</div>
+  <div class="row c3">
+    <div class="card ok"><div class="pill yes">권장</div>
+      <div class="name">1안 — 카드를 판 위에 얹기</div>
+      <div class="stage" id="s1"></div>
+      <div class="desc">주 로고 크롭 원칙 유지. 여백이 오히려 카드를 강조한다.</div>
+      <div class="scale" id="s1scale"></div></div>
+    <div class="card"><div class="name">2안 — 카드 3장 부채꼴</div>
+      <div class="stage" id="s2"></div>
+      <div class="desc">정사각을 꽉 채우고 "카드게임"이 즉각 읽힌다. 단 그리드에서 파생된 형태가 아니라 시스템 일관성이 약해진다.</div>
+      <div class="scale" id="s2scale"></div></div>
+    <div class="card"><div class="name">3안 — 셀 비율을 6:7로 완화</div>
+      <div class="stage" id="s3"></div>
+      <div class="desc">거의 정사각이라 크롭이 깔끔. 대신 "카드"라는 신호가 약해져 B의 이점을 일부 잃는다.</div>
+      <div class="scale" id="s3scale"></div></div>
+  </div>
+
+  <h2>규격</h2>
+  <div class="card">
+  <table>
+    <tr><th>항목</th><th>값</th></tr>
+    <tr><td class="k">셀 비율</td><td class="v">5 : 7 (카드). 예 — 50 × 70</td></tr>
+    <tr><td class="k">셀 간격</td><td class="v">셀 너비의 12% (50 기준 6)</td></tr>
+    <tr><td class="k">모서리 라운드</td><td class="v">셀 너비의 8% (50 기준 4). 16px 이하에서는 0으로 스냅</td></tr>
+    <tr><td class="k">획 두께</td><td class="v">셀 너비의 3% (50 기준 1.5). 최소 1px 유지 — 이하로는 채운 셀로 대체</td></tr>
+    <tr><td class="k">글자 크기</td><td class="v">셀 너비의 54% (50 기준 27), 셀 광학 중심 정렬</td></tr>
+    <tr><td class="k">여백(clear space)</td><td class="v">사방으로 셀 1개 너비</td></tr>
+    <tr><td class="k">액센트 규칙</td><td class="v">시안 <code>#4fffdb</code> 는 <b>셀 딱 1개</b>에만. 첫 칸 H = "낸 카드". 그 외 전부 모노크롬</td></tr>
+    <tr><td class="k">최소 크기</td><td class="v">Tier 1 — 120px 폭 / Tier 2 — 90px 폭 / Tier 3 — 16px</td></tr>
+    <tr><td class="k">금지</td><td class="v">그라디언트, 글로우, 외곽선 추가, 셀 비율 변형, 3행을 2행으로 재배치</td></tr>
+  </table>
+  </div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const F="'Segoe UI',Inter,Helvetica,Arial,sans-serif";
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);
+  for(const k in a)e.setAttribute(k,a[k]);return e;};
+function mk(w,h,px){const s=el('svg',{viewBox:`0 0 ${w} ${h}`});
+  if(px){s.style.width=px+'px';s.style.height=(px*h/w)+'px';}
+  else{s.style.width='100%';s.style.maxWidth=w+'px';s.style.height='auto';}
+  return s;}
+function T(p,x,y,t,o={}){p.appendChild(el('text',{x,y,'text-anchor':o.a||'middle',
+  'dominant-baseline':'central','font-family':F,'font-size':o.s||27,
+  'font-weight':o.w||400,'letter-spacing':o.ls||0,fill:o.f||'#f8fafc'})).textContent=t;}
+function R(p,x,y,w,h,o={}){p.appendChild(el('rect',{x,y,width:w,height:h,
+  rx:o.rx||0,fill:o.fill||'none',stroke:o.stroke||'rgba(255,255,255,.34)',
+  'stroke-width':o.sw===undefined?1.5:o.sw}));}
+
+const ROWS=['HWANT','ASTIC','GAMES'];
+
+/* card-cell grid — CW:CH = 5:7 */
+function cardGrid(px,accent){
+  const CW=50,CH=70,G=6,W=CW*5+G*4,H=CH*3+G*2;
+  const s=mk(W+4,H+4,px);
+  ROWS.forEach((r,ri)=>[...r].forEach((c,ci)=>{
+    const x=2+ci*(CW+G),y=2+ri*(CH+G),hot=accent&&ri===0&&ci===0;
+    R(s,x,y,CW,CH,{rx:4,fill:hot?'#4fffdb':'none',stroke:hot?'#4fffdb':'rgba(255,255,255,.34)'});
+    T(s,x+CW/2,y+CH/2,c,{s:27,f:hot?'#08090d':'#f8fafc',w:hot?600:400});
+  }));
+  return s;
+}
+/* horizontal lockup */
+function horiz(px){
+  const CW=26,CH=36,G=3.4,W=CW*10+G*9;
+  const s=mk(W+4,CH+26,px);
+  [...'HWANTASTIC'].forEach((c,ci)=>{
+    const x=2+ci*(CW+G);
+    R(s,x,2,CW,CH,{rx:2.2,sw:1});
+    T(s,x+CW/2,2+CH/2,c,{s:14});
+  });
+  T(s,(W+4)/2,CH+15,'G A M E S',{s:9,ls:4.6,f:'#94a3b8',w:600});
+  return s;
+}
+/* icon: card cell on square plate */
+function icon(px,accent){
+  const S=192,CW=104,CH=146;
+  const s=mk(S,S,px);
+  R(s,0,0,S,S,{rx:26,fill:'#0f1218',stroke:'none',sw:0});
+  const x=(S-CW)/2,y=(S-CH)/2;
+  R(s,x,y,CW,CH,{rx:9,sw:3.4,fill:accent?'#4fffdb':'none',
+     stroke:accent?'#4fffdb':'rgba(255,255,255,.7)'});
+  T(s,S/2,S/2,'H',{s:66,f:accent?'#08090d':'#f8fafc',w:accent?600:400});
+  return s;
+}
+/* icon variant: 3 fanned cards */
+function fan(px){
+  const S=192,CW=84,CH=118,s=mk(S,S,px);
+  R(s,0,0,S,S,{rx:26,fill:'#0f1218',stroke:'none',sw:0});
+  [[-20,10,.45],[20,-10,.45],[0,0,1]].forEach(([rot,dx,op],i)=>{
+    const g=el('g',{transform:`rotate(${rot} ${S/2} ${S/2+40}) translate(${dx} 0)`});
+    g.appendChild(el('rect',{x:(S-CW)/2,y:(S-CH)/2-6,width:CW,height:CH,rx:8,
+      fill:'#0f1218',stroke:`rgba(255,255,255,${op*.75})`,'stroke-width':3.2}));
+    if(op===1){const t=el('text',{x:S/2,y:S/2-6,'text-anchor':'middle',
+      'dominant-baseline':'central','font-family':F,'font-size':56,fill:'#f8fafc'});
+      t.textContent='H';g.appendChild(t);}
+    s.appendChild(g);
+  });
+  return s;
+}
+/* icon variant: near-square 6:7 cell */
+function nearsq(px){
+  const S=192,CW=126,CH=147,s=mk(S,S,px);
+  R(s,0,0,S,S,{rx:26,fill:'#0f1218',stroke:'none',sw:0});
+  R(s,(S-CW)/2,(S-CH)/2,CW,CH,{rx:9,sw:3.4,stroke:'rgba(255,255,255,.7)'});
+  T(s,S/2,S/2,'H',{s:70});
+  return s;
+}
+/* mega crit structure diagrams (구조만, 실제 자형 아님) */
+function mcPrimary(){
+  const s=mk(200,172);
+  R(s,4,4,192,164,{rx:6,sw:5,stroke:'#f2f0c4'});
+  T(s,100,58,'MEGA',{s:44,w:800,ls:2,f:'#f2f0c4'});
+  T(s,100,116,'CRIT',{s:44,w:800,ls:2,f:'#f2f0c4'});
+  return s;
+}
+function mcIcon(){
+  const s=mk(172,172);
+  R(s,4,4,164,164,{rx:6,sw:5,stroke:'#f2f0c4'});
+  T(s,86,88,'M',{s:92,w:800,f:'#f2f0c4'});
+  return s;
+}
+function scaleRow(fn,sizes){
+  const b=document.createElement('div');b.className='scale';
+  sizes.forEach(px=>{const d=document.createElement('div');
+    d.appendChild(fn(px));
+    const sp=document.createElement('span');sp.textContent=px+'px';
+    d.appendChild(sp);b.appendChild(d);});
+  return b;
+}
+const put=(id,n)=>document.getElementById(id).appendChild(n);
+
+put('mc1',mcPrimary()); put('mc2',mcIcon());
+put('bad',cardGrid(70)); put('good',horiz(150));
+put('t1',cardGrid(null,true));
+put('t2',horiz(null));
+put('t3',icon(150));
+document.getElementById('t3scale').replaceWith(scaleRow(p=>icon(p),[128,64,32,16]));
+put('s1',icon(130,true)); put('s2',fan(130)); put('s3',nearsq(130));
+document.getElementById('s1scale').replaceWith(scaleRow(p=>icon(p,true),[48,32,16]));
+document.getElementById('s2scale').replaceWith(scaleRow(p=>fan(p),[48,32,16]));
+document.getElementById('s3scale').replaceWith(scaleRow(p=>nearsq(p),[48,32,16]));
+</script>
+</body>
+</html>

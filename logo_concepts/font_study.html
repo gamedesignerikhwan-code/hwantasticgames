@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hwantastic Games — 로고 폰트 검토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Inter+Tight:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;800;900&family=Fira+Code:wght@400;500;600;700&family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--panel:#11141b;--line:rgba(255,255,255,.09);
+        --ink:#f8fafc;--muted:#94a3b8;--dim:#64748b;--cyan:#4fffdb;--pink:#ff2a75}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,'Segoe UI',sans-serif;
+       padding:48px 32px 90px;line-height:1.55}
+  .wrap{max-width:1220px;margin:0 auto}
+  h1{font-size:22px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px;max-width:820px}
+  h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+     margin:56px 0 6px;font-weight:700}
+  .h2sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;max-width:860px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .row{display:grid;gap:18px}
+  .c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:repeat(3,1fr)}
+  .c4{grid-template-columns:repeat(4,1fr)}
+  .fname{font-size:14px;font-weight:700;margin-bottom:2px}
+  .fmeta{font-size:11px;color:var(--dim);margin-bottom:14px}
+  .note{font-size:12px;color:var(--muted);margin-top:14px;padding-top:12px;
+        border-top:1px dashed var(--line)}
+  .note b{color:var(--ink)}
+  .stage{background:#08090d;border-radius:10px;padding:20px;display:flex;
+         align-items:center;justify-content:center;min-height:170px}
+  .win{border-color:rgba(79,255,219,.4)}
+  .lose{border-color:rgba(255,42,117,.28)}
+  .pill{display:inline-block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+        font-weight:700;padding:3px 9px;border-radius:20px;margin-bottom:10px}
+  .pill.y{background:rgba(79,255,219,.13);color:var(--cyan)}
+  .pill.n{background:rgba(255,42,117,.14);color:var(--pink)}
+  .pill.m{background:rgba(255,255,255,.07);color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+  td.k{color:var(--ink);font-weight:600;width:150px}
+  td.v{color:var(--muted)}
+  code{font-family:'Fira Code',Consolas,monospace;font-size:11.5px;color:var(--cyan);
+       background:rgba(79,255,219,.08);padding:1px 5px;border-radius:4px}
+  .bars{display:flex;flex-direction:column;gap:7px;margin-top:6px}
+  .bar{display:grid;grid-template-columns:20px 1fr 46px;gap:10px;align-items:center;font-size:11px}
+  .bar .ch{font-weight:700;color:var(--ink);text-align:center}
+  .bar .track{height:9px;background:rgba(255,255,255,.06);border-radius:5px;overflow:hidden}
+  .bar .fill{height:100%;border-radius:5px}
+  .bar .pct{color:var(--muted);text-align:right;font-family:'Fira Code',monospace;font-size:10.5px}
+  .spread{font-size:11.5px;color:var(--muted);margin-top:12px}
+  .spread b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>로고 폰트 검토 — 게임 스택에 맞추기</h1>
+  <div class="sub">Minesweeper Extreme에서 실측한 폰트 스택을 기준으로, 카드 그리드 로고에 어떤 게 맞는지 비교.
+  Hearts Extreme는 Vercel 인증(<code>Authentication required</code>)이 걸려 있어 확인 불가 — 같은 스택이라는 전제로 진행했다.</div>
+
+  <h2>실측 — 게임 사이트가 쓰는 폰트</h2>
+  <div class="card" style="margin-bottom:8px">
+    <table>
+      <tr><th>역할</th><th>폰트</th><th>실제 사용</th></tr>
+      <tr><td class="k">Display</td><td class="v"><b style="color:#f8fafc">Outfit</b> 600 / 800 / 900</td>
+          <td class="v">H1 "MINESWEEPER" — 89.6px, w900, <code>letter-spacing:-1px</code></td></tr>
+      <tr><td class="k">Body / UI</td><td class="v"><b style="color:#f8fafc">Inter</b> 400 / 600 / 700 / 800</td>
+          <td class="v"><code>body { font-family: Inter, sans-serif }</code></td></tr>
+      <tr><td class="k">Mono</td><td class="v"><b style="color:#f8fafc">Fira Code</b> 500 / 600 / 700</td>
+          <td class="v">로드되어 있으나 랜딩엔 미노출 — 인게임 카운터·타이머로 추정</td></tr>
+      <tr><td class="k">배경</td><td class="v"><code>#0f172a</code></td>
+          <td class="v">스튜디오 사이트는 <code>#0a0c10</code> — 통일 필요</td></tr>
+    </table>
+  </div>
+  <div class="h2sub">현 스튜디오 사이트는 <b>Montserrat</b>(헤딩) + <b>Outfit</b>(본문). Montserrat은 게임 어디에도 안 쓰인다 — 이번에 버리는 게 맞다.</div>
+
+  <h2>Tier 1 카드 그리드 — 4개 폰트 비교</h2>
+  <div class="h2sub">셀 안에 글자가 <b>낱개로 격리</b>되는 조판이라, 일반적인 로고 폰트 선택 기준과 다르게 봐야 한다.</div>
+  <div class="row c4" id="grids"></div>
+
+  <h2>핵심 — 셀 채움률 편차</h2>
+  <div class="h2sub">모든 셀이 같은 크기인데 글자 폭은 폰트마다 다르다. W는 넘치고 I는 텅 빈다.
+  아래는 각 폰트로 15글자를 실측(canvas)해 셀 대비 차지하는 비율을 그린 것. <b>편차가 작을수록 그리드가 고르게 보인다.</b></div>
+  <div class="row c4" id="metrics"></div>
+
+  <h2>결선 — Tier 2 / Tier 3 대조</h2>
+  <div class="h2sub">가로 락업(글자가 붙어 있음)과 아이콘(글자 1개)에서도 확인.</div>
+  <div class="row c2" id="finals"></div>
+
+  <h2>결론</h2>
+  <div class="card">
+    <table>
+      <tr><th>대상</th><th>폰트</th><th>이유</th></tr>
+      <tr><td class="k">로고 (Tier 1·2·3)</td>
+          <td class="v"><b style="color:#4fffdb">Fira Code 600</b> — 대문자만</td>
+          <td class="v">모노스페이스는 <b>모든 글자 폭이 동일</b>하다. 셀 폭 = 글자 advance 폭이라
+          그리드와 조판 원리가 일치한다. "결정론·완전정보"라는 게임 컨셉과도 같은 말을 한다.
+          이미 게임 스택 안에 있어 새 폰트를 추가하지 않는다.</td></tr>
+      <tr><td class="k">차선</td>
+          <td class="v"><b style="color:#f8fafc">Inter Tight 600</b></td>
+          <td class="v">Fira Code의 "개발자 폰트" 뉘앙스가 걸린다면. 중립 그로테스크라 그리드와 안 싸운다.
+          단 W·I 편차는 <b>트래킹으로 수동 보정</b> 필요.</td></tr>
+      <tr><td class="k">비추천</td>
+          <td class="v">Outfit</td>
+          <td class="v">지오메트릭이라 O·G·S가 정원(正圓)에 가깝다. 사각 셀 안에서 모서리 네 곳이 비어
+          그리드가 헐거워 보인다. <b>게임 타이틀 전용</b>으로 남기는 게 맞다.</td></tr>
+      <tr><td class="k">폐기</td>
+          <td class="v">Montserrat</td>
+          <td class="v">게임 어디에도 안 쓰인다. Outfit과 인상이 겹쳐 둘 다 둘 이유가 없다.</td></tr>
+    </table>
+  </div>
+
+  <h2>적용할 토큰</h2>
+  <div class="card">
+<pre style="font-family:'Fira Code',monospace;font-size:12px;color:#cbd5e1;line-height:1.7;overflow-x:auto"><span style="color:#64748b">/* style.css :root — 게임 스택과 통일 */</span>
+--font-logo:    'Fira Code', 'Courier New', monospace;  <span style="color:#64748b">/* 로고 전용, 600 */</span>
+--font-heading: 'Outfit', sans-serif;                   <span style="color:#64748b">/* 게임 타이틀·섹션 헤딩 */</span>
+--font-body:    'Inter', sans-serif;                    <span style="color:#64748b">/* 본문·UI */</span>
+--font-mono:    'Fira Code', monospace;                 <span style="color:#64748b">/* 수치·버전·devlog */</span>
+--font-kr:      'Pretendard', sans-serif;               <span style="color:#64748b">/* 한글 — Inter와 골격 일치 */</span>
+
+<span style="color:#64748b">/* Montserrat 제거. bg는 게임에 맞춤 */</span>
+--bg-dark: #0f172a;</pre>
+  </div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const ROWS=['HWANT','ASTIC','GAMES'];
+const FONTS=[
+ {id:'fira', name:'Fira Code',    css:"'Fira Code',monospace", w:600, cls:'win',  pill:'y', tag:'권장',
+  meta:'게임 스택 · 모노스페이스',
+  note:'모든 글자가 같은 폭. <b>셀 리듬이 완벽하게 균일하다.</b> I도 W도 같은 자리를 차지한다.'},
+ {id:'itight',name:'Inter Tight', css:"'Inter Tight',sans-serif", w:600, cls:'', pill:'m', tag:'차선',
+  meta:'게임 스택(Inter) 계열 · 그로테스크',
+  note:'중립적이고 자형이 깔끔하다. 다만 <b>W가 넘치고 I가 빈다</b> — 수동 보정 필요.'},
+ {id:'outfit',name:'Outfit',      css:"Outfit,sans-serif", w:600, cls:'lose', pill:'n', tag:'비추천',
+  meta:'게임 Display 폰트 · 지오메트릭',
+  note:'O·G·S가 원형이라 <b>사각 셀 네 모서리가 빈다.</b> 그리드가 헐거워 보인다.'},
+ {id:'mont', name:'Montserrat',   css:"Montserrat,sans-serif", w:600, cls:'lose', pill:'n', tag:'폐기',
+  meta:'현 스튜디오 사이트 · 게임 미사용',
+  note:'Outfit과 인상이 겹치고 게임 어디에도 안 쓰인다. 유지할 이유가 없다.'}
+];
+
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+function grid(font,px,accent){
+  const CW=50,CH=70,G=6,W=CW*5+G*4,H=CH*3+G*2;
+  const s=el('svg',{viewBox:`0 0 ${W+4} ${H+4}`});
+  s.style.width='100%';s.style.maxWidth=(px||W+4)+'px';s.style.height='auto';
+  ROWS.forEach((r,ri)=>[...r].forEach((c,ci)=>{
+    const x=2+ci*(CW+G),y=2+ri*(CH+G),hot=accent&&ri===0&&ci===0;
+    s.appendChild(el('rect',{x,y,width:CW,height:CH,rx:4,
+      fill:hot?'#4fffdb':'none',stroke:hot?'#4fffdb':'rgba(255,255,255,.34)','stroke-width':1.5}));
+    const t=el('text',{x:x+CW/2,y:y+CH/2,'text-anchor':'middle','dominant-baseline':'central',
+      'font-family':font.css,'font-size':27,'font-weight':font.w,fill:hot?'#08090d':'#f8fafc'});
+    t.textContent=c;s.appendChild(t);
+  }));
+  return s;
+}
+function horiz(font,px){
+  const CW=26,CH=36,G=3.4,W=CW*10+G*9;
+  const s=el('svg',{viewBox:`0 0 ${W+4} ${CH+26}`});
+  s.style.width='100%';s.style.maxWidth=(px||W+4)+'px';s.style.height='auto';
+  [...'HWANTASTIC'].forEach((c,ci)=>{
+    const x=2+ci*(CW+G);
+    s.appendChild(el('rect',{x,y:2,width:CW,height:CH,rx:2.2,fill:'none',
+      stroke:'rgba(255,255,255,.34)','stroke-width':1}));
+    const t=el('text',{x:x+CW/2,y:2+CH/2,'text-anchor':'middle','dominant-baseline':'central',
+      'font-family':font.css,'font-size':14,'font-weight':font.w,fill:'#f8fafc'});
+    t.textContent=c;s.appendChild(t);
+  });
+  const g=el('text',{x:(W+4)/2,y:CH+15,'text-anchor':'middle','dominant-baseline':'central',
+    'font-family':font.css,'font-size':9,'font-weight':font.w,'letter-spacing':4.6,fill:'#94a3b8'});
+  g.textContent='GAMES';s.appendChild(g);
+  return s;
+}
+function icon(font,px,accent){
+  const S=192,CW=104,CH=146;
+  const s=el('svg',{viewBox:`0 0 ${S} ${S}`});
+  s.style.width=px+'px';s.style.height=px+'px';
+  s.appendChild(el('rect',{x:0,y:0,width:S,height:S,rx:26,fill:'#0f1218'}));
+  s.appendChild(el('rect',{x:(S-CW)/2,y:(S-CH)/2,width:CW,height:CH,rx:9,
+    fill:accent?'#4fffdb':'none',stroke:accent?'#4fffdb':'rgba(255,255,255,.7)','stroke-width':3.4}));
+  const t=el('text',{x:S/2,y:S/2,'text-anchor':'middle','dominant-baseline':'central',
+    'font-family':font.css,'font-size':66,'font-weight':font.w,fill:accent?'#08090d':'#f8fafc'});
+  t.textContent='H';s.appendChild(t);
+  return s;
+}
+
+/* ---- render ---- */
+function build(){
+  const gw=document.getElementById('grids'), mw=document.getElementById('metrics');
+  const cv=document.createElement('canvas'), ctx=cv.getContext('2d');
+
+  FONTS.forEach(f=>{
+    const c=document.createElement('div');c.className='card '+f.cls;
+    c.innerHTML=`<div class="pill ${f.pill}">${f.tag}</div>
+      <div class="fname">${f.name}</div><div class="fmeta">${f.meta}</div>`;
+    const st=document.createElement('div');st.className='stage';
+    st.appendChild(grid(f,240,f.id==='fira'));c.appendChild(st);
+    const n=document.createElement('div');n.className='note';n.innerHTML=f.note;
+    c.appendChild(n);gw.appendChild(c);
+
+    /* measured cell-fill */
+    ctx.font=`${f.w} 27px ${f.css}`;
+    const CW=50, chars=[...ROWS.join('')];
+    const uniq=[...new Set(chars)];
+    const widths=uniq.map(ch=>({ch,w:ctx.measureText(ch).width}));
+    widths.sort((a,b)=>b.w-a.w);
+    const show=[widths[0],widths[Math.floor(widths.length/2)],widths[widths.length-1]];
+    const max=widths[0].w, min=widths[widths.length-1].w;
+    const spread=((max-min)/max*100);
+
+    const m=document.createElement('div');m.className='card '+f.cls;
+    m.innerHTML=`<div class="fname">${f.name}</div>
+                 <div class="fmeta">셀 폭 50 대비 글자 폭 실측</div>`;
+    const bars=document.createElement('div');bars.className='bars';
+    show.forEach(({ch,w})=>{
+      const pct=w/CW*100;
+      const col = spread<1 ? '#4fffdb' : (pct>72?'#ff2a75':pct<34?'#ff2a75':'#94a3b8');
+      const b=document.createElement('div');b.className='bar';
+      b.innerHTML=`<div class="ch" style="font-family:${f.css};font-weight:${f.w}">${ch}</div>
+        <div class="track"><div class="fill" style="width:${Math.min(pct,100)}%;background:${col}"></div></div>
+        <div class="pct">${pct.toFixed(0)}%</div>`;
+      bars.appendChild(b);
+    });
+    m.appendChild(bars);
+    const sp=document.createElement('div');sp.className='spread';
+    sp.innerHTML = spread<1
+      ? `편차 <b style="color:#4fffdb">0%</b> — 전 글자 동일 폭. 셀 리듬이 완전히 균일하다.`
+      : `최대·최소 편차 <b style="color:#ff2a75">${spread.toFixed(0)}%</b> — 셀마다 여백이 다르게 보인다.`;
+    m.appendChild(sp);mw.appendChild(m);
+  });
+
+  /* finals: fira vs inter tight */
+  const fw=document.getElementById('finals');
+  [FONTS[0],FONTS[1]].forEach(f=>{
+    const c=document.createElement('div');c.className='card '+(f.id==='fira'?'win':'');
+    c.innerHTML=`<div class="pill ${f.pill}">${f.tag}</div><div class="fname">${f.name}</div>
+                 <div class="fmeta">Tier 2 가로 락업 / Tier 3 아이콘</div>`;
+    const s1=document.createElement('div');s1.className='stage';s1.style.minHeight='110px';
+    s1.appendChild(horiz(f,300));c.appendChild(s1);
+    const s2=document.createElement('div');s2.className='stage';
+    s2.style.minHeight='130px';s2.style.marginTop='12px';s2.style.gap='24px';
+    [96,48,32,16].forEach(px=>{
+      const d=document.createElement('div');
+      d.style.cssText='display:flex;flex-direction:column;align-items:center;gap:7px';
+      d.appendChild(icon(f,px,true));
+      const l=document.createElement('span');
+      l.style.cssText='font-size:9.5px;color:#64748b';l.textContent=px+'px';
+      d.appendChild(l);s2.appendChild(d);
+    });
+    c.appendChild(s2);fw.appendChild(c);
+  });
+}
+/* canvas measureText does NOT trigger webfont download — force each face in first,
+   otherwise every proportional font silently measures as the Arial fallback. */
+Promise.all(FONTS.flatMap(f=>[27,14,66].map(sz=>
+  document.fonts.load(`${f.w} ${sz}px ${f.css.split(',')[0]}`).catch(()=>{})
+)))
+ .then(()=>document.fonts.ready)
+ .then(build)
+ .catch(build);
+</script>
+</body>
+</html>

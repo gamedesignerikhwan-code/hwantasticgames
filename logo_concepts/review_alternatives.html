@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Hwantastic Games — Logo Direction Review</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:#11141b; --line:rgba(255,255,255,.09);
+    --ink:#f8fafc; --muted:#94a3b8; --dim:#64748b;
+    --cyan:#4fffdb; --pink:#ff2a75;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+       font-family:'Segoe UI',Inter,Helvetica,Arial,sans-serif;
+       padding:48px 32px 80px;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:22px;font-weight:700;letter-spacing:.02em}
+  .sub{color:var(--muted);font-size:13px;margin-top:6px}
+  h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+     color:var(--dim);margin:56px 0 18px;font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+        padding:22px;display:flex;flex-direction:column}
+  .card.flag{border-color:rgba(255,42,117,.35)}
+  .card.pick{border-color:rgba(79,255,219,.4)}
+  .tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+       color:var(--dim);font-weight:700}
+  .tag.bad{color:var(--pink)} .tag.good{color:var(--cyan)}
+  .name{font-size:15px;font-weight:700;margin:8px 0 4px}
+  .desc{font-size:12.5px;color:var(--muted);min-height:56px}
+  .stage{background:#08090d;border-radius:10px;margin:16px 0 12px;
+         min-height:190px;display:flex;align-items:center;justify-content:center;padding:20px}
+  .scale{display:flex;align-items:flex-end;gap:18px;border-top:1px solid var(--line);
+         padding-top:12px;margin-top:auto}
+  .scale div{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .scale span{font-size:9px;color:var(--dim);letter-spacing:.06em}
+  .verdict{font-size:11.5px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted)}
+  .verdict b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Hwantastic Games — 로고 방향 검토</h1>
+  <div class="sub">현재 선택안(typo_option_4 architectural grid) 진단 + 대안 5종. 각 카드 하단은 축소 테스트(64 / 32 / 16px).</div>
+
+  <h2>현재 선택안</h2>
+  <div class="grid" id="row-current"></div>
+
+  <h2>대안</h2>
+  <div class="grid" id="row-alts"></div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const FONT="'Segoe UI',Inter,Helvetica,Arial,sans-serif";
+
+function svg(w,h){const s=document.createElementNS(NS,'svg');
+  s.setAttribute('viewBox',`0 0 ${w} ${h}`);s.setAttribute('width','100%');
+  s.style.maxWidth=w+'px';s.style.height='auto';return s;}
+
+function rect(p,x,y,w,h,o={}){const r=document.createElementNS(NS,'rect');
+  r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);
+  r.setAttribute('fill',o.fill||'none');
+  if(o.stroke!==null){r.setAttribute('stroke',o.stroke||'rgba(255,255,255,.28)');
+    r.setAttribute('stroke-width',o.sw||1.4);}
+  if(o.rx)r.setAttribute('rx',o.rx);
+  p.appendChild(r);return r;}
+
+function txt(p,x,y,t,o={}){const e=document.createElementNS(NS,'text');
+  e.setAttribute('x',x);e.setAttribute('y',y);
+  e.setAttribute('text-anchor',o.anchor||'middle');
+  e.setAttribute('dominant-baseline','central');
+  e.setAttribute('font-family',FONT);
+  e.setAttribute('font-size',o.size||30);
+  e.setAttribute('font-weight',o.weight||400);
+  e.setAttribute('letter-spacing',o.ls||0);
+  e.setAttribute('fill',o.fill||'#f8fafc');
+  e.textContent=t;p.appendChild(e);return e;}
+
+/* ---- builders : each returns a fresh <svg> ---- */
+
+// 1. current: 5x3 uniform grid + caption
+function current(){
+  const C=52,W=C*5,s=svg(W+40,C*3+56);
+  const rows=['HWANT','ASTIC','GAMES'];
+  rows.forEach((r,ri)=>[...r].forEach((ch,ci)=>{
+    rect(s,20+ci*C,8+ri*C,C,C,{sw:1});
+    txt(s,20+ci*C+C/2,8+ri*C+C/2,ch,{size:29});
+  }));
+  txt(s,(W+40)/2,C*3+34,'HWANTASTIC GAMES',{size:13,ls:2.4,fill:'#cbd5e1'});
+  return s;
+}
+
+// 2. grouping fix: HWANTASTIC as one block, GAMES separated
+function grouped(){
+  const C=52,W=C*5,s=svg(W+40,C*3+30);
+  const rows=['HWANT','ASTIC','GAMES'];
+  rows.forEach((r,ri)=>[...r].forEach((ch,ci)=>{
+    // interior hairlines only inside the HWANTASTIC block
+    txt(s,20+ci*C+C/2,10+ri*C+(ri===2?14:0)+C/2,ch,{size:29});
+  }));
+  // outer box around rows 0-1 with interior lines
+  rect(s,20,10,W,C*2,{sw:1.6,stroke:'rgba(255,255,255,.45)'});
+  for(let i=1;i<5;i++){const l=document.createElementNS(NS,'line');
+    l.setAttribute('x1',20+i*C);l.setAttribute('y1',10);
+    l.setAttribute('x2',20+i*C);l.setAttribute('y2',10+C*2);
+    l.setAttribute('stroke','rgba(255,255,255,.16)');l.setAttribute('stroke-width',1);s.appendChild(l);}
+  const l2=document.createElementNS(NS,'line');
+  l2.setAttribute('x1',20);l2.setAttribute('y1',10+C);l2.setAttribute('x2',20+W);l2.setAttribute('y2',10+C);
+  l2.setAttribute('stroke','rgba(255,255,255,.16)');l2.setAttribute('stroke-width',1);s.appendChild(l2);
+  return s;
+}
+
+// 3. card-proportioned cells (5:7) — genre native
+function cardcells(){
+  const CW=44,CH=62,GAP=5,W=CW*5+GAP*4,s=svg(W+40,CH*3+GAP*2+18);
+  const rows=['HWANT','ASTIC','GAMES'];
+  rows.forEach((r,ri)=>[...r].forEach((ch,ci)=>{
+    const x=20+ci*(CW+GAP),y=8+ri*(CH+GAP);
+    rect(s,x,y,CW,CH,{rx:4,sw:1.2,stroke:'rgba(255,255,255,.34)'});
+    txt(s,x+CW/2,y+CH/2,ch,{size:27});
+  }));
+  return s;
+}
+
+// 4. icon system: lockup + derived single-cell mark
+function iconsys(){
+  const C=44,W=C*5,s=svg(W+150,C*3+20);
+  const rows=['HWANT','ASTIC','GAMES'];
+  rows.forEach((r,ri)=>[...r].forEach((ch,ci)=>{
+    rect(s,12+ci*C,10+ri*C,C,C,{sw:.9});
+    txt(s,12+ci*C+C/2,10+ri*C+C/2,ch,{size:25});
+  }));
+  // divider
+  const l=document.createElementNS(NS,'line');
+  l.setAttribute('x1',W+34);l.setAttribute('y1',18);l.setAttribute('x2',W+34);l.setAttribute('y2',C*3+2);
+  l.setAttribute('stroke','rgba(255,255,255,.12)');l.setAttribute('stroke-width',1);s.appendChild(l);
+  // the mark = one cell, scaled
+  const M=88,mx=W+56,my=(C*3+20)/2-M/2;
+  rect(s,mx,my,M,M,{sw:2.2,stroke:'rgba(255,255,255,.55)'});
+  txt(s,mx+M/2,my+M/2,'H',{size:54,weight:400});
+  txt(s,mx+M/2,my+M+14,'APP ICON',{size:8,ls:2,fill:'#64748b'});
+  return s;
+}
+
+// 5. single line HWANTASTIC + GAMES
+function oneline(){
+  const C=40,W=C*10,s=svg(W+40,C+46);
+  [...'HWANTASTIC'].forEach((ch,ci)=>{
+    rect(s,20+ci*C,8,C,C,{sw:1});
+    txt(s,20+ci*C+C/2,8+C/2,ch,{size:23});
+  });
+  txt(s,(W+40)/2,C+30,'G A M E S',{size:13,ls:6,fill:'#cbd5e1',weight:600});
+  return s;
+}
+
+// 6. perfect information: one solid cell (the played card)
+function perfectinfo(){
+  const C=52,W=C*5,s=svg(W+40,C*3+20);
+  const rows=['HWANT','ASTIC','GAMES'];
+  rows.forEach((r,ri)=>[...r].forEach((ch,ci)=>{
+    const solid=(ri===0&&ci===0);
+    rect(s,20+ci*C,10+ri*C,C,C,{sw:1,fill:solid?'#4fffdb':'none',
+        stroke:solid?'#4fffdb':'rgba(255,255,255,.28)'});
+    txt(s,20+ci*C+C/2,10+ri*C+C/2,ch,{size:29,fill:solid?'#08090d':'#f8fafc',
+        weight:solid?600:400});
+  }));
+  return s;
+}
+
+// 7. control: corner brackets (var_B)
+function brackets(){
+  const s=svg(300,190),L=34,T=8,B=182,R=292,K=30;
+  const path=(d)=>{const p=document.createElementNS(NS,'path');p.setAttribute('d',d);
+    p.setAttribute('fill','none');p.setAttribute('stroke','#f8fafc');
+    p.setAttribute('stroke-width',5);s.appendChild(p);};
+  path(`M${L+K} ${T} H${L} V${T+K}`); path(`M${R-K} ${T} H${R} V${T+K}`);
+  path(`M${L+K} ${B} H${L} V${B-K}`); path(`M${R-K} ${B} H${R} V${B-K}`);
+  ['HWANT','ASTIC','GAMES'].forEach((r,i)=>
+    txt(s,163,50+i*45,r,{size:44,weight:800,ls:1}));
+  return s;
+}
+
+const DATA=[
+ {id:'cur',tag:'현재 선택',cls:'flag',bad:true,name:'typo_option_4 — Architectural Grid',
+  build:current,
+  desc:'5×3 균일 그리드 + 하단 캡션. 단어가 HWANT / ASTIC 로 끊겨 "환+fantastic" 말장난이 사라지고, 셀이 글자를 낱개로 격리해 열(HAG·WSA…)로 읽힐 여지를 만든다.',
+  verdict:'<b>보류.</b> 캡션을 덧붙였다는 것 자체가 그리드만으로 이름이 안 읽힌다는 신호. 헤어라인은 32px에서 소멸.'},
+
+ {id:'a',tag:'대안 A',cls:'',name:'그룹핑 교정 — 한 단어로 묶기',
+  build:grouped,
+  desc:'HWANTASTIC 10칸을 굵은 외곽선 하나로 묶고 GAMES는 셀 밖으로 분리. 그리드 리듬은 유지하되 "두 줄이 한 단어"라는 사실을 형태가 직접 말해준다.',
+  verdict:'<b>최소 수정 최대 효과.</b> 현재안이 마음에 든다면 이 한 가지만 바꿔도 된다.'},
+
+ {id:'b',tag:'대안 B',cls:'pick',good:true,name:'카드 비율 셀 (5:7)',
+  build:cardcells,
+  desc:'정사각 셀을 카드 비율 세로 직사각형으로 바꾸고 모서리를 살짝 둥글린다. 도형 하나 바꿨을 뿐인데 Wordle이 아니라 "카드 15장이 펼쳐진 판"으로 읽힌다.',
+  verdict:'<b>추천 1순위.</b> Hearts Extreme의 트릭테이킹·완전정보 컨셉과 로고가 같은 말을 하게 된다.'},
+
+ {id:'c',tag:'대안 C',cls:'pick',good:true,name:'아이콘 시스템 — 셀 1개 = 마크',
+  build:iconsys,
+  desc:'그리드의 최소 단위인 셀 하나에 H만 넣어 심볼로 승격. 워드마크(가로형)와 심볼(정사각)이 같은 문법을 공유한다.',
+  verdict:'<b>필수 보완.</b> Steam 아이콘·파비콘·Discord 아바타는 정사각이다. 대안 B와 반드시 함께 간다.'},
+
+ {id:'d',tag:'대안 D',cls:'',name:'1행 배치 — 말장난 보존',
+  build:oneline,
+  desc:'HWANTASTIC을 10칸 한 줄로. 끊김이 없어 가독성과 "HWAN" 인지가 최상. 대신 10:1 비율이라 웹 헤더 전용에 가깝다.',
+  verdict:'<b>보조 락업으로.</b> 주 로고보다는 가로형 배너·프레스킷 헤더용.'},
+
+ {id:'e',tag:'대안 E',cls:'',name:'완전정보 — 셀 하나만 반전',
+  build:perfectinfo,
+  desc:'모든 셀이 열려 있고 딱 한 칸만 시안으로 채워 "낸 카드"를 표현. 게임의 핵심 훅(100% 완전정보)을 로고에 심는 서사 장치.',
+  verdict:'<b>액센트 규칙으로 채택 권장.</b> 사이트의 네온 시안을 로고 전체가 아닌 한 칸에만 쓰면 톤이 안 싸운다.'},
+
+ {id:'f',tag:'대조군',cls:'',name:'option4_var_B — 코너 브래킷',
+  build:brackets,
+  desc:'기존 후보 중 축소 내성이 가장 좋은 안. 굵은 획 + 단순 프레임이라 16px에서도 살아남는다. 다만 게임 스튜디오/스트리머 로고에서 흔한 문법.',
+  verdict:'<b>안전하지만 평범.</b> 그리드안의 축소 문제를 해결 못 하겠다면 폴백.'}
+];
+
+function scaleRow(builder){
+  const box=document.createElement('div');box.className='scale';
+  [64,32,16].forEach(px=>{
+    const d=document.createElement('div');
+    const holder=document.createElement('div');
+    const s=builder();
+    s.style.maxWidth='none';s.setAttribute('width',px*1.7);s.setAttribute('height','auto');
+    s.style.width=(px*1.7)+'px';s.style.height='auto';
+    holder.appendChild(s);
+    const lab=document.createElement('span');lab.textContent=px+'px';
+    d.appendChild(holder);d.appendChild(lab);box.appendChild(d);
+  });
+  return box;
+}
+
+DATA.forEach(d=>{
+  const c=document.createElement('div');
+  c.className='card '+d.cls;
+  c.innerHTML=`<div class="tag ${d.bad?'bad':d.good?'good':''}">${d.tag}</div>
+               <div class="name">${d.name}</div>
+               <div class="desc">${d.desc}</div>`;
+  const st=document.createElement('div');st.className='stage';
+  st.appendChild(d.build());c.appendChild(st);
+  c.appendChild(scaleRow(d.build));
+  const v=document.createElement('div');v.className='verdict';v.innerHTML=d.verdict;
+  c.appendChild(v);
+  document.getElementById(d.id==='cur'?'row-current':'row-alts').appendChild(c);
+});
+</script>
+</body>
+</html>
