@@ -20,7 +20,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- External Stylesheet (Absolute path) -->
+    <!-- External Stylesheet (Fallback) -->
     <link rel="stylesheet" href="/proto/proto.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
@@ -28,7 +28,7 @@
         :root {
             --bg-warm: #f5f0e8;
             --bg-warm-alt: #ede6d8;
-            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-card: rgba(255, 255, 255, 0.96);
             --glass-border: rgba(180, 165, 140, 0.28);
             --glass-border-accent: rgba(232, 115, 74, 0.35);
 
@@ -47,9 +47,9 @@
             --font-mono: 'Fira Code', ui-monospace, monospace;
 
             --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -64,40 +64,40 @@
             background-size: 24px 24px;
             color: var(--text-main);
             font-family: var(--font-body);
-            line-height: 1.6;
+            line-height: 1.55;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 60px 20px 80px;
+            padding: 36px 20px 60px;
         }
 
         .proto-wrapper {
-            max-width: 1060px;
+            max-width: 1100px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* Hero Title Section */
+        /* Compact Hero Title Section */
         .proto-hero {
             text-align: center;
-            margin-bottom: 36px;
+            margin-bottom: 22px;
         }
 
         .proto-hero-title {
             font-family: var(--font-heading);
-            font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+            font-size: clamp(2rem, 3.2vw, 2.6rem);
             font-weight: 800;
             color: var(--text-main);
-            letter-spacing: -0.8px;
-            margin-bottom: 16px;
+            letter-spacing: -0.6px;
+            margin-bottom: 8px;
         }
 
         .proto-hero-desc {
-            max-width: 660px;
-            margin: 0 auto 30px;
-            font-size: 1.05rem;
+            max-width: 720px;
+            margin: 0 auto 18px;
+            font-size: 0.98rem;
             color: var(--text-muted);
-            line-height: 1.65;
+            line-height: 1.5;
         }
 
         /* Category Filter Bar */
@@ -105,259 +105,315 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 26px;
         }
 
         .filter-btn {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             border: 1px solid var(--glass-border);
             color: var(--text-muted);
             font-family: var(--font-body);
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 600;
-            padding: 8px 18px;
+            padding: 7px 16px;
             border-radius: 999px;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
         }
 
         .filter-btn:hover {
             background: #ffffff;
             border-color: var(--accent-coral);
             color: var(--accent-coral);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .filter-btn.active {
             background: #ffffff;
             border-color: var(--accent-coral);
             color: var(--accent-coral);
-            box-shadow: 0 4px 18px var(--accent-coral-glow);
+            box-shadow: 0 3px 14px var(--accent-coral-glow);
         }
 
         .filter-btn .count-badge {
             background: rgba(0, 0, 0, 0.06);
             padding: 2px 7px;
             border-radius: 10px;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-family: var(--font-mono);
         }
 
-        /* Showcase Grid */
-        .proto-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-            align-items: stretch;
-        }
-
-        @media (max-width: 780px) {
-            .proto-grid {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-        }
-
-        /* Prototype Card */
-        .proto-card {
-            background: #ffffff;
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 8px 26px rgba(100, 80, 50, 0.07);
+        /* Wide-Row Prototype List */
+        .proto-list {
             display: flex;
             flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Wide Prototype Card */
+        .proto-card-row {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(100, 80, 50, 0.06);
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
             transition: var(--transition);
         }
 
-        .proto-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(100, 80, 50, 0.12);
+        .proto-card-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(100, 80, 50, 0.11);
+            border-color: rgba(232, 115, 74, 0.4);
         }
 
-        /* Card Visual Media Header */
-        .proto-card-media {
+        /* 1. Left Thumbnail Column */
+        .proto-card-thumb {
+            width: 170px;
+            min-width: 170px;
             position: relative;
-            height: 220px;
-            background: radial-gradient(circle at 60% 40%, #37465e 0%, #1c2433 100%);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 16px;
         }
 
-        .card-floating-category {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            z-index: 5;
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--text-main);
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 999px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .thumb-tamers {
+            background: radial-gradient(circle at 60% 40%, #3a4b6b 0%, #1c2333 100%);
         }
 
-        .card-floating-category i {
-            color: var(--accent-coral);
+        .thumb-doore {
+            background: radial-gradient(circle at 60% 40%, #567d58 0%, #29422a 100%);
         }
 
-        .card-floating-status {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            z-index: 5;
-            background: #10b981;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 11px;
-            border-radius: 999px;
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .card-floating-status .pulse-dot {
-            width: 6px;
-            height: 6px;
-            background: #ffffff;
-            border-radius: 50%;
-        }
-
-        /* Fanned Cards Art */
-        .tamers-art-wrapper {
+        /* Fanned Mini Art (Tamers) */
+        .mini-tamers-art {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .tamers-art-wrapper .card-graphic {
+        .mini-card {
             position: absolute;
-            width: 86px;
-            height: 124px;
-            border-radius: 10px;
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
+            width: 48px;
+            height: 70px;
+            border-radius: 6px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 10px;
-            transition: transform 0.35s ease;
+            padding: 4px 6px;
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
         }
 
-        .tamers-art-wrapper .card-graphic.c1 {
+        .mini-card.c1 {
             background: linear-gradient(145deg, #e8734a, #d45025);
             color: #fff;
-            transform: translateX(-40px) rotate(-14deg);
+            transform: translateX(-24px) rotate(-14deg);
             z-index: 1;
         }
 
-        .tamers-art-wrapper .card-graphic.c2 {
+        .mini-card.c2 {
             background: linear-gradient(145deg, #5a9e8f, #3c776a);
             color: #fff;
-            transform: translateY(-6px) rotate(0deg);
+            transform: translateY(-4px) rotate(0deg);
             z-index: 2;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
         }
 
-        .tamers-art-wrapper .card-graphic.c3 {
+        .mini-card.c3 {
             background: linear-gradient(145deg, #f0c040, #d9a016);
             color: #2a2215;
-            transform: translateX(40px) rotate(14deg);
+            transform: translateX(24px) rotate(14deg);
             z-index: 1;
         }
 
-        .proto-card:hover .card-graphic.c1 {
-            transform: translateX(-52px) rotate(-20deg) translateY(-4px);
+        .proto-card-row:hover .mini-card.c1 {
+            transform: translateX(-30px) rotate(-18deg);
         }
-        .proto-card:hover .card-graphic.c2 {
-            transform: translateY(-12px) scale(1.05);
+        .proto-card-row:hover .mini-card.c2 {
+            transform: translateY(-8px) scale(1.05);
         }
-        .proto-card:hover .card-graphic.c3 {
-            transform: translateX(52px) rotate(20deg) translateY(-4px);
-        }
-
-        .card-number {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 1rem;
-            align-self: flex-start;
+        .proto-card-row:hover .mini-card.c3 {
+            transform: translateX(30px) rotate(18deg);
         }
 
-        .card-icon {
-            font-size: 1.6rem;
+        /* Doore Tile Art (Doore) */
+        .mini-doore-art {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card-bottom-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            opacity: 0.9;
+        .doore-tile-cluster {
+            position: relative;
+            width: 80px;
+            height: 80px;
         }
 
-        /* Card Body */
-        .proto-card-body {
-            padding: 24px;
+        .doore-tile {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: #e9e4d4;
+            border: 2px solid #8c7853;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .doore-tile.t1 {
+            top: 4px;
+            left: 2px;
+            background: #e8dcc4;
+            z-index: 1;
+        }
+
+        .doore-tile.t2 {
+            bottom: 4px;
+            right: 2px;
+            background: #f7e6a1;
+            border-color: #b5922f;
+            z-index: 2;
+        }
+
+        .doore-tile-icon {
+            font-size: 1.3rem;
+        }
+
+        .doore-tile-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #4a3820;
+            line-height: 1;
+        }
+
+        .proto-card-row:hover .doore-tile.t1 {
+            transform: translate(-4px, -4px);
+        }
+        .proto-card-row:hover .doore-tile.t2 {
+            transform: translate(4px, 4px);
+        }
+
+        /* 2. Middle Content Column (Wide) */
+        .proto-card-content {
+            padding: 18px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             flex: 1;
+            min-width: 0;
+        }
+
+        .proto-card-top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: var(--bg-warm-alt);
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-badge i {
+            color: var(--accent-coral);
+            font-size: 0.72rem;
+        }
+
+        .status-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.12);
+            color: #0d8a60;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-badge .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+        }
+
+        .proto-card-title-line {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
         }
 
         .proto-card-title {
             font-family: var(--font-heading);
-            font-size: 1.65rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 4px;
+            line-height: 1.2;
         }
 
         .proto-card-subtitle {
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--accent-coral);
-            margin-bottom: 12px;
         }
 
+        /* Wide 2-line Description */
         .proto-card-desc {
             font-size: 0.92rem;
             color: var(--text-muted);
             line-height: 1.55;
-            margin-bottom: 18px;
-            flex: 1;
+            margin-bottom: 12px;
         }
 
-        /* Metadata Chips */
+        /* Meta Chips */
         .proto-meta-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 7px;
-            margin-bottom: 22px;
+            gap: 6px;
         }
 
         .meta-chip {
             background: var(--bg-warm);
             border: 1px solid var(--glass-border);
             color: var(--text-main);
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 3px 9px;
             border-radius: 6px;
             display: inline-flex;
             align-items: center;
@@ -366,36 +422,40 @@
 
         .meta-chip i {
             color: var(--accent-coral);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
         }
 
-        /* Card Actions */
+        /* 3. Right Action Column */
         .proto-card-actions {
+            width: 175px;
+            min-width: 175px;
+            padding: 18px 20px 18px 0;
             display: flex;
-            gap: 10px;
-            margin-top: auto;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-play-proto {
-            flex: 1;
             background: linear-gradient(135deg, #e8734a 0%, #d4613a 100%);
             color: #ffffff !important;
             font-weight: 700;
-            padding: 11px 18px;
+            font-size: 0.9rem;
+            padding: 10px 16px;
             border-radius: var(--radius-sm);
             text-align: center;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(232, 115, 74, 0.3);
+            gap: 7px;
+            box-shadow: 0 3px 10px rgba(232, 115, 74, 0.28);
             transition: var(--transition);
         }
 
         .btn-play-proto:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(232, 115, 74, 0.45);
+            box-shadow: 0 5px 15px rgba(232, 115, 74, 0.4);
             background: linear-gradient(135deg, #ed825b 0%, #dc6a44 100%);
         }
 
@@ -403,13 +463,15 @@
             background: transparent;
             border: 1px solid var(--glass-border);
             color: var(--text-muted);
-            padding: 11px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 14px;
             border-radius: var(--radius-sm);
             cursor: pointer;
-            font-weight: 600;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
         }
 
@@ -419,47 +481,35 @@
             background: rgba(0, 0, 0, 0.03);
         }
 
-        /* Teaser Card (More Prototypes in the Lab) */
-        .teaser-card {
-            background: rgba(255, 255, 255, 0.75);
-            border: 1.5px dashed var(--glass-border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 48px 32px;
-            text-align: center;
+        /* Responsive adjustments for narrow screens */
+        @media (max-width: 768px) {
+            .proto-card-row {
+                flex-direction: column;
+            }
+
+            .proto-card-thumb {
+                width: 100%;
+                min-width: 100%;
+                height: 130px;
+            }
+
+            .proto-card-content {
+                padding: 16px 18px;
+            }
+
+            .proto-card-actions {
+                width: 100%;
+                min-width: 100%;
+                padding: 0 18px 18px 18px;
+                flex-direction: row;
+            }
+
+            .btn-play-proto {
+                flex: 1;
+            }
         }
 
-        .teaser-icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(232, 115, 74, 0.1);
-            color: var(--accent-coral);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .teaser-title {
-            font-family: var(--font-heading);
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 12px;
-        }
-
-        .teaser-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            max-width: 320px;
-        }
-
-        /* Modal Overlay - Strictly hidden until active */
+        /* Modal Overlay */
         .proto-modal-overlay {
             position: fixed;
             top: 0;
@@ -475,7 +525,7 @@
             justify-content: center;
             padding: 20px;
             opacity: 0;
-            transition: opacity 0.25s ease;
+            transition: opacity 0.22s ease;
         }
 
         .proto-modal-overlay.active {
@@ -485,7 +535,7 @@
 
         .proto-modal-card {
             background: #ffffff;
-            max-width: 600px;
+            max-width: 580px;
             width: 100%;
             border-radius: var(--radius-lg);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
@@ -497,7 +547,7 @@
         }
 
         .proto-modal-header {
-            padding: 20px 24px;
+            padding: 18px 22px;
             border-bottom: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
@@ -507,7 +557,7 @@
 
         .proto-modal-title {
             font-family: var(--font-heading);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--text-main);
             display: flex;
@@ -523,7 +573,6 @@
             cursor: pointer;
             padding: 4px;
             line-height: 1;
-            border-radius: 50%;
         }
 
         .proto-modal-close:hover {
@@ -531,18 +580,18 @@
         }
 
         .proto-modal-body {
-            padding: 24px;
+            padding: 22px;
             overflow-y: auto;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.94rem;
+            line-height: 1.65;
             color: var(--text-main);
         }
 
         .proto-modal-body h4 {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin: 16px 0 6px;
+            margin: 14px 0 6px;
             color: var(--accent-coral);
         }
 
@@ -552,7 +601,7 @@
 
         .proto-modal-body ul {
             margin-left: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .proto-modal-body li {
@@ -560,7 +609,7 @@
         }
 
         .proto-modal-footer {
-            padding: 16px 24px;
+            padding: 14px 22px;
             border-top: 1px solid var(--glass-border);
             display: flex;
             justify-content: flex-end;
@@ -573,7 +622,8 @@
             border: 1px solid var(--glass-border);
             color: var(--text-muted);
             font-weight: 600;
-            padding: 9px 16px;
+            font-size: 0.88rem;
+            padding: 8px 14px;
             border-radius: var(--radius-sm);
             cursor: pointer;
         }
@@ -587,7 +637,7 @@
 <body class="proto-page">
 
     <div class="proto-wrapper">
-        <!-- Hero Title Section -->
+        <!-- Compact Hero Header -->
         <header class="proto-hero">
             <h1 class="proto-hero-title">Board Game Prototypes</h1>
             <p class="proto-hero-desc">
@@ -597,102 +647,138 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge">1</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">2</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">1</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">Soon</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">1</span>
                 </button>
             </div>
         </header>
 
-        <!-- Prototypes Catalog Grid -->
-        <main class="proto-grid">
+        <!-- Wide Prototype List (Optimized for 10+ Games) -->
+        <main class="proto-list">
 
             <!-- 1. TAMERS (Card Game) -->
-            <article class="proto-card" data-category="card-game" id="card-tamers">
-                <!-- Card Media -->
-                <div class="proto-card-media">
-                    <span class="card-floating-category">
-                        <i class="fa-solid fa-layer-group"></i> Card Game
-                    </span>
-                    <span class="card-floating-status">
-                        <span class="pulse-dot"></span> Playable Online
-                    </span>
-
-                    <!-- Fanned Card Art -->
-                    <div class="tamers-art-wrapper">
-                        <div class="card-graphic c1">
-                            <span class="card-number">8</span>
-                            <i class="fa-solid fa-fire card-icon"></i>
-                            <span class="card-bottom-label">Flame</span>
+            <article class="proto-card-row" data-category="card-game" id="card-tamers">
+                <!-- Left Thumbnail -->
+                <div class="proto-card-thumb thumb-tamers">
+                    <div class="mini-tamers-art">
+                        <div class="mini-card c1">
+                            <span style="font-weight:700;">8</span>
+                            <i class="fa-solid fa-fire"></i>
+                            <span style="font-size:0.5rem;">FLAME</span>
                         </div>
-                        <div class="card-graphic c2">
-                            <span class="card-number">12</span>
-                            <i class="fa-solid fa-paw card-icon"></i>
-                            <span class="card-bottom-label">Beast</span>
+                        <div class="mini-card c2">
+                            <span style="font-weight:700;">12</span>
+                            <i class="fa-solid fa-paw"></i>
+                            <span style="font-size:0.5rem;">BEAST</span>
                         </div>
-                        <div class="card-graphic c3">
-                            <span class="card-number">5</span>
-                            <i class="fa-solid fa-sun card-icon"></i>
-                            <span class="card-bottom-label">Solar</span>
+                        <div class="mini-card c3">
+                            <span style="font-weight:700;">5</span>
+                            <i class="fa-solid fa-sun"></i>
+                            <span style="font-size:0.5rem;">SOLAR</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card Body -->
-                <div class="proto-card-body">
-                    <h2 class="proto-card-title">Tamers</h2>
-                    <div class="proto-card-subtitle">Trick-Taking & Prediction Card Game</div>
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-top-row">
+                        <span class="category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
+                        <span class="status-badge"><span class="pulse-dot"></span> Playable Online</span>
+                    </div>
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Tamers</h2>
+                        <span class="proto-card-subtitle">Trick-Taking & Prediction Card Game</span>
+                    </div>
                     <p class="proto-card-desc">
                         동물 테이머들의 치열한 심리전! 각 라운드 자신이 따낼 트릭 수를 정밀하게 예측하고, 수트 규칙과 특수 능력 카드를 활용하여 예측을 완벽히 적중시키는 감각적인 트릭 테이킹 게임입니다.
                     </p>
-
-                    <!-- Meta Chips -->
                     <div class="proto-meta-chips">
                         <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
                         <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
                         <span class="meta-chip"><i class="fa-solid fa-brain"></i> Trick-Taking</span>
-                        <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Prediction / Bidding</span>
-                        <span class="meta-chip"><i class="fa-solid fa-network-wired"></i> Online Multiplayer</span>
+                        <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Exact Prediction</span>
+                        <span class="meta-chip"><i class="fa-solid fa-network-wired"></i> Web Multiplayer</span>
                     </div>
+                </div>
 
-                    <!-- Actions -->
-                    <div class="proto-card-actions">
-                        <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                            <i class="fa-solid fa-play"></i> Play Prototype
-                        </a>
-                        <button type="button" class="btn-info-proto" id="btnTamersInfo" title="Game Overview & Rules">
-                            <i class="fa-solid fa-circle-info"></i> Info
-                        </button>
-                    </div>
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play Prototype
+                    </a>
+                    <button type="button" class="btn-info-proto" onclick="openModal('tamersModal')">
+                        <i class="fa-solid fa-circle-info"></i> Info
+                    </button>
                 </div>
             </article>
 
-            <!-- 2. TEASER (More Prototypes in the Lab) -->
-            <article class="proto-card teaser-card" data-category="board-game">
-                <div class="teaser-icon-box">
-                    <i class="fa-solid fa-dice-d20"></i>
+            <!-- 2. DOORE / 두레 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-doore">
+                <!-- Left Thumbnail -->
+                <div class="proto-card-thumb thumb-doore">
+                    <div class="mini-doore-art">
+                        <div class="doore-tile-cluster">
+                            <div class="doore-tile t1">
+                                <span class="doore-tile-icon">🌾</span>
+                                <span class="doore-tile-label">DOORE</span>
+                            </div>
+                            <div class="doore-tile t2">
+                                <span class="doore-tile-icon">🏡</span>
+                                <span class="doore-tile-label">VILLAGE</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="teaser-title">More Prototypes in the Lab</h3>
-                <p class="teaser-desc">
-                    독창적인 테마와 혁신적인 메커니즘을 가진 새로운 보드게임 & 카드게임 프로토타입들이 차례대로 공개될 예정입니다.
-                </p>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-top-row">
+                        <span class="category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                        <span class="status-badge"><span class="pulse-dot"></span> Playable Online</span>
+                    </div>
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Doore (두레)</h2>
+                        <span class="proto-card-subtitle">Tile-Placement & Village Farming Board Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        전통 농경 공동체 '두레'를 모티브로 한 타일 배치 전략 보드게임. 일손과 자원을 조화롭게 운용하며 타일을 연결해 풍요로운 마을을 일구세요. (솔로 AI 대전 및 실시간 온라인 멀티플레이 지원)
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 1–4 Players (Solo AI)</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Tile Placement</span>
+                        <span class="meta-chip"><i class="fa-solid fa-wheat-awn"></i> Resource Management</span>
+                        <span class="meta-chip"><i class="fa-solid fa-globe"></i> PnP Web Prototype</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play Prototype
+                    </a>
+                    <button type="button" class="btn-info-proto" onclick="openModal('dooreModal')">
+                        <i class="fa-solid fa-circle-info"></i> Info
+                    </button>
+                </div>
             </article>
 
         </main>
     </div>
 
-    <!-- Tamers Info & Rules Modal -->
-    <div class="proto-modal-overlay" id="tamersInfoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display:none;">
+    <!-- Modal 1: Tamers Info -->
+    <div class="proto-modal-overlay" id="tamersModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
             <div class="proto-modal-header">
-                <div class="proto-modal-title" id="modalTitle">
+                <div class="proto-modal-title">
                     <i class="fa-solid fa-layer-group" style="color: var(--accent-coral);"></i> Tamers — Game Overview
                 </div>
-                <button type="button" class="proto-modal-close" id="btnCloseModal" aria-label="Close modal">
+                <button type="button" class="proto-modal-close" onclick="closeModal('tamersModal')" aria-label="Close modal">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -715,7 +801,7 @@
                 </p>
             </div>
             <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" id="btnCloseModalFooter">닫기</button>
+                <button type="button" class="btn-secondary" onclick="closeModal('tamersModal')">닫기</button>
                 <a href="https://tamers.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> 지금 플레이하기
                 </a>
@@ -723,44 +809,81 @@
         </div>
     </div>
 
-    <script>
-        // Modal functionality
-        const modal = document.getElementById('tamersInfoModal');
-        const btnOpen = document.getElementById('btnTamersInfo');
-        const btnClose = document.getElementById('btnCloseModal');
-        const btnCloseFooter = document.getElementById('btnCloseModalFooter');
+    <!-- Modal 2: Doore Info -->
+    <div class="proto-modal-overlay" id="dooreModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-wheat-awn" style="color: #438054;"></i> Doore (두레) — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('dooreModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🌾 게임 개요</h4>
+                <p>
+                    <strong>Doore (두레)</strong>는 한국 전통의 상부상조 농경 공동체 '두레'를 테마로 한 타일 배치 전략 보드게임입니다. 플레이어들은 협력과 경쟁 속에서 일손을 모으고 지혜롭게 타일을 연결하여 최고의 수확과 마을 번영을 이뤄내야 합니다.
+                </p>
 
-        function openModal() {
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
+                <h4>🧩 핵심 메커니즘</h4>
+                <ul>
+                    <li><strong>타일 배치 & 길 연결</strong>: 논, 밭, 마을, 수로 등 다양한 지형 타일을 배치하고 경로를 연결하여 시너지 점수를 극대화합니다.</li>
+                    <li><strong>공동체 협동 & 자원 운용</strong>: 일손과 코인을 현명하게 분배하여 함께 큰 작업을 완수하고 보상을 나눕니다.</li>
+                    <li><strong>솔로 AI 모드 & 실시간 멀티플레이</strong>: 언제든 AI 봇과 혼자 테스트하거나, 방 코드를 공유해 친구들과 웹에서 실시간으로 함께 즐길 수 있습니다.</li>
+                </ul>
+
+                <h4>🌐 온라인 플레이 안내</h4>
+                <p>
+                    WebRTC 및 소켓 기반으로 구동되는 PnP 디지털 웹 에디션 프로토타입입니다. 솔로 플레이는 즉시 시작할 수 있으며, 방 생성 시 초대 링크를 복사해 다른 테스터를 즉시 초대할 수 있습니다.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('dooreModal')">닫기</button>
+                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #4d8258 0%, #35623e 100%);">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 지금 플레이하기
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(id) {
+            const m = document.getElementById(id);
+            if (!m) return;
+            m.style.display = 'flex';
+            setTimeout(() => m.classList.add('active'), 10);
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            modal.classList.remove('active');
-            setTimeout(() => { modal.style.display = 'none'; }, 250);
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            if (!m) return;
+            m.classList.remove('active');
+            setTimeout(() => { m.style.display = 'none'; }, 220);
             document.body.style.overflow = '';
         }
 
-        if (btnOpen) btnOpen.addEventListener('click', openModal);
-        if (btnClose) btnClose.addEventListener('click', closeModal);
-        if (btnCloseFooter) btnCloseFooter.addEventListener('click', closeModal);
-
-        if (modal) {
+        // Close on backdrop click
+        document.querySelectorAll('.proto-modal-overlay').forEach(modal => {
             modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
             });
-        }
+        });
 
+        // Close on Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-                closeModal();
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.proto-modal-overlay.active').forEach(m => closeModal(m.id));
             }
         });
 
-        // Filter functionality
+        // Category Filter Logic
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.proto-grid .proto-card');
+        const cards = document.querySelectorAll('.proto-list .proto-card-row');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -770,7 +893,7 @@
 
                 cards.forEach(card => {
                     const cat = card.getAttribute('data-category');
-                    if (filter === 'all' || cat === filter || card.classList.contains('teaser-card')) {
+                    if (filter === 'all' || cat === filter) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
