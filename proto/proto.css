@@ -363,6 +363,74 @@ body.proto-page {
     transform: scale(1.08) rotate(-4deg);
 }
 
+/* Orchards Tile Art (Orchards) */
+.thumb-orchards {
+    background: radial-gradient(circle at 60% 40%, #2f6b3e 0%, #15381e 100%);
+}
+
+.mini-orchards-art {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.orchards-tile-cluster {
+    position: relative;
+    width: 72px;
+    height: 72px;
+}
+
+.orchards-tile {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.orchards-tile.o1 {
+    top: 4px;
+    left: 2px;
+    background: #d4ebd2;
+    border: 2px solid #48874c;
+    z-index: 1;
+}
+
+.orchards-tile.o2 {
+    bottom: 4px;
+    right: 2px;
+    background: #fde8e3;
+    border: 2px solid #d9664f;
+    z-index: 2;
+}
+
+.orchards-tile-icon {
+    font-size: 1.15rem;
+}
+
+.orchards-tile-label {
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: #2b3d2c;
+    line-height: 1;
+}
+
+.proto-card-row:hover .orchards-tile.o1 {
+    transform: translate(-3px, -3px);
+}
+.proto-card-row:hover .orchards-tile.o2 {
+    transform: translate(3px, 3px);
+}
+
 /* 2. Middle Content Column (Compact & Sleek) */
 .proto-card-content {
     padding: 14px 20px;
