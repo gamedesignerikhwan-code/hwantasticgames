@@ -548,6 +548,94 @@
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
         }
 
+        /* Alchemists Flask Art (Alchemists) */
+        .thumb-alchemists {
+            background: radial-gradient(circle at 60% 40%, #5c3d7a 0%, #2a1640 100%);
+        }
+
+        .mini-alchemists-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .alchemist-flask-cluster {
+            position: relative;
+            width: 80px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alchemist-flask {
+            position: absolute;
+            width: 32px;
+            height: 44px;
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .alchemist-flask::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 8px;
+            border-radius: 3px 3px 0 0;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1.5px solid rgba(0, 0, 0, 0.2);
+            border-bottom: none;
+        }
+
+        .alchemist-flask.f1 {
+            background: linear-gradient(180deg, rgba(255,215,0,0.9), #e6a800);
+            border: 2px solid #b8860b;
+            left: 2px;
+            top: 8px;
+            transform: rotate(-10deg);
+            z-index: 1;
+        }
+
+        .alchemist-flask.f2 {
+            background: linear-gradient(180deg, rgba(192,192,192,0.9), #a0a0a0);
+            border: 2px solid #707070;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            z-index: 2;
+        }
+
+        .alchemist-flask.f3 {
+            background: linear-gradient(180deg, rgba(205,127,50,0.9), #b5651d);
+            border: 2px solid #8b4513;
+            right: 2px;
+            top: 8px;
+            transform: rotate(10deg);
+            z-index: 1;
+        }
+
+        .proto-card-row:hover .alchemist-flask.f1 {
+            transform: rotate(-16deg) translateY(-3px);
+        }
+        .proto-card-row:hover .alchemist-flask.f2 {
+            transform: translateX(-50%) translateY(-5px) scale(1.06);
+        }
+        .proto-card-row:hover .alchemist-flask.f3 {
+            transform: rotate(16deg) translateY(-3px);
+        }
+
         /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
             padding: 14px 20px;
@@ -835,13 +923,13 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">5</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">6</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">1</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">4</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">5</span>
                 </button>
             </div>
         </header>
@@ -1086,6 +1174,48 @@
                 </div>
             </article>
 
+            <!-- 6. ALCHEMISTS / 연금술사 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-alchemists">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-alchemists">
+                    <div class="mini-alchemists-art">
+                        <div class="alchemist-flask-cluster">
+                            <div class="alchemist-flask f1">🟡</div>
+                            <div class="alchemist-flask f2">⚪</div>
+                            <div class="alchemist-flask f3">🟠</div>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Alchemists</h2>
+                        <span class="proto-card-subtitle">Engine-Building & Set Collection Board Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        An engine-building set collection board game with a unique drafting system! Collect gold, silver, and bronze ingredients, brew powerful potions, and compete for the most prestigious alchemist title.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 30–45 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-gears"></i> Engine Building</span>
+                        <span class="meta-chip"><i class="fa-solid fa-layer-group"></i> Set Collection</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #7b4fa2 0%, #4a2d6b 100%);">
+                        <i class="fa-solid fa-play"></i> Play Prototype
+                    </a>
+                    <button type="button" class="btn-info-proto" onclick="openModal('alchemistsModal')">
+                        <i class="fa-solid fa-circle-info"></i> Info
+                    </button>
+                </div>
+            </article>
+
         </main>
     </div>
 
@@ -1277,6 +1407,45 @@
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('rotatoModal')">Close</button>
                 <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #c84d45 0%, #9e2a2b 100%);">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Alchemists Info -->
+    <div class="proto-modal-overlay" id="alchemistsModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-flask" style="color: #7b4fa2;"></i> Alchemists — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('alchemistsModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>⚗️ Game Overview</h4>
+                <p>
+                    <strong>Alchemists (연금술사)</strong> is an engine-building set collection board game for 2 to 4 players. Collect three types of metal ingredients—Gold, Silver, and Bronze—to brew increasingly powerful potions and earn prestige points through strategic drafting and resource management.
+                </p>
+
+                <h4>🧩 Core Mechanics</h4>
+                <ul>
+                    <li><strong>Ingredient Drafting & Collection</strong>: Each round, draft ingredient cards from the shared market. Gold, Silver, and Bronze ingredients each serve different recipe requirements.</li>
+                    <li><strong>Engine Building</strong>: Invest in workshop upgrades, assistant alchemists, and specialized equipment to boost your brewing efficiency and unlock advanced potion recipes.</li>
+                    <li><strong>Set Collection & Potion Brewing</strong>: Combine matching sets of ingredients to brew potions worth varying prestige points. Higher-tier recipes demand rarer combinations but yield greater rewards.</li>
+                    <li><strong>Supply Management</strong>: Shared ingredient supplies create tension—draft aggressively to starve opponents, or build a flexible engine that adapts to available resources.</li>
+                </ul>
+
+                <h4>🌐 Online Playtest</h4>
+                <p>
+                    Fully playable digital prototype with zero installation. Features both Solo Play with AI bots (2–4P) and real-time multiplayer tester rooms powered by WebRTC P2P connections. Supports bilingual Korean/English interface.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('alchemistsModal')">Close</button>
+                <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #7b4fa2 0%, #4a2d6b 100%);">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
