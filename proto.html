@@ -782,8 +782,8 @@
 
         /* 3. Right Action Column */
         .proto-card-actions {
-            width: 160px;
-            min-width: 160px;
+            width: 168px;
+            min-width: 168px;
             padding: 14px 18px 14px 0;
             display: flex;
             flex-direction: column;
@@ -791,12 +791,13 @@
             gap: 7px;
         }
 
-        .btn-play-proto {
-            background: linear-gradient(135deg, #e8734a 0%, #d4613a 100%);
+        .btn-play-proto,
+        .btn-sell-sheet-proto,
+        .btn-rulebook-proto {
             color: #ffffff !important;
             font-weight: 700;
-            font-size: 0.86rem;
-            padding: 9px 14px;
+            font-size: 0.82rem;
+            padding: 8px 12px;
             border-radius: var(--radius-sm);
             text-align: center;
             text-decoration: none;
@@ -804,36 +805,45 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            box-shadow: 0 3px 10px rgba(232, 115, 74, 0.25);
             transition: var(--transition);
+            border: 1px solid transparent;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .btn-play-proto {
+            background: linear-gradient(135deg, #5a9e8f 0%, #3f7f72 100%);
+            box-shadow: 0 3px 10px rgba(63, 127, 114, 0.25);
         }
 
         .btn-play-proto:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(232, 115, 74, 0.38);
-            background: linear-gradient(135deg, #ed825b 0%, #dc6a44 100%);
+            box-shadow: 0 5px 14px rgba(63, 127, 114, 0.38);
+            background: linear-gradient(135deg, #68aa9b 0%, #478b7d 100%);
         }
 
-        .btn-info-proto {
-            background: transparent;
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 7px 12px;
-            border-radius: var(--radius-sm);
+        .btn-sell-sheet-proto {
+            background: linear-gradient(135deg, #e8734a 0%, #d4613a 100%);
+            box-shadow: 0 3px 10px rgba(232, 115, 74, 0.22);
             cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
         }
 
-        .btn-info-proto:hover {
-            border-color: var(--text-main);
-            color: var(--text-main);
-            background: rgba(0, 0, 0, 0.03);
+        .btn-sell-sheet-proto:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #ed825b 0%, #dc6a44 100%);
+            box-shadow: 0 5px 14px rgba(232, 115, 74, 0.34);
+        }
+
+        .btn-rulebook-proto {
+            background: #f5e6b8;
+            border-color: #d8b85c;
+            color: #705718 !important;
+            box-shadow: none;
+        }
+
+        .btn-rulebook-proto:disabled {
+            cursor: not-allowed;
+            opacity: 0.72;
         }
 
         /* Responsive adjustments for narrow screens */
@@ -859,8 +869,13 @@
                 flex-direction: row;
             }
 
-            .btn-play-proto {
+            .btn-play-proto,
+            .btn-sell-sheet-proto,
+            .btn-rulebook-proto {
                 flex: 1;
+                gap: 4px;
+                padding-inline: 4px;
+                font-size: 0.74rem;
             }
         }
 
@@ -1059,12 +1074,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('tamersModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1106,12 +1124,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('dooreModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('dooreModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1149,12 +1170,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #d48032 0%, #b35f19 100%);">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('waffleModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('waffleModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1196,12 +1220,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('orchardsModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1244,12 +1271,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #c84d45 0%, #9e2a2b 100%);">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('rotatoModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('rotatoModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1286,12 +1316,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #7b4fa2 0%, #4a2d6b 100%);">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('alchemistsModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1336,12 +1369,15 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #c27d38 0%, #874e1d 100%);">
-                        <i class="fa-solid fa-play"></i> Play Prototype
-                    </a>
-                    <button type="button" class="btn-info-proto" onclick="openModal('pyramidsModal')">
-                        <i class="fa-solid fa-circle-info"></i> Info
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('pyramidsModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
                 </div>
             </article>
 
@@ -1417,7 +1453,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('dooreModal')">Close</button>
-                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #4d8258 0%, #35623e 100%);">
+                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
@@ -1456,7 +1492,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('waffleModal')">Close</button>
-                <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #d48032 0%, #b35f19 100%);">
+                <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
@@ -1495,7 +1531,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('orchardsModal')">Close</button>
-                <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);">
+                <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
@@ -1535,7 +1571,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('rotatoModal')">Close</button>
-                <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #c84d45 0%, #9e2a2b 100%);">
+                <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
@@ -1574,7 +1610,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('alchemistsModal')">Close</button>
-                <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #7b4fa2 0%, #4a2d6b 100%);">
+                <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
@@ -1613,7 +1649,7 @@
             </div>
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('pyramidsModal')">Close</button>
-                <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #c27d38 0%, #874e1d 100%);">
+                <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
