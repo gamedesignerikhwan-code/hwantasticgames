@@ -614,6 +614,85 @@ body.proto-page {
     transform: rotate(16deg) translateY(-3px);
 }
 
+/* Square Pyramids Stepped Monument Art (Square Pyramids) */
+.thumb-pyramids {
+    background: radial-gradient(circle at 60% 40%, #a66a38 0%, #3d200d 100%);
+}
+
+.mini-pyramids-art {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    gap: 3px;
+}
+
+.pyr-tier {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pyr-block {
+    width: 22px;
+    height: 18px;
+    border-radius: 4px;
+    background: linear-gradient(145deg, #e6b87d, #c2884a);
+    border: 1.5px solid #7d4d20;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: #4a2808;
+    font-weight: 700;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.pyr-block.apex {
+    width: 24px;
+    height: 20px;
+    background: linear-gradient(145deg, #fcd34d, #f59e0b);
+    border-color: #92400e;
+    color: #78350f;
+    font-size: 0.72rem;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.45);
+    z-index: 3;
+}
+
+.pyr-block.tier2 {
+    background: linear-gradient(145deg, #eab36d, #b87a38);
+    z-index: 2;
+}
+
+.pyr-block.tier1 {
+    background: linear-gradient(145deg, #d89856, #a36224);
+    z-index: 1;
+}
+
+.proto-card-row:hover .pyr-block.apex {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 18px rgba(245, 158, 11, 0.6);
+}
+
+.proto-card-row:hover .pyr-tier.tier-2 .pyr-block:first-child {
+    transform: translate(-2px, -1px);
+}
+.proto-card-row:hover .pyr-tier.tier-2 .pyr-block:last-child {
+    transform: translate(2px, -1px);
+}
+.proto-card-row:hover .pyr-tier.tier-1 .pyr-block:first-child {
+    transform: translate(-3px, 1px);
+}
+.proto-card-row:hover .pyr-tier.tier-1 .pyr-block:last-child {
+    transform: translate(3px, 1px);
+}
+
 /* 2. Middle Content Column (Compact & Sleek) */
 .proto-card-content {
     padding: 14px 20px;

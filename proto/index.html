@@ -636,6 +636,85 @@
             transform: rotate(16deg) translateY(-3px);
         }
 
+        /* Square Pyramids Stepped Monument Art (Square Pyramids) */
+        .thumb-pyramids {
+            background: radial-gradient(circle at 60% 40%, #a66a38 0%, #3d200d 100%);
+        }
+
+        .mini-pyramids-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            gap: 3px;
+        }
+
+        .pyr-tier {
+            display: flex;
+            gap: 3px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pyr-block {
+            width: 22px;
+            height: 18px;
+            border-radius: 4px;
+            background: linear-gradient(145deg, #e6b87d, #c2884a);
+            border: 1.5px solid #7d4d20;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: #4a2808;
+            font-weight: 700;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .pyr-block.apex {
+            width: 24px;
+            height: 20px;
+            background: linear-gradient(145deg, #fcd34d, #f59e0b);
+            border-color: #92400e;
+            color: #78350f;
+            font-size: 0.72rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.45);
+            z-index: 3;
+        }
+
+        .pyr-block.tier2 {
+            background: linear-gradient(145deg, #eab36d, #b87a38);
+            z-index: 2;
+        }
+
+        .pyr-block.tier1 {
+            background: linear-gradient(145deg, #d89856, #a36224);
+            z-index: 1;
+        }
+
+        .proto-card-row:hover .pyr-block.apex {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 18px rgba(245, 158, 11, 0.6);
+        }
+
+        .proto-card-row:hover .pyr-tier.tier-2 .pyr-block:first-child {
+            transform: translate(-2px, -1px);
+        }
+        .proto-card-row:hover .pyr-tier.tier-2 .pyr-block:last-child {
+            transform: translate(2px, -1px);
+        }
+        .proto-card-row:hover .pyr-tier.tier-1 .pyr-block:first-child {
+            transform: translate(-3px, 1px);
+        }
+        .proto-card-row:hover .pyr-tier.tier-1 .pyr-block:last-child {
+            transform: translate(3px, 1px);
+        }
+
         /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
             padding: 14px 20px;
@@ -923,10 +1002,10 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">6</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">7</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
-                    <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">1</span>
+                    <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">2</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
                     <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">5</span>
@@ -1216,6 +1295,56 @@
                 </div>
             </article>
 
+            <!-- 7. SQUARE PYRAMIDS / 사각 피라미드 (Card Game) -->
+            <article class="proto-card-row" data-category="card-game" id="card-square-pyramids">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-pyramids">
+                    <div class="mini-pyramids-art">
+                        <div class="pyr-tier tier-3">
+                            <div class="pyr-block apex">▲</div>
+                        </div>
+                        <div class="pyr-tier tier-2">
+                            <div class="pyr-block tier2">■</div>
+                            <div class="pyr-block tier2">●</div>
+                        </div>
+                        <div class="pyr-tier tier-1">
+                            <div class="pyr-block tier1">◆</div>
+                            <div class="pyr-block tier1">▲</div>
+                            <div class="pyr-block tier1">✖</div>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Square Pyramids <small style="font-size:0.95rem; font-weight:600; color:var(--text-muted);">(사각 피라미드)</small></h2>
+                        <span class="proto-card-subtitle">Drafting & Pyramid-Building Card Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        A strategic drafting and architectural pyramid-building card game! Draft paired sets of body and edge cards, stack pyramid blocks layer by layer across 4 rounds, match apex and intersection symbols, and close each tier with perimeter edge cards for optimal majority and multiplier scoring.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-layer-group"></i> Card Drafting</span>
+                        <span class="meta-chip"><i class="fa-solid fa-mountain"></i> Pyramid Building</span>
+                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Set Matching</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="background: linear-gradient(135deg, #c27d38 0%, #874e1d 100%);">
+                        <i class="fa-solid fa-play"></i> Play Prototype
+                    </a>
+                    <button type="button" class="btn-info-proto" onclick="openModal('pyramidsModal')">
+                        <i class="fa-solid fa-circle-info"></i> Info
+                    </button>
+                </div>
+            </article>
+
         </main>
     </div>
 
@@ -1446,6 +1575,45 @@
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('alchemistsModal')">Close</button>
                 <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #7b4fa2 0%, #4a2d6b 100%);">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Square Pyramids Info -->
+    <div class="proto-modal-overlay" id="pyramidsModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-layer-group" style="color: #c27d38;"></i> Square Pyramids (사각 피라미드) — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('pyramidsModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🔺 Game Overview</h4>
+                <p>
+                    <strong>Square Pyramids (사각 피라미드)</strong> is an engaging 2 to 5 player tabletop strategy card game combining open card drafting with architectural pyramid-building spatial puzzle mechanics. Across 4 intensive rounds, players draft dual-card combinations—pairing foundational Body stone cards with perimeter Edge cards—to construct an ancient stepped monument from base to apex.
+                </p>
+
+                <h4>🧩 Core Mechanics</h4>
+                <ul>
+                    <li><strong>Dual-Card Draft Market</strong>: Each turn, draft an aligned pair consisting of 1 Body stone card (featuring 3 distinct corner glyphs) and 1 Edge card. Spend cross tokens (✖) to unlock free-pick flexibility across different market pairs.</li>
+                    <li><strong>Architectural Gravity Stacking</strong>: Build your 4-tier monument from bottom to top (4 bodies on L1 base down to 1 apex body on L4). Each upper block must be supported directly by the intersection of two underlying stones.</li>
+                    <li><strong>Intersection Glyph Matching</strong>: Align adjacent stone corners across 6 key intersection points. Completing matching 3-glyph crossing sets generates significant end-game scoring bonuses.</li>
+                    <li><strong>Perimeter Edge Closures & Multiplier Scoring</strong>: Seal the left and right perimeters of each completed level using edge cards. Edge cards multiply your collected body symbols, while triangular edge banners reward cutthroat majority points over opposing architects.</li>
+                </ul>
+
+                <h4>🌐 Online Playtest</h4>
+                <p>
+                    Fully playable digital prototype running smoothly in any modern desktop or mobile browser with zero installation. Features both <strong>Solo Play vs AI Builders</strong> (2–5 players) and <strong>Real-time Multiplayer Rooms</strong> powered by WebRTC P2P connections, with full English and Korean language support.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('pyramidsModal')">Close</button>
+                <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px; background: linear-gradient(135deg, #c27d38 0%, #874e1d 100%);">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
