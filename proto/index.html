@@ -787,6 +787,85 @@
             transform: rotate(2deg) translateY(-2px);
         }
 
+
+        /* Star Window Observatory Art */
+        .thumb-star-window {
+            background:
+                radial-gradient(circle at 72% 24%, rgba(255, 226, 122, 0.2) 0 2px, transparent 3px),
+                radial-gradient(circle at 25% 32%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+                radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.55) 0 1px, transparent 2px),
+                linear-gradient(150deg, #172554 0%, #111936 60%, #090d20 100%);
+        }
+
+        .mini-star-window-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .star-chart-mini {
+            position: relative;
+            width: 78px;
+            height: 62px;
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .star-sky-tile {
+            position: absolute;
+            width: 46px;
+            height: 23px;
+            border: 1.5px solid rgba(255, 255, 255, 0.76);
+            border-radius: 6px;
+            background: linear-gradient(135deg, #283b78, #1b2858);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.38);
+            color: #fde68a;
+            font-size: 0.72rem;
+            letter-spacing: 7px;
+            padding-left: 7px;
+            line-height: 20px;
+        }
+
+        .star-sky-tile.s1 {
+            left: 3px;
+            top: 7px;
+        }
+
+        .star-sky-tile.s2 {
+            right: 1px;
+            bottom: 5px;
+            transform: rotate(90deg);
+        }
+
+        .star-lens-mini {
+            position: absolute;
+            left: 25px;
+            top: 20px;
+            width: 28px;
+            height: 28px;
+            display: grid;
+            place-items: center;
+            border: 3px solid #67e8f9;
+            border-radius: 50%;
+            background: rgba(8, 17, 45, 0.72);
+            color: #ffffff;
+            font-size: 0.8rem;
+            box-shadow: 0 0 14px rgba(103, 232, 249, 0.55);
+            z-index: 2;
+        }
+
+        .proto-card-row:hover .star-chart-mini {
+            transform: rotate(1deg) scale(1.08);
+        }
+
+        .proto-card-row:hover .star-lens-mini {
+            box-shadow: 0 0 20px rgba(103, 232, 249, 0.82);
+        }
+
         /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
             padding: 14px 20px;
@@ -1089,13 +1168,13 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">8</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">9</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">2</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">6</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">7</span>
                 </button>
             </div>
         </header>
@@ -1498,6 +1577,51 @@
                 </div>
             </article>
 
+            <!-- 9. STAR WINDOW / 천문대의 밤 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-star-window">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-star-window">
+                    <div class="mini-star-window-art">
+                        <div class="star-chart-mini" aria-hidden="true">
+                            <span class="star-sky-tile s1">✦☄</span>
+                            <span class="star-sky-tile s2">✧◉</span>
+                            <span class="star-lens-mini">✦</span>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Star Window <small style="font-size:0.95rem; font-weight:600; color:var(--text-muted);">(천문대의 밤)</small></h2>
+                        <span class="proto-card-subtitle">Celestial Tile-Laying & Observation Strategy</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        Expand your personal sky chart with celestial domino tiles, then position observation lenses to frame matching stars, planets, comets, nebulae, and galaxies for multiplied scoring.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-moon"></i> 10 Nights</span>
+                        <span class="meta-chip"><i class="fa-solid fa-table-cells-large"></i> Tile Placement</span>
+                        <span class="meta-chip"><i class="fa-solid fa-crosshairs"></i> Spatial Scoring</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
         </main>
     </div>
 
@@ -1807,6 +1931,46 @@
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('drawingGameModal')">Close</button>
                 <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9: Star Window Info -->
+    <div class="proto-modal-overlay" id="starWindowModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-star" style="color: #eab308;"></i> Star Window — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('starWindowModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🔭 Game Overview</h4>
+                <p>
+                    <strong>Star Window (천문대의 밤)</strong> is a 2 to 4 player celestial tile-laying and spatial-scoring board game. Over 10 nights, observatory directors expand their personal sky charts and use lenses to capture the most valuable arrangements of stars, planets, comets, nebulae, and galaxies.
+                </p>
+
+                <h4>🧩 Core Mechanics</h4>
+                <ul>
+                    <li><strong>Observation Plan Drafting</strong>: On your turn, choose a paired plan containing one observation lens and one domino-shaped sky tile.</li>
+                    <li><strong>Open Sky-Chart Expansion</strong>: Rotate and place the sky tile beside your existing chart, shaping future fields of view without symbol-matching restrictions.</li>
+                    <li><strong>Lens Placement & Multiplied Scoring</strong>: Position the selected lens on a valid cell, edge, or vertex. Each matching celestial object inside its field of view scores the lens multiplier.</li>
+                    <li><strong>Prime-Scope Turn Order</strong>: Taking the prime scope makes you the first observer on the following night, adding a timing decision to every draft.</li>
+                    <li><strong>Cloud-Token Crosses</strong>: Placing a cloud tile earns a token that can swap the sky tiles between two observation plans before you draft.</li>
+                </ul>
+
+                <h4>🌐 Online Playtest</h4>
+                <p>
+                    The bilingual browser prototype supports solo play against AI observatories and real-time multiplayer rooms for up to four players with no installation required.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('starWindowModal')">Close</button>
+                <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>

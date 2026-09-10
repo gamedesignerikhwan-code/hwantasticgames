@@ -765,6 +765,85 @@ body.proto-page {
     transform: rotate(2deg) translateY(-2px);
 }
 
+
+/* Star Window Observatory Art */
+.thumb-star-window {
+    background:
+        radial-gradient(circle at 72% 24%, rgba(255, 226, 122, 0.2) 0 2px, transparent 3px),
+        radial-gradient(circle at 25% 32%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+        radial-gradient(circle at 45% 15%, rgba(255, 255, 255, 0.55) 0 1px, transparent 2px),
+        linear-gradient(150deg, #172554 0%, #111936 60%, #090d20 100%);
+}
+
+.mini-star-window-art {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.star-chart-mini {
+    position: relative;
+    width: 78px;
+    height: 62px;
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease;
+}
+
+.star-sky-tile {
+    position: absolute;
+    width: 46px;
+    height: 23px;
+    border: 1.5px solid rgba(255, 255, 255, 0.76);
+    border-radius: 6px;
+    background: linear-gradient(135deg, #283b78, #1b2858);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.38);
+    color: #fde68a;
+    font-size: 0.72rem;
+    letter-spacing: 7px;
+    padding-left: 7px;
+    line-height: 20px;
+}
+
+.star-sky-tile.s1 {
+    left: 3px;
+    top: 7px;
+}
+
+.star-sky-tile.s2 {
+    right: 1px;
+    bottom: 5px;
+    transform: rotate(90deg);
+}
+
+.star-lens-mini {
+    position: absolute;
+    left: 25px;
+    top: 20px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 3px solid #67e8f9;
+    border-radius: 50%;
+    background: rgba(8, 17, 45, 0.72);
+    color: #ffffff;
+    font-size: 0.8rem;
+    box-shadow: 0 0 14px rgba(103, 232, 249, 0.55);
+    z-index: 2;
+}
+
+.proto-card-row:hover .star-chart-mini {
+    transform: rotate(1deg) scale(1.08);
+}
+
+.proto-card-row:hover .star-lens-mini {
+    box-shadow: 0 0 20px rgba(103, 232, 249, 0.82);
+}
+
 /* 2. Middle Content Column (Compact & Sleek) */
 .proto-card-content {
     padding: 14px 20px;
