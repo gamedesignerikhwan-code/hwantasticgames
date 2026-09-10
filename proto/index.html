@@ -715,6 +715,78 @@
             transform: translate(3px, 1px);
         }
 
+
+        /* The Drawing Game Sea Canvas Art */
+        .thumb-drawing {
+            background: radial-gradient(circle at 55% 35%, #38bdf8 0%, #087aa4 55%, #064b66 100%);
+        }
+
+        .mini-drawing-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .drawing-board-mini {
+            position: relative;
+            width: 82px;
+            height: 62px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.88);
+            border-radius: 12px;
+            background:
+                radial-gradient(circle at 18% 25%, rgba(255,255,255,0.8) 0 3px, transparent 4px),
+                radial-gradient(circle at 78% 70%, rgba(255,255,255,0.65) 0 4px, transparent 5px),
+                radial-gradient(circle at 62% 18%, rgba(255,255,255,0.55) 0 2px, transparent 3px),
+                linear-gradient(160deg, #dff8ff 0%, #83def2 100%);
+            box-shadow: 0 7px 18px rgba(0, 35, 55, 0.38);
+            transition: transform 0.3s ease;
+        }
+
+        .drawing-animal {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            filter: drop-shadow(0 2px 2px rgba(0, 45, 65, 0.25));
+            transition: transform 0.3s ease;
+        }
+
+        .drawing-animal.whale {
+            left: 9px;
+            top: 8px;
+            font-size: 1.65rem;
+            transform: rotate(-8deg);
+        }
+
+        .drawing-animal.octopus {
+            right: 9px;
+            bottom: 5px;
+            font-size: 1.35rem;
+            transform: rotate(7deg);
+        }
+
+        .drawing-animal.starfish {
+            right: 8px;
+            top: 4px;
+            font-size: 0.85rem;
+        }
+
+        .proto-card-row:hover .drawing-board-mini {
+            transform: rotate(-2deg) scale(1.06);
+        }
+
+        .proto-card-row:hover .drawing-animal.whale {
+            transform: rotate(-3deg) translateX(3px);
+        }
+
+        .proto-card-row:hover .drawing-animal.octopus {
+            transform: rotate(2deg) translateY(-2px);
+        }
+
         /* 2. Middle Content Column (Compact & Sleek) */
         .proto-card-content {
             padding: 14px 20px;
@@ -1017,13 +1089,13 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">7</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">8</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">2</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">5</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">6</span>
                 </button>
             </div>
         </header>
@@ -1381,6 +1453,51 @@
                 </div>
             </article>
 
+            <!-- 8. THE DRAWING GAME (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-drawing-game">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-drawing">
+                    <div class="mini-drawing-art">
+                        <div class="drawing-board-mini" aria-hidden="true">
+                            <span class="drawing-animal whale">🐋</span>
+                            <span class="drawing-animal octopus">🐙</span>
+                            <span class="drawing-animal starfish">⭐</span>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">The Drawing Game</h2>
+                        <span class="proto-card-subtitle">Secret Selection & Sea-Canvas Tile Placement</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        Secretly choose from three revealed cards, gain a sea-animal tile based on how many players chose the same card, and place it carefully to cover bubbles across your personal ocean canvas.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 3–6 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 9 Turns</span>
+                        <span class="meta-chip"><i class="fa-solid fa-user-secret"></i> Secret Selection</span>
+                        <span class="meta-chip"><i class="fa-solid fa-pen-ruler"></i> Spatial Placement</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
         </main>
     </div>
 
@@ -1650,6 +1767,46 @@
             <div class="proto-modal-footer">
                 <button type="button" class="btn-secondary" onclick="closeModal('pyramidsModal')">Close</button>
                 <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8: The Drawing Game Info -->
+    <div class="proto-modal-overlay" id="drawingGameModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-water" style="color: #0ea5e9;"></i> The Drawing Game — Game Overview
+                </div>
+                <button type="button" class="proto-modal-close" onclick="closeModal('drawingGameModal')" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="proto-modal-body">
+                <h4>🌊 Game Overview</h4>
+                <p>
+                    <strong>The Drawing Game</strong> is a 3 to 6 player simultaneous-selection and spatial tile-placement board game. Across 9 turns, players collect colorful sea creatures and arrange them on a personal ocean canvas while covering as many bubbles as possible.
+                </p>
+
+                <h4>🧩 Core Mechanics</h4>
+                <ul>
+                    <li><strong>Secret A/B/C Selection</strong>: Three cards are revealed each turn. Every player secretly chooses one, then all choices are revealed simultaneously.</li>
+                    <li><strong>Group-Size Tile Awards</strong>: The number of players who selected the same card determines which sea-animal tile each of them receives from that card.</li>
+                    <li><strong>Freeform Canvas Placement</strong>: Position and rotate each animal on your ocean board without overlapping existing tiles, aiming to cover the printed bubbles efficiently.</li>
+                    <li><strong>Duplicate-to-Stone Conversion</strong>: If you gain an animal already in your collection, it becomes a smaller stone tile matching that animal's value tier.</li>
+                    <li><strong>Animal Points Minus Bubbles</strong>: Your final score is the total value of collected animals minus the number of bubbles left uncovered after 9 turns.</li>
+                </ul>
+
+                <h4>🌐 Online Playtest</h4>
+                <p>
+                    The bilingual browser prototype supports solo testing against AI opponents and real-time multiplayer rooms for 3–6 players with no installation required.
+                </p>
+            </div>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('drawingGameModal')">Close</button>
+                <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
