@@ -4028,7 +4028,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openOrchardsRulebookToast()" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook" aria-controls="orchardsRulebookToast" aria-expanded="false">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('orchardsRulebookModal')" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -4222,7 +4222,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openStarWindowRulebookToast()" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook" aria-controls="starWindowRulebookToast" aria-expanded="false">
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -4256,7 +4256,7 @@
                     </p>
                     <div class="proto-meta-chips">
                         <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-moon"></i> 10 Nights</span>
+                        <span class="meta-chip"><i class="fa-solid fa-moon"></i> 12 Nights</span>
                         <span class="meta-chip"><i class="fa-solid fa-table-cells-large"></i> Tile Placement</span>
                         <span class="meta-chip"><i class="fa-solid fa-crosshairs"></i> Spatial Scoring</span>
                     </div>
@@ -4267,7 +4267,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('starWindowRulebookModal')" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -9079,7 +9079,7 @@
             <div class="proto-modal-body">
                 <h4>🔭 Game Overview</h4>
                 <p>
-                    <strong>Star Window (천문대의 밤)</strong> is a 2 to 4 player celestial tile-laying and spatial-scoring board game. Over 10 nights, observatory directors expand their personal sky charts and use lenses to capture the most valuable arrangements of stars, planets, comets, nebulae, and galaxies.
+                    <strong>Star Window (천문대의 밤)</strong> is a 2 to 4 player celestial tile-laying and spatial-scoring board game. Over 12 nights, observatory directors expand their personal sky charts and use lenses to capture the most valuable arrangements of stars, planets, comets, nebulae, and galaxies.
                 </p>
 
                 <h4>🧩 Core Mechanics</h4>
@@ -9112,7 +9112,7 @@
             const m = document.getElementById(id);
             if (!m) return;
             if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal' || id === 'rotatoRulebookModal'
-                || id === 'alchemistsRulebookModal') {
+                || id === 'alchemistsRulebookModal' || id === 'orchardsRulebookModal' || id === 'starWindowRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }

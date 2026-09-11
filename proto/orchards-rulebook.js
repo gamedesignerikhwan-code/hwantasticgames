@@ -1,8 +1,9 @@
 (function () {
     'use strict';
 
-    const toastMarkup = `
-        <aside class="orchards-rulebook-toast" id="orchardsRulebookToast" role="dialog" aria-modal="false" aria-labelledby="orchardsRulebookToastTitle" aria-hidden="true">
+    const modalMarkup = `
+        <div class="proto-modal-overlay orchards-rulebook-overlay" id="orchardsRulebookModal" role="dialog" aria-modal="true" aria-labelledby="orchardsRulebookToastTitle" style="display:none;">
+        <div class="proto-modal-card orchards-rulebook-toast" id="orchardsRulebookToast">
             <header class="orchards-toast-header">
                 <span class="orchards-toast-mark" aria-hidden="true">🍏</span>
                 <div class="orchards-toast-heading">
@@ -14,8 +15,8 @@
                 </div>
                 <div class="orchards-toast-actions">
                     <div class="orchards-toast-lang" role="group" aria-label="Rulebook language">
-                        <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'orchardsRulebookToast')">KO</button>
-                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'orchardsRulebookToast')">EN</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'orchardsRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'orchardsRulebookModal')">EN</button>
                     </div>
                     <button type="button" class="orchards-toast-close" onclick="closeOrchardsRulebookToast()" aria-label="Close Orchards rulebook"><i class="fa-solid fa-xmark"></i></button>
                 </div>
@@ -73,47 +74,43 @@
                 <button type="button" onclick="closeOrchardsRulebookToast()"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
                 <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">Open game</span><span class="rb-content-ko" style="display:none;">게임 열기</span></a>
             </footer>
-        </aside>`;
+        </div>
+        </div>`;
 
-    let returnFocus = null;
+    const MODAL_ID = 'orchardsRulebookModal';
 
-    function getToast() {
-        return document.getElementById('orchardsRulebookToast');
+    function getModal() {
+        return document.getElementById(MODAL_ID);
     }
 
     window.openOrchardsRulebookToast = function () {
-        const toast = getToast();
-        if (!toast) return;
-        returnFocus = document.activeElement;
-        const isKo = document.documentElement.getAttribute('lang') === 'ko';
-        if (typeof window.setRulebookLanguage === 'function') {
-            window.setRulebookLanguage(isKo ? 'ko' : 'en', 'orchardsRulebookToast');
+        if (!getModal()) return;
+        if (typeof window.openModal === 'function') {
+            window.openModal(MODAL_ID);
         }
-        toast.classList.add('active');
-        toast.setAttribute('aria-hidden', 'false');
-        document.querySelector('#card-orchards .btn-rulebook-proto')?.setAttribute('aria-expanded', 'true');
-        toast.querySelector('.orchards-toast-close')?.focus();
     };
 
     window.closeOrchardsRulebookToast = function () {
-        const toast = getToast();
-        if (!toast) return;
-        toast.classList.remove('active');
-        toast.setAttribute('aria-hidden', 'true');
-        document.querySelector('#card-orchards .btn-rulebook-proto')?.setAttribute('aria-expanded', 'false');
-        if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+        if (!getModal()) return;
+        if (typeof window.closeModal === 'function') {
+            window.closeModal(MODAL_ID);
+        }
     };
 
     function init() {
-        document.body.insertAdjacentHTML('beforeend', toastMarkup);
+        document.body.insertAdjacentHTML('beforeend', modalMarkup);
+        const modal = getModal();
         const isKo = document.documentElement.getAttribute('lang') === 'ko';
         if (typeof window.setRulebookLanguage === 'function') {
-            window.setRulebookLanguage(isKo ? 'ko' : 'en', 'orchardsRulebookToast');
+            window.setRulebookLanguage(isKo ? 'ko' : 'en', MODAL_ID);
         }
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) window.closeOrchardsRulebookToast();
+        });
     }
 
     document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && getToast()?.classList.contains('active')) {
+        if (event.key === 'Escape' && getModal()?.classList.contains('active')) {
             window.closeOrchardsRulebookToast();
         }
     });
