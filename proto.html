@@ -3836,62 +3836,7 @@
         <!-- Wide Prototype List (Optimized for 10+ Games) -->
         <main class="proto-list">
 
-            <!-- 1. TAMERS (Card Game) -->
-            <article class="proto-card-row" data-category="card-game" id="card-tamers">
-                <!-- Left Thumbnail with Integrated Category Badge -->
-                <div class="proto-card-thumb thumb-tamers">
-                    <div class="mini-tamers-art">
-                        <div class="mini-card c1">
-                            <span style="font-weight:700;">8</span>
-                            <i class="fa-solid fa-fire"></i>
-                            <span style="font-size:0.5rem;">FLAME</span>
-                        </div>
-                        <div class="mini-card c2">
-                            <span style="font-weight:700;">12</span>
-                            <i class="fa-solid fa-paw"></i>
-                            <span style="font-size:0.5rem;">BEAST</span>
-                        </div>
-                        <div class="mini-card c3">
-                            <span style="font-weight:700;">5</span>
-                            <i class="fa-solid fa-sun"></i>
-                            <span style="font-size:0.5rem;">SOLAR</span>
-                        </div>
-                    </div>
-                    <span class="thumb-category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
-                </div>
-
-                <!-- Middle Content -->
-                <div class="proto-card-content">
-                    <div class="proto-card-title-line">
-                        <h2 class="proto-card-title">Tamers</h2>
-                        <span class="proto-card-subtitle">Trick-Taking & Prediction Card Game</span>
-                    </div>
-                    <p class="proto-card-desc">
-                        A tense psychological trick-taking game of animal tamers! Accurately predict your trick count each round and utilize suit rules and special ability cards to hit your bid with pinpoint precision.
-                    </p>
-                    <div class="proto-meta-chips">
-                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 15 Mins</span>
-                        <span class="meta-chip"><i class="fa-solid fa-brain"></i> Trick-Taking</span>
-                        <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Exact Prediction</span>
-                    </div>
-                </div>
-
-                <!-- Right Actions -->
-                <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersModal')">
-                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
-                    </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openModal('tamersRulebookModal')" title="Tamers Full Rulebook" aria-label="Tamers Full Rulebook">
-                        <i class="fa-solid fa-book-open"></i> Rulebook
-                    </button>
-                    <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                        <i class="fa-solid fa-play"></i> Play
-                    </a>
-                </div>
-            </article>
-
-            <!-- 2. DOORE / 두레 (Board Game) -->
+            <!-- 1. DOORE / 두레 (Board Game) -->
             <article class="proto-card-row" data-category="board-game" id="card-doore">
                 <!-- Left Thumbnail with Integrated Category Badge -->
                 <div class="proto-card-thumb thumb-doore">
@@ -3936,6 +3881,51 @@
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
+            <!-- 2. THE DRAWING GAME (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-drawing-game">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-drawing">
+                    <div class="mini-drawing-art">
+                        <div class="drawing-board-mini" aria-hidden="true">
+                            <span class="drawing-animal whale">🐋</span>
+                            <span class="drawing-animal octopus">🐙</span>
+                            <span class="drawing-animal starfish">⭐</span>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">The Drawing Game</h2>
+                        <span class="proto-card-subtitle">Secret Selection & Sea-Canvas Tile Placement</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        Secretly choose from three revealed cards, gain a sea-animal tile based on how many players chose the same card, and place it carefully to cover bubbles across your personal ocean canvas.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 3–6 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 9 Turns</span>
+                        <span class="meta-chip"><i class="fa-solid fa-user-secret"></i> Secret Selection</span>
+                        <span class="meta-chip"><i class="fa-solid fa-pen-ruler"></i> Spatial Placement</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
                 </div>
@@ -3987,20 +3977,15 @@
                 </div>
             </article>
 
-            <!-- 4. ORCHARDS / 오차드 (Board Game) -->
-            <article class="proto-card-row" data-category="board-game" id="card-orchards">
+            <!-- 4. ALCHEMISTS / 연금술사 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-alchemists">
                 <!-- Left Thumbnail with Integrated Category Badge -->
-                <div class="proto-card-thumb thumb-orchards">
-                    <div class="mini-orchards-art">
-                        <div class="orchards-tile-cluster">
-                            <div class="orchards-tile o1">
-                                <span class="orchards-tile-icon">🍏</span>
-                                <span class="orchards-tile-label">ORCHARD</span>
-                            </div>
-                            <div class="orchards-tile o2">
-                                <span class="orchards-tile-icon">🍎</span>
-                                <span class="orchards-tile-label">HARVEST</span>
-                            </div>
+                <div class="proto-card-thumb thumb-alchemists">
+                    <div class="mini-alchemists-art">
+                        <div class="alchemist-flask-cluster">
+                            <div class="alchemist-flask f1">🟡</div>
+                            <div class="alchemist-flask f2">⚪</div>
+                            <div class="alchemist-flask f3">🟠</div>
                         </div>
                     </div>
                     <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
@@ -4009,29 +3994,29 @@
                 <!-- Middle Content -->
                 <div class="proto-card-content">
                     <div class="proto-card-title-line">
-                        <h2 class="proto-card-title">Orchards</h2>
-                        <span class="proto-card-subtitle">Tile-Drafting & Harvest Strategy Board Game</span>
+                        <h2 class="proto-card-title">Alchemists</h2>
+                        <span class="proto-card-subtitle">Engine-Building & Set Collection Board Game</span>
                     </div>
                     <p class="proto-card-desc">
-                        A vibrant tactical tile-drafting and orchard-building board game! Simultaneously bid hand tiles to draft from the market, strategically cultivate your expanding garden with split-terrain tiles, harvest fruit tokens, and compete for worker majorities.
+                        An engine-building set collection board game with a unique drafting system! Collect gold, silver, and bronze ingredients, brew powerful potions, and compete for the most prestigious alchemist title.
                     </p>
                     <div class="proto-meta-chips">
-                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 25–40 Mins</span>
-                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Tile Drafting</span>
-                        <span class="meta-chip"><i class="fa-solid fa-apple-whole"></i> Harvest Scoring</span>
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 30–45 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-gears"></i> Engine Building</span>
+                        <span class="meta-chip"><i class="fa-solid fa-layer-group"></i> Set Collection</span>
                     </div>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openModal('orchardsRulebookModal')" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('alchemistsRulebookModal')" title="Alchemists Full Rulebook" aria-label="Alchemists Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
-                    <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                    <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
                 </div>
@@ -4088,15 +4073,15 @@
                 </div>
             </article>
 
-            <!-- 6. ALCHEMISTS / 연금술사 (Board Game) -->
-            <article class="proto-card-row" data-category="board-game" id="card-alchemists">
+            <!-- 6. STAR WINDOW / 천문대의 밤 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-star-window">
                 <!-- Left Thumbnail with Integrated Category Badge -->
-                <div class="proto-card-thumb thumb-alchemists">
-                    <div class="mini-alchemists-art">
-                        <div class="alchemist-flask-cluster">
-                            <div class="alchemist-flask f1">🟡</div>
-                            <div class="alchemist-flask f2">⚪</div>
-                            <div class="alchemist-flask f3">🟠</div>
+                <div class="proto-card-thumb thumb-star-window">
+                    <div class="mini-star-window-art">
+                        <div class="star-chart-mini" aria-hidden="true">
+                            <span class="star-sky-tile s1">✦☄</span>
+                            <span class="star-sky-tile s2">✧◉</span>
+                            <span class="star-lens-mini">✦</span>
                         </div>
                     </div>
                     <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
@@ -4105,35 +4090,140 @@
                 <!-- Middle Content -->
                 <div class="proto-card-content">
                     <div class="proto-card-title-line">
-                        <h2 class="proto-card-title">Alchemists</h2>
-                        <span class="proto-card-subtitle">Engine-Building & Set Collection Board Game</span>
+                        <h2 class="proto-card-title">Star Window <small style="font-size:0.95rem; font-weight:600; color:var(--text-muted);">(천문대의 밤)</small></h2>
+                        <span class="proto-card-subtitle">Celestial Tile-Laying & Observation Strategy</span>
                     </div>
                     <p class="proto-card-desc">
-                        An engine-building set collection board game with a unique drafting system! Collect gold, silver, and bronze ingredients, brew powerful potions, and compete for the most prestigious alchemist title.
+                        Expand your personal sky chart with celestial domino tiles, then position observation lenses to frame matching stars, planets, comets, nebulae, and galaxies for multiplied scoring.
                     </p>
                     <div class="proto-meta-chips">
                         <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 30–45 Mins</span>
-                        <span class="meta-chip"><i class="fa-solid fa-gears"></i> Engine Building</span>
-                        <span class="meta-chip"><i class="fa-solid fa-layer-group"></i> Set Collection</span>
+                        <span class="meta-chip"><i class="fa-solid fa-moon"></i> 12 Nights</span>
+                        <span class="meta-chip"><i class="fa-solid fa-table-cells-large"></i> Tile Placement</span>
+                        <span class="meta-chip"><i class="fa-solid fa-crosshairs"></i> Spatial Scoring</span>
                     </div>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openModal('alchemistsRulebookModal')" title="Alchemists Full Rulebook" aria-label="Alchemists Full Rulebook">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('starWindowRulebookModal')" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
-                    <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                    <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
                 </div>
             </article>
 
-            <!-- 7. SQUARE PYRAMIDS / 사각 피라미드 (Card Game) -->
+            <!-- 7. ORCHARDS / 오차드 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-orchards">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-orchards">
+                    <div class="mini-orchards-art">
+                        <div class="orchards-tile-cluster">
+                            <div class="orchards-tile o1">
+                                <span class="orchards-tile-icon">🍏</span>
+                                <span class="orchards-tile-label">ORCHARD</span>
+                            </div>
+                            <div class="orchards-tile o2">
+                                <span class="orchards-tile-icon">🍎</span>
+                                <span class="orchards-tile-label">HARVEST</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Orchards</h2>
+                        <span class="proto-card-subtitle">Tile-Drafting & Harvest Strategy Board Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        A vibrant tactical tile-drafting and orchard-building board game! Simultaneously bid hand tiles to draft from the market, strategically cultivate your expanding garden with split-terrain tiles, harvest fruit tokens, and compete for worker majorities.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 25–40 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Tile Drafting</span>
+                        <span class="meta-chip"><i class="fa-solid fa-apple-whole"></i> Harvest Scoring</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('orchardsRulebookModal')" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
+            <!-- 8. TAMERS (Card Game) -->
+            <article class="proto-card-row" data-category="card-game" id="card-tamers">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-tamers">
+                    <div class="mini-tamers-art">
+                        <div class="mini-card c1">
+                            <span style="font-weight:700;">8</span>
+                            <i class="fa-solid fa-fire"></i>
+                            <span style="font-size:0.5rem;">FLAME</span>
+                        </div>
+                        <div class="mini-card c2">
+                            <span style="font-weight:700;">12</span>
+                            <i class="fa-solid fa-paw"></i>
+                            <span style="font-size:0.5rem;">BEAST</span>
+                        </div>
+                        <div class="mini-card c3">
+                            <span style="font-weight:700;">5</span>
+                            <i class="fa-solid fa-sun"></i>
+                            <span style="font-size:0.5rem;">SOLAR</span>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Tamers</h2>
+                        <span class="proto-card-subtitle">Trick-Taking & Prediction Card Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        A tense psychological trick-taking game of animal tamers! Accurately predict your trick count each round and utilize suit rules and special ability cards to hit your bid with pinpoint precision.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 15 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-brain"></i> Trick-Taking</span>
+                        <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Exact Prediction</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('tamersRulebookModal')" title="Tamers Full Rulebook" aria-label="Tamers Full Rulebook">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
+            <!-- 9. SQUARE PYRAMIDS / 사각 피라미드 (Card Game) -->
             <article class="proto-card-row" data-category="card-game" id="card-square-pyramids">
                 <!-- Left Thumbnail with Integrated Category Badge -->
                 <div class="proto-card-thumb thumb-pyramids">
@@ -4181,96 +4271,6 @@
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                        <i class="fa-solid fa-play"></i> Play
-                    </a>
-                </div>
-            </article>
-
-            <!-- 8. THE DRAWING GAME (Board Game) -->
-            <article class="proto-card-row" data-category="board-game" id="card-drawing-game">
-                <!-- Left Thumbnail with Integrated Category Badge -->
-                <div class="proto-card-thumb thumb-drawing">
-                    <div class="mini-drawing-art">
-                        <div class="drawing-board-mini" aria-hidden="true">
-                            <span class="drawing-animal whale">🐋</span>
-                            <span class="drawing-animal octopus">🐙</span>
-                            <span class="drawing-animal starfish">⭐</span>
-                        </div>
-                    </div>
-                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
-                </div>
-
-                <!-- Middle Content -->
-                <div class="proto-card-content">
-                    <div class="proto-card-title-line">
-                        <h2 class="proto-card-title">The Drawing Game</h2>
-                        <span class="proto-card-subtitle">Secret Selection & Sea-Canvas Tile Placement</span>
-                    </div>
-                    <p class="proto-card-desc">
-                        Secretly choose from three revealed cards, gain a sea-animal tile based on how many players chose the same card, and place it carefully to cover bubbles across your personal ocean canvas.
-                    </p>
-                    <div class="proto-meta-chips">
-                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 3–6 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 9 Turns</span>
-                        <span class="meta-chip"><i class="fa-solid fa-user-secret"></i> Secret Selection</span>
-                        <span class="meta-chip"><i class="fa-solid fa-pen-ruler"></i> Spatial Placement</span>
-                    </div>
-                </div>
-
-                <!-- Right Actions -->
-                <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
-                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
-                    </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
-                        <i class="fa-solid fa-book-open"></i> Rulebook
-                    </button>
-                    <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
-                        <i class="fa-solid fa-play"></i> Play
-                    </a>
-                </div>
-            </article>
-
-            <!-- 9. STAR WINDOW / 천문대의 밤 (Board Game) -->
-            <article class="proto-card-row" data-category="board-game" id="card-star-window">
-                <!-- Left Thumbnail with Integrated Category Badge -->
-                <div class="proto-card-thumb thumb-star-window">
-                    <div class="mini-star-window-art">
-                        <div class="star-chart-mini" aria-hidden="true">
-                            <span class="star-sky-tile s1">✦☄</span>
-                            <span class="star-sky-tile s2">✧◉</span>
-                            <span class="star-lens-mini">✦</span>
-                        </div>
-                    </div>
-                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
-                </div>
-
-                <!-- Middle Content -->
-                <div class="proto-card-content">
-                    <div class="proto-card-title-line">
-                        <h2 class="proto-card-title">Star Window <small style="font-size:0.95rem; font-weight:600; color:var(--text-muted);">(천문대의 밤)</small></h2>
-                        <span class="proto-card-subtitle">Celestial Tile-Laying & Observation Strategy</span>
-                    </div>
-                    <p class="proto-card-desc">
-                        Expand your personal sky chart with celestial domino tiles, then position observation lenses to frame matching stars, planets, comets, nebulae, and galaxies for multiplied scoring.
-                    </p>
-                    <div class="proto-meta-chips">
-                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-moon"></i> 12 Nights</span>
-                        <span class="meta-chip"><i class="fa-solid fa-table-cells-large"></i> Tile Placement</span>
-                        <span class="meta-chip"><i class="fa-solid fa-crosshairs"></i> Spatial Scoring</span>
-                    </div>
-                </div>
-
-                <!-- Right Actions -->
-                <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowModal')">
-                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
-                    </button>
-                    <button type="button" class="btn-rulebook-proto" onclick="openModal('starWindowRulebookModal')" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook">
-                        <i class="fa-solid fa-book-open"></i> Rulebook
-                    </button>
-                    <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
                 </div>
