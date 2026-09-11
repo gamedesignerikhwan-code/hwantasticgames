@@ -251,8 +251,10 @@
                     setAttribute(rulebook, 'title', ko.rulebookSoon, isKorean);
                     setAttribute(rulebook, 'aria-label', ko.rulebookSoon, isKorean);
                 } else {
-                    setAttribute(rulebook, 'title', isKorean ? 'Tamers 전체 규칙서' : 'Tamers Full Rulebook', isKorean);
-                    setAttribute(rulebook, 'aria-label', isKorean ? 'Tamers 전체 규칙서' : 'Tamers Full Rulebook', isKorean);
+                    const gameName = card.querySelector('.proto-card-title')?.textContent?.trim() || '';
+                    const rulebookLabel = isKorean ? `${gameName} 전체 규칙서` : `${gameName} Full Rulebook`;
+                    setAttribute(rulebook, 'title', rulebookLabel, isKorean);
+                    setAttribute(rulebook, 'aria-label', rulebookLabel, isKorean);
                 }
             }
         });
@@ -271,6 +273,7 @@
 
         if (typeof window.setRulebookLanguage === 'function') {
             window.setRulebookLanguage(isKorean ? 'ko' : 'en');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'dooreRulebookModal');
         }
 
         const switcher = document.querySelector('.proto-language-switch');
