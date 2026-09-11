@@ -1956,6 +1956,7 @@ html[lang="ko"] .proto-modal-title {
     line-height: 1.35;
 }
 
+<<<<<<< HEAD
 /* ===================================================
    DOORE FULL RULEBOOK - VILLAGE FIELD THEME
    =================================================== */
@@ -2444,4 +2445,18 @@ html[lang="ko"] .proto-modal-title {
     .doore-rb-edition { display: none; }
     .doore-personal-tile-note { align-items: flex-start; flex-direction: column; }
     .doore-rb-footer .btn-secondary { margin-right: auto; }
+}
+
+/* In-Game Diagram Frame */
+.rb-ingame-frame {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.rb-ingame-img {
+    width: 100%;
+    height: auto;
+    display: block;
 }

@@ -1908,6 +1908,84 @@
             margin: 0;
             line-height: 1.35;
         }
+
+        /* Pin Overlay on In-Game Diagram */
+        .rb-ingame-frame {
+            position: relative;
+        }
+
+        .rb-pin-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .rb-pin-tag {
+            position: absolute;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            animation: rbPinPulse 2.5s infinite;
+        }
+
+        .rb-pin-tag.pin-a {
+            left: 27%;
+            bottom: 3.5%;
+            background: #dc2626;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .rb-pin-tag.pin-b {
+            left: 38%;
+            top: 21%;
+            background: #ea580c;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .rb-pin-tag.pin-c {
+            left: 50%;
+            top: 55%;
+            transform: translate(-50%, -50%);
+            background: #0284c7;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            animation: rbPinPulseC 2.5s infinite;
+        }
+
+        .rb-pin-tag.pin-d {
+            left: 61%;
+            top: 21%;
+            background: #059669;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        @keyframes rbPinPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        @keyframes rbPinPulseC {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -2873,37 +2951,68 @@
 
                         <!-- Real In-Game Capture Frame -->
                         <div class="rb-ingame-frame">
-                            <img src="/assets/tamers_ingame_table.png" onerror="this.onerror=null;this.src='assets/tamers_ingame_table.png';" alt="Tamers In-Game Table Setup Screen" class="rb-ingame-img" loading="lazy">
+                            <img src="/assets/tamers_ingame_table_ko.png" onerror="this.onerror=null;this.src='assets/tamers_ingame_table_ko.png';" alt="Tamers In-Game Table Setup Screen" class="rb-ingame-img" loading="lazy">
                         </div>
 
-                        <!-- Legend / Annotations -->
+                        <!-- Legend / Annotations matching exact locations in photo -->
                         <div class="rb-diagram-annotations">
+                            <!-- [A] 화면 하단: 개인 손패 카드 -->
                             <div class="rb-annot-item">
                                 <span class="rb-annot-badge badge-a">[A]</span>
                                 <div>
-                                    <strong><span class="rb-content-en">Personal Hand Cards</span><span class="rb-content-ko" style="display:none;">개인 손패 카드</span></strong>
-                                    <p><span class="rb-content-en">Dealt cards (1~50, ↑, ↓, X) for the round shown at the bottom.</span><span class="rb-content-ko" style="display:none;">화면 하단에 분배받은 라운드 손패 카드.</span></p>
+                                    <strong>
+                                        <span class="rb-content-en">Personal Hand Cards (Bottom)</span>
+                                        <span class="rb-content-ko" style="display:none;">개인 손패 카드 (화면 하단)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Dealt hand cards (1~50, ↑, ↓, X) for the round and your player status at the bottom.</span>
+                                        <span class="rb-content-ko" style="display:none;">화면 하단에 분배받은 라운드 손패 카드(1~50, ↑, ↓, X) 및 내 플레이어 정보.</span>
+                                    </p>
                                 </div>
                             </div>
+
+                            <!-- [B] 화면 왼쪽 위: 공개 이벤트 카드 시장 -->
                             <div class="rb-annot-item">
                                 <span class="rb-annot-badge badge-b">[B]</span>
                                 <div>
-                                    <strong><span class="rb-content-en">Open Event Market</span><span class="rb-content-ko" style="display:none;">공개 이벤트 카드 시장</span></strong>
-                                    <p><span class="rb-content-en">3 revealed event cards on the left ready to be drafted by trick winners.</span><span class="rb-content-ko" style="display:none;">화면 좌측에 공개된 3장의 이벤트 카드와 덱.</span></p>
+                                    <strong>
+                                        <span class="rb-content-en">Open Event Cards Market (Top-Left)</span>
+                                        <span class="rb-content-ko" style="display:none;">공개 이벤트 카드 시장 (화면 왼쪽 위)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">3 open event cards and the event draw deck displayed at the top-left of the table.</span>
+                                        <span class="rb-content-ko" style="display:none;">화면 왼쪽 위에 공개된 3장의 이벤트 카드와 이벤트 덱.</span>
+                                    </p>
                                 </div>
                             </div>
+
+                            <!-- [C] 화면 가운데 동그란 토큰들: 목표 승수 예측 토큰 -->
                             <div class="rb-annot-item">
                                 <span class="rb-annot-badge badge-c">[C]</span>
                                 <div>
-                                    <strong><span class="rb-content-en">Goal Prediction Phase</span><span class="rb-content-ko" style="display:none;">목표 승수 예측 토큰</span></strong>
-                                    <p><span class="rb-content-en">Secretly select your expected trick wins (0, 1, 2, or 3+ wins).</span><span class="rb-content-ko" style="display:none;">이번 라운드 예상 승수(0, 1, 2, 3+승)를 선택하여 선언.</span></p>
+                                    <strong>
+                                        <span class="rb-content-en">Goal Prediction Tokens (Center)</span>
+                                        <span class="rb-content-ko" style="display:none;">목표 승수 예측 토큰 (화면 가운데 동그란 토큰들)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Center circular tokens: Secretly predict your expected trick wins (0, 1, 2, or 3+ wins).</span>
+                                        <span class="rb-content-ko" style="display:none;">화면 가운데의 동그란 원형 토큰들: 이번 라운드 목표 예상 승수(0, 1, 2, 3+승)를 선택하여 선언.</span>
+                                    </p>
                                 </div>
                             </div>
+
+                            <!-- [D] 오른쪽 위쪽: 상대 플레이어 & 실시간 점수판 -->
                             <div class="rb-annot-item">
                                 <span class="rb-annot-badge badge-d">[D]</span>
                                 <div>
-                                    <strong><span class="rb-content-en">Opponents &amp; Scoreboard</span><span class="rb-content-ko" style="display:none;">상대 플레이어 및 점수판</span></strong>
-                                    <p><span class="rb-content-en">Opponents' remaining card counts, trick wins, and real-time score.</span><span class="rb-content-ko" style="display:none;">상대방의 남은 패 수, 획득 승수 및 실시간 점수판.</span></p>
+                                    <strong>
+                                        <span class="rb-content-en">Opponents &amp; Scoreboard (Top-Right)</span>
+                                        <span class="rb-content-ko" style="display:none;">상대 플레이어 &amp; 점수판 (오른쪽 위쪽)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Real-time scoreboard, opponent bot status, and round live log on the top-right.</span>
+                                        <span class="rb-content-ko" style="display:none;">화면 오른쪽 위쪽의 실시간 점수판(Scoreboard) 및 상대 플레이어 현황, 라운드 로그.</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -3423,6 +3532,10 @@
             modal.querySelectorAll('.rb-content-ko').forEach(el => el.style.display = isKo ? '' : 'none');
             modal.querySelectorAll('.rb-content-en').forEach(el => el.style.display = isKo ? 'none' : '');
             modal.querySelectorAll('.rb-lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.rbLang === lang));
+            const diagramImg = modal.querySelector('.rb-ingame-img');
+            if (diagramImg) {
+                diagramImg.src = isKo ? '/assets/tamers_ingame_table_ko.png' : '/assets/tamers_ingame_table_en.png';
+            }
         }
         window.setRulebookLanguage = setRulebookLanguage;
 
