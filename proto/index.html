@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -990,6 +990,21 @@
             border-color: #d8b85c;
             color: #705718 !important;
             box-shadow: none;
+            cursor: pointer;
+        }
+
+        .btn-rulebook-proto:not(:disabled) {
+            cursor: pointer;
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            color: #ffffff !important;
+            border-color: transparent;
+            box-shadow: 0 3px 10px rgba(180, 83, 9, 0.28);
+        }
+
+        .btn-rulebook-proto:not(:disabled):hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 5px 14px rgba(180, 83, 9, 0.4);
         }
 
         .btn-rulebook-proto:disabled {
@@ -1153,6 +1168,645 @@
             background: rgba(0,0,0,0.04);
             color: var(--text-main);
         }
+
+        /* Rulebook Modal Enhancements */
+        .rulebook-modal-card {
+            max-width: 820px;
+            width: 95%;
+        }
+
+        .rulebook-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rb-lang-toggle {
+            display: inline-flex;
+            background: rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--glass-border);
+            border-radius: 999px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .rb-lang-btn {
+            border: none;
+            background: transparent;
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .rb-lang-btn.active {
+            background: #d97706;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+        }
+
+        .rulebook-body {
+            padding: 22px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .rulebook-nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: -22px;
+            background: #ffffff;
+            z-index: 10;
+            margin: -6px 0 0 0;
+            padding-top: 4px;
+        }
+
+        .rb-nav-link {
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: var(--bg-warm);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .rb-nav-link:hover {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .rb-section {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(100, 80, 50, 0.04);
+        }
+
+        .rb-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 14px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--bg-warm);
+        }
+
+        .rb-section-title i {
+            color: #d97706;
+        }
+
+        .rb-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .rb-spec-item {
+            background: var(--bg-warm);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(180, 165, 140, 0.2);
+        }
+
+        .rb-spec-icon {
+            font-size: 1.35rem;
+            color: #d97706;
+        }
+
+        .rb-spec-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .rb-spec-val {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.09) 0%, rgba(217, 119, 6, 0.04) 100%);
+            border-left: 4px solid #d97706;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+
+        .rb-component-block {
+            margin-bottom: 22px;
+        }
+
+        .rb-component-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .rb-comp-subhead {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .rb-comp-subhead .badge {
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--bg-warm);
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
+        .rb-cards-flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .rb-mini-card {
+            border-radius: var(--radius-sm);
+            padding: 12px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .rb-mini-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .rb-mini-card.card-number {
+            background: #ffffff;
+            border-color: #d1d5db;
+        }
+
+        .rb-mini-card.card-strongest {
+            background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+            border-color: #f59e0b;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.18);
+        }
+
+        .rb-mini-card.card-weakest {
+            background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
+            border-color: #6366f1;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
+        }
+
+        .rb-mini-card.card-null {
+            background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+            border-color: #ef4444;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.18);
+        }
+
+        .rb-card-symbol {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 4px 0 2px;
+            font-family: var(--font-heading);
+        }
+
+        .card-strongest .rb-card-symbol { color: #d97706; }
+        .card-weakest .rb-card-symbol { color: #4f46e5; }
+        .card-null .rb-card-symbol { color: #dc2626; }
+        .card-number .rb-card-symbol { color: #374151; }
+
+        .rb-card-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .rb-card-desc {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .rb-callout-box {
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 0.84rem;
+            line-height: 1.55;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        .rb-callout-box.amber {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #92400e;
+        }
+
+        .rb-callout-box.blue {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+        }
+
+        .rb-callout-box i {
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .rb-event-category {
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+        }
+
+        .rb-event-category.cat-win {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .rb-event-category.cat-turn {
+            background: #fff7ed;
+            border-color: #fed7aa;
+        }
+
+        .rb-event-category.cat-swap {
+            background: #f0f9ff;
+            border-color: #bae6fd;
+        }
+
+        .rb-cat-header {
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cat-win .rb-cat-header { color: #166534; }
+        .cat-turn .rb-cat-header { color: #9a3412; }
+        .cat-swap .rb-cat-header { color: #075985; }
+
+        .rb-event-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 8px;
+        }
+
+        .rb-event-pill {
+            background: #ffffff;
+            border-radius: var(--radius-sm);
+            padding: 9px 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .rb-event-pill-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .rb-event-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rb-event-count {
+            font-size: 0.68rem;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: var(--bg-warm);
+            color: var(--text-dim);
+            font-weight: 700;
+        }
+
+        .rb-event-effect {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .rb-tokens-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .rb-token-chip {
+            border-radius: var(--radius-md);
+            padding: 12px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .rb-token-chip.chip-0 {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-color: #34d399;
+        }
+        .rb-token-chip.chip-1 {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-color: #38bdf8;
+        }
+        .rb-token-chip.chip-2 {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-color: #fbbf24;
+        }
+        .rb-token-chip.chip-3 {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            border-color: #fb7185;
+        }
+
+        .rb-token-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .rb-token-score {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #111827;
+            font-family: var(--font-heading);
+        }
+
+        .rb-token-note {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .rb-setup-table-wrap {
+            overflow-x: auto;
+            margin: 14px 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .rb-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+            text-align: center;
+        }
+
+        .rb-table th {
+            background: #fbf8f3;
+            padding: 10px 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .rb-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-main);
+        }
+
+        .rb-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rb-table tr:nth-child(even) td {
+            background: rgba(245, 240, 232, 0.4);
+        }
+
+        .rb-table .highlight-cell {
+            font-weight: 700;
+            color: #d97706;
+        }
+
+        .rb-setup-diagram {
+            background: #fbf8f3;
+            border: 2px dashed #d1c7b7;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .rb-diagram-player-zone {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 14px;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            flex-wrap: wrap;
+        }
+
+        .rb-diagram-center-market {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 14px;
+            background: #ffffff;
+            border: 2px solid #fed7aa;
+            border-radius: var(--radius-sm);
+        }
+
+        .rb-diagram-market-cards {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .rb-diagram-card-chip {
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.76rem;
+            font-weight: 700;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-warm);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rb-diagram-card-chip.deck {
+            background: #e5e7eb;
+            border-color: #9ca3af;
+            color: #374151;
+        }
+
+        .rb-diagram-card-chip.revealed {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .rb-steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .rb-step-card {
+            display: flex;
+            gap: 14px;
+            padding: 14px 16px;
+            background: var(--bg-warm);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .rb-step-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d97706;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 3px 8px rgba(217, 119, 6, 0.35);
+        }
+
+        .rb-step-content {
+            flex: 1;
+        }
+
+        .rb-step-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .rb-step-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .rb-step-text ul {
+            margin: 6px 0 0 18px;
+            padding: 0;
+        }
+
+        .rb-step-text li {
+            margin-bottom: 3px;
+        }
+
+        .rb-victory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .rb-victory-card {
+            background: linear-gradient(145deg, #ffffff 0%, #fbf8f3 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .rb-victory-card.primary {
+            border-color: #f59e0b;
+            background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.15);
+        }
+
+        .rb-victory-icon {
+            font-size: 1.8rem;
+            color: #d97706;
+            flex-shrink: 0;
+        }
+
+        .rb-victory-info h5 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 2px 0;
+        }
+
+        .rb-victory-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 640px) {
+            .rulebook-body {
+                padding: 16px;
+            }
+            .rb-cards-flex,
+            .rb-tokens-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .rb-step-card {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .rb-diagram-player-zone {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -1216,8 +1870,8 @@
                         A tense psychological trick-taking game of animal tamers! Accurately predict your trick count each round and utilize suit rules and special ability cards to hit your bid with pinpoint precision.
                     </p>
                     <div class="proto-meta-chips">
-                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
-                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–5 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 15 Mins</span>
                         <span class="meta-chip"><i class="fa-solid fa-brain"></i> Trick-Taking</span>
                         <span class="meta-chip"><i class="fa-solid fa-bullseye"></i> Exact Prediction</span>
                     </div>
@@ -1228,7 +1882,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('tamersRulebookModal')" title="Tamers Full Rulebook" aria-label="Tamers Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -1663,6 +2317,648 @@
         </div>
     </div>
 
+    <!-- Modal: Tamers Full Rulebook -->
+    <div class="proto-modal-overlay" id="tamersRulebookModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-book-open" style="color: #d97706;"></i>
+                    <span class="rb-title-text-en">Tamers — Full Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">Tamers — 전체 규칙서</span>
+                </div>
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en')">EN</button>
+                    </div>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('tamersRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rb-info')" class="rb-nav-link">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">Overview</span><span class="rb-content-ko" style="display:none;">게임 정보</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rb-components')" class="rb-nav-link">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span class="rb-content-en">Components</span><span class="rb-content-ko" style="display:none;">구성물</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rb-setup')" class="rb-nav-link">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">Set Up</span><span class="rb-content-ko" style="display:none;">게임 준비</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rb-play')" class="rb-nav-link">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span class="rb-content-en">How to Play</span><span class="rb-content-ko" style="display:none;">진행 방법</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rb-victory')" class="rb-nav-link">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span class="rb-content-en">Scoring &amp; Victory</span><span class="rb-content-ko" style="display:none;">점수 및 승리</span>
+                    </a>
+                </nav>
+
+                <!-- Section 1: Game Information -->
+                <section class="rb-section" id="rb-info">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Information</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 정보 (Game Information)</span>
+                    </h3>
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">2–5 Players</span><span class="rb-content-ko" style="display:none;">2~5명</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Time</span><span class="rb-content-ko" style="display:none;">시간</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">15 Mins</span><span class="rb-content-ko" style="display:none;">약 15분</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Age</span><span class="rb-content-ko" style="display:none;">연령</span></div>
+                                <div class="rb-spec-val">8+</div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-cards rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Genre</span><span class="rb-content-ko" style="display:none;">장르</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">Trick-Taking</span><span class="rb-content-ko" style="display:none;">트릭테이킹</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            <strong>Tamers</strong> completely removes traditional "suit" constraints to maximize accessibility and pace. Only the magnitude of numbers and special abilities determine trick victory, while unpredictable event cards and razor-sharp bid predictions keep every round thrilling!
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>Tamers</strong>는 기존 트릭테이킹의 복잡한 ‘수트(문양)’ 제약을 과감히 없애 접근성과 속도감을 극대화한 게임입니다. 오직 숫자의 크기와 특수 카드 효과로만 트릭 승패를 가리며, 예측 불가능한 이벤트 카드와 정밀한 승수 예측을 통해 매 순간 짜릿한 심리전이 펼쳐집니다!
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Components -->
+                <section class="rb-section" id="rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="rb-content-en">2. Components</span>
+                        <span class="rb-content-ko" style="display:none;">2. 게임 구성물 (Components)</span>
+                    </h3>
+
+                    <!-- 2-1. Game Cards -->
+                    <div class="rb-component-block">
+                        <div class="rb-comp-subhead">
+                            <i class="fa-solid fa-layer-group" style="color: #d97706;"></i>
+                            <span class="rb-content-en">56 Game Cards</span>
+                            <span class="rb-content-ko" style="display:none;">56장 게임 카드</span>
+                            <span class="badge">56 Cards</span>
+                        </div>
+
+                        <div class="rb-cards-flex">
+                            <div class="rb-mini-card card-number">
+                                <div class="rb-card-symbol">1–50</div>
+                                <div class="rb-card-name"><span class="rb-content-en">Numbered Cards</span><span class="rb-content-ko" style="display:none;">숫자 카드</span></div>
+                                <div class="rb-card-desc"><span class="rb-content-en">1 to 50 (1 each). Magnitude decides the trick winner.</span><span class="rb-content-ko" style="display:none;">1부터 50까지 각 1장. 크기로 승패 결정.</span></div>
+                            </div>
+                            <div class="rb-mini-card card-strongest">
+                                <div class="rb-card-symbol"><i class="fa-solid fa-angles-up"></i></div>
+                                <div class="rb-card-name"><span class="rb-content-en">↑ Strongest (3)</span><span class="rb-content-ko" style="display:none;">↑ 최강 카드 (3장)</span></div>
+                                <div class="rb-card-desc"><span class="rb-content-en">Defeats all numbered cards (1–50).</span><span class="rb-content-ko" style="display:none;">모든 숫자 카드(1~50)를 이김.</span></div>
+                            </div>
+                            <div class="rb-mini-card card-weakest">
+                                <div class="rb-card-symbol"><i class="fa-solid fa-angles-down"></i></div>
+                                <div class="rb-card-name"><span class="rb-content-en">↓ Weakest (2)</span><span class="rb-content-ko" style="display:none;">↓ 최약 카드 (2장)</span></div>
+                                <div class="rb-card-desc"><span class="rb-content-en">Loses to numbers, but defeats the Strongest card!</span><span class="rb-content-ko" style="display:none;">숫자에 지지만, 최강 카드를 이김!</span></div>
+                            </div>
+                            <div class="rb-mini-card card-null">
+                                <div class="rb-card-symbol">X</div>
+                                <div class="rb-card-name"><span class="rb-content-en">X Null Card (1)</span><span class="rb-content-ko" style="display:none;">X 무효 카드 (1장)</span></div>
+                                <div class="rb-card-desc"><span class="rb-content-en">No trick winner. Lead player remains unchanged.</span><span class="rb-content-ko" style="display:none;">승자 없음. 선 플레이어 유지.</span></div>
+                            </div>
+                        </div>
+
+                        <div class="rb-callout-box amber">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                            <div>
+                                <strong class="rb-content-en">Special Strongest vs Weakest Clash Rule:</strong>
+                                <strong class="rb-content-ko" style="display:none;">최강 vs 최약 상성 및 충돌 규칙:</strong>
+                                <div class="rb-content-en">
+                                    If both the Strongest card (↑) and Weakest card (↓) are played in the same trick, <strong>the Weakest card defeats the Strongest card!</strong> If both are played simultaneously (e.g. Blind turn), the card played earlier wins.
+                                </div>
+                                <div class="rb-content-ko" style="display:none;">
+                                    한 트릭에 최강 카드(↑)와 최약 카드(↓)가 함께 나오면, <strong>최약 카드가 최강 카드를 물리치고 승리합니다!</strong> 만약 블라인드 등으로 동시에 플레이된 경우, 더 먼저 낸 카드가 승리합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2-2. Event Cards -->
+                    <div class="rb-component-block">
+                        <div class="rb-comp-subhead">
+                            <i class="fa-solid fa-wand-magic-sparkles" style="color: #5a9e8f;"></i>
+                            <span class="rb-content-en">24 Event Cards</span>
+                            <span class="rb-content-ko" style="display:none;">24장 이벤트 카드</span>
+                            <span class="badge">24 Cards</span>
+                        </div>
+
+                        <!-- Category A: Change Wins -->
+                        <div class="rb-event-category cat-win">
+                            <div class="rb-cat-header">
+                                <i class="fa-solid fa-medal"></i>
+                                <span class="rb-content-en">a. Change the Number of Wins (8 Cards)</span>
+                                <span class="rb-content-ko" style="display:none;">a. 승수 변경 카드 (총 8장)</span>
+                            </div>
+                            <div class="rb-event-items">
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-plus" style="color:#166534;"></i> +1 Win</span>
+                                        <span class="rb-event-count">2x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Gain 1 extra win (split won trick pile into 2 stacks).</span>
+                                        <span class="rb-content-ko" style="display:none;">1승 추가 획득 (획득한 카드 더미를 2개로 분할).</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-hand-holding-dollar" style="color:#166534;"></i> Steal</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Take 1 won trick pile from another player.</span>
+                                        <span class="rb-content-ko" style="display:none;">다른 플레이어의 1승 더미를 1개 빼앗아 옴.</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-gift" style="color:#166534;"></i> Give</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Give your current 1 win pile to another player.</span>
+                                        <span class="rb-content-ko" style="display:none;">자신의 1승 더미 1개를 다른 플레이어에게 넘김.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category B: Alter Turn Rules -->
+                        <div class="rb-event-category cat-turn">
+                            <div class="rb-cat-header">
+                                <i class="fa-solid fa-shuffle"></i>
+                                <span class="rb-content-en">b. Alter Next Turn's Rules (9 Cards)</span>
+                                <span class="rb-content-ko" style="display:none;">b. 다음 턴 규칙 변경 카드 (총 9장)</span>
+                            </div>
+                            <div class="rb-event-items">
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-arrow-down-up-across-line" style="color:#9a3412;"></i> Reverse</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Next turn, the lowest number wins (↑ / ↓ rule still applies).</span>
+                                        <span class="rb-content-ko" style="display:none;">다음 턴 가장 낮은 숫자가 승리 (↑/↓ 상성은 유지).</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-eye-slash" style="color:#9a3412;"></i> Blind</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Next turn, everyone reveals their cards simultaneously.</span>
+                                        <span class="rb-content-ko" style="display:none;">다음 턴 모든 플레이어가 동시에 카드를 공개.</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-rotate-left" style="color:#9a3412;"></i> Opposite Direction</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Next turn proceeds counterclockwise from the winner's right.</span>
+                                        <span class="rb-content-ko" style="display:none;">다음 턴 승자의 오른쪽(반시계 방향)으로 진행.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category C: Swap Cards / Tokens -->
+                        <div class="rb-event-category cat-swap">
+                            <div class="rb-cat-header">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                                <span class="rb-content-en">c. Swap Cards &amp; Tokens (7 Cards)</span>
+                                <span class="rb-content-ko" style="display:none;">c. 카드 및 토큰 교환 카드 (총 7장)</span>
+                            </div>
+                            <div class="rb-event-items">
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-bullseye" style="color:#0369a1;"></i> Goal Swap</span>
+                                        <span class="rb-event-count">1x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Exchange goal prediction tokens with another player.</span>
+                                        <span class="rb-content-ko" style="display:none;">다른 플레이어와 예측 목표 토큰을 1:1 맞교환.</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-hands" style="color:#0369a1;"></i> Hand Exchange</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Swap your entire hand with another player.</span>
+                                        <span class="rb-content-ko" style="display:none;">다른 플레이어와 손패 전체를 맞교환.</span>
+                                    </div>
+                                </div>
+                                <div class="rb-event-pill">
+                                    <div class="rb-event-pill-top">
+                                        <span class="rb-event-title"><i class="fa-solid fa-share" style="color:#0369a1;"></i> Pass</span>
+                                        <span class="rb-event-count">3x</span>
+                                    </div>
+                                    <div class="rb-event-effect">
+                                        <span class="rb-content-en">Each player passes 1 card to the player on their left.</span>
+                                        <span class="rb-content-ko" style="display:none;">모든 플레이어가 왼쪽 플레이어에게 카드 1장을 넘김.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2-3. Goal Tokens -->
+                    <div class="rb-component-block">
+                        <div class="rb-comp-subhead">
+                            <i class="fa-solid fa-circle-dot" style="color: #e8734a;"></i>
+                            <span class="rb-content-en">20 Goal (Prediction) Tokens</span>
+                            <span class="rb-content-ko" style="display:none;">20개 예측 목표 토큰</span>
+                            <span class="badge">4 Tokens × 5 Colors</span>
+                        </div>
+                        <p style="font-size:0.84rem; color:var(--text-muted); margin:0 0 6px 0;">
+                            <span class="rb-content-en">Each player receives a set of 4 prediction tokens in their color:</span>
+                            <span class="rb-content-ko" style="display:none;">각 플레이어는 자신의 색상으로 된 4개의 예측 토큰 세트를 받습니다:</span>
+                        </p>
+                        <div class="rb-tokens-row">
+                            <div class="rb-token-chip chip-0">
+                                <span class="rb-token-title"><span class="rb-content-en">0 Wins</span><span class="rb-content-ko" style="display:none;">0승</span></span>
+                                <span class="rb-token-score">+5 PTS</span>
+                                <span class="rb-token-note"><span class="rb-content-en">Bonus Points</span><span class="rb-content-ko" style="display:none;">보너스 점수</span></span>
+                            </div>
+                            <div class="rb-token-chip chip-1">
+                                <span class="rb-token-title"><span class="rb-content-en">1 Win</span><span class="rb-content-ko" style="display:none;">1승</span></span>
+                                <span class="rb-token-score">+5 PTS</span>
+                                <span class="rb-token-note"><span class="rb-content-en">Bonus Points</span><span class="rb-content-ko" style="display:none;">보너스 점수</span></span>
+                            </div>
+                            <div class="rb-token-chip chip-2">
+                                <span class="rb-token-title"><span class="rb-content-en">2 Wins</span><span class="rb-content-ko" style="display:none;">2승</span></span>
+                                <span class="rb-token-score">+5 PTS</span>
+                                <span class="rb-token-note"><span class="rb-content-en">Bonus Points</span><span class="rb-content-ko" style="display:none;">보너스 점수</span></span>
+                            </div>
+                            <div class="rb-token-chip chip-3">
+                                <span class="rb-token-title"><span class="rb-content-en">3+ Wins</span><span class="rb-content-ko" style="display:none;">3승 이상</span></span>
+                                <span class="rb-token-score">+1 PT</span>
+                                <span class="rb-token-note"><span class="rb-content-en">Bonus Point</span><span class="rb-content-ko" style="display:none;">보너스 점수</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2-4. Reference Card & Score Tokens -->
+                    <div class="rb-component-block">
+                        <div class="rb-comp-subhead">
+                            <i class="fa-solid fa-clipboard-list" style="color: #6366f1;"></i>
+                            <span class="rb-content-en">Reference Card &amp; Score Tokens</span>
+                            <span class="rb-content-ko" style="display:none;">참조 카드 &amp; 점수 토큰</span>
+                        </div>
+                        <ul style="font-size:0.84rem; color:var(--text-muted); margin:0 0 0 18px;">
+                            <li>
+                                <strong class="rb-content-en">1 Reference Card:</strong>
+                                <strong class="rb-content-ko" style="display:none;">1장 참조 카드:</strong>
+                                <span class="rb-content-en">Displays game card counts (↑: 3, 1~50: 50, ↓: 2, X: 1) and event distribution summary.</span>
+                                <span class="rb-content-ko" style="display:none;">게임 카드 매수 및 이벤트 카드의 전체 구성을 한눈에 보여줍니다.</span>
+                            </li>
+                            <li>
+                                <strong class="rb-content-en">Score Tokens:</strong>
+                                <strong class="rb-content-ko" style="display:none;">점수 토큰:</strong>
+                                <span class="rb-content-en">Total value: 80 points for tracking round wins and bonus prediction points.</span>
+                                <span class="rb-content-ko" style="display:none;">총 80점 상당으로 라운드 승수와 보너스 점수를 기록하는 데 사용됩니다.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 3: Set Up -->
+                <section class="rb-section" id="rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Set Up</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비 (Set Up)</span>
+                    </h3>
+
+                    <!-- Deal Table -->
+                    <div class="rb-comp-subhead">
+                        <i class="fa-solid fa-table-cells" style="color: #d97706;"></i>
+                        <span class="rb-content-en">A. Card Dealing by Player Count &amp; Round</span>
+                        <span class="rb-content-ko" style="display:none;">A. 인원 및 라운드별 카드 분배 표</span>
+                    </div>
+                    <p style="font-size:0.84rem; color:var(--text-muted); margin:0 0 6px 0;">
+                        <span class="rb-content-en">Shuffle the 56 game cards and deal starting hands according to the chart:</span>
+                        <span class="rb-content-ko" style="display:none;">56장의 게임 카드를 잘 섞은 후, 아래 표에 맞춰 각 플레이어에게 손패를 분배합니다:</span>
+                    </p>
+                    <div class="rb-setup-table-wrap">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></th>
+                                    <th><span class="rb-content-en">Round 1</span><span class="rb-content-ko" style="display:none;">1라운드</span></th>
+                                    <th><span class="rb-content-en">Round 2</span><span class="rb-content-ko" style="display:none;">2라운드</span></th>
+                                    <th><span class="rb-content-en">Round 3</span><span class="rb-content-ko" style="display:none;">3라운드</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong><span class="rb-content-en">2 Players</span><span class="rb-content-ko" style="display:none;">2인</span></strong></td>
+                                    <td class="highlight-cell">4 cards</td>
+                                    <td class="highlight-cell">5 cards</td>
+                                    <td class="highlight-cell">6 cards</td>
+                                </tr>
+                                <tr>
+                                    <td><strong><span class="rb-content-en">3 Players</span><span class="rb-content-ko" style="display:none;">3인</span></strong></td>
+                                    <td class="highlight-cell">5 cards</td>
+                                    <td class="highlight-cell">6 cards</td>
+                                    <td class="highlight-cell">7 cards</td>
+                                </tr>
+                                <tr>
+                                    <td><strong><span class="rb-content-en">4 Players</span><span class="rb-content-ko" style="display:none;">4인</span></strong></td>
+                                    <td class="highlight-cell">7 cards</td>
+                                    <td class="highlight-cell">8 cards</td>
+                                    <td class="highlight-cell">9 cards</td>
+                                </tr>
+                                <tr>
+                                    <td><strong><span class="rb-content-en">5 Players</span><span class="rb-content-ko" style="display:none;">5인</span></strong></td>
+                                    <td class="highlight-cell">8 cards</td>
+                                    <td class="highlight-cell">9 cards</td>
+                                    <td class="highlight-cell">10 cards</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Steps B, C, D -->
+                    <div class="rb-steps-list" style="margin-top:16px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">B</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Prepare Event Market</span>
+                                    <span class="rb-content-ko" style="display:none;">이벤트 카드 시장 준비</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Shuffle the event card deck, place it in the center of the table, and reveal <strong>3 event cards face-up</strong>.</span>
+                                    <span class="rb-content-ko" style="display:none;">24장의 이벤트 카드 덱을 섞어 테이블 중앙에 두고, <strong>3장을 앞면으로 공개</strong>하여 시장을 만듭니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">C</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Goal Prediction</span>
+                                    <span class="rb-content-ko" style="display:none;">손패 확인 및 비밀 승수 예측</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Each player takes the 4 goal tokens of their chosen color. After inspecting their dealt hand, each player predicts how many tricks they expect to win (0, 1, 2, or 3+ wins). All players simultaneously reveal their prediction token and place it in front of them.</span>
+                                    <span class="rb-content-ko" style="display:none;">자신 색상의 목표 토큰 4개를 가져옵니다. 손패를 확인한 후, 이번 라운드에 몇 승을 거둘지 예측하여 토큰(0승, 1승, 2승, 3승 이상) 1개를 비밀리에 선택합니다. 모든 플레이어가 <strong>동시에 공개</strong>하여 자신 앞에 배치합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">D</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Determine Starting Player 🐾</span>
+                                    <span class="rb-content-ko" style="display:none;">선(시작) 플레이어 선정 🐾</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en"><strong>The player who loves animals the most</strong> becomes the starting player!</span>
+                                    <span class="rb-content-ko" style="display:none;"><strong>동물을 가장 사랑하는 플레이어</strong>가 1라운드의 선 플레이어가 됩니다!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setup Layout Diagram -->
+                    <div class="rb-setup-diagram">
+                        <div style="font-size:0.8rem; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.5px;">
+                            <i class="fa-solid fa-map"></i>
+                            <span class="rb-content-en">Table Setup Diagram</span>
+                            <span class="rb-content-ko" style="display:none;">테이블 배치도 (Setup Layout)</span>
+                        </div>
+
+                        <!-- Center Market -->
+                        <div class="rb-diagram-center-market">
+                            <div style="font-size:0.75rem; font-weight:700; color:#9a3412;">
+                                <i class="fa-solid fa-sparkles"></i> [B] <span class="rb-content-en">Event Card Deck &amp; 3 Revealed Cards</span><span class="rb-content-ko" style="display:none;">이벤트 덱 &amp; 공개된 카드 3장</span>
+                            </div>
+                            <div class="rb-diagram-market-cards">
+                                <span class="rb-diagram-card-chip deck"><i class="fa-solid fa-box-archive"></i> DECK</span>
+                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-hand-holding-dollar"></i> STEAL</span>
+                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-share"></i> PASS</span>
+                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-arrow-down-up-across-line"></i> REVERSE</span>
+                            </div>
+                        </div>
+
+                        <!-- Player Zone -->
+                        <div class="rb-diagram-player-zone">
+                            <div>
+                                <span style="font-size:0.72rem; font-weight:800; color:#dc2626;">[A]</span>
+                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Personal Game Cards</span><span class="rb-content-ko" style="display:none;">개인 손패 카드</span>:</strong>
+                                <span style="font-size:0.78rem; color:var(--text-muted);"><span class="rb-content-en">Dealt Hand</span><span class="rb-content-ko" style="display:none;">배분받은 핸드</span></span>
+                            </div>
+                            <div>
+                                <span style="font-size:0.72rem; font-weight:800; color:#2563eb;">[C]</span>
+                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Prediction Token</span><span class="rb-content-ko" style="display:none;">예측 목표 토큰</span>:</strong>
+                                <span class="rb-diagram-card-chip revealed" style="display:inline-flex; padding:3px 8px; font-size:0.7rem;"><i class="fa-solid fa-bullseye"></i> 1승 / +5점</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: How to Play -->
+                <section class="rb-section" id="rb-play">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span class="rb-content-en">4. How to Play</span>
+                        <span class="rb-content-ko" style="display:none;">4. 게임 진행 방법 (How to Play)</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <!-- Step 1 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Play a Trick &amp; Trigger Special Cards</span>
+                                    <span class="rb-content-ko" style="display:none;">트릭 진행 &amp; 특수 카드 발동</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <div class="rb-content-en">
+                                        Starting from the first player, each player plays 1 card in clockwise turn order.
+                                        <ul>
+                                            <li><strong>Trick Winner:</strong> The player who plays the highest number wins the trick and collects all played cards.</li>
+                                            <li><strong>Special Cards:</strong> If ↑ or ↓ cards are played, their special effects apply immediately.</li>
+                                            <li><strong>Marking 1 Win:</strong> The winner flips the collected cards face-down in their personal play area to mark 1 win.</li>
+                                            <li><strong>X Card (No Winner):</strong> If an X card is played, there is no trick winner. All played cards are discarded, and the lead player remains unchanged for the next trick.</li>
+                                            <li><strong>Choosing an Event Card:</strong> The trick winner chooses <strong>1 of the 3 revealed event cards</strong> and applies its effect immediately. <em>(Example: If the chosen event is +1 Win, the player splits their won trick pile into 2 separate stacks, counting as 2 wins!)</em></li>
+                                        </ul>
+                                    </div>
+                                    <div class="rb-content-ko" style="display:none;">
+                                        선 플레이어부터 시계 방향으로 각자 카드 1장씩을 냅니다.
+                                        <ul>
+                                            <li><strong>트릭 승자:</strong> 가장 높은 숫자를 낸 플레이어가 트릭을 이기고 나온 카드를 모두 가져옵니다.</li>
+                                            <li><strong>특수 카드:</strong> ↑(최강) 또는 ↓(최약) 카드가 나온 경우 특수 상성 규칙이 우선 적용됩니다.</li>
+                                            <li><strong>1승 기록:</strong> 승자는 가져온 카드를 뒷면으로 뒤집어 개인 영역에 1승 묶음으로 둡니다.</li>
+                                            <li><strong>X 카드 (무효):</strong> X 카드가 나오면 승자가 없습니다. 카드는 버려지고, 선 플레이어가 유지됩니다.</li>
+                                            <li><strong>이벤트 카드 선택:</strong> 승자는 공개된 3장의 이벤트 카드 중 <strong>1장을 골라 즉시 효과를 적용</strong>합니다. <em>(예: +1 Win 카드를 고른 경우, 방금 얻은 트릭 카드 묶음을 2개로 분할하여 2승으로 처리!)</em></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Lead Next Trick &amp; Refresh Events</span>
+                                    <span class="rb-content-ko" style="display:none;">다음 트릭 준비 &amp; 이벤트 시장 갱신</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <div class="rb-content-en">
+                                        The trick winner becomes the starting player for the next trick. Discard the 3 used event cards and reveal <strong>3 new ones</strong> from the event deck. <em>(If the event deck runs out, shuffle the discard pile to form a new deck.)</em>
+                                    </div>
+                                    <div class="rb-content-ko" style="display:none;">
+                                        트릭 승자가 다음 트릭의 선 플레이어가 됩니다. 공개되어 있던 3장의 이벤트 카드를 모두 버리고, 이벤트 덱에서 <strong>새로 3장</strong>을 뽑아 공개합니다. <em>(이벤트 덱이 소진되면 버린 더미를 섞어 새 덱을 만듭니다.)</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Round End &amp; Scoring</span>
+                                    <span class="rb-content-ko" style="display:none;">라운드 종료 &amp; 점수 계산</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <div class="rb-content-en">
+                                        When all players have played all cards from their hands, the round ends.
+                                        <ul>
+                                            <li><strong>Trick Points:</strong> Gain score tokens equal to the number of tricks won (1 win = 1 point).</li>
+                                            <li><strong>Prediction Bonus:</strong> If your actual number of wins exactly matches your chosen prediction token, gain the bonus score indicated on it (+5 pts or +1 pt)!</li>
+                                        </ul>
+                                    </div>
+                                    <div class="rb-content-ko" style="display:none;">
+                                        모든 플레이어가 손패의 카드를 전부 사용하면 라운드가 종료됩니다.
+                                        <ul>
+                                            <li><strong>승수 점수:</strong> 자신이 획득한 트릭 수(승수)만큼 점수를 얻습니다 (1승당 1점).</li>
+                                            <li><strong>예측 성공 보너스:</strong> 실제 달성한 승수가 라운드 시작 시 선언한 목표 토큰과 정확히 일치하면, 토큰에 표시된 보너스 점수(+5점 또는 +1점)를 추가로 획득합니다!</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Deal Next Round</span>
+                                    <span class="rb-content-ko" style="display:none;">새 라운드 준비</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <div class="rb-content-en">
+                                        Deal new hands for the next round according to the chart. The player with the highest total score becomes the new starting player. In case of a tie, the player closest clockwise from the previous first player becomes the next first player.
+                                    </div>
+                                    <div class="rb-content-ko" style="display:none;">
+                                        카드 분배 표에 따라 다음 라운드의 새 손패를 나누어줍니다. 누적 점수가 가장 높은 플레이어가 다음 라운드의 선 플레이어가 됩니다. 동점일 경우 이전 선 플레이어로부터 시계 방향으로 가장 가까운 사람이 선이 됩니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Scoring & Victory -->
+                <section class="rb-section" id="rb-victory">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span class="rb-content-en">5. Scoring &amp; Victory</span>
+                        <span class="rb-content-ko" style="display:none;">5. 점수 및 승리 조건 (Scoring &amp; Victory)</span>
+                    </h3>
+
+                    <div class="rb-victory-grid">
+                        <div class="rb-victory-card primary">
+                            <i class="fa-solid fa-crown rb-victory-icon"></i>
+                            <div class="rb-victory-info">
+                                <h5>
+                                    <span class="rb-content-en">Sudden Victory (15+ Points)</span>
+                                    <span class="rb-content-ko" style="display:none;">즉시 승리 (15점 이상)</span>
+                                </h5>
+                                <p>
+                                    <span class="rb-content-en">If any player reaches 15 points or more, the game ends immediately! That player wins the game.</span>
+                                    <span class="rb-content-ko" style="display:none;">어느 플레이어라도 15점 이상에 도달하면 게임이 즉시 종료되며 해당 플레이어가 승리합니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-victory-card">
+                            <i class="fa-solid fa-flag-checkered rb-victory-icon" style="color:#5a9e8f;"></i>
+                            <div class="rb-victory-info">
+                                <h5>
+                                    <span class="rb-content-en">3 Rounds End</span>
+                                    <span class="rb-content-ko" style="display:none;">3라운드 정규 종료</span>
+                                </h5>
+                                <p>
+                                    <span class="rb-content-en">If no player reaches 15 points, the game ends after 3 full rounds. The player with the highest total score wins!</span>
+                                    <span class="rb-content-ko" style="display:none;">아무도 15점에 도달하지 못한 경우 3라운드가 끝나면 게임이 종료되며, 누적 점수가 가장 높은 플레이어가 승리합니다!</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('tamersRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal 2: Doore Info -->
     <div class="proto-modal-overlay" id="dooreModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
@@ -1977,11 +3273,16 @@
         </div>
     </div>
 
+    <script src="/proto/i18n.js"></script>
     <script>
         // Modal functions
         function openModal(id) {
             const m = document.getElementById(id);
             if (!m) return;
+            if (id === 'tamersRulebookModal') {
+                const isKo = document.documentElement.getAttribute('lang') === 'ko';
+                setRulebookLanguage(isKo ? 'ko' : 'en');
+            }
             m.style.display = 'flex';
             setTimeout(() => m.classList.add('active'), 10);
             document.body.style.overflow = 'hidden';
@@ -1993,6 +3294,29 @@
             m.classList.remove('active');
             setTimeout(() => { m.style.display = 'none'; }, 220);
             document.body.style.overflow = '';
+        }
+
+        function setRulebookLanguage(lang) {
+            const modal = document.getElementById('tamersRulebookModal');
+            if (!modal) return;
+            const isKo = lang === 'ko';
+            const koTitle = modal.querySelector('.rb-title-text-ko');
+            const enTitle = modal.querySelector('.rb-title-text-en');
+            if (koTitle && enTitle) {
+                koTitle.style.display = isKo ? '' : 'none';
+                enTitle.style.display = isKo ? 'none' : '';
+            }
+            modal.querySelectorAll('.rb-content-ko').forEach(el => el.style.display = isKo ? '' : 'none');
+            modal.querySelectorAll('.rb-content-en').forEach(el => el.style.display = isKo ? 'none' : '');
+            modal.querySelectorAll('.rb-lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.rbLang === lang));
+        }
+        window.setRulebookLanguage = setRulebookLanguage;
+
+        function scrollRulebookSection(sectionId) {
+            const el = document.getElementById(sectionId);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         // Close on backdrop click
