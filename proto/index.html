@@ -23,6 +23,8 @@
     
     <!-- External Stylesheet (Fallback) -->
     <link rel="stylesheet" href="/proto/proto.css">
+    <link rel="stylesheet" href="/proto/orchards-rulebook.css">
+    <link rel="stylesheet" href="/proto/star-window-rulebook.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
     <style>
@@ -1999,49 +2001,176 @@
             }
         }
 
-        /* Preserve the supplied Doore rulebook as a faithful page-by-page web edition. */
-        .doore-rb-edition,
-        .doore-rb-lang-toggle {
-            display: none !important;
+/* ===== Doore Rulebook Modal ===== */
+        .doore-rulebook-modal-card {
+            max-width: 880px;
         }
 
-        .doore-rulebook-body {
-            padding: 20px;
-            gap: 0;
-            background: #e8e5df;
+        .doore-rulebook-modal-card .rb-lang-btn.active {
+            background: #438054;
+            box-shadow: 0 2px 6px rgba(67, 128, 84, 0.35);
         }
 
-        .doore-rulebook-body > :not(.doore-pdf-pages) {
-            display: none;
+        .doore-rulebook-modal-card .rb-spec-icon,
+        .doore-rulebook-modal-card .rb-section-title i,
+        .doore-rulebook-modal-card .rb-table .highlight-cell {
+            color: #438054;
         }
 
-        .doore-pdf-pages {
+        .doore-rulebook-modal-card .rb-step-badge {
+            background: linear-gradient(135deg, #438054 0%, #2e623d 100%);
+            box-shadow: 0 2px 6px rgba(67, 128, 84, 0.35);
+        }
+
+        .doore-rulebook-modal-card .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(67, 128, 84, 0.08) 0%, rgba(217, 119, 6, 0.05) 100%);
+            border-left-color: #438054;
+        }
+
+        .doore-rulebook-modal-card .rb-nav-link:hover {
+            background: #f0fdf4;
+            color: #166534;
+            border-color: #bbf7d0;
+        }
+
+        /* 3 Main Tile Types Cards */
+        .doore-tiles-grid {
             display: grid;
-            justify-items: center;
-            gap: 20px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .doore-pdf-page {
-            width: min(100%, 900px);
+        .doore-tile-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .doore-tile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        .doore-tile-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 6px;
+        }
+
+        .doore-tile-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .doore-tile-title {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--text-main);
             margin: 0;
-            background: #fff;
-            box-shadow: 0 4px 18px rgba(42, 37, 31, 0.16);
         }
 
-        .doore-pdf-page img {
-            display: block;
-            width: 100%;
-            height: auto;
+        .doore-tile-desc {
+            font-size: 0.76rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin: 4px 0 0;
+        }
+
+        /* Score Formula Callout */
+        .doore-score-formula-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1.5px solid #86efac;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin: 10px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .doore-score-icon {
+            font-size: 1.8rem;
+            color: #16a34a;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Live In-game Diagram Pins for Doore */
+        .doore-pin-tag {
+            position: absolute;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            animation: rbPinPulse 2.5s infinite;
+        }
+
+        .doore-pin-tag.pin-a {
+            left: 19.5%;
+            top: 46%;
+            transform: translate(-50%, -50%);
+            background: #2e7d32;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .doore-pin-tag.pin-b {
+            left: 65%;
+            top: 28%;
+            transform: translate(-50%, -50%);
+            background: #d97706;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .doore-pin-tag.pin-c {
+            left: 58%;
+            top: 6%;
+            transform: translate(-50%, -50%);
+            background: #0284c7;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .doore-pin-tag.pin-d {
+            left: 65%;
+            top: 67%;
+            transform: translate(-50%, -50%);
+            background: #7c3aed;
+            color: #ffffff;
+            border: 2px solid #ffffff;
         }
 
         @media (max-width: 640px) {
-            .doore-rulebook-body {
-                padding: 8px;
+            .doore-rulebook-modal-card .rulebook-nav-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 0;
+                scrollbar-width: none;
             }
 
-            .doore-pdf-pages {
-                gap: 10px;
+            .doore-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .doore-rulebook-modal-card .rb-nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
             }
         }
 
@@ -3899,7 +4028,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openOrchardsRulebookToast()" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook" aria-controls="orchardsRulebookToast" aria-expanded="false">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -4093,7 +4222,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openStarWindowRulebookToast()" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook" aria-controls="starWindowRulebookToast" aria-expanded="false">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -4882,128 +5011,610 @@
         </div>
     </div>
 
-    <!-- Doore Full Rulebook Modal -->
-    <div class="proto-modal-overlay" id="dooreRulebookModal" role="dialog" aria-modal="true" aria-labelledby="dooreRulebookTitle" style="display:none;">
+    <!-- Modal: Doore Full Rulebook -->
+    <div class="proto-modal-overlay" id="dooreRulebookModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card rulebook-modal-card doore-rulebook-modal-card">
-            <div class="proto-modal-header doore-rb-header">
-                <div class="proto-modal-title" id="dooreRulebookTitle">
-                    <span class="doore-rb-title-icon" aria-hidden="true">🌾</span>
-                    <span class="rb-title-text-en">Doore - Full Rulebook</span>
-                    <span class="rb-title-text-ko" style="display:none;">두레 - 전체 규칙서</span>
-                    <span class="doore-rb-edition"><span class="rb-content-en">Village Edition</span><span class="rb-content-ko" style="display:none;">마을판</span></span>
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-wheat-awn" style="color: #438054;"></i>
+                    <span class="rb-title-text-en">Doore — Complete Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">두레 — 전체 규칙서</span>
                 </div>
                 <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'dooreRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'dooreRulebookModal')">EN</button>
+                    </div>
                     <button type="button" class="proto-modal-close" onclick="closeModal('dooreRulebookModal')" aria-label="Close rulebook modal">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="proto-modal-body rulebook-body doore-rulebook-body">
-                <div class="doore-pdf-pages" aria-label="Doore rulebook pages">
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-1.png?v=20260911-2" width="1080" height="1560" alt="Doore sell sheet and component overview" decoding="async"></figure>
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-2.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 1: game information and components" loading="lazy" decoding="async"></figure>
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-3.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 2: setup and how to play" loading="lazy" decoding="async"></figure>
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-4.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 3: tile arrangement example" loading="lazy" decoding="async"></figure>
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-5.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 4: tile selection and placement" loading="lazy" decoding="async"></figure>
-                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-6.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 5: scoring, crops, and rule variants" loading="lazy" decoding="async"></figure>
-                </div>
-                <div class="doore-rb-hero">
-                    <div class="doore-rb-hero-copy">
-                        <span class="doore-rb-kicker"><i class="fa-solid fa-seedling"></i> <span class="rb-content-en">Build a village, one careful gift at a time</span><span class="rb-content-ko" style="display:none;">한 장의 배려로 함께 일구는 마을</span></span>
-                        <p class="rb-content-en">Arrange a hidden stack of tiles for your neighbors, spend coins to search for a better choice, and grow the most valuable fields on your 5 x 5 personal board.</p>
-                        <p class="rb-content-ko" style="display:none;">이웃에게 건넬 타일 더미의 순서를 정하고, 코인을 써서 더 좋은 타일을 찾으며, 5 x 5 개인 보드에 가장 가치 높은 농경지를 완성하세요.</p>
-                    </div>
-                    <div class="doore-rb-field" aria-hidden="true">
-                        <span>🌾</span><span>🍇</span><span>🍓</span><span>🍊</span><span>🍏</span><span>🧑‍🌾</span>
-                    </div>
-                </div>
-
-                <div class="rb-specs-grid doore-rb-specs">
-                    <div class="rb-spec-item"><i class="fa-solid fa-users rb-spec-icon"></i><div><div class="rb-spec-label"><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></div><div class="rb-spec-val"><span class="rb-content-en">2-4 Players</span><span class="rb-content-ko" style="display:none;">2-4명</span></div></div></div>
-                    <div class="rb-spec-item"><i class="fa-solid fa-clock rb-spec-icon"></i><div><div class="rb-spec-label"><span class="rb-content-en">Time</span><span class="rb-content-ko" style="display:none;">시간</span></div><div class="rb-spec-val"><span class="rb-content-en">30 Minutes</span><span class="rb-content-ko" style="display:none;">약 30분</span></div></div></div>
-                    <div class="rb-spec-item"><i class="fa-solid fa-child-reaching rb-spec-icon"></i><div><div class="rb-spec-label"><span class="rb-content-en">Age</span><span class="rb-content-ko" style="display:none;">연령</span></div><div class="rb-spec-val">6+</div></div></div>
-                    <div class="rb-spec-item"><i class="fa-solid fa-layer-group rb-spec-icon"></i><div><div class="rb-spec-label"><span class="rb-content-en">Core</span><span class="rb-content-ko" style="display:none;">핵심</span></div><div class="rb-spec-val"><span class="rb-content-en">Draft & Place</span><span class="rb-content-ko" style="display:none;">드래프트 & 배치</span></div></div></div>
-                </div>
-
-                <nav class="rulebook-nav-bar doore-rb-nav" aria-label="Doore rulebook sections">
-                    <a href="#doore-rb-info" onclick="scrollRulebookSection('doore-rb-info')" class="rb-nav-link"><i class="fa-solid fa-circle-info"></i> <span class="rb-content-en">Overview</span><span class="rb-content-ko" style="display:none;">게임 정보</span></a>
-                    <a href="#doore-rb-components" onclick="scrollRulebookSection('doore-rb-components')" class="rb-nav-link"><i class="fa-solid fa-box-open"></i> <span class="rb-content-en">Components</span><span class="rb-content-ko" style="display:none;">구성물</span></a>
-                    <a href="#doore-rb-setup" onclick="scrollRulebookSection('doore-rb-setup')" class="rb-nav-link"><i class="fa-solid fa-table-cells-large"></i> <span class="rb-content-en">Set Up</span><span class="rb-content-ko" style="display:none;">게임 준비</span></a>
-                    <a href="#doore-rb-play" onclick="scrollRulebookSection('doore-rb-play')" class="rb-nav-link"><i class="fa-solid fa-arrows-rotate"></i> <span class="rb-content-en">Round Flow</span><span class="rb-content-ko" style="display:none;">라운드 흐름</span></a>
-                    <a href="#doore-rb-score" onclick="scrollRulebookSection('doore-rb-score')" class="rb-nav-link"><i class="fa-solid fa-star"></i> <span class="rb-content-en">Scoring</span><span class="rb-content-ko" style="display:none;">점수 계산</span></a>
-                    <a href="#doore-rb-variants" onclick="scrollRulebookSection('doore-rb-variants')" class="rb-nav-link"><i class="fa-solid fa-sliders"></i> <span class="rb-content-en">Variants</span><span class="rb-content-ko" style="display:none;">변형 규칙</span></a>
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-overview')" class="rb-nav-link">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">Overview</span><span class="rb-content-ko" style="display:none;">개요</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-components')" class="rb-nav-link">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">Components &amp; Tiles</span><span class="rb-content-ko" style="display:none;">구성물 &amp; 타일 구조</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-setup')" class="rb-nav-link">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">Set Up &amp; Table</span><span class="rb-content-ko" style="display:none;">준비 &amp; 배치도</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-play')" class="rb-nav-link">
+                        <i class="fa-solid fa-play"></i>
+                        <span class="rb-content-en">Round Flow</span><span class="rb-content-ko" style="display:none;">라운드 진행 흐름</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-scoring')" class="rb-nav-link">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rb-content-en">Cluster Scoring</span><span class="rb-content-ko" style="display:none;">군락 점수 계산</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-crops')" class="rb-nav-link">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span class="rb-content-en">Crops &amp; Stats</span><span class="rb-content-ko" style="display:none;">5대 작물 &amp; 덱 통계</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('doore-rb-variants')" class="rb-nav-link">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="rb-content-en">Variants &amp; Tips</span><span class="rb-content-ko" style="display:none;">변형 규칙 &amp; 팁</span>
+                    </a>
                 </nav>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-info">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-circle-info"></i><span class="rb-content-en">1. Game Information</span><span class="rb-content-ko" style="display:none;">1. 게임 정보</span></h3>
-                    <div class="doore-rb-intro-grid">
-                        <div class="doore-rb-story-card"><span class="doore-rb-story-mark">두레</span><div class="rb-content-en"><strong>Doore</strong> is inspired by Korea's traditional communal farming culture. Every stack you arrange shapes another player's choices, but the final puzzle is yours to solve.</div><div class="rb-content-ko" style="display:none;"><strong>두레</strong>는 한국의 전통 공동 농경 문화에서 영감을 받았습니다. 내가 정렬한 타일 더미가 다른 사람의 선택을 만들지만, 최종 퍼즐은 각자 풀어야 합니다.</div></div>
-                        <div class="doore-rb-goal"><i class="fa-solid fa-bullseye"></i><div><strong><span class="rb-content-en">Goal</span><span class="rb-content-ko" style="display:none;">목표</span></strong><p class="rb-content-en">Create high-scoring crop clusters by pairing stars with matching worker arrows.</p><p class="rb-content-ko" style="display:none;">별이 많은 작물 군락에 같은 색 일꾼 화살표를 연결해 높은 점수를 만드세요.</p></div></div>
+                <!-- 1. Game Overview & Specifications -->
+                <section class="rb-section" id="doore-rb-overview">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Overview &amp; Specifications</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 개요 및 제원</span>
+                    </h3>
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            <strong>Doore (두레)</strong> is a 2 to 4 player drafting and tile-placement strategy board game rooted in Korea's traditional cooperative farming institution. Players secretly arrange stacks of tiles to pass to neighbors, navigating tense mutual dilemmas. Build your 5×5 personal farm, direct worker arrows toward high-value star clusters, and cultivate the most prosperous village!
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>두레(Doore)</strong>는 한국의 전통 공동 농경 노동 조직인 '두레'의 상부상조와 지혜에서 착안한 2~4인용 타일 드래프팅 &amp; 농경 퍼즐 보드게임입니다. 플레이어들은 손에 든 타일의 순서를 정해 이웃에게 건네며, 상대방의 선택을 유도하고 자신에게 돌아올 타일을 설계합니다. 5×5 개인 농장 보드에 작물 군락을 넓히고 일꾼의 경작 화살표를 최적의 방향으로 배치해 최고의 수확을 일구세요!
+                        </div>
+                    </div>
+
+                    <div class="rb-specs-grid" style="margin-top: 10px;">
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Player Count</span><span class="rb-content-ko" style="display:none;">플레이 인원</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">2–4 Players</span><span class="rb-content-ko" style="display:none;">2–4인</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Play Time</span><span class="rb-content-ko" style="display:none;">소요 시간</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">~30 Minutes</span><span class="rb-content-ko" style="display:none;">약 30분</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Target Age</span><span class="rb-content-ko" style="display:none;">대상 연령</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">Ages 6+ / 8+</span><span class="rb-content-ko" style="display:none;">6세 / 8세 이상</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-shapes rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Core Mechanics</span><span class="rb-content-ko" style="display:none;">핵심 메커니즘</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">Drafting, Set Collection, Tile Placement</span><span class="rb-content-ko" style="display:none;">드래프트, 세트 컬렉션, 공간 배치</span></div>
+                        </div>
                     </div>
                 </section>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-components">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-box-open"></i><span class="rb-content-en">2. Components</span><span class="rb-content-ko" style="display:none;">2. 구성물</span></h3>
-                    <div class="doore-component-grid">
-                        <div class="doore-component-card"><span class="doore-component-icon">▦</span><strong><span class="rb-content-en">4 Personal Boards</span><span class="rb-content-ko" style="display:none;">개인 보드 4개</span></strong><small><span class="rb-content-en">5 x 5 tile spaces</span><span class="rb-content-ko" style="display:none;">5 x 5 타일 공간</span></small></div>
-                        <div class="doore-component-card"><span class="doore-component-icon">↟ / ★★</span><strong><span class="rb-content-en">4 Personal Tiles</span><span class="rb-content-ko" style="display:none;">개인 타일 4개</span></strong><small><span class="rb-content-en">Wild arrow or 2 stars</span><span class="rb-content-ko" style="display:none;">와일드 화살표 또는 별 2개</span></small></div>
-                        <div class="doore-component-card"><span class="doore-component-icon">🪙</span><strong><span class="rb-content-en">40 Coin Tokens</span><span class="rb-content-ko" style="display:none;">코인 토큰 40개</span></strong><small><span class="rb-content-en">Search and flexibility</span><span class="rb-content-ko" style="display:none;">탐색과 선택 변경에 사용</span></small></div>
-                        <div class="doore-component-card"><span class="doore-component-icon">100</span><strong><span class="rb-content-en">Game Tiles</span><span class="rb-content-ko" style="display:none;">게임 타일 100개</span></strong><small><span class="rb-content-en">Coin, crop, and worker tiles</span><span class="rb-content-ko" style="display:none;">코인, 작물, 일꾼 타일</span></small></div>
+                <!-- 2. Components & Tile Anatomy -->
+                <section class="rb-section" id="doore-rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">2. Components &amp; Tile Anatomy</span>
+                        <span class="rb-content-ko" style="display:none;">2. 구성물 및 타일 해부도</span>
+                    </h3>
+                    <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+                        <span class="rb-content-en">The game includes 4 personal boards (5×5, 25 spaces), 4 personal double-sided tiles, 40 coin tokens (엽전), and 100 game tiles across 3 primary categories:</span>
+                        <span class="rb-content-ko" style="display:none;">게임 구성물은 4개의 개인 보드(5×5, 총 25칸), 4개의 양면 개인 타일, 엽전(코인) 토큰 40개, 그리고 3가지 주요 유형으로 나뉜 100장의 게임 타일로 이루어집니다:</span>
+                    </p>
+
+                    <div class="doore-tiles-grid">
+                        <div class="doore-tile-card">
+                            <div class="doore-tile-header">
+                                <span class="doore-tile-icon">🪙</span>
+                                <div>
+                                    <div class="doore-tile-title"><span class="rb-content-en">1) Coin Tile</span><span class="rb-content-ko" style="display:none;">1) 코인 타일</span></div>
+                                </div>
+                            </div>
+                            <p class="doore-tile-desc">
+                                <span class="rb-content-en">Features printed coins. When placed onto your personal board, immediately gain <strong>2 coin tokens</strong> from the supply. Maximum coin wallet limit is 10.</span>
+                                <span class="rb-content-ko" style="display:none;">타일에 엽전이 그려져 있습니다. 개인 보드에 배치하면 즉시 공급처에서 <strong>엽전 토큰 2개</strong>를 획득합니다. 플레이어가 보유할 수 있는 최대 코인은 10개입니다.</span>
+                            </p>
+                        </div>
+
+                        <div class="doore-tile-card">
+                            <div class="doore-tile-header">
+                                <span class="doore-tile-icon">🌾</span>
+                                <div>
+                                    <div class="doore-tile-title"><span class="rb-content-en">2) Crop Tile (5 Types)</span><span class="rb-content-ko" style="display:none;">2) 작물 타일 (5종)</span></div>
+                                </div>
+                            </div>
+                            <p class="doore-tile-desc">
+                                <span class="rb-content-en">5 crops (Rice 🌾, Grape 🍇, Strawberry 🍓, Tangerine 🍊, Apple 🍏) showing 1 to 3 stars. Some crop tiles also show 1 coin (🪙) or 1 coin + 1 star (🪙★), immediately granting 1 coin token!</span>
+                                <span class="rb-content-ko" style="display:none;">5종 작물(쌀 🌾, 포도 🍇, 딸기 🍓, 감귤 🍊, 사과 🍏)이며 1~3개의 별(★)을 가집니다. 일부 작물 타일은 엽전 1개(🪙)나 엽전 1개+별 1개(🪙★)를 포함하여 배치 시 즉시 엽전 1개를 줍니다.</span>
+                            </p>
+                        </div>
+
+                        <div class="doore-tile-card">
+                            <div class="doore-tile-header">
+                                <span class="doore-tile-icon">🧑‍🌾</span>
+                                <div>
+                                    <div class="doore-tile-title"><span class="rb-content-en">3) Worker Tile</span><span class="rb-content-ko" style="display:none;">3) 일꾼 타일</span></div>
+                                </div>
+                            </div>
+                            <p class="doore-tile-desc">
+                                <span class="rb-content-en">Shows 1 or 2 colored arrows pointing outward. <strong>Worker heads must face UPWARD when placed</strong> (no manual rotation). Arrows cultivate matching colored crops in that straight line!</span>
+                                <span class="rb-content-ko" style="display:none;">1~2개의 색상 화살표가 있습니다. <strong>배치 시 일꾼의 머리는 반드시 위쪽(UP)을 향해야 하며</strong> 임의 회전이 불가합니다. 화살표가 가리키는 직선상의 같은 색상 작물 군락을 경작합니다.</span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="doore-tile-types">
-                        <div><span class="doore-tile-type-icon coin">🪙🪙</span><strong><span class="rb-content-en">Coin Tile</span><span class="rb-content-ko" style="display:none;">코인 타일</span></strong><p><span class="rb-content-en">Gain 2 coins when placed.</span><span class="rb-content-ko" style="display:none;">배치하면 코인 2개를 얻습니다.</span></p></div>
-                        <div><span class="doore-tile-type-icon crops">🍏🍊🍓🍇🌾</span><strong><span class="rb-content-en">Crop Tile</span><span class="rb-content-ko" style="display:none;">작물 타일</span></strong><p><span class="rb-content-en">Five crops with 1-3 stars; some also grant 1 coin.</span><span class="rb-content-ko" style="display:none;">5종의 작물과 1-3개의 별. 일부는 코인 1개도 줍니다.</span></p></div>
-                        <div><span class="doore-tile-type-icon worker">🧑‍🌾 ➜</span><strong><span class="rb-content-en">Worker Tile</span><span class="rb-content-ko" style="display:none;">일꾼 타일</span></strong><p><span class="rb-content-en">Up to 2 colored arrows cultivate matching crops.</span><span class="rb-content-ko" style="display:none;">최대 2개의 색 화살표가 같은 색 작물을 경작합니다.</span></p></div>
+
+                    <div style="font-weight: 700; font-size: 0.84rem; color: var(--text-main); margin-top: 14px;">
+                        <span class="rb-content-en">🌟 Special Starting Component — Personal Tile:</span>
+                        <span class="rb-content-ko" style="display:none;">🌟 특별 시작 구성물 — 양면 개인 타일:</span>
+                    </div>
+
+                    <div class="doore-score-formula-card" style="background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%); border-color: #fde047;">
+                        <span style="font-size: 1.8rem; line-height: 1;">↟ / ★★</span>
+                        <div>
+                            <strong style="font-size: 0.86rem; color: #854d0e;">
+                                <span class="rb-content-en">Double-Sided Personal Tile (Fills the 25th space)</span>
+                                <span class="rb-content-ko" style="display:none;">양면 개인 타일 (마지막 25번째 칸을 채우는 조커)</span>
+                            </strong>
+                            <p style="font-size: 0.8rem; line-height: 1.45; color: var(--text-main); margin-top: 3px;">
+                                <span class="rb-content-en">After 24 board slots are filled over 6 rounds (or 8 rounds in 3P), place this tile in the final empty space. Choose either the <strong>Wild Arrow (↟)</strong> side (orient in any direction as a wild worker) OR the <strong>2 Stars (★★)</strong> side (adds +2 stars to one connected adjacent crop cluster)!</span>
+                                <span class="rb-content-ko" style="display:none;">6라운드(3인은 8라운드) 동안 총 24칸을 채운 후, 마지막 남은 1칸에 이 타일을 원하는 면으로 놓습니다. <strong>와일드 화살표(↟) 면</strong>(일꾼 그림 없이 검은 화살표만 있어 원하는 방향으로 자유 회전 가능) 또는 <strong>별 2개(★★) 면</strong>(인접 연결된 작물 1종류에 별 2개 가산) 중 하나를 선택합니다!</span>
+                            </p>
+                        </div>
                     </div>
                 </section>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-setup">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-table-cells-large"></i><span class="rb-content-en">3. Set Up</span><span class="rb-content-ko" style="display:none;">3. 게임 준비</span></h3>
-                    <div class="doore-setup-strip">
-                        <div class="doore-setup-item"><span class="doore-setup-badge">A</span><div class="rb-content-en">Each player takes <strong>1 personal board</strong>, <strong>1 personal tile</strong>, and <strong>3 coins</strong>.</div><div class="rb-content-ko" style="display:none;">각자 <strong>개인 보드 1개</strong>, <strong>개인 타일 1개</strong>, <strong>코인 3개</strong>를 가져갑니다.</div></div>
-                        <div class="doore-setup-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-                        <div class="doore-setup-item"><span class="doore-setup-badge">B</span><div class="rb-content-en">Place all game tiles face down and the coin supply within everyone's reach.</div><div class="rb-content-ko" style="display:none;">모든 게임 타일은 뒷면으로 놓고, 코인 공급처와 함께 모두의 손이 닿는 곳에 둡니다.</div></div>
+                <!-- 3. Set Up & Live Layout -->
+                <section class="rb-section" id="doore-rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Set Up &amp; Table Layout</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비 &amp; 테이블 배치도</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">i</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Distribute Personal Boards, Personal Tile &amp; 3 Coins</span>
+                                    <span class="rb-content-ko" style="display:none;">개인 보드, 개인 타일, 엽전 3개 수령</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Each player receives 1 personal farm board (5×5, 25 spaces), 1 double-sided Personal Tile, and <strong>3 initial coin tokens</strong>.</span>
+                                    <span class="rb-content-ko" style="display:none;">각 플레이어는 5×5 개인 농장 보드 1개, 양면 개인 타일 1개, 그리고 <strong>초기 엽전(코인) 3개</strong>를 받고 시작합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">ii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Shuffle Game Tiles &amp; Establish Coin Supply</span>
+                                    <span class="rb-content-ko" style="display:none;">게임 타일 100장 뒷면 셔플 및 중앙 공급처 배치</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Shuffle all 100 regular game tiles face down in the center of the table. Place the remaining coin supply in convenient reach of all players.</span>
+                                    <span class="rb-content-ko" style="display:none;">100장의 게임 타일을 뒷면으로 골고루 섞어 테이블 중앙에 배치하고, 남은 엽전 토큰들도 공급처로 편리하게 모아둡니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Draw Round Tiles (Player Count + 1; 5 in 2-Player)</span>
+                                    <span class="rb-content-ko" style="display:none;">라운드 타일 드로우 (인원수 + 1개; 2인은 5개)</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">At the start of each round, each player draws tiles equal to the number of players + 1 (4 tiles in 3P, 5 tiles in 4P). <em>Special 2-Player Rule: Each player draws exactly 5 tiles.</em></span>
+                                    <span class="rb-content-ko" style="display:none;">매 라운드 시작 시 각자 인원수 + 1개의 타일을 드로우합니다(3인은 4장, 4인은 5장). <em>※ 2인 게임 특수 규칙: 2인 플레이 시에는 각자 정확히 5장의 타일을 뽑습니다.</em></span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iv</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Review Live Table Layout &amp; Interface Areas</span>
+                                    <span class="rb-content-ko" style="display:none;">테이블 배치도 및 실제 웹 인터페이스 확인</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Examine the live match interface layout below: your farm grid on the left, draft stack tray on the top-right, and competitor overview on the bottom-right.</span>
+                                    <span class="rb-content-ko" style="display:none;">아래의 실제 인게임 매치 화면을 통해 좌측 내 5×5 농장 보드, 우측 상단 드래프트 타일 정렬 트레이, 우측 하단 상대방 보드 현황의 위치를 파악합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In-game diagram with annotations -->
+                    <div class="rb-diagram-container" style="margin-top: 14px;">
+                        <div class="rb-diagram-header">
+                            <div class="rb-diagram-title">
+                                <i class="fa-solid fa-table-cells" style="color: #438054;"></i>
+                                <span class="rb-content-en">Live Table Arrangement &amp; Key Areas</span>
+                                <span class="rb-content-ko" style="display:none;">실제 인게임 테이블 배치도 &amp; 주요 구역</span>
+                            </div>
+                            <span class="badge" style="background:#dcfce7; color:#166534; font-weight:700;">Live Web UI</span>
+                        </div>
+
+                        <!-- Real In-Game Capture Frame -->
+                        <div class="rb-ingame-frame">
+                            <img src="/assets/doore_ingame_table.png" onerror="this.onerror=null;this.src='assets/doore_ingame_table.png';" alt="Doore Live In-Game Table Layout" class="rb-ingame-img" loading="lazy">
+                            <div class="rb-pin-overlay">
+                                <span class="doore-pin-tag pin-a">[A] <span class="rb-content-en">My Farm (5×5)</span><span class="rb-content-ko" style="display:none;">내 농장 (5×5)</span></span>
+                                <span class="doore-pin-tag pin-b">[B] <span class="rb-content-en">Draft Stack Tray</span><span class="rb-content-ko" style="display:none;">드래프트 정렬 트레이</span></span>
+                                <span class="doore-pin-tag pin-c">[C] <span class="rb-content-en">Status &amp; Coins</span><span class="rb-content-ko" style="display:none;">상태 &amp; 엽전 잔액</span></span>
+                                <span class="doore-pin-tag pin-d">[D] <span class="rb-content-en">Opponents (AI)</span><span class="rb-content-ko" style="display:none;">상대방 / AI 현황</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-layout-cards-grid">
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag" style="background:#2e7d32;">A</span> <span class="rb-content-en">Player 1 Farm Board &amp; Crop Chart</span><span class="rb-content-ko" style="display:none;">플레이어 1 농장 보드 &amp; 작물 차트</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Your personal 5×5 field grid (25 cells). Bottom panel displays current deck counts, star values, and worker arrow ratios for all 5 crops.</span>
+                                <span class="rb-content-ko" style="display:none;">플레이어 1의 5×5 개인 농장 보드(25칸)입니다. 하단 차트에서 5종 작물별 덱 잔여량, 별 합계, 일꾼 화살표 매수를 실시간으로 확인합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag" style="background:#d97706;">B</span> <span class="rb-content-en">Draft Stack Setup Tray</span><span class="rb-content-ko" style="display:none;">드래프트 타일 정렬 트레이</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Arrange your drawn tiles with left/right buttons. Order: #1 to neighbor on left, #2 to next player, #3 to next, #4 to yourself, and #5 as your spare tile!</span>
+                                <span class="rb-content-ko" style="display:none;">뽑은 타일들을 화살표로 정렬합니다. #1은 왼쪽 사람, #2는 그 다음 사람, #3은 다음 사람, #4는 나에게 올 타일, #5는 예비(스페어) 타일로 배치합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag" style="background:#0284c7;">C</span> <span class="rb-content-en">Round &amp; Coin Status Bar</span><span class="rb-content-ko" style="display:none;">라운드 및 엽전 상태 바</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Header bar showing current round (e.g., Round 1/6), current coin tokens (starts at 3 🪙), game mode, and rules/tutorial links.</span>
+                                <span class="rb-content-ko" style="display:none;">현재 라운드 진행도(예: 1/6 라운드), 보유 엽전 수(시작 시 3개), 게임 모드 및 규칙서/튜토리얼 링크를 제공하는 상단 상태 바입니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag" style="background:#7c3aed;">D</span> <span class="rb-content-en">Opponents Live Overview</span><span class="rb-content-ko" style="display:none;">상대방 / AI 보드 실시간 현황</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">View competitor 5×5 farm grids and coin counts in real time to predict what crops they are gathering and tailor your pass stacks.</span>
+                                <span class="rb-content-ko" style="display:none;">상대 플레이어(또는 AI) 3명의 5×5 보드와 남은 엽전 현황을 실시간으로 확인하여, 상대가 필요로 하는 타일을 견제하는 정렬 전략을 펼칩니다.</span>
+                            </p>
+                        </div>
                     </div>
                 </section>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-play">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-arrows-rotate"></i><span class="rb-content-en">4. How to Play</span><span class="rb-content-ko" style="display:none;">4. 게임 진행</span></h3>
-                    <div class="doore-flow-grid">
-                        <article class="doore-flow-card"><span class="doore-flow-no">1</span><div><h4><span class="rb-content-en">Draw</span><span class="rb-content-ko" style="display:none;">뽑기</span></h4><p class="rb-content-en">Each player draws player count + 1 tiles. In a 2-player game, draw 5.</p><p class="rb-content-ko" style="display:none;">각자 인원수 + 1개의 타일을 뽑습니다. 2인 게임에서는 5개를 뽑습니다.</p></div></article>
-                        <article class="doore-flow-card"><span class="doore-flow-no">2</span><div><h4><span class="rb-content-en">Arrange Secretly</span><span class="rb-content-ko" style="display:none;">비밀리에 정렬</span></h4><p class="rb-content-en">Order tiles for the player on your left, then the next seat, continuing around to yourself. Put the spare tile last and keep the stack hidden.</p><p class="rb-content-ko" style="display:none;">왼쪽 사람, 그다음 왼쪽 사람 순으로 타일을 정하고 한 바퀴 돌아 자신의 타일을 둡니다. 여분 타일은 맨 아래에 두고 더미를 숨깁니다.</p></div></article>
-                        <article class="doore-flow-card"><span class="doore-flow-no">3</span><div><h4><span class="rb-content-en">Pass & Reveal</span><span class="rb-content-ko" style="display:none;">전달하고 공개</span></h4><p class="rb-content-en">Everyone passes their stack left at the same time. Reveal the top tile.</p><p class="rb-content-ko" style="display:none;">모두 동시에 더미를 왼쪽으로 전달하고 맨 위 타일을 공개합니다.</p></div></article>
-                        <article class="doore-flow-card featured"><span class="doore-flow-no">4</span><div><h4><span class="rb-content-en">Choose or Spend</span><span class="rb-content-ko" style="display:none;">선택하거나 코인 사용</span></h4><p class="rb-content-en">Use the revealed tile, or pay 1 coin to move it to the bottom and reveal the next tile.</p><p class="rb-content-ko" style="display:none;">공개 타일을 사용하거나, 코인 1개를 내고 그 타일을 맨 아래로 보내 다음 타일을 확인합니다.</p></div></article>
-                        <article class="doore-flow-card"><span class="doore-flow-no">5</span><div><h4><span class="rb-content-en">Place & Pass</span><span class="rb-content-ko" style="display:none;">배치하고 전달</span></h4><p class="rb-content-en">Place the chosen tile in any empty space, then pass the stack left. Worker heads must face up. Gain printed coins (maximum 10), or place the tile face down to gain 1 coin.</p><p class="rb-content-ko" style="display:none;">선택한 타일을 빈칸에 놓고 남은 더미를 왼쪽으로 전달합니다. 일꾼의 머리는 위를 향해야 합니다. 표시된 코인을 얻되 최대 10개까지만 보유합니다. 또는 타일을 뒤집어 놓고 코인 1개를 얻을 수 있습니다.</p></div></article>
-                        <article class="doore-flow-card"><span class="doore-flow-no">6</span><div><h4><span class="rb-content-en">End the Round</span><span class="rb-content-ko" style="display:none;">라운드 종료</span></h4><p class="rb-content-en">When 2 tiles remain, view both. Pay 1 coin to choose the back tile; place one and return the other to the supply. Play 6 rounds with 2 or 4 players, and 8 rounds with 3 players.</p><p class="rb-content-ko" style="display:none;">타일 2개가 남으면 둘 다 확인합니다. 뒤쪽 타일을 쓰려면 코인 1개를 냅니다. 하나를 놓고 남은 하나는 공급처로 돌립니다. 2인/4인은 6라운드, 3인은 8라운드를 진행합니다.</p></div></article>
+                <!-- 4. Round Flow -->
+                <section class="rb-section" id="doore-rb-play">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-play"></i>
+                        <span class="rb-content-en">4. Round Flow &amp; Drafting Steps</span>
+                        <span class="rb-content-ko" style="display:none;">4. 라운드 흐름 &amp; 드래프트 진행</span>
+                    </h3>
+                    <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+                        <span class="rb-content-en">Each round proceeds through the following sequential phases simultaneously for all players:</span>
+                        <span class="rb-content-ko" style="display:none;">매 라운드는 모든 플레이어가 동시에 아래 순서대로 진행합니다:</span>
+                    </p>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Draw Round Tiles</span>
+                                    <span class="rb-content-ko" style="display:none;">라운드 타일 드로우 (인원수 + 1개)</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Each player draws tiles equal to players + 1 (5 tiles in 4P, 4 tiles in 3P, 5 tiles in 2P).</span>
+                                    <span class="rb-content-ko" style="display:none;">각자 인원수 + 1개의 타일을 덱에서 뽑습니다 (4인 5장, 3인 4장, 2인 5장).</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Secretly Arrange Stack Order</span>
+                                    <span class="rb-content-ko" style="display:none;">비밀리에 타일 전달 순서 정렬</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Arrange the tiles in order: the top tile goes to your left neighbor, the second to the player two seats left, and so forth, keeping the last tile at the bottom as your spare tile. Better tiles are placed deeper since deep tiles are more likely to stay unpicked and return to you!</span>
+                                    <span class="rb-content-ko" style="display:none;">타일을 순서대로 정렬합니다. 맨 위 타일은 왼쪽 사람에게 건넬 타일, 두 번째는 그 다음 사람에게 갈 타일 순이며, 마지막 타일은 여분(스페어) 타일로 맨 아래에 둡니다. 뒤쪽 타일일수록 상대가 집어가지 않고 나에게 돌아올 확률이 높으므로 좋은 타일은 뒤쪽에 배치하는 것이 유리합니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Pass Stack Left &amp; Reveal Top Tile</span>
+                                    <span class="rb-content-ko" style="display:none;">동시에 더미 전달 및 맨 위 타일 공개</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">All players simultaneously pass their prepared hidden stack to the player on their left. Each player flips over the top tile of the received stack to view it.</span>
+                                    <span class="rb-content-ko" style="display:none;">모든 플레이어가 준비한 비밀 타일 더미를 동시에 왼쪽 사람에게 건넵니다. 받은 더미의 맨 위 타일 1장을 뒤집어 공개합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Choose Tile or Spend 1 Coin to Pass</span>
+                                    <span class="rb-content-ko" style="display:none;">타일 선택 또는 엽전 1개 지불하고 넘기기</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">If you like the revealed tile, choose it to place. If you dislike it and have coin tokens, you may pay <strong>1 coin token</strong> to send the current tile to the bottom of the stack and reveal the next tile!</span>
+                                    <span class="rb-content-ko" style="display:none;">공개된 타일이 마음에 들면 선택해 배치합니다. 마음에 들지 않고 엽전이 있다면, <strong>엽전 1개</strong>를 내고 해당 타일을 더미 맨 아래로 보낸 뒤 다음 타일을 공개해 확인할 수 있습니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">5</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Place on Board (or Place Face-Down for +1 Coin)</span>
+                                    <span class="rb-content-ko" style="display:none;">보드에 타일 배치 (또는 뒷면 배치로 +1 엽전)</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Place the chosen tile in any empty space on your 5×5 farm board. <strong>Worker tile heads must always point upwards</strong>. Gain printed coins immediately. Alternatively, if you do not want the tile face-up, you may place it <strong>face-down to gain 1 coin token</strong>! Then pass the remaining stack left.</span>
+                                    <span class="rb-content-ko" style="display:none;">선택한 타일을 5×5 보드의 빈칸에 놓습니다. <strong>일꾼 타일은 반드시 머리가 위(UP)를 향해야 합니다</strong>. 타일에 그려진 코인 수만큼 즉시 엽전을 획득합니다. 만약 타일을 앞면으로 쓰기 싫다면 <strong>뒷면(상평통보 인장)으로 놓아 보상으로 엽전 1개를 획득</strong>할 수 있습니다! 배치 후 남은 더미는 다시 왼쪽 사람에게 전달합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">6</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">End of Round (Last 2 Tiles)</span>
+                                    <span class="rb-content-ko" style="display:none;">라운드 종료 (마지막 2장 남았을 때)</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">When only 2 tiles remain in the stack, check both tiles. You may place the front tile for free, or pay <strong>1 coin token</strong> to place the back tile. The single unplaced leftover tile is discarded to the central supply, ending the round!</span>
+                                    <span class="rb-content-ko" style="display:none;">더미에 타일이 2장만 남으면 둘 다 확인합니다. 앞쪽 타일은 무료로 놓을 수 있고, 뒤쪽 타일을 놓으려면 <strong>엽전 1개</strong>를 냅니다. 선택되지 않고 남은 1장은 중앙 공급처로 반환되며 해당 라운드가 종료됩니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">7</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Game End &amp; The 25th Personal Tile</span>
+                                    <span class="rb-content-ko" style="display:none;">게임 종료 및 25번째 칸 개인 타일 완성</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">A 2 or 4 player game plays 6 rounds (3-player game plays 8 rounds). Exactly 24 out of 25 spaces will be filled. Now, place your <strong>Personal Tile</strong> in the final 25th empty space using either the Wild Arrow (↟) or +2 Stars (★★) side to complete your board!</span>
+                                    <span class="rb-content-ko" style="display:none;">2인 또는 4인 게임은 6라운드, 3인 게임은 8라운드를 진행합니다. 이로써 25칸 중 정확히 24칸이 채워집니다. 마지막 남은 25번째 빈칸에 시작 시 받은 <strong>개인 타일</strong>을 원하는 면(와일드 화살표 ↟ 또는 별 2개 ★★)으로 배치하여 농장을 완성합니다!</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="rb-callout-box blue doore-two-player"><i class="fa-solid fa-people-arrows-left-right"></i><div><strong><span class="rb-content-en">2-player stack order</span><span class="rb-content-ko" style="display:none;">2인 게임 더미 순서</span></strong><p><span class="rb-content-en">Opponent - Me - Opponent - Me - Spare.</span><span class="rb-content-ko" style="display:none;">상대 - 나 - 상대 - 나 - 여분 순서로 정렬합니다.</span></p></div></div>
-                    <div class="doore-personal-tile-note"><span class="doore-personal-tile-visual"><b>↟</b><em>or</em><b>★★</b></span><div><strong><span class="rb-content-en">Finish your 5 x 5 board</span><span class="rb-content-ko" style="display:none;">5 x 5 보드 완성</span></strong><p class="rb-content-en">After 24 spaces are filled, place your personal tile in the final space. Use either the freely oriented wild arrow side or the 2-star side, assigned to one connected crop type.</p><p class="rb-content-ko" style="display:none;">24칸을 채운 뒤 마지막 빈칸에 개인 타일을 놓습니다. 원하는 방향으로 돌릴 수 있는 와일드 화살표 면이나, 연결된 작물 한 종류에 별 2개를 더하는 면을 선택합니다.</p></div></div>
+
+                    <div class="rb-intro-banner" style="margin-top: 12px; border-left-color: #0284c7; background: #f0f9ff;">
+                        <strong style="color: #0369a1;"><span class="rb-content-en">※ 2-Player Pass Sequence:</span><span class="rb-content-ko" style="display:none;">※ 2인 플레이 시 타일 더미 정렬 순서:</span></strong>
+                        <p style="margin: 4px 0 0; font-size: 0.8rem; color: var(--text-main); line-height: 1.45;">
+                            <span class="rb-content-en">In a 2-player game, each player receives 5 tiles. Arrange the stack in the exact order of: <strong>[1: Opponent] - [2: Myself] - [3: Opponent] - [4: Myself] - [5: Spare]</strong>.</span>
+                            <span class="rb-content-ko" style="display:none;">2인 게임에서는 각자 5장의 타일을 받습니다. 더미를 <strong>[1: 상대방] - [2: 나] - [3: 상대방] - [4: 나] - [5: 예비 타일]</strong> 순서로 정렬합니다.</span>
+                        </p>
+                    </div>
                 </section>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-score">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-star"></i><span class="rb-content-en">5. Scoring & Victory</span><span class="rb-content-ko" style="display:none;">5. 점수 및 승리</span></h3>
-                    <div class="doore-score-formula"><span><i class="fa-solid fa-star"></i> <span class="rb-content-en">Stars in a crop cluster</span><span class="rb-content-ko" style="display:none;">작물 군락의 별 합계</span></span><b>×</b><span><i class="fa-solid fa-arrow-right"></i> <span class="rb-content-en">Matching arrows toward it</span><span class="rb-content-ko" style="display:none;">군락을 향한 같은 색 화살표 수</span></span><b>=</b><span class="doore-score-result"><span class="rb-content-en">Cluster Score</span><span class="rb-content-ko" style="display:none;">군락 점수</span></span></div>
-                    <div class="doore-crop-row"><span class="apple">🍏 <b><span class="rb-content-en">Apple</span><span class="rb-content-ko" style="display:none;">사과</span></b></span><span class="tangerine">🍊 <b><span class="rb-content-en">Tangerine</span><span class="rb-content-ko" style="display:none;">감귤</span></b></span><span class="strawberry">🍓 <b><span class="rb-content-en">Strawberry</span><span class="rb-content-ko" style="display:none;">딸기</span></b></span><span class="grape">🍇 <b><span class="rb-content-en">Grape</span><span class="rb-content-ko" style="display:none;">포도</span></b></span><span class="rice">🌾 <b><span class="rb-content-en">Rice</span><span class="rb-content-ko" style="display:none;">쌀</span></b></span></div>
-                    <div class="doore-winner-card"><i class="fa-solid fa-trophy"></i><div class="rb-content-en">Add every crop cluster score. The highest total wins. If tied, the player with more coins wins.</div><div class="rb-content-ko" style="display:none;">모든 작물 군락 점수를 더합니다. 총점이 가장 높은 사람이 승리하며, 동점이면 남은 코인이 더 많은 사람이 승리합니다.</div></div>
+                <!-- 5. Cluster Scoring -->
+                <section class="rb-section" id="doore-rb-scoring">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rb-content-en">5. Cluster Scoring &amp; Victory</span>
+                        <span class="rb-content-ko" style="display:none;">5. 군락 점수 계산 &amp; 승리 조건</span>
+                    </h3>
+
+                    <div class="doore-score-formula-card">
+                        <i class="fa-solid fa-calculator doore-score-icon"></i>
+                        <div>
+                            <strong style="font-size: 0.88rem; color: #15803d;">
+                                <span class="rb-content-en">Cluster Formula: (Total Stars in Cluster) × (Matching Worker Arrows toward it)</span>
+                                <span class="rb-content-ko" style="display:none;">군락 점수 공식: (군락 내 별의 총합) × (해당 군락을 향한 같은 색 일꾼 화살표 수)</span>
+                            </strong>
+                            <p style="font-size: 0.8rem; line-height: 1.45; color: var(--text-main); margin-top: 3px;">
+                                <span class="rb-content-en">A <strong>Cluster</strong> is defined as orthogonally adjacent (up, down, left, right) tiles of the exact same crop. Diagonal tiles are separate clusters. For each cluster, sum all stars within it, then multiply by the total number of worker arrows of that crop color that point straight into that cluster!</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>군락(Cluster)</strong>은 상하좌우로 인접하여 연결된 동일한 작물 타일의 무리입니다 (대각선은 별개 군락). 각 군락마다 속한 모든 별의 개수를 더한 뒤, 해당 군락을 향해 직선상에서 가리키고 있는 동일한 색상의 일꾼 화살표 수를 곱합니다!</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive" style="margin-top: 10px;">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">Crop Cluster (Example from Rulebook)</span><span class="rb-content-ko" style="display:none;">작물 군락 (룰북 실전 예시)</span></th>
+                                    <th><span class="rb-content-en">Cluster Stars</span><span class="rb-content-ko" style="display:none;">군락 내 별 합계</span></th>
+                                    <th><span class="rb-content-en">Matching Arrows</span><span class="rb-content-ko" style="display:none;">가리키는 일꾼 화살표</span></th>
+                                    <th><span class="rb-content-en">Calculation &amp; Score</span><span class="rb-content-ko" style="display:none;">계산 및 군락 점수</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🍏 <strong><span class="rb-content-en">Apple Cluster</span><span class="rb-content-ko" style="display:none;">사과 군락</span></strong></td>
+                                    <td>5 stars</td>
+                                    <td>1 arrow</td>
+                                    <td class="highlight-cell">5 × 1 = <strong>5 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>🍊 <strong><span class="rb-content-en">Tangerine Cluster</span><span class="rb-content-ko" style="display:none;">감귤 군락</span></strong></td>
+                                    <td>3 stars</td>
+                                    <td>2 arrows</td>
+                                    <td class="highlight-cell">3 × 2 = <strong>6 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>🍓 <strong><span class="rb-content-en">Strawberry Cluster</span><span class="rb-content-ko" style="display:none;">딸기 군락</span></strong></td>
+                                    <td>2 stars</td>
+                                    <td>1 arrow</td>
+                                    <td class="highlight-cell">2 × 1 = <strong>2 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>🍇 <strong><span class="rb-content-en">Grape Cluster A</span><span class="rb-content-ko" style="display:none;">포도 군락 A</span></strong></td>
+                                    <td>5 stars</td>
+                                    <td>2 arrows</td>
+                                    <td class="highlight-cell">5 × 2 = <strong>10 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>🍇 <strong><span class="rb-content-en">Grape Cluster B</span><span class="rb-content-ko" style="display:none;">포도 군락 B</span></strong></td>
+                                    <td>1 star</td>
+                                    <td>1 arrow</td>
+                                    <td class="highlight-cell">1 × 1 = <strong>1 pt</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>🌾 <strong><span class="rb-content-en">Rice Cluster</span><span class="rb-content-ko" style="display:none;">쌀 군락</span></strong></td>
+                                    <td>0 stars</td>
+                                    <td>N arrows</td>
+                                    <td class="highlight-cell">0 × N = <strong>0 pts</strong></td>
+                                </tr>
+                                <tr style="background: #f0fdf4; font-weight: 800;">
+                                    <td colspan="3"><span class="rb-content-en">Total Farm Score (5 + 6 + 2 + 10 + 1 + 0)</span><span class="rb-content-ko" style="display:none;">총 농장 점수 합계 (5 + 6 + 2 + 10 + 1 + 0)</span></td>
+                                    <td class="highlight-cell" style="font-size: 0.95rem; color: #15803d;"><strong>24 pts!</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 0.78rem; color: var(--text-dim); margin-top: 6px;">
+                        <span class="rb-content-en">※ Tie-breaker: If players tie for highest score, the player with <strong>more remaining coin tokens</strong> wins!</span>
+                        <span class="rb-content-ko" style="display:none;">※ 동점자 처리: 동점일 경우 <strong>남은 엽전(코인) 토큰이 더 많은 플레이어</strong>가 최종 승리합니다!</span>
+                    </p>
                 </section>
 
-                <section class="rb-section doore-rb-section" id="doore-rb-variants">
-                    <h3 class="rb-section-title"><i class="fa-solid fa-sliders"></i><span class="rb-content-en">6. Rule Variants</span><span class="rb-content-ko" style="display:none;">6. 변형 규칙</span></h3>
-                    <div class="doore-variant-grid">
-                        <div class="doore-variant-card kids"><i class="fa-solid fa-child-reaching"></i><div><strong><span class="rb-content-en">Children's Rules</span><span class="rb-content-ko" style="display:none;">어린이 규칙</span></strong><p class="rb-content-en">Worker tiles may be placed in any direction, regardless of the worker illustration.</p><p class="rb-content-ko" style="display:none;">일꾼 그림의 방향과 관계없이 일꾼 타일을 어느 방향으로든 놓을 수 있습니다.</p></div></div>
-                        <div class="doore-variant-card advanced"><i class="fa-solid fa-brain"></i><div><strong><span class="rb-content-en">Advanced Rules</span><span class="rb-content-ko" style="display:none;">고급 규칙</span></strong><p class="rb-content-en">When 2 tiles remain, do not view both for free. Pay 1 coin whenever you want to check the next tile.</p><p class="rb-content-ko" style="display:none;">타일 2개가 남아도 둘 다 무료로 볼 수 없습니다. 다음 타일을 확인하려면 코인 1개를 내야 합니다.</p></div></div>
+                <!-- 6. 5 Crops & Deck Stats -->
+                <section class="rb-section" id="doore-rb-crops">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span class="rb-content-en">6. 5 Crop Characteristics &amp; Deck Stats</span>
+                        <span class="rb-content-ko" style="display:none;">6. 5대 작물 특성 &amp; 덱 구성 통계</span>
+                    </h3>
+                    <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+                        <span class="rb-content-en">The 100-card tile deck features asymmetric balances between worker abundance and star multipliers as shown on the bottom chart of your player board:</span>
+                        <span class="rb-content-ko" style="display:none;">100장의 타일 덱은 개인 보드 하단 차트에 인쇄된 것처럼 일꾼 화살표의 풍부함과 별 점수의 희귀도 사이의 정교한 비대칭 밸런스를 갖추고 있습니다:</span>
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">Crop Type</span><span class="rb-content-ko" style="display:none;">작물 종류</span></th>
+                                    <th><span class="rb-content-en">Crop Tiles (Deck)</span><span class="rb-content-ko" style="display:none;">작물 타일 수 (덱)</span></th>
+                                    <th><span class="rb-content-en">Worker Arrows</span><span class="rb-content-ko" style="display:none;">일꾼 화살표 수</span></th>
+                                    <th><span class="rb-content-en">Total Stars in Deck</span><span class="rb-content-ko" style="display:none;">덱 내 총 별 수</span></th>
+                                    <th><span class="rb-content-en">Strategic Characteristics</span><span class="rb-content-ko" style="display:none;">전략적 특징</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>🌾 <strong><span class="rb-content-en">Rice</span><span class="rb-content-ko" style="display:none;">쌀</span></strong></td>
+                                    <td>13 tiles</td>
+                                    <td>13 arrows</td>
+                                    <td>9 stars</td>
+                                    <td><span class="rb-content-en">Requires abundant labor; easy to multiply arrows across multiple clusters.</span><span class="rb-content-ko" style="display:none;">손이 많이 가지만 일꾼 화살표가 가장 풍부하여 여러 군락을 커버하기 용이함.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>🍇 <strong><span class="rb-content-en">Grape</span><span class="rb-content-ko" style="display:none;">포도</span></strong></td>
+                                    <td>12 tiles</td>
+                                    <td>11 arrows</td>
+                                    <td>11 stars</td>
+                                    <td><span class="rb-content-en">Balanced staple crop; great flexibility for building medium clusters.</span><span class="rb-content-ko" style="display:none;">가장 밸런스가 균형 잡힌 주력 작물로 안정적인 중간 규모 군락 형성에 최적.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>🍓 <strong><span class="rb-content-en">Strawberry</span><span class="rb-content-ko" style="display:none;">딸기</span></strong></td>
+                                    <td>11 tiles</td>
+                                    <td>9 arrows</td>
+                                    <td>13 stars</td>
+                                    <td><span class="rb-content-en">High star yield with moderate workers; efficient mid-to-high scoring.</span><span class="rb-content-ko" style="display:none;">높은 별 산출량과 적절한 일꾼 수로 효율적인 중고득점 공략에 적합.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>🍊 <strong><span class="rb-content-en">Tangerine</span><span class="rb-content-ko" style="display:none;">감귤</span></strong></td>
+                                    <td>10 tiles</td>
+                                    <td>8 arrows</td>
+                                    <td>15 stars</td>
+                                    <td><span class="rb-content-en">High star concentration; high return on investment when paired with arrows.</span><span class="rb-content-ko" style="display:none;">높은 별 밀도. 소수의 일꾼 화살표만 정확히 연결해도 큰 점수 획득 가능.</span></td>
+                                </tr>
+                                <tr>
+                                    <td>🍏 <strong><span class="rb-content-en">Apple</span><span class="rb-content-ko" style="display:none;">사과</span></strong></td>
+                                    <td>8 tiles</td>
+                                    <td>7 arrows</td>
+                                    <td class="highlight-cell"><strong>17 stars!</strong></td>
+                                    <td><span class="rb-content-en">Rarest tiles, but highest star potential; game-winning jackpot crop!</span><span class="rb-content-ko" style="display:none;">가장 희귀하지만 별 가치가 가장 높아 대박 점수를 터뜨릴 수 있는 핵심 작물!</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 7. Variants & Tips -->
+                <section class="rb-section" id="doore-rb-variants">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="rb-content-en">7. Rule Variants &amp; Strategy Tips</span>
+                        <span class="rb-content-ko" style="display:none;">7. 변형 규칙 &amp; 전략 팁</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-child-reaching"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Children's Rule Variant</span><span class="rb-content-ko" style="display:none;">어린이 규칙 (입문용)</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Worker tiles may be placed in any direction, regardless of the worker image orientation. This relaxes spatial placement constraints for younger players.</span><span class="rb-content-ko" style="display:none;">일꾼 머리 방향 제약 없이 원하는 방향으로 자유롭게 돌려 배치할 수 있어, 어린이나 초보자도 쉽게 퍼즐을 즐길 수 있습니다.</span></p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-brain"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Advanced Rule Variant</span><span class="rb-content-ko" style="display:none;">고급 규칙 (전략가용)</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">When only 2 tiles remain at round end, players cannot check both for free. Instead, you must pay 1 coin token to inspect the next tile, heightening economic tension.</span><span class="rb-content-ko" style="display:none;">라운드 끝에 타일이 2장 남았을 때도 둘 다 무료로 볼 수 없으며, 다음 타일을 확인하려면 반드시 엽전 1개를 지불해야 합니다.</span></p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-coins"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Coin Economy &amp; Flip Strategy</span><span class="rb-content-ko" style="display:none;">엽전 경제 관리 &amp; 뒷면 배치 활용법</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Drafting is constrained by coins. Placing unusable tiles face-down yields +1 coin while filling board slots, generating the funds needed to skip bad tiles later.</span><span class="rb-content-ko" style="display:none;">내 군락에 불리한 타일을 억지로 놓지 않고 뒷면으로 배치하면 엽전 1개를 비축하면서 칸을 메울 수 있어, 후반 핵심 타일을 넘겨받을 자금을 확보할 수 있습니다.</span></p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
 
-            <div class="proto-modal-footer doore-rb-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('dooreRulebookModal')"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
-                <a href="assets/doore-rulebook.pdf" target="_blank" rel="noopener noreferrer" class="btn-rulebook-pdf"><i class="fa-solid fa-file-pdf"></i><span class="rb-content-en">Open Original PDF</span><span class="rb-content-ko" style="display:none;">원본 PDF 열기</span></a>
-                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i><span class="rb-content-en">Play Online Now</span><span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span></a>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('dooreRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
             </div>
         </div>
     </div>
+
 
     <!-- Waffle Pop! Full Rulebook Modal -->
     <div class="proto-modal-overlay" id="waffleRulebookModal" role="dialog" aria-modal="true" aria-labelledby="waffleRulebookTitle" style="display:none;">
@@ -8546,6 +9157,11 @@
                 if (diagramImg) {
                     diagramImg.src = '/assets/rotato_ingame_table.png';
                 }
+            } else if (modalId === 'dooreRulebookModal') {
+                const diagramImg = modal.querySelector('.rb-ingame-img');
+                if (diagramImg) {
+                    diagramImg.src = '/assets/doore_ingame_table.png';
+                }
             }
         }
         window.setRulebookLanguage = setRulebookLanguage;
@@ -8594,5 +9210,7 @@
             });
         });
     </script>
+    <script src="/proto/orchards-rulebook.js"></script>
+    <script src="/proto/star-window-rulebook.js"></script>
 </body>
 </html>

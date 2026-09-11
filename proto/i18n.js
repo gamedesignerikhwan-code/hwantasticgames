@@ -278,6 +278,8 @@
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'alchemistsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'pyramidsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'rotatoRulebookModal');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'orchardsRulebookToast');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'starWindowRulebookToast');
         }
 
         const switcher = document.querySelector('.proto-language-switch');
