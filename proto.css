@@ -1257,31 +1257,31 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rulebook-body {
-    padding: 22px 24px 28px;
+    padding: 16px 20px 22px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     scroll-behavior: smooth;
 }
 
 .rulebook-nav-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    padding-bottom: 12px;
+    gap: 5px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--glass-border);
     position: sticky;
-    top: -22px;
+    top: -16px;
     background: #ffffff;
     z-index: 10;
-    margin: -6px 0 0 0;
+    margin: -4px 0 0 0;
     padding-top: 4px;
 }
 
 .rb-nav-link {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 999px;
     background: var(--bg-warm);
     color: var(--text-muted);
@@ -1300,20 +1300,29 @@ html[lang="ko"] .proto-modal-title {
     background: #ffffff;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 14px 16px;
     box-shadow: 0 4px 16px rgba(100, 80, 50, 0.04);
+}
+
+.rb-section p {
+    margin: 0 0 6px 0;
+    line-height: 1.5;
+}
+
+.rb-section p:last-child {
+    margin-bottom: 0;
 }
 
 .rb-section-title {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--text-main);
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 0 0 14px 0;
-    padding-bottom: 8px;
+    gap: 7px;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
     border-bottom: 2px solid var(--bg-warm);
 }
 
@@ -1324,27 +1333,27 @@ html[lang="ko"] .proto-modal-title {
 .rb-specs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .rb-spec-item {
     background: var(--bg-warm);
     border-radius: var(--radius-sm);
-    padding: 10px 12px;
+    padding: 8px 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     border: 1px solid rgba(180, 165, 140, 0.2);
 }
 
 .rb-spec-icon {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     color: #d97706;
 }
 
 .rb-spec-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-dim);
     text-transform: uppercase;
     font-weight: 700;
@@ -1352,7 +1361,7 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-spec-val {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--text-main);
 }
@@ -1361,14 +1370,14 @@ html[lang="ko"] .proto-modal-title {
     background: linear-gradient(135deg, rgba(245, 158, 11, 0.09) 0%, rgba(217, 119, 6, 0.04) 100%);
     border-left: 4px solid #d97706;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 12px 16px;
-    font-size: 0.88rem;
-    line-height: 1.6;
+    padding: 10px 14px;
+    font-size: 0.84rem;
+    line-height: 1.5;
     color: var(--text-main);
 }
 
 .rb-component-block {
-    margin-bottom: 22px;
+    margin-bottom: 14px;
 }
 
 .rb-component-block:last-child {
@@ -1376,18 +1385,18 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-comp-subhead {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--text-main);
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .rb-comp-subhead .badge {
-    font-size: 0.72rem;
-    padding: 2px 8px;
+    font-size: 0.7rem;
+    padding: 2px 7px;
     border-radius: 999px;
     background: var(--bg-warm);
     color: var(--text-dim);
@@ -1396,27 +1405,27 @@ html[lang="ko"] .proto-modal-title {
 
 .rb-cards-flex {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px;
-    margin-bottom: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
 .rb-mini-card {
     border-radius: var(--radius-sm);
-    padding: 12px 10px;
+    padding: 8px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
     position: relative;
     transition: var(--transition);
 }
 
 .rb-mini-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.07);
 }
 
 .rb-mini-card.card-number {
@@ -1427,26 +1436,26 @@ html[lang="ko"] .proto-modal-title {
 .rb-mini-card.card-strongest {
     background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
     border-color: #f59e0b;
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.18);
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.16);
 }
 
 .rb-mini-card.card-weakest {
     background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
     border-color: #6366f1;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
+    box-shadow: 0 3px 10px rgba(99, 102, 241, 0.16);
 }
 
 .rb-mini-card.card-null {
     background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
     border-color: #ef4444;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.18);
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.16);
 }
 
 .rb-card-symbol {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     font-weight: 800;
     line-height: 1.1;
-    margin: 4px 0 2px;
+    margin: 2px 0 2px;
     font-family: var(--font-heading);
 }
 
@@ -1456,26 +1465,26 @@ html[lang="ko"] .proto-modal-title {
 .card-number .rb-card-symbol { color: #374151; }
 
 .rb-card-name {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .rb-card-desc {
     font-size: 0.72rem;
     color: var(--text-muted);
-    line-height: 1.35;
+    line-height: 1.3;
 }
 
 .rb-callout-box {
     border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    font-size: 0.84rem;
-    line-height: 1.55;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    line-height: 1.45;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: flex-start;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .rb-callout-box.amber {
@@ -1491,15 +1500,15 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-callout-box i {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 2px;
     flex-shrink: 0;
 }
 
 .rb-event-category {
     border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    margin-bottom: 10px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
     border: 1px solid transparent;
 }
 
@@ -1519,12 +1528,12 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-cat-header {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 8px;
+    gap: 5px;
+    margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -1535,15 +1544,15 @@ html[lang="ko"] .proto-modal-title {
 
 .rb-event-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 6px;
 }
 
 .rb-event-pill {
     background: #ffffff;
     border-radius: var(--radius-sm);
-    padding: 9px 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    padding: 6px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -1551,11 +1560,11 @@ html[lang="ko"] .proto-modal-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .rb-event-title {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-main);
     display: flex;
@@ -1564,8 +1573,8 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-event-count {
-    font-size: 0.68rem;
-    padding: 1px 6px;
+    font-size: 0.66rem;
+    padding: 1px 5px;
     border-radius: 999px;
     background: var(--bg-warm);
     color: var(--text-dim);
@@ -1573,28 +1582,28 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-event-effect {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 .rb-tokens-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .rb-token-chip {
     border-radius: var(--radius-md);
-    padding: 12px 10px;
+    padding: 8px 8px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     border: 2px solid transparent;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
 }
 
 .rb-token-chip.chip-0 {
@@ -1615,27 +1624,27 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-token-title {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 800;
     color: var(--text-main);
 }
 
 .rb-token-score {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 900;
     color: #111827;
     font-family: var(--font-heading);
 }
 
 .rb-token-note {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
     font-weight: 500;
 }
 
 .rb-setup-table-wrap {
     overflow-x: auto;
-    margin: 14px 0;
+    margin: 8px 0;
     border-radius: var(--radius-sm);
     border: 1px solid var(--glass-border);
 }
@@ -1643,20 +1652,20 @@ html[lang="ko"] .proto-modal-title {
 .rb-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     text-align: center;
 }
 
 .rb-table th {
     background: #fbf8f3;
-    padding: 10px 14px;
+    padding: 6px 10px;
     font-weight: 700;
     color: var(--text-main);
     border-bottom: 2px solid var(--glass-border);
 }
 
 .rb-table td {
-    padding: 10px 14px;
+    padding: 6px 10px;
     border-bottom: 1px solid var(--glass-border);
     color: var(--text-main);
 }
@@ -1678,19 +1687,19 @@ html[lang="ko"] .proto-modal-title {
     background: #fbf8f3;
     border: 2px dashed #d1c7b7;
     border-radius: var(--radius-md);
-    padding: 16px;
-    margin-top: 14px;
+    padding: 10px 12px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
 .rb-diagram-player-zone {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    padding: 12px 14px;
+    padding: 8px 10px;
     background: #ffffff;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-sm);
@@ -1701,8 +1710,8 @@ html[lang="ko"] .proto-modal-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 14px;
+    gap: 6px;
+    padding: 10px;
     background: #ffffff;
     border: 2px solid #fed7aa;
     border-radius: var(--radius-sm);
@@ -1710,15 +1719,15 @@ html[lang="ko"] .proto-modal-title {
 
 .rb-diagram-market-cards {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .rb-diagram-card-chip {
-    padding: 6px 12px;
+    padding: 4px 10px;
     border-radius: var(--radius-sm);
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
     border: 1px solid var(--glass-border);
     background: var(--bg-warm);
@@ -1742,31 +1751,34 @@ html[lang="ko"] .proto-modal-title {
 .rb-steps-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
 .rb-step-card {
     display: flex;
-    gap: 14px;
-    padding: 14px 16px;
+    gap: 10px;
+    padding: 9px 13px;
     background: var(--bg-warm);
     border-radius: var(--radius-sm);
     border: 1px solid var(--glass-border);
 }
 
 .rb-step-badge {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 6px;
+    border-radius: 999px;
     background: #d97706;
     color: #ffffff;
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+    font-family: var(--font-heading), sans-serif;
+    letter-spacing: -0.3px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 3px 8px rgba(217, 119, 6, 0.35);
+    box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
 }
 
 .rb-step-content {
@@ -1774,73 +1786,73 @@ html[lang="ko"] .proto-modal-title {
 }
 
 .rb-step-title {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 700;
     color: var(--text-main);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .rb-step-text {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
-    line-height: 1.55;
+    line-height: 1.45;
     margin: 0;
 }
 
 .rb-step-text ul {
-    margin: 6px 0 0 18px;
+    margin: 4px 0 0 16px;
     padding: 0;
 }
 
 .rb-step-text li {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .rb-victory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
 }
 
 .rb-victory-card {
     background: linear-gradient(145deg, #ffffff 0%, #fbf8f3 100%);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-sm);
-    padding: 14px 16px;
+    padding: 10px 12px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
 }
 
 .rb-victory-card.primary {
     border-color: #f59e0b;
     background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
-    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.15);
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.14);
 }
 
 .rb-victory-icon {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #d97706;
     flex-shrink: 0;
 }
 
 .rb-victory-info h5 {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     font-weight: 800;
     color: var(--text-main);
     margin: 0 0 2px 0;
 }
 
 .rb-victory-info p {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 
 @media (max-width: 640px) {
     .rulebook-body {
-        padding: 16px;
+        padding: 12px;
     }
     .rb-cards-flex,
     .rb-tokens-row {
@@ -1848,7 +1860,7 @@ html[lang="ko"] .proto-modal-title {
     }
     .rb-step-card {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
     }
     .rb-diagram-player-zone {
         flex-direction: column;
@@ -1861,11 +1873,11 @@ html[lang="ko"] .proto-modal-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .rb-diagram-title {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-weight: 800;
     color: var(--text-main);
     display: flex;
@@ -1878,7 +1890,7 @@ html[lang="ko"] .proto-modal-title {
     border-radius: var(--radius-sm);
     overflow: hidden;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     background: #000;
 }
 
@@ -1896,17 +1908,17 @@ html[lang="ko"] .proto-modal-title {
 .rb-diagram-annotations {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 10px;
-    margin-top: 14px;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .rb-annot-item {
     background: #ffffff;
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-sm);
-    padding: 10px 12px;
+    padding: 8px 10px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: flex-start;
 }
 
@@ -1953,10 +1965,9 @@ html[lang="ko"] .proto-modal-title {
     font-size: 0.74rem;
     color: var(--text-muted);
     margin: 0;
-    line-height: 1.35;
+    line-height: 1.3;
 }
 
-<<<<<<< HEAD
 /* ===================================================
    DOORE FULL RULEBOOK - VILLAGE FIELD THEME
    =================================================== */
@@ -2459,4 +2470,50 @@ html[lang="ko"] .proto-modal-title {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* Preserve the supplied Doore rulebook as a faithful page-by-page web edition. */
+.doore-rb-edition,
+.doore-rb-lang-toggle {
+    display: none !important;
+}
+
+.doore-rulebook-body {
+    padding: 20px;
+    gap: 0;
+    background: #e8e5df;
+}
+
+.doore-rulebook-body > :not(.doore-pdf-pages) {
+    display: none;
+}
+
+.doore-pdf-pages {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.doore-pdf-page {
+    width: min(100%, 900px);
+    margin: 0;
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(42, 37, 31, 0.16);
+}
+
+.doore-pdf-page img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 640px) {
+    .doore-rulebook-body {
+        padding: 8px;
+    }
+
+    .doore-pdf-pages {
+        gap: 10px;
+    }
 }

@@ -1210,31 +1210,31 @@
         }
 
         .rulebook-body {
-            padding: 22px 24px 28px;
+            padding: 16px 20px 22px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
             scroll-behavior: smooth;
         }
 
         .rulebook-nav-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            padding-bottom: 12px;
+            gap: 5px;
+            padding-bottom: 8px;
             border-bottom: 1px solid var(--glass-border);
             position: sticky;
-            top: -22px;
+            top: -16px;
             background: #ffffff;
             z-index: 10;
-            margin: -6px 0 0 0;
+            margin: -4px 0 0 0;
             padding-top: 4px;
         }
 
         .rb-nav-link {
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             font-weight: 700;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 999px;
             background: var(--bg-warm);
             color: var(--text-muted);
@@ -1253,20 +1253,29 @@
             background: #ffffff;
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 14px 16px;
             box-shadow: 0 4px 16px rgba(100, 80, 50, 0.04);
+        }
+
+        .rb-section p {
+            margin: 0 0 6px 0;
+            line-height: 1.5;
+        }
+
+        .rb-section p:last-child {
+            margin-bottom: 0;
         }
 
         .rb-section-title {
             font-family: var(--font-heading);
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 800;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin: 0 0 14px 0;
-            padding-bottom: 8px;
+            gap: 7px;
+            margin: 0 0 10px 0;
+            padding-bottom: 6px;
             border-bottom: 2px solid var(--bg-warm);
         }
 
@@ -1277,27 +1286,27 @@
         .rb-specs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
-            gap: 10px;
-            margin-bottom: 14px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
         .rb-spec-item {
             background: var(--bg-warm);
             border-radius: var(--radius-sm);
-            padding: 10px 12px;
+            padding: 8px 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border: 1px solid rgba(180, 165, 140, 0.2);
         }
 
         .rb-spec-icon {
-            font-size: 1.35rem;
+            font-size: 1.2rem;
             color: #d97706;
         }
 
         .rb-spec-label {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--text-dim);
             text-transform: uppercase;
             font-weight: 700;
@@ -1305,7 +1314,7 @@
         }
 
         .rb-spec-val {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--text-main);
         }
@@ -1314,14 +1323,14 @@
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.09) 0%, rgba(217, 119, 6, 0.04) 100%);
             border-left: 4px solid #d97706;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            padding: 12px 16px;
-            font-size: 0.88rem;
-            line-height: 1.6;
+            padding: 10px 14px;
+            font-size: 0.84rem;
+            line-height: 1.5;
             color: var(--text-main);
         }
 
         .rb-component-block {
-            margin-bottom: 22px;
+            margin-bottom: 14px;
         }
 
         .rb-component-block:last-child {
@@ -1329,18 +1338,18 @@
         }
 
         .rb-comp-subhead {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 6px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .rb-comp-subhead .badge {
-            font-size: 0.72rem;
-            padding: 2px 8px;
+            font-size: 0.7rem;
+            padding: 2px 7px;
             border-radius: 999px;
             background: var(--bg-warm);
             color: var(--text-dim);
@@ -1349,27 +1358,27 @@
 
         .rb-cards-flex {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-bottom: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         .rb-mini-card {
             border-radius: var(--radius-sm);
-            padding: 12px 10px;
+            padding: 8px 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
             position: relative;
             transition: var(--transition);
         }
 
         .rb-mini-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.07);
         }
 
         .rb-mini-card.card-number {
@@ -1380,26 +1389,26 @@
         .rb-mini-card.card-strongest {
             background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
             border-color: #f59e0b;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.18);
+            box-shadow: 0 3px 10px rgba(245, 158, 11, 0.16);
         }
 
         .rb-mini-card.card-weakest {
             background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
             border-color: #6366f1;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.18);
+            box-shadow: 0 3px 10px rgba(99, 102, 241, 0.16);
         }
 
         .rb-mini-card.card-null {
             background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
             border-color: #ef4444;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.18);
+            box-shadow: 0 3px 10px rgba(239, 68, 68, 0.16);
         }
 
         .rb-card-symbol {
-            font-size: 1.6rem;
+            font-size: 1.35rem;
             font-weight: 800;
             line-height: 1.1;
-            margin: 4px 0 2px;
+            margin: 2px 0 2px;
             font-family: var(--font-heading);
         }
 
@@ -1409,26 +1418,26 @@
         .card-number .rb-card-symbol { color: #374151; }
 
         .rb-card-name {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .rb-card-desc {
             font-size: 0.72rem;
             color: var(--text-muted);
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         .rb-callout-box {
             border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            font-size: 0.84rem;
-            line-height: 1.55;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            line-height: 1.45;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: flex-start;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .rb-callout-box.amber {
@@ -1444,15 +1453,15 @@
         }
 
         .rb-callout-box i {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-top: 2px;
             flex-shrink: 0;
         }
 
         .rb-event-category {
             border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            margin-bottom: 10px;
+            padding: 8px 12px;
+            margin-bottom: 8px;
             border: 1px solid transparent;
         }
 
@@ -1472,12 +1481,12 @@
         }
 
         .rb-cat-header {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 5px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -1488,15 +1497,15 @@
 
         .rb-event-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 6px;
         }
 
         .rb-event-pill {
             background: #ffffff;
             border-radius: var(--radius-sm);
-            padding: 9px 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            padding: 6px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
@@ -1504,11 +1513,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .rb-event-title {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-main);
             display: flex;
@@ -1517,8 +1526,8 @@
         }
 
         .rb-event-count {
-            font-size: 0.68rem;
-            padding: 1px 6px;
+            font-size: 0.66rem;
+            padding: 1px 5px;
             border-radius: 999px;
             background: var(--bg-warm);
             color: var(--text-dim);
@@ -1526,28 +1535,28 @@
         }
 
         .rb-event-effect {
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .rb-tokens-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .rb-token-chip {
             border-radius: var(--radius-md);
-            padding: 12px 10px;
+            padding: 8px 8px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
             border: 2px solid transparent;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
         }
 
         .rb-token-chip.chip-0 {
@@ -1568,27 +1577,27 @@
         }
 
         .rb-token-title {
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 800;
             color: var(--text-main);
         }
 
         .rb-token-score {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 900;
             color: #111827;
             font-family: var(--font-heading);
         }
 
         .rb-token-note {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
         .rb-setup-table-wrap {
             overflow-x: auto;
-            margin: 14px 0;
+            margin: 8px 0;
             border-radius: var(--radius-sm);
             border: 1px solid var(--glass-border);
         }
@@ -1596,20 +1605,20 @@
         .rb-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.86rem;
+            font-size: 0.82rem;
             text-align: center;
         }
 
         .rb-table th {
             background: #fbf8f3;
-            padding: 10px 14px;
+            padding: 6px 10px;
             font-weight: 700;
             color: var(--text-main);
             border-bottom: 2px solid var(--glass-border);
         }
 
         .rb-table td {
-            padding: 10px 14px;
+            padding: 6px 10px;
             border-bottom: 1px solid var(--glass-border);
             color: var(--text-main);
         }
@@ -1631,19 +1640,19 @@
             background: #fbf8f3;
             border: 2px dashed #d1c7b7;
             border-radius: var(--radius-md);
-            padding: 16px;
-            margin-top: 14px;
+            padding: 10px 12px;
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .rb-diagram-player-zone {
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
-            padding: 12px 14px;
+            padding: 8px 10px;
             background: #ffffff;
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-sm);
@@ -1654,8 +1663,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            padding: 14px;
+            gap: 6px;
+            padding: 10px;
             background: #ffffff;
             border: 2px solid #fed7aa;
             border-radius: var(--radius-sm);
@@ -1663,15 +1672,15 @@
 
         .rb-diagram-market-cards {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .rb-diagram-card-chip {
-            padding: 6px 12px;
+            padding: 4px 10px;
             border-radius: var(--radius-sm);
-            font-size: 0.76rem;
+            font-size: 0.74rem;
             font-weight: 700;
             border: 1px solid var(--glass-border);
             background: var(--bg-warm);
@@ -1695,31 +1704,34 @@
         .rb-steps-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .rb-step-card {
             display: flex;
-            gap: 14px;
-            padding: 14px 16px;
+            gap: 10px;
+            padding: 9px 13px;
             background: var(--bg-warm);
             border-radius: var(--radius-sm);
             border: 1px solid var(--glass-border);
         }
 
         .rb-step-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            min-width: 26px;
+            height: 26px;
+            padding: 0 6px;
+            border-radius: 999px;
             background: #d97706;
             color: #ffffff;
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 0.82rem;
+            font-family: var(--font-heading), sans-serif;
+            letter-spacing: -0.3px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 3px 8px rgba(217, 119, 6, 0.35);
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
         }
 
         .rb-step-content {
@@ -1727,73 +1739,73 @@
         }
 
         .rb-step-title {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .rb-step-text {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            line-height: 1.45;
             margin: 0;
         }
 
         .rb-step-text ul {
-            margin: 6px 0 0 18px;
+            margin: 4px 0 0 16px;
             padding: 0;
         }
 
         .rb-step-text li {
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .rb-victory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
         }
 
         .rb-victory-card {
             background: linear-gradient(145deg, #ffffff 0%, #fbf8f3 100%);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-sm);
-            padding: 14px 16px;
+            padding: 10px 12px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
         }
 
         .rb-victory-card.primary {
             border-color: #f59e0b;
             background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
-            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.15);
+            box-shadow: 0 3px 10px rgba(245, 158, 11, 0.14);
         }
 
         .rb-victory-icon {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #d97706;
             flex-shrink: 0;
         }
 
         .rb-victory-info h5 {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 800;
             color: var(--text-main);
             margin: 0 0 2px 0;
         }
 
         .rb-victory-info p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         @media (max-width: 640px) {
             .rulebook-body {
-                padding: 16px;
+                padding: 12px;
             }
             .rb-cards-flex,
             .rb-tokens-row {
@@ -1801,7 +1813,7 @@
             }
             .rb-step-card {
                 flex-direction: column;
-                gap: 8px;
+                gap: 6px;
             }
             .rb-diagram-player-zone {
                 flex-direction: column;
@@ -1814,11 +1826,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .rb-diagram-title {
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             font-weight: 800;
             color: var(--text-main);
             display: flex;
@@ -1831,7 +1843,7 @@
             border-radius: var(--radius-sm);
             overflow: hidden;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             background: #000;
         }
 
@@ -1849,17 +1861,17 @@
         .rb-diagram-annotations {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-            margin-top: 14px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .rb-annot-item {
             background: #ffffff;
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-sm);
-            padding: 10px 12px;
+            padding: 8px 10px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: flex-start;
         }
 
@@ -1906,7 +1918,7 @@
             font-size: 0.74rem;
             color: var(--text-muted);
             margin: 0;
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         /* Pin Overlay on In-Game Diagram */
@@ -1984,6 +1996,627 @@
             }
             50% {
                 transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
++
+        /* Preserve the supplied Doore rulebook as a faithful page-by-page web edition. */
+        .doore-rb-edition,
+        .doore-rb-lang-toggle {
+            display: none !important;
+        }
+
+        .doore-rulebook-body {
+            padding: 20px;
+            gap: 0;
+            background: #e8e5df;
+        }
+
+        .doore-rulebook-body > :not(.doore-pdf-pages) {
+            display: none;
+        }
+
+        .doore-pdf-pages {
+            display: grid;
+            justify-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .doore-pdf-page {
+            width: min(100%, 900px);
+            margin: 0;
+            background: #fff;
+            box-shadow: 0 4px 18px rgba(42, 37, 31, 0.16);
+        }
+
+        .doore-pdf-page img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 640px) {
+            .doore-rulebook-body {
+                padding: 8px;
+            }
+
+            .doore-pdf-pages {
+                gap: 10px;
+            }
+        }
+
+        /* ===== Waffle Pop! Rulebook Modal ===== */
+        .waffle-rulebook-modal-card {
+            max-width: 880px;
+        }
+
+        .waffle-rulebook-modal-card .rb-lang-btn.active {
+            background: #c47c32;
+            box-shadow: 0 2px 6px rgba(196, 124, 50, 0.35);
+        }
+
+        .waffle-rulebook-modal-card .rb-spec-icon,
+        .waffle-rulebook-modal-card .rb-section-title i,
+        .waffle-rulebook-modal-card .rb-table .highlight-cell {
+            color: #c47c32;
+        }
+
+        .waffle-rulebook-modal-card .rb-step-badge {
+            background: #c47c32;
+            box-shadow: 0 2px 6px rgba(196, 124, 50, 0.35);
+        }
+
+        .waffle-rulebook-modal-card .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(196, 124, 50, 0.10) 0%, rgba(232, 180, 120, 0.05) 100%);
+            border-left-color: #c47c32;
+        }
+
+        .waffle-rulebook-modal-card .rb-nav-link:hover {
+            background: #fdf1e3;
+            color: #8a5420;
+            border-color: #f0d7b8;
+        }
+
+        .wp-tagline {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+            margin: 0 0 10px;
+        }
+
+        /* 30-second summary */
+        .wp-thirty {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            background: #fffaf3;
+            border: 1px solid #f0d7b8;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+        }
+
+        .wp-thirty-mark {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #c47c32;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.92rem;
+            box-shadow: 0 3px 10px rgba(196, 124, 50, 0.35);
+        }
+
+        .wp-thirty-body strong {
+            display: block;
+            font-size: 0.86rem;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .wp-thirty-body p {
+            margin: 0;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* Shared table diagram */
+        .wp-table-diagram {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            background: #fbf8f3;
+            border: 2px dashed #e0cdb2;
+            border-radius: var(--radius-md);
+            padding: 12px;
+        }
+
+        .wp-diagram-panel {
+            background: #fff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+        }
+
+        .wp-diagram-label {
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: #a06a2c;
+            margin-bottom: 7px;
+        }
+
+        .wp-plate {
+            display: grid;
+            grid-template-columns: 18px repeat(4, 1fr);
+            gap: 3px;
+        }
+
+        .wp-plate span {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wp-cell {
+            aspect-ratio: 1 / 1;
+            border-radius: 5px;
+            background: linear-gradient(145deg, #f7dfb4 0%, #edc88d 100%);
+            border: 1px solid #dbb079;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            box-shadow: inset 0 -2px 0 rgba(160, 106, 44, 0.18);
+        }
+
+        .wp-cell.empty {
+            background: #efe9e0;
+            border-style: dashed;
+            border-color: #c9bba6;
+            box-shadow: none;
+        }
+
+        .wp-mission-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .wp-mission-chip {
+            flex: 1 1 auto;
+            min-width: 62px;
+            text-align: center;
+            border-radius: var(--radius-sm);
+            border: 1px solid #f0d7b8;
+            background: #fffaf3;
+            padding: 6px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #8a5420;
+        }
+
+        .wp-mission-chip b {
+            display: block;
+            font-size: 0.95rem;
+            color: #c47c32;
+        }
+
+        .wp-ticket-row {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .wp-ticket {
+            padding: 3px 9px;
+            border-radius: 5px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            background: #fef3c7;
+            border: 1px solid #e9b96b;
+            color: #8a5420;
+        }
+
+        .wp-ticket.deck {
+            background: #e5e7eb;
+            border-color: #b6bcc4;
+            color: #4b5563;
+        }
+
+        /* Stack cut-away */
+        .wp-stack {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .wp-stack-tiles {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .wp-stack-tile {
+            padding: 4px 14px;
+            border-radius: 5px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-align: center;
+            background: #efe9e0;
+            border: 1px solid #d6cbb8;
+            color: var(--text-dim);
+        }
+
+        .wp-stack-tile.top {
+            background: linear-gradient(145deg, #f7dfb4 0%, #edc88d 100%);
+            border-color: #dbb079;
+            color: #8a5420;
+        }
+
+        /* Turn actions */
+        .wp-action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 9px;
+        }
+
+        .wp-action-card {
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            background: var(--bg-warm);
+            border-top: 3px solid #c47c32;
+        }
+
+        .wp-action-card h4 {
+            margin: 0 0 4px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wp-action-key {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: #c47c32;
+            color: #fff;
+            font-size: 0.72rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wp-action-card p,
+        .wp-action-card li {
+            font-size: 0.79rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .wp-action-card ol {
+            margin: 0;
+            padding-left: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* Topping scoring cards */
+        .wp-topping-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+            gap: 9px;
+        }
+
+        .wp-topping-card {
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--wp-accent, #c47c32);
+            border-radius: var(--radius-sm);
+            background: #fff;
+            padding: 9px 12px;
+        }
+
+        .wp-topping-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .wp-topping-name {
+            font-size: 0.84rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wp-topping-formula {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--wp-soft, #fdf1e3);
+            color: var(--wp-accent, #c47c32);
+            white-space: nowrap;
+        }
+
+        .wp-topping-card p {
+            margin: 0;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .wp-t-vip { --wp-accent: #d4426b; --wp-soft: #fdeaf0; }
+        .wp-t-cherry { --wp-accent: #d99a1f; --wp-soft: #fdf4e0; }
+        .wp-t-aroma { --wp-accent: #7a9e3f; --wp-soft: #f2f7e8; }
+        .wp-t-berry { --wp-accent: #e05252; --wp-soft: #fdecec; }
+        .wp-t-mallow { --wp-accent: #9b7fc4; --wp-soft: #f4f0fb; }
+        .wp-t-cookie { --wp-accent: #b07a3e; --wp-soft: #fbf2e7; }
+        .wp-t-macaron { --wp-accent: #4e9bb5; --wp-soft: #e9f5f9; }
+
+        /* Score curve strip */
+        .wp-curve-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .wp-curve {
+            background: var(--bg-warm);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+        }
+
+        .wp-curve-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+        }
+
+        .wp-curve-vals {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .wp-curve-vals b {
+            min-width: 26px;
+            text-align: center;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.74rem;
+            background: #fff;
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+        }
+
+        /* Endgame turn order strip */
+        .wp-endgame-strip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+
+        .wp-seat {
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            background: var(--bg-warm);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        .wp-seat.trigger {
+            background: #fde8e8;
+            border-color: #f3b9b9;
+            color: #b3352f;
+        }
+
+        .wp-seat.plays {
+            background: #fffaf3;
+            border-color: #e9b96b;
+            color: #8a5420;
+        }
+
+        .wp-seat.score {
+            background: #c47c32;
+            border-color: #c47c32;
+            color: #fff;
+        }
+
+        /* Examples */
+        .wp-example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 9px;
+        }
+
+        .wp-example {
+            background: var(--bg-warm);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+        }
+
+        .wp-example-tag {
+            display: inline-block;
+            font-size: 0.64rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #a06a2c;
+            background: #fdf1e3;
+            border-radius: 999px;
+            padding: 2px 8px;
+            margin-bottom: 5px;
+        }
+
+        .wp-example h4 {
+            margin: 0 0 4px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .wp-example p {
+            margin: 0;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        /* FAQ */
+        .wp-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .wp-faq details {
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .wp-faq summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 9px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .wp-faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .wp-faq summary::after {
+            content: "+";
+            font-size: 1rem;
+            font-weight: 800;
+            color: #c47c32;
+            flex-shrink: 0;
+        }
+
+        .wp-faq details[open] summary::after {
+            content: "\2212";
+        }
+
+        .wp-faq details[open] summary {
+            background: #fffaf3;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .wp-faq-answer {
+            padding: 9px 12px;
+            font-size: 0.79rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* Quick reference */
+        .wp-quickref {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 9px;
+        }
+
+        .wp-quickref-col {
+            background: #fffaf3;
+            border: 1px solid #f0d7b8;
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+        }
+
+        .wp-quickref-col h4 {
+            margin: 0 0 6px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #8a5420;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .wp-quickref-col ul {
+            margin: 0;
+            padding-left: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .wp-quickref-col li {
+            font-size: 0.79rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 640px) {
+            .wp-table-diagram {
+                grid-template-columns: 1fr;
+            }
+
+            /* 11 sections would wrap into five rows and swallow the viewport,
+               so scroll the jump bar sideways instead. */
+            .waffle-rulebook-modal-card .rulebook-nav-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 0;
+                scrollbar-width: none;
+            }
+
+            .waffle-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .waffle-rulebook-modal-card .rb-nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            .waffle-rulebook-modal-card .proto-modal-footer {
+                flex-wrap: wrap;
+                padding: 12px 14px;
+            }
+
+            .waffle-rulebook-modal-card .proto-modal-footer .btn-secondary,
+            .waffle-rulebook-modal-card .proto-modal-footer .btn-play-proto {
+                white-space: nowrap;
+                font-size: 0.82rem;
             }
         }
     </style>
@@ -2157,7 +2790,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('waffleModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('waffleRulebookModal')" title="Waffle Pop! Full Rulebook" aria-label="Waffle Pop! Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -2844,59 +3477,65 @@
                         <span class="rb-content-ko" style="display:none;">3. 게임 준비 (Set Up)</span>
                     </h3>
 
-                    <!-- Deal Table -->
-                    <div class="rb-comp-subhead">
-                        <i class="fa-solid fa-table-cells" style="color: #d97706;"></i>
-                        <span class="rb-content-en">A. Card Dealing by Player Count &amp; Round</span>
-                        <span class="rb-content-ko" style="display:none;">A. 인원 및 라운드별 카드 분배 표</span>
-                    </div>
-                    <p style="font-size:0.84rem; color:var(--text-muted); margin:0 0 6px 0;">
-                        <span class="rb-content-en">Shuffle the 56 game cards and deal starting hands according to the chart:</span>
-                        <span class="rb-content-ko" style="display:none;">56장의 게임 카드를 잘 섞은 후, 아래 표에 맞춰 각 플레이어에게 손패를 분배합니다:</span>
-                    </p>
-                    <div class="rb-setup-table-wrap">
-                        <table class="rb-table">
-                            <thead>
-                                <tr>
-                                    <th><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></th>
-                                    <th><span class="rb-content-en">Round 1</span><span class="rb-content-ko" style="display:none;">1라운드</span></th>
-                                    <th><span class="rb-content-en">Round 2</span><span class="rb-content-ko" style="display:none;">2라운드</span></th>
-                                    <th><span class="rb-content-en">Round 3</span><span class="rb-content-ko" style="display:none;">3라운드</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong><span class="rb-content-en">2 Players</span><span class="rb-content-ko" style="display:none;">2인</span></strong></td>
-                                    <td class="highlight-cell">4 cards</td>
-                                    <td class="highlight-cell">5 cards</td>
-                                    <td class="highlight-cell">6 cards</td>
-                                </tr>
-                                <tr>
-                                    <td><strong><span class="rb-content-en">3 Players</span><span class="rb-content-ko" style="display:none;">3인</span></strong></td>
-                                    <td class="highlight-cell">5 cards</td>
-                                    <td class="highlight-cell">6 cards</td>
-                                    <td class="highlight-cell">7 cards</td>
-                                </tr>
-                                <tr>
-                                    <td><strong><span class="rb-content-en">4 Players</span><span class="rb-content-ko" style="display:none;">4인</span></strong></td>
-                                    <td class="highlight-cell">7 cards</td>
-                                    <td class="highlight-cell">8 cards</td>
-                                    <td class="highlight-cell">9 cards</td>
-                                </tr>
-                                <tr>
-                                    <td><strong><span class="rb-content-en">5 Players</span><span class="rb-content-ko" style="display:none;">5인</span></strong></td>
-                                    <td class="highlight-cell">8 cards</td>
-                                    <td class="highlight-cell">9 cards</td>
-                                    <td class="highlight-cell">10 cards</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- Steps B, C, D -->
-                    <div class="rb-steps-list" style="margin-top:16px;">
+                    <div class="rb-steps-list">
+                        <!-- Step i: 카드 분배 표 -->
                         <div class="rb-step-card">
-                            <div class="rb-step-badge">B</div>
+                            <div class="rb-step-badge">i</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Card Dealing by Player Count &amp; Round</span>
+                                    <span class="rb-content-ko" style="display:none;">인원 및 라운드별 카드 분배</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <p style="margin:0 0 5px 0;">
+                                        <span class="rb-content-en">Shuffle the 56 game cards and deal starting hands according to the chart:</span>
+                                        <span class="rb-content-ko" style="display:none;">56장의 게임 카드를 잘 섞은 후, 아래 표에 맞춰 각 플레이어에게 손패를 분배합니다:</span>
+                                    </p>
+                                    <div class="rb-setup-table-wrap" style="margin:4px 0 0 0;">
+                                        <table class="rb-table">
+                                            <thead>
+                                                <tr>
+                                                    <th><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></th>
+                                                    <th><span class="rb-content-en">Round 1</span><span class="rb-content-ko" style="display:none;">1라운드</span></th>
+                                                    <th><span class="rb-content-en">Round 2</span><span class="rb-content-ko" style="display:none;">2라운드</span></th>
+                                                    <th><span class="rb-content-en">Round 3</span><span class="rb-content-ko" style="display:none;">3라운드</span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong><span class="rb-content-en">2 Players</span><span class="rb-content-ko" style="display:none;">2인</span></strong></td>
+                                                    <td class="highlight-cell">4 cards</td>
+                                                    <td class="highlight-cell">5 cards</td>
+                                                    <td class="highlight-cell">6 cards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong><span class="rb-content-en">3 Players</span><span class="rb-content-ko" style="display:none;">3인</span></strong></td>
+                                                    <td class="highlight-cell">5 cards</td>
+                                                    <td class="highlight-cell">6 cards</td>
+                                                    <td class="highlight-cell">7 cards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong><span class="rb-content-en">4 Players</span><span class="rb-content-ko" style="display:none;">4인</span></strong></td>
+                                                    <td class="highlight-cell">7 cards</td>
+                                                    <td class="highlight-cell">8 cards</td>
+                                                    <td class="highlight-cell">9 cards</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong><span class="rb-content-en">5 Players</span><span class="rb-content-ko" style="display:none;">5인</span></strong></td>
+                                                    <td class="highlight-cell">8 cards</td>
+                                                    <td class="highlight-cell">9 cards</td>
+                                                    <td class="highlight-cell">10 cards</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step ii: 이벤트 카드 시장 준비 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">ii</div>
                             <div class="rb-step-content">
                                 <div class="rb-step-title">
                                     <span class="rb-content-en">Prepare Event Market</span>
@@ -2909,8 +3548,9 @@
                             </div>
                         </div>
 
+                        <!-- Step iii: 손패 확인 및 비밀 승수 예측 -->
                         <div class="rb-step-card">
-                            <div class="rb-step-badge">C</div>
+                            <div class="rb-step-badge">iii</div>
                             <div class="rb-step-content">
                                 <div class="rb-step-title">
                                     <span class="rb-content-en">Goal Prediction</span>
@@ -2923,8 +3563,9 @@
                             </div>
                         </div>
 
+                        <!-- Step iv: 선 플레이어 선정 -->
                         <div class="rb-step-card">
-                            <div class="rb-step-badge">D</div>
+                            <div class="rb-step-badge">iv</div>
                             <div class="rb-step-content">
                                 <div class="rb-step-title">
                                     <span class="rb-content-en">Determine Starting Player 🐾</span>
@@ -3193,10 +3834,6 @@
                     <span class="doore-rb-edition"><span class="rb-content-en">Village Edition</span><span class="rb-content-ko" style="display:none;">마을판</span></span>
                 </div>
                 <div class="rulebook-header-actions">
-                    <div class="rb-lang-toggle doore-rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
-                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'dooreRulebookModal')">KO</button>
-                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'dooreRulebookModal')">EN</button>
-                    </div>
                     <button type="button" class="proto-modal-close" onclick="closeModal('dooreRulebookModal')" aria-label="Close rulebook modal">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
@@ -3204,6 +3841,14 @@
             </div>
 
             <div class="proto-modal-body rulebook-body doore-rulebook-body">
+                <div class="doore-pdf-pages" aria-label="Doore rulebook pages">
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-1.png?v=20260911-2" width="1080" height="1560" alt="Doore sell sheet and component overview" decoding="async"></figure>
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-2.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 1: game information and components" loading="lazy" decoding="async"></figure>
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-3.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 2: setup and how to play" loading="lazy" decoding="async"></figure>
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-4.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 3: tile arrangement example" loading="lazy" decoding="async"></figure>
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-5.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 4: tile selection and placement" loading="lazy" decoding="async"></figure>
+                    <figure class="doore-pdf-page"><img src="/proto/assets/doore-rulebook-pages/page-6.png?v=20260911-2" width="1080" height="1560" alt="Doore full rulebook page 5: scoring, crops, and rule variants" loading="lazy" decoding="async"></figure>
+                </div>
                 <div class="doore-rb-hero">
                     <div class="doore-rb-hero-copy">
                         <span class="doore-rb-kicker"><i class="fa-solid fa-seedling"></i> <span class="rb-content-en">Build a village, one careful gift at a time</span><span class="rb-content-ko" style="display:none;">한 장의 배려로 함께 일구는 마을</span></span>
@@ -3297,6 +3942,792 @@
                 <button type="button" class="btn-secondary" onclick="closeModal('dooreRulebookModal')"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
                 <a href="assets/doore-rulebook.pdf" target="_blank" rel="noopener noreferrer" class="btn-rulebook-pdf"><i class="fa-solid fa-file-pdf"></i><span class="rb-content-en">Open Original PDF</span><span class="rb-content-ko" style="display:none;">원본 PDF 열기</span></a>
                 <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;"><i class="fa-solid fa-arrow-up-right-from-square"></i><span class="rb-content-en">Play Online Now</span><span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waffle Pop! Full Rulebook Modal -->
+    <div class="proto-modal-overlay" id="waffleRulebookModal" role="dialog" aria-modal="true" aria-labelledby="waffleRulebookTitle" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card waffle-rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title" id="waffleRulebookTitle">
+                    <i class="fa-solid fa-book-open" style="color: #c47c32;"></i>
+                    <span class="rb-title-text-en">Waffle Pop! — Complete Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">Waffle Pop! — 전체 규칙서</span>
+                </div>
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'waffleRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'waffleRulebookModal')">EN</button>
+                    </div>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('waffleRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-overview')" class="rb-nav-link"><i class="fa-solid fa-circle-info"></i> <span class="rb-content-en">1. Overview</span><span class="rb-content-ko" style="display:none;">1. 게임 개요</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-components')" class="rb-nav-link"><i class="fa-solid fa-box-open"></i> <span class="rb-content-en">2. Components</span><span class="rb-content-ko" style="display:none;">2. 구성물</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-setup')" class="rb-nav-link"><i class="fa-solid fa-sliders"></i> <span class="rb-content-en">3. Setup</span><span class="rb-content-ko" style="display:none;">3. 게임 준비</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-anatomy')" class="rb-nav-link"><i class="fa-solid fa-table-cells-large"></i> <span class="rb-content-en">4. Table Anatomy</span><span class="rb-content-ko" style="display:none;">4. 게임 영역</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-turn')" class="rb-nav-link"><i class="fa-solid fa-gamepad"></i> <span class="rb-content-en">5. Your Turn</span><span class="rb-content-ko" style="display:none;">5. 차례 진행</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-missions')" class="rb-nav-link"><i class="fa-solid fa-shapes"></i> <span class="rb-content-en">6. Missions</span><span class="rb-content-ko" style="display:none;">6. 미션 완성</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-scoring')" class="rb-nav-link"><i class="fa-solid fa-star"></i> <span class="rb-content-en">7. Topping Scoring</span><span class="rb-content-ko" style="display:none;">7. 토핑 득점</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-endgame')" class="rb-nav-link"><i class="fa-solid fa-flag-checkered"></i> <span class="rb-content-en">8. End of Game</span><span class="rb-content-ko" style="display:none;">8. 게임 종료</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-examples')" class="rb-nav-link"><i class="fa-solid fa-lightbulb"></i> <span class="rb-content-en">9. Examples</span><span class="rb-content-ko" style="display:none;">9. 진행 예시</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-faq')" class="rb-nav-link"><i class="fa-solid fa-circle-question"></i> <span class="rb-content-en">10. Clarifications</span><span class="rb-content-ko" style="display:none;">10. 세부 규칙</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('wp-rb-reference')" class="rb-nav-link"><i class="fa-solid fa-list-check"></i> <span class="rb-content-en">11. Quick Reference</span><span class="rb-content-ko" style="display:none;">11. 빠른 참조</span></a>
+                </nav>
+
+                <!-- 1. Overview -->
+                <section class="rb-section" id="wp-rb-overview">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Overview</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 개요</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Draft coordinate tickets, fit open cutter shapes onto a three-layer waffle, and build the sweetest scoring combinations before the plate runs out.</span>
+                        <span class="rb-content-ko" style="display:none;">좌표 티켓을 모으고 공개된 미션 모양틀을 3단 와플 위에 맞춰, 플레이트가 비기 전에 가장 달콤한 점수 조합을 만드세요.</span>
+                    </p>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">2–4 Players</span><span class="rb-content-ko" style="display:none;">2~4명</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Time</span><span class="rb-content-ko" style="display:none;">시간</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">20–30 Mins</span><span class="rb-content-ko" style="display:none;">20~30분</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-shapes rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Core Mechanic</span><span class="rb-content-ko" style="display:none;">핵심 메커니즘</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">Pattern Building</span><span class="rb-content-ko" style="display:none;">패턴 빌딩</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-layer-group rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Sub Mechanic</span><span class="rb-content-ko" style="display:none;">보조 메커니즘</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">Set Collection</span><span class="rb-content-ko" style="display:none;">세트 컬렉션</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wp-thirty">
+                        <div class="wp-thirty-mark">30&Prime;</div>
+                        <div class="wp-thirty-body">
+                            <strong><span class="rb-content-en">The game in thirty seconds</span><span class="rb-content-ko" style="display:none;">30초 만에 이해하는 게임</span></strong>
+                            <p>
+                                <span class="rb-content-en">Collect coordinate tickets. Spend a set of tickets whose cells form one face-up mission shape. Pop the top topping from every selected cell, then score your toppings in seven different ways. When five waffle cells are empty, finish the round; highest score wins.</span>
+                                <span class="rb-content-ko" style="display:none;">좌표 티켓을 모읍니다. 공개된 미션 모양을 이루는 칸들의 티켓을 함께 지불하고, 선택한 각 칸의 맨 위 토핑을 가져옵니다. 토핑은 일곱 가지 방식으로 점수가 됩니다. 와플 칸 5개가 비면 그 라운드를 마치고, 가장 높은 점수를 얻은 사람이 승리합니다.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rb-intro-banner" style="margin-top: 10px;">
+                        <div class="rb-content-en">
+                            The shared waffle plate is a <strong>4×4 grid</strong>. Every cell begins with a stack of <strong>three toppings</strong>, so the visible options change as players remove the top layer. Three mission cutters—one each covering <strong>3, 4, and 5 cells</strong>—are always face up.
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            공용 와플 플레이트는 <strong>4×4 격자</strong>입니다. 각 칸에는 <strong>토핑 3개</strong>가 쌓여 있어 맨 위 토핑을 가져갈 때마다 다음 선택지가 드러납니다. <strong>3칸·4칸·5칸</strong>짜리 미션 모양틀이 하나씩 항상 공개됩니다.
+                        </div>
+                    </div>
+
+                    <div class="wp-table-diagram">
+                        <div class="wp-diagram-panel">
+                            <div class="wp-diagram-label"><span class="rb-content-en">4×4 Waffle · 3 Layers per Cell</span><span class="rb-content-ko" style="display:none;">4×4 와플 · 칸마다 3단</span></div>
+                            <div class="wp-plate" aria-hidden="true">
+                                <span></span><span>A</span><span>B</span><span>C</span><span>D</span>
+                                <span>1</span><div class="wp-cell">🍓</div><div class="wp-cell">🫐</div><div class="wp-cell">🍯</div><div class="wp-cell">🍪</div>
+                                <span>2</span><div class="wp-cell">🍫</div><div class="wp-cell">🍒</div><div class="wp-cell">🍓</div><div class="wp-cell">🫐</div>
+                                <span>3</span><div class="wp-cell">🍯</div><div class="wp-cell">🍪</div><div class="wp-cell empty"></div><div class="wp-cell">🍒</div>
+                                <span>4</span><div class="wp-cell">🫐</div><div class="wp-cell">🍓</div><div class="wp-cell">🍫</div><div class="wp-cell">🍯</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="wp-diagram-panel" style="margin-bottom: 10px;">
+                                <div class="wp-diagram-label"><span class="rb-content-en">Face-up Missions</span><span class="rb-content-ko" style="display:none;">공개 미션</span></div>
+                                <div class="wp-mission-row">
+                                    <div class="wp-mission-chip"><b>3</b><span class="rb-content-en">cells</span><span class="rb-content-ko" style="display:none;">칸</span></div>
+                                    <div class="wp-mission-chip"><b>4</b><span class="rb-content-en">cells</span><span class="rb-content-ko" style="display:none;">칸</span></div>
+                                    <div class="wp-mission-chip"><b>5</b><span class="rb-content-en">cells</span><span class="rb-content-ko" style="display:none;">칸</span></div>
+                                </div>
+                            </div>
+                            <div class="wp-diagram-panel">
+                                <div class="wp-diagram-label"><span class="rb-content-en">Coordinate Supply</span><span class="rb-content-ko" style="display:none;">좌표 공급처</span></div>
+                                <div class="wp-ticket-row">
+                                    <span class="wp-ticket deck"><i class="fa-solid fa-layer-group"></i> <span class="rb-content-en">Deck</span><span class="rb-content-ko" style="display:none;">덱</span></span>
+                                    <span class="wp-ticket">A2</span>
+                                    <span class="wp-ticket">B3</span>
+                                    <span class="wp-ticket">C1</span>
+                                    <span class="wp-ticket">D4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber" style="margin-top: 10px;">
+                        <i class="fa-solid fa-bullseye"></i>
+                        <div>
+                            <strong class="rb-content-en">Your goal</strong>
+                            <strong class="rb-content-ko" style="display:none;">목표</strong>
+                            <div class="rb-content-en">Use coordinate tickets to complete mission shapes, collect valuable toppings, and finish with the highest total score. Each topping scores differently—some reward speed, some reward concentration, and some become valuable only in pairs.</div>
+                            <div class="rb-content-ko" style="display:none;">좌표 티켓으로 미션 모양을 완성하고 가치 있는 토핑을 모아 게임 종료 시 가장 높은 총점을 얻으세요. 각 토핑은 서로 다른 방식으로 득점합니다. 빠르게 가져가야 좋은 토핑, 한 종류를 집중해서 모아야 하는 토핑, 짝을 만들어야 점수가 되는 토핑이 있습니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Components -->
+                <section class="rb-section" id="wp-rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="rb-content-en">2. Components</span>
+                        <span class="rb-content-ko" style="display:none;">2. 구성물</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Everything needed for one 2–4 player game.</span>
+                        <span class="rb-content-ko" style="display:none;">2~4인 게임 한 판에 필요한 구성물입니다.</span>
+                    </p>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-table-cells-large rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">1</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Waffle Plate</span><span class="rb-content-ko" style="display:none;">와플 플레이트</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-cookie-bite rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">48</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Topping Tiles</span><span class="rb-content-ko" style="display:none;">토핑 타일</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-ticket rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">64</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Coordinate Tickets</span><span class="rb-content-ko" style="display:none;">좌표 티켓</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-shapes rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">30</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Mission Cards</span><span class="rb-content-ko" style="display:none;">미션 카드</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 4px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Waffle Plate</span><span class="rb-content-ko" style="display:none;">와플 플레이트</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">A 4×4 grid labeled A–D and 1–4.</span><span class="rb-content-ko" style="display:none;">열 A–D, 행 1–4로 표시된 4×4 격자.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">48</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Topping Tiles</span><span class="rb-content-ko" style="display:none;">토핑 타일</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Three tiles in each of the 16 cells.</span><span class="rb-content-ko" style="display:none;">16개 칸마다 3개씩 쌓습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">64</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Coordinate Tickets</span><span class="rb-content-ko" style="display:none;">좌표 티켓</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Four copies of every coordinate, A1 through D4.</span><span class="rb-content-ko" style="display:none;">A1부터 D4까지 각 좌표 4장씩.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">30</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Mission Cards</span><span class="rb-content-ko" style="display:none;">미션 카드</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Ten 3-cell, ten 4-cell, and ten 5-cell cutters.</span><span class="rb-content-ko" style="display:none;">3칸·4칸·5칸 모양틀 각 10장.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead" style="margin-top: 12px;">
+                        <i class="fa-solid fa-scale-balanced" style="color: #c47c32;"></i>
+                        <span class="rb-content-en">Topping mix by player count</span>
+                        <span class="rb-content-ko" style="display:none;">인원수별 토핑 구성</span>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">Topping</span><span class="rb-content-ko" style="display:none;">토핑</span></th>
+                                    <th><span class="rb-content-en">2 players</span><span class="rb-content-ko" style="display:none;">2인</span></th>
+                                    <th><span class="rb-content-en">3 players</span><span class="rb-content-ko" style="display:none;">3인</span></th>
+                                    <th><span class="rb-content-en">4 players</span><span class="rb-content-ko" style="display:none;">4인</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><span class="rb-content-en">VIP Order</span><span class="rb-content-ko" style="display:none;">오픈런 VIP</span></td><td>6</td><td>6</td><td>6</td></tr>
+                                <tr><td><span class="rb-content-en">Golden Cherry</span><span class="rb-content-ko" style="display:none;">골든 체리</span></td><td>5</td><td>6</td><td>7</td></tr>
+                                <tr><td><span class="rb-content-en">Sweet Aroma</span><span class="rb-content-ko" style="display:none;">달콤한 향기</span></td><td>7</td><td>7</td><td>7</td></tr>
+                                <tr><td><span class="rb-content-en">Strawberry</span><span class="rb-content-ko" style="display:none;">생딸기</span></td><td>7</td><td>7</td><td>7</td></tr>
+                                <tr><td><span class="rb-content-en">Marshmallow</span><span class="rb-content-ko" style="display:none;">마시멜로</span></td><td>9</td><td>8</td><td>7</td></tr>
+                                <tr><td><span class="rb-content-en">Sugar Cookie</span><span class="rb-content-ko" style="display:none;">슈가 쿠키</span></td><td>6</td><td>6</td><td>6</td></tr>
+                                <tr><td><span class="rb-content-en">Berry Macaron</span><span class="rb-content-ko" style="display:none;">베리 마카롱</span></td><td>8</td><td>8</td><td>8</td></tr>
+                                <tr><td class="highlight-cell"><span class="rb-content-en">Total</span><span class="rb-content-ko" style="display:none;">합계</span></td><td class="highlight-cell">48</td><td class="highlight-cell">48</td><td class="highlight-cell">48</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="rb-callout-box blue">
+                        <i class="fa-solid fa-shapes"></i>
+                        <div>
+                            <strong class="rb-content-en">Mission deck composition</strong>
+                            <strong class="rb-content-ko" style="display:none;">미션 덱 구성</strong>
+                            <div class="rb-content-en">The 3-cell deck contains five Straight and five L cutters. The 4-cell deck contains two each of Straight, Square, L, T, and S. The 5-cell deck contains one each of X, T, U, V, W, Z, L, F, P, and Y.</div>
+                            <div class="rb-content-ko" style="display:none;">3칸 덱은 일자형 5장과 L형 5장입니다. 4칸 덱은 일자형·정사각형·L·T·S형 각 2장입니다. 5칸 덱은 X·T·U·V·W·Z·L·F·P·Y형 각 1장입니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Setup -->
+                <section class="rb-section" id="wp-rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Setup</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Build the waffle from the bottom layer up. Four visual beats: mix 48 toppings · stack 3 × 16 · deal tickets 3/3/4/4 · reveal one mission each of 3, 4, and 5 cells.</span>
+                        <span class="rb-content-ko" style="display:none;">아래층부터 와플을 차례로 쌓습니다. 네 장면으로 보는 준비: 토핑 48개 섞기 · 16칸에 3단 쌓기 · 티켓 3/3/4/4장 나누기 · 3·4·5칸 미션 각 1장 공개.</span>
+                    </p>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Prepare the topping supply</span><span class="rb-content-ko" style="display:none;">토핑을 준비합니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Use the player-count table above, shuffle all 48 toppings face down, then place three in every waffle cell. Turn all stacks face up so only the top tile of each stack is available.</span><span class="rb-content-ko" style="display:none;">인원수별 표에 따라 토핑 48개를 골라 뒷면으로 섞습니다. 와플의 16개 칸에 3개씩 쌓고, 각 더미의 맨 위 토핑만 보이게 앞면으로 놓습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Make the coordinate deck</span><span class="rb-content-ko" style="display:none;">좌표 덱을 만듭니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Shuffle all 64 coordinate tickets and place the deck within reach. Leave space for a face-up market and a discard pile.</span><span class="rb-content-ko" style="display:none;">좌표 티켓 64장을 섞어 모두가 닿는 곳에 놓습니다. 공개 시장과 버린 티켓 더미를 놓을 공간을 남깁니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Choose a first player</span><span class="rb-content-ko" style="display:none;">시작 플레이어를 정합니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">In turn order, the first and second players draw 3 tickets each. The third and fourth players, when present, draw 4 tickets each.</span><span class="rb-content-ko" style="display:none;">차례 순서상 첫 번째와 두 번째 플레이어는 티켓 3장씩, 세 번째와 네 번째 플레이어가 있다면 티켓 4장씩 받습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Open the ticket market</span><span class="rb-content-ko" style="display:none;">티켓 시장을 엽니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Reveal tickets until the market shows at least four different coordinate choices. Duplicate coordinates stay in the market, so it may contain more than four cards.</span><span class="rb-content-ko" style="display:none;">서로 다른 좌표 선택지가 최소 4종류 보일 때까지 티켓을 공개합니다. 중복 좌표도 시장에 남으므로 시장에 4장보다 많을 수 있습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">5</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Prepare missions</span><span class="rb-content-ko" style="display:none;">미션을 준비합니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Separate the mission cards into 3-, 4-, and 5-cell decks. Shuffle each deck and reveal one card from each.</span><span class="rb-content-ko" style="display:none;">미션 카드를 3칸·4칸·5칸 덱으로 나누어 각각 섞고 맨 위 카드 1장씩 공개합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">6</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Begin</span><span class="rb-content-ko" style="display:none;">게임을 시작합니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">The first player takes the first turn. Play proceeds clockwise.</span><span class="rb-content-ko" style="display:none;">시작 플레이어부터 시계 방향으로 차례를 진행합니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Table Anatomy -->
+                <section class="rb-section" id="wp-rb-anatomy">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <span class="rb-content-en">4. Table Anatomy</span>
+                        <span class="rb-content-ko" style="display:none;">4. 게임 영역</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Four shared areas drive every decision: the waffle plate, the ticket market, the three open missions, and every player's score area.</span>
+                        <span class="rb-content-ko" style="display:none;">네 개의 공용 영역이 모든 선택을 만듭니다. 와플 플레이트, 티켓 시장, 공개 미션 3장, 그리고 각자의 득점 영역입니다.</span>
+                    </p>
+
+                    <div class="wp-diagram-panel" style="background: #fbf8f3; border-style: dashed; border-color: #e0cdb2; border-width: 2px;">
+                        <div class="wp-diagram-label"><span class="rb-content-en">A topping stack is resolved from the top</span><span class="rb-content-ko" style="display:none;">토핑 더미는 맨 위부터 해결합니다</span></div>
+                        <div class="wp-stack">
+                            <div class="wp-stack-tiles" aria-hidden="true">
+                                <div class="wp-stack-tile top">🍓</div>
+                                <div class="wp-stack-tile">?</div>
+                                <div class="wp-stack-tile">?</div>
+                            </div>
+                            <div>
+                                <strong style="font-size: 0.82rem; display: block; color: #8a5420;"><span class="rb-content-en">Take only the top tile</span><span class="rb-content-ko" style="display:none;">맨 위 1개만 획득</span></strong>
+                                <p style="margin: 3px 0 0; font-size: 0.79rem; line-height: 1.45; color: var(--text-muted);"><span class="rb-content-en">The next layer becomes visible immediately and may change the value of future missions.</span><span class="rb-content-ko" style="display:none;">토핑을 가져오면 바로 아래층이 공개되어 다음 미션의 가치가 달라집니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 10px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-location-crosshairs"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Coordinates</span><span class="rb-content-ko" style="display:none;">좌표</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Columns are A–D and rows are 1–4. A ticket names exactly one cell, such as B3.</span><span class="rb-content-ko" style="display:none;">열은 A–D, 행은 1–4입니다. B3처럼 하나의 티켓은 정확히 하나의 칸을 가리킵니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-layer-group"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Stacks</span><span class="rb-content-ko" style="display:none;">토핑 더미</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Only the top topping in each cell can be collected. Removing it reveals the tile below.</span><span class="rb-content-ko" style="display:none;">각 칸의 맨 위 토핑만 가져갈 수 있습니다. 토핑을 가져가면 바로 아래 토핑이 공개됩니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-hand"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Hands</span><span class="rb-content-ko" style="display:none;">손</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Coordinate tickets in hand are private. There is no hand limit.</span><span class="rb-content-ko" style="display:none;">손에 든 좌표 티켓은 비공개입니다. 손 제한은 없습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-eye"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Collected toppings</span><span class="rb-content-ko" style="display:none;">획득한 토핑</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Keep them face up in your personal score area. This information is public.</span><span class="rb-content-ko" style="display:none;">개인 득점 영역에 앞면으로 공개해 둡니다. 누구나 확인할 수 있습니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Your Turn -->
+                <section class="rb-section" id="wp-rb-turn">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span class="rb-content-en">5. Your Turn</span>
+                        <span class="rb-content-ko" style="display:none;">5. 차례 진행</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Choose exactly one of the following three actions. One turn, one choice.</span>
+                        <span class="rb-content-ko" style="display:none;">아래 세 가지 행동 중 정확히 하나를 선택합니다. 한 차례에는 한 가지 선택뿐입니다.</span>
+                    </p>
+
+                    <div class="wp-action-grid">
+                        <div class="wp-action-card">
+                            <h4><span class="wp-action-key">A</span><span class="rb-content-en">Take 1 Ticket from the Market</span><span class="rb-content-ko" style="display:none;">시장에서 티켓 1장 가져오기</span></h4>
+                            <p><span class="rb-content-en">Choose one face-up coordinate ticket and add it to your hand. Then reveal cards from the deck until the market again contains at least four different coordinate choices. Keep all duplicates in the market.</span><span class="rb-content-ko" style="display:none;">공개된 좌표 티켓 하나를 손에 넣습니다. 그 후 서로 다른 좌표 선택지가 다시 최소 4종류가 될 때까지 덱에서 카드를 공개합니다. 중복 티켓도 시장에 그대로 둡니다.</span></p>
+                        </div>
+                        <div class="wp-action-card">
+                            <h4><span class="wp-action-key">B</span><span class="rb-content-en">Draw 2, Keep 1</span><span class="rb-content-ko" style="display:none;">2장 뽑아 1장 선택하기</span></h4>
+                            <p><span class="rb-content-en">Draw the top two tickets. Add one to your hand and place the other face up in the market. Do not perform the normal market refill after this action.</span><span class="rb-content-ko" style="display:none;">좌표 덱 맨 위 2장을 뽑습니다. 1장은 손에 넣고, 나머지 1장은 시장에 앞면으로 추가합니다. 이 행동 후에는 일반적인 시장 보충을 하지 않습니다.</span></p>
+                        </div>
+                        <div class="wp-action-card">
+                            <h4><span class="wp-action-key">C</span><span class="rb-content-en">Complete 1 Mission</span><span class="rb-content-ko" style="display:none;">미션 1장 완성하기</span></h4>
+                            <ol>
+                                <li><span class="rb-content-en">Choose exactly 3, 4, or 5 waffle cells matching the open mission of that size.</span><span class="rb-content-ko" style="display:none;">공개된 3칸·4칸·5칸 미션 중 하나와 일치하는 와플 칸을 정확히 선택합니다.</span></li>
+                                <li><span class="rb-content-en">Show and discard the matching coordinate ticket for every selected cell.</span><span class="rb-content-ko" style="display:none;">선택한 모든 칸과 일치하는 좌표 티켓을 공개하고 버립니다.</span></li>
+                                <li><span class="rb-content-en">Take the top topping from each selected non-empty cell and place it in your score area.</span><span class="rb-content-ko" style="display:none;">선택한 비어 있지 않은 각 칸에서 맨 위 토핑을 가져와 개인 득점 영역에 놓습니다.</span></li>
+                                <li><span class="rb-content-en">Resolve any immediate topping effects one tile at a time.</span><span class="rb-content-ko" style="display:none;">즉시 효과가 있다면 토핑을 한 개씩 순서대로 처리합니다.</span></li>
+                                <li><span class="rb-content-en">Discard the completed mission and reveal a new mission from the same deck.</span><span class="rb-content-ko" style="display:none;">완성한 미션을 버리고 같은 크기 덱에서 새 미션을 공개합니다.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber">
+                        <i class="fa-solid fa-rotate"></i>
+                        <div>
+                            <strong class="rb-content-en">Deck empty?</strong>
+                            <strong class="rb-content-ko" style="display:none;">좌표 덱이 부족하다면</strong>
+                            <div class="rb-content-en">Whenever more tickets are needed, shuffle the discarded, spent tickets to form a new coordinate deck. If fewer than two tickets are available for action B, choose another action.</div>
+                            <div class="rb-content-ko" style="display:none;">버린 좌표 티켓을 섞어 새 덱을 만듭니다. 그래도 행동 B에 필요한 2장을 마련할 수 없다면 다른 행동을 선택합니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. Missions -->
+                <section class="rb-section" id="wp-rb-missions">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">6. Completing Missions</span>
+                        <span class="rb-content-ko" style="display:none;">6. 미션 완성</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">The cutter cares about shape, not location or topping type.</span>
+                        <span class="rb-content-ko" style="display:none;">모양틀은 위치와 토핑 종류가 아니라 모양만 봅니다.</span>
+                    </p>
+
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            Your selected cells must reproduce the complete shape shown on one face-up mission card. You may <strong>translate</strong> it anywhere on the 4×4 plate, <strong>rotate</strong> it in 90° steps, or <strong>reflect</strong> it as a mirror image.
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            선택한 칸들은 공개 미션 카드 하나에 그려진 전체 모양과 일치해야 합니다. 4×4 플레이트 안의 어느 <strong>위치로든 옮길</strong> 수 있고, 90도 단위로 <strong>회전</strong>하거나 <strong>거울상으로 뒤집을</strong> 수 있습니다.
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 10px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-palette"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">The selected cells do not need matching toppings.</span><span class="rb-content-ko" style="display:none;">선택한 칸의 토핑 종류가 서로 같을 필요는 없습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-ticket"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">You must pay one matching coordinate ticket for every selected cell. Duplicate coordinates are never needed within one mission because a shape cannot use the same cell twice.</span><span class="rb-content-ko" style="display:none;">선택한 모든 칸마다 일치하는 좌표 티켓 1장을 내야 합니다. 하나의 모양이 같은 칸을 두 번 사용하지 않으므로 한 미션에서 같은 좌표 티켓이 중복으로 필요하지 않습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-regular fa-square"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">If a selected cell is empty, you may still use its coordinate to complete the shape, but you receive no topping from that cell.</span><span class="rb-content-ko" style="display:none;">선택한 칸이 비어 있어도 모양을 완성하는 데 사용할 수 있지만, 그 칸에서는 토핑을 얻지 못합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">You complete only one mission per turn. The completed card is replaced immediately.</span><span class="rb-content-ko" style="display:none;">한 차례에는 미션 하나만 완성합니다. 완성한 카드는 즉시 새 카드로 교체합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-shuffle"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">When a mission deck runs out, shuffle its completed missions to create a new deck.</span><span class="rb-content-ko" style="display:none;">미션 덱이 떨어지면 그 크기의 완성된 미션 카드를 섞어 새 덱을 만듭니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box blue">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <strong class="rb-content-en">Mission ready — example</strong>
+                            <strong class="rb-content-ko" style="display:none;">미션 준비 완료 — 예시</strong>
+                            <div class="rb-content-en">A1, A2, and B2 form the open 3-cell L. The active player owns all three tickets, so the claim becomes available: the chosen waffle cells are outlined, the mission preview confirms the valid shape, and every cost can be paid.</div>
+                            <div class="rb-content-ko" style="display:none;">A1·A2·B2가 공개된 3칸 L형을 만듭니다. 현재 플레이어가 세 좌표 티켓을 모두 가지고 있어 미션 획득이 가능합니다. 선택한 와플 칸에 강조 테두리가 표시되고, 미션 미리보기로 모양 일치를 확인하며, 비용을 모두 낼 수 있습니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. Topping Scoring -->
+                <section class="rb-section" id="wp-rb-scoring">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rb-content-en">7. Topping Scoring</span>
+                        <span class="rb-content-ko" style="display:none;">7. 토핑 득점</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Seven toppings, seven ways to build points. The color and icon tell you the scoring family; the formula on each tile tells you what to pursue.</span>
+                        <span class="rb-content-ko" style="display:none;">일곱 가지 토핑은 일곱 가지 방식으로 점수가 됩니다. 토핑의 색과 아이콘은 득점 유형을 나타내며, 타일의 공식은 어떤 조합을 노려야 하는지 알려 줍니다.</span>
+                    </p>
+
+                    <div class="wp-curve-strip">
+                        <div class="wp-curve">
+                            <div class="wp-curve-label"><span class="rb-content-en">VIP gets smaller</span><span class="rb-content-ko" style="display:none;">VIP는 점점 감소</span></div>
+                            <div class="wp-curve-vals"><b>7</b><b>5</b><b>3</b><b>2</b></div>
+                        </div>
+                        <div class="wp-curve">
+                            <div class="wp-curve-label"><span class="rb-content-en">Cherry sets jump</span><span class="rb-content-ko" style="display:none;">체리는 세트 도약</span></div>
+                            <div class="wp-curve-vals"><b>3</b><b>8</b><b>15</b><b>25</b></div>
+                        </div>
+                        <div class="wp-curve">
+                            <div class="wp-curve-label"><span class="rb-content-en">Berry squares</span><span class="rb-content-ko" style="display:none;">딸기는 제곱 성장</span></div>
+                            <div class="wp-curve-vals"><b>1</b><b>4</b><b>9</b><b>16</b></div>
+                        </div>
+                        <div class="wp-curve">
+                            <div class="wp-curve-label"><span class="rb-content-en">Mallow grows steadily</span><span class="rb-content-ko" style="display:none;">마시멜로는 누적 성장</span></div>
+                            <div class="wp-curve-vals"><b>1</b><b>3</b><b>6</b><b>10</b></div>
+                        </div>
+                    </div>
+
+                    <div class="wp-topping-grid">
+                        <div class="wp-topping-card wp-t-vip">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🎀 <span class="rb-content-en">VIP Order</span><span class="rb-content-ko" style="display:none;">오픈런 VIP</span></div>
+                                <div class="wp-topping-formula">7 / 5 / 3 / 2 / 1 / 0</div>
+                            </div>
+                            <p><span class="rb-content-en">Score immediately when claimed according to the global claim order. The first VIP taken is worth 7, then 5, 3, 2, 1, and 0. A player may claim more than one VIP.</span><span class="rb-content-ko" style="display:none;">전체 게임에서 획득된 순서에 따라 즉시 가치가 정해집니다. 첫 번째는 7점, 이후 5·3·2·1·0점입니다. 한 사람이 여러 개를 가져갈 수 있습니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-cherry">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🍒 <span class="rb-content-en">Golden Cherry</span><span class="rb-content-ko" style="display:none;">골든 체리</span></div>
+                                <div class="wp-topping-formula">3 / 8 / 15 / 25</div>
+                            </div>
+                            <p><span class="rb-content-en">At game end, score your total number of Cherries as one set: 1 scores 3, 2 score 8, 3 score 15, and 4 or more score 25. There is no instant victory.</span><span class="rb-content-ko" style="display:none;">게임 종료 시 보유한 전체 체리를 하나의 세트로 계산합니다. 1개 3점, 2개 8점, 3개 15점, 4개 이상 25점입니다. 즉시 승리 효과는 없습니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-aroma">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🍯 <span class="rb-content-en">Sweet Aroma</span><span class="rb-content-ko" style="display:none;">달콤한 향기</span></div>
+                                <div class="wp-topping-formula"><span class="rb-content-en">+N per trigger</span><span class="rb-content-ko" style="display:none;">발동마다 +N</span></div>
+                            </div>
+                            <p><span class="rb-content-en">Each time any Sweet Aroma is claimed, every player immediately scores 1 point for each Sweet Aroma they currently own. The newly claimed tile counts. If several are claimed together, resolve them one at a time.</span><span class="rb-content-ko" style="display:none;">누군가 향기를 하나 가져올 때마다 모든 보유자는 현재 가진 향기 1개당 1점을 즉시 얻습니다. 방금 가져온 타일도 셉니다. 한 미션에서 여러 개를 얻으면 한 개씩 순서대로 처리합니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-berry">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🍓 <span class="rb-content-en">Strawberry</span><span class="rb-content-ko" style="display:none;">생딸기</span></div>
+                                <div class="wp-topping-formula">N²</div>
+                            </div>
+                            <p><span class="rb-content-en">At game end, square the number you own. One scores 1, two score 4, three score 9, four score 16, and so on.</span><span class="rb-content-ko" style="display:none;">게임 종료 시 보유 개수를 제곱합니다. 1개 1점, 2개 4점, 3개 9점, 4개 16점입니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-mallow">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🍡 <span class="rb-content-en">Marshmallow</span><span class="rb-content-ko" style="display:none;">마시멜로</span></div>
+                                <div class="wp-topping-formula">N×(N+1)÷2</div>
+                            </div>
+                            <p><span class="rb-content-en">At game end, score the triangular number for the amount you own: 1, 3, 6, 10, 15, 21, 28…</span><span class="rb-content-ko" style="display:none;">게임 종료 시 보유 개수에 해당하는 삼각수로 득점합니다. 1·3·6·10·15·21·28점 순서입니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-cookie">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🍪 <span class="rb-content-en">Sugar Cookie</span><span class="rb-content-ko" style="display:none;">슈가 쿠키</span></div>
+                                <div class="wp-topping-formula"><span class="rb-content-en">Printed value</span><span class="rb-content-ko" style="display:none;">인쇄된 점수</span></div>
+                            </div>
+                            <p><span class="rb-content-en">At game end, add the printed values. There are two each worth 2, 3, and 4 points.</span><span class="rb-content-ko" style="display:none;">게임 종료 시 타일에 인쇄된 숫자를 모두 더합니다. 2·3·4점짜리가 각각 2개씩 있습니다.</span></p>
+                        </div>
+                        <div class="wp-topping-card wp-t-macaron">
+                            <div class="wp-topping-head">
+                                <div class="wp-topping-name">🫐 <span class="rb-content-en">Berry Macaron</span><span class="rb-content-ko" style="display:none;">베리 마카롱</span></div>
+                                <div class="wp-topping-formula"><span class="rb-content-en">Pairs only</span><span class="rb-content-ko" style="display:none;">페어만 득점</span></div>
+                            </div>
+                            <p><span class="rb-content-en">Only an even number of Macarons scores. Add all printed values in complete two-tile pairs; values do not need to match. If you own an odd number, your lowest-value Macaron is unpaired and scores 0.</span><span class="rb-content-ko" style="display:none;">짝수 개의 마카롱만 점수가 됩니다. 완성된 2개짜리 페어에 포함된 모든 액면을 더하며 숫자가 서로 같을 필요는 없습니다. 홀수 개라면 가장 낮은 액면 1개는 미완성으로 0점입니다.</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <div>
+                            <strong class="rb-content-en">Timing reminder</strong>
+                            <strong class="rb-content-ko" style="display:none;">효과 시점</strong>
+                            <div class="rb-content-en">Sweet Aroma is the only repeating immediate effect. VIP values are fixed when claimed. All other topping categories are calculated at the end of the game.</div>
+                            <div class="rb-content-ko" style="display:none;">달콤한 향기만 게임 중 반복해서 즉시 점수를 줍니다. 오픈런 VIP의 가치는 획득 순간 정해집니다. 나머지 토핑은 게임 종료 시 계산합니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. End of Game -->
+                <section class="rb-section" id="wp-rb-endgame">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                        <span class="rb-content-en">8. End of the Game</span>
+                        <span class="rb-content-ko" style="display:none;">8. 게임 종료</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">The plate empties, but every player gets equal turns.</span>
+                        <span class="rb-content-ko" style="display:none;">와플은 줄어들어도 모든 플레이어는 같은 횟수만큼 차례를 갖습니다.</span>
+                    </p>
+
+                    <div class="wp-diagram-panel" style="background: #fbf8f3; border-style: dashed; border-color: #e0cdb2; border-width: 2px;">
+                        <div class="wp-diagram-label"><span class="rb-content-en">Example · Player 2 creates the fifth empty cell</span><span class="rb-content-ko" style="display:none;">예시 · 플레이어 2가 다섯 번째 빈 칸 생성</span></div>
+                        <div class="wp-endgame-strip" aria-hidden="true">
+                            <span class="wp-seat">P1</span>
+                            <span class="wp-seat trigger">P2</span>
+                            <span class="wp-seat plays">P3</span>
+                            <span class="wp-seat plays">P4</span>
+                            <i class="fa-solid fa-arrow-right" style="color: var(--text-dim);"></i>
+                            <span class="wp-seat score"><i class="fa-solid fa-trophy"></i> <span class="rb-content-en">Score</span><span class="rb-content-ko" style="display:none;">점수 계산</span></span>
+                        </div>
+                        <p style="margin: 0; font-size: 0.79rem; line-height: 1.45; color: var(--text-muted);"><span class="rb-content-en">Players 3 and 4 finish the round. Players 1 and 2 do not take another turn.</span><span class="rb-content-ko" style="display:none;">플레이어 3과 4가 차례를 마칩니다. 플레이어 1과 2는 추가 차례를 갖지 않습니다.</span></p>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 10px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">At the end of every turn, count the waffle cells with no toppings remaining.</span><span class="rb-content-ko" style="display:none;">각 차례가 끝날 때 토핑이 하나도 남지 않은 와플 칸의 수를 셉니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">When at least 5 of the 16 cells are empty, the final-round trigger activates.</span><span class="rb-content-ko" style="display:none;">16칸 중 5칸 이상이 비면 마지막 라운드 조건이 발동합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Continue until the last player in the current round finishes their turn. If the last player triggered the ending, the game ends immediately after that turn.</span><span class="rb-content-ko" style="display:none;">현재 라운드의 마지막 플레이어가 차례를 마칠 때까지 계속합니다. 마지막 플레이어가 조건을 발동했다면 그 차례 직후 게임이 끝납니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Add all seven topping categories, including Sweet Aroma points already recorded during play.</span><span class="rb-content-ko" style="display:none;">게임 중 기록한 달콤한 향기 점수를 포함해 일곱 토핑 종류의 점수를 모두 더합니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div>
+                            <strong class="rb-content-en">Winner</strong>
+                            <strong class="rb-content-ko" style="display:none;">승자</strong>
+                            <div class="rb-content-en">The player with the most points wins. If tied, the tied player with more collected topping tiles wins. If still tied, share the victory.</div>
+                            <div class="rb-content-ko" style="display:none;">가장 높은 점수를 얻은 플레이어가 승리합니다. 동점이라면 획득한 토핑 타일이 더 많은 플레이어가 승리합니다. 그래도 같다면 공동 승리합니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. Examples -->
+                <section class="rb-section" id="wp-rb-examples">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="rb-content-en">9. Play Examples</span>
+                        <span class="rb-content-ko" style="display:none;">9. 진행 예시</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Common situations, resolved step by step.</span>
+                        <span class="rb-content-ko" style="display:none;">첫 게임에서 자주 만나는 상황들입니다.</span>
+                    </p>
+
+                    <div class="wp-example-grid">
+                        <div class="wp-example">
+                            <span class="wp-example-tag"><span class="rb-content-en">Mission</span><span class="rb-content-ko" style="display:none;">미션</span></span>
+                            <h4><span class="rb-content-en">Completing a 3-cell L</span><span class="rb-content-ko" style="display:none;">3칸 L형 완성</span></h4>
+                            <p><span class="rb-content-en">The open 3-cell mission is an L. Mina has B2, B3, and C3 tickets. Those cells form a rotated L, so she discards all three tickets and takes the top topping from B2, B3, and C3. The 3-cell mission is then replaced.</span><span class="rb-content-ko" style="display:none;">공개된 3칸 미션이 L형입니다. 미나는 B2·B3·C3 티켓을 가지고 있습니다. 세 칸은 회전한 L형이므로 티켓 3장을 버리고 B2·B3·C3의 맨 위 토핑을 가져옵니다. 이후 3칸 미션을 교체합니다.</span></p>
+                            <div class="wp-ticket-row"><span class="wp-ticket">B2</span><span class="wp-ticket">B3</span><span class="wp-ticket">C3</span></div>
+                        </div>
+                        <div class="wp-example">
+                            <span class="wp-example-tag"><span class="rb-content-en">Aroma</span><span class="rb-content-ko" style="display:none;">향기</span></span>
+                            <h4><span class="rb-content-en">Two Aromas at once</span><span class="rb-content-ko" style="display:none;">향기 2개를 한 번에 획득</span></h4>
+                            <p><span class="rb-content-en">Alex owns 2 Aromas. Bea owns 1, then claims 2 more in one mission. Resolve the first: Alex gains 2 and Bea gains 2. Resolve the second: Alex gains 2 and Bea gains 3. The action awards 4 points to Alex and 5 to Bea.</span><span class="rb-content-ko" style="display:none;">알렉스는 향기 2개, 비는 향기 1개를 가지고 있습니다. 비가 한 미션으로 향기 2개를 가져갑니다. 첫 타일 처리 시 알렉스 +2점, 비 +2점. 두 번째 처리 시 알렉스 +2점, 비 +3점입니다. 이 행동으로 알렉스는 4점, 비는 5점을 얻습니다.</span></p>
+                        </div>
+                        <div class="wp-example">
+                            <span class="wp-example-tag"><span class="rb-content-en">Macaron</span><span class="rb-content-ko" style="display:none;">마카롱</span></span>
+                            <h4><span class="rb-content-en">An odd collection</span><span class="rb-content-ko" style="display:none;">홀수 개의 마카롱</span></h4>
+                            <p><span class="rb-content-en">Joon owns Macarons worth 5, 4, and 2. Only two can form a complete pair, so the lowest tile is unpaired. Joon scores 5 + 4 = 9 points.</span><span class="rb-content-ko" style="display:none;">준은 5·4·2점 마카롱을 가지고 있습니다. 2개만 완성 페어가 되므로 가장 낮은 2점 타일은 미완성입니다. 준은 5 + 4 = 9점을 얻습니다.</span></p>
+                        </div>
+                        <div class="wp-example">
+                            <span class="wp-example-tag"><span class="rb-content-en">Final score</span><span class="rb-content-ko" style="display:none;">최종 점수</span></span>
+                            <h4><span class="rb-content-en">One bakery total</span><span class="rb-content-ko" style="display:none;">한 플레이어의 총점</span></h4>
+                            <p><span class="rb-content-en">A player has VIPs worth 7 and 2, 3 Cherries, 8 Aroma points, 3 Strawberries, 2 Marshmallows, Cookies worth 4 and 3, and Macarons worth 5, 3, and 2. That is 9 + 15 + 8 (VIP · Cherry · Aroma), 9 + 3 + 7 (Berry · Mallow · Cookie), and 8 (Macaron, the 2 unpaired). <strong>Total: 59 points.</strong></span><span class="rb-content-ko" style="display:none;">VIP 7점과 2점, 체리 3개, 향기 점수 8점, 딸기 3개, 마시멜로 2개, 쿠키 4점과 3점, 마카롱 5·3·2점을 가지고 있습니다. 9 + 15 + 8 (VIP · 체리 · 향기), 9 + 3 + 7 (딸기 · 마시멜로 · 쿠키), 8 (마카롱, 2점 미완성)입니다. <strong>총점: 59점.</strong></span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. Clarifications -->
+                <section class="rb-section" id="wp-rb-faq">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span class="rb-content-en">10. Clarifications</span>
+                        <span class="rb-content-ko" style="display:none;">10. 세부 규칙</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Answers to edge cases that often appear in a first game.</span>
+                        <span class="rb-content-ko" style="display:none;">첫 게임에서 생기기 쉬운 질문입니다.</span>
+                    </p>
+
+                    <div class="wp-faq">
+                        <details open>
+                            <summary><span><span class="rb-content-en">Can a mission be rotated or flipped?</span><span class="rb-content-ko" style="display:none;">미션을 회전하거나 뒤집어도 되나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">Yes. Translation, all four 90° rotations, and mirror reflection are legal. The relative arrangement of cells must otherwise be exact.</span><span class="rb-content-ko" style="display:none;">네. 위치 이동, 90도 단위의 네 방향 회전, 거울 대칭이 모두 허용됩니다. 칸의 상대적인 배치는 정확히 같아야 합니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Can I take a topping below the top layer?</span><span class="rb-content-ko" style="display:none;">아래층 토핑을 골라 가져올 수 있나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">No. Every selected cell gives only its current top tile. Removing it exposes the next layer for later turns.</span><span class="rb-content-ko" style="display:none;">아니요. 선택한 각 칸의 현재 맨 위 토핑만 가져옵니다. 토핑을 제거하면 다음 차례를 위해 아래층이 드러납니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Can I combine two different face-up missions?</span><span class="rb-content-ko" style="display:none;">서로 다른 공개 미션 두 장을 섞어 사용할 수 있나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">No. One mission action must exactly match one of the three face-up cards. You complete and replace only that card.</span><span class="rb-content-ko" style="display:none;">아니요. 한 번의 미션 행동은 공개된 카드 한 장과 정확히 일치해야 하며, 그 카드만 교체합니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Why can the ticket market contain more than four cards?</span><span class="rb-content-ko" style="display:none;">왜 티켓 시장에 4장보다 많을 수 있나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">The market guarantees four different coordinate choices, not four total cards. Duplicates remain, and action B can add more tickets.</span><span class="rb-content-ko" style="display:none;">시장은 총 4장이 아니라 서로 다른 좌표 선택지 4종류를 보장합니다. 중복 티켓은 남고, 행동 B로도 시장에 티켓이 추가됩니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Do Macaron values have to match to form a pair?</span><span class="rb-content-ko" style="display:none;">마카롱 페어의 숫자는 같아야 하나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">No. Any two Macarons form a scoring pair. With an odd total, the lowest-value one is left unpaired.</span><span class="rb-content-ko" style="display:none;">아니요. 마카롱 아무 2개가 득점 페어가 됩니다. 홀수 개라면 가장 낮은 액면 1개를 미완성으로 둡니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Does the player claiming a Sweet Aroma score its trigger?</span><span class="rb-content-ko" style="display:none;">향기를 가져온 플레이어도 그 발동 점수를 받나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">Yes. Add the new tile first, then every owner scores according to their current Aroma count.</span><span class="rb-content-ko" style="display:none;">네. 새 타일을 먼저 보유 영역에 추가한 뒤, 모든 보유자가 현재 향기 개수만큼 점수를 받습니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">Is there a hand limit?</span><span class="rb-content-ko" style="display:none;">손에 들 수 있는 티켓 수 제한이 있나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">No. You may hold any number of coordinate tickets.</span><span class="rb-content-ko" style="display:none;">없습니다. 좌표 티켓은 원하는 만큼 보유할 수 있습니다.</span></div>
+                        </details>
+                        <details>
+                            <summary><span><span class="rb-content-en">What happens if a selected cell is already empty?</span><span class="rb-content-ko" style="display:none;">선택한 칸이 이미 비어 있다면 어떻게 되나요?</span></span></summary>
+                            <div class="wp-faq-answer"><span class="rb-content-en">You still pay its coordinate ticket and it still counts toward the mission shape, but you collect no topping from that cell.</span><span class="rb-content-ko" style="display:none;">좌표 티켓을 내고 미션 모양을 만드는 데에는 사용할 수 있지만, 그 칸에서는 토핑을 가져오지 못합니다.</span></div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- 11. Quick Reference -->
+                <section class="rb-section" id="wp-rb-reference">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="rb-content-en">11. Quick Reference</span>
+                        <span class="rb-content-ko" style="display:none;">11. 빠른 참조</span>
+                    </h3>
+                    <p class="wp-tagline">
+                        <span class="rb-content-en">Keep this section visible during your first game.</span>
+                        <span class="rb-content-ko" style="display:none;">첫 게임 동안 이 부분을 펼쳐 두세요.</span>
+                    </p>
+
+                    <div class="wp-quickref">
+                        <div class="wp-quickref-col">
+                            <h4><span class="rb-content-en">A turn = choose 1 action</span><span class="rb-content-ko" style="display:none;">한 차례 = 행동 1개</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Take 1 market ticket, then refill to 4 different choices.</span><span class="rb-content-ko" style="display:none;">시장 티켓 1장을 가져오고 서로 다른 선택지 4종류까지 보충.</span></li>
+                                <li><span class="rb-content-en">Draw 2 tickets, keep 1, add 1 to the market.</span><span class="rb-content-ko" style="display:none;">티켓 2장을 뽑아 1장은 보유, 1장은 시장에 추가.</span></li>
+                                <li><span class="rb-content-en">Pay 3/4/5 matching coordinates, pop top toppings, refresh that mission.</span><span class="rb-content-ko" style="display:none;">3/4/5개 좌표를 내고 맨 위 토핑을 획득한 뒤 해당 미션 교체.</span></li>
+                            </ul>
+                        </div>
+                        <div class="wp-quickref-col">
+                            <h4><span class="rb-content-en">End &amp; Win</span><span class="rb-content-ko" style="display:none;">종료와 승리</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Trigger: 5 empty waffle cells.</span><span class="rb-content-ko" style="display:none;">빈 와플 칸 5개에서 종료 발동.</span></li>
+                                <li><span class="rb-content-en">Finish the current round.</span><span class="rb-content-ko" style="display:none;">현재 라운드 끝까지 진행.</span></li>
+                                <li><span class="rb-content-en">Most points wins.</span><span class="rb-content-ko" style="display:none;">최고 점수 승리.</span></li>
+                                <li><span class="rb-content-en">Tie: most toppings, then shared win.</span><span class="rb-content-ko" style="display:none;">동점: 토핑 수, 그래도 같으면 공동 승리.</span></li>
+                            </ul>
+                        </div>
+                        <div class="wp-quickref-col">
+                            <h4><span class="rb-content-en">First-game advice</span><span class="rb-content-ko" style="display:none;">첫 게임 전략</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Draft tickets that connect to more than one open mission.</span><span class="rb-content-ko" style="display:none;">공개 미션 둘 이상으로 이어질 수 있는 좌표 티켓을 가져오세요.</span></li>
+                                <li><span class="rb-content-en">Watch which toppings will be exposed after a stack is popped.</span><span class="rb-content-ko" style="display:none;">토핑을 꺼낸 뒤 새로 공개될 아래층까지 살펴보세요.</span></li>
+                                <li><span class="rb-content-en">Do not ignore Sweet Aroma owners—their points can rise during other players' turns.</span><span class="rb-content-ko" style="display:none;">향기 보유자를 무시하지 마세요. 다른 플레이어 차례에도 점수가 커질 수 있습니다.</span></li>
+                                <li><span class="rb-content-en">As the fifth empty cell approaches, convert your hand into points before time runs out.</span><span class="rb-content-ko" style="display:none;">다섯 번째 빈 칸이 가까워지면 손의 좌표 티켓을 점수로 바꿀 기회를 놓치지 마세요.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('waffleRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://waffle-pop.vercel.app/rules" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="rb-content-en">Open Web Rulebook</span>
+                    <span class="rb-content-ko" style="display:none;">웹 규칙서 열기</span>
+                </a>
+                <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
             </div>
         </div>
     </div>
@@ -3621,7 +5052,7 @@
         function openModal(id) {
             const m = document.getElementById(id);
             if (!m) return;
-            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal') {
+            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }
