@@ -3111,6 +3111,573 @@
                 white-space: nowrap;
             }
         }
+
+        /* ===== Alchemists Rulebook Modal ===== */
+        .alchemists-rulebook-modal-card {
+            max-width: 900px;
+        }
+
+        .alchemists-rulebook-modal-card .rb-lang-btn.active {
+            background: #7b4fa2;
+            box-shadow: 0 2px 6px rgba(123, 79, 162, 0.35);
+        }
+
+        .alchemists-rulebook-modal-card .rb-spec-icon,
+        .alchemists-rulebook-modal-card .rb-section-title i,
+        .alchemists-rulebook-modal-card .rb-table .highlight-cell {
+            color: #7b4fa2;
+        }
+
+        .alchemists-rulebook-modal-card .rb-step-badge {
+            background: #7b4fa2;
+            box-shadow: 0 2px 6px rgba(123, 79, 162, 0.35);
+        }
+
+        .alchemists-rulebook-modal-card .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(123, 79, 162, 0.10) 0%, rgba(168, 132, 204, 0.05) 100%);
+            border-left-color: #7b4fa2;
+        }
+
+        .alchemists-rulebook-modal-card .rb-nav-link:hover {
+            background: #f3edf8;
+            color: #5c3a7a;
+            border-color: #dfcdee;
+        }
+
+        .al-tagline {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: var(--text-muted);
+            margin: 0 0 10px;
+        }
+
+        /* Gem chips */
+        .al-gem {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 9px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            border: 1px solid var(--al-line, #d6cbb8);
+            background: var(--al-soft, #f5f0e8);
+            color: var(--al-ink, #6b5a43);
+        }
+
+        .al-gem::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--al-dot, #c9bba6);
+            box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.22);
+        }
+
+        .al-gem.gold { --al-dot: #e0ac2b; --al-soft: #fdf5e0; --al-line: #e8cd8a; --al-ink: #8a6414; }
+        .al-gem.silver { --al-dot: #b8c1cc; --al-soft: #f2f5f8; --al-line: #cfd8e2; --al-ink: #55606d; }
+        .al-gem.bronze { --al-dot: #c2703d; --al-soft: #fbeee5; --al-line: #e7c0a3; --al-ink: #8a4a20; }
+        .al-gem.card { --al-dot: #7b4fa2; --al-soft: #f3edf8; --al-line: #dfcdee; --al-ink: #5c3a7a; }
+
+        /* Market diagram */
+        .al-market {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+            background: #faf7fb;
+            border: 2px dashed #dfcdee;
+            border-radius: var(--radius-md);
+            padding: 12px;
+        }
+
+        .al-market-slot {
+            background: #fff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 9px 8px;
+            text-align: center;
+        }
+
+        .al-slot-no {
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+        }
+
+        .al-slot-card {
+            border-radius: 6px;
+            background: linear-gradient(160deg, #fdfaf2 0%, #f3ead6 100%);
+            border: 1px solid #e2d5ba;
+            padding: 7px 4px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: var(--font-heading), sans-serif;
+            color: #6b5a43;
+            margin-bottom: 6px;
+        }
+
+        .al-slot-arrow {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+        }
+
+        /* Card anatomy */
+        .al-anatomy {
+            display: grid;
+            grid-template-columns: minmax(0, 128px) minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+            margin-top: 10px;
+            background: #faf7fb;
+            border: 2px dashed #dfcdee;
+            border-radius: var(--radius-md);
+            padding: 12px;
+        }
+
+        .al-card-face {
+            border-radius: 8px;
+            background: linear-gradient(160deg, #fdfaf2 0%, #f3ead6 100%);
+            border: 1px solid #e2d5ba;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 3px 10px rgba(100, 80, 50, 0.12);
+        }
+
+        .al-face-top {
+            border: 1.5px solid #d4426b;
+            border-radius: 5px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #8a4a20;
+            background: #fff;
+        }
+
+        .al-face-no {
+            border: 1.5px solid #4e7bb5;
+            border-radius: 5px;
+            padding: 3px;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            font-family: var(--font-heading), sans-serif;
+            color: #2f4a6d;
+            background: #fff;
+        }
+
+        .al-face-sub {
+            border: 1.5px solid #4e9b6b;
+            border-radius: 5px;
+            padding: 6px 5px;
+            text-align: center;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #2f6d4a;
+            background: #fff;
+        }
+
+        .al-anatomy-notes {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .al-note {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            font-size: 0.79rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .al-note b {
+            color: var(--text-main);
+        }
+
+        .al-note-key {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 3px;
+            margin-top: 3px;
+            border: 2px solid currentColor;
+        }
+
+        .al-note-key.red { color: #d4426b; }
+        .al-note-key.blue { color: #4e7bb5; }
+        .al-note-key.green { color: #4e9b6b; }
+
+        /* Turn flow strip */
+        .al-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+        }
+
+        .al-flow-step {
+            background: var(--bg-warm);
+            border: 1px solid var(--glass-border);
+            border-top: 3px solid #7b4fa2;
+            border-radius: var(--radius-sm);
+            padding: 9px 11px;
+        }
+
+        .al-flow-no {
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            color: #7b4fa2;
+            margin-bottom: 3px;
+        }
+
+        .al-flow-step h4 {
+            margin: 0 0 3px;
+            font-size: 0.83rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .al-flow-step p {
+            margin: 0;
+            font-size: 0.77rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        /* Action cards */
+        .al-action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+            gap: 9px;
+        }
+
+        .al-action {
+            border: 1px solid var(--glass-border);
+            border-left: 4px solid var(--al-dot, #7b4fa2);
+            border-radius: var(--radius-sm);
+            background: #fff;
+            padding: 9px 12px;
+        }
+
+        .al-action h4 {
+            margin: 0 0 4px;
+            font-size: 0.83rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .al-action p {
+            margin: 0;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .al-action.gold { --al-dot: #e0ac2b; }
+        .al-action.silver { --al-dot: #b8c1cc; }
+        .al-action.bronze { --al-dot: #c2703d; }
+        .al-action.card { --al-dot: #7b4fa2; }
+
+        /* Secondary action types */
+        .al-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+            gap: 9px;
+        }
+
+        .al-type {
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            border: 1px solid var(--al-line, var(--glass-border));
+            background: var(--al-soft, #fff);
+        }
+
+        .al-type-tag {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--al-dot, #7b4fa2);
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .al-type h4 {
+            margin: 0 0 4px;
+            font-size: 0.83rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .al-type p {
+            margin: 0 0 5px;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .al-type ul {
+            margin: 0;
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .al-type li {
+            font-size: 0.76rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+
+        .al-type.active { --al-dot: #c2703d; --al-soft: #fdf6f0; --al-line: #e7c0a3; }
+        .al-type.bonus { --al-dot: #4e9b6b; --al-soft: #f0f8f3; --al-line: #bfe0cd; }
+        .al-type.scoring { --al-dot: #4e7bb5; --al-soft: #eff5fb; --al-line: #c3d8ec; }
+
+        /* NOW / NEXT timing */
+        .al-timing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 9px;
+            margin-top: 10px;
+        }
+
+        .al-timing-card {
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            border: 1px solid var(--glass-border);
+            background: #fff;
+        }
+
+        .al-timing-badge {
+            display: inline-block;
+            font-size: 0.66rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .al-timing-card.now .al-timing-badge {
+            background: #4e9b6b;
+            color: #fff;
+        }
+
+        .al-timing-card.next .al-timing-badge {
+            background: #c2703d;
+            color: #fff;
+        }
+
+        .al-timing-card p {
+            margin: 0 0 6px;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+        }
+
+        .al-timing-card ul {
+            margin: 0;
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .al-timing-card li {
+            font-size: 0.76rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+
+        /* Scoring formulas */
+        .al-formula-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .al-formula {
+            background: var(--bg-warm);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 9px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .al-formula .vp {
+            font-weight: 800;
+            color: #7b4fa2;
+        }
+
+        /* Encyclopedia */
+        .al-enc-scroll {
+            max-height: 340px;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+        }
+
+        .al-enc {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.76rem;
+        }
+
+        .al-enc thead th {
+            position: sticky;
+            top: 0;
+            background: #f6f1fa;
+            padding: 7px 9px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-align: left;
+            border-bottom: 2px solid #dfcdee;
+            z-index: 1;
+        }
+
+        .al-enc td {
+            padding: 6px 9px;
+            border-bottom: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+
+        .al-enc tr:last-child td {
+            border-bottom: none;
+        }
+
+        .al-enc tr:nth-child(even) td {
+            background: rgba(245, 240, 248, 0.5);
+        }
+
+        .al-enc .al-enc-no {
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        .al-enc-type {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            padding: 1px 7px;
+            border-radius: 999px;
+            white-space: nowrap;
+            color: #fff;
+        }
+
+        .al-enc-type.active { background: #c2703d; }
+        .al-enc-type.bonus { background: #4e9b6b; }
+        .al-enc-type.scoring { background: #4e7bb5; }
+
+        /* Quick reference */
+        .al-quickref {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 9px;
+        }
+
+        .al-quickref-col {
+            background: #faf7fb;
+            border: 1px solid #dfcdee;
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+        }
+
+        .al-quickref-col h4 {
+            margin: 0 0 6px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #5c3a7a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .al-quickref-col ul {
+            margin: 0;
+            padding-left: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .al-quickref-col li {
+            font-size: 0.79rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 640px) {
+            .al-market {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .al-anatomy {
+                grid-template-columns: 1fr;
+            }
+
+            .al-card-face {
+                max-width: 150px;
+            }
+
+            /* 10 sections would wrap into several rows and swallow the viewport,
+               so scroll the jump bar sideways instead. */
+            .alchemists-rulebook-modal-card .rulebook-nav-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 0;
+                scrollbar-width: none;
+            }
+
+            .alchemists-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .alchemists-rulebook-modal-card .rb-nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            .alchemists-rulebook-modal-card .proto-modal-footer {
+                flex-wrap: wrap;
+                padding: 12px 14px;
+            }
+
+            .alchemists-rulebook-modal-card .proto-modal-footer .btn-secondary,
+            .alchemists-rulebook-modal-card .proto-modal-footer .btn-play-proto {
+                white-space: nowrap;
+                font-size: 0.82rem;
+            }
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -3428,7 +3995,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('alchemistsRulebookModal')" title="Alchemists Full Rulebook" aria-label="Alchemists Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -5935,6 +6502,994 @@
         </div>
     </div>
 
+    <!-- Alchemists Full Rulebook Modal -->
+    <div class="proto-modal-overlay" id="alchemistsRulebookModal" role="dialog" aria-modal="true" aria-labelledby="alchemistsRulebookTitle" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card alchemists-rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title" id="alchemistsRulebookTitle">
+                    <i class="fa-solid fa-flask" style="color: #7b4fa2;"></i>
+                    <span class="rb-title-text-en">Alchemists — Full Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">연금술사 — 전체 규칙서</span>
+                </div>
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'alchemistsRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'alchemistsRulebookModal')">EN</button>
+                    </div>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('alchemistsRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-info')" class="rb-nav-link"><i class="fa-solid fa-circle-info"></i> <span class="rb-content-en">1. Overview</span><span class="rb-content-ko" style="display:none;">1. 게임 정보</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-components')" class="rb-nav-link"><i class="fa-solid fa-box-open"></i> <span class="rb-content-en">2. Components</span><span class="rb-content-ko" style="display:none;">2. 구성물</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-setup')" class="rb-nav-link"><i class="fa-solid fa-sliders"></i> <span class="rb-content-en">3. Setup</span><span class="rb-content-ko" style="display:none;">3. 게임 준비</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-turn')" class="rb-nav-link"><i class="fa-solid fa-gamepad"></i> <span class="rb-content-en">4. Turn Sequence</span><span class="rb-content-ko" style="display:none;">4. 턴 진행</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-main')" class="rb-nav-link"><i class="fa-solid fa-hand-pointer"></i> <span class="rb-content-en">5. Main Actions</span><span class="rb-content-ko" style="display:none;">5. 메인 액션</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-secondary')" class="rb-nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> <span class="rb-content-en">6. Secondary Actions</span><span class="rb-content-ko" style="display:none;">6. 보조 액션</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-scoring')" class="rb-nav-link"><i class="fa-solid fa-star"></i> <span class="rb-content-en">7. Selling &amp; Scoring</span><span class="rb-content-ko" style="display:none;">7. 판매와 점수</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-endgame')" class="rb-nav-link"><i class="fa-solid fa-flag-checkered"></i> <span class="rb-content-en">8. End of Game</span><span class="rb-content-ko" style="display:none;">8. 게임 종료</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-encyclopedia')" class="rb-nav-link"><i class="fa-solid fa-book"></i> <span class="rb-content-en">9. Card Encyclopedia</span><span class="rb-content-ko" style="display:none;">9. 카드 도감</span></a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('al-rb-reference')" class="rb-nav-link"><i class="fa-solid fa-list-check"></i> <span class="rb-content-en">10. Quick Reference</span><span class="rb-content-ko" style="display:none;">10. 빠른 참조</span></a>
+                </nav>
+
+                <!-- 1. Overview -->
+                <section class="rb-section" id="al-rb-info">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Overview</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 정보</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Trade gems, complete the formula. Draft cards, refine gold, silver and bronze, and build an engine of your own.</span>
+                        <span class="rb-content-ko" style="display:none;">보석을 거래하고 공식을 완성하세요. 카드를 드래프트하고 금·은·동을 정제해 자신만의 엔진을 완성하는 게임입니다.</span>
+                    </p>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">2–4 Players</span><span class="rb-content-ko" style="display:none;">2~4명</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Time</span><span class="rb-content-ko" style="display:none;">시간</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">30 Mins</span><span class="rb-content-ko" style="display:none;">약 30분</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Age</span><span class="rb-content-ko" style="display:none;">연령</span></div>
+                                <div class="rb-spec-val">10+</div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-gears rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Genre</span><span class="rb-content-ko" style="display:none;">장르</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">Engine Building</span><span class="rb-content-ko" style="display:none;">엔진 빌딩</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            <strong>Alchemists</strong> is an engine-building set collection game with a unique drafting system. Every card does <strong>two jobs at once</strong>: its <strong>main action</strong> tells you which gems you collect and which market card you draft, and its <strong>secondary action</strong> becomes part of your permanent workshop. The trick is that a card you want for its gems may not be the card you want for its engine.
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>연금술사</strong>는 독특한 드래프트 시스템을 가진 엔진 빌딩 · 셋 컬렉션 게임입니다. 모든 카드는 <strong>두 가지 역할</strong>을 동시에 합니다. <strong>메인 액션</strong>은 어떤 보석을 얻고 어떤 마켓 카드를 가져올지 정하고, <strong>보조 액션</strong>은 내 공방에 영구히 남습니다. 보석이 탐나는 카드와 엔진으로 갖고 싶은 카드가 다르다는 점이 이 게임의 핵심입니다.
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber" style="margin-top: 10px;">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div>
+                            <strong class="rb-content-en">Goal of the game</strong>
+                            <strong class="rb-content-ko" style="display:none;">게임의 목표</strong>
+                            <div class="rb-content-en">Score the most points. The final round triggers when any player reaches <strong>50 points</strong> or when <strong>12 cards</strong> have been played. After equal turns, leftover gems convert to points and the highest score wins.</div>
+                            <div class="rb-content-ko" style="display:none;">가장 많은 점수를 얻으세요. 누군가 <strong>50점</strong>에 도달하거나 <strong>12장</strong>의 카드를 플레이하면 최종 라운드가 발동합니다. 모두가 동등한 턴을 마친 뒤 남은 보석을 점수로 정산하며, 최종 점수가 가장 높은 사람이 승리합니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Components -->
+                <section class="rb-section" id="al-rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-box-open"></i>
+                        <span class="rb-content-en">2. Components</span>
+                        <span class="rb-content-ko" style="display:none;">2. 구성물</span>
+                    </h3>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-clone rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">67</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Game Cards</span><span class="rb-content-ko" style="display:none;">게임 카드</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-table-columns rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">4</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Starting Boards</span><span class="rb-content-ko" style="display:none;">시작 카드 보드</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-gem rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">75</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Gem Tokens</span><span class="rb-content-ko" style="display:none;">보석 토큰</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-chart-line rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label">1 + 4</div>
+                                <div class="rb-spec-val" style="font-size: 0.8rem;"><span class="rb-content-en">Board &amp; Meeples</span><span class="rb-content-ko" style="display:none;">점수판과 미플</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 4px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">67</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Game Cards</span><span class="rb-content-ko" style="display:none;">게임 카드</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">16 starting cards (4 identical sets lettered A–D) and 51 regular cards numbered #1–#51. Starting cards carry letters instead of unique numbers, and every player begins with the same four.</span><span class="rb-content-ko" style="display:none;">시작 카드 16장(A~D 4세트)과 일반 카드 51장(1~51번). 시작 카드는 고유번호 대신 알파벳이 적혀 있고, 모든 플레이어가 같은 4장으로 시작합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Starting Card Boards</span><span class="rb-content-ko" style="display:none;">시작 카드 보드</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Each board gathers 3 cards showing the base scoring rules. Each of those cards also grants 1 inventory slot, so every player starts with 3 gem slots.</span><span class="rb-content-ko" style="display:none;">보드에는 기본 점수 공식이 적힌 카드 3장이 모여 있습니다. 이 카드들은 각각 인벤토리 1칸을 제공하므로, 모든 플레이어는 보석 3칸으로 시작합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">75</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Gem Tokens &amp; 3 Containers</span><span class="rb-content-ko" style="display:none;">보석 토큰과 보석통 3개</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">25 Gold, 25 Silver, 25 Bronze. At the start of the game every gem sits in its own container.</span><span class="rb-content-ko" style="display:none;">금 25개, 은 25개, 동 25개. 게임 시작 시 모든 보석은 각자의 보석통에 담겨 있습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-flag"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Score Board &amp; 4 Meeples</span><span class="rb-content-ko" style="display:none;">점수판과 미플 4개</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">A standard score track with one meeple per player.</span><span class="rb-content-ko" style="display:none;">각 플레이어의 점수를 표시하는 일반적인 점수판과 미플입니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead" style="margin-top: 12px;">
+                        <i class="fa-solid fa-id-card" style="color: #7b4fa2;"></i>
+                        <span class="rb-content-en">Anatomy of a game card</span>
+                        <span class="rb-content-ko" style="display:none;">게임 카드 구성</span>
+                    </div>
+                    <div class="al-anatomy">
+                        <div class="al-card-face" aria-hidden="true">
+                            <div class="al-face-top">🟡🟡 + 🃏</div>
+                            <div class="al-face-no">24</div>
+                            <div class="al-face-sub">SCORING<br>⇩ 10</div>
+                        </div>
+                        <div class="al-anatomy-notes">
+                            <div class="al-note">
+                                <span class="al-note-key red"></span>
+                                <div>
+                                    <b><span class="rb-content-en">Main Action (red)</span><span class="rb-content-ko" style="display:none;">메인 액션 (빨강)</span></b><br>
+                                    <span class="rb-content-en">What the card does when you play it. A gold, silver or bronze icon means you take that many of that gem and draft the market card matched to it.</span>
+                                    <span class="rb-content-ko" style="display:none;">이 카드를 플레이할 때 하는 행동입니다. 금·은·동 아이콘은 그만큼의 보석을 가져오고, 그 보석에 매칭된 마켓 카드를 드래프트한다는 뜻입니다.</span>
+                                </div>
+                            </div>
+                            <div class="al-note">
+                                <span class="al-note-key blue"></span>
+                                <div>
+                                    <b><span class="rb-content-en">Unique Number (blue)</span><span class="rb-content-ko" style="display:none;">고유 번호 (파랑)</span></b><br>
+                                    <span class="rb-content-en">The card's number. This is what the market sorts by, so the number decides which gem column a card lands in.</span>
+                                    <span class="rb-content-ko" style="display:none;">카드의 고유 번호입니다. 마켓은 이 번호로 정렬되므로, 번호에 따라 그 카드가 어느 보석 열에 놓일지가 정해집니다.</span>
+                                </div>
+                            </div>
+                            <div class="al-note">
+                                <span class="al-note-key green"></span>
+                                <div>
+                                    <b><span class="rb-content-en">Secondary Action (green)</span><span class="rb-content-ko" style="display:none;">보조 액션 (초록)</span></b><br>
+                                    <span class="rb-content-en">Printed horizontally in black it is an <strong>ACTIVE</strong> effect that fires once, right now. Printed vertically in blue it is a <strong>PASSIVE</strong> effect that joins your engine and widens your inventory by one slot.</span>
+                                    <span class="rb-content-ko" style="display:none;">검은색 가로 표기는 즉시 1회 발동하는 <strong>액티브</strong> 효과입니다. 파란색 세로 표기는 내 엔진에 합류해 인벤토리를 1칸 넓히는 <strong>패시브</strong> 효과입니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Setup -->
+                <section class="rb-section" id="al-rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Setup</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">A</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Take a board and four starting cards</span><span class="rb-content-ko" style="display:none;">보드와 시작 카드 4장을 받습니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Each player takes one starting card board and the 4 starting cards of one letter. The board's 3 scoring cards give 1 inventory slot each, so everyone starts with 3 slots.</span><span class="rb-content-ko" style="display:none;">각자 시작 카드 보드 1개와 같은 알파벳의 시작 카드 4장을 가져옵니다. 보드의 점수 카드 3장이 각각 인벤토리 1칸을 주므로 모두 3칸으로 시작합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">B</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Fill the gem containers</span><span class="rb-content-ko" style="display:none;">보석통을 채웁니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Separate the gems into gold, silver and bronze and place each type in its own container within everyone's reach.</span><span class="rb-content-ko" style="display:none;">보석을 금·은·동으로 나누어 각각의 보석통에 담아 모두의 손이 닿는 곳에 둡니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">C</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Build the deck and open the market</span><span class="rb-content-ko" style="display:none;">덱을 만들고 마켓을 엽니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Shuffle all non-starting cards into a deck. Reveal 4 and lay them out in ascending order of card number. Gold goes under the lowest, silver under the next, bronze under the next. The highest-numbered card is left without a gem container.</span><span class="rb-content-ko" style="display:none;">시작 카드가 아닌 카드를 모두 섞어 덱을 만듭니다. 4장을 공개해 카드 번호 오름차순으로 배열합니다. 가장 낮은 번호 아래에 금, 그다음에 은, 그다음에 동을 매칭합니다. 가장 높은 번호 카드에는 보석통을 매칭하지 않습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">D</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Set scores to zero</span><span class="rb-content-ko" style="display:none;">점수를 0으로 맞춥니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Each player picks a meeple and places it on 0 on the score board.</span><span class="rb-content-ko" style="display:none;">각자 미플을 하나 골라 점수판의 0에 놓습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">E</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Choose a first player</span><span class="rb-content-ko" style="display:none;">시작 플레이어를 정합니다</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Play then proceeds to the left.</span><span class="rb-content-ko" style="display:none;">이후 차례는 왼쪽으로 진행합니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead" style="margin-top: 12px;">
+                        <i class="fa-solid fa-store" style="color: #7b4fa2;"></i>
+                        <span class="rb-content-en">The ascending market</span>
+                        <span class="rb-content-ko" style="display:none;">오름차순 마켓</span>
+                    </div>
+                    <div class="al-market">
+                        <div class="al-market-slot">
+                            <div class="al-slot-no"><span class="rb-content-en">Slot 1 · lowest</span><span class="rb-content-ko" style="display:none;">1슬롯 · 최저</span></div>
+                            <div class="al-slot-card">10</div>
+                            <div class="al-slot-arrow">▼</div>
+                            <span class="al-gem gold"><span class="rb-content-en">GOLD</span><span class="rb-content-ko" style="display:none;">금</span></span>
+                        </div>
+                        <div class="al-market-slot">
+                            <div class="al-slot-no"><span class="rb-content-en">Slot 2</span><span class="rb-content-ko" style="display:none;">2슬롯</span></div>
+                            <div class="al-slot-card">32</div>
+                            <div class="al-slot-arrow">▼</div>
+                            <span class="al-gem silver"><span class="rb-content-en">SILVER</span><span class="rb-content-ko" style="display:none;">은</span></span>
+                        </div>
+                        <div class="al-market-slot">
+                            <div class="al-slot-no"><span class="rb-content-en">Slot 3</span><span class="rb-content-ko" style="display:none;">3슬롯</span></div>
+                            <div class="al-slot-card">37</div>
+                            <div class="al-slot-arrow">▼</div>
+                            <span class="al-gem bronze"><span class="rb-content-en">BRONZE</span><span class="rb-content-ko" style="display:none;">동</span></span>
+                        </div>
+                        <div class="al-market-slot">
+                            <div class="al-slot-no"><span class="rb-content-en">Slot 4 · highest</span><span class="rb-content-ko" style="display:none;">4슬롯 · 최고</span></div>
+                            <div class="al-slot-card">44</div>
+                            <div class="al-slot-arrow">▼</div>
+                            <span class="al-gem card"><span class="rb-content-en">FREE PICK ONLY</span><span class="rb-content-ko" style="display:none;">자유 획득 전용</span></span>
+                        </div>
+                    </div>
+                    <div class="rb-callout-box blue">
+                        <i class="fa-solid fa-arrow-down-1-9"></i>
+                        <div>
+                            <strong class="rb-content-en">The market re-sorts every turn</strong>
+                            <strong class="rb-content-ko" style="display:none;">마켓은 매 턴 다시 정렬됩니다</strong>
+                            <div class="rb-content-en">Because the four face-up cards are always re-sorted by number, a card's gem column is not fixed. The same card can be the gold card this turn and the bronze card next turn, depending on what gets revealed.</div>
+                            <div class="rb-content-ko" style="display:none;">공개된 4장은 항상 번호순으로 다시 정렬되므로, 카드가 놓이는 보석 열은 고정되어 있지 않습니다. 새로 공개되는 카드에 따라, 이번 턴에 금 카드였던 것이 다음 턴에는 동 카드가 될 수 있습니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Turn Sequence -->
+                <section class="rb-section" id="al-rb-turn">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span class="rb-content-en">4. Turn Sequence</span>
+                        <span class="rb-content-ko" style="display:none;">4. 턴 진행 순서</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">On your turn you play exactly one card from your hand, then work through four steps in order.</span>
+                        <span class="rb-content-ko" style="display:none;">자기 차례에는 손패에서 카드 정확히 1장을 내고, 아래 네 단계를 순서대로 진행합니다.</span>
+                    </p>
+
+                    <div class="al-flow">
+                        <div class="al-flow-step">
+                            <div class="al-flow-no"><span class="rb-content-en">Step 1</span><span class="rb-content-ko" style="display:none;">단계 1</span></div>
+                            <h4><span class="rb-content-en">Main Action</span><span class="rb-content-ko" style="display:none;">메인 액션</span></h4>
+                            <p><span class="rb-content-en">Play 1 card from hand. Collect the gems it shows and draft the market card matched to that gem — or, on a Free Card action, choose any market card.</span><span class="rb-content-ko" style="display:none;">손패에서 카드 1장을 플레이합니다. 표시된 보석을 획득하고 그 보석에 매칭된 마켓 카드를 드래프트합니다. 자유 획득 카드라면 마켓 4장 중 원하는 1장을 고릅니다.</span></p>
+                        </div>
+                        <div class="al-flow-step">
+                            <div class="al-flow-no"><span class="rb-content-en">Step 2</span><span class="rb-content-ko" style="display:none;">단계 2</span></div>
+                            <h4><span class="rb-content-en">Secondary Action</span><span class="rb-content-ko" style="display:none;">보조 액션</span></h4>
+                            <p><span class="rb-content-en">Resolve the played card's lower half: run its ACTIVE exchange once, or attach it as a PASSIVE card beneath your board for +1 inventory slot.</span><span class="rb-content-ko" style="display:none;">낸 카드의 아래쪽을 처리합니다. 액티브 교환을 1회 실행하거나, 패시브 카드로 보드 아래에 장착해 인벤토리를 +1칸 확장합니다.</span></p>
+                        </div>
+                        <div class="al-flow-step">
+                            <div class="al-flow-no"><span class="rb-content-en">Step 3</span><span class="rb-content-ko" style="display:none;">단계 3</span></div>
+                            <h4><span class="rb-content-en">Resolve &amp; Sell</span><span class="rb-content-ko" style="display:none;">정산과 판매</span></h4>
+                            <p><span class="rb-content-en">Use each-turn exchanges, apply point-paying passive abilities and sell gems by your scoring formulas — in any order, as often as you like.</span><span class="rb-content-ko" style="display:none;">매 턴 교환 능력, 점수를 주는 패시브 능력, 보유한 공식에 따른 보석 판매를 순서 없이 원하는 만큼 수행합니다.</span></p>
+                        </div>
+                        <div class="al-flow-step">
+                            <div class="al-flow-no"><span class="rb-content-en">Step 4</span><span class="rb-content-ko" style="display:none;">단계 4</span></div>
+                            <h4><span class="rb-content-en">Market Replenish</span><span class="rb-content-ko" style="display:none;">마켓 보충</span></h4>
+                            <p><span class="rb-content-en">Reveal 1 new card from the deck and re-sort all 4 market cards into ascending order. The turn passes to the left.</span><span class="rb-content-ko" style="display:none;">덱에서 새 카드 1장을 공개하고 마켓 4장을 다시 오름차순으로 정렬합니다. 차례는 왼쪽으로 넘어갑니다.</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber">
+                        <i class="fa-solid fa-box"></i>
+                        <div>
+                            <strong class="rb-content-en">The inventory limit is only checked when your turn ends</strong>
+                            <strong class="rb-content-ko" style="display:none;">인벤토리 한도는 턴이 끝날 때만 확인합니다</strong>
+                            <div class="rb-content-en">You may hold more gems than your limit during your turn — that is how big exchanges work. Anything still over the limit when you finish is returned to the containers.</div>
+                            <div class="rb-content-ko" style="display:none;">턴 도중에는 한도보다 많은 보석을 들고 있어도 됩니다. 큰 교환은 이렇게 성립합니다. 턴을 마칠 때 한도를 넘은 보석은 보석통으로 반환합니다.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Main Actions -->
+                <section class="rb-section" id="al-rb-main">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        <span class="rb-content-en">5. The Four Main Actions</span>
+                        <span class="rb-content-ko" style="display:none;">5. 네 가지 메인 액션</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Your four starting cards carry all four main actions in the game, so every player can do anything on turn one.</span>
+                        <span class="rb-content-ko" style="display:none;">시작 카드 4장에는 게임의 메인 액션 4종류가 모두 들어 있어, 첫 턴부터 어떤 행동이든 할 수 있습니다.</span>
+                    </p>
+
+                    <div class="al-action-grid">
+                        <div class="al-action gold">
+                            <h4><span class="al-gem gold"><span class="rb-content-en">GOLD</span><span class="rb-content-ko" style="display:none;">금</span></span></h4>
+                            <p><span class="rb-content-en">Take the shown number of gold, then draft the card matched to the gold container.</span><span class="rb-content-ko" style="display:none;">표시된 수만큼 금을 가져온 뒤, 금 보석통에 매칭된 카드를 드래프트합니다.</span></p>
+                        </div>
+                        <div class="al-action silver">
+                            <h4><span class="al-gem silver"><span class="rb-content-en">SILVER</span><span class="rb-content-ko" style="display:none;">은</span></span></h4>
+                            <p><span class="rb-content-en">Take the shown number of silver, then draft the card matched to the silver container.</span><span class="rb-content-ko" style="display:none;">표시된 수만큼 은을 가져온 뒤, 은 보석통에 매칭된 카드를 드래프트합니다.</span></p>
+                        </div>
+                        <div class="al-action bronze">
+                            <h4><span class="al-gem bronze"><span class="rb-content-en">BRONZE</span><span class="rb-content-ko" style="display:none;">동</span></span></h4>
+                            <p><span class="rb-content-en">Take the shown number of bronze, then draft the card matched to the bronze container.</span><span class="rb-content-ko" style="display:none;">표시된 수만큼 동을 가져온 뒤, 동 보석통에 매칭된 카드를 드래프트합니다.</span></p>
+                        </div>
+                        <div class="al-action card">
+                            <h4><span class="al-gem card"><span class="rb-content-en">FREE CARD</span><span class="rb-content-ko" style="display:none;">자유 획득</span></span></h4>
+                            <p><span class="rb-content-en">Choose <strong>any 1</strong> of the 4 face-up cards. If the card you played also shows gems, take those too. This is the <strong>only</strong> way to reach the 4th market card.</span><span class="rb-content-ko" style="display:none;">공개된 4장 중 <strong>원하는 1장</strong>을 가져옵니다. 낸 카드에 보석이 표시되어 있으면 그 보석도 함께 받습니다. 4슬롯 카드를 가져올 수 있는 <strong>유일한</strong> 방법입니다.</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 10px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-gem"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">A colored gem icon means that specific metal. A colorless gem icon means <strong>any gem</strong> of your choice.</span><span class="rb-content-ko" style="display:none;">색이 있는 보석 아이콘은 해당 금속을, 색이 없는 보석 아이콘은 <strong>원하는 보석 아무거나</strong>를 뜻합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-plus"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">If a BONUS card in your engine grants extra gems for this action, take those additional gems now.</span><span class="rb-content-ko" style="display:none;">내 엔진의 보너스 카드가 이 행동에 추가 보석을 준다면, 지금 그만큼 더 가져옵니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-hand"></i></div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">A drafted card goes into your <strong>hand</strong>. You do not play it now — it becomes an option on a later turn.</span><span class="rb-content-ko" style="display:none;">드래프트한 카드는 <strong>손패</strong>로 들어옵니다. 지금 사용하는 것이 아니라, 이후 턴의 선택지가 됩니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. Secondary Actions -->
+                <section class="rb-section" id="al-rb-secondary">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span class="rb-content-en">6. Secondary Actions</span>
+                        <span class="rb-content-ko" style="display:none;">6. 보조 액션</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Every card's lower half is either a one-shot ACTIVE effect or a permanent PASSIVE one. This is where your engine comes from.</span>
+                        <span class="rb-content-ko" style="display:none;">모든 카드의 아래쪽은 1회성 액티브 효과이거나 영구적인 패시브 효과입니다. 엔진은 여기에서 만들어집니다.</span>
+                    </p>
+
+                    <div class="al-type-grid">
+                        <div class="al-type active">
+                            <span class="al-type-tag">ACTIVE · EXCHANGE</span>
+                            <h4><span class="rb-content-en">Fires once, immediately</span><span class="rb-content-ko" style="display:none;">즉시 1회 발동</span></h4>
+                            <p><span class="rb-content-en">The only ACTIVE effect is EXCHANGE. Convert the resource shown on top into the one shown below, as many times as the arrows allow. "ALL" means you may convert every one of that resource you hold.</span><span class="rb-content-ko" style="display:none;">액티브 효과는 교환(EXCHANGE) 하나뿐입니다. 카드 위쪽 자원을 아래쪽 자원으로, 화살표가 허용하는 횟수만큼 바꿉니다. "ALL"은 보유한 해당 자원 전부를 바꿀 수 있다는 뜻입니다.</span></p>
+                            <ul>
+                                <li><span class="rb-content-en">Printed horizontally in black.</span><span class="rb-content-ko" style="display:none;">검은색 가로로 표기됩니다.</span></li>
+                                <li><span class="rb-content-en">The card is then placed to the right of your board.</span><span class="rb-content-ko" style="display:none;">사용 후 보드 오른쪽에 놓습니다.</span></li>
+                                <li><span class="rb-content-en">It does <strong>not</strong> expand your inventory.</span><span class="rb-content-ko" style="display:none;">인벤토리는 확장되지 <strong>않습니다</strong>.</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-type bonus">
+                            <span class="al-type-tag">PASSIVE · BONUS</span>
+                            <h4><span class="rb-content-en">An ongoing benefit</span><span class="rb-content-ko" style="display:none;">지속되는 이득</span></h4>
+                            <p><span class="rb-content-en">BONUS cards keep paying out as the game goes on:</span><span class="rb-content-ko" style="display:none;">보너스 카드는 게임 내내 계속 효과를 냅니다.</span></p>
+                            <ul>
+                                <li><span class="rb-content-en">Extra gems when you take a specific main action.</span><span class="rb-content-ko" style="display:none;">특정 메인 액션을 할 때 추가 보석.</span></li>
+                                <li><span class="rb-content-en">Points for emptying your inventory completely.</span><span class="rb-content-ko" style="display:none;">인벤토리를 완전히 비울 때 점수.</span></li>
+                                <li><span class="rb-content-en">An exchange you may make every turn.</span><span class="rb-content-ko" style="display:none;">턴마다 할 수 있는 교환.</span></li>
+                                <li><span class="rb-content-en">Extra gems whenever you receive bonus gems.</span><span class="rb-content-ko" style="display:none;">보너스 보석을 받을 때 추가 보석.</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-type scoring">
+                            <span class="al-type-tag">PASSIVE · SCORING</span>
+                            <h4><span class="rb-content-en">A new selling formula</span><span class="rb-content-ko" style="display:none;">새로운 판매 공식</span></h4>
+                            <p><span class="rb-content-en">SCORING cards add a selling formula on top of the three you start with — for example <strong>4 Gold → 10 VP</strong>. From then on you may use it whenever you sell.</span><span class="rb-content-ko" style="display:none;">스코어 카드는 시작 시 가진 3개 공식에 새 판매 공식을 더합니다. 예를 들어 <strong>금 4개 → 10점</strong>입니다. 이후 판매할 때마다 사용할 수 있습니다.</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rb-callout-box amber" style="margin-top: 10px;">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <div>
+                            <strong class="rb-content-en">Passive cards widen your workshop</strong>
+                            <strong class="rb-content-ko" style="display:none;">패시브 카드는 공방을 넓힙니다</strong>
+                            <div class="rb-content-en">Slide each PASSIVE card under your starting board. Every one you attach permanently adds <strong>+1 inventory slot</strong>, and that extra slot counts from the very turn you attach it.</div>
+                            <div class="rb-content-ko" style="display:none;">패시브 카드는 시작 카드 보드 아래에 끼워 넣습니다. 장착할 때마다 <strong>인벤토리 +1칸</strong>이 영구히 늘어나며, 그 칸은 장착한 그 턴부터 적용됩니다.</div>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead" style="margin-top: 12px;">
+                        <i class="fa-solid fa-hourglass-half" style="color: #7b4fa2;"></i>
+                        <span class="rb-content-en">When does the ability start working?</span>
+                        <span class="rb-content-ko" style="display:none;">능력은 언제부터 작동하나요?</span>
+                    </div>
+                    <p class="al-tagline" style="margin-bottom: 0;">
+                        <span class="rb-content-en">The side band of each card is marked NOW or NEXT.</span>
+                        <span class="rb-content-ko" style="display:none;">카드 측면 띠에 NOW 또는 NEXT가 표시되어 있습니다.</span>
+                    </p>
+                    <div class="al-timing">
+                        <div class="al-timing-card now">
+                            <span class="al-timing-badge">NOW</span>
+                            <p><span class="rb-content-en">Usable from the very turn it is played, because the action it keys off still lies ahead of you.</span><span class="rb-content-ko" style="display:none;">낸 그 턴부터 사용할 수 있습니다. 능력이 가리키는 행동이 아직 남아 있기 때문입니다.</span></p>
+                            <ul>
+                                <li><span class="rb-content-en">Each-turn exchanges</span><span class="rb-content-ko" style="display:none;">매 턴 교환</span></li>
+                                <li><span class="rb-content-en">+1 VP per turn</span><span class="rb-content-ko" style="display:none;">턴마다 +1점</span></li>
+                                <li><span class="rb-content-en">+2 VP on inventory clear</span><span class="rb-content-ko" style="display:none;">인벤토리 비움 +2점</span></li>
+                                <li><span class="rb-content-en">A SCORING card's selling formula</span><span class="rb-content-ko" style="display:none;">스코어 카드의 판매 공식</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-timing-card next">
+                            <span class="al-timing-badge">NEXT</span>
+                            <p><span class="rb-content-en">Usable from your next turn, because the action it keys off was already over before the card arrived — it cannot apply retroactively.</span><span class="rb-content-ko" style="display:none;">다음 턴부터 사용할 수 있습니다. 능력이 가리키는 행동이 이 카드를 얻기 전에 이미 끝나, 소급 적용할 수 없기 때문입니다.</span></p>
+                            <ul>
+                                <li><span class="rb-content-en">+1 on gem or card acquisition</span><span class="rb-content-ko" style="display:none;">보석·카드 획득 시 +1</span></li>
+                                <li><span class="rb-content-en">+1 extra whenever bonus gems are received</span><span class="rb-content-ko" style="display:none;">보너스 보석 수령 시 +1 추가</span></li>
+                                <li><span class="rb-content-en">+2 VP on inventory expansion</span><span class="rb-content-ko" style="display:none;">인벤토리 확장 시 +2점</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. Selling & Scoring -->
+                <section class="rb-section" id="al-rb-scoring">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rb-content-en">7. Selling &amp; Scoring</span>
+                        <span class="rb-content-ko" style="display:none;">7. 판매와 점수</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Gems are not points. You score by selling them through a formula you own.</span>
+                        <span class="rb-content-ko" style="display:none;">보석 자체는 점수가 아닙니다. 보유한 공식으로 판매해야 점수가 됩니다.</span>
+                    </p>
+
+                    <div class="rb-comp-subhead">
+                        <i class="fa-solid fa-scale-balanced" style="color: #7b4fa2;"></i>
+                        <span class="rb-content-en">The three base formulas on your starting board</span>
+                        <span class="rb-content-ko" style="display:none;">시작 보드의 기본 공식 3종</span>
+                    </div>
+                    <div class="al-formula-row">
+                        <div class="al-formula">
+                            <span class="al-gem gold">×3</span> <span>→</span> <span class="vp">6 VP</span>
+                        </div>
+                        <div class="al-formula">
+                            <span class="al-gem silver">×2</span> <span>→</span> <span class="vp">3 VP</span>
+                        </div>
+                        <div class="al-formula">
+                            <span class="al-gem bronze">×1</span> <span>→</span> <span class="vp">1 VP</span>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Sell as many times as you like during step 3, in any order, mixing base formulas with any SCORING formulas you have added.</span><span class="rb-content-ko" style="display:none;">단계 3에서 원하는 만큼, 순서에 관계없이 판매할 수 있습니다. 기본 공식과 추가한 스코어 공식을 섞어 사용해도 됩니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Point-paying passive abilities are applied from their own card, <strong>once per card per turn</strong>.</span><span class="rb-content-ko" style="display:none;">점수를 주는 패시브 능력은 해당 카드에서 <strong>카드당 턴마다 1회</strong> 적용합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en"><strong>Inventory Clear</strong> applies when gems passed through your inventory this turn and it is empty now — whether they left by selling or were turned into points by the played card's own exchange. A turn that started empty and stayed empty does not count.</span><span class="rb-content-ko" style="display:none;"><strong>인벤토리 비움</strong>은 이번 턴에 보석이 인벤토리를 거쳐 갔고 지금 모두 비어 있을 때 적용됩니다. 판매로 빠졌든, 낸 카드의 교환으로 점수가 되었든 상관없습니다. 처음부터 비어 있던 턴은 해당하지 않습니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Move your meeple along the score board as you earn points.</span><span class="rb-content-ko" style="display:none;">얻은 점수만큼 점수판의 미플을 옮깁니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. End of Game -->
+                <section class="rb-section" id="al-rb-endgame">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                        <span class="rb-content-en">8. End of the Game</span>
+                        <span class="rb-content-ko" style="display:none;">8. 게임 종료와 승리</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Two conditions can end the game, and either way everyone gets the same number of turns.</span>
+                        <span class="rb-content-ko" style="display:none;">두 가지 조건 중 하나로 게임이 끝나며, 어느 쪽이든 모든 플레이어는 같은 횟수의 턴을 갖습니다.</span>
+                    </p>
+
+                    <div class="al-type-grid">
+                        <div class="al-type scoring">
+                            <span class="al-type-tag"><span class="rb-content-en">Condition 1</span><span class="rb-content-ko" style="display:none;">조건 1</span></span>
+                            <h4><span class="rb-content-en">50 or more points</span><span class="rb-content-ko" style="display:none;">50점 이상</span></h4>
+                            <p><span class="rb-content-en">A player finishes their turn with 50+ points on the score board. The meeple's position makes this obvious to everyone.</span><span class="rb-content-ko" style="display:none;">한 플레이어가 점수판에서 50점 이상으로 턴을 마칩니다. 미플의 위치로 모두가 바로 확인할 수 있습니다.</span></p>
+                        </div>
+                        <div class="al-type bonus">
+                            <span class="al-type-tag"><span class="rb-content-en">Condition 2</span><span class="rb-content-ko" style="display:none;">조건 2</span></span>
+                            <h4><span class="rb-content-en">12 cards played</span><span class="rb-content-ko" style="display:none;">카드 12장 플레이</span></h4>
+                            <p><span class="rb-content-en">Count the ACTIVE cards to the right of your board plus the PASSIVE cards attached beneath it — the starting board itself does not count. When that total reaches 12, the final round is triggered.</span><span class="rb-content-ko" style="display:none;">보드 오른쪽의 액티브 카드와 보드 아래에 장착한 패시브 카드를 셉니다. 시작 카드 보드는 세지 않습니다. 합이 12장이 되면 최종 라운드가 발동합니다.</span></p>
+                        </div>
+                    </div>
+
+                    <div class="rb-steps-list" style="margin-top: 10px;">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">The round is played out so that every player has taken an equal number of turns, finishing with the player to the right of the first player.</span><span class="rb-content-ko" style="display:none;">선 플레이어의 오른쪽 플레이어까지 진행하여, 모든 플레이어가 동등한 수의 턴을 마칩니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">Any gems still in your inventory are converted to points using your scoring formulas.</span><span class="rb-content-ko" style="display:none;">인벤토리에 남은 보석을 보유한 점수 공식으로 점수로 변환합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <p class="rb-step-text"><span class="rb-content-en">The highest score wins. If there is a tie, the tied players share the victory.</span><span class="rb-content-ko" style="display:none;">최종 점수가 가장 높은 플레이어가 승리합니다. 동점일 경우 공동 승리합니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. Card Encyclopedia -->
+                <section class="rb-section" id="al-rb-encyclopedia">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-book"></i>
+                        <span class="rb-content-en">9. Card Encyclopedia</span>
+                        <span class="rb-content-ko" style="display:none;">9. 카드 도감</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Every regular card, as implemented in the digital prototype. The left column is the main action (gem and amount); the right is the secondary action.</span>
+                        <span class="rb-content-ko" style="display:none;">디지털 프로토타입에 구현된 일반 카드 목록입니다. 왼쪽은 메인 액션(보석과 개수), 오른쪽은 보조 액션입니다.</span>
+                    </p>
+                    <div class="al-enc-scroll">
+                        <table class="al-enc">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">No.</span><span class="rb-content-ko" style="display:none;">번호</span></th>
+                                    <th><span class="rb-content-en">Main</span><span class="rb-content-ko" style="display:none;">메인</span></th>
+                                    <th><span class="rb-content-en">Type</span><span class="rb-content-ko" style="display:none;">유형</span></th>
+                                    <th><span class="rb-content-en">Secondary Action</span><span class="rb-content-ko" style="display:none;">보조 액션</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="al-enc-no">#1</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +0</span><span class="rb-content-ko" style="display:none;">카드 +0</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange 1 Gold for 3 Silver (1 time)</span><span class="rb-content-ko" style="display:none;">GOLD 1개를 SILVER 3개로 교환 (1회)</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#2</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +0</span><span class="rb-content-ko" style="display:none;">카드 +0</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange 1 Gold for 5 Bronze (1 time)</span><span class="rb-content-ko" style="display:none;">GOLD 1개를 BRONZE 5개로 교환 (1회)</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#3</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 1 Bronze for 2 VP each</span><span class="rb-content-ko" style="display:none;">BRONZE 1개까지 개당 2점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#4</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +1</span><span class="rb-content-ko" style="display:none;">은 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange up to 3 Silver for 1 Gold each</span><span class="rb-content-ko" style="display:none;">SILVER 3개까지 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#5</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +0</span><span class="rb-content-ko" style="display:none;">카드 +0</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Any Gem when playing a Card acquisition action</span><span class="rb-content-ko" style="display:none;">카드 획득 행동을 할 때 아무 보석 +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#6</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +1</span><span class="rb-content-ko" style="display:none;">은 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 2 Silver for 3 VP each</span><span class="rb-content-ko" style="display:none;">SILVER 2개까지 개당 3점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#7</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +1</span><span class="rb-content-ko" style="display:none;">금 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange all Gold in inventory for 3 Bronze each</span><span class="rb-content-ko" style="display:none;">인벤토리의 GOLD 전부를 개당 BRONZE 3개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#8</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +2</span><span class="rb-content-ko" style="display:none;">금 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange 1 Gold for 2 Silver (1 time)</span><span class="rb-content-ko" style="display:none;">GOLD 1개를 SILVER 2개로 교환 (1회)</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#9</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +1</span><span class="rb-content-ko" style="display:none;">카드 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange up to 3 Bronze for 1 Gold each</span><span class="rb-content-ko" style="display:none;">BRONZE 3개까지 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#10</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +1</span><span class="rb-content-ko" style="display:none;">동 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 2 Bronze for 3 VP each</span><span class="rb-content-ko" style="display:none;">BRONZE 2개까지 개당 3점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#11</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Whenever receiving bonus gems, take +1 additional Any Gem</span><span class="rb-content-ko" style="display:none;">보너스 보석을 받을 때마다 아무 보석 +1개 추가</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#12</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +2</span><span class="rb-content-ko" style="display:none;">금 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 1 Gold for 3 VP</span><span class="rb-content-ko" style="display:none;">GOLD 1개까지 3점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#13</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +3</span><span class="rb-content-ko" style="display:none;">동 +3</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 2 Bronze for 2 VP each</span><span class="rb-content-ko" style="display:none;">BRONZE 2개까지 개당 2점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#14</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +2</span><span class="rb-content-ko" style="display:none;">카드 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange up to 3 Silver for 1 Gold each</span><span class="rb-content-ko" style="display:none;">SILVER 3개까지 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#15</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +2</span><span class="rb-content-ko" style="display:none;">은 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell all Silver in inventory for 2 VP each</span><span class="rb-content-ko" style="display:none;">인벤토리의 SILVER 전부를 개당 2점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#16</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +3</span><span class="rb-content-ko" style="display:none;">은 +3</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange up to 2 Silver for 1 Gold each</span><span class="rb-content-ko" style="display:none;">SILVER 2개까지 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#17</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +1</span><span class="rb-content-ko" style="display:none;">동 +1</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Bronze for 1 Silver</span><span class="rb-content-ko" style="display:none;">턴마다 BRONZE 1개를 SILVER 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#18</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +1</span><span class="rb-content-ko" style="display:none;">동 +1</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell all Bronze in inventory for 2 VP each</span><span class="rb-content-ko" style="display:none;">인벤토리의 BRONZE 전부를 개당 2점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#19</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +3</span><span class="rb-content-ko" style="display:none;">은 +3</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 1 Silver for 3 VP</span><span class="rb-content-ko" style="display:none;">SILVER 1개까지 3점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#20</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +1</span><span class="rb-content-ko" style="display:none;">카드 +1</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Any Gem when playing a Card acquisition action</span><span class="rb-content-ko" style="display:none;">카드 획득 행동을 할 때 아무 보석 +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#21</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Bronze when playing a Bronze acquisition action</span><span class="rb-content-ko" style="display:none;">BRONZE 획득 행동을 할 때 BRONZE +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#22</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange all Bronze in inventory for 1 Silver each</span><span class="rb-content-ko" style="display:none;">인벤토리의 BRONZE 전부를 개당 SILVER 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#23</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +1</span><span class="rb-content-ko" style="display:none;">금 +1</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Gold when playing a Gold acquisition action</span><span class="rb-content-ko" style="display:none;">GOLD 획득 행동을 할 때 GOLD +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#24</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +0</span><span class="rb-content-ko" style="display:none;">카드 +0</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 4 Gold -&gt; 10 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — GOLD 4개 → 10점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#25</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +3</span><span class="rb-content-ko" style="display:none;">동 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Bronze when playing a Bronze acquisition action</span><span class="rb-content-ko" style="display:none;">BRONZE 획득 행동을 할 때 BRONZE +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#26</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +2</span><span class="rb-content-ko" style="display:none;">은 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Silver when playing a Silver acquisition action</span><span class="rb-content-ko" style="display:none;">SILVER 획득 행동을 할 때 SILVER +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#27</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +3</span><span class="rb-content-ko" style="display:none;">금 +3</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Sell up to 2 Gold for 3 VP each</span><span class="rb-content-ko" style="display:none;">GOLD 2개까지 개당 3점에 판매</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#28</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +3</span><span class="rb-content-ko" style="display:none;">동 +3</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange all Bronze in inventory for 1 Gold each</span><span class="rb-content-ko" style="display:none;">인벤토리의 BRONZE 전부를 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#29</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +2</span><span class="rb-content-ko" style="display:none;">은 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Silver for 1 Gold</span><span class="rb-content-ko" style="display:none;">턴마다 SILVER 1개를 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#30</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +1</span><span class="rb-content-ko" style="display:none;">동 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 2 Bronze -&gt; 3 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — BRONZE 2개 → 3점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#31</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +2</span><span class="rb-content-ko" style="display:none;">카드 +2</span></span></td>
+                                    <td><span class="al-enc-type active"><span class="rb-content-en">ACTIVE</span><span class="rb-content-ko" style="display:none;">액티브</span></span></td>
+                                    <td><span class="rb-content-en">Exchange all gems in inventory for 1 Gold each</span><span class="rb-content-ko" style="display:none;">인벤토리의 모든 보석을 개당 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#32</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +1</span><span class="rb-content-ko" style="display:none;">은 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 3 Silver -&gt; 6 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — SILVER 3개 → 6점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#33</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +2</span><span class="rb-content-ko" style="display:none;">금 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Gold when playing a Gold acquisition action</span><span class="rb-content-ko" style="display:none;">GOLD 획득 행동을 할 때 GOLD +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#34</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +3</span><span class="rb-content-ko" style="display:none;">은 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Silver for 2 Bronze</span><span class="rb-content-ko" style="display:none;">턴마다 SILVER 1개를 BRONZE 2개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#35</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +3</span><span class="rb-content-ko" style="display:none;">은 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Gain +1 Silver when playing a Silver acquisition action</span><span class="rb-content-ko" style="display:none;">SILVER 획득 행동을 할 때 SILVER +1개</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#36</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +1</span><span class="rb-content-ko" style="display:none;">카드 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 3 Silver -&gt; 6 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — SILVER 3개 → 6점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#37</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +1</span><span class="rb-content-ko" style="display:none;">금 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 4 Gold -&gt; 10 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — GOLD 4개 → 10점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#38</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Bronze for 1 Gold</span><span class="rb-content-ko" style="display:none;">턴마다 BRONZE 1개를 GOLD 1개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#39</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +2</span><span class="rb-content-ko" style="display:none;">카드 +2</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 2 Bronze -&gt; 3 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — BRONZE 2개 → 3점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#40</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +3</span><span class="rb-content-ko" style="display:none;">동 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Gain +1 VP</span><span class="rb-content-ko" style="display:none;">턴마다 +1점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#41</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +3</span><span class="rb-content-ko" style="display:none;">금 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Gold for 3 Bronze</span><span class="rb-content-ko" style="display:none;">턴마다 GOLD 1개를 BRONZE 3개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#42</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +3</span><span class="rb-content-ko" style="display:none;">금 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Each turn: Exchange 1 Gold for 2 Silver</span><span class="rb-content-ko" style="display:none;">턴마다 GOLD 1개를 SILVER 2개로 교환</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#43</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +0</span><span class="rb-content-ko" style="display:none;">카드 +0</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 5 Gold -&gt; 15 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — GOLD 5개 → 15점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#44</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +1</span><span class="rb-content-ko" style="display:none;">동 +1</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Whenever inventory is completely emptied, gain +2 VP</span><span class="rb-content-ko" style="display:none;">인벤토리를 완전히 비울 때마다 +2점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#45</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +1</span><span class="rb-content-ko" style="display:none;">은 +1</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Whenever inventory is completely emptied, gain +2 VP</span><span class="rb-content-ko" style="display:none;">인벤토리를 완전히 비울 때마다 +2점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#46</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +1</span><span class="rb-content-ko" style="display:none;">카드 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 3 Bronze -&gt; 6 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — BRONZE 3개 → 6점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#47</td>
+                                    <td><span class="al-gem card"><span class="rb-content-en">CARD +1</span><span class="rb-content-ko" style="display:none;">카드 +1</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 4 Silver -&gt; 10 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — SILVER 4개 → 10점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#48</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +2</span><span class="rb-content-ko" style="display:none;">동 +2</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 3 Bronze -&gt; 6 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — BRONZE 3개 → 6점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#49</td>
+                                    <td><span class="al-gem bronze"><span class="rb-content-en">BRONZE +3</span><span class="rb-content-ko" style="display:none;">동 +3</span></span></td>
+                                    <td><span class="al-enc-type bonus"><span class="rb-content-en">BONUS</span><span class="rb-content-ko" style="display:none;">보너스</span></span></td>
+                                    <td><span class="rb-content-en">Whenever inventory expands (+1 slot), gain +2 VP</span><span class="rb-content-ko" style="display:none;">인벤토리가 확장될 때마다 (+1칸) +2점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#50</td>
+                                    <td><span class="al-gem silver"><span class="rb-content-en">SILVER +2</span><span class="rb-content-ko" style="display:none;">은 +2</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 4 Silver -&gt; 10 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — SILVER 4개 → 10점</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="al-enc-no">#51</td>
+                                    <td><span class="al-gem gold"><span class="rb-content-en">GOLD +2</span><span class="rb-content-ko" style="display:none;">금 +2</span></span></td>
+                                    <td><span class="al-enc-type scoring"><span class="rb-content-en">SCORING</span><span class="rb-content-ko" style="display:none;">스코어</span></span></td>
+                                    <td><span class="rb-content-en">Scoring rule added: 5 Gold -&gt; 15 VP</span><span class="rb-content-ko" style="display:none;">점수 공식 추가 — GOLD 5개 → 15점</span></td>
+                                </tr>                            </tbody>
+                        </table>
+                    </div>
+                    <div class="rb-callout-box blue">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <div>
+                            <span class="rb-content-en">Listing covers all 51 regular cards, #1–#51, taken from the playable prototype’s own card database.</span>
+                            <span class="rb-content-ko" style="display:none;">플레이 가능한 프로토타입의 카드 데이터베이스에서 가져온 일반 카드 51종 전체(1번~51번)입니다.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. Quick Reference -->
+                <section class="rb-section" id="al-rb-reference">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="rb-content-en">10. Quick Reference</span>
+                        <span class="rb-content-ko" style="display:none;">10. 빠른 참조</span>
+                    </h3>
+                    <p class="al-tagline">
+                        <span class="rb-content-en">Keep this section visible during your first game.</span>
+                        <span class="rb-content-ko" style="display:none;">첫 게임 동안 이 부분을 펼쳐 두세요.</span>
+                    </p>
+
+                    <div class="al-quickref">
+                        <div class="al-quickref-col">
+                            <h4><span class="rb-content-en">A turn, in order</span><span class="rb-content-ko" style="display:none;">턴 순서</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Play 1 card: take its gems, draft its matched market card.</span><span class="rb-content-ko" style="display:none;">카드 1장 플레이: 보석 획득, 매칭된 마켓 카드 드래프트.</span></li>
+                                <li><span class="rb-content-en">Resolve its secondary action: exchange once, or attach for +1 slot.</span><span class="rb-content-ko" style="display:none;">보조 액션 처리: 1회 교환하거나, 장착해 +1칸 확장.</span></li>
+                                <li><span class="rb-content-en">Use each-turn abilities and sell gems, in any order.</span><span class="rb-content-ko" style="display:none;">매 턴 능력 사용과 보석 판매를 순서 없이 수행.</span></li>
+                                <li><span class="rb-content-en">Reveal 1 card, re-sort the market ascending, pass left.</span><span class="rb-content-ko" style="display:none;">카드 1장 공개, 마켓 오름차순 재정렬, 왼쪽으로 차례 넘김.</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-quickref-col">
+                            <h4><span class="rb-content-en">Base formulas</span><span class="rb-content-ko" style="display:none;">기본 공식</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">3 Gold → 6 VP</span><span class="rb-content-ko" style="display:none;">금 3개 → 6점</span></li>
+                                <li><span class="rb-content-en">2 Silver → 3 VP</span><span class="rb-content-ko" style="display:none;">은 2개 → 3점</span></li>
+                                <li><span class="rb-content-en">1 Bronze → 1 VP</span><span class="rb-content-ko" style="display:none;">동 1개 → 1점</span></li>
+                                <li><span class="rb-content-en">Start with 3 inventory slots; each PASSIVE card adds +1.</span><span class="rb-content-ko" style="display:none;">인벤토리 3칸으로 시작하며, 패시브 카드 1장마다 +1칸.</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-quickref-col">
+                            <h4><span class="rb-content-en">End &amp; Win</span><span class="rb-content-ko" style="display:none;">종료와 승리</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Trigger: 50+ points, or 12 cards played.</span><span class="rb-content-ko" style="display:none;">발동: 50점 이상 또는 카드 12장 플레이.</span></li>
+                                <li><span class="rb-content-en">Finish the round so turns are equal.</span><span class="rb-content-ko" style="display:none;">턴 수가 같아지도록 라운드를 마칩니다.</span></li>
+                                <li><span class="rb-content-en">Convert leftover gems by your formulas.</span><span class="rb-content-ko" style="display:none;">남은 보석을 보유 공식으로 점수 변환.</span></li>
+                                <li><span class="rb-content-en">Highest score wins; a tie is a shared victory.</span><span class="rb-content-ko" style="display:none;">최고 점수 승리, 동점은 공동 승리.</span></li>
+                            </ul>
+                        </div>
+                        <div class="al-quickref-col">
+                            <h4><span class="rb-content-en">First-game advice</span><span class="rb-content-ko" style="display:none;">첫 게임 전략</span></h4>
+                            <ul>
+                                <li><span class="rb-content-en">Read the market by number, not by position — it re-sorts every turn.</span><span class="rb-content-ko" style="display:none;">마켓은 위치가 아니라 번호로 읽으세요. 매 턴 다시 정렬됩니다.</span></li>
+                                <li><span class="rb-content-en">Attach passives early: slots and formulas compound.</span><span class="rb-content-ko" style="display:none;">패시브를 일찍 장착하세요. 칸과 공식은 복리로 쌓입니다.</span></li>
+                                <li><span class="rb-content-en">Save the Free Card action for the 4th market card — nothing else reaches it.</span><span class="rb-content-ko" style="display:none;">자유 획득은 4슬롯 카드를 위해 아껴 두세요. 다른 방법으로는 가져올 수 없습니다.</span></li>
+                                <li><span class="rb-content-en">Overfilling your inventory mid-turn is fine, as long as you sell down before you finish.</span><span class="rb-content-ko" style="display:none;">턴 도중 인벤토리를 넘겨도 괜찮습니다. 턴을 마치기 전에 팔아 정리하면 됩니다.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('alchemistsRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
         <!-- Modal 6: Alchemists Info -->
     <div class="proto-modal-overlay" id="alchemistsModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
@@ -6945,7 +8500,8 @@
         function openModal(id) {
             const m = document.getElementById(id);
             if (!m) return;
-            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal' || id === 'rotatoRulebookModal') {
+            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal' || id === 'rotatoRulebookModal'
+                || id === 'alchemistsRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }
