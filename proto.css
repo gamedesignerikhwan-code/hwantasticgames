@@ -2615,3 +2615,208 @@ html[lang="ko"] .proto-modal-title {
         white-space: nowrap;
     }
 }
+
+/* ===== The Drawing Game Rulebook Modal ===== */
+.drawing-game-rulebook-modal-card {
+    max-width: 880px;
+}
+
+.drawing-game-rulebook-modal-card .rb-lang-btn.active {
+    background: #0284c7;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+}
+
+.drawing-game-rulebook-modal-card .rb-spec-icon,
+.drawing-game-rulebook-modal-card .rb-section-title i,
+.drawing-game-rulebook-modal-card .rb-table .highlight-cell {
+    color: #0284c7;
+}
+
+.drawing-game-rulebook-modal-card .rb-step-badge {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
+}
+
+.drawing-game-rulebook-modal-card .rb-intro-banner {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(14, 165, 233, 0.04) 100%);
+    border-left-color: #0284c7;
+}
+
+.drawing-game-rulebook-modal-card .rb-nav-link:hover {
+    background: #f0f9ff;
+    color: #0369a1;
+    border-color: #bae6fd;
+}
+
+/* Animal Tiers Grid */
+.dg-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.dg-tier-card {
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+}
+
+.dg-tier-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.dg-tier-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 6px;
+}
+
+.dg-tier-badge {
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.dg-tier-badge.gold {
+    background: #fef08a;
+    color: #854d0e;
+    border: 1px solid #facc15;
+}
+
+.dg-tier-badge.silver {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.dg-tier-badge.bronze {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fdba74;
+}
+
+.dg-tier-badge.stone {
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid #94a3b8;
+}
+
+.dg-tier-score {
+    font-size: 0.88rem;
+    font-weight: 900;
+    color: #0369a1;
+}
+
+.dg-tier-animals {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 4px 0 0;
+}
+
+.dg-tier-desc {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    color: var(--text-muted);
+    margin: 2px 0 0;
+}
+
+/* Formula Callout */
+.dg-formula-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1.5px solid #7dd3fc;
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin: 10px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.dg-formula-icon {
+    font-size: 1.8rem;
+    color: #0284c7;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Pins for The Drawing Game */
+.drawing-pin-tag {
+    position: absolute;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    z-index: 5;
+    letter-spacing: 0.5px;
+    animation: rbPinPulse 2.5s infinite;
+}
+
+.drawing-pin-tag.pin-a {
+    left: 35%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: #0284c7;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.drawing-pin-tag.pin-b {
+    left: 28%;
+    top: 92%;
+    transform: translate(-50%, -50%);
+    background: #d97706;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.drawing-pin-tag.pin-c {
+    left: 63%;
+    top: 86%;
+    transform: translate(-50%, -50%);
+    background: #16a34a;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.drawing-pin-tag.pin-d {
+    left: 84%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: #7c3aed;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+@media (max-width: 640px) {
+    .drawing-game-rulebook-modal-card .rulebook-nav-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        flex-shrink: 0;
+        scrollbar-width: none;
+    }
+
+    .drawing-game-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .drawing-game-rulebook-modal-card .rb-nav-link {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
