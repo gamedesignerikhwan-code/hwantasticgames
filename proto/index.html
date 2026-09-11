@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <base href="/proto/">
+    <script>if(location.protocol==='file:'){const b=document.querySelector('base');if(b)b.remove();}</script>
     <title>Board Game Prototypes | Hwantastic Games</title>
     
     <!-- Favicon -->
@@ -1807,6 +1808,106 @@
                 align-items: flex-start;
             }
         }
+
+        /* In-Game Capture Diagram Styles */
+        .rb-diagram-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .rb-diagram-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .rb-ingame-frame {
+            width: 100%;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            background: #000;
+        }
+
+        .rb-ingame-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.28s ease;
+        }
+
+        .rb-ingame-frame:hover .rb-ingame-img {
+            transform: scale(1.012);
+        }
+
+        .rb-diagram-annotations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .rb-annot-item {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .rb-annot-badge {
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 2px 7px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .rb-annot-badge.badge-a {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+        }
+
+        .rb-annot-badge.badge-b {
+            background: #ffedd5;
+            color: #ea580c;
+            border: 1px solid #fdba74;
+        }
+
+        .rb-annot-badge.badge-c {
+            background: #e0f2fe;
+            color: #0284c7;
+            border: 1px solid #7dd3fc;
+        }
+
+        .rb-annot-badge.badge-d {
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #6ee7b7;
+        }
+
+        .rb-annot-item strong {
+            font-size: 0.82rem;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .rb-annot-item p {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.35;
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -2759,38 +2860,51 @@
                         </div>
                     </div>
 
-                    <!-- Setup Layout Diagram -->
+                    <!-- Setup Layout Diagram with Real In-Game Capture -->
                     <div class="rb-setup-diagram">
-                        <div style="font-size:0.8rem; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.5px;">
-                            <i class="fa-solid fa-map"></i>
-                            <span class="rb-content-en">Table Setup Diagram</span>
-                            <span class="rb-content-ko" style="display:none;">테이블 배치도 (Setup Layout)</span>
+                        <div class="rb-diagram-header">
+                            <div class="rb-diagram-title">
+                                <i class="fa-solid fa-gamepad" style="color: #d97706;"></i>
+                                <span class="rb-content-en">Actual In-Game Table Layout (Web Prototype)</span>
+                                <span class="rb-content-ko" style="display:none;">실제 웹 프로토타입 인게임 테이블 배치도</span>
+                            </div>
+                            <span class="badge" style="background:#fef3c7; color:#92400e; font-weight:700;">Live Web UI</span>
                         </div>
 
-                        <!-- Center Market -->
-                        <div class="rb-diagram-center-market">
-                            <div style="font-size:0.75rem; font-weight:700; color:#9a3412;">
-                                <i class="fa-solid fa-sparkles"></i> [B] <span class="rb-content-en">Event Card Deck &amp; 3 Revealed Cards</span><span class="rb-content-ko" style="display:none;">이벤트 덱 &amp; 공개된 카드 3장</span>
-                            </div>
-                            <div class="rb-diagram-market-cards">
-                                <span class="rb-diagram-card-chip deck"><i class="fa-solid fa-box-archive"></i> DECK</span>
-                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-hand-holding-dollar"></i> STEAL</span>
-                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-share"></i> PASS</span>
-                                <span class="rb-diagram-card-chip revealed"><i class="fa-solid fa-arrow-down-up-across-line"></i> REVERSE</span>
-                            </div>
+                        <!-- Real In-Game Capture Frame -->
+                        <div class="rb-ingame-frame">
+                            <img src="/assets/tamers_ingame_table.png" onerror="this.onerror=null;this.src='assets/tamers_ingame_table.png';" alt="Tamers In-Game Table Setup Screen" class="rb-ingame-img" loading="lazy">
                         </div>
 
-                        <!-- Player Zone -->
-                        <div class="rb-diagram-player-zone">
-                            <div>
-                                <span style="font-size:0.72rem; font-weight:800; color:#dc2626;">[A]</span>
-                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Personal Game Cards</span><span class="rb-content-ko" style="display:none;">개인 손패 카드</span>:</strong>
-                                <span style="font-size:0.78rem; color:var(--text-muted);"><span class="rb-content-en">Dealt Hand</span><span class="rb-content-ko" style="display:none;">배분받은 핸드</span></span>
+                        <!-- Legend / Annotations -->
+                        <div class="rb-diagram-annotations">
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-a">[A]</span>
+                                <div>
+                                    <strong><span class="rb-content-en">Personal Hand Cards</span><span class="rb-content-ko" style="display:none;">개인 손패 카드</span></strong>
+                                    <p><span class="rb-content-en">Dealt cards (1~50, ↑, ↓, X) for the round shown at the bottom.</span><span class="rb-content-ko" style="display:none;">화면 하단에 분배받은 라운드 손패 카드.</span></p>
+                                </div>
                             </div>
-                            <div>
-                                <span style="font-size:0.72rem; font-weight:800; color:#2563eb;">[C]</span>
-                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Prediction Token</span><span class="rb-content-ko" style="display:none;">예측 목표 토큰</span>:</strong>
-                                <span class="rb-diagram-card-chip revealed" style="display:inline-flex; padding:3px 8px; font-size:0.7rem;"><i class="fa-solid fa-bullseye"></i> 1승 / +5점</span>
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-b">[B]</span>
+                                <div>
+                                    <strong><span class="rb-content-en">Open Event Market</span><span class="rb-content-ko" style="display:none;">공개 이벤트 카드 시장</span></strong>
+                                    <p><span class="rb-content-en">3 revealed event cards on the left ready to be drafted by trick winners.</span><span class="rb-content-ko" style="display:none;">화면 좌측에 공개된 3장의 이벤트 카드와 덱.</span></p>
+                                </div>
+                            </div>
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-c">[C]</span>
+                                <div>
+                                    <strong><span class="rb-content-en">Goal Prediction Phase</span><span class="rb-content-ko" style="display:none;">목표 승수 예측 토큰</span></strong>
+                                    <p><span class="rb-content-en">Secretly select your expected trick wins (0, 1, 2, or 3+ wins).</span><span class="rb-content-ko" style="display:none;">이번 라운드 예상 승수(0, 1, 2, 3+승)를 선택하여 선언.</span></p>
+                                </div>
+                            </div>
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-d">[D]</span>
+                                <div>
+                                    <strong><span class="rb-content-en">Opponents &amp; Scoreboard</span><span class="rb-content-ko" style="display:none;">상대 플레이어 및 점수판</span></strong>
+                                    <p><span class="rb-content-en">Opponents' remaining card counts, trick wins, and real-time score.</span><span class="rb-content-ko" style="display:none;">상대방의 남은 패 수, 획득 승수 및 실시간 점수판.</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1855,3 +1855,103 @@ html[lang="ko"] .proto-modal-title {
         align-items: flex-start;
     }
 }
+
+/* In-Game Capture Diagram Styles */
+.rb-diagram-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rb-diagram-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rb-ingame-frame {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    background: #000;
+}
+
+.rb-ingame-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.28s ease;
+}
+
+.rb-ingame-frame:hover .rb-ingame-img {
+    transform: scale(1.012);
+}
+
+.rb-diagram-annotations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.rb-annot-item {
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.rb-annot-badge {
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.rb-annot-badge.badge-a {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.rb-annot-badge.badge-b {
+    background: #ffedd5;
+    color: #ea580c;
+    border: 1px solid #fdba74;
+}
+
+.rb-annot-badge.badge-c {
+    background: #e0f2fe;
+    color: #0284c7;
+    border: 1px solid #7dd3fc;
+}
+
+.rb-annot-badge.badge-d {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1px solid #6ee7b7;
+}
+
+.rb-annot-item strong {
+    font-size: 0.82rem;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.rb-annot-item p {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.35;
+}
