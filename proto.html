@@ -2903,6 +2903,214 @@
                 white-space: nowrap;
             }
         }
+
+        /* ===== Rotato Pizza Rulebook Modal ===== */
+        .rotato-rulebook-modal-card {
+            max-width: 880px;
+        }
+
+        .rotato-rulebook-modal-card .rb-lang-btn.active {
+            background: #c84d45;
+            box-shadow: 0 2px 6px rgba(200, 77, 69, 0.35);
+        }
+
+        .rotato-rulebook-modal-card .rb-spec-icon,
+        .rotato-rulebook-modal-card .rb-section-title i,
+        .rotato-rulebook-modal-card .rb-table .highlight-cell {
+            color: #c84d45;
+        }
+
+        .rotato-rulebook-modal-card .rb-step-badge {
+            background: linear-gradient(135deg, #c84d45 0%, #a83832 100%);
+            box-shadow: 0 2px 6px rgba(200, 77, 69, 0.35);
+        }
+
+        .rotato-rulebook-modal-card .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(200, 77, 69, 0.08) 0%, rgba(249, 115, 22, 0.04) 100%);
+            border-left-color: #c84d45;
+        }
+
+        .rotato-rulebook-modal-card .rb-nav-link:hover {
+            background: #fef2f2;
+            color: #991b1b;
+            border-color: #fecaca;
+        }
+
+        /* 4 Center Toppings Cards */
+        .rot-toppings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .rot-topping-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .rot-topping-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        .rot-topping-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 6px;
+        }
+
+        .rot-topping-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .rot-topping-title {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        .rot-topping-desc {
+            font-size: 0.76rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin: 4px 0 0;
+        }
+
+        /* Rotation Step Progress */
+        .rot-rotation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .rot-rot-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .rot-rot-badge {
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--bg-warm);
+            color: var(--text-dim);
+        }
+
+        .rot-rot-badge.complete {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        /* Scoring Formula Card */
+        .rot-score-formula-card {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            border: 1.5px solid #fecdd3;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin: 10px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .rot-score-icon {
+            font-size: 1.8rem;
+            color: #e11d48;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* In-Game Diagram Pins for Rotato */
+        .rot-pin-tag {
+            position: absolute;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            animation: rbPinPulse 2.5s infinite;
+        }
+
+        .rot-pin-tag.pin-a {
+            left: 18%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            background: #dc2626;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .rot-pin-tag.pin-b {
+            left: 52%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            background: #0284c7;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .rot-pin-tag.pin-c {
+            left: 84%;
+            top: 32%;
+            transform: translate(-50%, -50%);
+            background: #ea580c;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .rot-pin-tag.pin-d {
+            left: 84%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            background: #059669;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        @media (max-width: 640px) {
+            .rotato-rulebook-modal-card .rulebook-nav-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 0;
+                scrollbar-width: none;
+            }
+
+            .rotato-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .rotato-rulebook-modal-card .rb-nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -3124,7 +3332,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('rotatoRulebookModal')" title="Rotato Pizza Full Rulebook" aria-label="Rotato Pizza Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -5172,7 +5380,562 @@
         </div>
     </div>
 
-    <!-- Modal 6: Alchemists Info -->
+
+    <!-- Modal: Rotato Pizza Full Rulebook -->
+    <div class="proto-modal-overlay" id="rotatoRulebookModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card rotato-rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-arrows-rotate" style="color: #c84d45;"></i>
+                    <span class="rb-title-text-en">Rotato Pizza — Complete Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">로타토 피자 — 전체 규칙서</span>
+                </div>
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'rotatoRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'rotatoRulebookModal')">EN</button>
+                    </div>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('rotatoRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-overview')" class="rb-nav-link">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">Overview</span><span class="rb-content-ko" style="display:none;">개요</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-components')" class="rb-nav-link">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">Components &amp; Anatomy</span><span class="rb-content-ko" style="display:none;">구성물 &amp; 타일 구조</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-setup')" class="rb-nav-link">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">Set Up &amp; Table</span><span class="rb-content-ko" style="display:none;">준비 &amp; 배치도</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-play')" class="rb-nav-link">
+                        <i class="fa-solid fa-play"></i>
+                        <span class="rb-content-en">Turn Flow</span><span class="rb-content-ko" style="display:none;">차례 진행 5단계</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-rotation')" class="rb-nav-link">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <span class="rb-content-en">Rotation &amp; Gravity</span><span class="rb-content-ko" style="display:none;">회전 연쇄 &amp; 중력</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-scoring')" class="rb-nav-link">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span class="rb-content-en">End Game &amp; Scoring</span><span class="rb-content-ko" style="display:none;">종료 &amp; 제곱 점수</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('rot-rb-strategy')" class="rb-nav-link">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="rb-content-en">Tips &amp; FAQ</span><span class="rb-content-ko" style="display:none;">전략 팁 &amp; FAQ</span>
+                    </a>
+                </nav>
+
+                <!-- 1. Game Overview -->
+                <section class="rb-section" id="rot-rb-overview">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Overview &amp; Specifications</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 개요 및 제원</span>
+                    </h3>
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            <strong>Rotato Pizza</strong> is a 2 to 4 player spatial puzzle and gravity tile-drafting board game. Players draft pizza tiles into their 3-column boards, align matching edge nutrients to trigger cascading clockwise rotations, and harvest fully rotated tiles into their score pile to unleash gravity collapses!
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>로타토 피자(Rotato Pizza)</strong>는 2~4인이 즐기는 공간 퍼즐 및 중력 타일 드래프팅 보드게임입니다. 플레이어들은 3열로 구성된 개인 피자 보드에 타일을 떨어뜨려 배치하고, 맞닿은 변의 영양소 기호를 맞춰 시계 방향 연속 회전을 일으키며, 3번 회전된 타일을 완성해 득점하고 중력 연쇄를 격발합니다!
+                        </div>
+                    </div>
+
+                    <div class="rb-specs-grid" style="margin-top: 10px;">
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Player Count</span><span class="rb-content-ko" style="display:none;">플레이 인원</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">2–4 Players</span><span class="rb-content-ko" style="display:none;">2–4인</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Play Time</span><span class="rb-content-ko" style="display:none;">소요 시간</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">~20 Minutes</span><span class="rb-content-ko" style="display:none;">약 20분</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Target Age</span><span class="rb-content-ko" style="display:none;">대상 연령</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">Ages 8+</span><span class="rb-content-ko" style="display:none;">8세 이상</span></div>
+                        </div>
+                        <div class="rb-spec-card">
+                            <i class="fa-solid fa-shapes rb-spec-icon"></i>
+                            <div class="rb-spec-label"><span class="rb-content-en">Core Mechanics</span><span class="rb-content-ko" style="display:none;">핵심 메커니즘</span></div>
+                            <div class="rb-spec-val"><span class="rb-content-en">Drafting, Puzzle, Gravity</span><span class="rb-content-ko" style="display:none;">드래프트, 공간 퍼즐, 중력</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Components & Anatomy -->
+                <section class="rb-section" id="rot-rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">2. Components &amp; Tile Anatomy</span>
+                        <span class="rb-content-ko" style="display:none;">2. 구성물 및 타일 해부도</span>
+                    </h3>
+                    <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+                        <span class="rb-content-en">The game includes 92 tiles total (84 game tiles, 8 starting tiles) and 4 personal boards (3 columns × 4 rows).</span>
+                        <span class="rb-content-ko" style="display:none;">게임은 총 92장의 타일(일반 게임 타일 84장, 시작 타일 8장)과 4개의 개인 보드(3열 × 4행)로 구성됩니다.</span>
+                    </p>
+
+                    <div style="font-weight: 700; font-size: 0.84rem; color: var(--text-main); margin-top: 6px;">
+                        <span class="rb-content-en">🍕 4 Center Crop / Topping Types:</span>
+                        <span class="rb-content-ko" style="display:none;">🍕 4가지 중앙 작물 / 토핑 종류:</span>
+                    </div>
+
+                    <div class="rot-toppings-grid">
+                        <div class="rot-topping-card">
+                            <div class="rot-topping-header">
+                                <span class="rot-topping-icon">🔴</span>
+                                <div>
+                                    <div class="rot-topping-title"><span class="rb-content-en">Irish Potato / Tomato</span><span class="rb-content-ko" style="display:none;">아이리시 감자 / 토마토</span></div>
+                                </div>
+                            </div>
+                            <p class="rot-topping-desc">
+                                <span class="rb-content-en">Red center topping. Highly versatile for quadratic set combos.</span>
+                                <span class="rb-content-ko" style="display:none;">빨간색 중앙 토핑. 세트 컬렉션 및 고득점 집중 수집에 유용합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rot-topping-card">
+                            <div class="rot-topping-header">
+                                <span class="rot-topping-icon">🟡</span>
+                                <div>
+                                    <div class="rot-topping-title"><span class="rb-content-en">Sweet Potato / Pepper</span><span class="rb-content-ko" style="display:none;">고구마 / 옐로 파프리카</span></div>
+                                </div>
+                            </div>
+                            <p class="rot-topping-desc">
+                                <span class="rb-content-en">Yellow center topping representing rich sweet flavor.</span>
+                                <span class="rb-content-ko" style="display:none;">노란색 중앙 토핑으로 달콤한 풍미의 피자 조각을 상징합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rot-topping-card">
+                            <div class="rot-topping-header">
+                                <span class="rot-topping-icon">⚪</span>
+                                <div>
+                                    <div class="rot-topping-title"><span class="rb-content-en">White Potato / Mushroom</span><span class="rb-content-ko" style="display:none;">하양 감자 / 양송이버섯</span></div>
+                                </div>
+                            </div>
+                            <p class="rot-topping-desc">
+                                <span class="rb-content-en">White center topping providing subtle earthy aroma.</span>
+                                <span class="rb-content-ko" style="display:none;">하얀색 중앙 토핑으로 고소하고 깊은 버섯 풍미를 부여합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rot-topping-card">
+                            <div class="rot-topping-header">
+                                <span class="rot-topping-icon">🌿</span>
+                                <div>
+                                    <div class="rot-topping-title"><span class="rb-content-en">Red Potato / Basil Herb</span><span class="rb-content-ko" style="display:none;">붉은 감자 / 바질 허브</span></div>
+                                </div>
+                            </div>
+                            <p class="rot-topping-desc">
+                                <span class="rb-content-en">Green aromatic topping completing the gourmet recipe.</span>
+                                <span class="rb-content-ko" style="display:none;">초록색 허브 토핑으로 정통 피자의 산뜻한 향을 완성합니다.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="font-weight: 700; font-size: 0.84rem; color: var(--text-main); margin-top: 14px;">
+                        <span class="rb-content-en">🔄 3-Rotation Life Cycle (IN to OUT):</span>
+                        <span class="rb-content-ko" style="display:none;">🔄 3단계 회전 라이프사이클 (IN에서 OUT까지):</span>
+                    </div>
+
+                    <div class="rot-rotation-steps">
+                        <div class="rot-rot-card">
+                            <div class="rot-rot-badge">Initial Entry (0° / 0 회전)</div>
+                            <strong style="font-size: 0.82rem; margin-top: 4px; color: var(--text-main);"><span class="rb-content-en">IN Facing Downward</span><span class="rb-content-ko" style="display:none;">IN 표식이 아래를 향함</span></strong>
+                            <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0; line-height: 1.3;"><span class="rb-content-en">Tile drops into lowest available slot in chosen column.</span><span class="rb-content-ko" style="display:none;">선택한 열의 가장 낮은 빈칸으로 떨어집니다.</span></p>
+                        </div>
+                        <div class="rot-rot-card">
+                            <div class="rot-rot-badge">1st Turn (90° / 1회 회전)</div>
+                            <strong style="font-size: 0.82rem; margin-top: 4px; color: var(--text-main);"><span class="rb-content-en">First 90° Clockwise</span><span class="rb-content-ko" style="display:none;">시계 방향 90도 1회전</span></strong>
+                            <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0; line-height: 1.3;"><span class="rb-content-en">OUT mark shifts to upper-left. Edges face new neighbors.</span><span class="rb-content-ko" style="display:none;">OUT 표식이 좌상단으로 이동하며 새 이웃을 마주합니다.</span></p>
+                        </div>
+                        <div class="rot-rot-card">
+                            <div class="rot-rot-badge">2nd Turn (180° / 2회 회전)</div>
+                            <strong style="font-size: 0.82rem; margin-top: 4px; color: var(--text-main);"><span class="rb-content-en">Second 90° Clockwise</span><span class="rb-content-ko" style="display:none;">시계 방향 90도 2회전</span></strong>
+                            <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0; line-height: 1.3;"><span class="rb-content-en">OUT mark moves to top-right. One rotation away from harvest!</span><span class="rb-content-ko" style="display:none;">OUT 표식이 우상단으로 이동합니다. 완성까지 1회전 남음!</span></p>
+                        </div>
+                        <div class="rot-rot-card">
+                            <div class="rot-rot-badge complete">Complete! (270° / 3회 회전)</div>
+                            <strong style="font-size: 0.82rem; margin-top: 4px; color: #166534;"><span class="rb-content-en">OUT at Bottom-Right</span><span class="rb-content-ko" style="display:none;">OUT 표식이 우하단 도달</span></strong>
+                            <p style="font-size: 0.74rem; color: var(--text-muted); margin: 0; line-height: 1.3;"><span class="rb-content-en">Tile is harvested to score pile! Upper tiles drop by gravity.</span><span class="rb-content-ko" style="display:none;">타일이 득점 영역으로 수확되며 위쪽 타일들이 중력 낙하합니다!</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Set Up & Live Layout -->
+                <section class="rb-section" id="rot-rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Set Up &amp; Table Layout</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비 &amp; 테이블 배치도</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">i</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Shuffle Game Tile Deck</span>
+                                    <span class="rb-content-ko" style="display:none;">게임 타일 셔플 및 덱 생성</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Thoroughly shuffle all 84 regular game tiles face down to form the central draw deck.</span>
+                                    <span class="rb-content-ko" style="display:none;">일반 게임 타일 84장을 잘 섞어 뒷면으로 중앙 뽑기 덱을 만듭니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">ii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Distribute Boards &amp; 2 Starting Tiles</span>
+                                    <span class="rb-content-ko" style="display:none;">개인 보드 및 시작 타일 2장 지급</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Each player receives 1 personal board (3 columns × 4 rows) and 2 starting tiles of matching color. Place both starting tiles freely in the two marked spaces at the bottom row.</span>
+                                    <span class="rb-content-ko" style="display:none;">각 플레이어는 개인 보드(3열 × 4행) 1개와 같은 색상의 시작 타일 2장을 받습니다. 보드 하단에 표시된 2개의 시작 위치(좌우 열)에 자유롭게 배치합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Draw Initial Hand of 4 Tiles</span>
+                                    <span class="rb-content-ko" style="display:none;">시작 핸드 타일 4장 드로우</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Each player draws 4 tiles from the tile deck into their private hand. These tiles will be drafted turn by turn.</span>
+                                    <span class="rb-content-ko" style="display:none;">각 플레이어는 덱에서 타일 4장을 뽑아 손패로 가져옵니다. 이 4장의 타일이 매 차례 드래프트 대상이 됩니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iv</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Review Table Layout &amp; Match Indicators</span>
+                                    <span class="rb-content-ko" style="display:none;">테이블 배치도 및 인터페이스 확인</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Verify the positions of your personal board, opponent boards, hand draft tray, and completed score piles as shown below.</span>
+                                    <span class="rb-content-ko" style="display:none;">아래의 실제 인게임 화면을 통해 내 개인 보드, 상대방 보드, 핸드 타일 트레이, 득점 타일 영역의 위치를 확인합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- In-game diagram with annotations -->
+                    <div class="rb-diagram-container" style="margin-top: 14px;">
+                        <div class="rb-diagram-header">
+                            <div class="rb-diagram-title">
+                                <i class="fa-solid fa-table-cells" style="color: #c84d45;"></i>
+                                <span class="rb-content-en">Live Table Arrangement &amp; Key Areas</span>
+                                <span class="rb-content-ko" style="display:none;">실제 인게임 테이블 배치도 &amp; 주요 구역</span>
+                            </div>
+                            <span class="badge" style="background:#fee2e2; color:#c84d45; font-weight:700;">Live Web UI</span>
+                        </div>
+
+                        <!-- Real In-Game Capture Frame -->
+                        <div class="rb-ingame-frame">
+                            <img src="/assets/rotato_ingame_table.png" onerror="this.onerror=null;this.src='assets/rotato_ingame_table.png';" alt="Rotato Pizza Live In-Game Table Layout" class="rb-ingame-img" loading="lazy">
+                            <div class="rb-pin-overlay">
+                                <span class="rot-pin-tag pin-a">[A] <span class="rb-content-en">My Board</span><span class="rb-content-ko" style="display:none;">내 보드</span></span>
+                                <span class="rot-pin-tag pin-b">[B] <span class="rb-content-en">Opponent / AI</span><span class="rb-content-ko" style="display:none;">상대 / AI</span></span>
+                                <span class="rot-pin-tag pin-c">[C] <span class="rb-content-en">Hand (4)</span><span class="rb-content-ko" style="display:none;">핸드 (4장)</span></span>
+                                <span class="rot-pin-tag pin-d">[D] <span class="rb-content-en">Score &amp; Deck</span><span class="rb-content-ko" style="display:none;">득점 &amp; 덱</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-layout-cards-grid">
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag">A</span> <span class="rb-content-en">Personal Board (3×4)</span><span class="rb-content-ko" style="display:none;">내 개인 보드 (3×4)</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Your pizza kitchen grid with 3 columns. Tiles dropped here fall to the lowest empty row. Bottom row houses 2 starting tiles.</span>
+                                <span class="rb-content-ko" style="display:none;">3개 열로 이뤄진 플레이어 1의 개인 보드입니다. 배치한 타일은 중력으로 가장 아래 칸으로 떨어집니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag">B</span> <span class="rb-content-en">Opponent / AI Board</span><span class="rb-content-ko" style="display:none;">상대방 / AI 보드</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">View the real-time board state, rotations, and scored tile totals of your competitors to anticipate passes.</span>
+                                <span class="rb-content-ko" style="display:none;">상대방(또는 AI)의 보드 상황과 완성된 득점 타일 수를 실시간으로 파악하여 드래프트 전략을 세웁니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag">C</span> <span class="rb-content-en">Hand Draft Tray (4 Tiles)</span><span class="rb-content-ko" style="display:none;">핸드 드래프트 트레이 (4장)</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Your current 4 draft tiles. Choose 1 to play onto your board, then pass the remaining 3 tiles clockwise to your left neighbor.</span>
+                                <span class="rb-content-ko" style="display:none;">현재 손에 든 4장의 타일입니다. 1장을 골라 보드에 배치하고, 남은 타일은 왼쪽 플레이어에게 패스합니다.</span>
+                            </p>
+                        </div>
+                        <div class="rb-layout-card">
+                            <div class="rb-layout-card-badge"><span class="badge-tag">D</span> <span class="rb-content-en">Score Pile &amp; Deck Info</span><span class="rb-content-ko" style="display:none;">득점 타일 보관소 &amp; 덱 정보</span></div>
+                            <p class="rb-layout-card-desc">
+                                <span class="rb-content-en">Area storing all tiles that completed 3 full rotations. Displays current round, deck counter, and game action logs.</span>
+                                <span class="rb-content-ko" style="display:none;">3회 회전을 마친 완성 타일들이 쌓이는 곳입니다. 현재 라운드와 남은 덱 매수, 게임 로그가 표시됩니다.</span>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Turn Flow -->
+                <section class="rb-section" id="rot-rb-play">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-play"></i>
+                        <span class="rb-content-en">4. Turn Flow (5 Steps)</span>
+                        <span class="rb-content-ko" style="display:none;">4. 차례 진행 (5단계)</span>
+                    </h3>
+                    <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 8px;">
+                        <span class="rb-content-en">All players act simultaneously each turn through the following 5 chronological steps:</span>
+                        <span class="rb-content-ko" style="display:none;">매 턴 모든 플레이어는 아래의 5단계를 순서대로 동시에 진행합니다:</span>
+                    </p>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Draft &amp; Drop 1 Tile (Tetris Gravity)</span>
+                                    <span class="rb-content-ko" style="display:none;">타일 1장 선택 및 드롭 배치 (테트리스 방식)</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Choose 1 tile from your hand. Select 1 of the 3 columns on your personal board and drop the tile into the lowest available space, ensuring its <strong>"IN" symbol is facing downward</strong>.</span>
+                                    <span class="rb-content-ko" style="display:none;">손패에서 타일 1장을 선택합니다. 개인 보드의 3개 열 중 하나를 골라 맨 아래 빈칸으로 떨어뜨리며, 이때 타일의 <strong>"IN" 표식이 아래를 향하도록</strong> 배치합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Edge-Matching Rotation Chain</span>
+                                    <span class="rb-content-ko" style="display:none;">변 기호 일치 시 시계 방향 회전 연쇄</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">If touching edges of adjacent tiles have matching symbols, rotate one of the matching tiles 90° clockwise. If this rotation creates new matching edges, continue rotating newly matched tiles in sequence!</span>
+                                    <span class="rb-content-ko" style="display:none;">인접한 타일끼리 맞닿은 변의 영양소 기호가 일치하면, 일치한 타일 중 하나를 골라 시계 방향으로 90도 회전시킵니다. 이 회전으로 새로운 변 기호가 맞닿게 되면 계속해서 연속 회전을 이어갈 수 있습니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Compulsory Same-Icon Rotation</span>
+                                    <span class="rb-content-ko" style="display:none;">방금 낸 타일과 동일한 중앙 아이콘 1회 회전</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Rotate 1 tile clockwise that shares the exact same center crop/topping icon as the tile you just placed. If this rotation creates a new edge match, trigger another edge-matching rotation chain!</span>
+                                    <span class="rb-content-ko" style="display:none;">방금 배치한 타일과 중앙 아이콘(작물/토핑 종류)이 같은 타일 1개를 선택해 시계 방향으로 1회 회전시킵니다. 이 회전으로 새롭게 변 일치가 발생하면 즉시 추가 회전 연쇄를 발동합니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Tile Completion &amp; Gravity Collapse</span>
+                                    <span class="rb-content-ko" style="display:none;">3회 회전 완료 타일 수확 및 중력 낙하</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">When a tile rotates 3 times and its <strong>"OUT" symbol reaches the bottom-right corner</strong>, it is harvested to your score pile! Any tiles resting above the harvested tile immediately fall down by gravity. If falling creates new edge matches, continue rotating!</span>
+                                    <span class="rb-content-ko" style="display:none;">어떤 타일이든 3번 회전하여 <strong>"OUT" 표식이 우측 하단</strong>에 도달하면 완성되어 득점 영역으로 수확됩니다! 수확된 타일 위에 있던 타일들은 즉시 중력으로 떨어지며, 떨어진 자리에서 새롭게 변이 맞닿으면 추가 회전을 이어갑니다!</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">5</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Draft Pass &amp; Hand Refill</span>
+                                    <span class="rb-content-ko" style="display:none;">손패 좌측 패스 및 라운드 종료 핸드 보충</span>
+                                </div>
+                                <p class="rb-step-text">
+                                    <span class="rb-content-en">Pass all remaining tiles in hand clockwise to the player on your left. Once all 4 hand tiles are played, each player draws 4 fresh tiles from the deck and repeats.</span>
+                                    <span class="rb-content-ko" style="display:none;">손에 남은 타일을 전부 왼쪽 플레이어에게 전달(드래프트 패스)합니다. 4장의 손패를 모두 사용하면 각자 덱에서 4장씩 새로 뽑아 다음 라운드를 시작합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Rotation & Gravity Rules -->
+                <section class="rb-section" id="rot-rb-rotation">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <span class="rb-content-en">5. Rotation Chains &amp; Gravity Rules</span>
+                        <span class="rb-content-ko" style="display:none;">5. 회전 연쇄 및 중력 낙하 상세 규칙</span>
+                    </h3>
+
+                    <div class="rb-intro-banner" style="margin-bottom: 10px;">
+                        <div class="rb-content-en">
+                            <strong>Core Principle:</strong> You may only rotate a tile if, in the <em>current board state</em>, two touching edges share the exact same symbol. Chains stop immediately when no adjacent matches remain.
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>핵심 원칙:</strong> <em>현재 보드 상태</em>에서 맞닿은 두 변의 기호가 일치할 때만 타일을 회전할 수 있습니다. 회전으로 인해 기호 일치가 깨지면 연쇄가 즉시 종료됩니다.
+                        </div>
+                    </div>
+
+                    <div class="pyr-levels-stack">
+                        <div class="pyr-level-row">
+                            <span class="pyr-level-badge" style="background:#c84d45;">Matching</span>
+                            <div class="pyr-level-desc">
+                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Adjacent Edge Matching</span><span class="rb-content-ko" style="display:none;">맞닿은 변 기호 일치</span></strong>
+                                <p style="margin:2px 0 0; font-size:0.75rem; color:var(--text-muted);"><span class="rb-content-en">When two neighbor tiles share the same edge symbol, the active player chooses which one of them to rotate 90° clockwise.</span><span class="rb-content-ko" style="display:none;">두 타일의 맞닿은 변 기호가 같으면 플레이어가 둘 중 하나를 골라 시계 방향으로 90도 회전시킵니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="pyr-level-row">
+                            <span class="pyr-level-badge" style="background:#ea580c;">Chaining</span>
+                            <div class="pyr-level-desc">
+                                <strong style="font-size:0.82rem;"><span class="rb-content-en">Multi-Match Sequential Chains</span><span class="rb-content-ko" style="display:none;">다중 일치 및 순차 연쇄</span></strong>
+                                <p style="margin:2px 0 0; font-size:0.75rem; color:var(--text-muted);"><span class="rb-content-en">If multiple tiles match simultaneously, rotate one, then re-check the board and rotate the next available match.</span><span class="rb-content-ko" style="display:none;">동시에 여러 곳이 일치하는 경우, 하나를 회전한 후 새 보드 상태를 확인하여 순차적으로 다음 일치 타일을 회전합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="pyr-level-row">
+                            <span class="pyr-level-badge" style="background:#0284c7;">Gravity</span>
+                            <div class="pyr-level-desc">
+                                <strong style="font-size:0.82rem;"><span class="rb-content-en">One-by-One Gravity Resolution</span><span class="rb-content-ko" style="display:none;">하나씩 순차 제거 및 중력 처리</span></strong>
+                                <p style="margin:2px 0 0; font-size:0.75rem; color:var(--text-muted);"><span class="rb-content-en">If multiple tiles complete at the same time, harvest them one by one, fully resolving gravity after each removal before taking the next!</span><span class="rb-content-ko" style="display:none;">동시에 여러 타일이 완성된 경우, 한 번에 하나씩 제거하고 중력 낙하를 완전히 처리한 뒤 다음 타일을 제거해야 합니다!</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. End Game & Scoring -->
+                <section class="rb-section" id="rot-rb-scoring">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span class="rb-content-en">6. End Game &amp; Quadratic Scoring</span>
+                        <span class="rb-content-ko" style="display:none;">6. 게임 종료 및 제곱 점수 계산</span>
+                    </h3>
+
+                    <div class="pyr-crossing-card" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #fca5a5;">
+                        <i class="fa-solid fa-flag-checkered pyr-crossing-icon" style="color: #c84d45;"></i>
+                        <div>
+                            <strong style="font-size: 0.88rem; color: #991b1b;"><span class="rb-content-en">Game End Trigger (9 Harvested Tiles)</span><span class="rb-content-ko" style="display:none;">게임 종료 발동 (타일 9장 완성)</span></strong>
+                            <p style="font-size: 0.8rem; line-height: 1.45; color: var(--text-main); margin-top: 3px;">
+                                <span class="rb-content-en">When any player scores (removes) <strong>9 or more tiles</strong>, all players replenish their hands up to 3 tiles. Once these final 3 tiles have been played, the game immediately ends and scores are tallied.</span>
+                                <span class="rb-content-ko" style="display:none;">누구든 <strong>9장 이상의 타일</strong>을 완성하여 수확하면 게임 종료가 발동됩니다! 모든 플레이어가 손패를 최대 3장까지 보충하고, 마지막 3장의 타일을 모두 플레이하면 게임이 종료되어 점수를 계산합니다.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rot-score-formula-card">
+                        <i class="fa-solid fa-square-root-variable rot-score-icon"></i>
+                        <div>
+                            <strong style="font-size: 0.88rem; color: #9f1239;"><span class="rb-content-en">Scoring Formula: (Count)² + 10 pts per Full Set</span><span class="rb-content-ko" style="display:none;">점수 계산 공식: (각 토핑 개수)² + 풀 세트당 +10점</span></strong>
+                            <p style="font-size: 0.8rem; line-height: 1.45; color: var(--text-main); margin-top: 3px;">
+                                <span class="rb-content-en">Each collected icon scores points equal to the <strong>square of its quantity (N²)</strong>. Additionally, earn <strong>+10 bonus points</strong> for every complete set containing all 4 different toppings (🔴, 🟡, ⚪, 🌿).</span>
+                                <span class="rb-content-ko" style="display:none;">수확한 4가지 토핑 아이콘 각각의 개수를 <strong>제곱한 점수(N²)</strong>를 획득합니다. 여기에 더해 4가지 서로 다른 토핑을 모두 1개씩 갖춘 완전한 세트마다 <strong>보너스 +10점</strong>이 추가됩니다.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive" style="margin-top: 10px;">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th><span class="rb-content-en">Harvested Toppings (A / B / C / D)</span><span class="rb-content-ko" style="display:none;">수확한 토핑 구성 (A / B / C / D)</span></th>
+                                    <th><span class="rb-content-en">Squared Base Calculation</span><span class="rb-content-ko" style="display:none;">제곱 기본 점수 계산</span></th>
+                                    <th><span class="rb-content-en">Full Set Bonus</span><span class="rb-content-ko" style="display:none;">풀 세트 보너스</span></th>
+                                    <th><span class="rb-content-en">Total Score</span><span class="rb-content-ko" style="display:none;">최종 점수</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1 / 3 / 5 / 0</strong></td>
+                                    <td>1² + 3² + 5² + 0² = 1 + 9 + 25 = 35</td>
+                                    <td>0 sets (+0 pts)</td>
+                                    <td class="highlight-cell"><strong>35 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2 / 4 / 2 / 1</strong></td>
+                                    <td>2² + 4² + 2² + 1² = 4 + 16 + 4 + 1 = 25</td>
+                                    <td>1 full set (+10 pts)</td>
+                                    <td class="highlight-cell"><strong>35 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3 / 3 / 3 / 3</strong></td>
+                                    <td>3² + 3² + 3² + 3² = 9 × 4 = 36</td>
+                                    <td>3 full sets (+30 pts)</td>
+                                    <td class="highlight-cell"><strong>66 pts!</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 0.78rem; color: var(--text-dim); margin-top: 6px;">
+                        <span class="rb-content-en">※ If multiple players tie for the highest score, they share the victory!</span>
+                        <span class="rb-content-ko" style="display:none;">※ 동점자가 발생할 경우 공동 순위로 승리를 함께 나눕니다!</span>
+                    </p>
+                </section>
+
+                <!-- 7. Tips & FAQ -->
+                <section class="rb-section" id="rot-rb-strategy">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="rb-content-en">7. Strategy Tips &amp; FAQ</span>
+                        <span class="rb-content-ko" style="display:none;">7. 필승 전략 팁 &amp; FAQ</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-crosshairs"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Quadratic Focus vs Balanced Sets</span><span class="rb-content-ko" style="display:none;">한 토핑 집중(제곱 폭발) vs 균형 세트</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Specializing heavily into one topping scales rapidly (6²=36, 7²=49), while collecting even sets grants massive +10 flat bonuses. Adapt your draft based on passed hand tiles.</span><span class="rb-content-ko" style="display:none;">한 가지 토핑에 집중하면 제곱 효과로 급상승(6개=36점, 7개=49점)하며, 고른 수집은 세트당 +10점의 고득점을 안겨줍니다. 넘어오는 패에 맞춰 유연하게 노선을 결정하세요.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-arrow-down-long"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Plan Pre-emptive Gravity Drops</span><span class="rb-content-ko" style="display:none;">중력 낙하 이후의 변 일치를 미리 설계하라</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">When placing tiles on upper rows, check what edges will meet when the bottom tile is harvested. Setting up domino gravity cascades is key to winning.</span><span class="rb-content-ko" style="display:none;">위쪽 행에 타일을 놓을 때, 아래 타일이 수확된 후 어떤 기호가 맞닿게 될지 미리 계산하세요. 떨어지며 연쇄 회전이 발생하는 도미노 설계를 구축하면 한 턴에 대역전이 가능합니다.</span></p>
+                            </div>
+                        </div>
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge"><i class="fa-solid fa-question"></i></div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title"><span class="rb-content-en">Can I decline an edge rotation?</span><span class="rb-content-ko" style="display:none;">변 일치 시 회전을 거부할 수 있나요?</span></div>
+                                <p class="rb-step-text"><span class="rb-content-en">Rotating is a "may" option. If rotating a tile would break an advantageous neighbor alignment or hurt your setup, you can choose not to rotate.</span><span class="rb-content-ko" style="display:none;">변 일치 회전은 선택(May) 사항입니다. 회전으로 인해 다음 계획이 꼬이거나 불리해진다면 회전하지 않고 그대로 둘 수 있습니다.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('rotatoRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal 6: Alchemists Info -->
     <div class="proto-modal-overlay" id="alchemistsModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
             <div class="proto-modal-header">
@@ -6182,7 +6945,7 @@
         function openModal(id) {
             const m = document.getElementById(id);
             if (!m) return;
-            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal') {
+            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal' || id === 'rotatoRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }
@@ -6221,6 +6984,11 @@
                 const diagramImg = modal.querySelector('.rb-ingame-img');
                 if (diagramImg) {
                     diagramImg.src = '/assets/square_pyramids_ingame_table.png';
+                }
+            } else if (modalId === 'rotatoRulebookModal') {
+                const diagramImg = modal.querySelector('.rb-ingame-img');
+                if (diagramImg) {
+                    diagramImg.src = '/assets/rotato_ingame_table.png';
                 }
             }
         }

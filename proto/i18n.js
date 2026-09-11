@@ -275,7 +275,9 @@
             window.setRulebookLanguage(isKorean ? 'ko' : 'en');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'dooreRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'waffleRulebookModal');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'alchemistsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'pyramidsRulebookModal');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'rotatoRulebookModal');
         }
 
         const switcher = document.querySelector('.proto-language-switch');
