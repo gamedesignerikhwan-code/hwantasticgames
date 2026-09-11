@@ -2517,3 +2517,269 @@ html[lang="ko"] .proto-modal-title {
         gap: 10px;
     }
 }
+
+/* ===== Square Pyramids Rulebook Modal ===== */
+.pyramids-rulebook-modal-card {
+    max-width: 880px;
+}
+
+.pyramids-rulebook-modal-card .rb-lang-btn.active {
+    background: #c2410c;
+    box-shadow: 0 2px 6px rgba(194, 65, 12, 0.35);
+}
+
+.pyramids-rulebook-modal-card .rb-spec-icon,
+.pyramids-rulebook-modal-card .rb-section-title i,
+.pyramids-rulebook-modal-card .rb-table .highlight-cell {
+    color: #c2410c;
+}
+
+.pyramids-rulebook-modal-card .rb-step-badge {
+    background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+    box-shadow: 0 2px 6px rgba(194, 65, 12, 0.35);
+}
+
+.pyramids-rulebook-modal-card .rb-intro-banner {
+    background: linear-gradient(135deg, rgba(194, 65, 12, 0.08) 0%, rgba(217, 119, 6, 0.04) 100%);
+    border-left-color: #c2410c;
+}
+
+.pyramids-rulebook-modal-card .rb-nav-link:hover {
+    background: #fff7ed;
+    color: #9a3412;
+    border-color: #ffedd5;
+}
+
+/* 7 Hieroglyphic Symbol Cards */
+.pyr-symbols-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pyr-symbol-card {
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    position: relative;
+    transition: var(--transition);
+}
+
+.pyr-symbol-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.pyr-symbol-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 6px;
+}
+
+.pyr-symbol-glyph {
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #fbf8f3;
+    border: 1px solid #e7dfd3;
+}
+
+.glyph-rod { color: #b45309; }
+.glyph-cross { color: #dc2626; }
+.glyph-fish { color: #0284c7; }
+.glyph-ox { color: #16a34a; }
+.glyph-falcon { color: #7c3aed; }
+.glyph-triangle { color: #d97706; }
+.glyph-square { color: #c2410c; }
+
+.pyr-symbol-title-group {
+    flex: 1;
+    margin-left: 8px;
+}
+
+.pyr-symbol-name {
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.pyr-symbol-dist {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.pyr-symbol-effect {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.pyr-symbol-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+    width: fit-content;
+}
+
+.pyr-tag-instant {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.pyr-tag-scoring {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.pyr-tag-majority {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.pyr-tag-cumulative {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+/* Pyramid Stacking Levels Guide */
+.pyr-levels-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.pyr-level-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+}
+
+.pyr-level-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: #c2410c;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    min-width: 54px;
+    text-align: center;
+}
+
+.pyr-level-desc {
+    font-size: 0.8rem;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.pyr-level-slots {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    background: var(--bg-warm);
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Matched Crossings Banner */
+.pyr-crossing-card {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1.5px solid #fed7aa;
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin: 10px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.pyr-crossing-icon {
+    font-size: 1.8rem;
+    color: #ea580c;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Pin positions for Square Pyramids live capture */
+.pyr-pin-tag {
+    position: absolute;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    z-index: 5;
+    letter-spacing: 0.5px;
+    animation: rbPinPulse 2.5s infinite;
+}
+
+.pyr-pin-tag.pin-a {
+    left: 23%;
+    top: 36%;
+    background: #dc2626;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.pyr-pin-tag.pin-b {
+    left: 71%;
+    top: 20%;
+    background: #ea580c;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.pyr-pin-tag.pin-c {
+    left: 23%;
+    top: 67%;
+    background: #0284c7;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.pyr-pin-tag.pin-d {
+    left: 71%;
+    top: 57%;
+    background: #059669;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}

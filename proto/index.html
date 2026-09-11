@@ -1998,7 +1998,7 @@
                 transform: translate(-50%, -50%) scale(1.08);
             }
         }
-+
+
         /* Preserve the supplied Doore rulebook as a faithful page-by-page web edition. */
         .doore-rb-edition,
         .doore-rb-lang-toggle {
@@ -2619,6 +2619,290 @@
                 font-size: 0.82rem;
             }
         }
+
+        /* ===== Square Pyramids Rulebook Modal ===== */
+        .pyramids-rulebook-modal-card {
+            max-width: 880px;
+        }
+
+        .pyramids-rulebook-modal-card .rb-lang-btn.active {
+            background: #c2410c;
+            box-shadow: 0 2px 6px rgba(194, 65, 12, 0.35);
+        }
+
+        .pyramids-rulebook-modal-card .rb-spec-icon,
+        .pyramids-rulebook-modal-card .rb-section-title i,
+        .pyramids-rulebook-modal-card .rb-table .highlight-cell {
+            color: #c2410c;
+        }
+
+        .pyramids-rulebook-modal-card .rb-step-badge {
+            background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
+            box-shadow: 0 2px 6px rgba(194, 65, 12, 0.35);
+        }
+
+        .pyramids-rulebook-modal-card .rb-intro-banner {
+            background: linear-gradient(135deg, rgba(194, 65, 12, 0.08) 0%, rgba(217, 119, 6, 0.04) 100%);
+            border-left-color: #c2410c;
+        }
+
+        .pyramids-rulebook-modal-card .rb-nav-link:hover {
+            background: #fff7ed;
+            color: #9a3412;
+            border-color: #ffedd5;
+        }
+
+        /* 7 Hieroglyphic Symbol Cards */
+        .pyr-symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .pyr-symbol-card {
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .pyr-symbol-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        .pyr-symbol-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 6px;
+        }
+
+        .pyr-symbol-glyph {
+            font-size: 1.6rem;
+            line-height: 1;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: #fbf8f3;
+            border: 1px solid #e7dfd3;
+        }
+
+        .glyph-rod { color: #b45309; }
+        .glyph-cross { color: #dc2626; }
+        .glyph-fish { color: #0284c7; }
+        .glyph-ox { color: #16a34a; }
+        .glyph-falcon { color: #7c3aed; }
+        .glyph-triangle { color: #d97706; }
+        .glyph-square { color: #c2410c; }
+
+        .pyr-symbol-title-group {
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .pyr-symbol-name {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .pyr-symbol-dist {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            margin-top: 2px;
+        }
+
+        .pyr-symbol-effect {
+            font-size: 0.76rem;
+            line-height: 1.4;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .pyr-symbol-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+            width: fit-content;
+        }
+
+        .pyr-tag-instant {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .pyr-tag-scoring {
+            background: #eff6ff;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
+        .pyr-tag-majority {
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .pyr-tag-cumulative {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* Pyramid Stacking Levels Guide */
+        .pyr-levels-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .pyr-level-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+        }
+
+        .pyr-level-badge {
+            font-size: 0.74rem;
+            font-weight: 800;
+            color: #ffffff;
+            background: #c2410c;
+            padding: 3px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            min-width: 54px;
+            text-align: center;
+        }
+
+        .pyr-level-desc {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .pyr-level-slots {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-dim);
+            background: var(--bg-warm);
+            padding: 3px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        /* Matched Crossings Banner */
+        .pyr-crossing-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 1.5px solid #fed7aa;
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin: 10px 0;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .pyr-crossing-icon {
+            font-size: 1.8rem;
+            color: #ea580c;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Pin positions for Square Pyramids live capture */
+        .pyr-pin-tag {
+            position: absolute;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            animation: rbPinPulse 2.5s infinite;
+        }
+
+        .pyr-pin-tag.pin-a {
+            left: 23%;
+            top: 36%;
+            background: #dc2626;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .pyr-pin-tag.pin-b {
+            left: 71%;
+            top: 20%;
+            background: #ea580c;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .pyr-pin-tag.pin-c {
+            left: 23%;
+            top: 67%;
+            background: #0284c7;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .pyr-pin-tag.pin-d {
+            left: 71%;
+            top: 57%;
+            background: #059669;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        @media (max-width: 640px) {
+            .pyramids-rulebook-modal-card .rulebook-nav-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 0;
+                scrollbar-width: none;
+            }
+
+            .pyramids-rulebook-modal-card .rulebook-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .pyramids-rulebook-modal-card .rb-nav-link {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body class="proto-page">
@@ -2989,7 +3273,7 @@
                     <button type="button" class="btn-sell-sheet-proto" onclick="openModal('pyramidsModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
-                    <button type="button" class="btn-rulebook-proto" disabled title="Rulebook coming soon" aria-label="Rulebook coming soon">
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('pyramidsRulebookModal')" title="Square Pyramids Full Rulebook" aria-label="Square Pyramids Full Rulebook">
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
@@ -4966,6 +5250,852 @@
         </div>
     </div>
 
+    <!-- Modal: Square Pyramids Full Rulebook -->
+    <div class="proto-modal-overlay" id="pyramidsRulebookModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card pyramids-rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-mountain" style="color: #c2410c;"></i>
+                    <span class="rb-title-text-en">Square Pyramids — Complete Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">사각 피라미드 — 전체 규칙서</span>
+                </div>
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'pyramidsRulebookModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'pyramidsRulebookModal')">EN</button>
+                    </div>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('pyramidsRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="proto-modal-body rulebook-body">
+                <!-- Quick Jump Navigation -->
+                <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-overview')" class="rb-nav-link">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">Overview</span><span class="rb-content-ko" style="display:none;">게임 개요</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-components')" class="rb-nav-link">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">Components &amp; Symbols</span><span class="rb-content-ko" style="display:none;">구성물 &amp; 7대 기호</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-setup')" class="rb-nav-link">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">Set Up &amp; Table</span><span class="rb-content-ko" style="display:none;">게임 준비 &amp; 배치도</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-play')" class="rb-nav-link">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span class="rb-content-en">Round Flow &amp; Drafting</span><span class="rb-content-ko" style="display:none;">진행 &amp; 드래프트</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-scoring')" class="rb-nav-link">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span class="rb-content-en">Edge Scoring</span><span class="rb-content-ko" style="display:none;">엣지 점수 계산</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-endgame')" class="rb-nav-link">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span class="rb-content-en">End Game &amp; Crossings</span><span class="rb-content-ko" style="display:none;">종료 &amp; 6개 교차로</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollRulebookSection('pyr-rb-reference')" class="rb-nav-link">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="rb-content-en">Card Distribution</span><span class="rb-content-ko" style="display:none;">카드 구성비 &amp; 요약</span>
+                    </a>
+                </nav>
+
+                <!-- Section 1: Overview -->
+                <section class="rb-section" id="pyr-rb-overview">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="rb-content-en">1. Game Information &amp; Overview</span>
+                        <span class="rb-content-ko" style="display:none;">1. 게임 정보 및 핵심 개요</span>
+                    </h3>
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Players</span><span class="rb-content-ko" style="display:none;">인원</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">2–5 Players</span><span class="rb-content-ko" style="display:none;">2~5명</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-clock rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Time</span><span class="rb-content-ko" style="display:none;">시간</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">15–45 Mins</span><span class="rb-content-ko" style="display:none;">15~45분</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Age</span><span class="rb-content-ko" style="display:none;">연령</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">8+ Years</span><span class="rb-content-ko" style="display:none;">8세 이상</span></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-puzzle-piece rb-spec-icon"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Category</span><span class="rb-content-ko" style="display:none;">장르</span></div>
+                                <div class="rb-spec-val"><span class="rb-content-en">Puzzle &amp; Drafting</span><span class="rb-content-ko" style="display:none;">퍼즐 &amp; 드래프트</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rb-intro-banner">
+                        <div class="rb-content-en">
+                            <strong>Architectural Drafting &amp; Gravity Puzzle:</strong> Players take on the role of master architects in ancient Egypt, competing to construct the most magnificent monument using 20 square cards (10 body blocks and 10 perimeter edge cards). Over 4 rounds, you will draft paired combinations of stones, build layer upon layer using structural brick-laying physics, seal each tier with calculating edge cards, and aim to match 3 identical hieroglyphic symbols at 6 key architectural crossing points!
+                        </div>
+                        <div class="rb-content-ko" style="display:none;">
+                            <strong>건축 드래프트 &amp; 중력 적재 퍼즐:</strong> 고대 이집트의 수석 건축가가 되어 20장의 사각 카드(몸통 10장 + 가장자리 10장)로 장엄한 피라미드를 쌓아 올리는 전략 게임입니다! 4개 라운드 동안 몸통과 모서리 카드의 쌍을 드래프트하고, 하층 2장 위에 상층 1장을 걸쳐 올리는 브릭 적재 방식으로 피라미드를 건축합니다. 각 층 완성 시 가장자리 카드로 테두리를 봉인해 득점하고, 내부 6개 교차로에서 동일한 상형기호 3개를 일치시켜 대량의 보너스를 획득하세요!
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Components & 7 Symbols -->
+                <section class="rb-section" id="pyr-rb-components">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="rb-content-en">2. Components &amp; The 7 Hieroglyphic Symbols</span>
+                        <span class="rb-content-ko" style="display:none;">2. 구성물 및 7대 상형기호</span>
+                    </h3>
+
+                    <div class="rb-component-block">
+                        <div class="rb-comp-subhead">
+                            <i class="fa-solid fa-box-open" style="color: #c2410c;"></i>
+                            <span class="rb-content-en">Game Components Overview</span>
+                            <span class="rb-content-ko" style="display:none;">게임 구성물 전체 안내</span>
+                            <span class="badge">100 Cards</span>
+                        </div>
+                        <ul style="font-size:0.82rem; color:var(--text-muted); margin:0 0 10px 18px; line-height:1.5;">
+                            <li>
+                                <strong class="rb-content-en">50 Body Cards:</strong>
+                                <strong class="rb-content-ko" style="display:none;">50장 몸통(Body) 카드:</strong>
+                                <span class="rb-content-en">Each card features 3 distinct hieroglyphic symbols placed at its corners. All 50 cards are unique. Each player builds a 4-tier pyramid body using exactly 10 cards (L1: 4, L2: 3, L3: 2, L4: 1). Mirrored back allows 180° rotation (Flip) before placement.</span>
+                                <span class="rb-content-ko" style="display:none;">각 카드 모서리에 3개의 서로 다른 상형기호가 배치되어 있습니다. 50장 모두 고유한 구성을 가지며, 각 플레이어는 4개 층에 걸쳐 총 10장(1층 4장, 2층 3장, 3층 2장, 4층 1장)을 건축합니다. 대칭 뒷면으로 배치 전 180도 좌우 회전(뒤집기)이 가능합니다.</span>
+                            </li>
+                            <li>
+                                <strong class="rb-content-en">50 Edge Cards:</strong>
+                                <strong class="rb-content-ko" style="display:none;">50장 가장자리(Edge) 카드:</strong>
+                                <span class="rb-content-en">Right-triangle perimeter cards with 1 symbol (or 2 cows/falcons). Used to seal the left and right slopes of each completed level and trigger multiplier or majority scoring (10 edges per player across 5 levels).</span>
+                                <span class="rb-content-ko" style="display:none;">직각삼각형 형태의 모서리 카드로 1개(또는 소/매의 경우 2개)의 기호가 인쇄되어 있습니다. 완성된 각 층의 좌우 경사면을 봉인하며 배수 및 다수 점수를 계산합니다(5개 레벨 좌우 총 10장 사용).</span>
+                            </li>
+                            <li>
+                                <strong class="rb-content-en">1 First Player Marker &amp; 10 Cross Tokens:</strong>
+                                <strong class="rb-content-ko" style="display:none;">1개 선 플레이어 마커 &amp; 10개 십자 토큰:</strong>
+                                <span class="rb-content-en">First player marker denotes turn order. 10 Cross tokens (✖) allow architects to split paired market combinations and free-pick any 1 body + any 1 edge, or steal tokens from rivals!</span>
+                                <span class="rb-content-ko" style="display:none;">선 마커는 턴 순서를 나타내며, 10개의 십자 토큰(✖)은 시장 조합을 무시하고 원하는 몸통 1장과 가장자리 1장을 자유 선택(Free Pick)하거나 타 플레이어에게서 강탈할 때 사용됩니다.</span>
+                            </li>
+                            <li>
+                                <strong class="rb-content-en">5 Reference Cards &amp; Scoring Pad:</strong>
+                                <strong class="rb-content-ko" style="display:none;">5장 참조표 &amp; 점수 기록지:</strong>
+                                <span class="rb-content-en">Provides instant scoring rules and symbol distribution counts for all architects.</span>
+                                <span class="rb-content-ko" style="display:none;">기호별 득점 공식과 덱 전체 수량을 한눈에 보여줍니다.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 7 Symbols Interactive Cards Grid -->
+                    <div class="rb-comp-subhead">
+                        <i class="fa-solid fa-gem" style="color: #c2410c;"></i>
+                        <span class="rb-content-en">The 7 Hieroglyphic Symbols &amp; Powers</span>
+                        <span class="rb-content-ko" style="display:none;">7대 상형기호 및 고유 득점 규칙</span>
+                    </div>
+
+                    <div class="pyr-symbols-grid">
+                        <!-- 1. Rod -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-rod">|</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Rod / Scepter</span>
+                                        <span class="rb-content-ko" style="display:none;">막대 / 지휘봉</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 5 · Edge: 5 (1x each)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Body Instant:</strong> Immediately seize the First Player Marker (starts next round).</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>몸통 즉시 효과:</strong> 선 플레이어 마커를 즉시 가져옵니다 (다음 라운드 선 플레이어).</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Rods on bodies up to this level] × [Rods on edge].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 막대 수] × [이번 층 엣지의 막대 수].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-instant"><i class="fa-solid fa-flag"></i> 1st Player Marker</span>
+                        </div>
+
+                        <!-- 2. Cross -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-cross">✖</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Cross / Ankh</span>
+                                        <span class="rb-content-ko" style="display:none;">십자 기호 (Cross)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 7 · Edge: 7 (1x each)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Body Instant:</strong> Take 1 Cross Token from pool (or steal from a rival if pool is empty!).</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>몸통 즉시 효과:</strong> 공용 풀에서 십자 토큰 1개 획득 (풀이 비었으면 상대에게서 강탈 가능!).</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Crosses on bodies up to this level] × [Crosses on edge].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 십자 수] × [이번 층 엣지의 십자 수].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-instant"><i class="fa-solid fa-hand-holding-dollar"></i> Gain/Steal Token</span>
+                        </div>
+
+                        <!-- 3. Fish -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-fish">𓆟</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Fish (Nile Tilapia)</span>
+                                        <span class="rb-content-ko" style="display:none;">물고기 (Fish)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 11 · Edge: 8 (1 fish each)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>High Abundance:</strong> Most common body symbol. All 8 edge cards show exactly 1 fish.</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>최다 수량:</strong> 몸통에 가장 흔한 기호. 8장의 가장자리 카드는 모두 1마리씩 인쇄.</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Fishes on bodies up to this level] × [Fishes on edge].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 물고기 수] × [이번 층 엣지의 물고기 수].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-scoring"><i class="fa-solid fa-xmark"></i> Multiplier Score</span>
+                        </div>
+
+                        <!-- 4. Ox -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-ox">𓃓</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Ox / Cow (Apis)</span>
+                                        <span class="rb-content-ko" style="display:none;">황소 (Ox / Cow)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 8 · Edge: 8 (4x 1-cow, 4x 2-cows)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Variable Edges:</strong> 4 edge cards contain 1 cow, and 4 edge cards contain 2 cows!</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>가변 엣지 배수:</strong> 엣지 카드 4장은 1마리, 나머지 4장은 강력한 2마리 인쇄!</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Cows on bodies up to this level] × [Cows on edge (1 or 2)].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 황소 수] × [이번 층 엣지의 황소 수 (1~2마리)].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-scoring"><i class="fa-solid fa-bolt"></i> Up to 2x Edge Multiplier</span>
+                        </div>
+
+                        <!-- 5. Falcon -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-falcon">𓅂</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Falcon (Horus)</span>
+                                        <span class="rb-content-ko" style="display:none;">매 (Falcon / Bird)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 5 · Edge: 8 (All 2 birds each!)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Guaranteed Double Multiplier:</strong> Rare on body cards (5), but EVERY falcon edge card has 2 falcons!</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>전 엣지 2배수 보장:</strong> 몸통 수량은 적지만(5장), 모든 매 엣지 카드는 2마리씩 인쇄!</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Falcons on bodies up to this level] × [2 falcons per edge].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 매 수] × [이번 층 엣지의 매 수(기본 2마리)].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-scoring"><i class="fa-solid fa-angles-up"></i> Double Edge Power</span>
+                        </div>
+
+                        <!-- 6. Triangle -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-triangle">▲</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Triangle (Apex Race)</span>
+                                        <span class="rb-content-ko" style="display:none;">삼각 피라미드 (다수 경쟁)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 9 · Edge: 9 (1x each)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Majority Competition:</strong> Compares body triangles between all architects.</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>치열한 다수 경쟁:</strong> 모든 플레이어의 몸통에 놓인 삼각 개수를 실시간 비교합니다.</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> <strong>+3 points per rival</strong> who has strictly fewer body triangles below this level! (Calculated per triangle edge played).</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> 이번 층까지 몸통의 삼각 수가 <strong>나보다 더 적은 상대 1명당 3점 획득</strong>! (배치된 삼각 엣지 1장당 각각 계산).</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-majority"><i class="fa-solid fa-crown"></i> 3 Pts per Trailing Rival</span>
+                        </div>
+
+                        <!-- 7. Square -->
+                        <div class="pyr-symbol-card">
+                            <div class="pyr-symbol-card-top">
+                                <div class="pyr-symbol-glyph glyph-square">■</div>
+                                <div class="pyr-symbol-title-group">
+                                    <div class="pyr-symbol-name">
+                                        <span class="rb-content-en">Square (Stone Block)</span>
+                                        <span class="rb-content-ko" style="display:none;">사각 석재 (누적 배수)</span>
+                                    </div>
+                                    <div class="pyr-symbol-dist">Body: 5 · Edge: 5 (1x each)</div>
+                                </div>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Cumulative Multiplier:</strong> Squares look back at ALL previously placed square edges!</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>누적 배수 특화:</strong> 1층부터 지금까지 놓인 모든 사각 엣지를 누적 집계합니다!</span>
+                            </div>
+                            <div class="pyr-symbol-effect">
+                                <span class="rb-content-en"><strong>Edge Score:</strong> [Squares on bodies up to this level] × [<strong>Total squares across ALL edges</strong> from Level 1 up to this level].</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>엣지 점수:</strong> [해당 층까지 몸통 사각 수] × [<strong>1층부터 해당 층까지 누적된 모든 엣지의 사각 기호 총합</strong>].</span>
+                            </div>
+                            <span class="pyr-symbol-tag pyr-tag-cumulative"><i class="fa-solid fa-chart-line"></i> Cumulative Edge Multiplier</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Set Up & Table Layout -->
+                <section class="rb-section" id="pyr-rb-setup">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span class="rb-content-en">3. Set Up &amp; In-Game Table Layout</span>
+                        <span class="rb-content-ko" style="display:none;">3. 게임 준비 및 실제 인게임 테이블 배치도</span>
+                    </h3>
+
+                    <div class="rb-steps-list">
+                        <!-- Step i: 덱 분리 및 시장 구성 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">i</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Separate Decks &amp; Form 5 Draft Combinations</span>
+                                    <span class="rb-content-ko" style="display:none;">덱 분리 및 5개 드래프트 조합 진열</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Separate all 100 cards into the <strong>Body Deck (50 cards)</strong> and <strong>Edge Deck (50 cards)</strong>. Shuffle both decks separately and place them face down. Reveal the top 5 cards from each deck side-by-side to form <strong>5 paired combinations</strong> of [1 Body Card + 1 Edge Card].</span>
+                                    <span class="rb-content-ko" style="display:none;">카드 100장을 <strong>몸통 카드(50장)</strong>와 <strong>가장자리 카드(50장)</strong>로 분리하여 각각 섞은 뒤 뒷면 덱을 만듭니다. 각 덱 맨 위에서 5장씩 오픈하여 세로로 나란히 놓아 <strong>5개의 [몸통 1장 + 가장자리 1장] 드래프트 조합(Combination)</strong>을 진열합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step ii: 공용 풀 & 참조표 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">ii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Cross Tokens Pool &amp; Reference Cards</span>
+                                    <span class="rb-content-ko" style="display:none;">십자 토큰 공용 풀 &amp; 참조표 배분</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Place the 10 Cross Tokens (✖) in the center of the table where all architects can easily reach them. Each player takes 1 Reference Card.</span>
+                                    <span class="rb-content-ko" style="display:none;">10개의 십자 토큰(✖)을 모든 플레이어가 손을 뻗을 수 있는 중앙 공용 풀에 모아 둡니다. 각 플레이어는 참조표(Reference Card)를 1장씩 가져갑니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step iii: 선 플레이어 선정 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iii</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Determine Starting Architect 🚩</span>
+                                    <span class="rb-content-ko" style="display:none;">선 플레이어 선정 (Starting Architect) 🚩</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Randomly choose the starting player. That player takes the First Player Marker. (During the game, drafting a body card with a rod symbol <code>|</code> immediately claims this marker for the next round).</span>
+                                    <span class="rb-content-ko" style="display:none;">무작위로 첫 번째 플레이어를 정하고 선 플레이어 마커를 건넵니다. (게임 중 몸통 카드에 막대 기호 <code>|</code>가 있는 카드를 드래프트하면 즉시 이 마커를 빼앗아 다음 라운드의 선 플레이어가 됩니다).</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step iv: 개인 건축 부지 -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">iv</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Architect Construction Site</span>
+                                    <span class="rb-content-ko" style="display:none;">개인 피라미드 건축 부지 확보</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Each player reserves a clear play area in front of them with enough room for 4 base cards horizontally, stacking upwards to a single apex block, flanked by edge cards on both sides.</span>
+                                    <span class="rb-content-ko" style="display:none;">각 플레이어는 자신 앞에 바닥 1층(가로 4장 너비)부터 4층 꼭대기(1장)까지 피라미드를 쌓아 올리고, 양옆에 가장자리 카드를 배치할 충분한 공간을 확보합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setup Layout Diagram with Real In-Game Capture -->
+                    <div class="rb-setup-diagram">
+                        <div class="rb-diagram-header">
+                            <div class="rb-diagram-title">
+                                <i class="fa-solid fa-gamepad" style="color: #c2410c;"></i>
+                                <span class="rb-content-en">Actual In-Game Table Layout (Web Prototype Screen)</span>
+                                <span class="rb-content-ko" style="display:none;">실제 웹 프로토타입 인게임 테이블 배치도</span>
+                            </div>
+                            <span class="badge" style="background:#ffedd5; color:#c2410c; font-weight:700;">Live Web UI</span>
+                        </div>
+
+                        <!-- Real In-Game Capture Frame -->
+                        <div class="rb-ingame-frame">
+                            <img src="/assets/square_pyramids_ingame_table.png" onerror="this.onerror=null;this.src='assets/square_pyramids_ingame_table.png';" alt="Square Pyramids In-Game Table Setup Screen" class="rb-ingame-img" loading="lazy">
+                            <div class="rb-pin-overlay">
+                                <span class="pyr-pin-tag pin-a">[A] Pyramid</span>
+                                <span class="pyr-pin-tag pin-b">[B] Market</span>
+                                <span class="pyr-pin-tag pin-c">[C] Hand</span>
+                                <span class="pyr-pin-tag pin-d">[D] Status</span>
+                            </div>
+                        </div>
+
+                        <!-- Legend / Annotations matching exact locations in photo -->
+                        <div class="rb-diagram-annotations">
+                            <!-- [A] 화면 좌측 상단: 개인 피라미드 건축 영역 -->
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-a">[A]</span>
+                                <div>
+                                    <strong>
+                                        <span class="rb-content-en">My Pyramid Construction (Left-Top)</span>
+                                        <span class="rb-content-ko" style="display:none;">개인 피라미드 건축 영역 (화면 좌측 상단)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Your 4-tier monument slots (L1: 4, L2: 3, L3: 2, L4: 1) with perimeter edge slopes. Displays your current cross tokens, body triangles, and 1st player marker.</span>
+                                        <span class="rb-content-ko" style="display:none;">내 피라미드 건축판 (1층 4칸, 2층 3칸, 3층 2칸, 4층 1칸) 및 양측 경사면. 보유 십자 토큰, 몸통 삼각 수, 선 마커 소유 여부 표시.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- [B] 화면 우측 상단: 드래프트 라인 & 시장 -->
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-b">[B]</span>
+                                <div>
+                                    <strong>
+                                        <span class="rb-content-en">Draft Line Market &amp; Controls (Right-Top)</span>
+                                        <span class="rb-content-ko" style="display:none;">공개 드래프트 라인 &amp; 시장 (화면 우측 상단)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">The 5 revealed [Body + Edge] combinations. Features <strong>[↔ Flip Card]</strong> button and <strong>[Pay 1 Cross · Free Pick]</strong> button to bypass pairs.</span>
+                                        <span class="rb-content-ko" style="display:none;">공개된 5쌍의 [몸통 카드 + 모서리 카드] 조합. 카드 회전을 위한 <strong>[↔ 좌우 뒤집기]</strong> 및 조합 무시를 위한 <strong>[✖ 토큰 1개 지불 · 자유 선택]</strong> 버튼 제공.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- [C] 화면 좌측 하단: 손에 든 모서리 카드 -->
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-c">[C]</span>
+                                <div>
+                                    <strong>
+                                        <span class="rb-content-en">Edge Cards in Hand (Left-Bottom)</span>
+                                        <span class="rb-content-ko" style="display:none;">손에 든 모서리 카드 보관소 (화면 좌측 하단)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Drafted edge cards kept in hand during the round. When the round ends, select 2 edges to seal the completed level's left and right sides.</span>
+                                        <span class="rb-content-ko" style="display:none;">라운드 중 드래프트하여 손에 보관하는 모서리 카드들. 라운드 종료 시 2장을 선택하여 완성된 층의 좌우 양측에 배치해 득점합니다.</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- [D] 화면 우측 중하단: 상대 현황 및 심볼 트래커 -->
+                            <div class="rb-annot-item">
+                                <span class="rb-annot-badge badge-d">[D]</span>
+                                <div>
+                                    <strong>
+                                        <span class="rb-content-en">Opponents &amp; Symbol Tracker (Right-Bottom)</span>
+                                        <span class="rb-content-ko" style="display:none;">상대 현황 &amp; 심볼 분포 트래커 (화면 우측 중하단)</span>
+                                    </strong>
+                                    <p>
+                                        <span class="rb-content-en">Live mini-views of rival pyramids (crucial for Triangle majority races) and real-time distribution tracking of remaining deck symbols.</span>
+                                        <span class="rb-content-ko" style="display:none;">상대 플레이어들의 실시간 피라미드 진행 상황(삼각 다수 경쟁 확인에 필수) 및 덱에 남은 심볼 수량을 추적하는 분포표.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Round Flow & How to Play -->
+                <section class="rb-section" id="pyr-rb-play">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span class="rb-content-en">4. Round Flow &amp; Drafting Rules</span>
+                        <span class="rb-content-ko" style="display:none;">4. 라운드 진행 및 드래프트 규칙</span>
+                    </h3>
+
+                    <p style="font-size:0.84rem; color:var(--text-main); margin-bottom:10px;">
+                        <span class="rb-content-en">The game is played across <strong>4 distinct rounds</strong>, corresponding to the 4 levels of the pyramid:</span>
+                        <span class="rb-content-ko" style="display:none;">게임은 피라미드의 각 층을 차례대로 완성하는 <strong>총 4개의 라운드</strong>로 진행됩니다:</span>
+                    </p>
+
+                    <!-- Pyramid Stacking Levels Guide -->
+                    <div class="pyr-levels-stack">
+                        <div class="pyr-level-row">
+                            <div class="pyr-level-badge">Round 1</div>
+                            <div class="pyr-level-desc">
+                                <span class="rb-content-en"><strong>Level 1 Base (4 Turns):</strong> Each player drafts and builds 4 body cards side-by-side horizontally. At round end, place 2 edge cards on L1.</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>1층 바닥 건설 (4턴):</strong> 각자 4장의 몸통 카드를 가로로 인접하게 배치. 라운드 종료 시 1층 좌우에 엣지 2장 배치 &amp; 1층 점수 계산.</span>
+                            </div>
+                            <div class="pyr-level-slots">4 Bodies + 2 Edges</div>
+                        </div>
+
+                        <div class="pyr-level-row">
+                            <div class="pyr-level-badge">Round 2</div>
+                            <div class="pyr-level-desc">
+                                <span class="rb-content-en"><strong>Level 2 Tier (3 Turns):</strong> Build 3 body cards bridging over Level 1. At round end, place 2 edge cards on L2.</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>2층 건설 (3턴):</strong> 1층 카드들 위에 걸쳐 3장의 몸통 카드 배치. 라운드 종료 시 2층 좌우에 엣지 2장 배치 &amp; 2층 점수 계산.</span>
+                            </div>
+                            <div class="pyr-level-slots">3 Bodies + 2 Edges</div>
+                        </div>
+
+                        <div class="pyr-level-row">
+                            <div class="pyr-level-badge">Round 3</div>
+                            <div class="pyr-level-desc">
+                                <span class="rb-content-en"><strong>Level 3 Tier (2 Turns):</strong> Build 2 body cards bridging over Level 2. At round end, place 2 edge cards on L3.</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>3층 건설 (2턴):</strong> 2층 카드들 위에 걸쳐 2장의 몸통 카드 배치. 라운드 종료 시 3층 좌우에 엣지 2장 배치 &amp; 3층 점수 계산.</span>
+                            </div>
+                            <div class="pyr-level-slots">2 Bodies + 2 Edges</div>
+                        </div>
+
+                        <div class="pyr-level-row">
+                            <div class="pyr-level-badge">Round 4</div>
+                            <div class="pyr-level-desc">
+                                <span class="rb-content-en"><strong>Level 4 Apex (1 Turn):</strong> Build the final 1 body card at the apex. Place 2 edges on L4 <em>plus 2 cap edges at the L5 peak</em> (4 edges total).</span>
+                                <span class="rb-content-ko" style="display:none;"><strong>4층 완공 (1턴):</strong> 꼭대기 1장의 몸통 카드 배치. 4층 좌우 2장 <em>+ 피라미드 5층 꼭대기(Apex) 좌우에 마지막 2장</em>(총 4장) 배치 &amp; 최종 득점.</span>
+                            </div>
+                            <div class="pyr-level-slots">1 Body + 4 Edges</div>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead" style="margin-top:12px;">
+                        <i class="fa-solid fa-arrows-spin" style="color: #c2410c;"></i>
+                        <span class="rb-content-en">Turn Steps in Detail</span>
+                        <span class="rb-content-ko" style="display:none;">턴 진행 세부 순서</span>
+                    </div>
+
+                    <div class="rb-steps-list">
+                        <!-- Turn Step 1: Draft Pair / Free Pick -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">1</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Take a Combination (or Free-Pick with Cross Token)</span>
+                                    <span class="rb-content-ko" style="display:none;">조합 가져오기 (또는 십자 토큰으로 자유 픽)</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Starting with the first player and continuing clockwise, take 1 combination consisting of <strong>1 Body Card + 1 Edge Card</strong> from the market.<br>
+                                    <strong>⭐ Cross Token Power (Free Pick):</strong> By paying 1 Cross Token (✖) back to the pool, an architect may <em>ignore the paired combination</em> and choose <strong>ANY 1 Body Card + ANY 1 Edge Card</strong> in the market! After free-picking, realign the remaining cards into pairs.</span>
+                                    <span class="rb-content-ko" style="display:none;">선 플레이어부터 시계 방향으로, 시장에 진열된 5개의 조합 중 <strong>1개의 [몸통 1장 + 가장자리 1장] 쌍</strong>을 가져옵니다.<br>
+                                    <strong>⭐ 십자 토큰 특수 권능 (자유 선택):</strong> 십자 토큰(✖) 1개를 공용 풀에 지불하면, 조합 제한을 완전히 무시하고 시장에 있는 <strong>원하는 아무 몸통 1장 + 원하는 아무 가장자리 1장</strong>을 자유롭게 교차 선택(Free Pick)할 수 있습니다! 선택 후 남은 카드들로 다시 짝을 맞춥니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turn Step 2: Instant Body Abilities -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">2</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Trigger Immediate Body Powers</span>
+                                    <span class="rb-content-ko" style="display:none;">몸통 특수 능력 즉시 발동</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">Check the drafted body card for special power glyphs:
+                                    <ul>
+                                        <li>If it has a <strong>Rod <code>|</code></strong>: Take the First Player Marker immediately. You become the starting player of the next round.</li>
+                                        <li>If it has a <strong>Cross <code>✖</code></strong>: Take 1 Cross Token from the pool. If none remain in the pool, you may <em>steal one from another player</em>!</li>
+                                    </ul></span>
+                                    <span class="rb-content-ko" style="display:none;">가져온 몸통 카드에 특수 기호가 있는지 확인하여 즉시 처리합니다:
+                                    <ul>
+                                        <li><strong>막대 기호 <code>|</code></strong>가 포함된 경우: 즉시 선 플레이어 마커를 가져옵니다. 다음 라운드의 선 플레이어가 됩니다.</li>
+                                        <li><strong>십자 기호 <code>✖</code></strong>가 포함된 경우: 공용 풀에서 십자 토큰 1개를 즉시 획득합니다. 만약 공용 풀이 비어있다면 <em>다른 플레이어의 토큰 1개를 강탈</em>할 수 있습니다!</li>
+                                    </ul></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turn Step 3: Build Body Immediately -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">3</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Place Body Card Immediately (Gravity Physics)</span>
+                                    <span class="rb-content-ko" style="display:none;">몸통 카드 즉시 건축 (중력 적재 법칙)</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">The body card cannot be held in hand; it must be built into your pyramid immediately.
+                                    <ul>
+                                        <li><strong>180° Flip:</strong> You may rotate the card 180° before placement to optimize matching corner glyphs.</li>
+                                        <li><strong>Level 1 Placement:</strong> Must be connected adjacent to the left or right of existing Level 1 cards.</li>
+                                        <li><strong>Level 2–4 Gravity Stacking:</strong> Upper blocks must rest directly above the joint of two underlying cards from the level below (brick-laying style). Floating blocks are illegal!</li>
+                                    </ul></span>
+                                    <span class="rb-content-ko" style="display:none;">몸통 카드는 손에 들고 있을 수 없으며, 가져오자마자 즉시 피라미드에 배치해야 합니다.
+                                    <ul>
+                                        <li><strong>180도 좌우 뒤집기 (↔ Flip):</strong> 원하는 모서리 기호 방향을 맞추기 위해 카드를 180도 회전하여 배치할 수 있습니다.</li>
+                                        <li><strong>1층 배치 규칙:</strong> 이미 놓인 1층 카드들의 바로 왼쪽 또는 오른쪽에 인접(Connected)하게 붙여서 건설해야 합니다.</li>
+                                        <li><strong>2~4층 중력 적재 규칙:</strong> 위층의 카드는 반드시 바로 아래층에 놓인 2장의 몸통 카드 경계면 사이에 걸쳐서(벽돌 쌓기 방식) 올려놓아야 합니다. 공중에 뜬 배치는 불가능합니다!</li>
+                                    </ul></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turn Step 4: Keep Edge in Hand -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">4</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Keep Edge Card in Hand</span>
+                                    <span class="rb-content-ko" style="display:none;">가장자리 카드는 손패에 보관</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">The edge card stays secretly in your hand until the current round ends. You will choose which 2 edge cards to play when sealing the tier.</span>
+                                    <span class="rb-content-ko" style="display:none;">드래프트한 모서리 카드는 라운드가 끝날 때까지 비공개로 손에 보관합니다. 라운드 종료 시 손에 모인 엣지 카드 중 최적의 2장을 골라 배치하게 됩니다.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Turn Step 5: Market Refresh -->
+                        <div class="rb-step-card">
+                            <div class="rb-step-badge">5</div>
+                            <div class="rb-step-content">
+                                <div class="rb-step-title">
+                                    <span class="rb-content-en">Turn End Market Refresh</span>
+                                    <span class="rb-content-ko" style="display:none;">턴 종료 및 시장 리필</span>
+                                </div>
+                                <div class="rb-step-text">
+                                    <span class="rb-content-en">When all players have completed their turn, discard all unchosen cards remaining in the market. Reveal 5 new body cards and 5 new edge cards to form fresh pairs for the next turn.</span>
+                                    <span class="rb-content-ko" style="display:none;">모든 플레이어가 턴을 마치면 시장에 남은 모든 카드를 버리고, 두 덱에서 새로 5장씩 오픈하여 다음 턴을 위한 새로운 5개 조합을 준비합니다.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Edge Placement & Scoring -->
+                <section class="rb-section" id="pyr-rb-scoring">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-calculator"></i>
+                        <span class="rb-content-en">5. Edge Placement &amp; Level Scoring</span>
+                        <span class="rb-content-ko" style="display:none;">5. 엣지 배치 및 층별 점수 계산</span>
+                    </h3>
+
+                    <p style="font-size:0.84rem; color:var(--text-main); margin-bottom:8px;">
+                        <span class="rb-content-en">When all players finish building the required body stones for the level, the round ends. All players simultaneously select <strong>2 edge cards from their hand</strong> and place them on the left and right slopes of the completed level:</span>
+                        <span class="rb-content-ko" style="display:none;">해당 층의 몸통 카드 건축이 모두 끝나면 라운드가 종료됩니다. 모든 플레이어는 손에 모인 가장자리 카드 중 <strong>2장을 골라 이번에 완성한 층의 좌측과 우측에 1장씩 배치</strong>하고 점수를 계산합니다:</span>
+                    </p>
+
+                    <div class="rb-callout-box amber" style="margin-bottom:10px;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <span class="rb-content-en"><strong>Round 4 Apex Rule:</strong> In Round 4, players place 2 edges on Level 4 <em>plus their remaining 2 edges capping the Level 5 peak</em> (4 edge cards scored in total during Round 4!).</span>
+                            <span class="rb-content-ko" style="display:none;"><strong>4라운드 피라미드 완공 특수 규칙:</strong> 4라운드에는 4층 양쪽에 엣지 2장을 놓고, <em>남은 2장의 엣지 카드를 5층 꼭대기(Apex) 좌우에 추가로 배치</em>하여 총 4장의 엣지 점수를 계산합니다!</span>
+                        </div>
+                    </div>
+
+                    <div class="rb-comp-subhead">
+                        <i class="fa-solid fa-square-root-variable" style="color: #c2410c;"></i>
+                        <span class="rb-content-en">Scoring Formulas</span>
+                        <span class="rb-content-ko" style="display:none;">기호별 득점 계산 수식</span>
+                    </div>
+
+                    <div class="rb-setup-table-wrap">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Scoring Formula (KO / EN)</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>| / ✖ / 𓆟 / 𓃓 / 𓅂</strong><br><small>Standard Glyphs</small></td>
+                                    <td style="text-align:left;">
+                                        <span class="rb-content-en"><strong>[Symbols on Edge] × [Symbols on Body up to this level]</strong></span>
+                                        <span class="rb-content-ko" style="display:none;"><strong>[이번 층 엣지의 기호 수] × [해당 층까지 몸통 내 해당 기호 총수]</strong></span>
+                                    </td>
+                                    <td>2 falcon edge × 4 body falcons = <strong>8 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:#d97706;">▲</strong><br><small>Triangle Majority</small></td>
+                                    <td style="text-align:left;">
+                                        <span class="rb-content-en"><strong>+3 points per rival</strong> who has strictly fewer body triangles up to this level. (Scored per triangle edge card).</span>
+                                        <span class="rb-content-ko" style="display:none;">이번 층까지 몸통 삼각 수가 <strong>나보다 더 적은 상대 1명당 3점</strong>. (삼각 엣지 1장당 독립 계산).</span>
+                                    </td>
+                                    <td>In 3p game, beating both rivals = 2 rivals × 3 pts = <strong>6 pts</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color:#c2410c;">■</strong><br><small>Square Cumulative</small></td>
+                                    <td style="text-align:left;">
+                                        <span class="rb-content-en"><strong>[Squares on Body up to this level] × [ALL square edges from L1 to current level]</strong></span>
+                                        <span class="rb-content-ko" style="display:none;"><strong>[해당 층까지 몸통 사각 수] × [1층부터 이번 층까지 누적된 모든 엣지 사각 총합]</strong></span>
+                                    </td>
+                                    <td>3 body squares × 2 cumulative square edges = <strong>6 pts</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 6: End Game & Matched Crossings -->
+                <section class="rb-section" id="pyr-rb-endgame">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span class="rb-content-en">6. Game End &amp; The 6 Matched Crossings</span>
+                        <span class="rb-content-ko" style="display:none;">6. 게임 종료 &amp; 6개 교차로 세트 보너스</span>
+                    </h3>
+
+                    <p style="font-size:0.84rem; color:var(--text-main); margin-bottom:8px;">
+                        <span class="rb-content-en">The game ends when the 4th round ends and all Level 4 &amp; Level 5 apex edge cards have been scored. Architects now calculate final end-game bonuses:</span>
+                        <span class="rb-content-ko" style="display:none;">4라운드가 끝나고 4층 및 5층 꼭대기 엣지 점수 계산이 완료되면 게임이 종료됩니다. 건축가들은 최종 보너스 점수를 집계합니다:</span>
+                    </p>
+
+                    <!-- Matched Crossings Special Callout -->
+                    <div class="pyr-crossing-card">
+                        <i class="fa-solid fa-shapes pyr-crossing-icon"></i>
+                        <div>
+                            <h4 style="margin:0 0 4px 0; font-size:0.95rem; font-weight:800; color:#9a3412;">
+                                <span class="rb-content-en">The 6 Matched Crossing Sets (+5 Points Each!)</span>
+                                <span class="rb-content-ko" style="display:none;">6개 삼각 교차로 세트 매칭 보너스 (개당 +5점!)</span>
+                            </h4>
+                            <p style="margin:0 0 6px 0; font-size:0.82rem; line-height:1.45; color:var(--text-main);">
+                                <span class="rb-content-en">In the stacked pyramid body, exactly <strong>6 triangular intersection crossings</strong> are formed where the bottom edge of an upper stone meets the adjacent top corners of the two stones beneath it (3 crossings between L1–L2, 2 between L2–L3, and 1 between L3–L4).</span>
+                                <span class="rb-content-ko" style="display:none;">벽돌 적재 구조상 상층 카드 1장의 아래쪽 모서리와 하층 카드 2장의 맞닿은 위쪽 모서리가 만나는 지점에 <strong>총 6개의 삼각 교차점(Crossings)</strong>이 형성됩니다 (1–2층 사이 3곳, 2–3층 사이 2곳, 3–4층 사이 1곳).</span>
+                            </p>
+                            <p style="margin:0; font-size:0.82rem; line-height:1.45; color:#9a3412; font-weight:700;">
+                                <span class="rb-content-en">If all 3 corners meeting at a crossing share the EXACT SAME symbol, earn <strong>+5 bonus points per matched set</strong>! (Up to 30 bonus points possible).</span>
+                                <span class="rb-content-ko" style="display:none;">한 교차로에서 만나는 <strong>3개 모서리의 기호가 모두 동일하게 일치</strong>한다면, <strong>일치한 교차로 1곳당 보너스 5점</strong>을 획득합니다! (최대 30점 보너스 가능).</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rb-specs-grid" style="margin:10px 0;">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-circle-xmark rb-spec-icon" style="color:#dc2626;"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Unused Tokens</span><span class="rb-content-ko" style="display:none;">남은 토큰</span></div>
+                                <div class="rb-spec-val">+1 PT <small style="font-weight:600; font-size:0.7rem;">/ ✖ Token</small></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-flag rb-spec-icon" style="color:#b45309;"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">1st Player Marker</span><span class="rb-content-ko" style="display:none;">선 마커 소유자</span></div>
+                                <div class="rb-spec-val">+1 PT <small style="font-weight:600; font-size:0.7rem;">Final Owner</small></div>
+                            </div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-shapes rb-spec-icon" style="color:#ea580c;"></i>
+                            <div>
+                                <div class="rb-spec-label"><span class="rb-content-en">Crossings Bonus</span><span class="rb-content-ko" style="display:none;">교차로 보너스</span></div>
+                                <div class="rb-spec-val">+5 PTS <small style="font-weight:600; font-size:0.7rem;">/ Matched Set</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PDF Page 6 Scoring Example Breakdown -->
+                    <div class="rb-comp-subhead" style="margin-top:12px;">
+                        <i class="fa-solid fa-receipt" style="color: #c2410c;"></i>
+                        <span class="rb-content-en">Complete Scoring Example (From Rulebook Page 6)</span>
+                        <span class="rb-content-ko" style="display:none;">규칙서 6페이지 종합 득점 예시 해설</span>
+                    </div>
+
+                    <div class="rb-callout-box blue">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <div style="font-size:0.8rem; line-height:1.45;">
+                            <span class="rb-content-en">
+                                <strong>Level 1:</strong> Left edge [1 Fish] × 2 body fishes = <strong>2 pts</strong>. Right edge [Triangle] beats 1 rival = <strong>3 pts</strong>.<br>
+                                <strong>Level 2:</strong> Left edge [1 Cow] × 4 body cows = <strong>4 pts</strong>. Right edge [Triangle] beats 1 rival = <strong>3 pts</strong>.<br>
+                                <strong>Level 3:</strong> Left edge [1 Cross] × 4 body crosses = <strong>4 pts</strong>. Right edge [1 Rod] × 2 body rods = <strong>2 pts</strong>.<br>
+                                <strong>Level 4:</strong> Left edge [2 Cows] × 4 body cows = <strong>8 pts</strong>. Right edge [1 Square] × 3 body squares × 1 total edge square = <strong>3 pts</strong>.<br>
+                                <strong>Level 5 (Apex):</strong> Left edge [2 Falcons] × 4 body falcons = <strong>8 pts</strong>. Right edge [1 Square] × 3 body squares × 2 cumulative edge squares = <strong>6 pts</strong>.<br>
+                                <strong>End Game:</strong> 4 Matched Crossings = <strong>20 pts</strong>. 1 remaining Cross Token + First Player Marker = <strong>2 pts</strong>.
+                            </span>
+                            <span class="rb-content-ko" style="display:none;">
+                                <strong>1층:</strong> 좌측 엣지 [물고기 1마리] × 몸통 물고기 2개 = <strong>2점</strong>. 우측 엣지 [삼각] 상대보다 많음 = <strong>3점</strong>.<br>
+                                <strong>2층:</strong> 좌측 엣지 [황소 1마리] × 몸통 황소 4개 = <strong>4점</strong>. 우측 엣지 [삼각] 상대보다 많음 = <strong>3점</strong>.<br>
+                                <strong>3층:</strong> 좌측 엣지 [십자 1개] × 몸통 십자 4개 = <strong>4점</strong>. 우측 엣지 [막대 1개] × 몸통 막대 2개 = <strong>2점</strong>.<br>
+                                <strong>4층:</strong> 좌측 엣지 [황소 2마리] × 몸통 황소 4개 = <strong>8점</strong>. 우측 엣지 [사각 1개] × 몸통 사각 3개 × 사각 엣지 1개 = <strong>3점</strong>.<br>
+                                <strong>5층 (꼭대기):</strong> 좌측 엣지 [매 2마리] × 몸통 매 4개 = <strong>8점</strong>. 우측 엣지 [사각 1개] × 몸통 사각 3개 × 누적 사각 엣지 2개 = <strong>6점</strong>.<br>
+                                <strong>최종 보너스:</strong> 4개 교차로 세트 완성 = <strong>20점</strong>. 남은 십자 토큰 1개 + 선 마커 소유 1점 = <strong>2점</strong>.
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 7: Distribution & Reference -->
+                <section class="rb-section" id="pyr-rb-reference">
+                    <h3 class="rb-section-title">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="rb-content-en">7. Symbol Distribution &amp; Card Counts</span>
+                        <span class="rb-content-ko" style="display:none;">7. 심볼 분포표 및 카드 구성비</span>
+                    </h3>
+
+                    <div class="rb-setup-table-wrap">
+                        <table class="rb-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>| (Rod)</th>
+                                    <th>✖ (Cross)</th>
+                                    <th>▲ (Triangle)</th>
+                                    <th>𓆟 (Fish)</th>
+                                    <th>𓃓 (Ox)</th>
+                                    <th>𓅂 (Falcon)</th>
+                                    <th>■ (Square)</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>BODY</strong></td>
+                                    <td class="highlight-cell">5</td>
+                                    <td class="highlight-cell">7</td>
+                                    <td class="highlight-cell">9</td>
+                                    <td class="highlight-cell">11</td>
+                                    <td class="highlight-cell">8</td>
+                                    <td class="highlight-cell">5</td>
+                                    <td class="highlight-cell">5</td>
+                                    <td><strong>50 Cards</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EDGE</strong></td>
+                                    <td>5</td>
+                                    <td>7</td>
+                                    <td>9</td>
+                                    <td>8 (1x)</td>
+                                    <td>8 (4x 1x, 4x 2x)</td>
+                                    <td>8 (All 2x!)</td>
+                                    <td>5</td>
+                                    <td><strong>50 Cards</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('pyramidsRulebookModal')">
+                    <span class="rb-content-en">Close</span>
+                    <span class="rb-content-ko" style="display:none;">닫기</span>
+                </button>
+                <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="rb-content-en">Play Online Now</span>
+                    <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal 8: The Drawing Game Info -->
     <div class="proto-modal-overlay" id="drawingGameModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
@@ -5052,7 +6182,7 @@
         function openModal(id) {
             const m = document.getElementById(id);
             if (!m) return;
-            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal') {
+            if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }
@@ -5082,9 +6212,16 @@
             modal.querySelectorAll('.rb-content-ko').forEach(el => el.style.display = isKo ? '' : 'none');
             modal.querySelectorAll('.rb-content-en').forEach(el => el.style.display = isKo ? 'none' : '');
             modal.querySelectorAll('.rb-lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.rbLang === lang));
-            const diagramImg = modal.querySelector('.rb-ingame-img');
-            if (diagramImg) {
-                diagramImg.src = isKo ? '/assets/tamers_ingame_table_ko.png' : '/assets/tamers_ingame_table_en.png';
+            if (modalId === 'tamersRulebookModal') {
+                const diagramImg = modal.querySelector('.rb-ingame-img');
+                if (diagramImg) {
+                    diagramImg.src = isKo ? '/assets/tamers_ingame_table_ko.png' : '/assets/tamers_ingame_table_en.png';
+                }
+            } else if (modalId === 'pyramidsRulebookModal') {
+                const diagramImg = modal.querySelector('.rb-ingame-img');
+                if (diagramImg) {
+                    diagramImg.src = '/assets/square_pyramids_ingame_table.png';
+                }
             }
         }
         window.setRulebookLanguage = setRulebookLanguage;
