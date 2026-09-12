@@ -1,9 +1,10 @@
 /* Doore publisher sell sheet. Centered like every other Sell Sheet dialog on
-   the page, and sized to match them rather than to the wider rulebooks. */
+   the page, but a little wider than them so a one-page sheet does not read as
+   a narrow column; still well short of the rulebook shell. */
 .proto-modal-card.doore-sell-sheet-card {
     position: relative;
     width: 100%;
-    max-width: 580px;
+    max-width: 680px;
     max-height: 88vh;
     display: flex;
     flex-direction: column;
