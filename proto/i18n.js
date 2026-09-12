@@ -59,66 +59,6 @@
                 desc: '천체 도미노 타일로 나만의 밤하늘 지도를 넓히고, 관측 렌즈를 배치해 별·행성·혜성·성운·은하를 한 시야에 담아 배수 점수를 얻으세요.',
                 meta: ['2–4명', '12번의 밤', '타일 배치', '공간 점수']
             }
-        },
-        modals: {
-            waffleModal: {
-                title: 'Waffle Pop! — 게임 소개',
-                headings: ['🧇 게임 소개', '🧩 핵심 메커니즘', '🌐 온라인 플레이테스트'],
-                paragraphs: [
-                    '<strong>Waffle Pop!</strong>은 2~4명이 즐기는 유쾌하고 전술적인 디저트 보드게임입니다. 맛있는 토핑 타일이 3층으로 쌓인 4×4 와플 판(총 48개 타일)에서 공간 패턴 미션 카드를 완성하고 높은 점수의 토핑을 수확합니다.',
-                    '설치 없이 완전히 플레이할 수 있는 디지털 프로토타입입니다. 영리한 솔로 AI 봇 테스트 모드와 브라우저 P2P 연결 기반의 실시간 멀티플레이 방을 제공합니다.'
-                ],
-                items: [
-                    '<strong>3D 격자 & 공간 패턴 매칭</strong>: 좌표 카드를 드래프트해 와플 판에서 3·4·5칸 패턴 미션을 맞춥니다. 회전과 좌우 반전을 모두 지원합니다.',
-                    '<strong>다층 토핑 수확</strong>: 미션을 완성하면 일치한 각 좌표의 맨 위 토핑을 가져옵니다. 아래층이 차례로 드러나며 판의 상황이 계속 달라집니다.',
-                    '<strong>비대칭 토핑 점수</strong>: 선착순 VIP 리본, 황금 체리 세트, 제곱으로 커지는 딸기 조합, 공동 배당 등 7종 토핑마다 다른 전략을 제공합니다.',
-                    '<strong>동일 턴 종료</strong>: 4×4 와플 판에서 5곳 이상의 3개 층이 모두 비워지면 게임 종료가 시작되며, 모두 같은 수의 턴을 진행합니다.'
-                ]
-            },
-            pyramidsModal: {
-                title: 'Square Pyramids (사각 피라미드) — 게임 소개',
-                headings: ['🔺 게임 소개', '🧩 핵심 메커니즘', '🌐 온라인 플레이테스트'],
-                paragraphs: [
-                    '<strong>Square Pyramids (사각 피라미드)</strong>는 공개 카드 드래프트와 건축적인 피라미드 공간 퍼즐을 결합한 2~5인 전략 카드 게임입니다. 4라운드 동안 기초 몸통 돌 카드와 테두리 가장자리 카드를 짝지어 가져오고, 바닥부터 꼭대기까지 고대 계단식 기념물을 건설합니다.',
-                    '설치 없이 최신 데스크톱·모바일 브라우저에서 원활하게 플레이할 수 있습니다. <strong>AI 건축가와의 솔로 플레이</strong>(2~5인 구성)와 WebRTC P2P 기반 <strong>실시간 멀티플레이 방</strong>을 제공하며 한국어와 영어를 완전히 지원합니다.'
-                ],
-                items: [
-                    '<strong>2장 카드 드래프트 시장</strong>: 매 턴 서로 다른 모서리 기호 3개가 있는 몸통 돌 카드 1장과 가장자리 카드 1장으로 구성된 한 쌍을 가져옵니다. 교차 토큰(✖)을 쓰면 서로 다른 시장 쌍에서 자유롭게 선택할 수 있습니다.',
-                    '<strong>건축 중력 쌓기</strong>: 아래에서 위로 4층 기념물을 만듭니다(L1 바닥 몸통 4개부터 L4 꼭대기 몸통 1개까지). 위 블록은 바로 아래 두 돌의 교차점에 지지되어야 합니다.',
-                    '<strong>교차 기호 매칭</strong>: 핵심 교차점 6곳에서 인접한 돌의 모서리를 맞춥니다. 같은 기호 3개가 교차하면 큰 종료 점수 보너스를 얻습니다.',
-                    '<strong>외곽 가장자리 완성 & 배수 점수</strong>: 완성한 각 층의 좌우 외곽을 가장자리 카드로 닫습니다. 가장자리 카드는 수집한 몸통 기호 점수에 배수를 적용하고, 삼각 깃발은 다른 건축가와의 다수 경쟁 점수를 줍니다.'
-                ]
-            },
-            drawingGameModal: {
-                title: 'The Drawing Game — 게임 소개',
-                headings: ['🌊 게임 소개', '🧩 핵심 메커니즘', '🌐 온라인 플레이테스트'],
-                paragraphs: [
-                    '<strong>The Drawing Game</strong>은 3~6명이 즐기는 동시 선택·공간 타일 배치 보드게임입니다. 9턴 동안 다채로운 바다 생물을 모아 개인 바다 캔버스에 배치하고 가능한 한 많은 물방울을 가립니다.',
-                    '한국어·영어를 지원하는 브라우저 프로토타입으로, 설치 없이 AI 상대와 솔로 테스트하거나 3~6명이 실시간 멀티플레이 방에서 함께 즐길 수 있습니다.'
-                ],
-                items: [
-                    '<strong>A/B/C 비밀 선택</strong>: 매 턴 카드 3장을 공개합니다. 모두 하나를 비밀리에 고른 뒤 동시에 공개합니다.',
-                    '<strong>선택 인원별 타일 획득</strong>: 같은 카드를 고른 플레이어 수에 따라 각자가 그 카드에서 받을 바다 동물 타일이 정해집니다.',
-                    '<strong>자유로운 캔버스 배치</strong>: 기존 타일과 겹치지 않게 동물을 놓고 돌려, 인쇄된 물방울을 효율적으로 가립니다.',
-                    '<strong>중복 동물의 돌 전환</strong>: 이미 가진 동물을 다시 얻으면 해당 동물의 가치 단계에 맞는 더 작은 돌 타일로 바뀝니다.',
-                    '<strong>동물 점수 − 물방울</strong>: 최종 점수는 수집한 동물 가치의 합에서 9턴 뒤 가리지 못한 물방울 수를 뺀 값입니다.'
-                ]
-            },
-            starWindowModal: {
-                title: 'Star Window — 게임 소개',
-                headings: ['🔭 게임 소개', '🧩 핵심 메커니즘', '🌐 온라인 플레이테스트'],
-                paragraphs: [
-                    '<strong>Star Window (천문대의 밤)</strong>은 2~4명이 즐기는 천체 타일 배치·공간 점수 보드게임입니다. 열두 번의 밤 동안 천문대장들은 개인 밤하늘 지도를 넓히고, 렌즈로 별·행성·혜성·성운·은하의 가장 가치 있는 배열을 포착합니다.',
-                    '한국어·영어를 지원하는 브라우저 프로토타입으로, 설치 없이 AI 천문대와 솔로 플레이하거나 최대 4명이 실시간 멀티플레이 방에서 함께 즐길 수 있습니다.'
-                ],
-                items: [
-                    '<strong>관측 계획 드래프트</strong>: 자신의 턴에 관측 렌즈 1개와 도미노 모양 하늘 타일 1개가 묶인 계획을 선택합니다.',
-                    '<strong>열린 밤하늘 확장</strong>: 하늘 타일을 돌려 기존 지도 옆에 놓습니다. 기호 일치 제약 없이 미래의 관측 범위를 설계합니다.',
-                    '<strong>렌즈 배치 & 배수 점수</strong>: 선택한 렌즈를 유효한 칸·변·꼭짓점에 놓습니다. 시야 안에서 조건에 맞는 천체마다 렌즈 배수만큼 점수를 얻습니다.',
-                    '<strong>주 망원경 턴 순서</strong>: 주 망원경을 선택하면 다음 날 밤의 첫 관측자가 되어, 매 드래프트에 타이밍 선택이 더해집니다.',
-                    '<strong>구름 토큰 교차</strong>: 구름 타일을 놓으면 드래프트 전에 두 관측 계획의 하늘 타일을 서로 바꿀 수 있는 토큰을 얻습니다.'
-                ]
-            }
         }
     };
 
@@ -202,18 +142,6 @@
                     setAttribute(rulebook, 'aria-label', rulebookLabel, isKorean);
                 }
             }
-        });
-
-        Object.entries(ko.modals).forEach(([id, modalCopy]) => {
-            const modal = document.getElementById(id);
-            if (!modal) return;
-            setInlineLabel(modal.querySelector('.proto-modal-title'), modalCopy.title, isKorean);
-            modal.querySelectorAll('.proto-modal-body h4').forEach((heading, index) => setHtml(heading, modalCopy.headings[index], isKorean));
-            modal.querySelectorAll('.proto-modal-body p').forEach((paragraph, index) => setHtml(paragraph, modalCopy.paragraphs[index], isKorean));
-            modal.querySelectorAll('.proto-modal-body li').forEach((item, index) => setHtml(item, modalCopy.items[index], isKorean));
-            setInlineLabel(modal.querySelector('.proto-modal-footer .btn-secondary'), '닫기', isKorean);
-            setInlineLabel(modal.querySelector('.proto-modal-footer .btn-play-proto'), '지금 플레이', isKorean);
-            setAttribute(modal.querySelector('.proto-modal-close'), 'aria-label', '상세 창 닫기', isKorean);
         });
 
         if (typeof window.setRulebookLanguage === 'function') {
