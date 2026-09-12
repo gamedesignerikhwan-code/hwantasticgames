@@ -97,11 +97,54 @@
         }
 
         .proto-hero-desc {
-            max-width: 700px;
-            margin: 0 auto 16px;
+            max-width: 640px;
+            margin: 0 auto 10px;
             font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.45;
+            line-height: 1.5;
+            text-wrap: balance;
+        }
+
+        .proto-hero-note {
+            display: block;
+            margin-top: 4px;
+            text-wrap: balance;
+        }
+
+        .proto-hero-contact {
+            margin: 0 auto 16px;
+        }
+
+        .proto-hero-contact a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3px 7px;
+            padding: 7px 14px;
+            border: 1px solid var(--glass-border);
+            border-radius: 999px;
+            background: var(--glass-bg);
+            color: var(--text-muted);
+            font-size: 0.86rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .proto-hero-contact a:hover {
+            border-color: var(--accent-coral);
+            color: var(--accent-coral);
+        }
+
+        .proto-hero-contact i {
+            color: var(--accent-coral);
+        }
+
+        /* keep the label and the address whole; they stack on narrow screens */
+        .proto-hero-contact-label,
+        .proto-hero-contact-mail {
+            white-space: nowrap;
         }
 
         /* Category Filter Bar */
@@ -4022,8 +4065,16 @@
         <header class="proto-hero">
             <h1 class="proto-hero-title">Board Game Prototypes</h1>
             <p class="proto-hero-desc">
-                Playable web prototypes of original tabletop games designed by Ikhwan Kwon. Test live in your browser and share your feedback!<br>
+                Playable web prototypes of original tabletop games designed by Ikhwan Kwon. Test live in your browser and share your feedback!
                 <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(While AI technology was utilized to implement this website, every game is built upon original human ideas and game design.)</span>
+            </p>
+
+            <p class="proto-hero-contact">
+                <a href="mailto:gamedesigner.ikhwan@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="proto-hero-contact-label">Questions or requests</span>
+                    <span class="proto-hero-contact-mail">gamedesigner.ikhwan@gmail.com</span>
+                </a>
             </p>
 
             <!-- Category Filter Bar -->

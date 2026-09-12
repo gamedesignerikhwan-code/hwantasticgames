@@ -8,7 +8,8 @@
     const ko = {
         title: '보드게임 프로토타입 | 환상적인 게임즈',
         heroTitle: '보드게임 프로토타입',
-        heroDesc: '권익환(Ikhwan Kwon)이 디자인한 오리지널 테이블탑 게임의 웹 프로토타입입니다. 브라우저에서 바로 플레이하고 의견을 들려주세요!<br><span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
+        heroDesc: '권익환(Ikhwan Kwon)이 디자인한 오리지널 테이블탑 게임의 웹 프로토타입입니다. 브라우저에서 바로 플레이하고 의견을 들려주세요! <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
+        heroContact: '문의 및 요청',
         filters: ['전체', '카드 게임', '보드게임'],
         categories: { 'card-game': '카드 게임', 'board-game': '보드게임' },
         actions: ['소개서', '규칙서', '플레이'],
@@ -72,6 +73,12 @@
         element.innerHTML = isKorean ? value : originals.get(element);
     }
 
+    function setText(element, value, isKorean) {
+        if (!element) return;
+        remember(element);
+        element.innerHTML = isKorean ? value : originals.get(element);
+    }
+
     function setInlineLabel(element, value, isKorean) {
         if (!element) return;
         remember(element);
@@ -106,6 +113,7 @@
 
         setHtml(document.querySelector('.proto-hero-title'), ko.heroTitle, isKorean);
         setHtml(document.querySelector('.proto-hero-desc'), ko.heroDesc, isKorean);
+        setText(document.querySelector('.proto-hero-contact-label'), ko.heroContact, isKorean);
         document.querySelectorAll('.filter-btn').forEach((button, index) => setInlineLabel(button, ko.filters[index], isKorean));
 
         // Toggle Korean subtitles in card titles and headers
