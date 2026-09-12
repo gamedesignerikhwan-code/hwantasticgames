@@ -52,12 +52,12 @@
             'card-drawing-game': {
                 subtitle: '비밀 선택 & 바다 캔버스 타일 배치',
                 desc: '공개된 카드 3장 중 하나를 비밀리에 고르고, 같은 카드를 선택한 인원수에 따라 바다 동물 타일을 받습니다. 개인 바다 캔버스의 물방울을 최대한 가리도록 신중하게 배치하세요.',
-                meta: ['3–6명', '9턴', '비밀 선택', '공간 배치']
+                meta: ['3–6명', '10–20분', '비밀 선택', '공간 배치']
             },
             'card-star-window': {
                 subtitle: '천체 타일 배치 & 관측 전략',
                 desc: '천체 도미노 타일로 나만의 밤하늘 지도를 넓히고, 관측 렌즈를 배치해 별·행성·혜성·성운·은하를 한 시야에 담아 배수 점수를 얻으세요.',
-                meta: ['2–4명', '12번의 밤', '타일 배치', '공간 점수']
+                meta: ['2–4명', '25–40분', '타일 배치', '공간 점수']
             }
         }
     };
@@ -153,8 +153,8 @@
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'pyramidsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'rotatoRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'drawingGameRulebookModal');
-            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'orchardsRulebookToast');
-            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'starWindowRulebookToast');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'orchardsRulebookModal');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'starWindowRulebookModal');
         }
 
         const switcher = document.querySelector('.proto-language-switch');

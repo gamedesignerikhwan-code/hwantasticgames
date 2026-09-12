@@ -113,7 +113,7 @@
             <div class="star-window-toast-body">
                 <div class="rb-content-en">
                     <p class="star-window-toast-lead"><strong>Extend your star chart and capture the brightest view.</strong><br>Choose a sky tile and observation lens as one plan, then build your observatory across twelve nights.</p>
-                    <div class="star-window-toast-specs"><span>2–4 players</span><span>30–45 minutes</span><span>Ages 10+</span></div>
+                    <div class="star-window-toast-specs"><span>2–4 players</span><span>25–40 minutes</span><span>Ages 10+</span></div>
 
                     <section class="star-window-toast-section"><h4><span class="star-window-toast-no">01</span> Overview</h4><p>Each player directs a small observatory. Over <strong>twelve nights</strong> you extend a personal star chart with sky tiles, then set observation lenses onto that chart to frame as many of one celestial object as you can.</p><p>The catch is that a lens and the tile it comes with are taken <strong>as a pair</strong>. The tile you want rarely arrives with the lens you want, and the plan you leave behind stays on the table for your opponents.</p><div class="star-window-toast-callout">The observatory with the highest observation score after the twelfth night wins.</div></section>
 
@@ -140,7 +140,7 @@
 
                 <div class="rb-content-ko" style="display:none;">
                     <p class="star-window-toast-lead"><strong>하늘 타일을 이어 별지도를 펼치고, 가장 빛나는 장면을 포착하세요.</strong><br>하늘 타일과 관측 렌즈를 하나의 계획으로 가져와 열두 번의 밤 동안 천문대를 완성합니다.</p>
-                    <div class="star-window-toast-specs"><span>2–4인</span><span>30–45분</span><span>10세 이상</span></div>
+                    <div class="star-window-toast-specs"><span>2–4인</span><span>25–40분</span><span>10세 이상</span></div>
 
                     <section class="star-window-toast-section"><h4><span class="star-window-toast-no">01</span> 게임 개요</h4><p>각 플레이어는 작은 천문대의 대장이 됩니다. <strong>열두 번의 밤</strong> 동안 하늘 타일을 이어 붙여 자신만의 별지도를 넓히고, 그 위에 관측 렌즈를 놓아 같은 천체를 최대한 많이 담아냅니다.</p><p>핵심은 렌즈와 하늘 타일을 <strong>한 세트로 함께</strong> 가져와야 한다는 점입니다. 원하는 타일이 원하는 렌즈와 짝지어 나오는 경우는 드물고, 내가 남긴 계획은 그대로 상대에게 넘어갑니다.</p><div class="star-window-toast-callout">열두 번째 밤이 끝났을 때 가장 높은 관측 점수를 기록한 천문대가 승리합니다.</div></section>
 

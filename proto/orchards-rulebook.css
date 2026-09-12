@@ -1,185 +1,42 @@
-/* Modal shell: rendered as a centered modal, matching every other prototype rulebook. */
-.proto-modal-card.orchards-rulebook-toast {
-    position: relative;
-    width: 95%;
-    max-width: 880px;
-    max-height: 88vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid rgba(51, 76, 45, 0.18);
-    border-radius: var(--radius-lg, 22px);
-    background: #fffdf8;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-    color: #263323;
-}
-
-.orchards-toast-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 18px;
-    border-bottom: 1px solid #dce5d7;
-    background: linear-gradient(135deg, #edf5e8, #fff8e8);
-}
-
-.orchards-toast-mark {
-    display: grid;
-    flex: 0 0 auto;
-    width: 40px;
-    height: 40px;
-    place-items: center;
-    border-radius: 13px;
-    background: #477544;
-    color: #fff;
-    font-size: 1.25rem;
-    box-shadow: 0 5px 12px rgba(71, 117, 68, 0.24);
-}
-
-.orchards-toast-heading {
-    min-width: 0;
-    flex: 1;
-}
-
-.orchards-toast-eyebrow {
-    display: block;
-    margin-bottom: 2px;
-    color: #66815f;
-    font-size: 0.67rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.orchards-toast-title {
-    margin: 0;
-    color: #243322;
-    font-family: var(--font-heading);
-    font-size: 1.08rem;
-    font-weight: 800;
-}
-
-.orchards-toast-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.orchards-toast-lang {
-    display: flex;
-    padding: 3px;
-    border: 1px solid #d4dfcf;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.8);
-}
-
-.orchards-toast-lang .rb-lang-btn {
-    min-width: 34px;
-    padding: 5px 8px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: #60705c;
-    font-size: 0.68rem;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.orchards-toast-lang .rb-lang-btn.active {
-    background: #477544;
-    color: #fff;
-}
-
-.orchards-toast-close {
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.78);
-    color: #4f604b;
-    cursor: pointer;
-}
-
-.orchards-toast-close:hover {
-    background: #fff;
-    color: #243322;
-}
-
-.orchards-toast-body {
-    overflow-y: auto;
-    padding: 18px;
-    overscroll-behavior: contain;
-}
-
-.orchards-toast-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 12px 16px;
-    border-top: 1px solid #dce5d7;
-    background: #faf7ef;
-}
-
-.orchards-toast-footer a,
-.orchards-toast-footer button {
-    border: 0;
-    border-radius: 10px;
-    padding: 9px 12px;
-    font-size: 0.76rem;
-    font-weight: 800;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.orchards-toast-footer button {
-    background: #ebe7dc;
-    color: #4d5449;
-}
-
-.orchards-toast-footer a {
-    background: #477544;
-    color: #fff;
-}
-
-@media (max-width: 640px) {
-    .orchards-toast-header,
-    .orchards-toast-body {
-        padding: 13px;
-    }
-
-    .orchards-toast-eyebrow {
-        display: none;
-    }
-}
-
 /* ─────────────────────────────────────────────────────────────
-   Rulebook body ported from the game itself
-   (https://orchards-boardgame.vercel.app) so /proto shows the same
-   rulebook, worked examples included. Every rule is scoped to the
-   modal card, so none of it leaks into the rest of /proto.
+   Orchards rulebook. The shell, nav bar, section headings and spec
+   grid come from the shared .rulebook-modal-card styles in index.html,
+   exactly like the Doore and Star Window rulebooks; what remains here is
+   Orchards' own accent plus the content blocks and worked-example
+   diagrams ported from the game itself.
    ───────────────────────────────────────────────────────────── */
-.proto-modal-card.orchards-rulebook-toast {
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-    --garden-brown: #8B6F47;
-    --garden-cream: #FFF9ED;
-    --garden-gold: #E8B84B;
-    --garden-gold-light: #FFF3D6;
-    --garden-green: #4A7C59;
-    --garden-green-dark: #2E5339;
-    --garden-green-light: #A8D5BA;
-    --garden-shadow: rgba(46, 83, 57, 0.12);
-    --garden-shadow-strong: rgba(46, 83, 57, 0.25);
-    --garden-text: #2C3830;
-    --garden-text-light: #5A6B5E;
-    --garden-white: #FEFCF7;
-    --glass-border: rgba(168, 213, 186, 0.4);
-    --radius-md: 14px;
+/* This sheet loads before index.html's inline rulebook CSS, so the width
+   needs the extra class to beat .rulebook-modal-card's 820px default. */
+.proto-modal-card.orchards-rulebook-modal-card {
+    max-width: 880px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-split {
+.orchards-rulebook-modal-card .rb-lang-btn.active {
+    background: #477544;
+    box-shadow: 0 2px 6px rgba(71, 117, 68, 0.35);
+}
+
+.orchards-rulebook-modal-card .rb-spec-icon,
+.orchards-rulebook-modal-card .rb-section-title i {
+    color: #477544;
+}
+
+.orchards-rulebook-modal-card .rb-intro-banner {
+    border-left-color: #477544;
+    background: rgba(71, 117, 68, 0.08);
+}
+
+.orchards-rulebook-modal-card .rb-nav-link:hover {
+    background: rgba(71, 117, 68, 0.12);
+    color: #2f5a34;
+}
+
+.orchards-rulebook-modal-card .rb-section h4 {
+    margin: 14px 0 6px;
+    color: #2f5a34;
+}
+
+.orchards-rulebook-modal-card .tile-split {
   width: 100%;
   height: 100%;
   position: relative;
@@ -187,7 +44,7 @@
   transition: transform 0.3s var(--ease-spring);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half {
+.orchards-rulebook-modal-card .tile-half {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -196,25 +53,25 @@
   justify-content: center;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-top {
+.orchards-rulebook-modal-card .tile-half-top {
   clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-bottom {
+.orchards-rulebook-modal-card .tile-half-bottom {
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-top .worker-count {
+.orchards-rulebook-modal-card .tile-half-top .worker-count {
   top: 15%;
   left: 15%;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-bottom .worker-count {
+.orchards-rulebook-modal-card .tile-half-bottom .worker-count {
   bottom: 15%;
   right: 15%;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card {
+.orchards-rulebook-modal-card .tile-card {
   width: 98px;
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -226,31 +83,31 @@
   flex-shrink: 0;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card:hover {
+.orchards-rulebook-modal-card .tile-card:hover {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 8px 20px var(--garden-shadow-strong);
   border-color: var(--garden-green);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card.selected {
+.orchards-rulebook-modal-card .tile-card.selected {
   border-color: var(--garden-gold);
   box-shadow: 0 0 0 3px rgba(232,184,75,0.3), 0 8px 20px var(--garden-shadow-strong);
   transform: translateY(-5px) scale(1.05);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card-inner {
+.orchards-rulebook-modal-card .tile-card-inner {
   height: 82px;
   position: relative;
   overflow: hidden;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card-split {
+.orchards-rulebook-modal-card .tile-card-split {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half {
+.orchards-rulebook-modal-card .card-half {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -259,34 +116,34 @@
   justify-content: center;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-top {
+.orchards-rulebook-modal-card .card-half-top {
   clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-bottom {
+.orchards-rulebook-modal-card .card-half-bottom {
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-workers {
+.orchards-rulebook-modal-card .card-workers {
   font-size: 0.65rem;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
   position: absolute;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-top .card-workers { top: 12px; left: 10px;
+.orchards-rulebook-modal-card .card-half-top .card-workers { top: 12px; left: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-bottom .card-workers { bottom: 12px; right: 10px;
+.orchards-rulebook-modal-card .card-half-bottom .card-workers { bottom: 12px; right: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .crop-card-inner {
+.orchards-rulebook-modal-card .crop-card-inner {
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--garden-cream);
 }
 
-.proto-modal-card.orchards-rulebook-toast .crop-icons-grid {
+.orchards-rulebook-modal-card .crop-icons-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
@@ -295,7 +152,7 @@
   padding: 6px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .crop-icon {
+.orchards-rulebook-modal-card .crop-icon {
   width: 26px;
   height: 26px;
   border-radius: 50%;
@@ -307,7 +164,7 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card-footer {
+.orchards-rulebook-modal-card .tile-card-footer {
   padding: 6px 8px;
   display: flex;
   justify-content: space-between;
@@ -316,7 +173,7 @@
   border-top: 1px solid var(--glass-border);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-type-badge {
+.orchards-rulebook-modal-card .tile-type-badge {
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -325,46 +182,46 @@
   border-radius: 4px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .terrain-badge {
+.orchards-rulebook-modal-card .terrain-badge {
   background: var(--garden-green-light);
   color: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .crop-badge {
+.orchards-rulebook-modal-card .crop-badge {
   background: var(--garden-gold-light);
   color: var(--garden-brown);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-id {
+.orchards-rulebook-modal-card .tile-id {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--garden-text-light);
 }
 
-.proto-modal-card.orchards-rulebook-toast .pattern-R {
+.orchards-rulebook-modal-card .pattern-R {
   background-color: #E64A58 !important;
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 20%, transparent 24%) !important;
   background-size: 11px 11px !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .pattern-Y {
+.orchards-rulebook-modal-card .pattern-Y {
   background-color: #F2C94C !important;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(145, 95, 0, 0.28) 5px, rgba(145, 95, 0, 0.28) 9px) !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .pattern-G {
+.orchards-rulebook-modal-card .pattern-G {
   background-color: #27AE60 !important;
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255, 255, 255, 0.35) 8px, rgba(255, 255, 255, 0.35) 10px),
     repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255, 255, 255, 0.35) 8px, rgba(255, 255, 255, 0.35) 10px) !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .pattern-B {
+.orchards-rulebook-modal-card .pattern-B {
   background-color: #2D9CDB !important;
   background-image: repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(255, 255, 255, 0.4) 4px, rgba(255, 255, 255, 0.4) 7px) !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .pattern-W {
+.orchards-rulebook-modal-card .pattern-W {
   background-color: #9B59B6 !important;
   background-image:
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45) 28%, transparent 32%),
@@ -373,7 +230,7 @@
   background-size: 13px 13px !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .worker-meeple-group {
+.orchards-rulebook-modal-card .worker-meeple-group {
   position: absolute;
   display: inline-flex;
   align-items: center;
@@ -383,263 +240,85 @@
   pointer-events: none;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-top .worker-meeple-group {
+.orchards-rulebook-modal-card .tile-half-top .worker-meeple-group {
   top: 4%;
   left: 4%;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-half-bottom .worker-meeple-group {
+.orchards-rulebook-modal-card .tile-half-bottom .worker-meeple-group {
   bottom: 4%;
   right: 4%;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-top .worker-meeple-group {
+.orchards-rulebook-modal-card .card-half-top .worker-meeple-group {
   top: 10px;
   left: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .card-half-bottom .worker-meeple-group {
+.orchards-rulebook-modal-card .card-half-bottom .worker-meeple-group {
   bottom: 10px;
   right: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .meeple-svg {
+.orchards-rulebook-modal-card .meeple-svg {
   display: inline-block;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
   transition: transform 0.15s ease;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card .meeple-svg {
+.orchards-rulebook-modal-card .tile-card .meeple-svg {
   width: 16px;
   height: 16px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .interactive-preview-tile .meeple-svg {
+.orchards-rulebook-modal-card .interactive-preview-tile .meeple-svg {
   width: 22px;
   height: 22px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .interactive-preview-tile .worker-meeple-group {
+.orchards-rulebook-modal-card .interactive-preview-tile .worker-meeple-group {
   gap: 6px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="bid"]:hover,
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="draft"]:hover,
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="final"]:hover,
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="draft-pick"]:hover {
+.orchards-rulebook-modal-card .tile-card[data-mode="bid"]:hover,
+.orchards-rulebook-modal-card .tile-card[data-mode="draft"]:hover,
+.orchards-rulebook-modal-card .tile-card[data-mode="final"]:hover,
+.orchards-rulebook-modal-card .tile-card[data-mode="draft-pick"]:hover {
   border-color: var(--garden-green);
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="display-only"],
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="market-display"] {
+.orchards-rulebook-modal-card .tile-card[data-mode="display-only"],
+.orchards-rulebook-modal-card .tile-card[data-mode="market-display"] {
   cursor: default;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="display-only"]:hover,
-.proto-modal-card.orchards-rulebook-toast .tile-card[data-mode="market-display"]:hover {
+.orchards-rulebook-modal-card .tile-card[data-mode="display-only"]:hover,
+.orchards-rulebook-modal-card .tile-card[data-mode="market-display"]:hover {
   transform: none !important;
   box-shadow: 0 2px 10px var(--garden-shadow) !important;
   border-color: transparent !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rules-cover {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 28px;
-  min-height: 270px;
-  padding: 42px clamp(24px, 5vw, 64px);
-  overflow: hidden;
-  color: white;
-  background:
-    radial-gradient(circle at 85% 16%, rgba(239, 192, 77, 0.42), transparent 24%),
-    radial-gradient(circle at 12% 100%, rgba(157, 196, 124, 0.28), transparent 32%),
-    linear-gradient(135deg, #173f31 0%, #2e6c4a 62%, #557f45 100%);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover::before,
-.proto-modal-card.orchards-rulebook-toast .rules-cover::after {
-  content: '';
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 50%;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover::before { width: 240px; height: 240px; right: -60px; top: -85px;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover::after { width: 150px; height: 150px; right: 90px; top: -35px;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover-copy { position: relative; z-index: 1; max-width: 620px;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-edition {
-  display: inline-flex;
-  margin-bottom: 14px;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover h3 {
-  margin: 0 0 14px;
-  color: white;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 4.3vw, 3.7rem);
-  line-height: 1.03;
-  letter-spacing: -0.035em;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-cover p {
-  max-width: 620px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-facts {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 78px);
-  flex: 0 0 auto;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
-  background: rgba(9, 34, 25, 0.28);
-  backdrop-filter: blur(8px);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-facts div { padding: 15px 8px; text-align: center;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-facts div + div { border-left: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-facts strong { display: block; color: #fff3b8; font-size: 1.35rem;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rules-facts span { display: block; margin-top: 2px; color: rgba(255,255,255,.72); font-size: 0.68rem; text-transform: uppercase;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-layout {
-  display: grid;
-  grid-template-columns: 185px minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(26px, 4vw, 58px);
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 36px clamp(22px, 4vw, 50px) 64px;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav {
-  position: sticky;
-  top: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 15px;
-  border: 1px solid rgba(74, 124, 89, 0.16);
-  border-radius: 16px;
-  background: rgba(246, 244, 235, 0.76);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav strong {
-  padding: 4px 8px 9px;
-  color: var(--garden-green-dark);
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav a {
-  padding: 7px 8px;
-  border-radius: 8px;
-  color: var(--garden-text-light);
-  font-size: 0.78rem;
-  font-weight: 650;
-  text-decoration: none;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav a:hover,
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav a:focus-visible { color: var(--garden-green-dark); background: var(--garden-green-light);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rulebook-content { min-width: 0;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 18px;
-  padding: 30px 0;
-  scroll-margin-top: 18px;
-  border-bottom: 1px solid rgba(74, 124, 89, 0.14);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section:first-child { padding-top: 0;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section:last-child { border-bottom: 0;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-number {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  color: white;
-  background: var(--garden-green-dark);
-  box-shadow: 0 5px 12px rgba(38, 82, 60, 0.16);
-  font-size: 0.75rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section h3 {
-  margin: 5px 0 12px;
-  color: var(--garden-green-dark);
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.35rem, 2.1vw, 1.72rem);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section h4 {
-  margin: 22px 0 7px;
-  color: var(--garden-green-dark);
-  font-size: 1rem;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section p,
-.proto-modal-card.orchards-rulebook-toast .rule-list,
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card li,
-.proto-modal-card.orchards-rulebook-toast .rule-section details p {
+.orchards-rulebook-modal-card .rule-list,
+.orchards-rulebook-modal-card .tile-rule-card li {
   color: var(--garden-text);
   font-size: 1rem;
   line-height: 1.72;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-list { margin: 0; padding-left: 1.25rem;
+.orchards-rulebook-modal-card .rule-list { margin: 0; padding-left: 1.25rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-list li + li { margin-top: 6px;
+.orchards-rulebook-modal-card .rule-list li + li { margin-top: 6px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-grid {
+.orchards-rulebook-modal-card .component-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-card {
+.orchards-rulebook-modal-card .component-card {
   display: grid;
   grid-template-columns: 46px 1fr;
   gap: 1px 12px;
@@ -650,27 +329,27 @@
   background: #fff;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-card.component-wide { grid-column: 1 / -1;
+.orchards-rulebook-modal-card .component-card.component-wide { grid-column: 1 / -1;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-card strong { color: var(--garden-green-dark); font-size: 0.94rem;
+.orchards-rulebook-modal-card .component-card strong { color: var(--garden-green-dark); font-size: 0.94rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-card small { grid-column: 2; color: var(--garden-text-light); font-size: 0.78rem; line-height: 1.45;
+.orchards-rulebook-modal-card .component-card small { grid-column: 2; color: var(--garden-text-light); font-size: 0.78rem; line-height: 1.45;
 }
 
-.proto-modal-card.orchards-rulebook-toast .component-icon { grid-row: span 2; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--garden-cream); font-size: 1.45rem;
+.orchards-rulebook-modal-card .component-icon { grid-row: span 2; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--garden-cream); font-size: 1.45rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .terrain-icon { position: relative; overflow: hidden; transform: rotate(5deg); background: linear-gradient(135deg, #d86d65 0 49%, #7aaa58 51% 100%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
+.orchards-rulebook-modal-card .terrain-icon { position: relative; overflow: hidden; transform: rotate(5deg); background: linear-gradient(135deg, #d86d65 0 49%, #7aaa58 51% 100%); box-shadow: inset 0 0 0 2px rgba(255,255,255,.65);
 }
 
-.proto-modal-card.orchards-rulebook-toast .terrain-icon::after { content: '♟'; position: absolute; left: 7px; top: 3px; color: white; font-size: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,.3);
+.orchards-rulebook-modal-card .terrain-icon::after { content: '♟'; position: absolute; left: 7px; top: 3px; color: white; font-size: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-note,
-.proto-modal-card.orchards-rulebook-toast .rule-callout,
-.proto-modal-card.orchards-rulebook-toast .rule-warning {
+.orchards-rulebook-modal-card .rule-note,
+.orchards-rulebook-modal-card .rule-callout,
+.orchards-rulebook-modal-card .rule-warning {
   margin-top: 14px;
   padding: 13px 15px;
   border-radius: 12px;
@@ -678,174 +357,137 @@
   line-height: 1.55;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-note { border-left: 4px solid var(--garden-green); background: var(--garden-green-light); color: var(--garden-green-dark);
+.orchards-rulebook-modal-card .rule-note { border-left: 4px solid var(--garden-green); background: var(--garden-green-light); color: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-callout { border: 1px solid rgba(232, 184, 75, 0.45); background: var(--garden-gold-light); color: #6d551b;
+.orchards-rulebook-modal-card .rule-callout { border: 1px solid rgba(232, 184, 75, 0.45); background: var(--garden-gold-light); color: #6d551b;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-warning { border-left: 4px solid #d58c42; background: #fff3e2; color: #785126;
+.orchards-rulebook-modal-card .rule-warning { border-left: 4px solid #d58c42; background: #fff3e2; color: #785126;
 }
 
-.proto-modal-card.orchards-rulebook-toast .setup-table { width: 100%; margin-top: 16px; overflow: hidden; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(74, 124, 89, 0.16); border-radius: 12px; font-size: 0.86rem;
+.orchards-rulebook-modal-card .setup-table { width: 100%; margin-top: 16px; overflow: hidden; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(74, 124, 89, 0.16); border-radius: 12px; font-size: 0.86rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .setup-table th,
-.proto-modal-card.orchards-rulebook-toast .setup-table td { padding: 10px; text-align: center; border-right: 1px solid rgba(74, 124, 89, 0.12);
+.orchards-rulebook-modal-card .setup-table th,
+.orchards-rulebook-modal-card .setup-table td { padding: 10px; text-align: center; border-right: 1px solid rgba(74, 124, 89, 0.12);
 }
 
-.proto-modal-card.orchards-rulebook-toast .setup-table th:last-child,
-.proto-modal-card.orchards-rulebook-toast .setup-table td:last-child { border-right: 0;
+.orchards-rulebook-modal-card .setup-table th:last-child,
+.orchards-rulebook-modal-card .setup-table td:last-child { border-right: 0;
 }
 
-.proto-modal-card.orchards-rulebook-toast .setup-table thead th { color: white; background: var(--garden-green-dark);
+.orchards-rulebook-modal-card .setup-table thead th { color: white; background: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .setup-table tbody th { color: var(--garden-green-dark); background: var(--garden-green-light);
+.orchards-rulebook-modal-card .setup-table tbody th { color: var(--garden-green-dark); background: var(--garden-green-light);
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow { display: grid; gap: 8px; margin-top: 16px;
+.orchards-rulebook-modal-card .round-flow { display: grid; gap: 8px; margin-top: 16px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow > div { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border: 1px solid rgba(74, 124, 89, 0.13); border-radius: 13px; background: white;
+.orchards-rulebook-modal-card .round-flow > div { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 14px; border: 1px solid rgba(74, 124, 89, 0.13); border-radius: 13px; background: white;
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: white; background: var(--garden-green); font-size: 0.86rem;
+.orchards-rulebook-modal-card .round-flow b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: white; background: var(--garden-green); font-size: 0.86rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow span { display: flex; flex-direction: column; gap: 2px;
+.orchards-rulebook-modal-card .round-flow span { display: flex; flex-direction: column; gap: 2px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow strong { color: var(--garden-green-dark); font-size: 0.94rem;
+.orchards-rulebook-modal-card .round-flow strong { color: var(--garden-green-dark); font-size: 0.94rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .round-flow small { color: var(--garden-text-light); font-size: 0.82rem; line-height: 1.45;
+.orchards-rulebook-modal-card .round-flow small { color: var(--garden-text-light); font-size: 0.82rem; line-height: 1.45;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-grid { display: grid; gap: 10px;
+.orchards-rulebook-modal-card .tile-rule-grid { display: grid; gap: 10px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding: 15px; border-radius: 14px;
+.orchards-rulebook-modal-card .tile-rule-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding: 15px; border-radius: 14px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card > span { font-size: 1.55rem;
+.orchards-rulebook-modal-card .tile-rule-card > span { font-size: 1.55rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card h4 { margin: 0 0 5px;
+.orchards-rulebook-modal-card .tile-rule-card h4 { margin: 0 0 5px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card ul { margin: 0; padding-left: 1.1rem;
+.orchards-rulebook-modal-card .tile-rule-card ul { margin: 0; padding-left: 1.1rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .tile-rule-card li { font-size: 0.9rem; line-height: 1.55;
+.orchards-rulebook-modal-card .tile-rule-card li { font-size: 0.9rem; line-height: 1.55;
 }
 
-.proto-modal-card.orchards-rulebook-toast .terrain-rule { background: #eef6e9;
+.orchards-rulebook-modal-card .terrain-rule { background: #eef6e9;
 }
 
-.proto-modal-card.orchards-rulebook-toast .crop-rule { background: #fff7df;
+.orchards-rulebook-modal-card .crop-rule { background: #fff7df;
 }
 
-.proto-modal-card.orchards-rulebook-toast .scarecrow-rule { background: #f1ece8;
+.orchards-rulebook-modal-card .scarecrow-rule { background: #f1ece8;
 }
 
-.proto-modal-card.orchards-rulebook-toast .score-formula { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0; padding: 20px; border-radius: 16px; color: var(--garden-green-dark); background: linear-gradient(135deg, var(--garden-gold-light), var(--garden-green-light));
+.orchards-rulebook-modal-card .score-formula { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0; padding: 20px; border-radius: 16px; color: var(--garden-green-dark); background: linear-gradient(135deg, var(--garden-gold-light), var(--garden-green-light));
 }
 
-.proto-modal-card.orchards-rulebook-toast .score-formula span,
-.proto-modal-card.orchards-rulebook-toast .score-formula strong { padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.76);
+.orchards-rulebook-modal-card .score-formula span,
+.orchards-rulebook-modal-card .score-formula strong { padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.76);
 }
 
-.proto-modal-card.orchards-rulebook-toast .score-formula b { color: var(--garden-gold); font-size: 1.4rem;
+.orchards-rulebook-modal-card .score-formula b { color: var(--garden-gold); font-size: 1.4rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .quick-reference-section { margin-top: 12px; padding: 24px; border: 1px solid rgba(232, 184, 75, 0.45); border-radius: 18px; background: linear-gradient(145deg, #fffaf0, #f3f8ee);
+.orchards-rulebook-modal-card .quick-grid { display: grid; grid-template-columns: minmax(120px, .8fr) minmax(150px, 1.2fr); overflow: hidden; margin-bottom: 18px; border: 1px solid rgba(74, 124, 89, 0.14); border-radius: 12px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .quick-grid { display: grid; grid-template-columns: minmax(120px, .8fr) minmax(150px, 1.2fr); overflow: hidden; margin-bottom: 18px; border: 1px solid rgba(74, 124, 89, 0.14); border-radius: 12px;
+.orchards-rulebook-modal-card .quick-grid span,
+.orchards-rulebook-modal-card .quick-grid strong { padding: 9px 11px; border-bottom: 1px solid rgba(74, 124, 89, 0.1); font-size: 0.84rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .quick-grid span,
-.proto-modal-card.orchards-rulebook-toast .quick-grid strong { padding: 9px 11px; border-bottom: 1px solid rgba(74, 124, 89, 0.1); font-size: 0.84rem;
+.orchards-rulebook-modal-card .quick-grid span { color: var(--garden-text-light); background: rgba(74, 124, 89, 0.06);
 }
 
-.proto-modal-card.orchards-rulebook-toast .quick-grid span { color: var(--garden-text-light); background: rgba(74, 124, 89, 0.06);
+.orchards-rulebook-modal-card .quick-grid strong { color: var(--garden-green-dark); background: rgba(255,255,255,.7);
 }
 
-.proto-modal-card.orchards-rulebook-toast .quick-grid strong { color: var(--garden-green-dark); background: rgba(255,255,255,.7);
-}
-
-.proto-modal-card.orchards-rulebook-toast .quick-grid > :nth-last-child(-n+2) { border-bottom: 0;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section details { margin-top: 8px; border: 1px solid rgba(74, 124, 89, 0.14); border-radius: 10px; background: rgba(255,255,255,.7);
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section summary { padding: 11px 13px; color: var(--garden-green-dark); cursor: pointer; font-size: 0.9rem; font-weight: 750;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-section details p { margin: 0; padding: 0 13px 13px; font-size: 0.86rem;
+.orchards-rulebook-modal-card .quick-grid > :nth-last-child(-n+2) { border-bottom: 0;
 }
 
 @media (max-width: 780px) {
-.proto-modal-card.orchards-rulebook-toast .rules-cover { min-height: 0; align-items: flex-start; flex-direction: column; padding: 30px 20px;
-}
-.proto-modal-card.orchards-rulebook-toast .rules-cover h3 { font-size: 2.05rem;
-}
-.proto-modal-card.orchards-rulebook-toast .rules-cover p { font-size: 0.94rem;
-}
-.proto-modal-card.orchards-rulebook-toast .rules-facts { width: 100%; grid-template-columns: repeat(3, 1fr);
-}
-.proto-modal-card.orchards-rulebook-toast .rulebook-layout { display: block; padding: 22px 17px 48px;
-}
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav { position: static; flex-direction: row; gap: 6px; margin-bottom: 25px; padding: 9px; overflow-x: auto; white-space: nowrap;
-}
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav strong { display: none;
-}
-.proto-modal-card.orchards-rulebook-toast .rulebook-nav a { flex: 0 0 auto; background: rgba(255,255,255,.72);
-}
-.proto-modal-card.orchards-rulebook-toast .rule-section { grid-template-columns: 38px minmax(0, 1fr); gap: 11px; padding: 25px 0;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-number { width: 36px; height: 36px; border-radius: 11px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-section h3 { margin-top: 4px;
-}
-.proto-modal-card.orchards-rulebook-toast .component-grid { grid-template-columns: 1fr;
-}
-.proto-modal-card.orchards-rulebook-toast .component-card.component-wide { grid-column: auto;
-}
-.proto-modal-card.orchards-rulebook-toast .score-formula { gap: 6px; padding: 15px 8px;
-}
-.proto-modal-card.orchards-rulebook-toast .score-formula span,
-.proto-modal-card.orchards-rulebook-toast .score-formula strong { padding: 7px 8px; font-size: 0.82rem;
-}
-.proto-modal-card.orchards-rulebook-toast .quick-reference-section { padding: 18px 12px;
-}
+    .orchards-rulebook-modal-card .component-grid { grid-template-columns: 1fr;
+    }
+
+    .orchards-rulebook-modal-card .component-card.component-wide { grid-column: auto;
+    }
+
+    .orchards-rulebook-modal-card .score-formula { gap: 6px; padding: 15px 8px;
+    }
+
+    .orchards-rulebook-modal-card .score-formula span,
+    .orchards-rulebook-modal-card .score-formula strong { padding: 7px 8px; font-size: 0.82rem;
+    }
 }
 
 @media (max-width: 420px) {
-.proto-modal-card.orchards-rulebook-toast .rule-section { grid-template-columns: 1fr;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-number { margin-bottom: -3px;
-}
-.proto-modal-card.orchards-rulebook-toast .rules-cover h3 { font-size: 1.8rem;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-section p,
-.proto-modal-card.orchards-rulebook-toast .rule-list { font-size: 0.94rem;
-}
-.proto-modal-card.orchards-rulebook-toast .quick-grid { grid-template-columns: 1fr;
-}
-.proto-modal-card.orchards-rulebook-toast .quick-grid span,
-.proto-modal-card.orchards-rulebook-toast .quick-grid strong { border-bottom: 1px solid rgba(74, 124, 89, 0.1);
-}
-.proto-modal-card.orchards-rulebook-toast .quick-grid > :last-child { border-bottom: 0;
-}
+    .orchards-rulebook-modal-card .rule-list { font-size: 0.94rem;
+    }
+
+    .orchards-rulebook-modal-card .quick-grid { grid-template-columns: 1fr;
+    }
+
+    .orchards-rulebook-modal-card .quick-grid span,
+    .orchards-rulebook-modal-card .quick-grid strong { border-bottom: 1px solid rgba(74, 124, 89, 0.1);
+    }
+
+    .orchards-rulebook-modal-card .quick-grid > :last-child { border-bottom: 0;
+    }
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-mount { margin-top: 20px;
+.orchards-rulebook-modal-card .rule-example-mount { margin-top: 20px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example {
+.orchards-rulebook-modal-card .rule-play-example {
   margin: 0;
   padding: 18px;
   overflow: hidden;
@@ -857,14 +499,14 @@
   box-shadow: 0 8px 24px rgba(46, 75, 55, 0.08);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example figcaption {
+.orchards-rulebook-modal-card .rule-play-example figcaption {
   display: flex;
   flex-direction: column;
   gap: 4px;
   margin-bottom: 15px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example figcaption span {
+.orchards-rulebook-modal-card .rule-play-example figcaption span {
   color: var(--garden-gold);
   font-size: 0.7rem;
   font-weight: 900;
@@ -872,12 +514,12 @@
   text-transform: uppercase;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example figcaption strong {
+.orchards-rulebook-modal-card .rule-play-example figcaption strong {
   color: var(--garden-green-dark);
   font-size: 1rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-subtitle {
+.orchards-rulebook-modal-card .rule-example-subtitle {
   margin: 13px 0 8px;
   color: var(--garden-text-light);
   font-size: 0.72rem;
@@ -886,7 +528,7 @@
   text-transform: uppercase;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-card-row {
+.orchards-rulebook-modal-card .rule-example-card-row {
   display: flex;
   align-items: flex-start;
   gap: 9px;
@@ -895,26 +537,26 @@
   scrollbar-width: thin;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example .tile-card {
+.orchards-rulebook-modal-card .rule-play-example .tile-card {
   width: 88px;
   pointer-events: none;
   box-shadow: 0 3px 9px rgba(38, 62, 46, 0.12);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example .tile-card-inner { height: 74px;
+.orchards-rulebook-modal-card .rule-play-example .tile-card-inner { height: 74px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example .tile-card.selected {
+.orchards-rulebook-modal-card .rule-play-example .tile-card.selected {
   z-index: 1;
   border-color: var(--garden-gold);
   box-shadow: 0 0 0 3px rgba(232, 184, 75, 0.3), 0 7px 18px rgba(78, 62, 20, 0.18);
   transform: translateY(-3px);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-play-example .tile-card.selected:hover { transform: translateY(-3px) !important;
+.orchards-rulebook-modal-card .rule-play-example .tile-card.selected:hover { transform: translateY(-3px) !important;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome {
+.orchards-rulebook-modal-card .rule-example-outcome {
   display: grid;
   grid-template-columns: auto auto minmax(0, 1fr);
   gap: 9px;
@@ -928,13 +570,13 @@
   line-height: 1.45;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome b { color: var(--garden-green-dark);
+.orchards-rulebook-modal-card .rule-example-outcome b { color: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome > span:first-of-type { color: var(--garden-gold); font-size: 1.15rem; font-weight: 900;
+.orchards-rulebook-modal-card .rule-example-outcome > span:first-of-type { color: var(--garden-gold); font-size: 1.15rem; font-weight: 900;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-lane {
+.orchards-rulebook-modal-card .rule-bid-lane {
   display: flex;
   align-items: flex-end;
   gap: 14px;
@@ -944,7 +586,7 @@
   background: #e9eee7;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-entry {
+.orchards-rulebook-modal-card .rule-bid-entry {
   position: relative;
   display: flex;
   flex: 0 0 auto;
@@ -957,22 +599,22 @@
   background: rgba(255,255,255,.76);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-entry.is-first { border-color: rgba(232, 184, 75, 0.72); background: #fff9df;
+.orchards-rulebook-modal-card .rule-bid-entry.is-first { border-color: rgba(232, 184, 75, 0.72); background: #fff9df;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-entry > strong { color: var(--garden-text); font-size: 0.74rem;
+.orchards-rulebook-modal-card .rule-bid-entry > strong { color: var(--garden-text); font-size: 0.74rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-order { position: absolute; top: -8px; right: -7px; z-index: 2; padding: 4px 7px; border-radius: 999px; color: white; background: var(--garden-green-dark); box-shadow: 0 3px 8px rgba(0,0,0,.16); font-size: 0.64rem; font-weight: 900;
+.orchards-rulebook-modal-card .rule-bid-order { position: absolute; top: -8px; right: -7px; z-index: 2; padding: 4px 7px; border-radius: 999px; color: white; background: var(--garden-green-dark); box-shadow: 0 3px 8px rgba(0,0,0,.16); font-size: 0.64rem; font-weight: 900;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-bid-entry.is-first .rule-bid-order { color: #503e12; background: var(--garden-gold);
+.orchards-rulebook-modal-card .rule-bid-entry.is-first .rule-bid-order { color: #503e12; background: var(--garden-gold);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-market-example { padding-top: 7px; border-radius: 13px; background: rgba(255,255,255,.66);
+.orchards-rulebook-modal-card .rule-market-example { padding-top: 7px; border-radius: 13px; background: rgba(255,255,255,.66);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-harvest-flow {
+.orchards-rulebook-modal-card .rule-harvest-flow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -983,19 +625,19 @@
   background: #f4f0e7;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-single-card { flex: 0 0 auto;
+.orchards-rulebook-modal-card .rule-example-single-card { flex: 0 0 auto;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-flow-arrow { flex: 0 0 auto; color: var(--garden-gold); font-size: 1.55rem; font-weight: 900;
+.orchards-rulebook-modal-card .rule-flow-arrow { flex: 0 0 auto; color: var(--garden-gold); font-size: 1.55rem; font-weight: 900;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-token-bank { display: flex; flex: 0 0 auto; gap: 5px; padding: 10px; border: 1px dashed rgba(74, 124, 89, 0.3); border-radius: 999px; background: white;
+.orchards-rulebook-modal-card .rule-token-bank { display: flex; flex: 0 0 auto; gap: 5px; padding: 10px; border: 1px dashed rgba(74, 124, 89, 0.3); border-radius: 999px; background: white;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-S { background: #5d4037;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-S { background: #5d4037;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token {
+.orchards-rulebook-modal-card .rule-piece-token {
   display: grid;
   place-items: center;
   width: 28px;
@@ -1007,7 +649,7 @@
   font-size: 0.9rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-connected-board {
+.orchards-rulebook-modal-card .rule-connected-board {
   position: relative;
   display: flex;
   flex: 0 0 auto;
@@ -1019,7 +661,7 @@
   background: #dce8d6;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-connected-board::after {
+.orchards-rulebook-modal-card .rule-connected-board::after {
   content: '';
   position: absolute;
   left: 50%;
@@ -1033,10 +675,10 @@
   pointer-events: none;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-board-piece { flex: 0 0 auto;
+.orchards-rulebook-modal-card .rule-board-piece { flex: 0 0 auto;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-terrain-square {
+.orchards-rulebook-modal-card .rule-terrain-square {
   position: relative;
   width: 90px;
   height: 90px;
@@ -1047,13 +689,13 @@
   box-shadow: 0 3px 8px rgba(36, 58, 43, 0.17);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-terrain-square .meeple-svg { width: 16px; height: 16px;
+.orchards-rulebook-modal-card .rule-terrain-square .meeple-svg { width: 16px; height: 16px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-terrain-square .worker-meeple-group { gap: 2px;
+.orchards-rulebook-modal-card .rule-terrain-square .worker-meeple-group { gap: 2px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-tokens {
+.orchards-rulebook-modal-card .rule-piece-tokens {
   position: absolute;
   z-index: 3;
   display: flex;
@@ -1063,19 +705,19 @@
   pointer-events: none;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-tokens.top-left { top: 7px; left: 7px;
+.orchards-rulebook-modal-card .rule-piece-tokens.top-left { top: 7px; left: 7px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-tokens.top-right { top: 7px; right: 7px; justify-content: flex-end;
+.orchards-rulebook-modal-card .rule-piece-tokens.top-right { top: 7px; right: 7px; justify-content: flex-end;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-tokens .rule-piece-token { width: 24px; height: 24px; font-size: 0.78rem;
+.orchards-rulebook-modal-card .rule-piece-tokens .rule-piece-token { width: 24px; height: 24px; font-size: 0.78rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-id { position: absolute; z-index: 4; left: 50%; bottom: 3px; transform: translateX(-50%); padding: 2px 5px; border-radius: 999px; color: #fff; background: rgba(24, 38, 29, 0.68); font-size: 0.58rem; font-weight: 850;
+.orchards-rulebook-modal-card .rule-piece-id { position: absolute; z-index: 4; left: 50%; bottom: 3px; transform: translateX(-50%); padding: 2px 5px; border-radius: 999px; color: #fff; background: rgba(24, 38, 29, 0.68); font-size: 0.58rem; font-weight: 850;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-worked {
+.orchards-rulebook-modal-card .rule-score-worked {
   display: grid;
   grid-template-columns: auto minmax(190px, 1fr);
   gap: 18px;
@@ -1085,90 +727,90 @@
   background: #edf3e9;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-connected-board-large .rule-terrain-square { width: 104px; height: 104px;
+.orchards-rulebook-modal-card .rule-connected-board-large .rule-terrain-square { width: 104px; height: 104px;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math { display: grid; overflow: hidden; border: 1px solid rgba(74, 124, 89, 0.15); border-radius: 12px; background: white;
+.orchards-rulebook-modal-card .rule-score-math { display: grid; overflow: hidden; border: 1px solid rgba(74, 124, 89, 0.15); border-radius: 12px; background: white;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 11px; border-bottom: 1px solid rgba(74, 124, 89, 0.1);
+.orchards-rulebook-modal-card .rule-score-math > div { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 11px; border-bottom: 1px solid rgba(74, 124, 89, 0.1);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math > div:last-child { border-bottom: 0;
+.orchards-rulebook-modal-card .rule-score-math > div:last-child { border-bottom: 0;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math span { color: var(--garden-text-light); font-size: 0.78rem;
+.orchards-rulebook-modal-card .rule-score-math span { color: var(--garden-text-light); font-size: 0.78rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math strong { color: var(--garden-green-dark);
+.orchards-rulebook-modal-card .rule-score-math strong { color: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math .is-total { color: white; background: var(--garden-green-dark);
+.orchards-rulebook-modal-card .rule-score-math .is-total { color: white; background: var(--garden-green-dark);
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math .is-total span,
-.proto-modal-card.orchards-rulebook-toast .rule-score-math .is-total strong { color: white;
+.orchards-rulebook-modal-card .rule-score-math .is-total span,
+.orchards-rulebook-modal-card .rule-score-math .is-total strong { color: white;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-score-math .is-total strong { font-size: 1.35rem;
+.orchards-rulebook-modal-card .rule-score-math .is-total strong { font-size: 1.35rem;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-example-caption { margin: 12px 0 0 !important; padding: 11px 12px; border-left: 4px solid var(--garden-gold); border-radius: 0 10px 10px 0; background: rgba(255,255,255,.72); font-size: 0.86rem !important; line-height: 1.55 !important;
+.orchards-rulebook-modal-card .rule-example-caption { margin: 12px 0 0 !important; padding: 11px 12px; border-left: 4px solid var(--garden-gold); border-radius: 0 10px 10px 0; background: rgba(255,255,255,.72); font-size: 0.86rem !important; line-height: 1.55 !important;
 }
 
 @media (max-width: 680px) {
-.proto-modal-card.orchards-rulebook-toast .rule-play-example { padding: 14px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-example-card-row { margin-right: -14px; padding-right: 14px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-harvest-flow { justify-content: flex-start; margin-right: -14px; padding-right: 14px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-score-worked { grid-template-columns: 1fr;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-connected-board-large { justify-self: center;
-}
+    .orchards-rulebook-modal-card .rule-play-example { padding: 14px;
+    }
+
+    .orchards-rulebook-modal-card .rule-example-card-row { margin-right: -14px; padding-right: 14px;
+    }
+
+    .orchards-rulebook-modal-card .rule-harvest-flow { justify-content: flex-start; margin-right: -14px; padding-right: 14px;
+    }
+
+    .orchards-rulebook-modal-card .rule-score-worked { grid-template-columns: 1fr;
+    }
+
+    .orchards-rulebook-modal-card .rule-connected-board-large { justify-self: center;
+    }
 }
 
 @media (max-width: 420px) {
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome { grid-template-columns: auto minmax(0, 1fr);
-}
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome > span:first-of-type { display: none;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-example-outcome > span:last-child { grid-column: 1 / -1;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-play-example .tile-card { width: 82px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-terrain-square { width: 82px; height: 82px;
-}
-.proto-modal-card.orchards-rulebook-toast .rule-connected-board-large .rule-terrain-square { width: 94px; height: 94px;
-}
+    .orchards-rulebook-modal-card .rule-example-outcome { grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .orchards-rulebook-modal-card .rule-example-outcome > span:first-of-type { display: none;
+    }
+
+    .orchards-rulebook-modal-card .rule-example-outcome > span:last-child { grid-column: 1 / -1;
+    }
+
+    .orchards-rulebook-modal-card .rule-play-example .tile-card { width: 82px;
+    }
+
+    .orchards-rulebook-modal-card .rule-terrain-square { width: 82px; height: 82px;
+    }
+
+    .orchards-rulebook-modal-card .rule-connected-board-large .rule-terrain-square { width: 94px; height: 94px;
+    }
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-R { background-color: #e64a58;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-R { background-color: #e64a58;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-Y { background-color: #f2c94c;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-Y { background-color: #f2c94c;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-G { background-color: #27ae60;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-G { background-color: #27ae60;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-B { background-color: #2d9cdb;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-B { background-color: #2d9cdb;
 }
 
-.proto-modal-card.orchards-rulebook-toast .rule-piece-token.pattern-W { background-color: #9b59b6;
+.orchards-rulebook-modal-card .rule-piece-token.pattern-W { background-color: #9b59b6;
 }
 
-/* ── One /proto-only adjustment on top of the ported rulebook ──────────────
-   Grid items default to a min-content floor, which lets the wide example rows
-   push the whole rulebook sideways (the game has the same quirk). Releasing
-   the floor keeps the modal body vertical-only; the example rows and the
-   contents bar still scroll horizontally on their own. */
-.proto-modal-card.orchards-rulebook-toast .rule-section > div {
-    min-width: 0;
-}
-
-.proto-modal-card.orchards-rulebook-toast .rule-harvest-flow,
-.proto-modal-card.orchards-rulebook-toast .rule-score-worked {
+.orchards-rulebook-modal-card .rule-harvest-flow,
+.orchards-rulebook-modal-card .rule-score-worked {
     overflow-x: auto;
 }

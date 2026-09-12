@@ -567,29 +567,29 @@
         'drawing-game': {
             mark: '🎨',
             name: { en: 'The Drawing Game', ko: '드로잉 게임' },
-            specs: [['3–6', 'players'], ['9', 'rounds'], ['20–30', 'minutes']],
+            specs: [['3–6', 'players'], ['9', 'rounds'], ['10–20', 'minutes']],
             tags: {
                 en: ['Simultaneous Selection', 'Spatial Placement'],
                 ko: ['동시 비밀 선택', '공간 배치']
             },
             hero: {
                 en: {
-                    h: 'The more of you want it, the less you get.',
-                    p: 'Three cards are revealed each round and everyone commits in secret. Pick one alone and the big animal is yours; pick the one everybody picked and you all take the smallest.'
+                    h: 'Read the table, land where two or three meet.',
+                    p: 'Every card pays by how many players picked it, and the payoff peaks in the middle: two or three on the same card take the big animals, while going alone or piling in with everyone pays the small ones.'
                 },
                 ko: {
-                    h: '많이 고를수록 적게 받습니다.',
-                    p: '매 라운드 카드 3장이 공개되고 모두가 비밀리에 선택합니다. 혼자 고르면 큰 동물을, 모두가 고르면 가장 작은 동물을 받습니다.'
+                    h: '눈치를 읽고, 둘이나 셋이 모이는 자리를 노리세요.',
+                    p: '카드의 보상은 그 카드를 고른 사람 수로 정해지며, 가장 좋은 자리는 가운데입니다. 둘 또는 셋이 겹치면 큰 동물을 가져가고, 혼자 고르거나 넷 이상이 몰리면 작은 동물이 돌아옵니다.'
                 }
             },
             points: {
                 en: [
-                    'Rewards depend on <strong>how many players chose that card</strong>, never on the size of the table — so reading the crowd matters more than the cards themselves.',
+                    'Rewards depend on <strong>how many players chose that card</strong>, and they peak in the middle: the two- and three-player rows hold almost every gold animal, while the alone row and the four-or-more row pay the small ones.',
                     'Every animal is a <strong>tile you have to fit</strong> on your own 20-bubble canvas: tiles may never overlap, and each bubble left uncovered costs a point.',
                     'A duplicate animal converts into a <strong>stone worth no points</strong> — but a compact shape that erases the bubbles a big animal can no longer reach.'
                 ],
                 ko: [
-                    '보상은 테이블 인원이 아니라 <strong>그 카드를 고른 사람 수</strong>로 정해집니다. 카드보다 남의 선택을 읽는 것이 중요합니다.',
+                    '보상은 <strong>그 카드를 고른 사람 수</strong>로 정해지며, 가장 큰 보상은 가운데에 있습니다. 2명·3명 행에 큰 동물이 몰려 있고, 혼자 고른 행과 4명 이상 행에는 작은 동물이 배치되어 있습니다.',
                     '얻은 동물은 모두 <strong>내 캔버스에 직접 맞춰 넣어야 하는 타일</strong>입니다. 타일은 겹칠 수 없고, 덮지 못한 물방울마다 1점씩 깎입니다.',
                     '이미 가진 동물이 중복되면 <strong>0점짜리 스톤</strong>으로 바뀝니다. 점수는 없지만 큰 동물이 들어갈 수 없는 좁은 틈을 메워 줍니다.'
                 ]
@@ -646,7 +646,7 @@
         'star-window': {
             mark: '🔭',
             name: { en: 'Star Window', ko: '천문대의 밤' },
-            specs: [['2–4', 'players'], ['10+', 'ages'], ['30–45', 'minutes']],
+            specs: [['2–4', 'players'], ['10+', 'ages'], ['25–40', 'minutes']],
             tags: {
                 en: ['Tile Placement', 'Spatial Scoring'],
                 ko: ['타일 배치', '공간 점수']

@@ -181,97 +181,92 @@
     }
 
     const modalMarkup = `
-        <div class="proto-modal-overlay orchards-rulebook-overlay" id="orchardsRulebookModal" role="dialog" aria-modal="true" aria-labelledby="orchardsRulebookToastTitle" style="display:none;">
-        <div class="proto-modal-card orchards-rulebook-toast" id="orchardsRulebookToast">
-            <header class="orchards-toast-header">
-                <span class="orchards-toast-mark" aria-hidden="true">🍏</span>
-                <div class="orchards-toast-heading">
-                    <span class="orchards-toast-eyebrow"><span class="rb-content-en">Official digital rulebook</span><span class="rb-content-ko" style="display:none;">공식 디지털 규칙서</span></span>
-                    <h3 class="orchards-toast-title" id="orchardsRulebookToastTitle">
-                        <span class="rb-title-text-en">Orchards Rulebook</span>
-                        <span class="rb-title-text-ko" style="display:none;">오차드 공식 규칙서</span>
-                    </h3>
+        <div class="proto-modal-overlay" id="orchardsRulebookModal" role="dialog" aria-modal="true" style="display:none;">
+        <div class="proto-modal-card rulebook-modal-card orchards-rulebook-modal-card">
+            <div class="proto-modal-header">
+                <div class="proto-modal-title">
+                    <i class="fa-solid fa-apple-whole" style="color: #477544;"></i>
+                    <span class="rb-title-text-en">Orchards — Complete Rulebook</span>
+                    <span class="rb-title-text-ko" style="display:none;">오차드 — 전체 규칙서</span>
                 </div>
-                <div class="orchards-toast-actions">
-                    <div class="orchards-toast-lang" role="group" aria-label="Rulebook language">
+                <div class="rulebook-header-actions">
+                    <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
                         <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'orchardsRulebookModal')">KO</button>
                         <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'orchardsRulebookModal')">EN</button>
                     </div>
-                    <button type="button" class="orchards-toast-close" onclick="closeOrchardsRulebookToast()" aria-label="Close Orchards rulebook"><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" class="proto-modal-close" onclick="closeModal('orchardsRulebookModal')" aria-label="Close rulebook modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
-            </header>
+            </div>
 
-            <div class="orchards-toast-body">
+            <div class="proto-modal-body rulebook-body">
                 <div class="rb-content-en">
-                    <section class="rules-cover">
-                      <div class="rules-cover-copy">
-                        <span class="rules-edition">Digital Edition</span>
-                        <h3>Grow a connected orchard.<br>Harvest at the perfect moment.</h3>
-                        <p>Use the number on every tile as a blind bid, draft from the shared market, then turn that bid into a growing orchard or a fresh harvest.</p>
-                      </div>
-                      <div class="rules-facts" aria-label="Game information">
-                        <div><strong>2-5</strong><span>Players</span></div>
-                        <div><strong>30</strong><span>Minutes</span></div>
-                        <div><strong>8+</strong><span>Age</span></div>
-                      </div>
+                    <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-overview')" class="rb-nav-link"><i class="fa-solid fa-circle-info"></i> 1. Overview</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-components')" class="rb-nav-link"><i class="fa-solid fa-shapes"></i> 2. Components</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-setup')" class="rb-nav-link"><i class="fa-solid fa-sliders"></i> 3. Setup</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-draft')" class="rb-nav-link"><i class="fa-solid fa-hand-pointer"></i> 4. Initial draft</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-round')" class="rb-nav-link"><i class="fa-solid fa-play"></i> 5. Round flow</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-placement')" class="rb-nav-link"><i class="fa-solid fa-seedling"></i> 6. Playing tiles</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-end')" class="rb-nav-link"><i class="fa-solid fa-flag-checkered"></i> 7. Game end</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-scoring')" class="rb-nav-link"><i class="fa-solid fa-star"></i> 8. Scoring</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-en-reference')" class="rb-nav-link"><i class="fa-solid fa-bookmark"></i> Quick reference</a>
+                    </nav>
+
+                    <div class="rb-intro-banner"><strong>Grow a connected orchard. Harvest at the perfect moment.</strong> Use the number on every tile as a blind bid, draft from the shared market, then turn that bid into a growing orchard or a fresh harvest.</div>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div class="rb-spec-label">Players</div>
+                            <div class="rb-spec-value">2–5 Players</div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-hourglass-half rb-spec-icon"></i>
+                            <div class="rb-spec-label">Play Time</div>
+                            <div class="rb-spec-value">30 Minutes</div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div class="rb-spec-label">Age</div>
+                            <div class="rb-spec-value">8+ Age</div>
+                        </div>
+                    </div>
+
+                    <section class="rb-section" id="rules-en-overview">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-circle-info"></i> 01. Overview & objective</h3>
+                        <p>You are building a productive orchard from five terrain types. Terrain brings workers; crop tiles bring fruit. At game end, each connected orchard scores <strong>workers × fruit</strong>. The player with the highest total score wins.</p>
                     </section>
 
-                    <div class="rulebook-layout">
-                      <nav class="rulebook-nav" aria-label="Rulebook contents">
-                        <strong>Contents</strong>
-                        <a href="#rules-en-overview">1. Overview</a>
-                        <a href="#rules-en-components">2. Components</a>
-                        <a href="#rules-en-setup">3. Setup</a>
-                        <a href="#rules-en-draft">4. Initial draft</a>
-                        <a href="#rules-en-round">5. Round flow</a>
-                        <a href="#rules-en-placement">6. Playing tiles</a>
-                        <a href="#rules-en-end">7. Game end</a>
-                        <a href="#rules-en-scoring">8. Scoring</a>
-                        <a href="#rules-en-reference">Quick reference</a>
-                      </nav>
-
-                      <article class="rulebook-content">
-                        <section id="rules-en-overview" class="rule-section">
-                          <span class="rule-number">01</span>
-                          <div><h3>Overview & objective</h3><p>You are building a productive orchard from five terrain types. Terrain brings workers; crop tiles bring fruit. At game end, each connected orchard scores <strong>workers × fruit</strong>. The player with the highest total score wins.</p></div>
-                        </section>
-
-                        <section id="rules-en-components" class="rule-section">
-                          <span class="rule-number">02</span>
-                          <div>
-                            <h3>Components</h3>
-                            <div class="component-grid">
+                    <section class="rb-section" id="rules-en-components">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-shapes"></i> 02. Components</h3>
+                        <div class="component-grid">
                               <div class="component-card"><span class="component-icon terrain-icon" aria-hidden="true"></span><strong>50 terrain tiles</strong><small>Two diagonal color halves and 1-5 workers in total.</small></div>
                               <div class="component-card"><span class="component-icon">🧺</span><strong>40 crop tiles</strong><small>Each provides 1-4 fruit and/or scarecrow tokens.</small></div>
                               <div class="component-card component-wide"><span class="component-icon">🍎</span><strong>106 tokens</strong><small>15 Apple · 17 Banana · 19 Pear · 21 Blueberry · 23 Grape · 11 Scarecrow</small></div>
                             </div>
                             <div class="rule-note"><strong>Tile numbers matter.</strong> Every tile has a unique number from 1 to 90. Lower numbers act earlier when bids are revealed.</div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-en-setup" class="rule-section">
-                          <span class="rule-number">03</span>
-                          <div>
-                            <h3>Setup</h3>
-                            <ol class="rule-list">
+                    <section class="rb-section" id="rules-en-setup">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-sliders"></i> 03. Setup</h3>
+                        <ol class="rule-list">
                               <li>Randomly remove tiles according to player count. Return them unseen.</li>
                               <li>Deal <strong>5 tiles</strong> to each player.</li>
                               <li>Place the remaining tiles face down as the deck and keep all tokens within reach.</li>
                             </ol>
                             <table class="setup-table"><thead><tr><th>Players</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody><tr><th>Remove</th><td>15</td><td>10</td><td>5</td><td>0</td></tr></tbody></table>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-en-draft" class="rule-section">
-                          <span class="rule-number">04</span>
-                          <div><h3>Initial hand draft</h3><p>Everyone chooses 1 tile from their 5-tile hand and keeps it. Pass all remaining tiles to the player on your left. Repeat until everyone has kept 4 tiles. The single unchosen tile left in each packet is removed from the game.</p><div class="rule-callout">You begin round 1 with exactly <strong>4 tiles in hand</strong>.</div><div class="rule-example-mount" data-rule-example="draft"></div></div>
-                        </section>
+                    <section class="rb-section" id="rules-en-draft">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-hand-pointer"></i> 04. Initial hand draft</h3>
+                        <p>Everyone chooses 1 tile from their 5-tile hand and keeps it. Pass all remaining tiles to the player on your left. Repeat until everyone has kept 4 tiles. The single unchosen tile left in each packet is removed from the game.</p><div class="rule-callout">You begin round 1 with exactly <strong>4 tiles in hand</strong>.</div><div class="rule-example-mount" data-rule-example="draft"></div>
+                    </section>
 
-                        <section id="rules-en-round" class="rule-section">
-                          <span class="rule-number">05</span>
-                          <div>
-                            <h3>Round flow</h3>
-                            <p>The game has <strong>13 rounds</strong>. Complete these steps in order:</p>
+                    <section class="rb-section" id="rules-en-round">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-play"></i> 05. Round flow</h3>
+                        <p>The game has <strong>13 rounds</strong>. Complete these steps in order:</p>
                             <div class="round-flow">
                               <div><b>1</b><span><strong>Reveal the market</strong><small>Reveal 5 tiles from the deck.</small></span></div>
                               <div><b>2</b><span><strong>Bid secretly</strong><small>Each player chooses 1 tile from hand. This tile will also be played this round.</small></span></div>
@@ -280,32 +275,26 @@
                               <div><b>5</b><span><strong>Play bids</strong><small>In the same order, resolve the tile each player submitted.</small></span></div>
                             </div>
                             <div class="rule-note"><strong>Hand size stays at 4.</strong> You bid one tile and draft one replacement every round.</div><div class="rule-example-mount" data-rule-example="bidding"></div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-en-placement" class="rule-section">
-                          <span class="rule-number">06</span>
-                          <div>
-                            <h3>Playing tiles</h3>
-                            <div class="tile-rule-grid">
+                    <section class="rb-section" id="rules-en-placement">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-seedling"></i> 06. Playing tiles</h3>
+                        <div class="tile-rule-grid">
                               <div class="tile-rule-card terrain-rule"><span>🌿</span><div><h4>Terrain tile</h4><ul><li>Your first terrain tile may be placed in any open space.</li><li>Every later terrain tile must share an edge with a tile already in your orchard. Diagonal contact is not enough.</li><li>You may rotate it in 90° steps before placing it. Colors do not need to match.</li></ul></div></div>
                               <div class="tile-rule-card crop-rule"><span>🧺</span><div><h4>Crop tile</h4><ul><li>Discard the crop tile and take every token shown on it.</li><li>Place each fruit on a terrain half of the matching color. Any number of tokens may share a half.</li><li>If a token has no matching terrain, it is discarded.</li></ul></div></div>
                               <div class="tile-rule-card scarecrow-rule"><span>🎃</span><div><h4>Scarecrow</h4><ul><li>May be placed on any terrain color.</li><li>Counts as <strong>+1 worker</strong> in that connected orchard; it is not fruit.</li></ul></div></div>
                             </div>
                             <div class="rule-warning"><strong>Early crop risk:</strong> If you play a crop before you have matching terrain, its fruit may be lost.</div><div class="rule-example-mount" data-rule-example="harvest"></div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-en-end" class="rule-section">
-                          <span class="rule-number">07</span>
-                          <div><h3>Final play & game end</h3><p>After round 13, each player still has 4 tiles. Choose <strong>one</strong> final tile and play it normally. Discard the other 3. Once every final tile and its tokens have been resolved, proceed to scoring.</p></div>
-                        </section>
+                    <section class="rb-section" id="rules-en-end">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-flag-checkered"></i> 07. Final play & game end</h3>
+                        <p>After round 13, each player still has 4 tiles. Choose <strong>one</strong> final tile and play it normally. Discard the other 3. Once every final tile and its tokens have been resolved, proceed to scoring.</p>
+                    </section>
 
-                        <section id="rules-en-scoring" class="rule-section scoring-section">
-                          <span class="rule-number">08</span>
-                          <div>
-                            <h3>Scoring</h3>
-                            <h4>A. Connected-orchard points</h4>
+                    <section class="rb-section" id="rules-en-scoring">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-star"></i> 08. Scoring</h3>
+                        <h4>A. Connected-orchard points</h4>
                             <p>A connected orchard is a group of same-color terrain halves connected through shared edges. Rotated diagonal halves only connect where that colored half actually reaches the shared edge.</p>
                             <div class="score-formula"><span>Workers</span><b>×</b><span>Fruit</span><b>=</b><strong>Points</strong></div>
                             <p>Score every connected orchard separately, then add them together. Scarecrows are included in the worker total.</p>
@@ -314,93 +303,83 @@
                             <p>For each of the five colors, compare every player’s largest connected orchard by its <strong>number of terrain tiles</strong>. A sole leader gains <strong>10 points</strong>. If tied for largest, every tied player gains <strong>7 points</strong>. No bonus is awarded when nobody has that color.</p>
                             <h4>C. Victory</h4>
                             <p>Add all connected-orchard points and all largest-orchard bonuses. The highest total score wins.</p>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-en-reference" class="rule-section quick-reference-section">
-                          <span class="rule-number">✓</span>
-                          <div>
-                            <h3>Quick reference</h3>
-                            <div class="quick-grid"><span>Market</span><strong>5 tiles</strong><span>Starting hand</span><strong>4 after draft</strong><span>Rounds</span><strong>13 + 1 final play</strong><span>Bid order</span><strong>Lowest number first</strong><span>Orchard score</span><strong>Workers × fruit</strong><span>Largest orchard</span><strong>10 / tied 7</strong></div>
+                    <section class="rb-section" id="rules-en-reference">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-bookmark"></i> Quick reference</h3>
+                        <div class="quick-grid"><span>Market</span><strong>5 tiles</strong><span>Starting hand</span><strong>4 after draft</strong><span>Rounds</span><strong>13 + 1 final play</strong><span>Bid order</span><strong>Lowest number first</strong><span>Orchard score</span><strong>Workers × fruit</strong><span>Largest orchard</span><strong>10 / tied 7</strong></div>
                             <details><summary>What counts as connected?</summary><p>Only same-colored halves meeting across a shared edge. Corners never connect, and the rotated diagonal determines which edges each half touches.</p></details>
                             <details><summary>Does the market tile get played immediately?</summary><p>No. The market tile goes into your hand. The tile you submitted as your bid is the one played this round.</p></details>
                             <details><summary>Can I save a crop token for later?</summary><p>No. Resolve every token from the crop tile immediately; place it legally or discard it.</p></details>
-                          </div>
-                        </section>
-                      </article>
-                    </div>
+                    </section>
                 </div>
 
                 <div class="rb-content-ko" style="display:none;">
-                    <section class="rules-cover">
-                      <div class="rules-cover-copy">
-                        <span class="rules-edition">디지털 에디션</span>
-                        <h3>과수원을 연결하고,<br>가장 좋은 순간에 수확하세요.</h3>
-                        <p>타일의 고유 번호로 비공개 입찰하고, 공동 시장에서 타일을 가져온 뒤, 입찰에 사용한 타일로 과수원을 넓히거나 과일을 수확합니다.</p>
-                      </div>
-                      <div class="rules-facts" aria-label="게임 정보">
-                        <div><strong>2-5</strong><span>인</span></div>
-                        <div><strong>30</strong><span>분</span></div>
-                        <div><strong>8+</strong><span>연령</span></div>
-                      </div>
+                    <nav class="rulebook-nav-bar" aria-label="Rulebook sections">
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-overview')" class="rb-nav-link"><i class="fa-solid fa-circle-info"></i> 1. 게임 개요</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-components')" class="rb-nav-link"><i class="fa-solid fa-shapes"></i> 2. 구성물</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-setup')" class="rb-nav-link"><i class="fa-solid fa-sliders"></i> 3. 게임 준비</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-draft')" class="rb-nav-link"><i class="fa-solid fa-hand-pointer"></i> 4. 초기 드래프트</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-round')" class="rb-nav-link"><i class="fa-solid fa-play"></i> 5. 라운드 진행</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-placement')" class="rb-nav-link"><i class="fa-solid fa-seedling"></i> 6. 타일 사용</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-end')" class="rb-nav-link"><i class="fa-solid fa-flag-checkered"></i> 7. 게임 종료</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-scoring')" class="rb-nav-link"><i class="fa-solid fa-star"></i> 8. 점수 계산</a>
+                        <a href="javascript:void(0)" onclick="scrollRulebookSection('rules-ko-reference')" class="rb-nav-link"><i class="fa-solid fa-bookmark"></i> 빠른 참조</a>
+                    </nav>
+
+                    <div class="rb-intro-banner"><strong>과수원을 연결하고, 가장 좋은 순간에 수확하세요.</strong> 타일의 고유 번호로 비공개 입찰하고, 공동 시장에서 타일을 가져온 뒤, 입찰에 사용한 타일로 과수원을 넓히거나 과일을 수확합니다.</div>
+
+                    <div class="rb-specs-grid">
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-users rb-spec-icon"></i>
+                            <div class="rb-spec-label">인원</div>
+                            <div class="rb-spec-value">2–5 인</div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-hourglass-half rb-spec-icon"></i>
+                            <div class="rb-spec-label">소요 시간</div>
+                            <div class="rb-spec-value">30 분</div>
+                        </div>
+                        <div class="rb-spec-item">
+                            <i class="fa-solid fa-child-reaching rb-spec-icon"></i>
+                            <div class="rb-spec-label">연령</div>
+                            <div class="rb-spec-value">8+ 연령</div>
+                        </div>
+                    </div>
+
+                    <section class="rb-section" id="rules-ko-overview">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-circle-info"></i> 01. 게임 개요와 목표</h3>
+                        <p>다섯 종류의 지형을 연결해 풍성한 과수원을 만듭니다. 지형 타일은 일꾼을, 작물 타일은 과일을 제공합니다. 게임이 끝나면 연결된 과수원마다 <strong>일꾼 × 과일</strong>로 점수를 얻으며, 총점이 가장 높은 플레이어가 승리합니다.</p>
                     </section>
 
-                    <div class="rulebook-layout">
-                      <nav class="rulebook-nav" aria-label="규칙서 목차">
-                        <strong>목차</strong>
-                        <a href="#rules-ko-overview">1. 게임 개요</a>
-                        <a href="#rules-ko-components">2. 구성물</a>
-                        <a href="#rules-ko-setup">3. 게임 준비</a>
-                        <a href="#rules-ko-draft">4. 초기 드래프트</a>
-                        <a href="#rules-ko-round">5. 라운드 진행</a>
-                        <a href="#rules-ko-placement">6. 타일 사용</a>
-                        <a href="#rules-ko-end">7. 게임 종료</a>
-                        <a href="#rules-ko-scoring">8. 점수 계산</a>
-                        <a href="#rules-ko-reference">빠른 참조</a>
-                      </nav>
-
-                      <article class="rulebook-content">
-                        <section id="rules-ko-overview" class="rule-section">
-                          <span class="rule-number">01</span>
-                          <div><h3>게임 개요와 목표</h3><p>다섯 종류의 지형을 연결해 풍성한 과수원을 만듭니다. 지형 타일은 일꾼을, 작물 타일은 과일을 제공합니다. 게임이 끝나면 연결된 과수원마다 <strong>일꾼 × 과일</strong>로 점수를 얻으며, 총점이 가장 높은 플레이어가 승리합니다.</p></div>
-                        </section>
-
-                        <section id="rules-ko-components" class="rule-section">
-                          <span class="rule-number">02</span>
-                          <div>
-                            <h3>구성물</h3>
-                            <div class="component-grid">
+                    <section class="rb-section" id="rules-ko-components">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-shapes"></i> 02. 구성물</h3>
+                        <div class="component-grid">
                               <div class="component-card"><span class="component-icon terrain-icon" aria-hidden="true"></span><strong>지형 타일 50장</strong><small>대각선으로 나뉜 두 색 지형과 총 1-5명의 일꾼.</small></div>
                               <div class="component-card"><span class="component-icon">🧺</span><strong>작물 타일 40장</strong><small>과일 및 허수아비 토큰 1-4개를 제공합니다.</small></div>
                               <div class="component-card component-wide"><span class="component-icon">🍎</span><strong>토큰 106개</strong><small>사과 15 · 바나나 17 · 배 19 · 블루베리 21 · 포도 23 · 허수아비 11</small></div>
                             </div>
                             <div class="rule-note"><strong>타일 번호가 중요합니다.</strong> 모든 타일에는 1부터 90까지 서로 다른 번호가 있으며, 낮은 번호일수록 입찰 공개 후 먼저 행동합니다.</div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-ko-setup" class="rule-section">
-                          <span class="rule-number">03</span>
-                          <div>
-                            <h3>게임 준비</h3>
-                            <ol class="rule-list">
+                    <section class="rb-section" id="rules-ko-setup">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-sliders"></i> 03. 게임 준비</h3>
+                        <ol class="rule-list">
                               <li>플레이어 수에 맞춰 타일을 무작위로 제거하고, 내용을 보지 않은 채 게임에서 제외합니다.</li>
                               <li>각 플레이어에게 타일을 <strong>5장씩</strong> 나눠 줍니다.</li>
                               <li>남은 타일은 뒷면으로 덱을 만들고, 모든 토큰을 손이 닿는 곳에 둡니다.</li>
                             </ol>
                             <table class="setup-table"><thead><tr><th>인원</th><th>2인</th><th>3인</th><th>4인</th><th>5인</th></tr></thead><tbody><tr><th>제거</th><td>15장</td><td>10장</td><td>5장</td><td>0장</td></tr></tbody></table>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-ko-draft" class="rule-section">
-                          <span class="rule-number">04</span>
-                          <div><h3>초기 손패 드래프트</h3><p>모두 자신의 5장 중 1장을 골라 보관한 뒤, 남은 타일을 왼쪽 플레이어에게 전달합니다. 모두가 4장을 확보할 때까지 반복합니다. 각 묶음에 마지막으로 남은 선택되지 않은 1장은 게임에서 제거합니다.</p><div class="rule-callout">1라운드는 정확히 <strong>4장의 손패</strong>로 시작합니다.</div><div class="rule-example-mount" data-rule-example="draft"></div></div>
-                        </section>
+                    <section class="rb-section" id="rules-ko-draft">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-hand-pointer"></i> 04. 초기 손패 드래프트</h3>
+                        <p>모두 자신의 5장 중 1장을 골라 보관한 뒤, 남은 타일을 왼쪽 플레이어에게 전달합니다. 모두가 4장을 확보할 때까지 반복합니다. 각 묶음에 마지막으로 남은 선택되지 않은 1장은 게임에서 제거합니다.</p><div class="rule-callout">1라운드는 정확히 <strong>4장의 손패</strong>로 시작합니다.</div><div class="rule-example-mount" data-rule-example="draft"></div>
+                    </section>
 
-                        <section id="rules-ko-round" class="rule-section">
-                          <span class="rule-number">05</span>
-                          <div>
-                            <h3>라운드 진행</h3>
-                            <p>게임은 <strong>13라운드</strong> 동안 진행합니다. 매 라운드 아래 순서를 따릅니다.</p>
+                    <section class="rb-section" id="rules-ko-round">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-play"></i> 05. 라운드 진행</h3>
+                        <p>게임은 <strong>13라운드</strong> 동안 진행합니다. 매 라운드 아래 순서를 따릅니다.</p>
                             <div class="round-flow">
                               <div><b>1</b><span><strong>시장 공개</strong><small>덱에서 타일 5장을 공개합니다.</small></span></div>
                               <div><b>2</b><span><strong>비공개 입찰</strong><small>각자 손패 1장을 고릅니다. 이 타일은 이번 라운드에 실제로 사용됩니다.</small></span></div>
@@ -409,32 +388,26 @@
                               <div><b>5</b><span><strong>입찰 타일 사용</strong><small>같은 순서대로 자신이 입찰에 낸 타일을 해결합니다.</small></span></div>
                             </div>
                             <div class="rule-note"><strong>손패는 계속 4장입니다.</strong> 매 라운드 1장을 입찰하고 시장에서 1장을 보충합니다.</div><div class="rule-example-mount" data-rule-example="bidding"></div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-ko-placement" class="rule-section">
-                          <span class="rule-number">06</span>
-                          <div>
-                            <h3>타일 사용</h3>
-                            <div class="tile-rule-grid">
+                    <section class="rb-section" id="rules-ko-placement">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-seedling"></i> 06. 타일 사용</h3>
+                        <div class="tile-rule-grid">
                               <div class="tile-rule-card terrain-rule"><span>🌿</span><div><h4>지형 타일</h4><ul><li>첫 지형 타일은 비어 있는 아무 칸에 놓을 수 있습니다.</li><li>두 번째 타일부터는 이미 놓인 타일과 변으로 맞닿아야 합니다. 모서리만 닿는 대각선 배치는 연결이 아닙니다.</li><li>놓기 전에 90° 단위로 회전할 수 있습니다. 맞닿는 지형의 색은 같지 않아도 됩니다.</li></ul></div></div>
                               <div class="tile-rule-card crop-rule"><span>🧺</span><div><h4>작물 타일</h4><ul><li>작물 타일을 버리고, 표시된 토큰을 모두 가져옵니다.</li><li>각 과일은 같은 색 지형의 반쪽에 놓습니다. 한 지형 반쪽에 여러 토큰을 놓을 수 있습니다.</li><li>일치하는 지형이 없는 토큰은 버립니다.</li></ul></div></div>
                               <div class="tile-rule-card scarecrow-rule"><span>🎃</span><div><h4>허수아비</h4><ul><li>아무 색 지형에나 놓을 수 있습니다.</li><li>그 연결 과수원에서 <strong>일꾼 +1</strong>로 계산하며, 과일 수에는 포함하지 않습니다.</li></ul></div></div>
                             </div>
                             <div class="rule-warning"><strong>초반 작물 주의:</strong> 같은 색 지형을 아직 놓지 않았다면 수확한 과일을 잃을 수 있습니다.</div><div class="rule-example-mount" data-rule-example="harvest"></div>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-ko-end" class="rule-section">
-                          <span class="rule-number">07</span>
-                          <div><h3>마지막 타일과 게임 종료</h3><p>13라운드가 끝나면 각 플레이어의 손에는 여전히 타일 4장이 있습니다. 그중 <strong>1장만</strong> 골라 일반 규칙대로 사용하고, 나머지 3장은 버립니다. 모두 마지막 타일과 그 토큰을 해결하면 점수를 계산합니다.</p></div>
-                        </section>
+                    <section class="rb-section" id="rules-ko-end">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-flag-checkered"></i> 07. 마지막 타일과 게임 종료</h3>
+                        <p>13라운드가 끝나면 각 플레이어의 손에는 여전히 타일 4장이 있습니다. 그중 <strong>1장만</strong> 골라 일반 규칙대로 사용하고, 나머지 3장은 버립니다. 모두 마지막 타일과 그 토큰을 해결하면 점수를 계산합니다.</p>
+                    </section>
 
-                        <section id="rules-ko-scoring" class="rule-section scoring-section">
-                          <span class="rule-number">08</span>
-                          <div>
-                            <h3>점수 계산</h3>
-                            <h4>A. 연결 과수원 점수</h4>
+                    <section class="rb-section" id="rules-ko-scoring">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-star"></i> 08. 점수 계산</h3>
+                        <h4>A. 연결 과수원 점수</h4>
                             <p>연결 과수원은 같은 색 지형의 반쪽들이 서로 맞닿은 변을 통해 이어진 묶음입니다. 회전된 대각선 지형은 해당 색 반쪽이 실제로 닿는 변에서만 연결됩니다.</p>
                             <div class="score-formula"><span>일꾼</span><b>×</b><span>과일</span><b>=</b><strong>점수</strong></div>
                             <p>연결 과수원마다 별도로 계산한 뒤 모두 더합니다. 허수아비는 일꾼 수에 포함합니다.</p>
@@ -443,28 +416,24 @@
                             <p>다섯 색마다 각 플레이어의 가장 큰 연결 과수원을 <strong>포함된 지형 타일 수</strong>로 비교합니다. 단독 1위는 <strong>10점</strong>, 공동 1위는 해당 플레이어 모두 <strong>7점</strong>을 얻습니다. 누구도 해당 색 지형이 없다면 보너스가 없습니다.</p>
                             <h4>C. 승리</h4>
                             <p>모든 연결 과수원 점수와 가장 큰 과수원 보너스를 합칩니다. 총점이 가장 높은 플레이어가 승리합니다.</p>
-                          </div>
-                        </section>
+                    </section>
 
-                        <section id="rules-ko-reference" class="rule-section quick-reference-section">
-                          <span class="rule-number">✓</span>
-                          <div>
-                            <h3>빠른 참조</h3>
-                            <div class="quick-grid"><span>시장</span><strong>타일 5장</strong><span>시작 손패</span><strong>드래프트 후 4장</strong><span>진행</span><strong>13라운드 + 마지막 1장</strong><span>행동 순서</span><strong>낮은 번호부터</strong><span>과수원 점수</span><strong>일꾼 × 과일</strong><span>가장 큰 과수원</span><strong>10점 / 공동 7점</strong></div>
+                    <section class="rb-section" id="rules-ko-reference">
+                        <h3 class="rb-section-title"><i class="fa-solid fa-bookmark"></i> 빠른 참조</h3>
+                        <div class="quick-grid"><span>시장</span><strong>타일 5장</strong><span>시작 손패</span><strong>드래프트 후 4장</strong><span>진행</span><strong>13라운드 + 마지막 1장</strong><span>행동 순서</span><strong>낮은 번호부터</strong><span>과수원 점수</span><strong>일꾼 × 과일</strong><span>가장 큰 과수원</span><strong>10점 / 공동 7점</strong></div>
                             <details><summary>어디까지 연결된 과수원인가요?</summary><p>같은 색 지형 반쪽이 변으로 직접 맞닿아야 합니다. 모서리는 연결되지 않으며, 타일을 회전한 방향에 따라 각 대각선 반쪽이 닿는 변도 달라집니다.</p></details>
                             <details><summary>시장에서 가져온 타일을 바로 사용하나요?</summary><p>아닙니다. 시장 타일은 손패로 들어갑니다. 이번 라운드에 사용하는 것은 입찰에 제출한 타일입니다.</p></details>
                             <details><summary>작물 토큰을 다음 라운드까지 보관할 수 있나요?</summary><p>아닙니다. 작물 타일의 모든 토큰을 즉시 해결해 합법적으로 배치하거나 버려야 합니다.</p></details>
-                          </div>
-                        </section>
-                      </article>
-                    </div>
+                    </section>
                 </div>
             </div>
 
-            <footer class="orchards-toast-footer">
-                <button type="button" onclick="closeOrchardsRulebookToast()"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
-                <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">Open game</span><span class="rb-content-ko" style="display:none;">게임 열기</span></a>
-            </footer>
+            <div class="proto-modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeModal('orchardsRulebookModal')"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
+                <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">Play Now</span><span class="rb-content-ko" style="display:none;">지금 플레이</span>
+                </a>
+            </div>
         </div>
         </div>`;
 
@@ -478,18 +447,6 @@
         [['en', 'rb-content-en'], ['ko', 'rb-content-ko']].forEach(([lang, cls]) => {
             modal.querySelectorAll(`.${cls} [data-rule-example]`).forEach(mount => {
                 mount.innerHTML = buildRulebookExample(mount.dataset.ruleExample, lang);
-            });
-        });
-    }
-
-    // The contents list uses in-page anchors; scroll the modal body rather than
-    // letting the browser jump the page behind the modal.
-    function wireContentsNav(modal) {
-        modal.querySelectorAll('.rulebook-nav a[href^="#"]').forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const target = modal.querySelector('#' + CSS.escape(link.getAttribute('href').slice(1)));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     }
@@ -512,7 +469,6 @@
         document.body.insertAdjacentHTML('beforeend', modalMarkup);
         const modal = getModal();
         renderExamples(modal);
-        wireContentsNav(modal);
         const isKo = document.documentElement.getAttribute('lang') === 'ko';
         if (typeof window.setRulebookLanguage === 'function') {
             window.setRulebookLanguage(isKo ? 'ko' : 'en', MODAL_ID);
