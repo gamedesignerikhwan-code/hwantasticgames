@@ -521,7 +521,7 @@
             },
             steps: {
                 en: [
-                    ['Build the plate', 'Shuffle the 48 topping tiles and stack three in every cell of the 4×4 waffle, with only the top tile of each stack face up.'],
+                    ['Build the plate', 'The box holds 50 topping tiles; the player-count mix puts 48 of them on the plate. Shuffle those face down and stack three in every cell of the 4×4 waffle, with only the top tile of each stack face up.'],
                     ['Open the market', 'Shuffle the 64 coordinate tickets. The first two players draw 3 tickets each, the third and fourth draw 4, then reveal tickets until the market shows at least four different coordinates.'],
                     ['Reveal the missions', 'Separate the mission cards into 3-, 4- and 5-cell decks and reveal one card from each.'],
                     ['Take one action', 'On your turn choose exactly one: take 1 ticket from the market, draw 2 and keep 1, or complete a mission.'],
@@ -530,7 +530,7 @@
                     ['Empty the plate', 'When at least 5 of the 16 cells are empty, finish the round so every player has had the same number of turns, then score.']
                 ],
                 ko: [
-                    ['와플 만들기', '토핑 타일 48개를 섞어 4×4 와플의 모든 칸에 3장씩 쌓고, 각 더미의 맨 위 타일만 앞면으로 둡니다.'],
+                    ['와플 만들기', '상자에는 토핑 타일 50개가 들어 있고, 인원수별 구성에 따라 그중 48개를 판에 올립니다. 해당 타일을 뒷면으로 섞어 4×4 와플의 모든 칸에 3장씩 쌓고, 각 더미의 맨 위 타일만 앞면으로 둡니다.'],
                     ['시장 열기', '좌표 티켓 64장을 섞습니다. 첫 번째·두 번째 플레이어는 3장, 세 번째·네 번째는 4장을 받은 뒤, 서로 다른 좌표가 4종 이상 보일 때까지 티켓을 공개합니다.'],
                     ['미션 공개', '미션 카드를 3칸·4칸·5칸 덱으로 나누고 각 덱에서 1장씩 공개합니다.'],
                     ['행동 하나 고르기', '자기 차례에 딱 하나를 선택합니다: 시장에서 티켓 1장 가져오기, 2장 뽑아 1장 남기기, 또는 미션 완성하기.'],
@@ -547,8 +547,8 @@
                 }
             },
             components: {
-                en: [['1', 'Waffle Plate — a 4×4 grid', 'fa-table-cells'], ['48', 'Topping Tiles — three per cell', 'fa-layer-group'], ['64', 'Coordinate Tickets — A1 to D4', 'fa-ticket'], ['30', 'Mission Cards — ten each of 3, 4 and 5 cells', 'fa-shapes']],
-                ko: [['1', '와플 플레이트 — 4×4 격자', 'fa-table-cells'], ['48', '토핑 타일 — 칸마다 3장', 'fa-layer-group'], ['64', '좌표 티켓 — A1~D4', 'fa-ticket'], ['30', '미션 카드 — 3·4·5칸 각 10장', 'fa-shapes']]
+                en: [['1', 'Waffle Plate — a 4×4 grid', 'fa-table-cells'], ['50', 'Topping Tiles — 48 on the plate, three per cell', 'fa-layer-group'], ['64', 'Coordinate Tickets — A1 to D4', 'fa-ticket'], ['30', 'Mission Cards — ten each of 3, 4 and 5 cells', 'fa-shapes']],
+                ko: [['1', '와플 플레이트 — 4×4 격자', 'fa-table-cells'], ['50', '토핑 타일 — 48개를 판에, 칸마다 3장', 'fa-layer-group'], ['64', '좌표 티켓 — A1~D4', 'fa-ticket'], ['30', '미션 카드 — 3·4·5칸 각 10장', 'fa-shapes']]
             },
             figure: {
                 src: { en: '/assets/waffle_ingame_table.png', ko: '/assets/waffle_ingame_table.png' },
