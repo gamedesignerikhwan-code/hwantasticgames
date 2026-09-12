@@ -497,12 +497,10 @@ body.dreamhome-theme::before {
 }
 
 .hero-tagline {
-    font-size: 1.35rem;
-    font-weight: 700;
+    font-size: 1.25rem;
     color: var(--text-main);
     max-width: 680px;
-    margin: 0 auto 10px auto;
-    line-height: 1.45;
+    margin: 0 auto 32px auto;
     text-shadow: 0 1px 4px rgba(245, 240, 232, 0.6);
 }
 
@@ -517,7 +515,7 @@ body.dreamhome-theme::before {
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 40px;
 }
@@ -1784,116 +1782,4 @@ body.dreamhome-theme::before {
     .about-story-container {
         padding: 28px;
     }
-}
-
-/* ── Hearts Extreme game overview ──────────────────────────────────────── */
-.hero-subtagline {
-    max-width: 640px;
-    margin: 0 auto 32px auto;
-    color: var(--text-main);
-    opacity: 0.82;
-    font-size: 1rem;
-    line-height: 1.6;
-    text-shadow: 0 1px 4px rgba(245, 240, 232, 0.6);
-}
-
-.overview-subnote {
-    margin-top: 12px;
-}
-
-.playtest-callout {
-    margin-top: 40px;
-    padding: 28px 30px;
-    border-left: 4px solid var(--accent-teal);
-}
-
-.playtest-callout-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.playtest-callout-head i {
-    color: var(--accent-teal);
-    font-size: 1.5rem;
-}
-
-.playtest-callout-head h3 {
-    margin: 0;
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    color: var(--text-main);
-}
-
-.playtest-callout p {
-    color: var(--text-muted);
-    font-size: 0.97rem;
-    line-height: 1.65;
-}
-
-.playtest-list {
-    margin: 14px 0;
-    padding-left: 20px;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-
-.playtest-ask {
-    margin-top: 14px;
-}
-
-.playtest-cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.overview-clips {
-    margin-top: 50px;
-}
-
-.overview-clips-heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 24px;
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--text-main);
-}
-
-.overview-clips-heading i {
-    color: var(--accent-coral);
-}
-
-.clip-grid {
-    display: grid;
-    /* four clips: 2x2 on desktop rather than a 3 + 1 orphan row */
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 22px;
-}
-
-.clip-item {
-    margin: 0;
-    padding: 14px;
-    overflow: hidden;
-}
-
-.clip-item video {
-    display: block;
-    width: 100%;
-    border-radius: var(--radius-md, 12px);
-    background: #000;
-}
-
-.clip-item figcaption {
-    margin-top: 12px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-align: center;
 }
