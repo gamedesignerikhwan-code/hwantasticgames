@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/proto/proto.css">
     <link rel="stylesheet" href="/proto/orchards-rulebook.css">
     <link rel="stylesheet" href="/proto/star-window-rulebook.css">
+    <link rel="stylesheet" href="/proto/doore-sell-sheet.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
     <style>
@@ -4079,7 +4080,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('dooreModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openDooreSellSheet()" aria-controls="dooreSellSheetToast" aria-expanded="false">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('dooreRulebookModal')" title="Doore Full Rulebook" aria-label="Doore Full Rulebook">
@@ -9913,5 +9914,6 @@
     </script>
     <script src="/proto/orchards-rulebook.js"></script>
     <script src="/proto/star-window-rulebook.js"></script>
+    <script src="/proto/doore-sell-sheet.js"></script>
 </body>
 </html>
