@@ -1,6 +1,10 @@
-# Steam 상점 자산 업로드 안내
+# 상점 자산 업로드 안내
 
 생성: `node scripts/steam-capture.js` → `python scripts/steam_compose.py`
+
+아래 Steam 자산과 itch.io 대표 이미지를 같은 스크립트에서 뽑는다. 두 상점에 같은 게임이
+서로 다른 얼굴로 올라가지 않게 하려는 것이다. itch 것만 다시 뽑으려면
+`python scripts/steam_compose.py itch` (Steam 자산은 건드리지 않는다).
 
 Graphical Assets 탭의 드롭존은 **이미지 크기로 슬롯을 자동 판별**한다.
 목록에 없는 크기를 넣으면 `Dimensions provided do not match any known assets` 로 거부된다.
@@ -29,6 +33,39 @@ Graphical Assets 탭의 드롭존은 **이미지 크기로 슬롯을 자동 판�
 |---|---|---|
 | `header_capsule.png` | 920×430 | Store · Header Capsule |
 | `library_header.png` | 920×430 | Library · Library Header |
+
+## itch.io
+
+| 파일 | 크기 | 슬롯 |
+|---|---|---|
+| `itch_cover.png` | 630×500 | Edit game · Cover image |
+
+브라우즈 목록에서 315×250까지 줄어 표시되므로 로고 외 문구는 넣지 않았다.
+스크린샷은 위 `screenshot_*.png`(1920×1080)를 그대로 재사용한다.
+
+### 스팀 링크 UTM 규칙
+
+Steamworks 트래픽 리포트에서 유입을 갈라 보기 위한 것이다. 게임 안의 링크는
+`game.js`의 `Game.steamStoreUrl()`이 자동으로 붙이고, **itch 페이지처럼 게임 밖에
+손으로 쓰는 링크는 아래 표를 따라야** 리포트가 한 축으로 정리된다.
+
+| 파라미터 | 의미 | 값 |
+|---|---|---|
+| `utm_source` | 트래픽이 실제로 온 곳 | `itch` (itch 페이지·itch 빌드) / `ingame` (스팀 데모·웹 테스트) |
+| `utm_medium` | 링크가 놓인 자리 | `page` `devlog` (게임 밖, 손으로) / `wishlist` `copy_link` `twitter` `native` (게임 안, 자동) |
+| `utm_campaign` | 맥락 | `demo_launch` (게임 밖) / `level_result` `rank_high_score` `ranker_badge` (게임 안, 자동) |
+
+기준 URL: `https://store.steampowered.com/app/5015250/Hearts_Extreme`
+
+itch 페이지 본문에 넣을 링크:
+
+```
+https://store.steampowered.com/app/5015250/Hearts_Extreme/?utm_source=itch&utm_medium=page&utm_campaign=demo_launch
+```
+
+`utm_source`를 나누는 이유: itch 빌드의 인게임 위시리스트 버튼도 예전에는 `ingame`으로
+나가서, 스팀 데모에서 온 클릭과 한 덩어리로 잡혀 itch가 만든 위시리스트를 분리할 수
+없었다. 지금은 `isItchBuild`를 보고 `itch`로 나간다.
 
 ## Graphical Assets 탭이 아닌 곳
 
