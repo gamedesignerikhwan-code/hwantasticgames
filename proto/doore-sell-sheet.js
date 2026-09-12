@@ -3,8 +3,9 @@
 
     // Publisher sell sheet for Doore. Every fact here comes from page 1 of
     // "Game Introduction - Doore.pdf", the sheet sent to publishers.
-    const toastMarkup = `
-        <aside class="doore-sell-sheet-toast" id="dooreSellSheetToast" role="dialog" aria-modal="false" aria-labelledby="dooreSellSheetTitle" aria-hidden="true">
+    const modalMarkup = `
+        <div class="proto-modal-overlay doore-sell-sheet-overlay" id="dooreSellSheetModal" role="dialog" aria-modal="true" aria-labelledby="dooreSellSheetTitle" style="display:none;">
+        <div class="proto-modal-card doore-sell-sheet-card" id="dooreSellSheetToast">
             <header class="doore-ss-header">
                 <span class="doore-ss-mark" aria-hidden="true">🌾</span>
                 <div class="doore-ss-heading">
@@ -16,8 +17,8 @@
                 </div>
                 <div class="doore-ss-actions">
                     <div class="doore-ss-lang" role="group" aria-label="Sell sheet language">
-                        <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'dooreSellSheetToast')">KO</button>
-                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'dooreSellSheetToast')">EN</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', 'dooreSellSheetModal')">KO</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', 'dooreSellSheetModal')">EN</button>
                     </div>
                     <button type="button" class="doore-ss-close" onclick="closeDooreSellSheet()" aria-label="Close Doore sell sheet"><i class="fa-solid fa-xmark"></i></button>
                 </div>
@@ -173,43 +174,39 @@
                 <button type="button" onclick="closeDooreSellSheet()"><span class="rb-content-en">Close</span><span class="rb-content-ko" style="display:none;">닫기</span></button>
                 <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">Play the prototype</span><span class="rb-content-ko" style="display:none;">프로토타입 플레이</span></a>
             </footer>
-        </aside>`;
+        </div>
+        </div>`;
 
-    let returnFocus = null;
+    const MODAL_ID = 'dooreSellSheetModal';
 
-    function getToast() {
-        return document.getElementById('dooreSellSheetToast');
+    function getModal() {
+        return document.getElementById(MODAL_ID);
     }
 
     function syncLanguage() {
         const isKo = document.documentElement.getAttribute('lang') === 'ko';
         if (typeof window.setRulebookLanguage === 'function') {
-            window.setRulebookLanguage(isKo ? 'ko' : 'en', 'dooreSellSheetToast');
+            window.setRulebookLanguage(isKo ? 'ko' : 'en', MODAL_ID);
         }
     }
 
     window.openDooreSellSheet = function () {
-        const toast = getToast();
-        if (!toast) return;
-        returnFocus = document.activeElement;
-        syncLanguage();
-        toast.classList.add('active');
-        toast.setAttribute('aria-hidden', 'false');
-        document.querySelector('#card-doore .btn-sell-sheet-proto')?.setAttribute('aria-expanded', 'true');
-        toast.querySelector('.doore-ss-close')?.focus();
+        if (!getModal()) return;
+        if (typeof window.openModal === 'function') {
+            window.openModal(MODAL_ID);
+        }
     };
 
     window.closeDooreSellSheet = function () {
-        const toast = getToast();
-        if (!toast) return;
-        toast.classList.remove('active');
-        toast.setAttribute('aria-hidden', 'true');
-        document.querySelector('#card-doore .btn-sell-sheet-proto')?.setAttribute('aria-expanded', 'false');
-        if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+        if (!getModal()) return;
+        if (typeof window.closeModal === 'function') {
+            window.closeModal(MODAL_ID);
+        }
     };
 
     function init() {
-        document.body.insertAdjacentHTML('beforeend', toastMarkup);
+        document.body.insertAdjacentHTML('beforeend', modalMarkup);
+        const modal = getModal();
         syncLanguage();
         // The page's language switch only re-runs the rulebooks it knows about,
         // so follow the <html lang> attribute instead of being wired into it.
@@ -217,10 +214,13 @@
             attributes: true,
             attributeFilter: ['lang']
         });
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) window.closeDooreSellSheet();
+        });
     }
 
     document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && getToast()?.classList.contains('active')) {
+        if (event.key === 'Escape' && getModal()?.classList.contains('active')) {
             window.closeDooreSellSheet();
         }
     });

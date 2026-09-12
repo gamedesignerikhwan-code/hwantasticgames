@@ -4081,7 +4081,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openDooreSellSheet()" aria-controls="dooreSellSheetToast" aria-expanded="false">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('dooreSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('dooreRulebookModal')" title="Doore Full Rulebook" aria-label="Doore Full Rulebook">
@@ -7095,44 +7095,6 @@
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     <span class="rb-content-en">Play Online Now</span>
                     <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 2: Doore Info -->
-    <div class="proto-modal-overlay" id="dooreModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-wheat-awn" style="color: #438054;"></i> Doore — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('dooreModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🌾 Game Overview</h4>
-                <p>
-                    <strong>Doore</strong> is a 2 to 4 player tile-placement strategy board game rooted in the traditional Korean cooperative farming tradition known as "Doore". Players balance cooperation and competition to pool community labor and connect tiles for village prosperity.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Tile Placement & Path Synergy</strong>: Draft and lay rice paddies, farm fields, village hubs, and waterways to maximize connectivity and scoring bonuses.</li>
-                    <li><strong>Communal Labor & Resource Allocation</strong>: Wisely manage worker units and coins to complete large communal projects and share harvest rewards.</li>
-                    <li><strong>Strategic Interaction</strong>: Balance shared community milestones with individual scoring opportunities across evolving village layouts.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    An interactive digital prototype designed for publisher evaluation and rules walkthroughs. Supports online rooms for multiplayer playthroughs directly in the browser.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('dooreModal')">Close</button>
-                <a href="https://doore-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
         </div>
