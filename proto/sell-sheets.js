@@ -174,8 +174,8 @@
                 }
             },
             components: {
-                en: [['67', 'Game Cards', 'fa-clone'], ['4', 'Starting Card Boards', 'fa-table-cells'], ['75', 'Gem Tokens', 'fa-gem'], ['3', 'Gem Containers', 'fa-box'], ['1', 'Score Board', 'fa-chart-simple'], ['4', 'Meeples', 'fa-chess-pawn']],
-                ko: [['67', '게임 카드', 'fa-clone'], ['4', '시작 카드 보드', 'fa-table-cells'], ['75', '보석 토큰', 'fa-gem'], ['3', '보석 용기', 'fa-box'], ['1', '점수 보드', 'fa-chart-simple'], ['4', '미플', 'fa-chess-pawn']]
+                en: [['51', 'Game Cards', 'fa-clone'], ['4', 'Starting Card Boards', 'fa-table-cells'], ['75', 'Gem Tokens', 'fa-gem'], ['3', 'Gem Containers', 'fa-box'], ['1', 'Score Board', 'fa-chart-simple'], ['4', 'Meeples', 'fa-chess-pawn']],
+                ko: [['51', '게임 카드', 'fa-clone'], ['4', '시작 카드 보드', 'fa-table-cells'], ['75', '보석 토큰', 'fa-gem'], ['3', '보석 용기', 'fa-box'], ['1', '점수 보드', 'fa-chart-simple'], ['4', '미플', 'fa-chess-pawn']]
             },
             figure: {
                 src: { en: '/assets/alchemists_ingame_table.png', ko: '/assets/alchemists_ingame_table.png' },
