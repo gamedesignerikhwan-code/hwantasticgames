@@ -4126,7 +4126,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('drawingGameSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('drawingGameRulebookModal')" title="The Drawing Game Full Rulebook" aria-label="The Drawing Game Full Rulebook">
@@ -4172,7 +4172,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('waffleModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('waffleSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('waffleRulebookModal')" title="Waffle Pop! Full Rulebook" aria-label="Waffle Pop! Full Rulebook">
@@ -4313,7 +4313,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('starWindowSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('starWindowRulebookModal')" title="Star Window Full Rulebook" aria-label="Star Window Full Rulebook">
@@ -4471,7 +4471,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('pyramidsModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('squarePyramidsSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('pyramidsRulebookModal')" title="Square Pyramids Full Rulebook" aria-label="Square Pyramids Full Rulebook">
@@ -7062,45 +7062,6 @@
         </div>
     </div>
 
-    <!-- Modal 3: Waffle Pop Info -->
-    <div class="proto-modal-overlay" id="waffleModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-cake-candles" style="color: #c47c32;"></i> Waffle Pop! — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('waffleModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🧇 Game Overview</h4>
-                <p>
-                    <strong>Waffle Pop!</strong> is a delightful tactical dessert board game for 2 to 4 players. On a 4×4 waffle plate stacked with 3 layers of delicious topping tiles (48 tiles total), players compete to fulfill spatial pattern mission cards and harvest high-scoring toppings.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>3D Grid & Spatial Pattern Matching</strong>: Draft coordinate cards to match 3, 4, or 5-cell pattern missions on the waffle plate (full support for rotations and mirrored reflections).</li>
-                    <li><strong>Multi-Tiered Topping Harvest</strong>: Fulfilling a mission lets you claim the top topping from each matched coordinate, gradually revealing deeper layers and creating dynamic board shifts.</li>
-                    <li><strong>Asymmetric Topping Scoring</strong>: Strategic variety across 7 topping types—from first-come first-served VIP ribbons and Golden Cherry sets to quadratic Strawberry combos and shared dividends.</li>
-                    <li><strong>Equal-Turn Endgame</strong>: Triggered when 5 or more spots on the 4×4 waffle plate are fully cleared of all 3 layers.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Fully playable digital prototype with zero installation required. Includes intelligent solo AI bot testing modes as well as real-time multiplayer rooms via browser peer connections.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('waffleModal')">Close</button>
-                <a href="https://waffle-pop.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal: Rotato Pizza Full Rulebook -->
     <div class="proto-modal-overlay" id="rotatoRulebookModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card rulebook-modal-card rotato-rulebook-modal-card">
@@ -8643,45 +8604,6 @@
         </div>
     </div>
 
-    <!-- Modal 7: Square Pyramids Info -->
-    <div class="proto-modal-overlay" id="pyramidsModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-layer-group" style="color: #c27d38;"></i> Square Pyramids — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('pyramidsModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🔺 Game Overview</h4>
-                <p>
-                    <strong>Square Pyramids</strong> is an engaging 2 to 5 player tabletop strategy card game combining open card drafting with architectural pyramid-building spatial puzzle mechanics. Across 4 intensive rounds, players draft dual-card combinations—pairing foundational Body stone cards with perimeter Edge cards—to construct an ancient stepped monument from base to apex.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Dual-Card Draft Market</strong>: Each turn, draft an aligned pair consisting of 1 Body stone card (featuring 3 distinct corner glyphs) and 1 Edge card. Spend cross tokens (✖) to unlock free-pick flexibility across different market pairs.</li>
-                    <li><strong>Architectural Gravity Stacking</strong>: Build your 4-tier monument from bottom to top (4 bodies on L1 base down to 1 apex body on L4). Each upper block must be supported directly by the intersection of two underlying stones.</li>
-                    <li><strong>Intersection Glyph Matching</strong>: Align adjacent stone corners across 6 key intersection points. Completing matching 3-glyph crossing sets generates significant end-game scoring bonuses.</li>
-                    <li><strong>Perimeter Edge Closures & Multiplier Scoring</strong>: Seal the left and right perimeters of each completed level using edge cards. Edge cards multiply your collected body symbols, while triangular edge banners reward cutthroat majority points over opposing architects.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Fully playable digital prototype running smoothly in any modern desktop or mobile browser with zero installation. Features both <strong>Solo Play vs AI Builders</strong> (2–5 players) and <strong>Real-time Multiplayer Rooms</strong> powered by WebRTC P2P connections, with full English and Korean language support.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('pyramidsModal')">Close</button>
-                <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal: Square Pyramids Full Rulebook -->
     <div class="proto-modal-overlay" id="pyramidsRulebookModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card rulebook-modal-card pyramids-rulebook-modal-card">
@@ -9523,86 +9445,6 @@
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     <span class="rb-content-en">Play Online Now</span>
                     <span class="rb-content-ko" style="display:none;">지금 온라인 플레이</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 8: The Drawing Game Info -->
-    <div class="proto-modal-overlay" id="drawingGameModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-water" style="color: #0ea5e9;"></i> The Drawing Game — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('drawingGameModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🌊 Game Overview</h4>
-                <p>
-                    <strong>The Drawing Game</strong> is a 3 to 6 player simultaneous-selection and spatial tile-placement board game. Across 9 turns, players collect colorful sea creatures and arrange them on a personal ocean canvas while covering as many bubbles as possible.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Secret A/B/C Selection</strong>: Three cards are revealed each turn. Every player secretly chooses one, then all choices are revealed simultaneously.</li>
-                    <li><strong>Group-Size Tile Awards</strong>: The number of players who selected the same card determines which sea-animal tile each of them receives from that card.</li>
-                    <li><strong>Freeform Canvas Placement</strong>: Position and rotate each animal on your ocean board without overlapping existing tiles, aiming to cover the printed bubbles efficiently.</li>
-                    <li><strong>Duplicate-to-Stone Conversion</strong>: If you gain an animal already in your collection, it becomes a smaller stone tile matching that animal's value tier.</li>
-                    <li><strong>Animal Points Minus Bubbles</strong>: Your final score is the total value of collected animals minus the number of bubbles left uncovered after 9 turns.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    The bilingual browser prototype supports solo testing against AI opponents and real-time multiplayer rooms for 3–6 players with no installation required.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('drawingGameModal')">Close</button>
-                <a href="https://the-drawing-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 9: Star Window Info -->
-    <div class="proto-modal-overlay" id="starWindowModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-star" style="color: #eab308;"></i> Star Window — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('starWindowModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🔭 Game Overview</h4>
-                <p>
-                    <strong>Star Window</strong> is a 2 to 4 player celestial tile-laying and spatial-scoring board game. Over 12 nights, observatory directors expand their personal sky charts and use lenses to capture the most valuable arrangements of stars, planets, comets, nebulae, and galaxies.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Observation Plan Drafting</strong>: On your turn, choose a paired plan containing one observation lens and one domino-shaped sky tile.</li>
-                    <li><strong>Open Sky-Chart Expansion</strong>: Rotate and place the sky tile beside your existing chart, shaping future fields of view without symbol-matching restrictions.</li>
-                    <li><strong>Lens Placement & Multiplied Scoring</strong>: Position the selected lens on a valid cell, edge, or vertex. Each matching celestial object inside its field of view scores the lens multiplier.</li>
-                    <li><strong>Prime-Scope Turn Order</strong>: Taking the prime scope makes you the first observer on the following night, adding a timing decision to every draft.</li>
-                    <li><strong>Cloud-Token Crosses</strong>: Placing a cloud tile earns a token that can swap the sky tiles between two observation plans before you draft.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    The bilingual browser prototype supports solo play against AI observatories and real-time multiplayer rooms for up to four players with no installation required.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('starWindowModal')">Close</button>
-                <a href="https://star-window.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
                 </a>
             </div>
         </div>

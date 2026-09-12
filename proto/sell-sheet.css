@@ -46,6 +46,30 @@
     --ss-accent-soft: #eaf3e6;
 }
 
+.sell-sheet-card.ss-waffle {
+    --ss-accent: #c47c32;
+    --ss-accent-dark: #9a5e20;
+    --ss-accent-soft: #fdf1e2;
+}
+
+.sell-sheet-card.ss-drawing-game {
+    --ss-accent: #0284c7;
+    --ss-accent-dark: #075985;
+    --ss-accent-soft: #e2f2fb;
+}
+
+.sell-sheet-card.ss-star-window {
+    --ss-accent: #3730a3;
+    --ss-accent-dark: #24216b;
+    --ss-accent-soft: #e8eaff;
+}
+
+.sell-sheet-card.ss-square-pyramids {
+    --ss-accent: #c2410c;
+    --ss-accent-dark: #9a3208;
+    --ss-accent-soft: #fdeade;
+}
+
 /* ── Header ─────────────────────────────────────────────────────────────── */
 .ss-header {
     display: flex;
