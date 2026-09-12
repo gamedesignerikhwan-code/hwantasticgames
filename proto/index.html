@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/proto/proto.css">
     <link rel="stylesheet" href="/proto/orchards-rulebook.css">
     <link rel="stylesheet" href="/proto/star-window-rulebook.css">
-    <link rel="stylesheet" href="/proto/doore-sell-sheet.css">
+    <link rel="stylesheet" href="/proto/sell-sheet.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
     <style>
@@ -4217,7 +4217,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('alchemistsSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('alchemistsRulebookModal')" title="Alchemists Full Rulebook" aria-label="Alchemists Full Rulebook">
@@ -4268,7 +4268,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('rotatoModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('rotatoSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('rotatoRulebookModal')" title="Rotato Pizza Full Rulebook" aria-label="Rotato Pizza Full Rulebook">
@@ -4363,7 +4363,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('orchardsSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('orchardsRulebookModal')" title="Orchards Full Rulebook" aria-label="Orchards Full Rulebook">
@@ -4418,7 +4418,7 @@
 
                 <!-- Right Actions -->
                 <div class="proto-card-actions">
-                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersModal')">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tamersSellSheetModal')">
                         <i class="fa-solid fa-file-lines"></i> Sell Sheet
                     </button>
                     <button type="button" class="btn-rulebook-proto" onclick="openModal('tamersRulebookModal')" title="Tamers Full Rulebook" aria-label="Tamers Full Rulebook">
@@ -4976,44 +4976,6 @@
         </div>
     </div>
 
-
-    <!-- Modal 1: Tamers Info -->
-    <div class="proto-modal-overlay" id="tamersModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-layer-group" style="color: var(--accent-coral);"></i> Tamers — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('tamersModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🎯 Game Overview</h4>
-                <p>
-                    <strong>Tamers</strong> is an exact-bidding trick-taking card game designed for 2 to 4 players. After examining their starting hand, each player bids on the exact number of tricks they intend to take this round.
-                </p>
-
-                <h4>🃏 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Exact Bidding</strong>: Bonus points are awarded only when you hit your exact prediction. Taking more or fewer tricks than your bid incurs penalty points.</li>
-                    <li><strong>Lead Suit & Trump</strong>: Strict must-follow suit rules paired with a dynamic trump system that allows tactical comebacks.</li>
-                    <li><strong>Special Ability Cards</strong>: Unique ability cards that let players manipulate trick flow beyond raw numerical values.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Currently running as a real-time multiplayer web prototype hosted on Vercel. Play directly in your desktop or mobile browser with zero installation. Create a room or share an invite link to start playtesting immediately.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('tamersModal')">Close</button>
-                <a href="https://tamers-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- Modal: Tamers Full Rulebook -->
     <div class="proto-modal-overlay" id="tamersRulebookModal" role="dialog" aria-modal="true" style="display:none;">
@@ -7139,86 +7101,6 @@
         </div>
     </div>
 
-    <!-- Modal 4: Orchards Info -->
-    <div class="proto-modal-overlay" id="orchardsModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-apple-whole" style="color: #4caf50;"></i> Orchards — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('orchardsModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🍏 Game Overview</h4>
-                <p>
-                    <strong>Orchards</strong> is an engaging 2 to 5 player tile-drafting and spatial orchard-building board game. Over 13 dynamic rounds, players secretly bid hand tiles to determine market draft priority, expand their personal orchard grids with split-terrain tiles, and cultivate bountiful fruit harvests.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Simultaneous Secret Bidding & Market Draft</strong>: Each round, players secretly select a tile from hand. Lower numbered bids draft earlier from the revealed market tiles, creating sharp tactical priority decisions.</li>
-                    <li><strong>Split-Terrain Placement & Rotation</strong>: Rotate dual-colored diagonal terrain tiles in 90° increments to connect matching colors and expand your grove.</li>
-                    <li><strong>Crop Harvesting & Worker Multipliers</strong>: Bidding crop tiles grants fruit tokens placed onto matching colored orchards. Final scoring multiplies workers by fruit tokens across your clusters.</li>
-                    <li><strong>Wild Scarecrows & Area Majority</strong>: Leverage wild Scarecrow (🎃) tokens on any terrain color and race to earn +10 bonus points for the largest worker group in each color.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Fully interactive digital prototype playable directly in the browser with zero installation. Features both Solo Play with intelligent AI bots (2–5P) and real-time multiplayer tester rooms powered by WebRTC.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('orchardsModal')">Close</button>
-                <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 5: Rotato Pizza Info -->
-    <div class="proto-modal-overlay" id="rotatoModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-arrows-rotate" style="color: #c84d45;"></i> Rotato Pizza — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('rotatoModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>🥔 Game Overview</h4>
-                <p>
-                    <strong>Rotato Pizza</strong> is an addictive spatial puzzle and gravity tile-placement board game for 2 to 4 players. Players draft tiles into personal 3-column boards like Tetris, ignite chain-reaction edge rotations, and score completed tiles as they complete full 3-step rotations.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Gravity Column Drop</strong>: On each turn, pick 1 hand tile and drop it into one of your 3 columns. The tile falls to the lowest available space with its IN mark facing downward.</li>
-                    <li><strong>Edge-Matching Rotation Chains</strong>: If touching edges match colors/symbols after placement, rotate matching tiles clockwise. Chain reactions continue until no adjacent matches remain.</li>
-                    <li><strong>Type-Match Bonus Rotation</strong>: After resolving matching chains, you may rotate 1 tile sharing the same potato/topping icon as the placed tile, sparking new potential chains.</li>
-                    <li><strong>3-Turn Completion & Gravity Collapse</strong>: When a tile completes 3 clockwise rotations and its OUT mark points lower-right, it becomes complete! Pressing complete moves it to your score pile, and all tiles above drop downward by gravity.</li>
-                    <li><strong>Clockwise Drafting & Set Scoring</strong>: Pass remaining hand tiles clockwise after each turn. At game end, score points equal to each icon type squared, plus 10 bonus points for each complete set of 4 icons.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Fully playable web playtest kit running directly in the browser with zero installation. Features both <strong>Solo vs AI</strong> (2–4 players) and <strong>Hotseat Multiplayer</strong> modes, complete with bilingual English/Korean rule summaries.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('rotatoModal')">Close</button>
-                <a href="https://vercel-rotato-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
-
     <!-- Modal: Rotato Pizza Full Rulebook -->
     <div class="proto-modal-overlay" id="rotatoRulebookModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card rulebook-modal-card rotato-rulebook-modal-card">
@@ -8761,45 +8643,6 @@
         </div>
     </div>
 
-        <!-- Modal 6: Alchemists Info -->
-    <div class="proto-modal-overlay" id="alchemistsModal" role="dialog" aria-modal="true" style="display:none;">
-        <div class="proto-modal-card">
-            <div class="proto-modal-header">
-                <div class="proto-modal-title">
-                    <i class="fa-solid fa-flask" style="color: #7b4fa2;"></i> Alchemists — Game Overview
-                </div>
-                <button type="button" class="proto-modal-close" onclick="closeModal('alchemistsModal')" aria-label="Close modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="proto-modal-body">
-                <h4>⚗️ Game Overview</h4>
-                <p>
-                    <strong>Alchemists</strong> is an engine-building set collection board game for 2 to 4 players. Collect three types of metal ingredients—Gold, Silver, and Bronze—to brew increasingly powerful potions and earn prestige points through strategic drafting and resource management.
-                </p>
-
-                <h4>🧩 Core Mechanics</h4>
-                <ul>
-                    <li><strong>Ingredient Drafting & Collection</strong>: Each round, draft ingredient cards from the shared market. Gold, Silver, and Bronze ingredients each serve different recipe requirements.</li>
-                    <li><strong>Engine Building</strong>: Invest in workshop upgrades, assistant alchemists, and specialized equipment to boost your brewing efficiency and unlock advanced potion recipes.</li>
-                    <li><strong>Set Collection & Potion Brewing</strong>: Combine matching sets of ingredients to brew potions worth varying prestige points. Higher-tier recipes demand rarer combinations but yield greater rewards.</li>
-                    <li><strong>Supply Management</strong>: Shared ingredient supplies create tension—draft aggressively to starve opponents, or build a flexible engine that adapts to available resources.</li>
-                </ul>
-
-                <h4>🌐 Online Playtest</h4>
-                <p>
-                    Fully playable digital prototype with zero installation. Features both Solo Play with AI bots (2–4P) and real-time multiplayer tester rooms powered by WebRTC P2P connections. Supports bilingual Korean/English interface.
-                </p>
-            </div>
-            <div class="proto-modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal('alchemistsModal')">Close</button>
-                <a href="https://alchemists-game.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto" style="padding: 9px 18px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Play Now
-                </a>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal 7: Square Pyramids Info -->
     <div class="proto-modal-overlay" id="pyramidsModal" role="dialog" aria-modal="true" style="display:none;">
         <div class="proto-modal-card">
@@ -9877,6 +9720,6 @@
     </script>
     <script src="/proto/orchards-rulebook.js"></script>
     <script src="/proto/star-window-rulebook.js"></script>
-    <script src="/proto/doore-sell-sheet.js"></script>
+    <script src="/proto/sell-sheets.js"></script>
 </body>
 </html>
