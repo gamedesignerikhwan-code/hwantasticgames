@@ -723,7 +723,7 @@
         hutch: {
             mark: '🏡',
             name: { en: 'My Little Hutch', ko: '나의 작은 오두막' },
-            specs: [['2–4', 'players'], ['8+', 'ages'], ['20–40', 'minutes']],
+            specs: [['2–4', 'players'], ['8+', 'ages'], ['30–45', 'minutes']],
             tags: {
                 en: ['Dual-Layer Puzzle', 'Tile Placement', 'Worker Placement', 'Drafting'],
                 ko: ['2중 퍼즐', '타일 배치', '일꾼 드래프팅', '엔진 빌딩']
