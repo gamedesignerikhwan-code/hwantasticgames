@@ -719,6 +719,84 @@
                 }
             },
             play: 'https://star-window.vercel.app/'
+        },
+        hutch: {
+            mark: '🏡',
+            name: { en: 'My Little Hutch', ko: '나의 작은 오두막' },
+            specs: [['2–4', 'players'], ['8+', 'ages'], ['20–40', 'minutes']],
+            tags: {
+                en: ['Dual-Layer Puzzle', 'Tile Placement', 'Worker Placement', 'Drafting'],
+                ko: ['2중 퍼즐', '타일 배치', '일꾼 드래프팅', '엔진 빌딩']
+            },
+            hero: {
+                en: {
+                    h: 'A dual-layer farm puzzle with shepherd engine-building.',
+                    p: 'Draft domino and single tiles to complete lines on your 5×5 farm, then position specialized shepherds over dense animal clusters for explosive harvest scores.'
+                },
+                ko: {
+                    h: '타일 배치와 목동 배치가 결합된 2중 농장 퍼즐.',
+                    p: '도미노와 싱글 타일로 5×5 농장의 줄을 채워 최고 점수의 빙고를 선점하고, 동물들이 모인 곳에 목동을 배치해 폭발적인 수확 점수를 얻으세요.'
+                }
+            },
+            points: {
+                en: [
+                    'A <strong>dual-layer spatial puzzle</strong> combining domino and single tile placement with shepherd worker overlays.',
+                    '<strong>Competitive drafting with a single worker</strong>: Navigate tight market actions under a mandatory movement rule where you cannot stay in the same space.',
+                    '<strong>Engine-building satisfaction</strong>: Harvest silver coins from placed tiles to purchase expensive high-tier tiles and crucial shepherds.'
+                ],
+                ko: [
+                    '타일 놓기와 타일 위 목동 놓기를 유기적으로 결합한 <strong>2중 공간 퍼즐 게임</strong>입니다.',
+                    '<strong>제한된 선택지에서 일꾼 하나만을 운영하는 경쟁적 드래프팅</strong>: 머물렀던 칸을 연속으로 선택할 수 없는 의무 이동 규칙이 깊은 수를 만듭니다.',
+                    '<strong>퍼즐 게임 안의 엔진 빌딩</strong>: 농장에 축적된 은화 심볼을 수확해 값비싼 고득점 타일과 핵심 목동을 선점하는 성취감을 제공합니다.'
+                ]
+            },
+            steps: {
+                en: [
+                    ['Setup & Starting Coins', 'Each player receives a 5×5 farm board and 1 worker. Players receive 3, 5, 8, or 12 starting coins by turn order.'],
+                    ['5 Action Choices', 'On your turn, send your worker to 1 of 5 spaces: Buy Domino, Buy Single, Hire Shepherd, Gain 5 Coins, or Claim Farm Coins.'],
+                    ['Must Move & Opponent Cost', 'You cannot choose the space where your worker currently stays. If other players are on a market space, pay +2 extra coins per opponent worker.'],
+                    ['Tile Placement', 'Immediately place drafted domino (2 cells) or single (1 cell) tiles onto empty spaces of your 5×5 personal board.'],
+                    ['Line Completion & Bingo', 'Completing any 5-cell row or column immediately awards the highest available White Bingo Bonus tile (15 down to 4 pts).'],
+                    ['Shepherd Scoring Engines', 'Place shepherds onto filled cells to activate 1 of 5 scoring area patterns (1-cell, 2-line, 3-line, 2×2 square, 5-line) for matching animals.'],
+                    ['Game End & Victory', 'When all white bingo bonus tiles are claimed, the current round finishes. Sum bingo tiles and shepherd scores to crown the winning farm!']
+                ],
+                ko: [
+                    ['게임 준비 & 차례별 코인', '각 플레이어는 5×5 개인 보드와 일꾼 1개를 받습니다. 턴 순서에 따라 3, 5, 8, 12코인을 지급받습니다.'],
+                    ['5대 액션 선택', '자신의 턴에 일꾼을 도미노 구매, 싱글 구매, 목동 고용, 5코인 획득, 또는 개인 은화 수확 중 하나의 액션 칸으로 보냅니다.'],
+                    ['의무 이동 & 상대 일꾼 비용', '현재 머물고 있는 액션 칸은 연속 선택이 불가합니다. 마켓 액션에 다른 플레이어 일꾼이 있다면 1명당 2코인을 추가 지불합니다.'],
+                    ['타일 배치', '가져온 도미노 타일(2칸)이나 싱글 타일(1칸)을 개인 농장 보드의 빈칸에 즉시 배치합니다.'],
+                    ['줄 완성 & 빙고 보너스', '가로 또는 세로 5칸 줄을 빈틈없이 채우면 공용 스택에서 가장 높은 흰색 빙고 보너스 타일(15~4점)을 선점합니다.'],
+                    ['목동 고용 & 점수 패턴', '타일이 놓인 칸에 목동을 배치하여 5가지 영역 패턴(1칸, 2칸 직선, 3칸 직선, 2×2 사각, 5칸 줄)으로 동물 점수 엔진을 가동합니다.'],
+                    ['게임 종료 & 승리', '준비된 흰색 빙고 타일이 모두 떨어지면 해당 라운드의 마지막 플레이어까지 동등하게 진행 후 종료되며, 빙고 점수와 목동 점수의 합으로 승자를 가립니다.']
+                ]
+            },
+            scoring: {
+                formula: {
+                    op: '+',
+                    en: ['🏆 Bingo Bonus Tiles', '🐮 Shepherd Animal Multipliers'],
+                    ko: ['🏆 빙고 보너스 타일 점수', '🐮 목동 패턴 동물 점수']
+                },
+                note: {
+                    en: 'Sum all earned bingo bonus tiles and the animal scores evaluated by each placed shepherd. In case of a tie, the player with more remaining coins wins.',
+                    ko: '획득한 모든 빙고 보너스 타일 점수와 각 목동이 평가한 동물 배수 점수를 합산합니다. 동점 시 남은 보유 코인이 더 많은 플레이어가 승리합니다.'
+                }
+            },
+            components: {
+                en: [['1', 'Public Game Board', 'fa-map'], ['4', 'Personal Boards (5×5)', 'fa-table-cells'], ['35', 'Domino Tiles', 'fa-clone'], ['35', 'Single Tiles', 'fa-square'], ['40', 'Shepherds & 1 Bag', 'fa-hat-cowboy'], ['21', 'Bingo Bonus Tiles', 'fa-award'], ['100', 'Coin Value Tokens', 'fa-coins'], ['4', 'Player Workers', 'fa-person']],
+                ko: [['1', '공용 게임 보드', 'fa-map'], ['4', '개인 보드 (5×5)', 'fa-table-cells'], ['35', '도미노 타일', 'fa-clone'], ['35', '싱글 타일', 'fa-square'], ['40', '목동 토큰 & 주머니 1개', 'fa-hat-cowboy'], ['21', '빙고 보너스 타일', 'fa-award'], ['100', '코인 가치 토큰', 'fa-coins'], ['4', '플레이어 일꾼', 'fa-person']]
+            },
+            figure: {
+                src: { en: '/assets/hutch_ingame_table.png', ko: '/assets/hutch_ingame_table.png' },
+                alt: {
+                    en: 'My Little Hutch digital prototype: personal 5x5 farm board on the left, public market with dominoes, singles, and shepherds on the right.',
+                    ko: '나의 작은 오두막 디지털 프로토타입 화면: 왼쪽의 5×5 개인 농장 보드와 오른쪽의 도미노·싱글·목동 공용 마켓.'
+                },
+                caption: {
+                    en: 'Playable directly in the browser against smart AI bots or in real-time multiplayer rooms, allowing publishers to fully test the dual-puzzle dynamics.',
+                    ko: '브라우저에서 AI 봇 또는 실시간 멀티플레이 룸으로 바로 플레이할 수 있어, 2중 퍼즐 드래프팅의 재미를 검토할 수 있습니다.'
+                }
+            },
+            play: 'https://my-little-hutch.vercel.app/'
         }
     };
 

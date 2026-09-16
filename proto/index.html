@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/proto/proto.css">
     <link rel="stylesheet" href="/proto/orchards-rulebook.css">
     <link rel="stylesheet" href="/proto/star-window-rulebook.css">
+    <link rel="stylesheet" href="/proto/hutch-rulebook.css">
     <link rel="stylesheet" href="/proto/sell-sheet.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
@@ -499,6 +500,79 @@
         .proto-card-row:hover .orchards-tile.o2 {
             transform: translate(3px, 3px);
         }
+
+        /* My Little Hutch Art (나의 작은 오두막) */
+        .thumb-hutch {
+            background: radial-gradient(circle at 60% 40%, #3e7b4c 0%, #1c4427 100%);
+        }
+
+        .mini-hutch-art {
+            position: relative;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .hutch-tile-cluster {
+            position: relative;
+            width: 76px;
+            height: 72px;
+        }
+
+        .hutch-tile {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .hutch-tile.ht1 {
+            top: 2px;
+            left: 2px;
+            background: #fef3c7;
+            border: 2px solid #d97706;
+            z-index: 1;
+        }
+
+        .hutch-tile.ht2 {
+            bottom: 2px;
+            right: 2px;
+            background: #dbeafe;
+            border: 2px solid #2563eb;
+            z-index: 2;
+        }
+
+        .hutch-tile-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .hutch-tile-label {
+            font-size: 0.52rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .hutch-tile.ht1 .hutch-tile-label { color: #92400e; }
+        .hutch-tile.ht2 .hutch-tile-label { color: #1e40af; }
+
+        .proto-card-row:hover .hutch-tile.ht1 {
+            transform: translate(-3px, -3px) rotate(-3deg);
+        }
+        .proto-card-row:hover .hutch-tile.ht2 {
+            transform: translate(3px, 3px) rotate(3deg);
+        }
+
 
         /* Rotato Tile Art (Rotato Pizza) */
         .thumb-rotato {
@@ -4421,6 +4495,59 @@
                         <i class="fa-solid fa-book-open"></i> Rulebook
                     </button>
                     <a href="https://orchards-boardgame.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
+            <!-- MY LITTLE HUTCH / 나의 작은 오두막 (Board Game) -->
+            <article class="proto-card-row" data-category="board-game" id="card-my-little-hutch">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-hutch">
+                    <div class="mini-hutch-art">
+                        <div class="hutch-tile-cluster">
+                            <div class="hutch-tile ht1">
+                                <span class="hutch-tile-icon">🤠</span>
+                                <span class="hutch-tile-label">SHEPHERD</span>
+                            </div>
+                            <div class="hutch-tile ht2">
+                                <span class="hutch-tile-icon">🐮</span>
+                                <span class="hutch-tile-label">FARM 5×5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">
+                            <span class="rb-title-text-en">My Little Hutch</span>
+                            <span class="rb-title-text-ko" style="display:none;">나의 작은 오두막</span>
+                        </h2>
+                        <span class="proto-card-subtitle">Tile-Drafting & Shepherd Engine Board Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        A dual-layer puzzle and competitive drafting board game on a 5×5 farm! Draft domino and single tiles to complete rows and columns for high-value bingo bonuses, while placing specialized shepherds over animal clusters to ignite explosive scoring engines.
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20–40 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-shapes"></i> Tile Drafting</span>
+                        <span class="meta-chip"><i class="fa-solid fa-puzzle-piece"></i> Dual-Layer Puzzle</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('hutchSellSheetModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('hutchRulebookModal')" title="My Little Hutch Full Rulebook" aria-label="My Little Hutch Full Rulebook">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="https://my-little-hutch.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
                 </div>
@@ -9508,7 +9635,7 @@
             const m = document.getElementById(id);
             if (!m) return;
             if (id === 'tamersRulebookModal' || id === 'dooreRulebookModal' || id === 'waffleRulebookModal' || id === 'pyramidsRulebookModal' || id === 'rotatoRulebookModal'
-                || id === 'alchemistsRulebookModal' || id === 'orchardsRulebookModal' || id === 'starWindowRulebookModal' || id === 'drawingGameRulebookModal') {
+                || id === 'alchemistsRulebookModal' || id === 'orchardsRulebookModal' || id === 'starWindowRulebookModal' || id === 'drawingGameRulebookModal' || id === 'hutchRulebookModal') {
                 const isKo = document.documentElement.getAttribute('lang') === 'ko';
                 setRulebookLanguage(isKo ? 'ko' : 'en', id);
             }
@@ -9613,6 +9740,7 @@
     </script>
     <script src="/proto/orchards-rulebook.js"></script>
     <script src="/proto/star-window-rulebook.js"></script>
+    <script src="/proto/hutch-rulebook.js"></script>
     <script src="/proto/sell-sheets.js"></script>
 </body>
 </html>

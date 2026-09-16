@@ -1,0 +1,417 @@
+/* ==========================================================================
+   My Little Hutch (나의 작은 오두막) Full Rulebook Modal Styles
+   Matches Hwantastic Games proto design system and modal specifications
+   ========================================================================== */
+
+/* Quick Tab Navigation inside Rulebook */
+.hutch-rulebook-tabs {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #fdfbf7;
+    border-bottom: 1px solid var(--glass-border);
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.hutch-tab-btn {
+    padding: 6px 13px;
+    border: 1px solid rgba(180, 165, 140, 0.4);
+    background: #fff;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hutch-tab-btn:hover {
+    background: #f5f0e8;
+    color: var(--text-main);
+    border-color: var(--accent-coral);
+}
+
+.hutch-tab-btn.active {
+    background: #2e7d32;
+    color: #ffffff;
+    border-color: #2e7d32;
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.25);
+}
+
+.hutch-tab-panel {
+    display: none;
+    animation: hutchFadeIn 0.2s ease;
+}
+
+.hutch-tab-panel.active {
+    display: block;
+}
+
+@keyframes hutchFadeIn {
+    from { opacity: 0; transform: translateY(3px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rule Boxes and Containers */
+.rule-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+}
+
+.rule-box h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.rule-box p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.rule-diagram-box {
+    background: #ffffff;
+    border: 1px solid rgba(180, 165, 140, 0.35);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.rule-diagram-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Setup Diagram Columns */
+.rule-setup-diagram {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .rule-setup-diagram {
+        grid-template-columns: 1fr;
+    }
+}
+
+.setup-section {
+    background: #fcfaf7;
+    border: 1px solid #ede4d3;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.setup-section-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 4px;
+}
+
+.setup-market-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
+
+.setup-market-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    width: 62px;
+    color: #475569;
+}
+
+.setup-market-slots {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.setup-slot {
+    flex: 1;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 2px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.setup-slot.domino-slot { background: #dbeafe; color: #1d4ed8; }
+.setup-slot.single-slot { background: #ede9fe; color: #6d28d9; }
+.setup-slot.shepherd-slot { background: #d1fae5; color: #047857; }
+
+.setup-market-deck {
+    font-size: 0.68rem;
+    font-weight: 700;
+    background: #334155;
+    color: #ffffff;
+    padding: 4px 6px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.setup-special-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.setup-special-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.setup-special-card .icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.setup-components-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.setup-component-badge {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 3px 7px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.setup-start-coins {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.coin-chip {
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Personal Mini Board Grid Diagram */
+.setup-mini-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.setup-mini-grid {
+    display: grid;
+    grid-template-columns: 22px repeat(5, 24px);
+    grid-template-rows: 22px repeat(5, 24px) 24px;
+    gap: 2px;
+    background: #cbd5e1;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.setup-mini-cell {
+    background: #ffffff;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.setup-mini-cell.corner {
+    background: transparent;
+}
+
+.setup-mini-cell.bingo-col,
+.setup-mini-cell.bingo-row {
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 0.62rem;
+}
+
+.setup-mini-cell.claim-bar {
+    grid-column: 2 / span 5;
+    background: #b91c1c;
+    color: #ffffff;
+    font-size: 0.64rem;
+    letter-spacing: 0.5px;
+}
+
+/* Flow Grid */
+.rule-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.rule-flow-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.rule-flow-card-head {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Compare Row (Movement Restriction) */
+.rule-step-compare {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+    .rule-step-compare {
+        flex-direction: column;
+    }
+}
+
+.rule-compare-col {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.rule-compare-col.state-prev {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+}
+
+.rule-compare-col.state-next {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.rule-compare-arrow {
+    font-size: 1.4rem;
+    color: #94a3b8;
+    font-weight: 800;
+}
+
+/* Shepherd 5 Pattern Visualizer */
+.rule-pattern-visualizer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+}
+
+.rule-pattern-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.rule-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 12px);
+    grid-template-rows: repeat(5, 12px);
+    gap: 2px;
+    background: #e2e8f0;
+    padding: 3px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.rule-mini-cell {
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+.rule-mini-cell.active-pat {
+    background: #10b981;
+}
+
+.rule-mini-cell.center-sh {
+    background: #d97706 !important;
+    position: relative;
+    box-shadow: 0 0 0 1px #fff inset;
+}
+
+/* Animal Scoring Multipliers Table */
+.rule-animal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    margin-top: 10px;
+}
+
+.rule-animal-table th {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 700;
+    padding: 8px 6px;
+    border: 1px solid #cbd5e1;
+    text-align: center;
+}
+
+.rule-animal-table td {
+    padding: 8px 6px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.rule-animal-table tbody tr:hover {
+    background: #f8fafc;
+}
