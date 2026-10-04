@@ -1,0 +1,108 @@
+.thumb-tangent-code {
+    background: radial-gradient(circle at 55% 35%, #716ab5, #353159);
+}
+.thumb-dondurma {
+    background: radial-gradient(circle at 55% 35%, #fff0c9, #eda777);
+}
+.physical-thumb-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+}
+.gesture-symbol { font-size: 3.6rem; line-height: 1.1; }
+.gesture-code {
+    color: #fff4cd;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+.ice-cream-symbol { font-size: 4.8rem; line-height: 1; }
+.ice-cream-stick {
+    position: absolute;
+    width: 66px;
+    height: 9px;
+    background: #fff9ed;
+    border: 1px solid #b87c4e;
+    border-radius: 6px;
+    transform: rotate(-25deg);
+    right: -25px;
+    top: 37px;
+    box-shadow: 0 2px 4px #7a4c3626;
+}
+.physical-play-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: .76rem;
+    color: var(--text-muted);
+}
+.physical-play-note i { color: var(--accent-teal); }
+.sell-sheet-card.ss-tangent-code {
+    --ss-accent: #655ca5;
+    --ss-accent-dark: #49427d;
+    --ss-accent-soft: #eeebf9;
+}
+.sell-sheet-card.ss-dondurma {
+    --ss-accent: #c76c3e;
+    --ss-accent-dark: #9e4b25;
+    --ss-accent-soft: #fff0e1;
+}
+.proto-modal-card.physical-rulebook-card { max-width: 820px; }
+#tangentCodeSellSheetModal:not(.active),
+#dondurmaSellSheetModal:not(.active),
+#tangentCodeRulebookModal:not(.active),
+#dondurmaRulebookModal:not(.active) { pointer-events: none; }
+.physical-rule-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 16px;
+}
+.physical-rule-nav a {
+    color: var(--ss-accent-dark);
+    background: var(--ss-accent-soft);
+    padding: 7px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: .78rem;
+    font-weight: 600;
+}
+.physical-rulebook-card .ss-section { scroll-margin-top: 12px; }
+.physical-rulebook-card .ss-section h4 {
+    margin-bottom: 12px;
+    color: var(--ss-accent-dark);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+.physical-rulebook-card .ss-section ul,
+.physical-rule-steps { padding-left: 24px; }
+.physical-rulebook-card .ss-section li { margin-bottom: 9px; }
+.physical-rulebook-card .ss-section p { margin-bottom: 12px; }
+.physical-rule-steps > li { padding-left: 4px; }
+.physical-rule-steps > li > strong { color: var(--ss-accent-dark); }
+.physical-rule-steps > li > p { margin-top: 4px; }
+.physical-grade-table {
+    width: 100%;
+    max-width: 460px;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+.physical-grade-table th, .physical-grade-table td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid #dedbd4;
+}
+.physical-grade-table th { background: var(--ss-accent-soft); color: var(--ss-accent-dark); }
+.physical-grade-table tbody tr:nth-child(even) { background: #f9f7f1; }
+@media (max-width: 520px) {
+    .physical-rulebook-card .ss-header { gap: 8px; flex-wrap: wrap; }
+    .physical-rulebook-card .ss-heading { flex: 1; min-width: 0; }
+    .physical-rulebook-card .ss-actions { margin-left: auto; }
+    .physical-rule-nav a { font-size: .73rem; }
+    .physical-rulebook-card .ss-body { padding: 16px; }
+}

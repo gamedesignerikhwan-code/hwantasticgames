@@ -8,13 +8,34 @@
     const ko = {
         title: '보드게임 프로토타입 | 환상적인 게임즈',
         heroTitle: '보드게임 프로토타입',
-        heroDesc: '권익환(Ikhwan Kwon)이 디자인한 오리지널 테이블탑 게임의 웹 프로토타입입니다. 브라우저에서 바로 플레이하고 의견을 들려주세요! <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
+        heroDesc: '권익환(Ikhwan Kwon)이 디자인한 오리지널 테이블탑 게임의 프로토타입입니다. 셀시트와 규칙서를 살펴보고, 웹 데모가 있는 게임은 브라우저에서 플레이해 보세요! <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
         heroContact: '문의 및 요청',
         filters: ['전체', '카드 게임', '보드게임'],
         categories: { 'card-game': '카드 게임', 'board-game': '보드게임' },
         actions: ['소개서', '규칙서', '플레이'],
         rulebookSoon: '규칙서는 곧 공개됩니다',
         cards: {
+            "card-tangent-code": {
+                "subtitle": "멈춘 손동작 & 협력 단어 추리",
+                "desc": "말없이 서로의 생각을 읽어 보세요. 주사위를 비밀리에 굴리고, 손동작과 표정으로 단어를 동시에 표현합니다. 술래가 모두의 뜻을 맞히도록 돕는 협력 파티 게임입니다.",
+                "meta": [
+                    "2–8명",
+                    "10–15분",
+                    "8세 이상",
+                    "협력"
+                ]
+            },
+            "card-dondurma": {
+                "subtitle": "아이스크림 트릭 & 동시 손재주",
+                "desc": "내 아이스크림을 콘 위에 지키면서 벨크로 막대로 상대 아이스크림을 가져오세요. 튀르키예 아이스크림의 장난스러운 움직임에서 착안한 짧고 직관적인 패밀리 손재주 게임으로, 마지막까지 남으면 승리합니다.",
+                "meta": [
+                    "2–4명",
+                    "5분",
+                    "5세 이상",
+                    "손재주"
+                ]
+            },
+
             'card-tamers': {
                 subtitle: '트릭테이킹 & 예측 카드 게임',
                 desc: '동물 조련사들의 팽팽한 심리 트릭테이킹 게임! 매 라운드 획득할 트릭 수를 정확히 예측하고, 수트 규칙과 특수 능력 카드를 활용해 선언한 수를 정밀하게 맞혀 보세요.',
@@ -133,6 +154,7 @@
             setHtml(card.querySelector('.proto-card-desc'), cardCopy.desc, isKorean);
             card.querySelectorAll('.meta-chip').forEach((chip, index) => setInlineLabel(chip, cardCopy.meta[index], isKorean));
             card.querySelectorAll('.proto-card-actions > *').forEach((action, index) => setInlineLabel(action, ko.actions[index], isKorean));
+            setText(card.querySelector('.physical-play-note span'), '현장 플레이 · 웹 데모 없음', isKorean);
             const rulebook = card.querySelector('.btn-rulebook-proto');
             if (rulebook) {
                 if (rulebook.disabled) {

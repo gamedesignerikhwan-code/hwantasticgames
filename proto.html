@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="/proto/star-window-rulebook.css">
     <link rel="stylesheet" href="/proto/hutch-rulebook.css">
     <link rel="stylesheet" href="/proto/sell-sheet.css">
+    <link rel="stylesheet" href="/proto/physical-games.css">
 
     <!-- Embedded Direct Stylesheet: Guarantees 100% perfect rendering regardless of URL slashes or caching -->
     <style>
@@ -4139,7 +4140,7 @@
         <header class="proto-hero">
             <h1 class="proto-hero-title">Board Game Prototypes</h1>
             <p class="proto-hero-desc">
-                Playable web prototypes of original tabletop games designed by Ikhwan Kwon.<br>Test live in your browser and share your feedback!
+                Original tabletop game prototypes designed by Ikhwan Kwon.<br>Explore sell sheets and rulebooks, and try the available browser demos.
                 <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(While AI technology was utilized to implement this website, every game is built upon original human ideas and game design.)</span>
             </p>
 
@@ -4154,13 +4155,13 @@
             <!-- Category Filter Bar -->
             <div class="proto-filter-bar">
                 <button type="button" class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">9</span>
+                    <i class="fa-solid fa-border-all"></i> All <span class="count-badge" id="count-all">12</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="card-game">
                     <i class="fa-solid fa-layer-group"></i> Card Game <span class="count-badge">2</span>
                 </button>
                 <button type="button" class="filter-btn" data-filter="board-game">
-                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">7</span>
+                    <i class="fa-solid fa-chess-board"></i> Board Game <span class="count-badge">10</span>
                 </button>
             </div>
         </header>
@@ -4658,6 +4659,49 @@
                     <a href="https://square-pyramids.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-play-proto">
                         <i class="fa-solid fa-play"></i> Play
                     </a>
+                </div>
+            </article>
+
+
+            <!-- Physical prototypes: publisher materials only, no browser play links. -->
+
+            <article class="proto-card-row physical-prototype" data-category="board-game" data-format="physical" id="card-tangent-code">
+                <div class="proto-card-thumb thumb-tangent-code">
+                    <div class="physical-thumb-art" aria-hidden="true"><span class="gesture-symbol">🙌</span><span class="gesture-code">O · ☆ · ?</span></div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Tangent Code</h2>
+                        <span class="proto-card-subtitle">Frozen Gestures & Co-operative Word Guessing</span>
+                    </div>
+                    <p class="proto-card-desc">Read the room without a word. Secretly roll a die, express a word with a frozen hand gesture and facial expression, and help the seeker decode everyone’s meaning in this simultaneous co-operative party game.</p>
+                    <div class="proto-meta-chips"><span class="meta-chip"><i class="fa-solid fa-users"></i> 2–8 Players</span><span class="meta-chip"><i class="fa-solid fa-clock"></i> 10–15 Mins</span><span class="meta-chip"><i class="fa-solid fa-child"></i> Ages 8+</span><span class="meta-chip"><i class="fa-solid fa-hands"></i> Co-operative</span></div>
+                    <p class="physical-play-note"><i class="fa-solid fa-hand"></i> <span>In-person play · No web demo</span></p>
+                </div>
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('tangentCodeSellSheetModal')"><i class="fa-solid fa-file-lines"></i> Sell Sheet</button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('tangentCodeRulebookModal')" title="Tangent Code Full Rulebook" aria-label="Tangent Code Full Rulebook"><i class="fa-solid fa-book-open"></i> Rulebook</button>
+                </div>
+            </article>
+
+            <article class="proto-card-row physical-prototype" data-category="board-game" data-format="physical" id="card-dondurma">
+                <div class="proto-card-thumb thumb-dondurma">
+                    <div class="physical-thumb-art" aria-hidden="true"><span class="ice-cream-symbol">🍦</span><span class="ice-cream-stick" aria-hidden="true"></span></div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-chess-board"></i> Board Game</span>
+                </div>
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Dondurma</h2>
+                        <span class="proto-card-subtitle">Ice-Cream Tricks & Simultaneous Dexterity</span>
+                    </div>
+                    <p class="proto-card-desc">Keep your ice cream on its cone while using a Velcro stick to take your opponents’ ice cream. A quick, hands-on family showdown inspired by Turkish ice cream tricks: the last player remaining wins.</p>
+                    <div class="proto-meta-chips"><span class="meta-chip"><i class="fa-solid fa-users"></i> 2–4 Players</span><span class="meta-chip"><i class="fa-solid fa-clock"></i> 5 Mins</span><span class="meta-chip"><i class="fa-solid fa-child"></i> Ages 5+</span><span class="meta-chip"><i class="fa-solid fa-ice-cream"></i> Dexterity</span></div>
+                    <p class="physical-play-note"><i class="fa-solid fa-hand"></i> <span>In-person play · No web demo</span></p>
+                </div>
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('dondurmaSellSheetModal')"><i class="fa-solid fa-file-lines"></i> Sell Sheet</button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('dondurmaRulebookModal')" title="Dondurma Full Rulebook" aria-label="Dondurma Full Rulebook"><i class="fa-solid fa-book-open"></i> Rulebook</button>
                 </div>
             </article>
 
@@ -9722,6 +9766,12 @@
         const cards = document.querySelectorAll('.proto-list .proto-card-row');
 
         filterBtns.forEach(btn => {
+            const badge = btn.querySelector('.count-badge');
+            const category = btn.dataset.filter;
+            if (badge) badge.textContent = category === 'all' ? cards.length : Array.from(cards).filter(card => card.dataset.category === category).length;
+        });
+
+        filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filter = btn.getAttribute('data-filter');
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -9742,5 +9792,6 @@
     <script src="/proto/star-window-rulebook.js"></script>
     <script src="/proto/hutch-rulebook.js"></script>
     <script src="/proto/sell-sheets.js"></script>
+    <script src="/proto/physical-games.js"></script>
 </body>
 </html>

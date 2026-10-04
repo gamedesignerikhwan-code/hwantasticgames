@@ -20,6 +20,7 @@
             scoring: 'Scoring',
             components: 'Components',
             prototype: 'Playable prototype',
+            physicalPrototype: 'In-person prototype',
             contact: 'Contact',
             close: 'Close',
             play: 'Play the prototype',
@@ -34,6 +35,7 @@
             scoring: '점수 계산',
             components: '구성물',
             prototype: '플레이 가능한 프로토타입',
+            physicalPrototype: '물리적 프로토타입',
             contact: '연락처',
             close: '닫기',
             play: '프로토타입 플레이',
@@ -42,6 +44,371 @@
     };
 
     const SHEETS = {
+        "tangent-code": {
+            "mark": "🙌",
+            "name": {
+                "en": "Tangent Code",
+                "ko": "Tangent Code · 탠전트 코드"
+            },
+            "specs": [
+                [
+                    "2–8",
+                    "players"
+                ],
+                [
+                    "8+",
+                    "ages"
+                ],
+                [
+                    "10–15",
+                    "minutes"
+                ]
+            ],
+            "tags": {
+                "en": [
+                    "Co-operative",
+                    "Simultaneous Action",
+                    "Party Game"
+                ],
+                "ko": [
+                    "협력",
+                    "동시 행동",
+                    "파티 게임"
+                ]
+            },
+            "hero": {
+                "en": {
+                    "h": "Are you on the same wavelength?",
+                    "p": "Say it without saying a word. Freeze a hand gesture and facial expression, then see whether the seeker can read the word you mean."
+                },
+                "ko": {
+                    "h": "우리, 같은 생각일까요?",
+                    "p": "말없이 손동작과 표정으로 단어를 표현하고 멈춰 보세요. 술래가 여러분의 생각을 읽을 수 있을까요?"
+                }
+            },
+            "points": {
+                "en": [
+                    "A <strong>co-operative party game</strong> about reading frozen hand gestures and facial expressions.",
+                    "<strong>Simultaneous expression</strong> and a 10-second countdown turn the whole group into the puzzle."
+                ],
+                "ko": [
+                    "멈춘 손동작과 표정으로 단어를 표현하고 서로의 생각을 읽는 <strong>협력 파티 게임</strong>입니다.",
+                    "<strong>동시 표현</strong>과 10초 카운트다운으로 모두가 함께 하나의 문제를 만듭니다."
+                ]
+            },
+            "steps": {
+                "en": [
+                    [
+                        "Set up",
+                        "Give each player a screen and a die, with a coin in front of the screen. Randomly select 10 word cards, prepare the score tokens and timer, and choose the first seeker."
+                    ],
+                    [
+                        "Reveal & roll",
+                        "The seeker reveals one card and starts the 10-second timer. Everyone else rolls their die behind their screen: O, ☆, or blank."
+                    ],
+                    [
+                        "Choose your expression",
+                        "The top word corresponds to O, the bottom word to ☆, and the middle word to blank. Think of a hand gesture and facial expression for your word before time runs out."
+                    ],
+                    [
+                        "Freeze together",
+                        "When time is up, everyone except the seeker simultaneously holds a frozen hand gesture and facial expression."
+                    ],
+                    [
+                        "Read the room",
+                        "The seeker guesses each player’s word: place their coin O-side up or ☆-side up, or remove the coin for a blank result."
+                    ],
+                    [
+                        "Reveal & score",
+                        "Lift the screens. The team scores 1 point per correct guess, plus 3 bonus points if every guess is correct."
+                    ],
+                    [
+                        "Pass the role",
+                        "The player to the seeker’s left becomes the next seeker. Play all 10 cards, then compare the team’s total with the grade table."
+                    ]
+                ],
+                "ko": [
+                    [
+                        "게임 준비",
+                        "각 플레이어에게 가림막과 주사위를 주고 가림막 앞에 동전을 놓습니다. 단어 카드 10장을 무작위로 골라 덱을 만들고, 점수 토큰과 타이머를 준비한 뒤 첫 술래를 정합니다."
+                    ],
+                    [
+                        "카드 공개와 주사위",
+                        "술래가 카드 한 장을 공개하고 10초 타이머를 시작합니다. 나머지 플레이어는 가림막 뒤에서 주사위를 굴려 O, ☆, 빈칸 중 결과를 확인합니다."
+                    ],
+                    [
+                        "표현 생각하기",
+                        "카드의 위쪽 단어는 O, 아래쪽 단어는 ☆, 가운데 단어는 빈칸에 해당합니다. 시간이 끝나기 전에 자신의 단어를 표현할 손동작과 표정을 생각합니다."
+                    ],
+                    [
+                        "동시에 멈춘 자세",
+                        "시간이 끝나면 술래를 제외한 모두가 손동작과 표정만으로 단어를 동시에 표현하고 그 자세를 유지합니다."
+                    ],
+                    [
+                        "술래의 추리",
+                        "술래는 각 플레이어가 표현한 단어를 추리합니다. O 또는 ☆라고 생각하면 동전의 해당 면을 위로 놓고, 빈칸이라면 동전을 치웁니다."
+                    ],
+                    [
+                        "공개와 점수",
+                        "가림막을 들어 결과를 공개합니다. 맞힌 사람마다 팀 점수 1점을 얻고, 전원을 맞히면 추가 3점을 얻습니다."
+                    ],
+                    [
+                        "술래 교대",
+                        "술래 왼쪽 사람이 다음 술래가 됩니다. 준비한 카드 10장을 모두 플레이한 뒤 팀 총점으로 등급을 확인합니다."
+                    ]
+                ]
+            },
+            "scoring": {
+                "single": {
+                    "en": "1 point per correct guess + 3 for a perfect round",
+                    "ko": "정답 1명당 1점 + 전원 정답 시 추가 3점"
+                },
+                "note": {
+                    "en": "Play 10 rounds together. The team’s total determines its grade, from F to SSS; see the rulebook for the full table.",
+                    "ko": "10라운드 동안 팀 점수를 모읍니다. 총점에 따라 F부터 SSS까지 등급이 정해집니다. 전체 등급표는 규칙서에서 확인하세요."
+                }
+            },
+            "components": {
+                "en": [
+                    [
+                        "8",
+                        "Screens",
+                        "fa-clone"
+                    ],
+                    [
+                        "8",
+                        "Dice (O / O / ☆ / ☆ / blank / blank)",
+                        "fa-dice"
+                    ],
+                    [
+                        "8",
+                        "Double-sided O / ☆ Coins",
+                        "fa-coins"
+                    ],
+                    [
+                        "80",
+                        "Word Cards",
+                        "fa-layer-group"
+                    ],
+                    [
+                        "≈50 pts",
+                        "Score Tokens",
+                        "fa-star"
+                    ],
+                    [
+                        "1",
+                        "Special 10-second Timer",
+                        "fa-hourglass-half"
+                    ]
+                ],
+                "ko": [
+                    [
+                        "8",
+                        "가림막",
+                        "fa-clone"
+                    ],
+                    [
+                        "8",
+                        "주사위 (O / O / ☆ / ☆ / 빈칸 / 빈칸)",
+                        "fa-dice"
+                    ],
+                    [
+                        "8",
+                        "O / ☆ 양면 동전",
+                        "fa-coins"
+                    ],
+                    [
+                        "80",
+                        "단어 카드",
+                        "fa-layer-group"
+                    ],
+                    [
+                        "약 50점",
+                        "점수 토큰",
+                        "fa-star"
+                    ],
+                    [
+                        "1",
+                        "특수 10초 타이머",
+                        "fa-hourglass-half"
+                    ]
+                ]
+            },
+            "figure": {
+                "src": {
+                    "en": "/proto/assets/tangent-code-table.webp",
+                    "ko": "/proto/assets/tangent-code-table.webp"
+                },
+                "alt": {
+                    "en": "Tangent Code table setup with screens, dice, O and star coins, word cards, score tokens, and a timer.",
+                    "ko": "가림막, 주사위, O·별 동전, 단어 카드, 점수 토큰, 타이머를 배치한 탠전트 코드 테이블."
+                },
+                "caption": {
+                    "en": "An in-person prototype: reading real hand gestures and facial expressions is essential to play. No browser demo is provided.",
+                    "ko": "실제 손동작과 표정을 읽는 현장 플레이가 핵심인 프로토타입입니다. 웹 데모는 제공하지 않습니다."
+                }
+            }
+        },
+        "dondurma": {
+            "mark": "🍦",
+            "name": {
+                "en": "Dondurma",
+                "ko": "Dondurma · 돈두르마"
+            },
+            "specs": [
+                [
+                    "2–4",
+                    "players"
+                ],
+                [
+                    "5+",
+                    "ages"
+                ],
+                [
+                    "5",
+                    "minutes"
+                ]
+            ],
+            "tags": {
+                "en": [
+                    "Dexterity",
+                    "Simultaneous Action",
+                    "Family Game"
+                ],
+                "ko": [
+                    "손재주",
+                    "동시 행동",
+                    "패밀리 게임"
+                ]
+            },
+            "hero": {
+                "en": {
+                    "h": "Keep your ice cream. Take theirs.",
+                    "p": "Inspired by Turkish ice cream tricks, Dondurma turns cones and Velcro sticks into a quick, hands-on showdown."
+                },
+                "ko": {
+                    "h": "내 아이스크림은 지키고, 상대 것은 가져오세요.",
+                    "p": "튀르키예 아이스크림의 장난스러운 움직임에서 착안한 게임입니다. 콘과 벨크로 막대로 짧고 직관적인 손재주 대결을 즐기세요."
+                }
+            },
+            "points": {
+                "en": [
+                    "A <strong>dexterity game inspired by dondurma</strong>, the Turkish ice cream.",
+                    "A distinctive physical gimmick delivers <strong>immediate, instinctive fun</strong>."
+                ],
+                "ko": [
+                    "튀르키예 아이스크림 <strong>돈두르마의 기믹을 활용한 손재주 게임</strong>입니다.",
+                    "독특한 물리적 기믹으로 <strong>직관적이고 즉각적인 재미</strong>를 제공합니다."
+                ]
+            },
+            "steps": {
+                "en": [
+                    [
+                        "Take your ice cream",
+                        "Each player holds an ice cream on its cone in their left hand and a Velcro stick in their right hand."
+                    ],
+                    [
+                        "Choose your play space",
+                        "At a table, keep your left elbow on the tabletop. When playing standing up, stand an arm’s length apart."
+                    ],
+                    [
+                        "Play simultaneously",
+                        "Use the stick’s Velcro to take another player’s ice cream while keeping your own ice cream on its cone."
+                    ],
+                    [
+                        "Stay in the game",
+                        "You are eliminated if another player takes your ice cream, if it separates from your cone, or—when playing at a table—if you lift your left elbow off the tabletop."
+                    ],
+                    [
+                        "Last player wins",
+                        "Continue until only one player remains. That player wins."
+                    ]
+                ],
+                "ko": [
+                    [
+                        "아이스크림 들기",
+                        "각 플레이어는 왼손에 아이스크림이 얹힌 콘을 들고, 오른손에 벨크로가 달린 막대를 듭니다."
+                    ],
+                    [
+                        "플레이 공간 정하기",
+                        "테이블에서는 왼쪽 팔꿈치를 테이블에 붙이고 플레이합니다. 서서 플레이할 때는 서로 팔 길이만큼 떨어져 섭니다."
+                    ],
+                    [
+                        "동시에 플레이",
+                        "내 아이스크림이 콘에서 떨어지지 않도록 지키면서, 막대의 벨크로로 상대 아이스크림을 가져옵니다."
+                    ],
+                    [
+                        "탈락 조건",
+                        "다른 플레이어에게 아이스크림을 빼앗기거나, 아이스크림이 콘에서 떨어지면 탈락합니다. 테이블 플레이에서는 왼쪽 팔꿈치를 테이블에서 떼어도 탈락합니다."
+                    ],
+                    [
+                        "마지막 생존자가 승리",
+                        "한 명만 남을 때까지 플레이합니다. 마지막으로 남은 플레이어가 승리합니다."
+                    ]
+                ]
+            },
+            "scoring": {
+                "single": {
+                    "en": "The last player remaining wins",
+                    "ko": "마지막으로 남은 플레이어가 승리"
+                },
+                "note": {
+                    "en": "Protect your ice cream from other players and keep it attached to your cone. At a table, keep your left elbow down.",
+                    "ko": "아이스크림을 상대에게 빼앗기지 않고 콘 위에 유지하세요. 테이블에서는 왼쪽 팔꿈치도 붙이고 있어야 합니다."
+                }
+            },
+            "components": {
+                "en": [
+                    [
+                        "4",
+                        "Sticks with Velcro",
+                        "fa-wand-magic"
+                    ],
+                    [
+                        "4",
+                        "Ice Creams",
+                        "fa-ice-cream"
+                    ],
+                    [
+                        "4",
+                        "Cones",
+                        "fa-caret-up"
+                    ]
+                ],
+                "ko": [
+                    [
+                        "4",
+                        "벨크로 막대",
+                        "fa-wand-magic"
+                    ],
+                    [
+                        "4",
+                        "아이스크림",
+                        "fa-ice-cream"
+                    ],
+                    [
+                        "4",
+                        "콘",
+                        "fa-caret-up"
+                    ]
+                ]
+            },
+            "figure": {
+                "src": {
+                    "en": "/proto/assets/dondurma-table.webp",
+                    "ko": "/proto/assets/dondurma-table.webp"
+                },
+                "alt": {
+                    "en": "Two players holding ice cream cones and Velcro sticks while playing Dondurma at a table.",
+                    "ko": "테이블에서 아이스크림 콘과 벨크로 막대를 들고 돈두르마를 플레이하는 두 사람."
+                },
+                "caption": {
+                    "en": "The physical prototype in play. Handling the cones, ice creams, and sticks is the game; no browser demo is provided.",
+                    "ko": "물리적 프로토타입 플레이 모습입니다. 콘·아이스크림·막대를 직접 조작하는 게임으로, 웹 데모는 제공하지 않습니다."
+                }
+            }
+        },
+
         doore: {
             mark: '🌾',
             name: { en: 'Doore', ko: '두레' },
@@ -862,7 +1229,7 @@
                     </section>
 
                     <section class="ss-section">
-                        <h5><i class="fa-solid fa-display"></i> ${L.prototype}</h5>
+                        <h5><i class="fa-solid fa-display"></i> ${sheet.play ? L.prototype : L.physicalPrototype}</h5>
                         ${prototype}
                     </section>
 
@@ -908,7 +1275,7 @@
 
             <footer class="ss-footer">
                 <button type="button" onclick="closeModal('${id}')"><span class="rb-content-en">${LABELS.en.close}</span><span class="rb-content-ko" style="display:none;">${LABELS.ko.close}</span></button>
-                <a href="${sheet.play}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">${LABELS.en.play}</span><span class="rb-content-ko" style="display:none;">${LABELS.ko.play}</span></a>
+                ${sheet.play ? `<a href="${sheet.play}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> <span class="rb-content-en">${LABELS.en.play}</span><span class="rb-content-ko" style="display:none;">${LABELS.ko.play}</span></a>` : ''}
             </footer>
         </div>
         </div>`;
