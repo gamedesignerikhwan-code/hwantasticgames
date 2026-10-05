@@ -8,7 +8,7 @@
     const ko = {
         title: '보드게임 프로토타입 | 환상적인 게임즈',
         heroTitle: '보드게임 프로토타입',
-        heroDesc: '권익환(Ikhwan Kwon)이 디자인한 오리지널 테이블탑 게임의 프로토타입입니다. 셀시트와 규칙서를 살펴보고, 웹 데모가 있는 게임은 브라우저에서 플레이해 보세요! <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
+        heroDesc: 'Hwantastic Games가 개발 중인 오리지널 테이블탑 게임의 프로토타입입니다. 셀시트와 규칙서를 살펴보고, 웹 데모가 있는 게임은 브라우저에서 플레이해 보세요! <span class="proto-hero-note" style="opacity: 0.85; font-size: 0.95em;">(웹사이트 구현에는 AI 기술이 사용되었지만 사람의 아이디어로 구현된 게임들입니다.)</span>',
         heroContact: '문의 및 요청',
         filters: ['전체', '카드 게임', '보드게임'],
         categories: { 'card-game': '카드 게임', 'board-game': '보드게임' },

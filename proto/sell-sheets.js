@@ -5,8 +5,8 @@
     // "Game Introduction - <game>.pdf", the sheets sent to publishers. The phone
     // number those PDFs carry is deliberately left out: this page is public.
     const CONTACT = {
-        en: 'Ikhwan Kwon — Designer',
-        ko: '권익환 (Ikhwan Kwon) — 디자이너',
+        en: 'Hwantastic Games — Studio Lead Designer',
+        ko: 'Hwantastic Games — 디자이너',
         email: 'gamedesigner.ikhwan@gmail.com'
     };
 

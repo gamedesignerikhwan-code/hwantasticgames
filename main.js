@@ -27,8 +27,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navTabLinks = document.querySelectorAll('[data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel');
 
+    function resolveTabId(rawId) {
+        if (!rawId) return 'home';
+        const id = rawId.toLowerCase();
+        if (id === 'home') return 'home';
+        if (id === 'games' || id === 'videogames' || id === 'video-games') return 'videogames';
+        if (id === 'community') return 'contact';
+        return id;
+    }
+
     function switchTab(tabId) {
-        if (!tabId) return;
+        tabId = resolveTabId(tabId) || 'home';
         const targetPanel = document.getElementById(`tab-${tabId}`);
         if (!targetPanel) return;
 
@@ -42,15 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update active class on navigation links
         document.querySelectorAll('.primary-menu .nav-link').forEach(link => {
-            if (link.getAttribute('data-tab') === tabId) {
-                link.classList.add('active');
+            const dataTab = link.getAttribute('data-tab');
+            if (dataTab) {
+                const linkTab = resolveTabId(dataTab);
+                if (linkTab === tabId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
             } else {
+                // External/separate page links (e.g. boardgames.html) should never be active on tab switch
                 link.classList.remove('active');
             }
         });
 
-        // Smooth scroll to top when switching views
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to top when switching views
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        setTimeout(() => window.scrollTo(0, 0), 10);
 
         // Close mobile nav menu if open
         if (siteNavigation && siteNavigation.classList.contains('active')) {
@@ -71,26 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const tabId = link.getAttribute('data-tab');
             if (tabId) {
                 e.preventDefault();
-                switchTab(tabId);
-                history.pushState(null, '', `#${tabId}`);
+                const resolved = resolveTabId(tabId);
+                switchTab(resolved);
+                if (resolved === 'home') {
+                    history.pushState(null, '', window.location.pathname);
+                } else {
+                    history.pushState(null, '', `#${resolved}`);
+                }
             }
         });
     });
 
-    // Check URL hash on page load (e.g. #news or #community)
+    // Check URL hash on page load (e.g. #news or #videogames)
     const initialHash = window.location.hash.replace('#', '');
-    if (initialHash && document.getElementById(`tab-${initialHash}`)) {
-        switchTab(initialHash);
+    const resolvedInitial = resolveTabId(initialHash);
+    if (resolvedInitial && document.getElementById(`tab-${resolvedInitial}`)) {
+        switchTab(resolvedInitial);
+        window.scrollTo(0, 0);
+        setTimeout(() => window.scrollTo(0, 0), 50);
     } else {
         switchTab('home');
+        window.scrollTo(0, 0);
     }
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', () => {
-        const hash = window.location.hash.replace('#', '') || 'home';
-        if (document.getElementById(`tab-${hash}`)) {
-            switchTab(hash);
-        }
+        const hash = window.location.hash.replace('#', '');
+        switchTab(resolveTabId(hash) || 'home');
+        window.scrollTo(0, 0);
     });
 
     // 3. Steam Wishlist Counter & Click Handler
@@ -294,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <h4>Supported Languages (16 Languages)</h4>
                 <ul>
-                    <li>English, Korean (한국어), Deutsch, Japanese (日本語), Simplified Chinese (简体中文), Traditional Chinese (繁體中文)</li>
+                    <li>English, Korean, Deutsch, Japanese (日本語), Simplified Chinese (简体中文), Traditional Chinese (繁體中文)</li>
                     <li>French (Français), Spanish (Español), Italian (Italiano), Russian (Русский), Portuguese (Português), Turkish (Türkçe)</li>
                     <li>Dutch (Nederlands), Polish (Polski), Hindi (हिन्दी), Arabic (العربية)</li>
                 </ul>
