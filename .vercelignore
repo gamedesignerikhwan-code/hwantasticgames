@@ -16,6 +16,7 @@
 /proto/assets/doore-rulebook-pages/
 
 # Single files
+/server.js
 /Hearts_Extreme_Playtest_Action_Plan.pdf
 /assets/promo_shots/000_S01_title_screen.png
 /assets/promo_shots/001_S01b_title_lang_hover.png

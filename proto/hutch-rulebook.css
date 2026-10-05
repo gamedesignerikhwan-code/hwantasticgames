@@ -6,14 +6,20 @@
 /* Quick Tab Navigation inside Rulebook */
 .hutch-rulebook-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
     padding: 10px 14px;
     background: #fdfbf7;
     border-bottom: 1px solid var(--glass-border);
-    overflow-x: auto;
     position: sticky;
     top: 0;
     z-index: 10;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hutch-rulebook-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .hutch-tab-btn {
@@ -414,4 +420,12 @@
 
 .rule-animal-table tbody tr:hover {
     background: #f8fafc;
+}
+
+@media (max-width: 640px) {
+    .hutch-rulebook-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
