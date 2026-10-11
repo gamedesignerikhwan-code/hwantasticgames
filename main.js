@@ -291,55 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. DevLog Modal Data & Handler
-    const devlogData = {
-        1: {
-            title: "[DevLog #03] Balancing 10 Extreme Decks & Special Modifier Cards",
-            date: "July 25, 2026",
-            category: "System Design",
-            content: `
-                <p>Hello everyone! This is the development team at Hwantastic Games.</p>
-
-                <p>The core premise of <strong>Hearts Extreme</strong> starts with 100% Perfect Information: everyone's hand is completely visible. However, pure number-crunching without variance risked making puzzles feel static over time.</p>
-
-                <h4>1. Introducing Rank Inversion Cards (↑ / ↓)</h4>
-                <p>To solve this, we introduced Rank Inversion modifiers. The moment a <code>↑</code> card is played into a trick, the lowest rank card immediately flips to become the most powerful. This allows players to outsmart opponents holding high rank cards.</p>
-
-                <h4>2. Score Double (M*2) and Nullification (X)</h4>
-                <p>In avoidance puzzle levels where players must avoid capturing penalty points, playing an <code>X</code> nullify card wipes the trick out of existence. Playtesting showed a 200% increase in player satisfaction when chaining these modifier cards across our 10 unique decks.</p>
-            `
-        },
-        2: {
-            title: "[DevLog #02] Steam Early Access & 16 Language Localization Plan",
-            date: "July 18, 2026",
-            category: "Steam Release",
-            content: `
-                <p>Greetings! Publishing team from Hwantastic Games here.</p>
-
-                <p>We are actively building the foundation to bring Hearts Extreme to players worldwide via Steam.</p>
-
-                <h4>Supported Languages (16 Languages)</h4>
-                <ul>
-                    <li>English, Korean, Deutsch, Japanese (日本語), Simplified Chinese (简体中文), Traditional Chinese (繁體中文)</li>
-                    <li>French (Français), Spanish (Español), Italian (Italiano), Russian (Русский), Portuguese (Português), Turkish (Türkçe)</li>
-                    <li>Dutch (Nederlands), Polish (Polski), Hindi (हिन्दी), Arabic (العربية)</li>
-                </ul>
-
-                <p>All UI elements, puzzle level goals, and tutorial text have been translated. Hit the Wishlist button on Steam!</p>
-            `
-        },
-        3: {
-            title: "[DevLog #01] Why Hearts? Turning Classic Trick-Taking into a Puzzle",
-            date: "July 05, 2026",
-            category: "Game Concept",
-            content: `
-                <p>Here is the origin story behind Hwantastic Games' debut Steam title, Hearts Extreme.</p>
-
-                <p>Traditional trick-taking card games (like Hearts or Spades) rely heavily on card deal luck. We asked ourselves: <em>"What if everyone's hand was fully revealed? Wouldn't it turn trick-taking into a deep, chess-like deterministic puzzle?"</em></p>
-
-                <p>The result is a game where victory is no longer dictated by luck, but by pure strategic foresight.</p>
-            `
-        }
-    };
+    // News cards link to standalone devlog_*.html pages; no card uses the modal any more.
+    const devlogData = {};
 
     const devlogModal = document.getElementById('devlogModal');
     const modalBody = document.getElementById('modalBody');
