@@ -11,8 +11,8 @@
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
-    --tile-size: 54px;
-    --tile-gap: 6px;
+    --tile-size: 44px;
+    --tile-gap: 5px;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Noto Sans KR', sans-serif;
 }
@@ -143,26 +143,24 @@ body {
 
 /* Main Layout */
 .game-container {
-    flex: 1;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 8px 16px 20px;
     display: flex;
     flex-direction: column;
-    padding: 16px 24px 30px;
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    gap: 20px;
+    gap: 10px;
 }
 
 /* Prompt Banner */
 .prompt-banner {
     background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(30, 41, 59, 0.8) 100%);
     border: 1px solid rgba(245, 158, 11, 0.35);
-    border-radius: var(--radius-md);
-    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    padding: 6px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .prompt-text {
@@ -183,14 +181,14 @@ body {
 .board-area {
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
-    border-radius: var(--radius-lg);
-    padding: 24px;
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
+    justify-content: space-between;
 }
 
 .board-header {
@@ -240,12 +238,13 @@ body {
 /* Pyramid Container */
 .pyramid-stage {
     position: relative;
-    padding: 20px 40px;
+    padding: 6px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 380px;
+    min-height: 280px;
     user-select: none;
+    flex: 1;
 }
 
 .pyramid-grid-wrap {
@@ -387,8 +386,9 @@ body {
 /* Players Area: Personal Boards */
 .players-area {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 10px;
+    width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -400,12 +400,12 @@ body {
 .personal-board-card {
     background: var(--bg-card);
     border: 2px solid var(--border-glass);
-    border-radius: var(--radius-lg);
-    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    gap: 5px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     position: relative;
     transition: border-color 0.3s;
 }
@@ -419,7 +419,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     border-bottom: 1px solid var(--border-glass);
 }
 
@@ -468,7 +468,7 @@ body {
 .pb-main-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr) auto auto;
-    gap: 8px;
+    gap: 4px;
     align-items: start;
 }
 
@@ -477,22 +477,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
-    padding: 8px 4px;
-    min-height: 190px;
+    padding: 3px 2px;
+    min-height: 80px;
+    width: 100%;
 }
 
 .pb-scoring-tile {
     width: 100%;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     border: 1px solid var(--border-glass);
-    border-radius: 6px;
-    padding: 6px 4px;
+    border-radius: 4px;
+    padding: 3px 2px;
     text-align: center;
-    font-size: 0.68rem;
+    font-size: 0.6rem;
     position: relative;
 }
 
@@ -515,22 +516,23 @@ body {
 .type-b .pb-rule-badge { background: #be185d; color: #fff; }
 
 .pb-symbol-mark {
-    font-size: 1.1rem;
-    margin: 2px 0;
+    font-size: 0.82rem;
+    margin: 1px 0;
+    line-height: 1;
 }
 
 .pb-col-score {
     font-weight: 800;
     color: var(--gold);
-    font-size: 0.76rem;
+    font-size: 0.65rem;
 }
 
 .pb-bonus-indicator {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     color: var(--text-muted);
     font-weight: 700;
-    margin-bottom: 4px;
-    padding: 2px 6px;
+    margin-bottom: 1px;
+    padding: 0.5px 3px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.05);
 }
@@ -545,13 +547,15 @@ body {
 }
 
 .mini-tile {
-    width: 32px;
-    height: 32px;
-    border-radius: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+    transition: transform 0.15s;
 }
 
 .mini-tile .tile-symbol-svg {
@@ -564,18 +568,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
-    padding: 8px 6px;
-    min-width: 68px;
-    min-height: 190px;
+    padding: 3px 2px;
+    min-width: 38px;
+    min-height: 80px;
 }
 
 .pb-side-header {
     text-align: center;
-    font-size: 0.68rem;
+    font-size: 0.55rem;
     font-weight: 800;
     color: #e2e8f0;
 }
@@ -586,14 +590,14 @@ body {
 }
 
 .pb-side-count {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-weight: 900;
     color: #fff;
-    margin: 4px 0;
+    margin: 1px 0;
 }
 
 .pb-side-total {
-    font-size: 0.72rem;
+    font-size: 0.6rem;
     font-weight: 700;
     color: var(--gold);
 }
@@ -836,11 +840,12 @@ body {
 .scoring-guide-section {
     background: var(--bg-card);
     border: 1px solid var(--border-glass);
-    border-radius: var(--radius-lg);
-    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 8px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
@@ -863,8 +868,9 @@ body {
 
 .scoring-guide-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    flex: 1;
 }
 
 @media (max-width: 1024px) {
@@ -882,12 +888,12 @@ body {
     background: rgba(15, 23, 42, 0.65);
     border: 1px solid var(--border-glass);
     border-radius: var(--radius-sm);
-    padding: 10px 8px;
+    padding: 6px 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 6px;
+    gap: 4px;
     transition: transform 0.2s, border-color 0.2s;
 }
 
@@ -898,7 +904,7 @@ body {
 }
 
 .guide-symbol-icon {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     line-height: 1;
 }
 
@@ -918,11 +924,14 @@ body {
 }
 
 .guide-rule-pill {
-    padding: 4px 6px;
-    border-radius: 4px;
+    padding: 2px 4px;
+    border-radius: 3px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-glass);
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .guide-rule-pill.active {
@@ -943,13 +952,12 @@ body {
 
 .scoring-guide-footer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding-top: 8px;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 6px;
     border-top: 1px solid var(--border-glass);
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
-    align-items: center;
 }
 
 .guide-footer-badge {
@@ -967,16 +975,19 @@ body {
 }
 
 .pb-rule-desc {
-    font-size: 0.62rem;
+    font-size: 0.52rem;
     color: #cbd5e1;
-    line-height: 1.25;
+    line-height: 1.15;
     background: rgba(0, 0, 0, 0.28);
-    padding: 3px 4px;
-    border-radius: 4px;
-    margin-top: 2px;
+    padding: 1px 2px;
+    border-radius: 2px;
+    margin-top: 1px;
     word-break: keep-all;
     text-align: center;
     width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Clickable / Flippable Scoring Tile */
@@ -1024,4 +1035,19 @@ body {
 }
 .btn-rule-toggle:hover {
     transform: scale(1.05);
+}
+
+/* Two-column Game Play Area: Left = Pyramid Board, Right = Scoring Rules */
+.game-play-area {
+    display: grid;
+    grid-template-columns: minmax(360px, 1.15fr) minmax(320px, 0.85fr);
+    gap: 12px;
+    align-items: stretch;
+    width: 100%;
+}
+
+@media (max-width: 980px) {
+    .game-play-area {
+        grid-template-columns: 1fr;
+    }
 }

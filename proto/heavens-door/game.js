@@ -1008,8 +1008,8 @@
         if (!stage) return;
         stage.innerHTML = '';
 
-        const tileSize = window.innerWidth <= 768 ? 40 : 54;
-        const tileGap = window.innerWidth <= 768 ? 4 : 6;
+        const tileSize = window.innerWidth <= 768 ? 34 : 44;
+        const tileGap = window.innerWidth <= 768 ? 3 : 5;
         const stride = tileSize + tileGap;
 
         // Base layer offset
@@ -1031,6 +1031,8 @@
 
                     const el = document.createElement('div');
                     el.className = `hd-tile tile-color-${tile.color}`;
+                    el.style.width = `${tileSize}px`;
+                    el.style.height = `${tileSize}px`;
                     el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (state.lang === 'ko' ? '뒷면 타일' : 'Face-down tile');
 
                     if (!tile.faceUp) {
