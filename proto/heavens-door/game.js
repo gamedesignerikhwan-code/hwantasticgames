@@ -143,6 +143,9 @@
             [523, 659, 784, 1046].forEach((f, i) => {
                 setTimeout(() => playTone(f, 'sine', 0.25, 0.12), i * 80);
             });
+        } else if (type === 'flip') {
+            playTone(600, 'sine', 0.1, 0.08);
+            setTimeout(() => playTone(750, 'sine', 0.15, 0.08), 80);
         } else if (type === 'win') {
             [440, 554, 659, 880].forEach((f, i) => {
                 setTimeout(() => playTone(f, 'triangle', 0.35, 0.14), i * 120);
@@ -155,7 +158,8 @@
         lang: 'ko',
         soundEnabled: true,
         playerCount: 2, // 2P (Player vs AI)
-        scoringMode: 'mixed', // 'A', 'B', or 'mixed'
+        scoringMode: 'mixed', // 'A', 'B', 'mixed', or 'custom'
+        customRules: { triangle: 'A', trapezoid: 'A', square: 'A', circle: 'A', star: 'A', hexagon: 'A' },
         turn: 1,
         maxTurns: 10,
         activePlayerIndex: 0,
@@ -189,6 +193,11 @@
     // Initialize Game
     function initGame(options = {}) {
         state.scoringMode = options.scoringMode || 'mixed';
+        if (options.customRules) {
+            state.customRules = { ...options.customRules };
+        } else if (!state.customRules) {
+            state.customRules = { triangle: 'A', trapezoid: 'A', square: 'A', circle: 'A', star: 'A', hexagon: 'A' };
+        }
         state.playerCount = options.playerCount || 2;
         state.turn = 1;
         state.activePlayerIndex = 0;
@@ -422,7 +431,15 @@
         // Check Combo (completely identical color and symbol)
         if (tile1.color === tile2.color && tile1.symbol === tile2.symbol) {
             playSound('combo');
-            // 1 tile to player's normal board, 1 tile under COMBO tile
+            const isNewSymbol = !player.columns.some(col => col.symbol === tile1.symbol);
+            if (player.isHuman && isNewSymbol && state.scoringMode === 'mixed') {
+                showScoringRuleChoiceModal(tile1.symbol, (ruleType) => {
+                    addTileToPlayerBoard(player, tile1, ruleType);
+                    player.combos.push(tile2);
+                    postTurnCheck();
+                });
+                return;
+            }
             addTileToPlayerBoard(player, tile1);
             player.combos.push(tile2);
             postTurnCheck();
@@ -432,14 +449,59 @@
         playSound('match');
 
         // Check if both tiles introduce NEW symbols not yet on the player board
-        const hasSymbol1 = player.columns.some(col => col.symbol === tile1.symbol);
-        const hasSymbol2 = player.columns.some(col => col.symbol === tile2.symbol);
+        const has1 = player.columns.some(col => col.symbol === tile1.symbol);
+        const has2 = player.columns.some(col => col.symbol === tile2.symbol);
+        const diffSymbols = (tile1.symbol !== tile2.symbol);
 
-        if (!hasSymbol1 && !hasSymbol2 && tile1.symbol !== tile2.symbol && player.isHuman && player.columns.length < 5) {
-            // Need player to decide which goes on left side (Rule 2)
-            state.pendingDraft = { player, tile1, tile2 };
-            showSymbolOrderModal(tile1, tile2);
-            return;
+        if (player.isHuman) {
+            // Case A: Two DIFFERENT new symbols -> decide order first (Rule 2)
+            if (!has1 && !has2 && diffSymbols && player.columns.length < 5) {
+                showSymbolOrderModal(tile1, tile2, (firstTile, secondTile) => {
+                    if (state.scoringMode === 'mixed') {
+                        showScoringRuleChoiceModal(firstTile.symbol, (rule1) => {
+                            showScoringRuleChoiceModal(secondTile.symbol, (rule2) => {
+                                addTileToPlayerBoard(player, firstTile, rule1);
+                                addTileToPlayerBoard(player, secondTile, rule2);
+                                postTurnCheck();
+                            });
+                        });
+                    } else {
+                        addTileToPlayerBoard(player, firstTile);
+                        addTileToPlayerBoard(player, secondTile);
+                        postTurnCheck();
+                    }
+                });
+                return;
+            }
+
+            // Case B: Same new symbol (e.g. Red Star + Blue Star)
+            if (!diffSymbols && !has1 && state.scoringMode === 'mixed') {
+                showScoringRuleChoiceModal(tile1.symbol, (rule) => {
+                    addTileToPlayerBoard(player, tile1, rule);
+                    addTileToPlayerBoard(player, tile2, rule);
+                    postTurnCheck();
+                });
+                return;
+            }
+
+            // Case C: Exactly one new symbol
+            if (state.scoringMode === 'mixed') {
+                if (!has1 && has2) {
+                    showScoringRuleChoiceModal(tile1.symbol, (rule) => {
+                        addTileToPlayerBoard(player, tile1, rule);
+                        addTileToPlayerBoard(player, tile2);
+                        postTurnCheck();
+                    });
+                    return;
+                } else if (has1 && !has2) {
+                    showScoringRuleChoiceModal(tile2.symbol, (rule) => {
+                        addTileToPlayerBoard(player, tile1);
+                        addTileToPlayerBoard(player, tile2, rule);
+                        postTurnCheck();
+                    });
+                    return;
+                }
+            }
         }
 
         // Normal placement for both tiles
@@ -456,9 +518,18 @@
         if (!col) {
             // New symbol column
             if (player.columns.length < 6) {
-                let ruleType = state.scoringMode;
-                if (ruleType === 'mixed') {
-                    ruleType = preferredRuleType || (Math.random() < 0.5 ? 'A' : 'B');
+                let ruleType = 'A';
+                if (preferredRuleType) {
+                    ruleType = preferredRuleType;
+                } else if (state.scoringMode === 'A') {
+                    ruleType = 'A';
+                } else if (state.scoringMode === 'B') {
+                    ruleType = 'B';
+                } else if (state.scoringMode === 'custom' && state.customRules && state.customRules[tile.symbol]) {
+                    ruleType = state.customRules[tile.symbol];
+                } else if (state.scoringMode === 'mixed') {
+                    // For AI or fallback
+                    ruleType = Math.random() < 0.5 ? 'A' : 'B';
                 }
                 col = {
                     symbol: tile.symbol,
@@ -482,6 +553,19 @@
             player.duplicates.push(tile);
         }
     }
+
+    // Interactive flip scoring tile
+    window.flipPlayerScoringTile = function(playerId, symbol) {
+        const player = state.players.find(p => p.id === playerId);
+        if (!player || !player.isHuman) return;
+        const col = player.columns.find(c => c.symbol === symbol);
+        if (!col) return;
+
+        col.ruleType = (col.ruleType === 'A' ? 'B' : 'A');
+        playSound('flip');
+        calculateScores();
+        render();
+    };
 
     // Advance Turn
     function postTurnCheck() {
@@ -686,10 +770,13 @@
     }
 
     // Modal: symbol order selection dialog
-    function showSymbolOrderModal(tile1, tile2) {
+    function showSymbolOrderModal(tile1, tile2, callback) {
         const modal = document.getElementById('choiceModal');
         const container = document.getElementById('choiceOptionsGrid');
-        if (!modal || !container) return;
+        if (!modal || !container) {
+            if (callback) callback(tile1, tile2);
+            return;
+        }
 
         const isKo = (state.lang === 'ko');
         document.getElementById('choiceModalTitle').textContent = isKo ? '첫 배치 순서 결정' : 'First Symbol Order Choice';
@@ -699,29 +786,80 @@
 
         container.innerHTML = `
             <button type="button" class="btn-choice" id="btnOrder1">
-                <span style="font-size: 1.8rem;">${SYMBOL_ICONS[tile1.symbol]}</span>
+                <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile1.symbol].color};">${SYMBOL_ICONS[tile1.symbol]}</span>
                 <span>${SYMBOL_NAMES[state.lang][tile1.symbol]} (좌측)</span>
             </button>
             <button type="button" class="btn-choice" id="btnOrder2">
-                <span style="font-size: 1.8rem;">${SYMBOL_ICONS[tile2.symbol]}</span>
+                <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile2.symbol].color};">${SYMBOL_ICONS[tile2.symbol]}</span>
                 <span>${SYMBOL_NAMES[state.lang][tile2.symbol]} (좌측)</span>
             </button>
         `;
 
         document.getElementById('btnOrder1').onclick = () => {
             modal.classList.remove('active');
-            addTileToPlayerBoard(state.pendingDraft.player, tile1);
-            addTileToPlayerBoard(state.pendingDraft.player, tile2);
-            state.pendingDraft = null;
-            postTurnCheck();
+            playSound('select');
+            if (callback) callback(tile1, tile2);
         };
 
         document.getElementById('btnOrder2').onclick = () => {
             modal.classList.remove('active');
-            addTileToPlayerBoard(state.pendingDraft.player, tile2);
-            addTileToPlayerBoard(state.pendingDraft.player, tile1);
-            state.pendingDraft = null;
-            postTurnCheck();
+            playSound('select');
+            if (callback) callback(tile2, tile1);
+        };
+
+        modal.classList.add('active');
+    }
+
+    // Modal: scoring rule choice dialog (Type A vs Type B)
+    function showScoringRuleChoiceModal(symbol, callback) {
+        const modal = document.getElementById('ruleChoiceModal');
+        const container = document.getElementById('ruleChoiceOptionsGrid');
+        if (!modal || !container) {
+            if (callback) callback('A');
+            return;
+        }
+
+        const rule = SYMBOL_RULES[symbol];
+        const name = SYMBOL_NAMES[state.lang][symbol];
+        const isKo = (state.lang === 'ko');
+
+        document.getElementById('ruleChoiceSymbolIcon').innerHTML = `<span style="color:${rule.color};">${rule.icon}</span>`;
+        document.getElementById('ruleChoiceModalTitle').textContent = isKo ? 
+            `[${rule.icon} ${name}] 점수 규칙 면 선택` : 
+            `Choose Scoring Rule for [${rule.icon} ${name}]`;
+        document.getElementById('ruleChoiceModalDesc').textContent = isKo ? 
+            `새로운 기호를 처음 획득했습니다. 이번 게임에서 적용할 규칙 면을 선택하세요.` : 
+            `You acquired a new symbol! Choose which scoring rule side to apply for this symbol.`;
+
+        container.innerHTML = `
+            <button type="button" class="btn-choice rule-select-btn type-a" id="btnRuleChoiceA" style="padding:16px 14px; text-align:left; border-top:4px solid #38bdf8; background:rgba(15, 23, 42, 0.85);">
+                <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                    <span class="guide-rule-tag tag-a" style="font-size:0.75rem; padding:2px 8px;">Type A</span>
+                    <span style="font-size:0.75rem; color:#38bdf8; font-weight:700;">${isKo ? '기본/밸런스' : 'Standard'}</span>
+                </div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[state.lang]}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[state.lang]}</div>
+            </button>
+            <button type="button" class="btn-choice rule-select-btn type-b" id="btnRuleChoiceB" style="padding:16px 14px; text-align:left; border-top:4px solid #f472b6; background:rgba(15, 23, 42, 0.85);">
+                <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                    <span class="guide-rule-tag tag-b" style="font-size:0.75rem; padding:2px 8px;">Type B</span>
+                    <span style="font-size:0.75rem; color:#f472b6; font-weight:700;">${isKo ? '전략/고득점' : 'Tactical'}</span>
+                </div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[state.lang]}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[state.lang]}</div>
+            </button>
+        `;
+
+        document.getElementById('btnRuleChoiceA').onclick = () => {
+            modal.classList.remove('active');
+            playSound('select');
+            if (callback) callback('A');
+        };
+
+        document.getElementById('btnRuleChoiceB').onclick = () => {
+            modal.classList.remove('active');
+            playSound('select');
+            if (callback) callback('B');
         };
 
         modal.classList.add('active');
@@ -825,22 +963,37 @@
 
         const isKo = (state.lang === 'ko');
 
+        const humanPlayer = state.players ? state.players.find(p => p.isHuman) : null;
+
         grid.innerHTML = SYMBOLS.map(symbol => {
             const rule = SYMBOL_RULES[symbol];
             const name = SYMBOL_NAMES[state.lang][symbol];
-            const isTypeAActive = (state.scoringMode === 'A' || state.scoringMode === 'mixed');
-            const isTypeBActive = (state.scoringMode === 'B' || state.scoringMode === 'mixed');
+            const humanCol = humanPlayer ? humanPlayer.columns.find(c => c.symbol === symbol) : null;
+            let aActive = false;
+            let bActive = false;
+
+            if (humanCol) {
+                aActive = (humanCol.ruleType === 'A');
+                bActive = (humanCol.ruleType === 'B');
+            } else if (state.scoringMode === 'A') {
+                aActive = true;
+            } else if (state.scoringMode === 'B') {
+                bActive = true;
+            } else if (state.scoringMode === 'custom' && state.customRules) {
+                aActive = (state.customRules[symbol] === 'A');
+                bActive = (state.customRules[symbol] === 'B');
+            }
 
             return `
                 <div class="guide-symbol-card">
                     <div class="guide-symbol-icon" style="color: ${rule.color};">${rule.icon}</div>
                     <div class="guide-symbol-name">${name}</div>
                     <div class="guide-rules-wrap">
-                        <div class="guide-rule-pill ${state.scoringMode === 'A' ? 'active' : ''}" title="${rule.A.full[state.lang]}">
+                        <div class="guide-rule-pill ${aActive ? 'active' : ''}" title="${rule.A.full[state.lang]}">
                             <span class="guide-rule-tag tag-a">A</span>
                             <span>${rule.A.short[state.lang]}</span>
                         </div>
-                        <div class="guide-rule-pill ${state.scoringMode === 'B' ? 'active' : ''}" title="${rule.B.full[state.lang]}">
+                        <div class="guide-rule-pill ${bActive ? 'active' : ''}" title="${rule.B.full[state.lang]}">
                             <span class="guide-rule-tag tag-b">B</span>
                             <span>${rule.B.short[state.lang]}</span>
                         </div>
@@ -936,9 +1089,12 @@
 
                     colsHtml += `
                         <div class="pb-symbol-col">
-                            <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()}" title="${SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]}">
+                            <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()} ${p.isHuman ? 'clickable-tile' : ''}" 
+                                 title="${p.isHuman ? (state.lang === 'ko' ? '클릭하여 A/B 규칙 면 뒤집기 (현재 ' + col.ruleType + '형)\n' + SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang] : 'Click to flip A/B side (Current Type ' + col.ruleType + ')\n' + SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]) : SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]}"
+                                 ${p.isHuman ? `onclick="window.flipPlayerScoringTile(${p.id}, '${col.symbol}')"` : ''}>
                                 <div class="pb-tile-top">
                                     <span class="pb-rule-badge">${col.ruleType}</span>
+                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${state.lang === 'ko' ? 'A/B 뒤집기' : 'Flip side'}"><i class="fa-solid fa-repeat"></i></span>` : ''}
                                     <span class="pb-col-score">${pts} pt</span>
                                 </div>
                                 <div class="pb-symbol-mark">${icon}</div>
