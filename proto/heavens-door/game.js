@@ -19,6 +19,82 @@
         hexagon: '⬢'
     };
 
+    
+    const SYMBOL_RULES = {
+        triangle: {
+            icon: '▲',
+            color: '#38bdf8',
+            A: {
+                short: { ko: '홀수 (5/15/25/35p)', en: 'Odd (5/15/25/35p)' },
+                full: { ko: '홀수 개수마다 득점 증가: 5 / 5 / 15 / 15 / 25 / 25 / 35 / 35점', en: 'Score increases on odd counts: 5/5/15/15/25/25/35/35 VP' }
+            },
+            B: {
+                short: { ko: '홀수 (N+1)² (4/16/36/64p)', en: 'Odd (N+1)² (4/16/36/64p)' },
+                full: { ko: '홀수 개수마다 (N+1)²: 4 / 4 / 16 / 16 / 36 / 36 / 64 / 64점', en: 'Odd counts scored as (N+1)²: 4/4/16/16/36/36/64/64 VP' }
+            }
+        },
+        trapezoid: {
+            icon: '⏢',
+            color: '#fb923c',
+            A: {
+                short: { ko: '짝수 (10/20/30/40p)', en: 'Even (10/20/30/40p)' },
+                full: { ko: '짝수 개수마다 득점 증가: 0 / 10 / 10 / 20 / 20 / 30 / 30 / 40점', en: 'Score increases on even counts: 0/10/10/20/20/30/30/40 VP' }
+            },
+            B: {
+                short: { ko: '짝수 (N+1)² (9/25/49/81p)', en: 'Even (N+1)² (9/25/49/81p)' },
+                full: { ko: '짝수 개수마다 (N+1)²: 0 / 9 / 9 / 25 / 25 / 49 / 49 / 81점', en: 'Even counts scored as (N+1)²: 0/9/9/25/25/49/49/81 VP' }
+            }
+        },
+        square: {
+            icon: '■',
+            color: '#4ade80',
+            A: {
+                short: { ko: '개수 × 콤보 × 2p', en: 'Count × Combos × 2p' },
+                full: { ko: '정사각형 1장당 나의 콤보 수 × 2점', en: '2 VP per COMBO for each square tile' }
+            },
+            B: {
+                short: { ko: '개수 × (콤보 × 중복)p', en: 'Count × (Combos × Dupl)p' },
+                full: { ko: '정사각형 1장당 (콤보 수 × 중복 수)점', en: 'Points per square = (Combos × Duplicates)' }
+            }
+        },
+        circle: {
+            icon: '●',
+            color: '#c084fc',
+            A: {
+                short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color' },
+                full: { ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점', en: 'Points per circle = count of tiles in most collected color' }
+            },
+            B: {
+                short: { ko: '개수 × 6번째 열 수', en: 'Count × Rightmost Col' },
+                full: { ko: '원 1장당 개인 보드 맨 오른쪽 6번째 열의 타일 수 점', en: 'Points per circle = count of tiles in rightmost 6th column' }
+            }
+        },
+        star: {
+            icon: '★',
+            color: '#facc15',
+            A: {
+                short: { ko: '단독 최다 시 50p', en: 'Sole Most: 50p' },
+                full: { ko: '동점 없는 단독 최다 별 보유 시 50점 (동점 시 0점)', en: '50 VP for strictly most stars without ties (0 VP if tied)' }
+            },
+            B: {
+                short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p' },
+                full: { ko: '최소 보유자가 아니면 25점', en: '25 VP if you are not the player with the fewest stars' }
+            }
+        },
+        hexagon: {
+            icon: '⬢',
+            color: '#f43f5e',
+            A: {
+                short: { ko: '4+/5+/6+ 달성 시 44/55/66p', en: '4+/5+/6+ Goal: 44/55/66p' },
+                full: { ko: '2인 4개+(44점) / 3인 5개+(55점) / 4인 6개+(66점)', en: 'Threshold: 4+ (44p in 2P) / 5+ (55p in 3P) / 6+ (66p in 4P)' }
+            },
+            B: {
+                short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile' },
+                full: { ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)', en: '6 VP per tile if not the leader (leader gets 0 VP)' }
+            }
+        }
+    };
+
     const SET_BONUSES = [0, 0, 0, 0, 5, 15, 30]; // 0 to 6 distinct symbols
 
     // Audio SFX using Web Audio API
@@ -730,10 +806,43 @@
         }
 
         // Render 3D Pyramid Board
+        renderScoringGuide();
         renderPyramid();
 
         // Render Personal Boards
         renderPlayers();
+    }
+
+    
+    function renderScoringGuide() {
+        const grid = document.getElementById('scoringGuideGrid');
+        if (!grid) return;
+
+        const isKo = (state.lang === 'ko');
+
+        grid.innerHTML = SYMBOLS.map(symbol => {
+            const rule = SYMBOL_RULES[symbol];
+            const name = SYMBOL_NAMES[state.lang][symbol];
+            const isTypeAActive = (state.scoringMode === 'A' || state.scoringMode === 'mixed');
+            const isTypeBActive = (state.scoringMode === 'B' || state.scoringMode === 'mixed');
+
+            return `
+                <div class="guide-symbol-card">
+                    <div class="guide-symbol-icon" style="color: ${rule.color};">${rule.icon}</div>
+                    <div class="guide-symbol-name">${name}</div>
+                    <div class="guide-rules-wrap">
+                        <div class="guide-rule-pill ${state.scoringMode === 'A' ? 'active' : ''}" title="${rule.A.full[state.lang]}">
+                            <span class="guide-rule-tag tag-a">A</span>
+                            <span>${rule.A.short[state.lang]}</span>
+                        </div>
+                        <div class="guide-rule-pill ${state.scoringMode === 'B' ? 'active' : ''}" title="${rule.B.full[state.lang]}">
+                            <span class="guide-rule-tag tag-b">B</span>
+                            <span>${rule.B.short[state.lang]}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 
     function renderPyramid() {
@@ -821,10 +930,13 @@
 
                     colsHtml += `
                         <div class="pb-symbol-col">
-                            <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()}">
-                                <span class="pb-rule-badge">${col.ruleType}</span>
+                            <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()}" title="${SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]}">
+                                <div class="pb-tile-top">
+                                    <span class="pb-rule-badge">${col.ruleType}</span>
+                                    <span class="pb-col-score">${pts} pt</span>
+                                </div>
                                 <div class="pb-symbol-mark">${icon}</div>
-                                <div class="pb-col-score">${pts} pt</div>
+                                <div class="pb-rule-desc">${SYMBOL_RULES[col.symbol][col.ruleType].short[state.lang]}</div>
                             </div>
                             <span class="pb-bonus-indicator">+${setVal} VP</span>
                             <div class="pb-tile-stack">
