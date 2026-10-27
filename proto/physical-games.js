@@ -2,76 +2,8 @@
     'use strict';
 
     // Adapted from the designer's supplied Game Introduction PDFs.
-    // Tangent Code includes its complete rulebook; Dondurma's rules are all
-    // contained in its one-page introduction. Neither game has a web demo.
+    // Dondurma's rules are all contained in its one-page introduction. No web demo.
     const RULEBOOKS = {
-    "tangent-code": {
-        "name": {
-            "en": "Tangent Code",
-            "ko": "Tangent Code · 탠전트 코드"
-        },
-        "specs": [
-            [
-                "2–8",
-                "players"
-            ],
-            [
-                "8+",
-                "ages"
-            ],
-            [
-                "10–15",
-                "minutes"
-            ]
-        ],
-        "mark": "🙌",
-        "sections": {
-            "en": [
-                [
-                    "components",
-                    "1. Components & Symbols",
-                    "<ul><li><strong>8</strong> Screens</li><li><strong>8</strong> Dice (O / O / ☆ / ☆ / blank / blank)</li><li><strong>8</strong> Double-sided O / ☆ Coins</li><li><strong>80</strong> Word Cards</li><li><strong>≈50 pts</strong> Score Tokens</li><li><strong>1</strong> Special 10-second Timer</li></ul><p>Each die has six faces: <strong>O / O / ☆ / ☆ / blank / blank</strong>. Each word card has three words: top = O, middle = blank, bottom = ☆. Coins show O on one side and ☆ on the other.</p><p>The special timer provides a loud, noisy countdown that ends after <strong>10 seconds</strong>.</p>"
-                ],
-                [
-                    "setup",
-                    "2. Setup",
-                    "<p>Give each player a screen and a die, with a coin in front of the screen. Randomly select 10 word cards, prepare the score tokens and timer, and choose the first seeker.</p><figure class=\"ss-figure\"><img src=\"/proto/assets/tangent-code-table.webp\" alt=\"Tangent Code table setup with screens, dice, O and star coins, word cards, score tokens, and a timer.\" loading=\"lazy\"><figcaption>An in-person prototype: reading real hand gestures and facial expressions is essential to play. No browser demo is provided.</figcaption></figure>"
-                ],
-                [
-                    "play",
-                    "3. How to Play",
-                    "<ol class=\"physical-rule-steps\"><li><strong>Set up</strong><p>Give each player a screen and a die, with a coin in front of the screen. Randomly select 10 word cards, prepare the score tokens and timer, and choose the first seeker.</p></li><li><strong>Reveal & roll</strong><p>The seeker reveals one card and starts the 10-second timer. Everyone else rolls their die behind their screen: O, ☆, or blank.</p></li><li><strong>Choose your expression</strong><p>The top word corresponds to O, the bottom word to ☆, and the middle word to blank. Think of a hand gesture and facial expression for your word before time runs out.</p></li><li><strong>Freeze together</strong><p>When time is up, everyone except the seeker simultaneously holds a frozen hand gesture and facial expression.</p></li><li><strong>Read the room</strong><p>The seeker guesses each player’s word: place their coin O-side up or ☆-side up, or remove the coin for a blank result.</p></li><li><strong>Reveal & score</strong><p>Lift the screens. The team scores 1 point per correct guess, plus 3 bonus points if every guess is correct.</p></li><li><strong>Pass the role</strong><p>The player to the seeker’s left becomes the next seeker. Play all 10 cards, then compare the team’s total with the grade table.</p></li></ol><figure class=\"ss-figure\"><img src=\"/proto/assets/tangent-code-gestures.webp\" alt=\"Players holding gestures while the seeker chooses O, star, or blank.\" loading=\"lazy\"></figure>"
-                ],
-                [
-                    "scoring",
-                    "4. Scoring, Game End & Grades",
-                    "<p>The team earns <strong>1 point per correct guess</strong> and <strong>3 extra points</strong> if the seeker guesses every player correctly. After each round, the role passes to the player on the seeker’s left. The game ends after all <strong>10 cards</strong> are played.</p><table class=\"physical-grade-table\"><thead><tr><th>Team score</th><th>Grade</th></tr></thead><tbody><tr><td>40+</td><td>SSS</td></tr><tr><td>35–39</td><td>SS</td></tr><tr><td>30–34</td><td>S</td></tr><tr><td>25–29</td><td>A</td></tr><tr><td>20–24</td><td>B</td></tr><tr><td>15–19</td><td>C</td></tr><tr><td>10–14</td><td>D</td></tr><tr><td>0–9</td><td>F</td></tr></tbody></table>"
-                ]
-            ],
-            "ko": [
-                [
-                    "components",
-                    "1. 구성물과 기호",
-                    "<ul><li><strong>8</strong> 가림막</li><li><strong>8</strong> 주사위 (O / O / ☆ / ☆ / 빈칸 / 빈칸)</li><li><strong>8</strong> O / ☆ 양면 동전</li><li><strong>80</strong> 단어 카드</li><li><strong>약 50점</strong> 점수 토큰</li><li><strong>1</strong> 특수 10초 타이머</li></ul><p>주사위의 여섯 면은 <strong>O / O / ☆ / ☆ / 빈칸 / 빈칸</strong>입니다. 단어 카드의 위쪽은 O, 가운데는 빈칸, 아래쪽은 ☆에 해당하며, 동전에는 O와 ☆가 앞뒤로 표시되어 있습니다.</p><p>특수 타이머는 큰 소리로 카운트다운하며 <strong>10초</strong> 뒤에 끝납니다.</p>"
-                ],
-                [
-                    "setup",
-                    "2. 게임 준비",
-                    "<p>각 플레이어에게 가림막과 주사위를 주고 가림막 앞에 동전을 놓습니다. 단어 카드 10장을 무작위로 골라 덱을 만들고, 점수 토큰과 타이머를 준비한 뒤 첫 술래를 정합니다.</p><figure class=\"ss-figure\"><img src=\"/proto/assets/tangent-code-table.webp\" alt=\"가림막, 주사위, O·별 동전, 단어 카드, 점수 토큰, 타이머를 배치한 탠전트 코드 테이블.\" loading=\"lazy\"><figcaption>실제 손동작과 표정을 읽는 현장 플레이가 핵심인 프로토타입입니다. 웹 데모는 제공하지 않습니다.</figcaption></figure>"
-                ],
-                [
-                    "play",
-                    "3. 플레이 방법",
-                    "<ol class=\"physical-rule-steps\"><li><strong>게임 준비</strong><p>각 플레이어에게 가림막과 주사위를 주고 가림막 앞에 동전을 놓습니다. 단어 카드 10장을 무작위로 골라 덱을 만들고, 점수 토큰과 타이머를 준비한 뒤 첫 술래를 정합니다.</p></li><li><strong>카드 공개와 주사위</strong><p>술래가 카드 한 장을 공개하고 10초 타이머를 시작합니다. 나머지 플레이어는 가림막 뒤에서 주사위를 굴려 O, ☆, 빈칸 중 결과를 확인합니다.</p></li><li><strong>표현 생각하기</strong><p>카드의 위쪽 단어는 O, 아래쪽 단어는 ☆, 가운데 단어는 빈칸에 해당합니다. 시간이 끝나기 전에 자신의 단어를 표현할 손동작과 표정을 생각합니다.</p></li><li><strong>동시에 멈춘 자세</strong><p>시간이 끝나면 술래를 제외한 모두가 손동작과 표정만으로 단어를 동시에 표현하고 그 자세를 유지합니다.</p></li><li><strong>술래의 추리</strong><p>술래는 각 플레이어가 표현한 단어를 추리합니다. O 또는 ☆라고 생각하면 동전의 해당 면을 위로 놓고, 빈칸이라면 동전을 치웁니다.</p></li><li><strong>공개와 점수</strong><p>가림막을 들어 결과를 공개합니다. 맞힌 사람마다 팀 점수 1점을 얻고, 전원을 맞히면 추가 3점을 얻습니다.</p></li><li><strong>술래 교대</strong><p>술래 왼쪽 사람이 다음 술래가 됩니다. 준비한 카드 10장을 모두 플레이한 뒤 팀 총점으로 등급을 확인합니다.</p></li></ol><figure class=\"ss-figure\"><img src=\"/proto/assets/tangent-code-gestures.webp\" alt=\"멈춘 자세를 표현하는 플레이어들과 O·별·빈칸을 추리하는 술래.\" loading=\"lazy\"></figure>"
-                ],
-                [
-                    "scoring",
-                    "4. 점수·게임 종료·등급",
-                    "<p>맞힌 사람마다 <strong>팀 점수 1점</strong>을 얻으며, 전원을 맞히면 <strong>추가 3점</strong>을 얻습니다. 매 라운드 술래 왼쪽 사람이 다음 술래가 됩니다. 준비한 <strong>카드 10장</strong>을 모두 플레이하면 게임이 끝납니다.</p><table class=\"physical-grade-table\"><thead><tr><th>팀 총점</th><th>등급</th></tr></thead><tbody><tr><td>40+</td><td>SSS</td></tr><tr><td>35–39</td><td>SS</td></tr><tr><td>30–34</td><td>S</td></tr><tr><td>25–29</td><td>A</td></tr><tr><td>20–24</td><td>B</td></tr><tr><td>15–19</td><td>C</td></tr><tr><td>10–14</td><td>D</td></tr><tr><td>0–9</td><td>F</td></tr></tbody></table>"
-                ]
-            ]
-        }
-    },
     "dondurma": {
         "name": {
             "en": "Dondurma",

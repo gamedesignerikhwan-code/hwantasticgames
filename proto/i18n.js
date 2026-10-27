@@ -15,16 +15,6 @@
         actions: ['소개서', '규칙서', '플레이'],
         rulebookSoon: '규칙서는 곧 공개됩니다',
         cards: {
-            "card-tangent-code": {
-                "subtitle": "멈춘 손동작 & 협력 단어 추리",
-                "desc": "말없이 서로의 생각을 읽어 보세요. 주사위를 비밀리에 굴리고, 손동작과 표정으로 단어를 동시에 표현합니다. 술래가 모두의 뜻을 맞히도록 돕는 협력 파티 게임입니다.",
-                "meta": [
-                    "2–8명",
-                    "10–15분",
-                    "8세 이상",
-                    "협력"
-                ]
-            },
             "card-dondurma": {
                 "subtitle": "아이스크림 트릭 & 동시 손재주",
                 "desc": "내 아이스크림을 콘 위에 지키면서 벨크로 막대로 상대 아이스크림을 가져오세요. 튀르키예 아이스크림의 장난스러운 움직임에서 착안한 짧고 직관적인 패밀리 손재주 게임으로, 마지막까지 남으면 승리합니다.",
@@ -46,16 +36,6 @@
                 desc: '한국 전통 공동 농경 문화인 두레에서 영감을 받은 전략 타일 배치 게임입니다. 길을 연결하고 노동력과 자원을 함께 관리해 번영하는 마을을 만들어 보세요.',
                 meta: ['2–4명', '20–30분', '타일 배치', '자원 관리']
             },
-            'card-waffle-pop': {
-                subtitle: '3D 토핑 & 패턴 완성 디저트 보드게임',
-                desc: '사랑스럽고 전술적인 디저트 보드게임! 좌표 카드를 드래프트하고, 3층 구조의 4×4 와플 판에서 공간 패턴 미션을 완성해 다양한 점수 조합의 달콤한 토핑을 수확하세요.',
-                meta: ['2–4명', '20–30분', '패턴 만들기', '세트 컬렉션']
-            },
-            'card-orchards': {
-                subtitle: '타일 드래프트 & 수확 전략 보드게임',
-                desc: '생동감 넘치는 전술 타일 드래프트와 과수원 건설 게임! 손의 타일로 동시에 입찰해 시장 타일을 가져오고, 지형이 나뉜 타일로 정원을 확장하며 과일을 수확하고 일꾼 다수를 차지하세요.',
-                meta: ['2–5명', '25–40분', '타일 드래프트', '수확 점수']
-            },
             'card-rotato': {
                 subtitle: '중력 낙하 & 변 회전 연결 보드게임',
                 desc: '역동적인 공간 퍼즐과 타일 드래프트 게임! 테트리스처럼 3열 보드에 타일을 떨어뜨리고, 맞닿은 변의 연쇄 회전을 일으켜 360° 회전을 완성한 타일로 점수를 얻으세요.',
@@ -65,11 +45,6 @@
                 subtitle: '엔진 빌딩 & 세트 컬렉션 보드게임',
                 desc: '독특한 드래프트 시스템을 갖춘 엔진 빌딩 세트 컬렉션 게임! 금·은·동 재료를 모아 강력한 물약을 만들고, 가장 명망 높은 연금술사의 자리를 차지하세요.',
                 meta: ['2–4명', '30–45분', '엔진 빌딩', '세트 컬렉션']
-            },
-            'card-square-pyramids': {
-                subtitle: '드래프트 & 피라미드 건설 카드 게임',
-                desc: '전략적인 드래프트와 건축 퍼즐을 결합한 피라미드 건설 카드 게임! 몸통·가장자리 카드 쌍을 가져와 4라운드 동안 층층이 쌓고, 꼭짓점과 교차 기호를 맞춘 뒤 각 층의 테두리를 완성해 다수와 배수 점수를 노리세요.',
-                meta: ['2–5명', '20–30분', '카드 드래프트', '피라미드 건설', '세트 매칭']
             },
             'card-drawing-game': {
                 subtitle: '비밀 선택 & 바다 캔버스 타일 배치',
@@ -183,12 +158,9 @@
             window.setRulebookLanguage(isKorean ? 'ko' : 'en');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'tamersRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'dooreRulebookModal');
-            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'waffleRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'alchemistsRulebookModal');
-            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'pyramidsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'rotatoRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'drawingGameRulebookModal');
-            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'orchardsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'starWindowRulebookModal');
         }
 
