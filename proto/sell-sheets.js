@@ -44,6 +44,82 @@
     };
 
     const SHEETS = {
+        'heavens-door': {
+            mark: '🚪',
+            name: { en: "Heaven's Door", ko: "헤븐스 도어" },
+            specs: [['2–4', 'players'], ['8+', 'ages'], ['30', 'minutes']],
+            tags: {
+                en: ['3D Tile Drafting', 'Set Collection', 'Variable Scoring'],
+                ko: ['3D 타일 드래프트', '세트 수집', '가변 점수 조건']
+            },
+            hero: {
+                en: {
+                    h: 'A stepped pyramid of matching pairs.',
+                    p: 'Draft two exposed tiles that share a color or symbol, organize your constellation across 6 personal scoring tracks, and turn identical pairs into game-winning combos.'
+                },
+                ko: {
+                    h: '계단식 피라미드에서 찾는 일치의 문.',
+                    p: '색상이나 기호가 일치하는 외곽 타일 2장을 드래프트하고, 6개 기호 열과 양면 점수 타일을 조합해 콤보와 세트를 완성하세요.'
+                }
+            },
+            points: {
+                en: [
+                    'A <strong>beautiful 3D stepped pyramid drafting mechanic</strong>: only uncovered tiles with an exposed outer edge can be taken.',
+                    '<strong>Double-sided scoring condition tiles (Type A / Type B)</strong>: choose your scoring mode or mix and match for endless replayability.',
+                    '<strong>Tactical Combo & Duplicate rules</strong>: draft completely identical pairs for 7 VP combos, or manage duplicate colors to maximize bonuses.'
+                ],
+                ko: [
+                    '<strong>아름다운 3D 계단식 피라미드 드래프트</strong>: 덮여 있지 않고 외곽에 노출된 타일만 가져올 수 있습니다.',
+                    '<strong>양면 점수 조건 타일 (Type A / Type B)</strong>: 표준 밸런스형과 고득점 전략형을 선택하거나 혼합해 무한한 리플레이성을 제공합니다.',
+                    '<strong>전술적인 콤보 & 중복 규칙</strong>: 완전 일치 쌍으로 7점 콤보를 터뜨리고, 중복 타일을 관리해 점수를 극대화합니다.'
+                ]
+            },
+            steps: {
+                en: [
+                    ['Stack the pyramid', 'Form the stepped pyramid based on player count (2P: 6×5 & 5×4 layers; 3P: 7×6 & 6×5; 4P: 7×6, 6×5 & 5×4). The top layer is face up, lower layers randomized.'],
+                    ['Draft a pair', 'On your turn, choose two acquirable tiles (visible and possessing at least one exposed edge) that match in either Color or Symbol.'],
+                    ['Resolve combos & duplicates', 'Completely identical pairs yield 1 tile for your board and 1 for the COMBO stack (+7 VP). Tiles with duplicate colors on an existing symbol go to DUPLICATE (+2 VP).'],
+                    ['Place on personal board', 'Place new symbols in left-to-right order into your 6 column slots. In mixed mode, choose Type A or B for newly placed symbols.'],
+                    ['Reveal lower tiles', 'When tiles are removed, any newly uncovered face-down tiles flip face-up immediately.'],
+                    ['Score after 10 turns', 'After 10 turns (20 tiles collected per player), score symbol conditions, set collection bonus (up to 30 VP), combos, and duplicates. Highest total wins!']
+                ],
+                ko: [
+                    ['피라미드 적재', '인원수에 맞게 계단식 피라미드를 쌓습니다 (2인: 6×5 및 5×4층, 3인: 7×6 및 6×5층, 4인: 7×6, 6×5 및 5×4층). 최상층은 앞면, 아래층은 무작위로 놓습니다.'],
+                    ['타일 쌍 드래프트', '자신의 차례에 색상 또는 기호가 일치하는 획득 가능 타일(앞면 노출 및 외곽 모서리 노출) 2장을 가져옵니다.'],
+                    ['콤보 & 중복 처리', '색상과 기호가 완전 일치하는 쌍은 1장을 보드에, 1장을 콤보 스택(+7점)에 놓습니다. 기존 기호에 이미 있는 색상은 중복 스택(+2점)으로 갑니다.'],
+                    ['개인 보드 배치', '가져온 기호는 왼쪽부터 6개 열에 순서대로 배치합니다. 혼합 모드에서는 처음 놓는 기호의 A/B면을 결정합니다.'],
+                    ['뒷면 타일 공개', '타일이 빠져 아래층 타일이 완전히 드러나면 즉시 앞면으로 뒤집습니다.'],
+                    ['10턴 후 최종 계산', '각자 10턴(총 20장)을 진행한 뒤 기호별 점수, 세트 보너스(최대 30점), 콤보(장당 7점), 중복(장당 2점)을 합산하여 승자를 가립니다.']
+                ]
+            },
+            scoring: {
+                single: {
+                    en: '🚪 6 Symbol scoring conditions + Set bonus (0~30 VP) + Combos (7 VP) + Duplicates (2 VP)',
+                    ko: '🚪 6종 기호 점수 + 세트 보너스(0~30점) + 콤보(장당 7점) + 중복(장당 2점)'
+                },
+                note: {
+                    en: 'Type A offers stable tactical milestones, while Type B rewards exponential quadratic planning (N+1)². The player with the highest total score wins.',
+                    ko: 'Type A는 안정적인 단계별 목표를, Type B는 (N+1)² 제곱 형태의 공격적인 고득점 기회를 제공합니다. 총점이 가장 높은 플레이어가 승리합니다.'
+                }
+            },
+            components: {
+                en: [['96', 'Game Tiles (6 symbols × 8 colors × 2)', 'fa-layer-group'], ['4', 'Personal Boards', 'fa-table-cells'], ['32', 'Personal Scoring & Combo Tiles', 'fa-gem']],
+                ko: [['96', '게임 타일 (6종 기호 × 8종 색상 × 2장)', 'fa-layer-group'], ['4', '개인 보드', 'fa-table-cells'], ['32', '개인 점수 & 콤보 타일', 'fa-gem']]
+            },
+            figure: {
+                src: { en: '/proto/assets/tangent-code-table.webp', ko: '/proto/assets/tangent-code-table.webp' },
+                alt: {
+                    en: "Heaven's Door 3D tile pyramid and personal board setup.",
+                    ko: '헤븐스 도어 3D 타일 피라미드와 개인 보드 배치.'
+                },
+                caption: {
+                    en: 'Play the full digital prototype in your browser — draft against AI and experience the layered 3D puzzle firsthand.',
+                    ko: '브라우저에서 전체 디지털 프로토타입을 AI를 상대로 직접 플레이하며 3D 피라미드 퍼즐을 경험해 보세요.'
+                }
+            },
+            play: '/proto/heavens-door/'
+        },
+
         "dondurma": {
             "mark": "🍦",
             "name": {

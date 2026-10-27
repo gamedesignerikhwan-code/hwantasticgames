@@ -26,6 +26,12 @@
                 ]
             },
 
+            
+            'card-heavens-door': {
+                subtitle: '3D 피라미드 타일 드래프트 & 세트 컬렉션',
+                desc: '매혹적인 3D 계단식 피라미드 타일 드래프트 게임! 색상이나 기호가 일치하는 외곽 타일 2장을 선택해 가져오고, 6종 기호 열과 양면 점수 조건(A/B)을 조합해 콤보와 다채로운 세트 점수를 달성하세요.',
+                meta: ['2–4명', '30분', '3D 타일 드래프트', '세트 컬렉션', '가변 점수 조건']
+            },
             'card-tamers': {
                 subtitle: '트릭테이킹 & 예측 카드 게임',
                 desc: '동물 조련사들의 팽팽한 심리 트릭테이킹 게임! 매 라운드 획득할 트릭 수를 정확히 예측하고, 수트 규칙과 특수 능력 카드를 활용해 선언한 수를 정밀하게 맞혀 보세요.',
@@ -157,6 +163,7 @@
         if (typeof window.setRulebookLanguage === 'function') {
             window.setRulebookLanguage(isKorean ? 'ko' : 'en');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'tamersRulebookModal');
+            window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'heavensDoorRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'dooreRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'alchemistsRulebookModal');
             window.setRulebookLanguage(isKorean ? 'ko' : 'en', 'rotatoRulebookModal');

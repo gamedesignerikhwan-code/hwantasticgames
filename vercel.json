@@ -4,6 +4,8 @@
   "rewrites": [
     { "source": "/proto", "destination": "/proto/index.html" },
     { "source": "/proto/", "destination": "/proto/index.html" },
+    { "source": "/proto/heavens-door", "destination": "/proto/heavens-door/index.html" },
+    { "source": "/proto/heavens-door/", "destination": "/proto/heavens-door/index.html" },
     { "source": "/proto.css", "destination": "/proto/proto.css" }
   ]
 }

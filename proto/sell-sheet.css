@@ -34,6 +34,13 @@
     --ss-accent-soft: #fbeae8;
 }
 
+
+.sell-sheet-card.ss-heavens-door {
+    --ss-accent: #f59e0b;
+    --ss-accent-dark: #b45309;
+    --ss-accent-soft: #fef3c7;
+}
+
 .sell-sheet-card.ss-tamers {
     --ss-accent: #e8734a;
     --ss-accent-dark: #c25428;

@@ -322,6 +322,60 @@ html[lang="ko"] .proto-modal-title {
     transform: translateX(28px) rotate(18deg);
 }
 
+
+/* Heaven's Door Art */
+.thumb-heavens-door {
+    background: radial-gradient(circle at 60% 40%, #f59e0b 0%, #78350f 100%);
+}
+
+.mini-heavens-door-art {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.hd-thumb-tier {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hd-thumb-chip {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hd-thumb-chip.c1 { background: #3b82f6; color: #fff; }
+.hd-thumb-chip.c2 { background: #ef4444; color: #fff; }
+.hd-thumb-chip.c3 { background: #22c55e; color: #fff; }
+.hd-thumb-chip.c4 { background: #a855f7; color: #fff; }
+.hd-thumb-chip.c5 { background: #fbbf24; color: #78350f; }
+
+.proto-card-row:hover .hd-thumb-chip.c5 {
+    transform: translateY(-4px) scale(1.15);
+}
+.proto-card-row:hover .hd-thumb-chip.c1 {
+    transform: translate(-3px, 1px);
+}
+.proto-card-row:hover .hd-thumb-chip.c4 {
+    transform: translate(3px, 1px);
+}
+
 /* Doore Tile Art (Doore) */
 .mini-doore-art {
     position: relative;
