@@ -3,8 +3,13 @@
 
     // Game Constants
     const SYMBOLS = ['triangle', 'trapezoid', 'square', 'circle', 'star', 'hexagon'];
-    const COLORS = ['black', 'red', 'yellow', 'green', 'blue', 'purple', 'gray', 'white'];
+    const COLORS = ['black', 'red', 'yellow', 'green', 'blue', 'purple', 'orange', 'white'];
     
+        const COLOR_NAMES = {
+        en: { black: 'Black', red: 'Red', yellow: 'Yellow', green: 'Green', blue: 'Blue', purple: 'Purple', orange: 'Orange', white: 'White', gray: 'Orange' },
+        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' }
+    };
+
     const SYMBOL_NAMES = {
         en: { triangle: 'Triangle', trapezoid: 'Trapezoid', square: 'Square', circle: 'Circle', star: 'Star', hexagon: 'Hexagon' },
         ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' }
@@ -873,6 +878,7 @@
 
                     const el = document.createElement('div');
                     el.className = `hd-tile tile-color-${tile.color}`;
+                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (state.lang === 'ko' ? '뒷면 타일' : 'Face-down tile');
 
                     if (!tile.faceUp) {
                         el.classList.add('face-down');
@@ -941,7 +947,7 @@
                             <span class="pb-bonus-indicator">+${setVal} VP</span>
                             <div class="pb-tile-stack">
                                 ${col.tiles.map(t => `
-                                    <div class="mini-tile tile-color-${t.color}" title="${t.color} ${col.symbol}">
+                                    <div class="mini-tile tile-color-${t.color}" title="${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[t.color] || t.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[col.symbol] || col.symbol}">
                                         ${renderSymbolSvg(t.symbol)}
                                     </div>
                                 `).join('')}

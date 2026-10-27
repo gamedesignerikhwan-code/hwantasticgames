@@ -330,22 +330,28 @@ body {
 
 /* Tile Colors */
 .tile-color-black {
-    background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
-    border: 2px solid #64748b;
+    background: linear-gradient(135deg, #1e293b 0%, #020617 100%);
+    border: 2px solid #475569;
 }
 .tile-color-black .symbol-shape { fill: #f8fafc; }
 
 .tile-color-red {
     background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-    border: 2px solid #f87171;
+    border: 2px solid #fca5a5;
 }
 .tile-color-red .symbol-shape { fill: #ffffff; }
 
-.tile-color-yellow {
-    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-    border: 2px solid #fde68a;
+.tile-color-orange {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+    border: 2px solid #fed7aa;
 }
-.tile-color-yellow .symbol-shape { fill: #78350f; }
+.tile-color-orange .symbol-shape { fill: #ffffff; }
+
+.tile-color-yellow {
+    background: linear-gradient(135deg, #fef08a 0%, #eab308 100%);
+    border: 2px solid #fef9c3;
+}
+.tile-color-yellow .symbol-shape { fill: #713f12; }
 
 .tile-color-green {
     background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
@@ -365,17 +371,18 @@ body {
 }
 .tile-color-purple .symbol-shape { fill: #ffffff; }
 
-.tile-color-gray {
-    background: linear-gradient(135deg, #64748b 0%, #334155 100%);
-    border: 2px solid #94a3b8;
-}
-.tile-color-gray .symbol-shape { fill: #f8fafc; }
-
 .tile-color-white {
-    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-    border: 2px solid #94a3b8;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border: 2px solid #cbd5e1;
 }
-.tile-color-white .symbol-shape { fill: #1e293b; }
+.tile-color-white .symbol-shape { fill: #0f172a; }
+
+/* Fallback for gray -> maps to orange */
+.tile-color-gray {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+    border: 2px solid #fed7aa;
+}
+.tile-color-gray .symbol-shape { fill: #ffffff; }
 
 /* Players Area: Personal Boards */
 .players-area {

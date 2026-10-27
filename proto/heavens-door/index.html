@@ -353,22 +353,28 @@ body {
 
 /* Tile Colors */
 .tile-color-black {
-    background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
-    border: 2px solid #64748b;
+    background: linear-gradient(135deg, #1e293b 0%, #020617 100%);
+    border: 2px solid #475569;
 }
 .tile-color-black .symbol-shape { fill: #f8fafc; }
 
 .tile-color-red {
     background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-    border: 2px solid #f87171;
+    border: 2px solid #fca5a5;
 }
 .tile-color-red .symbol-shape { fill: #ffffff; }
 
-.tile-color-yellow {
-    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-    border: 2px solid #fde68a;
+.tile-color-orange {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+    border: 2px solid #fed7aa;
 }
-.tile-color-yellow .symbol-shape { fill: #78350f; }
+.tile-color-orange .symbol-shape { fill: #ffffff; }
+
+.tile-color-yellow {
+    background: linear-gradient(135deg, #fef08a 0%, #eab308 100%);
+    border: 2px solid #fef9c3;
+}
+.tile-color-yellow .symbol-shape { fill: #713f12; }
 
 .tile-color-green {
     background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
@@ -388,17 +394,18 @@ body {
 }
 .tile-color-purple .symbol-shape { fill: #ffffff; }
 
-.tile-color-gray {
-    background: linear-gradient(135deg, #64748b 0%, #334155 100%);
-    border: 2px solid #94a3b8;
-}
-.tile-color-gray .symbol-shape { fill: #f8fafc; }
-
 .tile-color-white {
-    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
-    border: 2px solid #94a3b8;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border: 2px solid #cbd5e1;
 }
-.tile-color-white .symbol-shape { fill: #1e293b; }
+.tile-color-white .symbol-shape { fill: #0f172a; }
+
+/* Fallback for gray -> maps to orange */
+.tile-color-gray {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+    border: 2px solid #fed7aa;
+}
+.tile-color-gray .symbol-shape { fill: #ffffff; }
 
 /* Players Area: Personal Boards */
 .players-area {
@@ -1284,8 +1291,13 @@ body {
 
     // Game Constants
     const SYMBOLS = ['triangle', 'trapezoid', 'square', 'circle', 'star', 'hexagon'];
-    const COLORS = ['black', 'red', 'yellow', 'green', 'blue', 'purple', 'gray', 'white'];
+    const COLORS = ['black', 'red', 'yellow', 'green', 'blue', 'purple', 'orange', 'white'];
     
+        const COLOR_NAMES = {
+        en: { black: 'Black', red: 'Red', yellow: 'Yellow', green: 'Green', blue: 'Blue', purple: 'Purple', orange: 'Orange', white: 'White', gray: 'Orange' },
+        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' }
+    };
+
     const SYMBOL_NAMES = {
         en: { triangle: 'Triangle', trapezoid: 'Trapezoid', square: 'Square', circle: 'Circle', star: 'Star', hexagon: 'Hexagon' },
         ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' }
@@ -2154,6 +2166,7 @@ body {
 
                     const el = document.createElement('div');
                     el.className = `hd-tile tile-color-${tile.color}`;
+                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (state.lang === 'ko' ? '뒷면 타일' : 'Face-down tile');
 
                     if (!tile.faceUp) {
                         el.classList.add('face-down');
@@ -2222,7 +2235,7 @@ body {
                             <span class="pb-bonus-indicator">+${setVal} VP</span>
                             <div class="pb-tile-stack">
                                 ${col.tiles.map(t => `
-                                    <div class="mini-tile tile-color-${t.color}" title="${t.color} ${col.symbol}">
+                                    <div class="mini-tile tile-color-${t.color}" title="${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[t.color] || t.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[col.symbol] || col.symbol}">
                                         ${renderSymbolSvg(t.symbol)}
                                     </div>
                                 `).join('')}
