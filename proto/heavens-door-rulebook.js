@@ -17,6 +17,8 @@
                     <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
                         <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', '${MODAL_ID}')">KO</button>
                         <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', '${MODAL_ID}')">EN</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="fr" onclick="setRulebookLanguage('fr', '${MODAL_ID}')">FR</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="de" onclick="setRulebookLanguage('de', '${MODAL_ID}')">DE</button>
                     </div>
                     <button type="button" class="proto-modal-close" onclick="closeModal('${MODAL_ID}')" aria-label="Close rulebook modal">
                         <i class="fa-solid fa-xmark"></i>
@@ -206,6 +208,23 @@
         </div>
     </div>
     `;
+
+
+    function setRulebookLanguage(lang, modalId = MODAL_ID) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        ['ko', 'en', 'fr', 'de'].forEach(l => {
+            modal.querySelectorAll(`.rb-content-${l}`).forEach(el => {
+                el.style.display = (l === lang) ? '' : 'none';
+            });
+            const t = modal.querySelector(`.rb-title-text-${l}`);
+            if (t) t.style.display = (l === lang) ? '' : 'none';
+        });
+        modal.querySelectorAll('.rb-lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.rbLang === lang);
+        });
+    }
+    window.setRulebookLanguage = setRulebookLanguage;
 
     function init() {
         if (!document.getElementById(MODAL_ID)) {

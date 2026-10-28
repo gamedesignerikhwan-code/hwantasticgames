@@ -1,26 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>헤븐스 도어 (Heaven's Door) | 환상적인 게임즈</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Base URL for safe asset resolution -->
-    <base href="/proto/heavens-door/">
-
-    <!-- External Fallback Stylesheet -->
-    <link rel="stylesheet" href="/proto/heavens-door/game.css">
-
-    <!-- Embedded Direct Stylesheet: Guarantees 100% styled rendering regardless of URL slashes or caching -->
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>헤븐스 도어 (Heaven's Door) | 환상적인 게임즈</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&amp;family=Outfit:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- FontAwesome Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Base URL for safe asset resolution -->
+<base href="/proto/heavens-door/"/>
+<!-- External Fallback Stylesheet -->
+<link href="/proto/heavens-door/game.css" rel="stylesheet"/>
+<!-- Embedded Direct Stylesheet: Guarantees 100% styled rendering regardless of URL slashes or caching -->
+<style>
 :root {
     --bg-page: #0f172a;
     --bg-card: rgba(30, 41, 59, 0.92);
@@ -1648,535 +1644,496 @@ body {
     </style>
 </head>
 <body>
-
-    <!-- Heaven's Door Game Entry / Landing Page (진입 화면) -->
-    <div class="game-entry-page" id="gameEntryPage">
-        <div class="entry-page-inner">
-            <!-- Top brand bar -->
-            <div class="entry-brand-bar">
-                <a href="/proto" class="entry-back-link">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span data-i18n-ko="프로토타입 목록" data-i18n-en="Prototypes Hub">프로토타입 목록</span>
-                </a>
-                <div class="entry-brand-logo">
-                    <span class="brand-subtag">HWANTASTIC GAMES · ORIGINAL PROTOTYPE</span>
-                </div>
-                <div class="entry-top-actions">
-                    <button type="button" class="btn-entry-tool" id="btnEntrySound" title="Sound Toggle">
-                        <i class="fa-solid fa-volume-high"></i>
-                    </button>
-                    <button type="button" class="btn-entry-tool" id="btnEntryLang">EN</button>
-                </div>
-            </div>
-
-            <!-- Hero Section -->
-            <div class="entry-hero-section">
-                <div class="entry-hero-badge">
-                    <i class="fa-solid fa-sparkles" style="color:var(--gold);"></i>
-                    <span data-i18n-ko="3D 피라미드 타일 드래프트 & 가변 점수 세트 컬렉션" data-i18n-en="3D Stepped Pyramid Tile Drafting & Variable Scoring">3D 피라미드 타일 드래프트 & 가변 점수 세트 컬렉션</span>
-                </div>
-
-                <div class="entry-hero-title">
-                    <h1 class="title-main">Heaven's Door</h1>
-                    <span class="title-sub">헤븐스 도어</span>
-                </div>
-
-                <p class="entry-hero-pitch" data-i18n-ko="계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요." data-i18n-en="Draft matching tile pairs from the 3D stepped pyramid, build personal scoring tracks, customize Type A & B rules, and achieve the highest celestial score!">
+<!-- Heaven's Door Game Entry / Landing Page (진입 화면) -->
+<div class="game-entry-page" id="gameEntryPage">
+<div class="entry-page-inner">
+<!-- Top brand bar -->
+<div class="entry-brand-bar">
+<a class="entry-back-link" href="/proto">
+<i class="fa-solid fa-arrow-left"></i>
+<span data-i18n-de="Prototypen-Übersicht" data-i18n-en="Prototypes Hub" data-i18n-fr="Accueil Prototypes" data-i18n-ko="프로토타입 목록">프로토타입 목록</span>
+</a>
+<div class="entry-brand-logo">
+<span class="brand-subtag">HWANTASTIC GAMES · ORIGINAL PROTOTYPE</span>
+</div>
+<div class="entry-top-actions">
+<button class="btn-entry-tool" id="btnEntrySound" title="Sound Toggle" type="button">
+<i class="fa-solid fa-volume-high"></i>
+</button>
+<button class="btn-entry-tool" id="btnEntryLang" type="button">EN</button>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="entry-hero-section">
+<div class="entry-hero-badge">
+<i class="fa-solid fa-sparkles" style="color:var(--gold);"></i>
+<span data-i18n-de="3D-Pyramiden-Plättchendraft &amp; Set-Sammlung mit variabler Wertung" data-i18n-en="3D Stepped Pyramid Tile Drafting &amp; Variable Scoring" data-i18n-fr="Draft de tuiles en pyramide 3D &amp; Collection de séries à score variable" data-i18n-ko="3D 피라미드 타일 드래프트 &amp; 가변 점수 세트 컬렉션">3D 피라미드 타일 드래프트 &amp; 가변 점수 세트 컬렉션</span>
+</div>
+<div class="entry-hero-title">
+<h1 class="title-main">Heaven's Door</h1>
+<span class="title-sub">헤븐스 도어</span>
+</div>
+<p class="entry-hero-pitch" data-i18n-de="Ziehe passende Plättchenpaare aus der 3D-Stufenpyramide, baue persönliche Wertungsleisten, passe Typ A- und B-Regeln an und erziele die höchste himmlische Punktzahl!" data-i18n-en="Draft matching tile pairs from the 3D stepped pyramid, build personal scoring tracks, customize Type A &amp; B rules, and achieve the highest celestial score!" data-i18n-fr="Draftez des paires de tuiles correspondantes dans la pyramide 3D à degrés, développez vos pistes de score, personnalisez vos règles A/B et atteignez le plus haut score céleste !" data-i18n-ko="계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.">
                     계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.
                 </p>
-
-                <!-- Key Visual / Animated Pyramid Preview -->
-                <div class="entry-pyramid-preview">
-                    <div class="entry-floating-tile t-1">▲</div>
-                    <div class="entry-floating-tile t-2">⏢</div>
-                    <div class="entry-floating-tile t-3">■</div>
-                    <div class="entry-pyramid-art">
-                        <div class="entry-pyramid-tier">
-                            <span class="tile-chip gold-star">★</span>
-                        </div>
-                        <div class="entry-pyramid-tier">
-                            <span class="tile-chip tc-blue">▲</span>
-                            <span class="tile-chip tc-green">■</span>
-                            <span class="tile-chip tc-purple">●</span>
-                        </div>
-                        <div class="entry-pyramid-tier">
-                            <span class="tile-chip tc-orange">⏢</span>
-                            <span class="tile-chip tc-red">★</span>
-                            <span class="tile-chip tc-rose">⬢</span>
-                            <span class="tile-chip tc-yellow">■</span>
-                        </div>
-                    </div>
-                    <div class="entry-floating-tile t-4">●</div>
-                    <div class="entry-floating-tile t-5">★</div>
-                    <div class="entry-floating-tile t-6">⬢</div>
-                </div>
-
-                <!-- Spec Meta Chips -->
-                <div class="entry-specs-row">
-                    <div class="entry-spec-pill">
-                        <i class="fa-solid fa-users"></i>
-                        <div>
-                            <strong data-i18n-ko="2~4인 플레이" data-i18n-en="2–4 Players">2~4인 플레이</strong>
-                            <span data-i18n-ko="나 vs AI 대전" data-i18n-en="You vs Smart AIs">나 vs AI 대전</span>
-                        </div>
-                    </div>
-                    <div class="entry-spec-pill">
-                        <i class="fa-solid fa-hourglass-half"></i>
-                        <div>
-                            <strong data-i18n-ko="30분 진행" data-i18n-en="30 Mins">30분 진행</strong>
-                            <span data-i18n-ko="총 10턴 (인당 20타일)" data-i18n-en="10 Turns (20 Tiles)">총 10턴 (인당 20타일)</span>
-                        </div>
-                    </div>
-                    <div class="entry-spec-pill">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <div>
-                            <strong data-i18n-ko="3D 피라미드" data-i18n-en="3D Stepped Pyramid">3D 피라미드</strong>
-                            <span data-i18n-ko="2~3층 입체 드래프트" data-i18n-en="Layered Drafting">2~3층 입체 드래프트</span>
-                        </div>
-                    </div>
-                    <div class="entry-spec-pill">
-                        <i class="fa-solid fa-sliders"></i>
-                        <div>
-                            <strong data-i18n-ko="가변 점수 공식" data-i18n-en="Variable Scoring">가변 점수 공식</strong>
-                            <span data-i18n-ko="6개 심볼 A/B면 선택" data-i18n-en="Type A & B Dual Sides">6개 심볼 A/B면 선택</span>
-                        </div>
-                    </div>
-                </div>
+<!-- Key Visual / Animated Pyramid Preview -->
+<div class="entry-pyramid-preview">
+<div class="entry-floating-tile t-1">▲</div>
+<div class="entry-floating-tile t-2">⏢</div>
+<div class="entry-floating-tile t-3">■</div>
+<div class="entry-pyramid-art">
+<div class="entry-pyramid-tier">
+<span class="tile-chip gold-star">★</span>
+</div>
+<div class="entry-pyramid-tier">
+<span class="tile-chip tc-blue">▲</span>
+<span class="tile-chip tc-green">■</span>
+<span class="tile-chip tc-purple">●</span>
+</div>
+<div class="entry-pyramid-tier">
+<span class="tile-chip tc-orange">⏢</span>
+<span class="tile-chip tc-red">★</span>
+<span class="tile-chip tc-rose">⬢</span>
+<span class="tile-chip tc-yellow">■</span>
+</div>
+</div>
+<div class="entry-floating-tile t-4">●</div>
+<div class="entry-floating-tile t-5">★</div>
+<div class="entry-floating-tile t-6">⬢</div>
+</div>
+<!-- Spec Meta Chips -->
+<div class="entry-specs-row">
+<div class="entry-spec-pill">
+<i class="fa-solid fa-users"></i>
+<div>
+<strong data-i18n-de="2–4 Spieler" data-i18n-en="2–4 Players" data-i18n-fr="2 à 4 joueurs" data-i18n-ko="2~4인 플레이">2~4인 플레이</strong>
+<span data-i18n-de="Du gegen smarte KIs" data-i18n-en="You vs Smart AIs" data-i18n-fr="Vous contre des IA" data-i18n-ko="나 vs AI 대전">나 vs AI 대전</span>
+</div>
+</div>
+<div class="entry-spec-pill">
+<i class="fa-solid fa-hourglass-half"></i>
+<div>
+<strong data-i18n-de="30 Minuten" data-i18n-en="30 Mins" data-i18n-fr="30 minutes" data-i18n-ko="30분 진행">30분 진행</strong>
+<span data-i18n-de="10 Runden (20 Plättchen)" data-i18n-en="10 Turns (20 Tiles)" data-i18n-fr="10 tours (20 tuiles / joueur)" data-i18n-ko="총 10턴 (인당 20타일)">총 10턴 (인당 20타일)</span>
+</div>
+</div>
+<div class="entry-spec-pill">
+<i class="fa-solid fa-layer-group"></i>
+<div>
+<strong data-i18n-de="3D-Pyramide" data-i18n-en="3D Stepped Pyramid" data-i18n-fr="Pyramide 3D" data-i18n-ko="3D 피라미드">3D 피라미드</strong>
+<span data-i18n-de="Mehrstufiger Draft" data-i18n-en="Layered Drafting" data-i18n-fr="Draft multiniveau" data-i18n-ko="2~3층 입체 드래프트">2~3층 입체 드래프트</span>
+</div>
+</div>
+<div class="entry-spec-pill">
+<i class="fa-solid fa-sliders"></i>
+<div>
+<strong data-i18n-de="Variable Wertung" data-i18n-en="Variable Scoring" data-i18n-fr="Score variable" data-i18n-ko="가변 점수 공식">가변 점수 공식</strong>
+<span data-i18n-de="6 Symbole mit A/B-Seiten" data-i18n-en="Type A &amp; B Dual Sides" data-i18n-fr="Faces A/B pour 6 symboles" data-i18n-ko="6개 심볼 A/B면 선택">6개 심볼 A/B면 선택</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Setup & Customization Controls -->
+<div class="entry-setup-section">
+<h2 class="entry-section-heading">
+<i class="fa-solid fa-gamepad" style="color:var(--gold);"></i>
+<span data-i18n-de="Spieleinstellungen" data-i18n-en="Game Setup Options" data-i18n-fr="Options de configuration" data-i18n-ko="게임 설정 선택">게임 설정 선택</span>
+</h2>
+<!-- Player Count Picker -->
+<div class="entry-picker-group">
+<label class="entry-picker-label" data-i18n-de="Spieleranzahl (Mensch vs. KI)" data-i18n-en="Player Count (Human vs AI)" data-i18n-fr="Nombre de joueurs (Humain vs IA)" data-i18n-ko="플레이어 수 (인간 vs AI 대전)">플레이어 수 (인간 vs AI 대전)</label>
+<div class="entry-cards-grid" id="entryPlayerCountPicker">
+<div class="entry-choice-card active" data-players="2">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span data-i18n-de="2 Spieler" data-i18n-en="2 Players" data-i18n-fr="2 joueurs" data-i18n-ko="2인 플레이">2인 플레이</span>
+<span class="card-rec-badge" data-i18n-de="Standard" data-i18n-en="Standard" data-i18n-fr="Recommandé" data-i18n-ko="기본 추천">기본 추천</span>
+</div>
+<div class="card-desc" data-i18n-de="Du vs. 1 KI · 2 Ebenen (50 Plättchen)" data-i18n-en="You vs 1 AI · 2 Layers (50 Tiles)" data-i18n-fr="Vous vs 1 IA · 2 niveaux (50 tuiles)" data-i18n-ko="나 vs AI 1명 · 2개 층 (50타일)">나 vs AI 1명 · 2개 층 (50타일)</div>
+</div>
+</div>
+<div class="entry-choice-card" data-players="3">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span data-i18n-de="3 Spieler" data-i18n-en="3 Players" data-i18n-fr="3 joueurs" data-i18n-ko="3인 플레이">3인 플레이</span>
+</div>
+<div class="card-desc" data-i18n-de="Du vs. 2 KIs · 2 Ebenen (72 Plättchen)" data-i18n-en="You vs 2 AIs · 2 Layers (72 Tiles)" data-i18n-fr="Vous vs 2 IA · 2 niveaux (72 tuiles)" data-i18n-ko="나 vs AI 2명 · 2개 층 (72타일)">나 vs AI 2명 · 2개 층 (72타일)</div>
+</div>
+</div>
+<div class="entry-choice-card" data-players="4">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span data-i18n-de="4 Spieler" data-i18n-en="4 Players" data-i18n-fr="4 joueurs" data-i18n-ko="4인 플레이">4인 플레이</span>
+</div>
+<div class="card-desc" data-i18n-de="Du vs. 3 KIs · 3 Ebenen (92 Plättchen)" data-i18n-en="You vs 3 AIs · 3 Layers (92 Tiles)" data-i18n-fr="Vous vs 3 IA · 3 niveaux (92 tuiles)" data-i18n-ko="나 vs AI 3명 · 3개 층 (92타일)">나 vs AI 3명 · 3개 층 (92타일)</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scoring Mode Picker -->
+<div class="entry-picker-group">
+<label class="entry-picker-label" data-i18n-de="Wertungsplättchen-Modus" data-i18n-en="Scoring Condition Mode" data-i18n-fr="Mode des tuiles de score" data-i18n-ko="점수 조건 타일 모드">점수 조건 타일 모드</label>
+<div class="entry-cards-grid" id="entryScoringModePicker">
+<div class="entry-choice-card active" data-mode="mixed">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span>🎲 <span data-i18n-de="Dynamische Wahl" data-i18n-en="Choose Dynamically" data-i18n-fr="Choix dynamique" data-i18n-ko="직접 선택 모드">직접 선택 모드</span></span>
+</div>
+<div class="card-desc" data-i18n-de="Wähle bei jedem neuen Symbol frei zwischen Typ A und B" data-i18n-en="Choose Type A or B dynamically each time you discover a new symbol" data-i18n-fr="Choisissez la face A ou B à chaque découverte d'un nouveau symbole" data-i18n-ko="새 기호를 얻을 때마다 A면 또는 B면을 직접 선택">새 기호를 얻을 때마다 A면 또는 B면을 직접 선택</div>
+</div>
+</div>
+<div class="entry-choice-card" data-mode="A">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span>⚡ <span data-i18n-de="Typ A-Modus" data-i18n-en="Type A Mode" data-i18n-fr="Mode Type A" data-i18n-ko="Type A 모드">Type A 모드</span></span>
+</div>
+<div class="card-desc" data-i18n-de="Verwendet Typ A-Regeln für alle 6 Symbole" data-i18n-en="All 6 symbols use Type A scoring rules" data-i18n-fr="Applique la règle de face A aux 6 symboles" data-i18n-ko="모든 6개 기호를 A면 규칙으로 적용">모든 6개 기호를 A면 규칙으로 적용</div>
+</div>
+</div>
+<div class="entry-choice-card" data-mode="B">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<span>🧠 <span data-i18n-de="Typ B-Modus" data-i18n-en="Type B Mode" data-i18n-fr="Mode Type B" data-i18n-ko="Type B 모드">Type B 모드</span></span>
+</div>
+<div class="card-desc" data-i18n-de="Verwendet Typ B-Regeln für alle 6 Symbole" data-i18n-en="All 6 symbols use Type B scoring rules" data-i18n-fr="Applique la règle de face B aux 6 symboles" data-i18n-ko="모든 6개 기호를 B면 규칙으로 적용">모든 6개 기호를 B면 규칙으로 적용</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 30-Second How to Play Guide -->
+<div class="entry-rules-summary">
+<h3 class="rules-summary-title">
+<i class="fa-solid fa-compass" style="color:var(--gold);"></i>
+<span data-i18n-de="30-Sekunden-Kurzanleitung" data-i18n-en="Quick How to Play (30-Sec Guide)" data-i18n-fr="Guide express en 30 secondes" data-i18n-ko="30초 핵심 룰 안내">30초 핵심 룰 안내</span>
+</h3>
+<div class="rules-steps-grid">
+<div class="rule-step-item">
+<div class="step-num">1</div>
+<div class="step-body">
+<strong data-i18n-de="2 passende Außenplättchen ziehen" data-i18n-en="Draft 2 Matching Tiles" data-i18n-fr="Draftez 2 tuiles extérieures concordantes" data-i18n-ko="일치하는 외곽 타일 2장 드래프트">일치하는 외곽 타일 2장 드래프트</strong>
+<p data-i18n-de="Nimm 2 offen am Pyramidenrand liegende Plättchen, die in Farbe oder Symbol übereinstimmen." data-i18n-en="Take 2 exposed tiles from the pyramid that match in Color or Symbol." data-i18n-fr="Prenez 2 tuiles face visible en bordure de pyramide partageant la même couleur ou le même symbole." data-i18n-ko="피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다.">피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다.</p>
+</div>
+</div>
+<div class="rule-step-item">
+<div class="step-num">2</div>
+<div class="step-body">
+<strong data-i18n-de="Tableau-Platzierung &amp; Kombos" data-i18n-en="Place Tiles &amp; Trigger Combos" data-i18n-fr="Placement &amp; Combos / Doublons" data-i18n-ko="보드 배치 &amp; 콤보 / 중복">보드 배치 &amp; 콤보 / 중복</strong>
+<p data-i18n-de="Symbole füllen Spalten von links nach rechts. Identische Paare geben [KOMBO 7 Punkte], doppelte Farben [DOPPELT 2 Punkte]!" data-i18n-en="Stack tiles in order. Identical pairs give [COMBO +7p], duplicate colors give [DUPLICATE +2p]!" data-i18n-fr="Chaque nouveau symbole commence une colonne. Une paire identique donne un [COMBO 7 pts], une couleur dupliquée un [DOUBLON 2 pts] !" data-i18n-ko="새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!">새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!</p>
+</div>
+</div>
+<div class="rule-step-item">
+<div class="step-num">3</div>
+<div class="step-body">
+<strong data-i18n-de="Nach 10 Runden: Set-Bonus &amp; Sieg" data-i18n-en="Score Points &amp; Victory" data-i18n-fr="Fin en 10 tours &amp; Bonus de série" data-i18n-ko="10턴 진행 후 세트 보너스 &amp; 승리">10턴 진행 후 세트 보너스 &amp; 승리</strong>
+<p data-i18n-de="Nach 10 Runden (20 Plättchen): Symbolpunkte + Set-Bonus (bis zu +30 P.) + Kombos zusammenzählen – höchste Punktzahl gewinnt!" data-i18n-en="After 10 turns (20 tiles), sum symbol points, set bonus (up to +30p), and combo points to crown the winner!" data-i18n-fr="Après 10 tours (20 tuiles), additionnez vos points de symboles, le bonus de 6 séries (jusqu'à +30 pts) et vos combos pour remporter la victoire !" data-i18n-ko="10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!">10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Buttons -->
+<div class="entry-cta-bar">
+<button class="btn-entry-primary" id="btnEntryStartGame" type="button">
+<i class="fa-solid fa-play"></i>
+<span data-i18n-de="Spiel starten" data-i18n-en="Start Game" data-i18n-fr="Démarrer la partie" data-i18n-ko="게임 시작하기">게임 시작하기</span>
+</button>
+<button class="btn-entry-secondary" id="btnEntryOpenRulebook" type="button">
+<i class="fa-solid fa-book-open"></i>
+<span data-i18n-de="Vollständiges Regelheft" data-i18n-en="Full Rulebook" data-i18n-fr="Livre de règles complet" data-i18n-ko="전체 규칙서">전체 규칙서</span>
+</button>
+</div>
+<!-- Footer -->
+<div class="entry-footer">
+<p>© 2026 Hwantastic Games. Designed by Ikhwan Kwon. All rights reserved.</p>
+</div>
+</div>
+</div>
+<!-- Header Navigation -->
+<header class="game-header">
+<div class="brand-section">
+<a class="back-link" href="/proto">
+<i class="fa-solid fa-arrow-left"></i>
+<span data-i18n-de="Prototypen" data-i18n-en="Prototypes" data-i18n-fr="Prototypes" data-i18n-ko="프로토타입 목록">프로토타입 목록</span>
+</a>
+<div class="game-title-group" id="btnTitleLobby" style="cursor:pointer;" title="진입 화면으로 이동">
+<h1>
+<span>Heaven's Door</span>
+<span style="font-size:0.95rem; opacity:0.8; font-weight:600;">(헤븐스 도어)</span>
+</h1>
+<small data-i18n-de="3D-Pyramiden-Plättchendraft &amp; Set-Sammlung" data-i18n-en="3D Pyramid Tile Drafting &amp; Set Collection" data-i18n-fr="Draft de tuiles en pyramide 3D &amp; Collection de séries" data-i18n-ko="3D 피라미드 타일 드래프트 &amp; 세트 컬렉션">3D 피라미드 타일 드래프트 &amp; 세트 컬렉션</small>
+</div>
+</div>
+<div class="turn-status-bar">
+<div class="status-badge" id="turnStatusBadge">
+<i class="fa-solid fa-hourglass-half"></i> 턴 1/10 · 내 차례
             </div>
-
-            <!-- Setup & Customization Controls -->
-            <div class="entry-setup-section">
-                <h2 class="entry-section-heading">
-                    <i class="fa-solid fa-gamepad" style="color:var(--gold);"></i>
-                    <span data-i18n-ko="게임 설정 선택" data-i18n-en="Game Setup Options">게임 설정 선택</span>
-                </h2>
-
-                <!-- Player Count Picker -->
-                <div class="entry-picker-group">
-                    <label class="entry-picker-label" data-i18n-ko="플레이어 수 (인간 vs AI 대전)" data-i18n-en="Player Count (Human vs AI)">플레이어 수 (인간 vs AI 대전)</label>
-                    <div class="entry-cards-grid" id="entryPlayerCountPicker">
-                        <div class="entry-choice-card active" data-players="2">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span data-i18n-ko="2인 플레이" data-i18n-en="2 Players">2인 플레이</span>
-                                    <span class="card-rec-badge" data-i18n-ko="기본 추천" data-i18n-en="Standard">기본 추천</span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="나 vs AI 1명 · 2개 층 (50타일)" data-i18n-en="You vs 1 AI · 2 Layers (50 Tiles)">나 vs AI 1명 · 2개 층 (50타일)</div>
-                            </div>
-                        </div>
-                        <div class="entry-choice-card" data-players="3">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span data-i18n-ko="3인 플레이" data-i18n-en="3 Players">3인 플레이</span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="나 vs AI 2명 · 2개 층 (72타일)" data-i18n-en="You vs 2 AIs · 2 Layers (72 Tiles)">나 vs AI 2명 · 2개 층 (72타일)</div>
-                            </div>
-                        </div>
-                        <div class="entry-choice-card" data-players="4">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span data-i18n-ko="4인 플레이" data-i18n-en="4 Players">4인 플레이</span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="나 vs AI 3명 · 3개 층 (92타일)" data-i18n-en="You vs 3 AIs · 3 Layers (92 Tiles)">나 vs AI 3명 · 3개 층 (92타일)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scoring Mode Picker -->
-                <div class="entry-picker-group">
-                    <label class="entry-picker-label" data-i18n-ko="점수 조건 타일 모드" data-i18n-en="Scoring Condition Mode">점수 조건 타일 모드</label>
-                    <div class="entry-cards-grid" id="entryScoringModePicker">
-                        <div class="entry-choice-card active" data-mode="mixed">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span>🎲 <span data-i18n-ko="직접 선택 모드" data-i18n-en="Choose Dynamically">직접 선택 모드</span></span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="새 기호를 얻을 때마다 A면 또는 B면을 직접 선택" data-i18n-en="Choose Type A or B dynamically each time you discover a new symbol">새 기호를 얻을 때마다 A면 또는 B면을 직접 선택</div>
-                            </div>
-                        </div>
-                        <div class="entry-choice-card" data-mode="A">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span>⚡ <span data-i18n-ko="Type A 모드" data-i18n-en="Type A Mode">Type A 모드</span></span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="모든 6개 기호를 A면 규칙으로 적용" data-i18n-en="All 6 symbols use Type A scoring rules">모든 6개 기호를 A면 규칙으로 적용</div>
-                            </div>
-                        </div>
-                        <div class="entry-choice-card" data-mode="B">
-                            <div class="card-radio-circle"></div>
-                            <div class="card-content">
-                                <div class="card-title">
-                                    <span>🧠 <span data-i18n-ko="Type B 모드" data-i18n-en="Type B Mode">Type B 모드</span></span>
-                                </div>
-                                <div class="card-desc" data-i18n-ko="모든 6개 기호를 B면 규칙으로 적용" data-i18n-en="All 6 symbols use Type B scoring rules">모든 6개 기호를 B면 규칙으로 적용</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+</div>
+<div class="header-actions">
+<button class="btn-header" id="btnEntryLobby" title="게임 진입 화면 / 설정" type="button">
+<i class="fa-solid fa-house"></i>
+<span data-i18n-de="Startseite" data-i18n-en="Home" data-i18n-fr="Accueil" data-i18n-ko="진입 화면">진입 화면</span>
+</button>
+<button class="btn-header" id="btnSoundSwitch" title="Sound Toggle" type="button">
+<i class="fa-solid fa-volume-high"></i>
+</button>
+<button class="btn-header" id="btnRulebook" type="button">
+<i class="fa-solid fa-book-open"></i>
+<span data-i18n-de="Regeln" data-i18n-en="Rules" data-i18n-fr="Règles" data-i18n-ko="규칙서">규칙서</span>
+</button>
+<button class="btn-header" id="btnNewGame" type="button">
+<i class="fa-solid fa-rotate-right"></i>
+<span data-i18n-de="Neues Spiel" data-i18n-en="New Game" data-i18n-fr="Nouvelle partie" data-i18n-ko="새 게임">새 게임</span>
+</button>
+<button class="btn-header" id="btnLangSwitch" type="button">EN</button>
+</div>
+</header>
+<!-- Main Game Container -->
+<main class="game-container">
+<!-- Prompt Guidance Banner -->
+<div class="prompt-banner">
+<div class="prompt-text" id="promptText">
+<i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)
             </div>
-
-            <!-- 30-Second How to Play Guide -->
-            <div class="entry-rules-summary">
-                <h3 class="rules-summary-title">
-                    <i class="fa-solid fa-compass" style="color:var(--gold);"></i>
-                    <span data-i18n-ko="30초 핵심 룰 안내" data-i18n-en="Quick How to Play (30-Sec Guide)">30초 핵심 룰 안내</span>
-                </h3>
-                <div class="rules-steps-grid">
-                    <div class="rule-step-item">
-                        <div class="step-num">1</div>
-                        <div class="step-body">
-                            <strong data-i18n-ko="일치하는 외곽 타일 2장 드래프트" data-i18n-en="Draft 2 Matching Tiles">일치하는 외곽 타일 2장 드래프트</strong>
-                            <p data-i18n-ko="피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다." data-i18n-en="Take 2 exposed tiles from the pyramid that match in Color or Symbol.">피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다.</p>
-                        </div>
-                    </div>
-                    <div class="rule-step-item">
-                        <div class="step-num">2</div>
-                        <div class="step-body">
-                            <strong data-i18n-ko="보드 배치 & 콤보 / 중복" data-i18n-en="Place Tiles & Trigger Combos">보드 배치 & 콤보 / 중복</strong>
-                            <p data-i18n-ko="새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!" data-i18n-en="Stack tiles in order. Identical pairs give [COMBO +7p], duplicate colors give [DUPLICATE +2p]!">새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!</p>
-                        </div>
-                    </div>
-                    <div class="rule-step-item">
-                        <div class="step-num">3</div>
-                        <div class="step-body">
-                            <strong data-i18n-ko="10턴 진행 후 세트 보너스 & 승리" data-i18n-en="Score Points & Victory">10턴 진행 후 세트 보너스 & 승리</strong>
-                            <p data-i18n-ko="10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!" data-i18n-en="After 10 turns (20 tiles), sum symbol points, set bonus (up to +30p), and combo points to crown the winner!">10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action Buttons -->
-            <div class="entry-cta-bar">
-                <button type="button" class="btn-entry-primary" id="btnEntryStartGame">
-                    <i class="fa-solid fa-play"></i>
-                    <span data-i18n-ko="게임 시작하기" data-i18n-en="Start Game">게임 시작하기</span>
-                </button>
-                <button type="button" class="btn-entry-secondary" id="btnEntryOpenRulebook">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span data-i18n-ko="전체 규칙서" data-i18n-en="Full Rulebook">전체 규칙서</span>
-                </button>
-            </div>
-
-            <!-- Footer -->
-            <div class="entry-footer">
-                <p>&copy; 2026 Hwantastic Games. Designed by Ikhwan Kwon. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header Navigation -->
-    <header class="game-header">
-        <div class="brand-section">
-            <a href="/proto" class="back-link">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span data-i18n-ko="프로토타입 목록" data-i18n-en="Prototypes">프로토타입 목록</span>
-            </a>
-            <div class="game-title-group" id="btnTitleLobby" style="cursor:pointer;" title="진입 화면으로 이동">
-                <h1>
-                    <span>Heaven's Door</span>
-                    <span style="font-size:0.95rem; opacity:0.8; font-weight:600;">(헤븐스 도어)</span>
-                </h1>
-                <small data-i18n-ko="3D 피라미드 타일 드래프트 & 세트 컬렉션" data-i18n-en="3D Pyramid Tile Drafting & Set Collection">3D 피라미드 타일 드래프트 & 세트 컬렉션</small>
-            </div>
-        </div>
-
-        <div class="turn-status-bar">
-            <div class="status-badge" id="turnStatusBadge">
-                <i class="fa-solid fa-hourglass-half"></i> 턴 1/10 · 내 차례
-            </div>
-        </div>
-
-        <div class="header-actions">
-            <button type="button" class="btn-header" id="btnEntryLobby" title="게임 진입 화면 / 설정">
-                <i class="fa-solid fa-house"></i>
-                <span data-i18n-ko="진입 화면" data-i18n-en="Home">진입 화면</span>
-            </button>
-            <button type="button" class="btn-header" id="btnSoundSwitch" title="Sound Toggle">
-                <i class="fa-solid fa-volume-high"></i>
-            </button>
-            <button type="button" class="btn-header" id="btnRulebook">
-                <i class="fa-solid fa-book-open"></i>
-                <span data-i18n-ko="규칙서" data-i18n-en="Rules">규칙서</span>
-            </button>
-            <button type="button" class="btn-header" id="btnNewGame">
-                <i class="fa-solid fa-rotate-right"></i>
-                <span data-i18n-ko="새 게임" data-i18n-en="New Game">새 게임</span>
-            </button>
-            <button type="button" class="btn-header" id="btnLangSwitch">EN</button>
-        </div>
-    </header>
-
-    <!-- Main Game Container -->
-    <main class="game-container">
-        
-        <!-- Prompt Guidance Banner -->
-        <div class="prompt-banner">
-            <div class="prompt-text" id="promptText">
-                <i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)
-            </div>
-            <div class="prompt-help" data-i18n-ko="규칙: 색상 또는 기호가 일치하는 2개 타일 획득" data-i18n-en="Rule: Take 2 tiles matching in Color or Symbol">
+<div class="prompt-help" data-i18n-de="Regel: 2 Plättchen mit übereinstimmender Farbe oder Symbol nehmen" data-i18n-en="Rule: Take 2 tiles matching in Color or Symbol" data-i18n-fr="Règle : prenez 2 tuiles concordantes par couleur ou symbole" data-i18n-ko="규칙: 색상 또는 기호가 일치하는 2개 타일 획득">
                 규칙: 색상 또는 기호가 일치하는 2개 타일 획득
             </div>
-        </div>
-
-        <!-- Top Play Zone: Board on Left, Scoring Rules on Right -->
-        <div class="game-play-area">
-            <!-- 3D Pyramid Board Area (Left) -->
-            <section class="board-area">
-                <div class="board-header">
-                    <h3>
-                        <i class="fa-solid fa-layer-group" style="color:var(--gold);"></i>
-                        <span data-i18n-ko="피라미드 타일 보드" data-i18n-en="Pyramid Tile Board">피라미드 타일 보드</span>
-                    </h3>
-                    <div class="board-legend">
-                        <div class="legend-item">
-                            <span class="legend-dot acquirable"></span>
-                            <span data-i18n-ko="획득 가능 (외곽)" data-i18n-en="Acquirable">획득 가능 (외곽)</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot covered"></span>
-                            <span data-i18n-ko="내부 / 덮임" data-i18n-en="Covered">내부 / 덮임</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pyramid-stage">
-                    <div class="pyramid-grid-wrap" id="pyramidGridWrap">
-                        <!-- Injected dynamically by game engine -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Symbol Scoring Reference Guide (Right) -->
-            <section class="scoring-guide-section" id="scoringGuideSection">
-                <div class="scoring-guide-header">
-                    <div class="scoring-guide-title">
-                        <i class="fa-solid fa-list-check" style="color:var(--gold);"></i>
-                        <span data-i18n-ko="심볼별 스코어링 규칙" data-i18n-en="Symbol Scoring Rules">심볼별 스코어링 규칙</span>
-                    </div>
-                    <span style="font-size:0.75rem; color:var(--text-muted);" data-i18n-ko="A/B형 득점 공식 요약" data-i18n-en="Type A & B Summary">A/B형 득점 공식 요약</span>
-                </div>
-                <div class="scoring-guide-grid" id="scoringGuideGrid"></div>
-                <div class="scoring-guide-footer">
-                    <div><span class="guide-footer-badge" data-i18n-ko="세트 보너스" data-i18n-en="Set Bonus">세트 보너스</span>: <span data-i18n-ko="1~3종 0p · 4종 +5p · 5종 +15p · 6종 +30p" data-i18n-en="1-3: 0p · 4: +5p · 5: +15p · 6: +30p">1~3종 0p · 4종 +5p · 5종 +15p · 6종 +30p</span></div>
-                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
-                        <div><span class="guide-footer-badge">COMBO</span>: <span data-i18n-ko="완전 일치 쌍 장당 +7p" data-i18n-en="+7p per identical pair">완전 일치 쌍 장당 +7p</span></div>
-                        <div><span class="guide-footer-badge">DUPLICATE</span>: <span data-i18n-ko="중복 색상 장당 +2p" data-i18n-en="+2p per duplicate color">중복 색상 장당 +2p</span></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Player Boards Area -->
-        <section class="players-area" id="playersArea">
-            <!-- Injected dynamically by game engine -->
-        </section>
-
-    </main>
-
-    <!-- Rulebook Modal -->
-    <div class="game-modal-overlay" id="rulebookModal" role="dialog" aria-modal="true">
-        <div class="game-modal-card">
-            <div class="game-modal-header">
-                <h2>
-                    <i class="fa-solid fa-book-open" style="color:var(--gold);"></i>
-                    <span data-i18n-ko="헤븐스 도어 — 전체 규칙서" data-i18n-en="Heaven's Door — Full Rulebook">헤븐스 도어 — 전체 규칙서</span>
-                </h2>
-                <button type="button" class="game-modal-close" id="closeRulebookModal">&times;</button>
-            </div>
-
-            <!-- Tab Navigation -->
-            <div class="rule-tabs">
-                <button type="button" class="rule-tab-btn active" data-target="tabOverview" data-i18n-ko="1. 개요 & 셋업" data-i18n-en="1. Overview & Setup">1. 개요 & 셋업</button>
-                <button type="button" class="rule-tab-btn" data-target="tabDraft" data-i18n-ko="2. 타일 획득 조건" data-i18n-en="2. Drafting Rules">2. 타일 획득 조건</button>
-                <button type="button" class="rule-tab-btn" data-target="tabPlacement" data-i18n-ko="3. 보드 배치 & 콤보" data-i18n-en="3. Placement & Combo">3. 보드 배치 & 콤보</button>
-                <button type="button" class="rule-tab-btn" data-target="tabScoring" data-i18n-ko="4. 기호별 점수 공식" data-i18n-en="4. Scoring Formulas">4. 기호별 점수 공식</button>
-                <button type="button" class="rule-tab-btn" data-target="tabEndGame" data-i18n-ko="5. 종료 & 승리" data-i18n-en="5. Game End">5. 종료 & 승리</button>
-            </div>
-
-            <!-- Tab 1: Overview & Setup -->
-            <div class="rule-tab-content active" id="tabOverview">
-                <h4 data-i18n-ko="게임 정보" data-i18n-en="Game Information">게임 정보</h4>
-                <p data-i18n-ko="• 2~4인 / 30분 / 8세 이상 / 드래프트, 세트 컬렉션" data-i18n-en="• 2–4 Players / 30 mins / Ages 8+ / Drafting, Set Collection">• 2~4인 / 30분 / 8세 이상 / 드래프트, 세트 컬렉션</p>
-                <h4 data-i18n-ko="구성물" data-i18n-en="Components">구성물</h4>
-                <ul>
-                    <li data-i18n-ko="<strong>게임 타일 96개</strong>: 6종 기호(삼각형·사다리꼴·정사각형·원·별·육각형) × 8종 색상 × 각 2장씩 쌍으로 구성" data-i18n-en="<strong>96 Game Tiles</strong>: 6 symbols × 8 colors × 2 identical pairs"><strong>게임 타일 96개</strong>: 6종 기호(삼각형·사다리꼴·정사각형·원·별·육각형) × 8종 색상 × 각 2장씩 쌍으로 구성</li>
-                    <li data-i18n-ko="<strong>개인 타일 32개</strong>: 플레이어당 8개 (기호별 점수 타일 6개 + 콤보 1개 + 중복 1개)" data-i18n-en="<strong>32 Personal Tiles</strong>: 8 per player (6 scoring condition tiles + 1 COMBO + 1 DUPLICATE)"><strong>개인 타일 32개</strong>: 플레이어당 8개 (기호별 점수 타일 6개 + 콤보 1개 + 중복 1개)</li>
-                    <li data-i18n-ko="<strong>개인 보드 4개</strong>: 가로형 보드, 기호별 슬롯 및 세트 점수 트랙" data-i18n-en="<strong>4 Personal Boards</strong>: Elongated player boards with set bonus track"><strong>개인 보드 4개</strong>: 가로형 보드, 기호별 슬롯 및 세트 점수 트랙</li>
-                </ul>
-                <h4 data-i18n-ko="피라미드 적재 셋업" data-i18n-en="Pyramid Setup">피라미드 적재 셋업</h4>
-                <ul>
-                    <li data-i18n-ko="<strong>2인 게임</strong>: 2개 층 (1층 가로 6 × 세로 5 = 30개 / 2층 가로 5 × 세로 4 = 20개)" data-i18n-en="<strong>2-Player Game</strong>: 2 layers (Layer 1: 6×5 / Layer 2: 5×4)"><strong>2인 게임</strong>: 2개 층 (1층 6×5=30개 / 2층 5×4=20개)</li>
-                    <li data-i18n-ko="<strong>3인 게임</strong>: 2개 층 (1층 가로 7 × 세로 6 = 42개 / 2층 가로 6 × 세로 5 = 30개)" data-i18n-en="<strong>3-Player Game</strong>: 2 layers (Layer 1: 7×6 / Layer 2: 6×5)"><strong>3인 게임</strong>: 2개 층 (1층 7×6=42개 / 2층 6×5=30개)</li>
-                    <li data-i18n-ko="<strong>4인 게임</strong>: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)" data-i18n-en="<strong>4-Player Game</strong>: 3 layers (Layer 1: 7×6 / Layer 2: 6×5 / Layer 3: 5×4)"><strong>4인 게임</strong>: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)</li>
-                    <li data-i18n-ko="최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다." data-i18n-en="Topmost layer tiles are placed face-up; lower layer tiles placed randomly face-up or face-down.">최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다.</li>
-                </ul>
-            </div>
-
-            <!-- Tab 2: Drafting Rules -->
-            <div class="rule-tab-content" id="tabDraft">
-                <h4 data-i18n-ko="타일 획득 조건" data-i18n-en="Tile Acquisition Conditions">타일 획득 조건</h4>
-                <p data-i18n-ko="자신의 차례에 <strong>조건을 만족하는 타일 2장</strong>을 가져옵니다. 두 타일은 반드시 <strong>색상이 일치</strong>하거나 <strong>기호가 일치</strong>해야 합니다." data-i18n-en="On your turn, take 2 valid tiles. Both tiles must match in <strong>Color</strong> or <strong>Symbol</strong>.">자신의 차례에 <strong>조건을 만족하는 타일 2장</strong>을 가져옵니다. 두 타일은 반드시 <strong>색상이 일치</strong>하거나 <strong>기호가 일치</strong>해야 합니다.</p>
-                <h4 data-i18n-ko="획득 가능한 타일이란?" data-i18n-en="What is an Acquirable Tile?">획득 가능한 타일이란?</h4>
-                <ol>
-                    <li data-i18n-ko="<strong>앞면이 노출</strong>되어 있어야 합니다 (위층 타일에 덮여 있지 않아야 함)." data-i18n-en="<strong>Front face must be visible</strong> (not covered by any upper tile)."><strong>앞면이 노출</strong>되어 있어야 합니다 (위층 타일에 덮여 있지 않아야 함).</li>
-                    <li data-i18n-ko="<strong>적어도 한 쪽 변이 외곽에 노출</strong>되어 있어야 합니다 (해당 층에서 상·하·좌·우 4방향이 모두 다른 타일로 둘러싸인 내부 타일은 가져올 수 없습니다)." data-i18n-en="<strong>At least one edge must be exposed</strong> (cannot be surrounded on all 4 orthogonal sides by tiles on the same layer)."><strong>적어도 한 쪽 변이 외곽에 노출</strong>되어 있어야 합니다 (해당 층에서 상·하·좌·우 4방향이 모두 다른 타일로 둘러싸인 내부 타일은 가져올 수 없습니다).</li>
-                    <li data-i18n-ko="게임 중 타일을 가져와 아래층의 뒷면 타일이 완전히 드러나면, <strong>즉시 앞면으로 뒤집습니다</strong>." data-i18n-en="When upper tiles are taken and lower face-down tiles are revealed, <strong>flip them face-up immediately</strong>.">게임 중 타일을 가져와 아래층의 뒷면 타일이 완전히 드러나면, <strong>즉시 앞면으로 뒤집습니다</strong>.</li>
-                </ol>
-            </div>
-
-            <!-- Tab 3: Placement & Combo -->
-            <div class="rule-tab-content" id="tabPlacement">
-                <h4 data-i18n-ko="개인 보드 배치 순서" data-i18n-en="Personal Board Placement Order">개인 보드 배치 순서</h4>
-                <p data-i18n-ko="가져온 타일은 <strong>기호가 처음 획득된 순서대로</strong> 개인 보드의 왼쪽에서 오른쪽 열에 차례로 배치됩니다. 같은 색상의 타일을 하나의 기호 더미에 중복으로 올릴 수 없습니다." data-i18n-en="Acquired tiles are placed from left to right in the order each symbol was first acquired. You cannot place duplicate colors on the same symbol stack.">가져온 타일은 <strong>기호가 처음 획득된 순서대로</strong> 개인 보드의 왼쪽에서 오른쪽 열에 차례로 배치됩니다. 같은 색상의 타일을 하나의 기호 더미에 중복으로 올릴 수 없습니다.</p>
-                
-                <h4 data-i18n-ko="[COMBO] 콤보 규칙" data-i18n-en="[COMBO] Rule">[COMBO] 콤보 규칙</h4>
-                <p data-i18n-ko="한 차례에 <strong>색상과 기호가 완전히 동일한 2장</strong>을 가져오면 [COMBO]가 발생합니다! 1장은 정상적으로 개인 보드 기호 열에 놓고, 나머지 1장은 별도의 <strong>[COMBO] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 7점</strong>!)" data-i18n-en="If you take 2 tiles with completely identical color AND symbol in one turn, it's a [COMBO]! 1 goes to your board, the other goes under the [COMBO] tile (worth <strong>7 VP each</strong> at game end!).">한 차례에 <strong>색상과 기호가 완전히 동일한 2장</strong>을 가져오면 [COMBO]가 발생합니다! 1장은 정상적으로 개인 보드 기호 열에 놓고, 나머지 1장은 별도의 <strong>[COMBO] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 7점</strong>!)</p>
-
-                <h4 data-i18n-ko="[DUPLICATE] 중복 타일" data-i18n-en="[DUPLICATE] Rule">[DUPLICATE] 중복 타일</h4>
-                <p data-i18n-ko="이미 보유한 기호 더미에 있는 색상과 동일한 타일을 가져오면, 그 타일은 더미 위에 올리지 못하고 <strong>[DUPLICATE] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 2점</strong>)" data-i18n-en="If you take a tile whose color already exists in that symbol stack, it cannot be stacked and goes under the [DUPLICATE] tile (worth <strong>2 VP each</strong>).">이미 보유한 기호 더미에 있는 색상과 동일한 타일을 가져오면, 그 타일은 더미 위에 올리지 못하고 <strong>[DUPLICATE] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 2점</strong>)</p>
-            </div>
-
-            <!-- Tab 4: Scoring Formulas -->
-            <div class="rule-tab-content" id="tabScoring">
-                <h4 data-i18n-ko="기호별 점수 공식표 (Type A vs Type B)" data-i18n-en="Symbol Scoring Conditions (Type A vs Type B)">기호별 점수 공식표 (Type A vs Type B)</h4>
-                <table class="rule-table">
-                    <thead>
-                        <tr>
-                            <th>Symbol</th>
-                            <th>Type A</th>
-                            <th>Type B</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>▲ 삼각형</strong></td>
-                            <td>홀수 개일 때만 증가 (1/3/5/7개: 5/15/25/35 pt)</td>
-                            <td>홀수 개일 때만 $(N+1)^2$ (1/3/5/7개: 4/16/36/64 pt)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>⏢ 사다리꼴</strong></td>
-                            <td>짝수 개일 때만 증가 (2/4/6/8개: 10/20/30/40 pt)</td>
-                            <td>짝수 개일 때만 $(N+1)^2$ (2/4/6/8개: 9/25/49/81 pt)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>■ 정사각형</strong></td>
-                            <td>정사각형 수 × 콤보 수 pt</td>
-                            <td>정사각형 수 × 중복 수 × 3 pt</td>
-                        </tr>
-                        <tr>
-                            <td><strong>● 원</strong></td>
-                            <td>원 개수 × (내가 가장 많이 모은 색상의 총 타일 수)</td>
-                            <td>원 개수 × (개인 보드 맨 왼쪽 1번째 열 타일 수)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>★ 별</strong></td>
-                            <td>동점 없는 단독 최다 시 <strong>40 pt</strong> (동점 시 20 pt)</td>
-                            <td>최소 보유자가 아니면 <strong>25 pt</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>⬢ 육각형</strong></td>
-                            <td>3개(15 pt) / 4개(30 pt) / 5개 이상 <strong>50 pt</strong></td>
-                            <td>최다 보유자가 아니면 개당 <strong>6 pt</strong> (최다는 0점)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Tab 5: Game End -->
-            <div class="rule-tab-content" id="tabEndGame">
-                <h4 data-i18n-ko="게임 종료 및 최종 점수" data-i18n-en="Game End & Final Scoring">게임 종료 및 최종 점수</h4>
-                <p data-i18n-ko="모든 플레이어가 <strong>10턴</strong>을 마치면(각자 총 20장 획득) 게임이 종료됩니다." data-i18n-en="The game ends after all players have completed 10 turns (20 tiles total per player).">모든 플레이어가 <strong>10턴</strong>을 마치면(각자 총 20장 획득) 게임이 종료됩니다.</p>
-                <h4 data-i18n-ko="합산 점수 항목" data-i18n-en="Score Components">합산 점수 항목</h4>
-                <ol>
-                    <li data-i18n-ko="<strong>기호별 점수</strong>: 6종 기호 점수 합계" data-i18n-en="<strong>Symbol Scores</strong>: Sum of points from 6 symbols"><strong>기호별 점수</strong>: 6종 기호 점수 합계</li>
-                    <li data-i18n-ko="<strong>세트 컬렉션 보너스</strong>: 수집한 기호 종류 수에 따라 보너스 (1종: 0 / 2종: 0 / 3종: 0 / 4종: 5 / 5종: 15 / 6종: 30 pt)" data-i18n-en="<strong>Set Bonus</strong>: 1 type: 0 / 2: 0 / 3: 0 / 4: 5 / 5: 15 / 6: 30 VP"><strong>세트 컬렉션 보너스</strong>: 수집한 기호 종류 수에 따라 보너스 (1종: 0 / 2종: 0 / 3종: 0 / 4종: 5 / 5종: 15 / 6종: 30 pt)</li>
-                    <li data-i18n-ko="<strong>[COMBO] 점수</strong>: 콤보 타일 1장당 <strong>7 pt</strong>" data-i18n-en="<strong>[COMBO] Points</strong>: 7 VP per combo tile"><strong>[COMBO] 점수</strong>: 콤보 타일 1장당 <strong>7 pt</strong></li>
-                    <li data-i18n-ko="<strong>[DUPLICATE] 점수</strong>: 중복 타일 1장당 <strong>2 pt</strong>" data-i18n-en="<strong>[DUPLICATE] Points</strong>: 2 VP per duplicate tile"><strong>[DUPLICATE] 점수</strong>: 중복 타일 1장당 <strong>2 pt</strong></li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <!-- Symbol Order Choice Modal -->
-    <div class="game-modal-overlay" id="choiceModal" role="dialog" aria-modal="true">
-        <div class="game-modal-card choice-modal-card">
-            <h2 id="choiceModalTitle">첫 배치 순서 결정</h2>
-            <p id="choiceModalDesc" style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">새로운 두 종류의 기호가 동시에 획득되었습니다. 개인 보드의 왼쪽에 먼저 놓을 기호를 선택하세요.</p>
-            <div class="choice-options-grid" id="choiceOptionsGrid"></div>
-        </div>
-    </div>
-
-
-    <!-- Scoring Rule Choice Modal -->
-    <div class="game-modal-overlay" id="ruleChoiceModal" role="dialog" aria-modal="true">
-        <div class="game-modal-card choice-modal-card" style="max-width:540px;">
-            <div style="font-size: 2.2rem; margin-bottom: 2px;" id="ruleChoiceSymbolIcon">▲</div>
-            <h2 id="ruleChoiceModalTitle" style="font-size: 1.25rem;">점수 규칙 면 선택</h2>
-            <p id="ruleChoiceModalDesc" style="color:var(--text-muted); font-size:0.86rem; margin: 4px 0 14px 0;">새로운 기호를 처음 획득했습니다. 사용할 스코어링 규칙(A면 또는 B면)을 선택하세요.</p>
-            <div class="choice-options-grid" id="ruleChoiceOptionsGrid" style="grid-template-columns: 1fr 1fr; gap: 12px;"></div>
-        </div>
-    </div>
-
-    <!-- New Game Settings Modal -->
-    <div class="game-modal-overlay" id="newGameModal" role="dialog" aria-modal="true">
-        <div class="game-modal-card choice-modal-card" style="max-width:440px;">
-            <div class="game-modal-header">
-                <h2>
-                    <i class="fa-solid fa-gear" style="color:var(--gold);"></i>
-                    <span data-i18n-ko="게임 설정" data-i18n-en="Game Setup">게임 설정</span>
-                </h2>
-                <button type="button" class="game-modal-close" id="closeNewGameModal">&times;</button>
-            </div>
-            
-            <div style="display:flex; flex-direction:column; gap:16px; margin: 16px 0; text-align:left;">
-                <div>
-                    <label style="font-weight:700; font-size:0.88rem; display:block; margin-bottom:6px;" data-i18n-ko="인원 수 (인간 vs AI)" data-i18n-en="Player Count (Human vs AI)">인원 수 (인간 vs AI)</label>
-                    <select id="selectPlayers" style="width:100%; padding:10px; background:#0f172a; color:#fff; border:1px solid var(--border-glass); border-radius:var(--radius-sm); font-size:0.9rem;">
-                        <option value="2" selected data-i18n-ko="2인 게임 (나 vs AI 1명)" data-i18n-en="2 Players (You vs 1 AI)">2인 게임 (나 vs AI 1명)</option>
-                        <option value="3" data-i18n-ko="3인 게임 (나 vs AI 2명)" data-i18n-en="3 Players (You vs 2 AIs)">3인 게임 (나 vs AI 2명)</option>
-                        <option value="4" data-i18n-ko="4인 게임 (나 vs AI 3명)" data-i18n-en="4 Players (You vs 3 AIs)">4인 게임 (나 vs AI 3명)</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="font-weight:700; font-size:0.88rem; display:block; margin-bottom:6px;" data-i18n-ko="점수 조건 타일 모드" data-i18n-en="Scoring Condition Mode">점수 조건 타일 모드</label>
-                    <select id="selectScoringMode" style="width:100%; padding:10px; background:#0f172a; color:#fff; border:1px solid var(--border-glass); border-radius:var(--radius-sm); font-size:0.9rem;">
-                        <option value="mixed" selected data-i18n-ko="직접 선택 (기호 첫 획득 시 A/B면 선택)" data-i18n-en="Choose on Acquisition (Select A/B per symbol)">직접 선택 (기호 첫 획득 시 A/B면 선택)</option>
-                        <option value="custom" data-i18n-ko="사전 커스텀 (시작 전 6종 기호 A/B 지정)" data-i18n-en="Custom Preset (Pre-assign A/B for 6 symbols)">사전 커스텀 (시작 전 6종 기호 A/B 지정)</option>
-                        <option value="A" data-i18n-ko="Type A 고정 (모든 기호 A형)" data-i18n-en="Type A (All Symbols Type A)">Type A 고정 (모든 기호 A형)</option>
-                        <option value="B" data-i18n-ko="Type B 고정 (모든 기호 B형)" data-i18n-en="Type B (All Symbols Type B)">Type B 고정 (모든 기호 B형)</option>
-                    </select>
-                </div>
-                <!-- Custom per-symbol A/B selector (shown when 'custom' is selected) -->
-                <div id="customScoringSetup" style="display:none; flex-direction:column; gap:8px; background:rgba(15,23,42,0.65); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-glass);">
-                    <div style="font-size:0.8rem; font-weight:700; color:var(--gold);" data-i18n-ko="기호별 점수 규칙 사전 지정" data-i18n-en="Assign Rule per Symbol">기호별 점수 규칙 사전 지정</div>
-                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px;" id="customSymbolRulesGrid"></div>
-                </div>
-            </div>
-
-            <button type="button" class="btn-play-again" id="btnStartNewGame" style="width:100%;" data-i18n-ko="게임 시작" data-i18n-en="Start Game">게임 시작</button>
-        </div>
-    </div>
-
-    <!-- Victory Modal -->
-    <div class="game-modal-overlay" id="victoryModal" role="dialog" aria-modal="true">
-        <div class="game-modal-card victory-card">
-            <div class="victory-title" id="victoryWinnerTitle">🎉 승리!</div>
-            <p style="color:var(--text-muted); font-size:0.88rem;" data-i18n-ko="10턴 완료 최종 점수 결과" data-i18n-en="Final Scores After 10 Turns">10턴 완료 최종 점수 결과</p>
-            <div class="scores-comparison" id="victoryScoresList"></div>
-            <button type="button" class="btn-play-again" id="btnPlayAgain" data-i18n-ko="다시 플레이" data-i18n-en="Play Again">다시 플레이</button>
-        </div>
-    </div>
-
-    <!-- Embedded Direct Game Engine -->
-    <script>
+</div>
+<!-- Top Play Zone: Board on Left, Scoring Rules on Right -->
+<div class="game-play-area">
+<!-- 3D Pyramid Board Area (Left) -->
+<section class="board-area">
+<div class="board-header">
+<h3>
+<i class="fa-solid fa-layer-group" style="color:var(--gold);"></i>
+<span data-i18n-de="Pyramiden-Spielfeld" data-i18n-en="Pyramid Tile Board" data-i18n-fr="Plateau de la pyramide" data-i18n-ko="피라미드 타일 보드">피라미드 타일 보드</span>
+</h3>
+<div class="board-legend">
+<div class="legend-item">
+<span class="legend-dot acquirable"></span>
+<span data-i18n-de="Verfügbar (Rand)" data-i18n-en="Acquirable" data-i18n-fr="Disponible (Bordure)" data-i18n-ko="획득 가능 (외곽)">획득 가능 (외곽)</span>
+</div>
+<div class="legend-item">
+<span class="legend-dot covered"></span>
+<span data-i18n-de="Verdeckt / Innen" data-i18n-en="Covered" data-i18n-fr="Couverte / Intérieur" data-i18n-ko="내부 / 덮임">내부 / 덮임</span>
+</div>
+</div>
+</div>
+<div class="pyramid-stage">
+<div class="pyramid-grid-wrap" id="pyramidGridWrap">
+<!-- Injected dynamically by game engine -->
+</div>
+</div>
+</section>
+<!-- Symbol Scoring Reference Guide (Right) -->
+<section class="scoring-guide-section" id="scoringGuideSection">
+<div class="scoring-guide-header">
+<div class="scoring-guide-title">
+<i class="fa-solid fa-list-check" style="color:var(--gold);"></i>
+<span data-i18n-de="Symbol-Wertungsregeln" data-i18n-en="Symbol Scoring Rules" data-i18n-fr="Règles de score des symboles" data-i18n-ko="심볼별 스코어링 규칙">심볼별 스코어링 규칙</span>
+</div>
+<span data-i18n-de="Übersicht der A/B-Formeln" data-i18n-en="Type A &amp; B Summary" data-i18n-fr="Résumé des formules A/B" data-i18n-ko="A/B형 득점 공식 요약" style="font-size:0.75rem; color:var(--text-muted);">A/B형 득점 공식 요약</span>
+</div>
+<div class="scoring-guide-grid" id="scoringGuideGrid"></div>
+<div class="scoring-guide-footer">
+<div><span class="guide-footer-badge" data-i18n-de="Set-Bonus" data-i18n-en="Set Bonus" data-i18n-fr="Bonus de série" data-i18n-ko="세트 보너스">세트 보너스</span>: <span data-i18n-de="1–3 Typen: 0p · 4: +5p · 5: +15p · 6: +30p" data-i18n-en="1-3: 0p · 4: +5p · 5: +15p · 6: +30p" data-i18n-fr="1~3 types : 0p · 4 types : +5p · 5 types : +15p · 6 types : +30p" data-i18n-ko="1~3종 0p · 4종 +5p · 5종 +15p · 6종 +30p">1~3종 0p · 4종 +5p · 5종 +15p · 6종 +30p</span></div>
+<div style="display:flex; gap:12px; flex-wrap:wrap;">
+<div><span class="guide-footer-badge">COMBO</span>: <span data-i18n-de="Identisches Paar: +7p / Plättchen" data-i18n-en="+7p per identical pair" data-i18n-fr="Paire parfaitement identique : +7p / tuile" data-i18n-ko="완전 일치 쌍 장당 +7p">완전 일치 쌍 장당 +7p</span></div>
+<div><span class="guide-footer-badge">DUPLICATE</span>: <span data-i18n-de="Doppelte Farbe: +2p / Plättchen" data-i18n-en="+2p per duplicate color" data-i18n-fr="Couleur dupliquée : +2p / tuile" data-i18n-ko="중복 색상 장당 +2p">중복 색상 장당 +2p</span></div>
+</div>
+</div>
+</section>
+</div>
+<!-- Player Boards Area -->
+<section class="players-area" id="playersArea">
+<!-- Injected dynamically by game engine -->
+</section>
+</main>
+<!-- Rulebook Modal -->
+<div aria-modal="true" class="game-modal-overlay" id="rulebookModal" role="dialog">
+<div class="game-modal-card">
+<div class="game-modal-header">
+<h2>
+<i class="fa-solid fa-book-open" style="color:var(--gold);"></i>
+<span data-i18n-de="Heaven's Door — Vollständiges Regelheft" data-i18n-en="Heaven's Door — Full Rulebook" data-i18n-fr="Heaven's Door — Règles complètes" data-i18n-ko="헤븐스 도어 — 전체 규칙서">헤븐스 도어 — 전체 규칙서</span>
+</h2>
+<button class="game-modal-close" id="closeRulebookModal" type="button">×</button>
+</div>
+<!-- Tab Navigation -->
+<div class="rule-tabs">
+<button class="rule-tab-btn active" data-i18n-de="1. Übersicht &amp; Aufbau" data-i18n-en="1. Overview &amp; Setup" data-i18n-fr="1. Aperçu &amp; Mise en place" data-i18n-ko="1. 개요 &amp; 셋업" data-target="tabOverview" type="button">1. 개요 &amp; 셋업</button>
+<button class="rule-tab-btn" data-i18n-de="2. Plättchen-Draftregeln" data-i18n-en="2. Drafting Rules" data-i18n-fr="2. Règles de draft" data-i18n-ko="2. 타일 획득 조건" data-target="tabDraft" type="button">2. 타일 획득 조건</button>
+<button class="rule-tab-btn" data-i18n-de="3. Platzierung &amp; Kombos" data-i18n-en="3. Placement &amp; Combo" data-i18n-fr="3. Placement &amp; Combos" data-i18n-ko="3. 보드 배치 &amp; 콤보" data-target="tabPlacement" type="button">3. 보드 배치 &amp; 콤보</button>
+<button class="rule-tab-btn" data-i18n-de="4. Wertungsformeln (A/B)" data-i18n-en="4. Scoring Formulas" data-i18n-fr="4. Formules de score (A/B)" data-i18n-ko="4. 기호별 점수 공식" data-target="tabScoring" type="button">4. 기호별 점수 공식</button>
+<button class="rule-tab-btn" data-i18n-de="5. Spielende &amp; Wertung" data-i18n-en="5. Game End" data-i18n-fr="5. Fin de partie &amp; Victoire" data-i18n-ko="5. 종료 &amp; 승리" data-target="tabEndGame" type="button">5. 종료 &amp; 승리</button>
+</div>
+<!-- Tab 1: Overview & Setup -->
+<div class="rule-tab-content active" id="tabOverview">
+<h4 data-i18n-de="Spielinformationen" data-i18n-en="Game Information" data-i18n-fr="Informations sur le jeu" data-i18n-ko="게임 정보">게임 정보</h4>
+<p data-i18n-de="• 2–4 Spieler / 30 Min. / Ab 8 Jahren / Draft, Set-Sammlung" data-i18n-en="• 2–4 Players / 30 mins / Ages 8+ / Drafting, Set Collection" data-i18n-fr="• 2 à 4 joueurs / 30 min / 8 ans et plus / Draft, Collection de séries" data-i18n-ko="• 2~4인 / 30분 / 8세 이상 / 드래프트, 세트 컬렉션">• 2~4인 / 30분 / 8세 이상 / 드래프트, 세트 컬렉션</p>
+<h4 data-i18n-de="Spielmaterial" data-i18n-en="Components" data-i18n-fr="Matériel" data-i18n-ko="구성물">구성물</h4>
+<ul>
+<li data-i18n-de="&lt;strong&gt;96 Spielplättchen&lt;/strong&gt;: 6 Symbole (Dreieck, Trapez, Quadrat, Kreis, Stern, Sechseck) × 8 Farben × je 2 identische Plättchen" data-i18n-en="&lt;strong&gt;96 Game Tiles&lt;/strong&gt;: 6 symbols × 8 colors × 2 identical pairs" data-i18n-fr="&lt;strong&gt;96 Tuiles de jeu&lt;/strong&gt; : 6 symboles (Triangle, Trapèze, Carré, Cercle, Étoile, Hexagone) × 8 couleurs × 2 tuiles jumelles" data-i18n-ko="&lt;strong&gt;게임 타일 96개&lt;/strong&gt;: 6종 기호(삼각형·사다리꼴·정사각형·원·별·육각형) × 8종 색상 × 각 2장씩 쌍으로 구성"><strong>게임 타일 96개</strong>: 6종 기호(삼각형·사다리꼴·정사각형·원·별·육각형) × 8종 색상 × 각 2장씩 쌍으로 구성</li>
+<li data-i18n-de="&lt;strong&gt;32 persönliche Plättchen&lt;/strong&gt;: 8 pro Spieler (6 Symbol-Wertungsplättchen + 1 KOMBO + 1 DOPPELT)" data-i18n-en="&lt;strong&gt;32 Personal Tiles&lt;/strong&gt;: 8 per player (6 scoring condition tiles + 1 COMBO + 1 DUPLICATE)" data-i18n-fr="&lt;strong&gt;32 Tuiles personnelles&lt;/strong&gt; : 8 par joueur (6 tuiles de score de symbole + 1 COMBO + 1 DOUBLON)" data-i18n-ko="&lt;strong&gt;개인 타일 32개&lt;/strong&gt;: 플레이어당 8개 (기호별 점수 타일 6개 + 콤보 1개 + 중복 1개)"><strong>개인 타일 32개</strong>: 플레이어당 8개 (기호별 점수 타일 6개 + 콤보 1개 + 중복 1개)</li>
+<li data-i18n-de="&lt;strong&gt;4 Spielertableaus&lt;/strong&gt;: Horizontale Tableaus mit Symbol- und Set-Leisten" data-i18n-en="&lt;strong&gt;4 Personal Boards&lt;/strong&gt;: Elongated player boards with set bonus track" data-i18n-fr="&lt;strong&gt;4 Plateaux individuels&lt;/strong&gt; : Plateaux horizontaux avec pistes de symboles et de séries" data-i18n-ko="&lt;strong&gt;개인 보드 4개&lt;/strong&gt;: 가로형 보드, 기호별 슬롯 및 세트 점수 트랙"><strong>개인 보드 4개</strong>: 가로형 보드, 기호별 슬롯 및 세트 점수 트랙</li>
+</ul>
+<h4 data-i18n-de="Pyramiden-Aufbau" data-i18n-en="Pyramid Setup" data-i18n-fr="Mise en place de la pyramide" data-i18n-ko="피라미드 적재 셋업">피라미드 적재 셋업</h4>
+<ul>
+<li data-i18n-de="&lt;strong&gt;2-Spieler-Spiel&lt;/strong&gt;: 2 Ebenen (Ebene 1: 6×5 = 30 / Ebene 2: 5×4 = 20)" data-i18n-en="&lt;strong&gt;2-Player Game&lt;/strong&gt;: 2 layers (Layer 1: 6×5 / Layer 2: 5×4)" data-i18n-fr="&lt;strong&gt;Partie à 2 joueurs&lt;/strong&gt; : 2 niveaux (Niveau 1 : 6×5 = 30 tuiles / Niveau 2 : 5×4 = 20 tuiles)" data-i18n-ko="&lt;strong&gt;2인 게임&lt;/strong&gt;: 2개 층 (1층 가로 6 × 세로 5 = 30개 / 2층 가로 5 × 세로 4 = 20개)"><strong>2인 게임</strong>: 2개 층 (1층 6×5=30개 / 2층 5×4=20개)</li>
+<li data-i18n-de="&lt;strong&gt;3-Spieler-Spiel&lt;/strong&gt;: 2 Ebenen (Ebene 1: 7×6 = 42 / Ebene 2: 6×5 = 30)" data-i18n-en="&lt;strong&gt;3-Player Game&lt;/strong&gt;: 2 layers (Layer 1: 7×6 / Layer 2: 6×5)" data-i18n-fr="&lt;strong&gt;Partie à 3 joueurs&lt;/strong&gt; : 2 niveaux (Niveau 1 : 7×6 = 42 tuiles / Niveau 2 : 6×5 = 30 tuiles)" data-i18n-ko="&lt;strong&gt;3인 게임&lt;/strong&gt;: 2개 층 (1층 가로 7 × 세로 6 = 42개 / 2층 가로 6 × 세로 5 = 30개)"><strong>3인 게임</strong>: 2개 층 (1층 7×6=42개 / 2층 6×5=30개)</li>
+<li data-i18n-de="&lt;strong&gt;4-Spieler-Spiel&lt;/strong&gt;: 3 Ebenen (Ebene 1: 7×6 / Ebene 2: 6×5 / Ebene 3: 5×4)" data-i18n-en="&lt;strong&gt;4-Player Game&lt;/strong&gt;: 3 layers (Layer 1: 7×6 / Layer 2: 6×5 / Layer 3: 5×4)" data-i18n-fr="&lt;strong&gt;Partie à 4 joueurs&lt;/strong&gt; : 3 niveaux (Niveau 1 : 7×6 / Niveau 2 : 6×5 / Niveau 3 : 5×4)" data-i18n-ko="&lt;strong&gt;4인 게임&lt;/strong&gt;: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)"><strong>4인 게임</strong>: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)</li>
+<li data-i18n-de="Die Plättchen der obersten Ebene liegen alle offen; Plättchen darunter werden zufällig offen oder verdeckt platziert." data-i18n-en="Topmost layer tiles are placed face-up; lower layer tiles placed randomly face-up or face-down." data-i18n-fr="Les tuiles du niveau supérieur sont toutes face visible ; les tuiles des niveaux inférieurs sont disposées aléatoirement face visible ou cachée." data-i18n-ko="최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다.">최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다.</li>
+</ul>
+</div>
+<!-- Tab 2: Drafting Rules -->
+<div class="rule-tab-content" id="tabDraft">
+<h4 data-i18n-de="Bedingungen für den Plättchenerwerb" data-i18n-en="Tile Acquisition Conditions" data-i18n-fr="Conditions de draft" data-i18n-ko="타일 획득 조건">타일 획득 조건</h4>
+<p data-i18n-de="In deinem Zug nimmst du &lt;strong&gt;2 gültige Plättchen&lt;/strong&gt;. Beide müssen entweder in &lt;strong&gt;Farbe&lt;/strong&gt; oder in &lt;strong&gt;Symbol&lt;/strong&gt; übereinstimmen." data-i18n-en="On your turn, take 2 valid tiles. Both tiles must match in &lt;strong&gt;Color&lt;/strong&gt; or &lt;strong&gt;Symbol&lt;/strong&gt;." data-i18n-fr="À votre tour, prenez &lt;strong&gt;2 tuiles valides&lt;/strong&gt;. Les deux tuiles doivent obligatoirement &lt;strong&gt;partager la même couleur&lt;/strong&gt; ou &lt;strong&gt;le même symbole&lt;/strong&gt;." data-i18n-ko="자신의 차례에 &lt;strong&gt;조건을 만족하는 타일 2장&lt;/strong&gt;을 가져옵니다. 두 타일은 반드시 &lt;strong&gt;색상이 일치&lt;/strong&gt;하거나 &lt;strong&gt;기호가 일치&lt;/strong&gt;해야 합니다.">자신의 차례에 <strong>조건을 만족하는 타일 2장</strong>을 가져옵니다. 두 타일은 반드시 <strong>색상이 일치</strong>하거나 <strong>기호가 일치</strong>해야 합니다.</p>
+<h4 data-i18n-de="Was ist ein verfügbares Plättchen?" data-i18n-en="What is an Acquirable Tile?" data-i18n-fr="Qu'est-ce qu'une tuile accessible ?" data-i18n-ko="획득 가능한 타일이란?">획득 가능한 타일이란?</h4>
+<ol>
+<li data-i18n-de="&lt;strong&gt;Die Vorderseite muss sichtbar sein&lt;/strong&gt; (nicht von einem Plättchen der oberen Ebene verdeckt)." data-i18n-en="&lt;strong&gt;Front face must be visible&lt;/strong&gt; (not covered by any upper tile)." data-i18n-fr="&lt;strong&gt;Sa face avant doit être visible&lt;/strong&gt; (non recouverte par une tuile du niveau supérieur)." data-i18n-ko="&lt;strong&gt;앞면이 노출&lt;/strong&gt;되어 있어야 합니다 (위층 타일에 덮여 있지 않아야 함)."><strong>앞면이 노출</strong>되어 있어야 합니다 (위층 타일에 덮여 있지 않아야 함).</li>
+<li data-i18n-de="&lt;strong&gt;Mindestens eine Kante muss frei am Rand liegen&lt;/strong&gt; (ein Plättchen, das auf derselben Ebene von allen 4 Seiten umschlossen ist, kann nicht genommen werden)." data-i18n-en="&lt;strong&gt;At least one edge must be exposed&lt;/strong&gt; (cannot be surrounded on all 4 orthogonal sides by tiles on the same layer)." data-i18n-fr="&lt;strong&gt;Au moins un côté doit être exposé vers l'extérieur&lt;/strong&gt; (une tuile entourée sur ses 4 côtés par d'autres tuiles du même niveau n'est pas accessible)." data-i18n-ko="&lt;strong&gt;적어도 한 쪽 변이 외곽에 노출&lt;/strong&gt;되어 있어야 합니다 (해당 층에서 상·하·좌·우 4방향이 모두 다른 타일로 둘러싸인 내부 타일은 가져올 수 없습니다)."><strong>적어도 한 쪽 변이 외곽에 노출</strong>되어 있어야 합니다 (해당 층에서 상·하·좌·우 4방향이 모두 다른 타일로 둘러싸인 내부 타일은 가져올 수 없습니다).</li>
+<li data-i18n-de="Wird durch das Nehmen eines Plättchens ein verdecktes Plättchen der unteren Ebene freigelegt, &lt;strong&gt;wird es sofort aufgedeckt&lt;/strong&gt;." data-i18n-en="When upper tiles are taken and lower face-down tiles are revealed, &lt;strong&gt;flip them face-up immediately&lt;/strong&gt;." data-i18n-fr="Si le retrait d'une tuile révèle entièrement une tuile face cachée du niveau inférieur, &lt;strong&gt;retournez-la immédiatement face visible&lt;/strong&gt;." data-i18n-ko="게임 중 타일을 가져와 아래층의 뒷면 타일이 완전히 드러나면, &lt;strong&gt;즉시 앞면으로 뒤집습니다&lt;/strong&gt;.">게임 중 타일을 가져와 아래층의 뒷면 타일이 완전히 드러나면, <strong>즉시 앞면으로 뒤집습니다</strong>.</li>
+</ol>
+</div>
+<!-- Tab 3: Placement & Combo -->
+<div class="rule-tab-content" id="tabPlacement">
+<h4 data-i18n-de="Reihenfolge auf dem Spielertableau" data-i18n-en="Personal Board Placement Order" data-i18n-fr="Ordre de placement sur le plateau" data-i18n-ko="개인 보드 배치 순서">개인 보드 배치 순서</h4>
+<p data-i18n-de="Erworbene Plättchen werden von links nach rechts in der &lt;strong&gt;Reihenfolge des ersten Erwerbs jedes Symbols&lt;/strong&gt; platziert. Gleiche Farben dürfen nicht auf denselben Symbolstapel gelegt werden." data-i18n-en="Acquired tiles are placed from left to right in the order each symbol was first acquired. You cannot place duplicate colors on the same symbol stack." data-i18n-fr="Les tuiles acquises sont placées de gauche à droite selon &lt;strong&gt;l'ordre de première obtention de chaque symbole&lt;/strong&gt;. Il est interdit d'empiler deux tuiles de même couleur sur une même pile de symbole." data-i18n-ko="가져온 타일은 &lt;strong&gt;기호가 처음 획득된 순서대로&lt;/strong&gt; 개인 보드의 왼쪽에서 오른쪽 열에 차례로 배치됩니다. 같은 색상의 타일을 하나의 기호 더미에 중복으로 올릴 수 없습니다.">가져온 타일은 <strong>기호가 처음 획득된 순서대로</strong> 개인 보드의 왼쪽에서 오른쪽 열에 차례로 배치됩니다. 같은 색상의 타일을 하나의 기호 더미에 중복으로 올릴 수 없습니다.</p>
+<h4 data-i18n-de="[KOMBO]-Regel" data-i18n-en="[COMBO] Rule" data-i18n-fr="Règle du [COMBO]" data-i18n-ko="[COMBO] 콤보 규칙">[COMBO] 콤보 규칙</h4>
+<p data-i18n-de="Nimmst du 2 Plättchen mit absolut identischer Farbe UND identischem Symbol, entsteht eine [KOMBO]! 1 kommt aufs Tableau, das andere unter das [KOMBO]-Plättchen (bringt am Spielende &lt;strong&gt;7 Punkte&lt;/strong&gt;!)." data-i18n-en="If you take 2 tiles with completely identical color AND symbol in one turn, it's a [COMBO]! 1 goes to your board, the other goes under the [COMBO] tile (worth &lt;strong&gt;7 VP each&lt;/strong&gt; at game end!)." data-i18n-fr="Si vous prenez 2 tuiles ayant exactement la même couleur ET le même symbole, vous réalisez un [COMBO] ! L'une va sur votre plateau, l'autre sous la tuile [COMBO] (vaut &lt;strong&gt;7 pts&lt;/strong&gt; en fin de partie !)." data-i18n-ko="한 차례에 &lt;strong&gt;색상과 기호가 완전히 동일한 2장&lt;/strong&gt;을 가져오면 [COMBO]가 발생합니다! 1장은 정상적으로 개인 보드 기호 열에 놓고, 나머지 1장은 별도의 &lt;strong&gt;[COMBO] 타일 아래&lt;/strong&gt;에 놓습니다. (게임 종료 시 &lt;strong&gt;장당 7점&lt;/strong&gt;!)">한 차례에 <strong>색상과 기호가 완전히 동일한 2장</strong>을 가져오면 [COMBO]가 발생합니다! 1장은 정상적으로 개인 보드 기호 열에 놓고, 나머지 1장은 별도의 <strong>[COMBO] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 7점</strong>!)</p>
+<h4 data-i18n-de="[DOPPELT]-Regel" data-i18n-en="[DUPLICATE] Rule" data-i18n-fr="Règle du [DOUBLON]" data-i18n-ko="[DUPLICATE] 중복 타일">[DUPLICATE] 중복 타일</h4>
+<p data-i18n-de="Besitzt du in der entsprechenden Symbolspalte bereits ein Plättchen dieser Farbe, wird das neue Plättchen unter das [DOPPELT]-Plättchen gelegt (bringt am Spielende &lt;strong&gt;2 Punkte&lt;/strong&gt;)." data-i18n-en="If you take a tile whose color already exists in that symbol stack, it cannot be stacked and goes under the [DUPLICATE] tile (worth &lt;strong&gt;2 VP each&lt;/strong&gt;)." data-i18n-fr="Si vous prenez une tuile dont la couleur est déjà présente dans la colonne de ce symbole, elle est placée sous votre tuile [DOUBLON] (vaut &lt;strong&gt;2 pts&lt;/strong&gt; en fin de partie)." data-i18n-ko="이미 보유한 기호 더미에 있는 색상과 동일한 타일을 가져오면, 그 타일은 더미 위에 올리지 못하고 &lt;strong&gt;[DUPLICATE] 타일 아래&lt;/strong&gt;에 놓습니다. (게임 종료 시 &lt;strong&gt;장당 2점&lt;/strong&gt;)">이미 보유한 기호 더미에 있는 색상과 동일한 타일을 가져오면, 그 타일은 더미 위에 올리지 못하고 <strong>[DUPLICATE] 타일 아래</strong>에 놓습니다. (게임 종료 시 <strong>장당 2점</strong>)</p>
+</div>
+<!-- Tab 4: Scoring Formulas -->
+<div class="rule-tab-content" id="tabScoring">
+<h4 data-i18n-de="Übersicht der Symbolwertungen (Typ A vs. Typ B)" data-i18n-en="Symbol Scoring Conditions (Type A vs Type B)" data-i18n-fr="Tableau des formules de score (Type A vs Type B)" data-i18n-ko="기호별 점수 공식표 (Type A vs Type B)">기호별 점수 공식표 (Type A vs Type B)</h4>
+<table class="rule-table">
+<thead>
+<tr>
+<th data-i18n-ko="기호" data-i18n-en="Symbol" data-i18n-fr="Symbole" data-i18n-de="Symbol">Symbol</th>
+<th>Type A</th>
+<th>Type B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-i18n-ko="<strong>▲ 삼각형</strong>" data-i18n-en="<strong>▲ Triangle</strong>" data-i18n-fr="<strong>▲ Triangle</strong>" data-i18n-de="<strong>▲ Dreieck</strong>"><strong>▲ 삼각형</strong></td>
+<td data-i18n-ko="홀수 개일 때만 증가 (1/3/5/7개: 5/15/25/35 pt)" data-i18n-en="Odd stacks: 1/3/5/7 tiles = 5/15/25/35 VP" data-i18n-fr="Paliers impairs : 1/3/5/7 tuiles = 5/15/25/35 pts" data-i18n-de="Ungerade Stapel: 1/3/5/7 Plättchen = 5/15/25/35 P.">홀수 개일 때만 증가 (1/3/5/7개: 5/15/25/35 pt)</td>
+<td data-i18n-ko="홀수 개일 때만 (N+1)² (1/3/5/7개: 4/16/36/64 pt)" data-i18n-en="Odd stacks (N+1)²: 1/3/5/7 tiles = 4/16/36/64 VP" data-i18n-fr="Paliers impairs (N+1)² : 1/3/5/7 tuiles = 4/16/36/64 pts" data-i18n-de="Ungerade Stapel (N+1)²: 1/3/5/7 Plättchen = 4/16/36/64 P.">홀수 개일 때만 (N+1)² (1/3/5/7개: 4/16/36/64 pt)</td>
+</tr>
+<tr>
+<td data-i18n-ko="<strong>⏢ 사다리꼴</strong>" data-i18n-en="<strong>⏢ Trapezoid</strong>" data-i18n-fr="<strong>⏢ Trapèze</strong>" data-i18n-de="<strong>⏢ Trapez</strong>"><strong>⏢ 사다리꼴</strong></td>
+<td data-i18n-ko="짝수 개일 때만 증가 (2/4/6/8개: 10/20/30/40 pt)" data-i18n-en="Even stacks: 2/4/6/8 tiles = 10/20/30/40 VP" data-i18n-fr="Paliers pairs : 2/4/6/8 tuiles = 10/20/30/40 pts" data-i18n-de="Gerade Stapel: 2/4/6/8 Plättchen = 10/20/30/40 P.">짝수 개일 때만 증가 (2/4/6/8개: 10/20/30/40 pt)</td>
+<td data-i18n-ko="짝수 개일 때만 (N+1)² (2/4/6/8개: 9/25/49/81 pt)" data-i18n-en="Even stacks (N+1)²: 2/4/6/8 tiles = 9/25/49/81 VP" data-i18n-fr="Paliers pairs (N+1)² : 2/4/6/8 tuiles = 9/25/49/81 pts" data-i18n-de="Gerade Stapel (N+1)²: 2/4/6/8 Plättchen = 9/25/49/81 P.">짝수 개일 때만 (N+1)² (2/4/6/8개: 9/25/49/81 pt)</td>
+</tr>
+<tr>
+<td data-i18n-ko="<strong>■ 정사각형</strong>" data-i18n-en="<strong>■ Square</strong>" data-i18n-fr="<strong>■ Carré</strong>" data-i18n-de="<strong>■ Quadrat</strong>"><strong>■ 정사각형</strong></td>
+<td data-i18n-ko="정사각형 수 × 콤보 수 pt" data-i18n-en="Squares × Combos VP" data-i18n-fr="Carrés × Combos pts" data-i18n-de="Quadrate × Kombos P.">정사각형 수 × 콤보 수 pt</td>
+<td data-i18n-ko="정사각형 수 × 중복 수 × 3 pt" data-i18n-en="Squares × Duplicates × 3 VP" data-i18n-fr="Carrés × Doublons × 3 pts" data-i18n-de="Quadrate × Doppelt × 3 P.">정사각형 수 × 중복 수 × 3 pt</td>
+</tr>
+<tr>
+<td data-i18n-ko="<strong>● 원</strong>" data-i18n-en="<strong>● Circle</strong>" data-i18n-fr="<strong>● Cercle</strong>" data-i18n-de="<strong>● Kreis</strong>"><strong>● 원</strong></td>
+<td data-i18n-ko="원 개수 × (내가 가장 많이 모은 색상의 총 타일 수)" data-i18n-en="Circles × (Tiles in your most collected color)" data-i18n-fr="Cercles × (Tuiles de votre couleur majoritaire)" data-i18n-de="Kreise × (Plättchen deiner häufigsten Farbe)">원 개수 × (내가 가장 많이 모은 색상의 총 타일 수)</td>
+<td data-i18n-ko="원 개수 × (개인 보드 맨 왼쪽 1번째 열 타일 수)" data-i18n-en="Circles × (Tiles in your 1st leftmost column)" data-i18n-fr="Cercles × (Tuiles de votre 1ère colonne de gauche)" data-i18n-de="Kreise × (Plättchen deiner 1. linken Spalte)">원 개수 × (개인 보드 맨 왼쪽 1번째 열 타일 수)</td>
+</tr>
+<tr>
+<td data-i18n-ko="<strong>★ 별</strong>" data-i18n-en="<strong>★ Star</strong>" data-i18n-fr="<strong>★ Étoile</strong>" data-i18n-de="<strong>★ Stern</strong>"><strong>★ 별</strong></td>
+<td data-i18n-ko="동점 없는 단독 최다 시 <strong>40 pt</strong> (동점 시 20 pt)" data-i18n-en="Sole most stars: <strong>40 VP</strong> (20 VP if tied)" data-i18n-fr="Majorité unique : <strong>40 pts</strong> (20 pts si égalité)" data-i18n-de="Allein meiste Sterne: <strong>40 P.</strong> (20 P. bei Gleichstand)">동점 없는 단독 최다 시 <strong>40 pt</strong> (동점 시 20 pt)</td>
+<td data-i18n-ko="최소 보유자가 아니면 <strong>25 pt</strong>" data-i18n-en="Not the player with fewest stars: <strong>25 VP</strong>" data-i18n-fr="Si vous n'avez pas le moins d'étoiles : <strong>25 pts</strong>" data-i18n-de="Nicht die wenigsten Sterne: <strong>25 P.</strong>">최소 보유자가 아니면 <strong>25 pt</strong></td>
+</tr>
+<tr>
+<td data-i18n-ko="<strong>⬢ 육각형</strong>" data-i18n-en="<strong>⬢ Hexagon</strong>" data-i18n-fr="<strong>⬢ Hexagone</strong>" data-i18n-de="<strong>⬢ Sechseck</strong>"><strong>⬢ 육각형</strong></td>
+<td data-i18n-ko="3개(15 pt) / 4개(30 pt) / 5개 이상 <strong>50 pt</strong>" data-i18n-en="3 tiles (15 VP) / 4 (30 VP) / 5+ <strong>50 VP</strong>" data-i18n-fr="3 tuiles (15 pts) / 4 (30 pts) / 5+ <strong>50 pts</strong>" data-i18n-de="3 Plättchen (15 P.) / 4 (30 P.) / 5+ <strong>50 P.</strong>">3개(15 pt) / 4개(30 pt) / 5개 이상 <strong>50 pt</strong></td>
+<td data-i18n-ko="최다 보유자가 아니면 개당 <strong>6 pt</strong> (최다는 0점)" data-i18n-en="Not the leader: <strong>6 VP</strong> per tile (Leader: 0 VP)" data-i18n-fr="Si pas le leader : <strong>6 pts</strong> / tuile (Leader : 0 pt)" data-i18n-de="Nicht der Führende: <strong>6 P.</strong> / Plättchen (Führender: 0 P.)">최다 보유자가 아니면 개당 <strong>6 pt</strong> (최다는 0점)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Tab 5: Game End -->
+<div class="rule-tab-content" id="tabEndGame">
+<h4 data-i18n-de="Spielende &amp; Schlusswertung" data-i18n-en="Game End &amp; Final Scoring" data-i18n-fr="Fin de partie et décompte final" data-i18n-ko="게임 종료 및 최종 점수">게임 종료 및 최종 점수</h4>
+<p data-i18n-de="Das Spiel endet, wenn alle Spieler &lt;strong&gt;10 Runden&lt;/strong&gt; beendet haben (jeder besitzt 20 Plättchen)." data-i18n-en="The game ends after all players have completed 10 turns (20 tiles total per player)." data-i18n-fr="La partie prend fin lorsque tous les joueurs ont terminé &lt;strong&gt;10 tours&lt;/strong&gt; (chacun ayant acquis 20 tuiles au total)." data-i18n-ko="모든 플레이어가 &lt;strong&gt;10턴&lt;/strong&gt;을 마치면(각자 총 20장 획득) 게임이 종료됩니다.">모든 플레이어가 <strong>10턴</strong>을 마치면(각자 총 20장 획득) 게임이 종료됩니다.</p>
+<h4 data-i18n-de="Punktebestandteile" data-i18n-en="Score Components" data-i18n-fr="Éléments du score total" data-i18n-ko="합산 점수 항목">합산 점수 항목</h4>
+<ol>
+<li data-i18n-de="&lt;strong&gt;Symbolpunkte&lt;/strong&gt;: Summe der 6 Symbolspalten" data-i18n-en="&lt;strong&gt;Symbol Scores&lt;/strong&gt;: Sum of points from 6 symbols" data-i18n-fr="&lt;strong&gt;Points des symboles&lt;/strong&gt; : Somme des 6 colonnes de symboles" data-i18n-ko="&lt;strong&gt;기호별 점수&lt;/strong&gt;: 6종 기호 점수 합계"><strong>기호별 점수</strong>: 6종 기호 점수 합계</li>
+<li data-i18n-de="&lt;strong&gt;Set-Sammelbonus&lt;/strong&gt;: Je nach Anzahl gesammelter Symbolarten (1–3: 0 / 4: 5 / 5: 15 / 6: 30 Punkte)" data-i18n-en="&lt;strong&gt;Set Bonus&lt;/strong&gt;: 1 type: 0 / 2: 0 / 3: 0 / 4: 5 / 5: 15 / 6: 30 VP" data-i18n-fr="&lt;strong&gt;Bonus de collection de séries&lt;/strong&gt; : Selon le nombre de types de symboles collectés (1~3 types : 0 / 4 types : 5 / 5 types : 15 / 6 types : 30 pts)" data-i18n-ko="&lt;strong&gt;세트 컬렉션 보너스&lt;/strong&gt;: 수집한 기호 종류 수에 따라 보너스 (1종: 0 / 2종: 0 / 3종: 0 / 4종: 5 / 5종: 15 / 6종: 30 pt)"><strong>세트 컬렉션 보너스</strong>: 수집한 기호 종류 수에 따라 보너스 (1종: 0 / 2종: 0 / 3종: 0 / 4종: 5 / 5종: 15 / 6종: 30 pt)</li>
+<li data-i18n-de="&lt;strong&gt;[KOMBO]-Punkte&lt;/strong&gt;: &lt;strong&gt;7 Punkte&lt;/strong&gt; pro Kombo-Plättchen" data-i18n-en="&lt;strong&gt;[COMBO] Points&lt;/strong&gt;: 7 VP per combo tile" data-i18n-fr="&lt;strong&gt;Points [COMBO]&lt;/strong&gt; : &lt;strong&gt;7 pts&lt;/strong&gt; par tuile de combo" data-i18n-ko="&lt;strong&gt;[COMBO] 점수&lt;/strong&gt;: 콤보 타일 1장당 &lt;strong&gt;7 pt&lt;/strong&gt;"><strong>[COMBO] 점수</strong>: 콤보 타일 1장당 <strong>7 pt</strong></li>
+<li data-i18n-de="&lt;strong&gt;[DOPPELT]-Punkte&lt;/strong&gt;: &lt;strong&gt;2 Punkte&lt;/strong&gt; pro doppeltem Plättchen" data-i18n-en="&lt;strong&gt;[DUPLICATE] Points&lt;/strong&gt;: 2 VP per duplicate tile" data-i18n-fr="&lt;strong&gt;Points [DOUBLON]&lt;/strong&gt; : &lt;strong&gt;2 pts&lt;/strong&gt; par tuile de doublon" data-i18n-ko="&lt;strong&gt;[DUPLICATE] 점수&lt;/strong&gt;: 중복 타일 1장당 &lt;strong&gt;2 pt&lt;/strong&gt;"><strong>[DUPLICATE] 점수</strong>: 중복 타일 1장당 <strong>2 pt</strong></li>
+</ol>
+</div>
+</div>
+</div>
+<!-- Symbol Order Choice Modal -->
+<div aria-modal="true" class="game-modal-overlay" id="choiceModal" role="dialog">
+<div class="game-modal-card choice-modal-card">
+<h2 id="choiceModalTitle">첫 배치 순서 결정</h2>
+<p id="choiceModalDesc" style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">새로운 두 종류의 기호가 동시에 획득되었습니다. 개인 보드의 왼쪽에 먼저 놓을 기호를 선택하세요.</p>
+<div class="choice-options-grid" id="choiceOptionsGrid"></div>
+</div>
+</div>
+<!-- Scoring Rule Choice Modal -->
+<div aria-modal="true" class="game-modal-overlay" id="ruleChoiceModal" role="dialog">
+<div class="game-modal-card choice-modal-card" style="max-width:540px;">
+<div id="ruleChoiceSymbolIcon" style="font-size: 2.2rem; margin-bottom: 2px;">▲</div>
+<h2 id="ruleChoiceModalTitle" style="font-size: 1.25rem;">점수 규칙 면 선택</h2>
+<p id="ruleChoiceModalDesc" style="color:var(--text-muted); font-size:0.86rem; margin: 4px 0 14px 0;">새로운 기호를 처음 획득했습니다. 사용할 스코어링 규칙(A면 또는 B면)을 선택하세요.</p>
+<div class="choice-options-grid" id="ruleChoiceOptionsGrid" style="grid-template-columns: 1fr 1fr; gap: 12px;"></div>
+</div>
+</div>
+<!-- New Game Settings Modal -->
+<div aria-modal="true" class="game-modal-overlay" id="newGameModal" role="dialog">
+<div class="game-modal-card choice-modal-card" style="max-width:440px;">
+<div class="game-modal-header">
+<h2>
+<i class="fa-solid fa-gear" style="color:var(--gold);"></i>
+<span data-i18n-de="Spieleinstellungen" data-i18n-en="Game Setup" data-i18n-fr="Paramètres de la partie" data-i18n-ko="게임 설정">게임 설정</span>
+</h2>
+<button class="game-modal-close" id="closeNewGameModal" type="button">×</button>
+</div>
+<div style="display:flex; flex-direction:column; gap:16px; margin: 16px 0; text-align:left;">
+<div>
+<label data-i18n-de="Spieleranzahl (Mensch vs. KI)" data-i18n-en="Player Count (Human vs AI)" data-i18n-fr="Nombre de joueurs (Humain vs IA)" data-i18n-ko="인원 수 (인간 vs AI)" style="font-weight:700; font-size:0.88rem; display:block; margin-bottom:6px;">인원 수 (인간 vs AI)</label>
+<select id="selectPlayers" style="width:100%; padding:10px; background:#0f172a; color:#fff; border:1px solid var(--border-glass); border-radius:var(--radius-sm); font-size:0.9rem;">
+<option data-i18n-de="2 Spieler (Du vs. 1 KI)" data-i18n-en="2 Players (You vs 1 AI)" data-i18n-fr="2 joueurs (Vous vs 1 IA)" data-i18n-ko="2인 게임 (나 vs AI 1명)" selected="" value="2">2인 게임 (나 vs AI 1명)</option>
+<option data-i18n-de="3 Spieler (Du vs. 2 KIs)" data-i18n-en="3 Players (You vs 2 AIs)" data-i18n-fr="3 joueurs (Vous vs 2 IA)" data-i18n-ko="3인 게임 (나 vs AI 2명)" value="3">3인 게임 (나 vs AI 2명)</option>
+<option data-i18n-de="4 Spieler (Du vs. 3 KIs)" data-i18n-en="4 Players (You vs 3 AIs)" data-i18n-fr="4 joueurs (Vous vs 3 IA)" data-i18n-ko="4인 게임 (나 vs AI 3명)" value="4">4인 게임 (나 vs AI 3명)</option>
+</select>
+</div>
+<div>
+<label data-i18n-de="Wertungsplättchen-Modus" data-i18n-en="Scoring Condition Mode" data-i18n-fr="Mode des tuiles de score" data-i18n-ko="점수 조건 타일 모드" style="font-weight:700; font-size:0.88rem; display:block; margin-bottom:6px;">점수 조건 타일 모드</label>
+<select id="selectScoringMode" style="width:100%; padding:10px; background:#0f172a; color:#fff; border:1px solid var(--border-glass); border-radius:var(--radius-sm); font-size:0.9rem;">
+<option data-i18n-de="Wahl beim Erwerb (A/B pro Symbol wählen)" data-i18n-en="Choose on Acquisition (Select A/B per symbol)" data-i18n-fr="Choix à l'acquisition (Sélection A/B par symbole)" data-i18n-ko="직접 선택 (기호 첫 획득 시 A/B면 선택)" selected="" value="mixed">직접 선택 (기호 첫 획득 시 A/B면 선택)</option>
+<option data-i18n-de="Voreinstellung (A/B für 6 Symbole vorab festlegen)" data-i18n-en="Custom Preset (Pre-assign A/B for 6 symbols)" data-i18n-fr="Personnalisation préalable (Assigner A/B avant de jouer)" data-i18n-ko="사전 커스텀 (시작 전 6종 기호 A/B 지정)" value="custom">사전 커스텀 (시작 전 6종 기호 A/B 지정)</option>
+<option data-i18n-de="Typ A fixiert (Alle Symbole Typ A)" data-i18n-en="Type A (All Symbols Type A)" data-i18n-fr="Fixe Type A (Tous les symboles en Type A)" data-i18n-ko="Type A 고정 (모든 기호 A형)" value="A">Type A 고정 (모든 기호 A형)</option>
+<option data-i18n-de="Typ B fixiert (Alle Symbole Typ B)" data-i18n-en="Type B (All Symbols Type B)" data-i18n-fr="Fixe Type B (Tous les symboles en Type B)" data-i18n-ko="Type B 고정 (모든 기호 B형)" value="B">Type B 고정 (모든 기호 B형)</option>
+</select>
+</div>
+<!-- Custom per-symbol A/B selector (shown when 'custom' is selected) -->
+<div id="customScoringSetup" style="display:none; flex-direction:column; gap:8px; background:rgba(15,23,42,0.65); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-glass);">
+<div data-i18n-de="Regel pro Symbol vorab zuweisen" data-i18n-en="Assign Rule per Symbol" data-i18n-fr="Prédéfinir la règle par symbole" data-i18n-ko="기호별 점수 규칙 사전 지정" style="font-size:0.8rem; font-weight:700; color:var(--gold);">기호별 점수 규칙 사전 지정</div>
+<div id="customSymbolRulesGrid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:8px;"></div>
+</div>
+</div>
+<button class="btn-play-again" data-i18n-de="Spiel starten" data-i18n-en="Start Game" data-i18n-fr="Démarrer la partie" data-i18n-ko="게임 시작" id="btnStartNewGame" style="width:100%;" type="button">게임 시작</button>
+</div>
+</div>
+<!-- Victory Modal -->
+<div aria-modal="true" class="game-modal-overlay" id="victoryModal" role="dialog">
+<div class="game-modal-card victory-card">
+<div class="victory-title" id="victoryWinnerTitle">🎉 승리!</div>
+<p data-i18n-de="Endergebnis nach 10 Runden" data-i18n-en="Final Scores After 10 Turns" data-i18n-fr="Résultats finaux après 10 tours" data-i18n-ko="10턴 완료 최종 점수 결과" style="color:var(--text-muted); font-size:0.88rem;">10턴 완료 최종 점수 결과</p>
+<div class="scores-comparison" id="victoryScoresList"></div>
+<button class="btn-play-again" data-i18n-de="Erneut spielen" data-i18n-en="Play Again" data-i18n-fr="Rejouer" data-i18n-ko="다시 플레이" id="btnPlayAgain" type="button">다시 플레이</button>
+</div>
+</div>
+<!-- Embedded Direct Game Engine -->
+<script>
 (function () {
     'use strict';
 
@@ -2186,12 +2143,16 @@ body {
     
         const COLOR_NAMES = {
         en: { black: 'Black', red: 'Red', yellow: 'Yellow', green: 'Green', blue: 'Blue', purple: 'Purple', orange: 'Orange', white: 'White', gray: 'Orange' },
-        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' }
+        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' },
+        fr: { black: 'Noir', red: 'Rouge', yellow: 'Jaune', green: 'Vert', blue: 'Bleu', purple: 'Violet', orange: 'Orange', white: 'Blanc', gray: 'Orange' },
+        de: { black: 'Schwarz', red: 'Rot', yellow: 'Gelb', green: 'Grün', blue: 'Blau', purple: 'Lila', orange: 'Orange', white: 'Weiß', gray: 'Orange' }
     };
 
     const SYMBOL_NAMES = {
         en: { triangle: 'Triangle', trapezoid: 'Trapezoid', square: 'Square', circle: 'Circle', star: 'Star', hexagon: 'Hexagon' },
-        ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' }
+        ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' },
+        fr: { triangle: 'Triangle', trapezoid: 'Trapèze', square: 'Carré', circle: 'Cercle', star: 'Étoile', hexagon: 'Hexagone' },
+        de: { triangle: 'Dreieck', trapezoid: 'Trapez', square: 'Quadrat', circle: 'Kreis', star: 'Stern', hexagon: 'Sechseck' }
     };
 
     const SYMBOL_ICONS = {
@@ -2209,87 +2170,256 @@ body {
             icon: '▲',
             color: '#38bdf8',
             A: {
-                short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks' },
-                boardLines: { ko: ['1/3/5/7개', '5/15/25/35p'], en: ['1/3/5/7 pcs', '5/15/25/35p'] },
-                full: { ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)', en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)' }
+                short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks', fr: '5/15/25/35p par 1/3/5/7 piles', de: '5/15/25/35p je 1/3/5/7 Stapel' },
+                boardLines: { ko: ['1/3/5/7개', '5/15/25/35p'], en: ['1/3/5/7 pcs', '5/15/25/35p'], fr: ['1/3/5/7 tuiles', '5/15/25/35p'], de: ['1/3/5/7 Plättchen', '5/15/25/35p'] },
+                full: {
+                    ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)',
+                    en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)',
+                    fr: 'Score aux paliers impairs : 5/15/25/35 points pour 1/3/5/7 tuiles (les nombres pairs conservent le palier précédent)',
+                    de: 'Punkte für ungerade Stapel: 5/15/25/35 Punkte bei 1/3/5/7 Plättchen (gerade Anzahlen behalten vorherige Stufe)'
+                }
             },
             B: {
-                short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks' },
-                boardLines: { ko: ['1/3/5/7개', '4/16/36/64p'], en: ['1/3/5/7 pcs', '4/16/36/64p'] },
-                full: { ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)', en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)' }
+                short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks', fr: '4/16/36/64p par 1/3/5/7 piles', de: '4/16/36/64p je 1/3/5/7 Stapel' },
+                boardLines: { ko: ['1/3/5/7개', '4/16/36/64p'], en: ['1/3/5/7 pcs', '4/16/36/64p'], fr: ['1/3/5/7 tuiles', '4/16/36/64p'], de: ['1/3/5/7 Plättchen', '4/16/36/64p'] },
+                full: {
+                    ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)',
+                    en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)',
+                    fr: 'Score (N+1)² aux paliers impairs : 4/16/36/64 points pour 1/3/5/7 tuiles (les nombres pairs conservent le palier précédent)',
+                    de: '(N+1)²-Wertung für ungerade Stapel: 4/16/36/64 Punkte bei 1/3/5/7 Plättchen (gerade behalten Vorstufe)'
+                }
             }
         },
         trapezoid: {
             icon: '⏢',
             color: '#fb923c',
             A: {
-                short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks' },
-                boardLines: { ko: ['2/4/6/8개', '10/20/30/40p'], en: ['2/4/6/8 pcs', '10/20/30/40p'] },
-                full: { ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)' }
+                short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks', fr: '10/20/30/40p par 2/4/6/8 piles', de: '10/20/30/40p je 2/4/6/8 Stapel' },
+                boardLines: { ko: ['2/4/6/8개', '10/20/30/40p'], en: ['2/4/6/8 pcs', '10/20/30/40p'], fr: ['2/4/6/8 tuiles', '10/20/30/40p'], de: ['2/4/6/8 Plättchen', '10/20/30/40p'] },
+                full: {
+                    ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)',
+                    en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)',
+                    fr: 'Score aux paliers pairs : 10/20/30/40 points pour 2/4/6/8 tuiles (1 tuile = 0 pt, les nombres impairs conservent le palier précédent)',
+                    de: 'Punkte für gerade Stapel: 10/20/30/40 Punkte bei 2/4/6/8 Plättchen (1 Plättchen = 0, ungerade behalten Vorstufe)'
+                }
             },
             B: {
-                short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks' },
-                boardLines: { ko: ['2/4/6/8개', '9/25/49/81p'], en: ['2/4/6/8 pcs', '9/25/49/81p'] },
-                full: { ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², odd counts keep previous tier)' }
+                short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks', fr: '9/25/49/81p par 2/4/6/8 piles', de: '9/25/49/81p je 2/4/6/8 Stapel' },
+                boardLines: { ko: ['2/4/6/8개', '9/25/49/81p'], en: ['2/4/6/8 pcs', '9/25/49/81p'], fr: ['2/4/6/8 tuiles', '9/25/49/81p'], de: ['2/4/6/8 Plättchen', '9/25/49/81p'] },
+                full: {
+                    ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)',
+                    en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², even counts keep previous tier)',
+                    fr: 'Score (N+1)² aux paliers pairs : 9/25/49/81 points pour 2/4/6/8 tuiles (1 tuile = 0 pt, les nombres impairs conservent le palier précédent)',
+                    de: '(N+1)²-Wertung für gerade Stapel: 9/25/49/81 Punkte bei 2/4/6/8 Plättchen (1 Plättchen = 0, ungerade behalten Vorstufe)'
+                }
             }
         },
         square: {
             icon: '■',
             color: '#4ade80',
             A: {
-                short: { ko: '개수 × 콤보p', en: 'Count × Combos p' },
-                boardLines: { ko: ['개수 × 콤보', '(콤보당 1p)'], en: ['Count ×', 'Combos (1p)'] },
-                full: { ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)', en: '1 VP per COMBO for each square tile' }
+                short: { ko: '개수 × 콤보p', en: 'Count × Combos p', fr: 'Nb tuiles × Combos p', de: 'Anzahl × Kombos p' },
+                boardLines: { ko: ['개수 × 콤보', '(콤보당 1p)'], en: ['Count ×', 'Combos (1p)'], fr: ['Tuiles ×', 'Combos (1p)'], de: ['Anzahl ×', 'Kombos (1p)'] },
+                full: {
+                    ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)',
+                    en: '1 VP per COMBO for each square tile',
+                    fr: '1 point par tuile COMBO pour chaque carré possédé',
+                    de: '1 Punkt pro KOMBO-Plättchen für jedes Quadrat'
+                }
             },
             B: {
-                short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p' },
-                boardLines: { ko: ['개수 × 중복', '× 3p'], en: ['Count × Dupl', '× 3p'] },
-                full: { ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점', en: '3 VP per DUPLICATE tile for each square tile' }
+                short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p', fr: 'Nb tuiles × Doublons × 3p', de: 'Anzahl × Doppelt × 3p' },
+                boardLines: { ko: ['개수 × 중복', '× 3p'], en: ['Count × Dupl', '× 3p'], fr: ['Tuiles × Doubl.', '× 3p'], de: ['Anzahl × Doppel', '× 3p'] },
+                full: {
+                    ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점',
+                    en: '3 VP per DUPLICATE tile for each square tile',
+                    fr: '3 points par tuile DOUBLON pour chaque carré possédé',
+                    de: '3 Punkte pro DOPPELTES Plättchen für jedes Quadrat'
+                }
             }
         },
         circle: {
             icon: '●',
             color: '#c084fc',
             A: {
-                short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color' },
-                boardLines: { ko: ['개수 ×', '최다 색상 수'], en: ['Count ×', 'Max Color'] },
-                full: { ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점', en: 'Points per circle = count of tiles in most collected color' }
+                short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color', fr: 'Nb tuiles × Coul. max', de: 'Anzahl × Meiste Farbe' },
+                boardLines: { ko: ['개수 ×', '최다 색상 수'], en: ['Count ×', 'Max Color'], fr: ['Tuiles ×', 'Coul. max'], de: ['Anzahl ×', 'Meiste Farbe'] },
+                full: {
+                    ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점',
+                    en: 'Points per circle = count of tiles in most collected color',
+                    fr: '1 point par cercle multiplié par le nombre total de tuiles de votre couleur la plus fréquente',
+                    de: 'Punkte pro Kreis = Anzahl der Plättchen deiner am häufigsten gesammelten Farbe'
+                }
             },
             B: {
-                short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col' },
-                boardLines: { ko: ['개수 ×', '1번째 열 수'], en: ['Count ×', '1st Col Count'] },
-                full: { ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점', en: 'Points per circle = count of tiles in leftmost 1st column' }
+                short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col', fr: 'Nb tuiles × 1ère colonne', de: 'Anzahl × 1. Spalte' },
+                boardLines: { ko: ['개수 ×', '1번째 열 수'], en: ['Count ×', '1st Col Count'], fr: ['Tuiles ×', '1ère colonne'], de: ['Anzahl ×', '1. Spalte'] },
+                full: {
+                    ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점',
+                    en: 'Points per circle = count of tiles in leftmost 1st column',
+                    fr: '1 point par cercle multiplié par le nombre de tuiles dans la 1ère colonne de votre plateau',
+                    de: 'Punkte pro Kreis = Anzahl der Plättchen in der 1. (ganz linken) Spalte deines Spielertableaus'
+                }
             }
         },
         star: {
             icon: '★',
             color: '#facc15',
             A: {
-                short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)' },
-                boardLines: { ko: ['단독 40p', '(동점 20p)'], en: ['Sole 40p', '(Tie 20p)'] },
-                full: { ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)', en: '40 VP for sole most stars (20 VP each if tied for most)' }
+                short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)', fr: 'Unique 40p (Égalité 20p)', de: 'Allein 40p (Gleich 20p)' },
+                boardLines: { ko: ['단독 40p', '(동점 20p)'], en: ['Sole 40p', '(Tie 20p)'], fr: ['Unique 40p', '(Égalité 20p)'], de: ['Allein 40p', '(Gleich 20p)'] },
+                full: {
+                    ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)',
+                    en: '40 VP for sole most stars (20 VP each if tied for most)',
+                    fr: "40 points si vous avez strictement le plus d'étoiles (20 points chacun en cas d'égalité en tête)",
+                    de: '40 Punkte für alleinige meiste Sterne (je 20 Punkte bei Gleichstand an der Spitze)'
+                }
             },
             B: {
-                short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p' },
-                boardLines: { ko: ['최소 아니면', '25p'], en: ['Not Fewest:', '25p'] },
-                full: { ko: '최소 보유자가 아니면 25점', en: '25 VP if you are not the player with the fewest stars' }
+                short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p', fr: 'Pas le moins : 25p', de: 'Nicht Letzter: 25p' },
+                boardLines: { ko: ['최소 아니면', '25p'], en: ['Not Fewest:', '25p'], fr: ['Pas le moins :', '25p'], de: ['Nicht Letzter:', '25p'] },
+                full: {
+                    ko: '최소 보유자가 아니면 25점',
+                    en: '25 VP if you are not the player with the fewest stars',
+                    fr: "25 points si vous n'êtes pas le joueur avec le moins d'étoiles",
+                    de: '25 Punkte, wenn du nicht die wenigsten Sterne aller Spieler hast'
+                }
             }
         },
         hexagon: {
             icon: '⬢',
             color: '#f43f5e',
             A: {
-                short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p' },
-                boardLines: { ko: ['3/4/5개', '15/30/50p'], en: ['3/4/5+ pcs', '15/30/50p'] },
-                full: { ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)', en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)' }
+                short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p', fr: '3/4/5+ tuiles : 15/30/50p', de: '3/4/5+ Plättchen: 15/30/50p' },
+                boardLines: { ko: ['3/4/5개', '15/30/50p'], en: ['3/4/5+ pcs', '15/30/50p'], fr: ['3/4/5+ tuiles', '15/30/50p'], de: ['3/4/5+ Plättchen', '15/30/50p'] },
+                full: {
+                    ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)',
+                    en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)',
+                    fr: "Paliers d'hexagones : 3 tuiles (15p) / 4 tuiles (30p) / 5 tuiles ou plus (50p)",
+                    de: 'Stufen für Sechsecke: 3 Plättchen (15p) / 4 Plättchen (30p) / 5+ Plättchen (50p)'
+                }
             },
             B: {
-                short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile' },
-                boardLines: { ko: ['최다 아니면', '개당 6p'], en: ['Not Leader:', '6p / tile'] },
-                full: { ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)', en: '6 VP per tile if not the leader (leader gets 0 VP)' }
+                short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile', fr: 'Pas le plus : 6p / tuile', de: 'Nicht Erster: 6p / Plättchen' },
+                boardLines: { ko: ['최다 아니면', '개당 6p'], en: ['Not Leader:', '6p / tile'], fr: ['Pas le leader :', '6p / tile'], de: ['Nicht Erster:', '6p / Plättchen'] },
+                full: {
+                    ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)',
+                    en: '6 VP per tile if not the leader (leader gets 0 VP)',
+                    fr: "6 points par hexagone si vous n'êtes pas le joueur qui en possède le plus (le leader marque 0 pt)",
+                    de: '6 Punkte pro Sechseck, wenn du nicht die meisten hast (der Führende erhält 0 Punkte)'
+                }
             }
         }
     };
+
+    const I18N_STRINGS = {
+        title: {
+            ko: "헤븐스 도어 (Heaven's Door) | 환상적인 게임즈",
+            en: "Heaven's Door | Hwantastic Games",
+            fr: "Heaven's Door | Hwantastic Games",
+            de: "Heaven's Door | Hwantastic Games"
+        },
+        youPlayer: {
+            ko: '나 (플레이어)',
+            en: 'You (Player)',
+            fr: 'Vous (Joueur)',
+            de: 'Du (Spieler)'
+        },
+        turn: {
+            ko: (cur, max) => `턴 ${cur}/${max}`,
+            en: (cur, max) => `Turn ${cur}/${max}`,
+            fr: (cur, max) => `Tour ${cur}/${max}`,
+            de: (cur, max) => `Zug ${cur}/${max}`
+        },
+        yourTurn: {
+            ko: '내 차례',
+            en: 'Your Turn',
+            fr: 'Votre tour',
+            de: 'Du bist am Zug'
+        },
+        aiThinking: {
+            ko: name => `${name} 생각 중...`,
+            en: name => `${name} Thinking...`,
+            fr: name => `${name} réfléchit...`,
+            de: name => `${name} denkt nach...`
+        },
+        gameOverPrompt: {
+            ko: '<i class="fa-solid fa-flag-checkered"></i> 게임이 종료되었습니다!',
+            en: '<i class="fa-solid fa-flag-checkered"></i> Game Over!',
+            fr: '<i class="fa-solid fa-flag-checkered"></i> Partie terminée !',
+            de: '<i class="fa-solid fa-flag-checkered"></i> Spiel beendet!'
+        },
+        aiEvaluatingPrompt: {
+            ko: '<i class="fa-solid fa-robot"></i> AI가 최적의 조합을 선택하고 있습니다...',
+            en: '<i class="fa-solid fa-robot"></i> AI is evaluating the best pair...',
+            fr: '<i class="fa-solid fa-robot"></i> L\'IA évalue la meilleure paire...',
+            de: '<i class="fa-solid fa-robot"></i> KI wählt das beste Paar aus...'
+        },
+        pickFirstPrompt: {
+            ko: '<i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)',
+            en: '<i class="fa-solid fa-hand-pointer"></i> Select your first tile (Exposed face-up tile)',
+            fr: '<i class="fa-solid fa-hand-pointer"></i> Choisissez votre première tuile (visible en bordure)',
+            de: '<i class="fa-solid fa-hand-pointer"></i> Erstes Plättchen wählen (offen am Rand liegend)'
+        },
+        pickSecondPrompt: {
+            ko: (c, s) => `<i class="fa-solid fa-check-double"></i> 두 번째 타일을 선택하세요 (${c} 색상 또는 ${s} 기호 일치)`,
+            en: (c, s) => `<i class="fa-solid fa-check-double"></i> Select your second tile (Matching ${c} or ${s})`,
+            fr: (c, s) => `<i class="fa-solid fa-check-double"></i> Choisissez la deuxième tuile (de couleur ${c} ou symbole ${s})`,
+            de: (c, s) => `<i class="fa-solid fa-check-double"></i> Zweites Plättchen wählen (passend zu ${c} oder ${s})`
+        },
+        firstOrderTitle: {
+            ko: '첫 배치 순서 결정',
+            en: 'First Symbol Order Choice',
+            fr: 'Ordre de placement initial',
+            de: 'Reihenfolge der ersten Symbole'
+        },
+        firstOrderDesc: {
+            ko: '획득한 2개 타일의 기호가 다릅니다. 어떤 기호를 먼저(좌측) 배치할지 선택하세요.',
+            en: 'The 2 drafted tiles have different symbols. Choose which one to place first (on the left column).',
+            fr: 'Les 2 tuiles choisies ont des symboles différents. Choisissez lequel placer en premier (à gauche).',
+            de: 'Die 2 gezogenen Plättchen haben verschiedene Symbole. Wähle, welches zuerst (links) platziert wird.'
+        },
+        leftSubtext: {
+            ko: '(좌측)',
+            en: '(Left)',
+            fr: '(Gauche)',
+            de: '(Links)'
+        },
+        ruleChoiceTitle: {
+            ko: (icon, name) => `[${icon} ${name}] 점수 규칙 면 선택`,
+            en: (icon, name) => `Choose Scoring Rule for [${icon} ${name}]`,
+            fr: (icon, name) => `Choisir la règle pour [${icon} ${name}]`,
+            de: (icon, name) => `Wertungsregel für [${icon} ${name}] wählen`
+        },
+        ruleChoiceDesc: {
+            ko: '새로운 기호를 처음 획득했습니다. 이번 게임에서 적용할 규칙 면을 선택하세요.',
+            en: 'You acquired a new symbol! Choose which scoring rule side to apply for this symbol.',
+            fr: 'Nouveau symbole acquis ! Choisissez la face de score à appliquer pour cette partie.',
+            de: 'Neues Symbol erworben! Wähle die Wertungsseite für dieses Symbol in diesem Spiel.'
+        },
+        victoryTitle: {
+            ko: (name, score) => `🎉 ${name} 승리! (${score}점)`,
+            en: (name, score) => `🎉 ${name} Wins! (${score} VP)`,
+            fr: (name, score) => `🎉 ${name} gagne ! (${score} PV)`,
+            de: (name, score) => `🎉 ${name} gewinnt! (${score} SP)`
+        },
+        breakdownSymbols: { ko: '기호', en: 'Symbols', fr: 'Symboles', de: 'Symbole' },
+        breakdownSet: { ko: '세트', en: 'Set', fr: 'Série', de: 'Set' },
+        breakdownCombo: { ko: '콤보', en: 'Combo', fr: 'Combo', de: 'Kombo' },
+        breakdownDupl: { ko: '중복', en: 'Dupl', fr: 'Doublon', de: 'Doppelt' },
+        faceDownTile: { ko: '뒷면 타일', en: 'Face-down tile', fr: 'Tuile face cachée', de: 'Verdecktes Plättchen' },
+        flipHintTitle: {
+            ko: (type, desc) => `클릭하여 A/B 규칙 면 뒤집기 (현재 ${type}형)\n${desc}`,
+            en: (type, desc) => `Click to flip A/B side (Current Type ${type})\n${desc}`,
+            fr: (type, desc) => `Cliquez pour retourner la face A/B (Actuel Type ${type})\n${desc}`,
+            de: (type, desc) => `Klicken zum Wenden der A/B-Seite (Aktuell Typ ${type})\n${desc}`
+        },
+        flipHintShort: { ko: 'A/B 뒤집기', en: 'Flip side', fr: 'Retourner face', de: 'Seite wenden' }
+    };
+
+    const SUPPORTED_LANGS = ['ko', 'en', 'fr', 'de'];
+    const LANG_BUTTON_TEXT = { ko: 'KO', en: 'EN', fr: 'FR', de: 'DE' };
+    const LANG_SWITCH_HEADER = { ko: '한국어', en: 'EN', fr: 'FR', de: 'DE' };
 
     const SET_BONUSES = [0, 0, 0, 0, 5, 15, 30]; // 0 to 6 distinct symbols
 
@@ -2402,7 +2532,7 @@ body {
             const isHuman = (i === 0);
             state.players.push({
                 id: i,
-                name: isHuman ? (state.lang === 'ko' ? '나 (플레이어)' : 'You (Player)') : `AI ${i}`,
+                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko) : `AI ${i}`,
                 isHuman,
                 // Board columns: ordered list of symbol placements { symbol, ruleType: 'A'|'B', tiles: [] }
                 columns: [],
@@ -2980,20 +3110,19 @@ body {
             return;
         }
 
-        const isKo = (state.lang === 'ko');
-        document.getElementById('choiceModalTitle').textContent = isKo ? '첫 배치 순서 결정' : 'First Symbol Order Choice';
-        document.getElementById('choiceModalDesc').textContent = isKo ? 
-            '새로운 두 종류의 기호가 동시에 획득되었습니다. 개인 보드의 왼쪽에 먼저 놓을 기호를 선택하세요.' :
-            'Two new symbols were acquired simultaneously. Choose which symbol to place to the left on your board.';
+        const lang = state.lang || 'ko';
+        document.getElementById('choiceModalTitle').textContent = I18N_STRINGS.firstOrderTitle[lang] || I18N_STRINGS.firstOrderTitle.ko;
+        document.getElementById('choiceModalDesc').textContent = I18N_STRINGS.firstOrderDesc[lang] || I18N_STRINGS.firstOrderDesc.ko;
+        const subtext = I18N_STRINGS.leftSubtext[lang] || I18N_STRINGS.leftSubtext.ko;
 
         container.innerHTML = `
             <button type="button" class="btn-choice" id="btnOrder1">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile1.symbol].color};">${SYMBOL_ICONS[tile1.symbol]}</span>
-                <span>${SYMBOL_NAMES[state.lang][tile1.symbol]} (좌측)</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile1.symbol]} ${subtext}</span>
             </button>
             <button type="button" class="btn-choice" id="btnOrder2">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile2.symbol].color};">${SYMBOL_ICONS[tile2.symbol]}</span>
-                <span>${SYMBOL_NAMES[state.lang][tile2.symbol]} (좌측)</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile2.symbol]} ${subtext}</span>
             </button>
         `;
 
@@ -3022,31 +3151,27 @@ body {
         }
 
         const rule = SYMBOL_RULES[symbol];
-        const name = SYMBOL_NAMES[state.lang][symbol];
-        const isKo = (state.lang === 'ko');
+        const lang = state.lang || 'ko';
+        const name = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[symbol];
 
         document.getElementById('ruleChoiceSymbolIcon').innerHTML = `<span style="color:${rule.color};">${rule.icon}</span>`;
-        document.getElementById('ruleChoiceModalTitle').textContent = isKo ? 
-            `[${rule.icon} ${name}] 점수 규칙 면 선택` : 
-            `Choose Scoring Rule for [${rule.icon} ${name}]`;
-        document.getElementById('ruleChoiceModalDesc').textContent = isKo ? 
-            `새로운 기호를 처음 획득했습니다. 이번 게임에서 적용할 규칙 면을 선택하세요.` : 
-            `You acquired a new symbol! Choose which scoring rule side to apply for this symbol.`;
+        document.getElementById('ruleChoiceModalTitle').textContent = (I18N_STRINGS.ruleChoiceTitle[lang] || I18N_STRINGS.ruleChoiceTitle.ko)(rule.icon, name);
+        document.getElementById('ruleChoiceModalDesc').textContent = I18N_STRINGS.ruleChoiceDesc[lang] || I18N_STRINGS.ruleChoiceDesc.ko;
 
         container.innerHTML = `
             <button type="button" class="btn-choice rule-select-btn type-a" id="btnRuleChoiceA" style="padding:16px 14px; text-align:left; border-top:4px solid #38bdf8; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-a" style="font-size:0.75rem; padding:2px 8px;">Type A</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[state.lang]}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[state.lang]}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[lang] || rule.A.short.ko}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[lang] || rule.A.full.ko}</div>
             </button>
             <button type="button" class="btn-choice rule-select-btn type-b" id="btnRuleChoiceB" style="padding:16px 14px; text-align:left; border-top:4px solid #f472b6; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-b" style="font-size:0.75rem; padding:2px 8px;">Type B</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[state.lang]}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[state.lang]}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[lang] || rule.B.short.ko}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[lang] || rule.B.full.ko}</div>
             </button>
         `;
 
@@ -3071,23 +3196,26 @@ body {
         const list = document.getElementById('victoryScoresList');
         if (!modal || !list) return;
 
-        const isKo = (state.lang === 'ko');
+        const lang = state.lang || 'ko';
         const sorted = [...state.players].sort((a, b) => b.totalScore - a.totalScore);
         const winner = sorted[0];
 
-        document.getElementById('victoryWinnerTitle').textContent = isKo ? 
-            `🎉 ${winner.name} 승리! (${winner.totalScore}점)` :
-            `🎉 ${winner.name} Wins! (${winner.totalScore} pts)`;
+        document.getElementById('victoryWinnerTitle').textContent = (I18N_STRINGS.victoryTitle[lang] || I18N_STRINGS.victoryTitle.ko)(winner.name, winner.totalScore);
+
+        const lblSymbols = I18N_STRINGS.breakdownSymbols[lang] || I18N_STRINGS.breakdownSymbols.ko;
+        const lblSet = I18N_STRINGS.breakdownSet[lang] || I18N_STRINGS.breakdownSet.ko;
+        const lblCombo = I18N_STRINGS.breakdownCombo[lang] || I18N_STRINGS.breakdownCombo.ko;
+        const lblDupl = I18N_STRINGS.breakdownDupl[lang] || I18N_STRINGS.breakdownDupl.ko;
 
         list.innerHTML = sorted.map((p, idx) => `
             <div class="score-row ${idx === 0 ? 'winner' : ''}">
                 <div>
                     <strong style="font-size: 1.05rem; display:block;">${p.name}</strong>
                     <div class="score-breakdown-details">
-                        <span>${isKo ? '기호' : 'Symbols'}: ${p.scoreBreakdown.symbolPoints}pt</span>
-                        <span>${isKo ? '세트' : 'Set'}: ${p.scoreBreakdown.setBonus}pt</span>
-                        <span>${isKo ? '콤보' : 'Combo'}: ${p.scoreBreakdown.comboPts}pt</span>
-                        <span>${isKo ? '중복' : 'Dupl'}: ${p.scoreBreakdown.duplicatePts}pt</span>
+                        <span>${lblSymbols}: ${p.scoreBreakdown.symbolPoints}pt</span>
+                        <span>${lblSet}: ${p.scoreBreakdown.setBonus}pt</span>
+                        <span>${lblCombo}: ${p.scoreBreakdown.comboPts}pt</span>
+                        <span>${lblDupl}: ${p.scoreBreakdown.duplicatePts}pt</span>
                     </div>
                 </div>
                 <div style="font-size: 1.45rem; font-weight: 900; color: var(--gold);">${p.totalScore}</div>
@@ -3120,13 +3248,17 @@ body {
     function render() {
         const isKo = (state.lang === 'ko');
 
+        const lang = state.lang || 'ko';
+
         // Status bar
         const badge = document.getElementById('turnStatusBadge');
         const activeP = state.players[state.activePlayerIndex];
         if (badge && activeP) {
             badge.className = `status-badge ${activeP.isHuman ? '' : 'ai-turn'}`;
-            const turnText = isKo ? `턴 ${state.turn}/${state.maxTurns}` : `Turn ${state.turn}/${state.maxTurns}`;
-            const playerText = activeP.isHuman ? (isKo ? '내 차례' : 'Your Turn') : (isKo ? `${activeP.name} 생각 중...` : `${activeP.name} Thinking...`);
+            const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.ko)(state.turn, state.maxTurns);
+            const playerText = activeP.isHuman ? 
+                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.ko) : 
+                (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.ko)(activeP.name);
             badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${turnText} · ${playerText}`;
         }
 
@@ -3134,17 +3266,15 @@ body {
         const promptEl = document.getElementById('promptText');
         if (promptEl) {
             if (state.gameOver) {
-                promptEl.innerHTML = isKo ? '<i class="fa-solid fa-flag-checkered"></i> 게임이 종료되었습니다!' : '<i class="fa-solid fa-flag-checkered"></i> Game Over!';
+                promptEl.innerHTML = I18N_STRINGS.gameOverPrompt[lang] || I18N_STRINGS.gameOverPrompt.ko;
             } else if (!activeP.isHuman) {
-                promptEl.innerHTML = isKo ? '<i class="fa-solid fa-robot"></i> AI가 최적의 조합을 선택하고 있습니다...' : '<i class="fa-solid fa-robot"></i> AI is evaluating the best pair...';
+                promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.ko;
             } else if (!state.selectedTile) {
-                promptEl.innerHTML = isKo ? 
-                    '<i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)' :
-                    '<i class="fa-solid fa-hand-pointer"></i> Select your 1st tile (exposed border tile)';
+                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.ko;
             } else {
-                promptEl.innerHTML = isKo ? 
-                    `<i class="fa-solid fa-link"></i> 두 번째 타일을 선택하세요 (선택한 타일과 <strong>색상</strong> 또는 <strong>기호</strong>가 같은 타일)` :
-                    `<i class="fa-solid fa-link"></i> Select your 2nd tile (must match <strong>Color</strong> or <strong>Symbol</strong>)`;
+                const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.ko)[state.selectedTile.color] || state.selectedTile.color;
+                const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[state.selectedTile.symbol] || state.selectedTile.symbol;
+                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.ko)(matchC, matchS);
             }
         }
 
@@ -3233,7 +3363,7 @@ body {
                     el.className = `hd-tile tile-color-${tile.color}`;
                     el.style.width = `${tileSize}px`;
                     el.style.height = `${tileSize}px`;
-                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (state.lang === 'ko' ? '뒷면 타일' : 'Face-down tile');
+                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (I18N_STRINGS.faceDownTile[state.lang] || I18N_STRINGS.faceDownTile.ko);
 
                     if (!tile.faceUp) {
                         el.classList.add('face-down');
@@ -3302,11 +3432,11 @@ body {
                     colsHtml += `
                         <div class="pb-symbol-col">
                             <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()} ${p.isHuman ? 'clickable-tile' : ''}" 
-                                 title="${p.isHuman ? (state.lang === 'ko' ? '클릭하여 A/B 규칙 면 뒤집기 (현재 ' + col.ruleType + '형)\n' + ruleData.full[state.lang] : 'Click to flip A/B side (Current Type ' + col.ruleType + ')\n' + ruleData.full[state.lang]) : ruleData.full[state.lang]}"
+                                 title="${p.isHuman ? (I18N_STRINGS.flipHintTitle[state.lang] || I18N_STRINGS.flipHintTitle.ko)(col.ruleType, (ruleData.full[state.lang] || ruleData.full.ko)) : (ruleData.full[state.lang] || ruleData.full.ko)}"
                                  ${p.isHuman ? `onclick="window.flipPlayerScoringTile(${p.id}, '${col.symbol}')"` : ''}>
                                 <div class="pb-tile-top">
                                     <span class="pb-rule-badge">${col.ruleType}</span>
-                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${state.lang === 'ko' ? 'A/B 뒤집기' : 'Flip side'}"><i class="fa-solid fa-repeat"></i></span>` : ''}
+                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${I18N_STRINGS.flipHintShort[state.lang] || I18N_STRINGS.flipHintShort.ko}"><i class="fa-solid fa-repeat"></i></span>` : ''}
                                     <span class="pb-col-score">${pts} pt</span>
                                 </div>
                                 <div class="pb-symbol-mark">${icon}</div>
@@ -3445,17 +3575,23 @@ body {
             };
         }
 
+        function cycleLanguage() {
+            const idx = SUPPORTED_LANGS.indexOf(state.lang);
+            state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
+            if (state.players) {
+                state.players.forEach(p => {
+                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko;
+                });
+            }
+            updateStaticTexts();
+            render();
+        }
+
         // Entry page lang button
         const btnEntryLang = document.getElementById('btnEntryLang');
         const btnLang = document.getElementById('btnLangSwitch');
         if (btnEntryLang) {
-            btnEntryLang.onclick = () => {
-                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
-                if (btnLang) btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
-                btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
-                updateStaticTexts();
-                render();
-            };
+            btnEntryLang.onclick = cycleLanguage;
         }
 
         // Entry page sound button
@@ -3517,13 +3653,7 @@ body {
 
         // Lang switch
         if (btnLang) {
-            btnLang.onclick = () => {
-                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
-                btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
-                if (btnEntryLang) btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
-                updateStaticTexts();
-                render();
-            };
+            btnLang.onclick = cycleLanguage;
         }
 
         // Sound switch
@@ -3537,15 +3667,22 @@ body {
     }
 
     function updateStaticTexts() {
-        const isKo = (state.lang === 'ko');
-        document.title = isKo ? "헤븐스 도어 (Heaven's Door) | 환상적인 게임즈" : "Heaven's Door | Hwantastic Games";
+        const lang = state.lang || 'ko';
+        document.title = (I18N_STRINGS.title[lang] || I18N_STRINGS.title.ko);
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
-            el.innerHTML = isKo ? el.getAttribute('data-i18n-ko') : el.getAttribute('data-i18n-en');
+            const val = el.getAttribute(`data-i18n-${lang}`) || el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko');
+            if (val) el.innerHTML = val;
         });
         const btnEntryLang = document.getElementById('btnEntryLang');
-        if (btnEntryLang) btnEntryLang.textContent = isKo ? 'EN' : 'KO';
+        if (btnEntryLang) {
+            btnEntryLang.textContent = LANG_BUTTON_TEXT[lang] || lang.toUpperCase();
+            btnEntryLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
+        }
         const btnLang = document.getElementById('btnLangSwitch');
-        if (btnLang) btnLang.textContent = isKo ? 'EN' : '한국어';
+        if (btnLang) {
+            btnLang.textContent = LANG_SWITCH_HEADER[lang] || lang.toUpperCase();
+            btnLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
+        }
     }
 
     // Startup
@@ -3563,6 +3700,6 @@ body {
 
 })();
 
-    </script>
+</script>
 </body>
 </html>

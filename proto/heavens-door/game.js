@@ -7,12 +7,16 @@
     
         const COLOR_NAMES = {
         en: { black: 'Black', red: 'Red', yellow: 'Yellow', green: 'Green', blue: 'Blue', purple: 'Purple', orange: 'Orange', white: 'White', gray: 'Orange' },
-        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' }
+        ko: { black: '검정', red: '빨강', yellow: '노랑', green: '초록', blue: '파랑', purple: '보라', orange: '주황', white: '흰색', gray: '주황' },
+        fr: { black: 'Noir', red: 'Rouge', yellow: 'Jaune', green: 'Vert', blue: 'Bleu', purple: 'Violet', orange: 'Orange', white: 'Blanc', gray: 'Orange' },
+        de: { black: 'Schwarz', red: 'Rot', yellow: 'Gelb', green: 'Grün', blue: 'Blau', purple: 'Lila', orange: 'Orange', white: 'Weiß', gray: 'Orange' }
     };
 
     const SYMBOL_NAMES = {
         en: { triangle: 'Triangle', trapezoid: 'Trapezoid', square: 'Square', circle: 'Circle', star: 'Star', hexagon: 'Hexagon' },
-        ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' }
+        ko: { triangle: '삼각형', trapezoid: '사다리꼴', square: '정사각형', circle: '원', star: '별', hexagon: '육각형' },
+        fr: { triangle: 'Triangle', trapezoid: 'Trapèze', square: 'Carré', circle: 'Cercle', star: 'Étoile', hexagon: 'Hexagone' },
+        de: { triangle: 'Dreieck', trapezoid: 'Trapez', square: 'Quadrat', circle: 'Kreis', star: 'Stern', hexagon: 'Sechseck' }
     };
 
     const SYMBOL_ICONS = {
@@ -30,87 +34,256 @@
             icon: '▲',
             color: '#38bdf8',
             A: {
-                short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks' },
-                boardLines: { ko: ['1/3/5/7개', '5/15/25/35p'], en: ['1/3/5/7 pcs', '5/15/25/35p'] },
-                full: { ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)', en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)' }
+                short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks', fr: '5/15/25/35p par 1/3/5/7 piles', de: '5/15/25/35p je 1/3/5/7 Stapel' },
+                boardLines: { ko: ['1/3/5/7개', '5/15/25/35p'], en: ['1/3/5/7 pcs', '5/15/25/35p'], fr: ['1/3/5/7 tuiles', '5/15/25/35p'], de: ['1/3/5/7 Plättchen', '5/15/25/35p'] },
+                full: {
+                    ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)',
+                    en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)',
+                    fr: 'Score aux paliers impairs : 5/15/25/35 points pour 1/3/5/7 tuiles (les nombres pairs conservent le palier précédent)',
+                    de: 'Punkte für ungerade Stapel: 5/15/25/35 Punkte bei 1/3/5/7 Plättchen (gerade Anzahlen behalten vorherige Stufe)'
+                }
             },
             B: {
-                short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks' },
-                boardLines: { ko: ['1/3/5/7개', '4/16/36/64p'], en: ['1/3/5/7 pcs', '4/16/36/64p'] },
-                full: { ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)', en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)' }
+                short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks', fr: '4/16/36/64p par 1/3/5/7 piles', de: '4/16/36/64p je 1/3/5/7 Stapel' },
+                boardLines: { ko: ['1/3/5/7개', '4/16/36/64p'], en: ['1/3/5/7 pcs', '4/16/36/64p'], fr: ['1/3/5/7 tuiles', '4/16/36/64p'], de: ['1/3/5/7 Plättchen', '4/16/36/64p'] },
+                full: {
+                    ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)',
+                    en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)',
+                    fr: 'Score (N+1)² aux paliers impairs : 4/16/36/64 points pour 1/3/5/7 tuiles (les nombres pairs conservent le palier précédent)',
+                    de: '(N+1)²-Wertung für ungerade Stapel: 4/16/36/64 Punkte bei 1/3/5/7 Plättchen (gerade behalten Vorstufe)'
+                }
             }
         },
         trapezoid: {
             icon: '⏢',
             color: '#fb923c',
             A: {
-                short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks' },
-                boardLines: { ko: ['2/4/6/8개', '10/20/30/40p'], en: ['2/4/6/8 pcs', '10/20/30/40p'] },
-                full: { ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)' }
+                short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks', fr: '10/20/30/40p par 2/4/6/8 piles', de: '10/20/30/40p je 2/4/6/8 Stapel' },
+                boardLines: { ko: ['2/4/6/8개', '10/20/30/40p'], en: ['2/4/6/8 pcs', '10/20/30/40p'], fr: ['2/4/6/8 tuiles', '10/20/30/40p'], de: ['2/4/6/8 Plättchen', '10/20/30/40p'] },
+                full: {
+                    ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)',
+                    en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)',
+                    fr: 'Score aux paliers pairs : 10/20/30/40 points pour 2/4/6/8 tuiles (1 tuile = 0 pt, les nombres impairs conservent le palier précédent)',
+                    de: 'Punkte für gerade Stapel: 10/20/30/40 Punkte bei 2/4/6/8 Plättchen (1 Plättchen = 0, ungerade behalten Vorstufe)'
+                }
             },
             B: {
-                short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks' },
-                boardLines: { ko: ['2/4/6/8개', '9/25/49/81p'], en: ['2/4/6/8 pcs', '9/25/49/81p'] },
-                full: { ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², odd counts keep previous tier)' }
+                short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks', fr: '9/25/49/81p par 2/4/6/8 piles', de: '9/25/49/81p je 2/4/6/8 Stapel' },
+                boardLines: { ko: ['2/4/6/8개', '9/25/49/81p'], en: ['2/4/6/8 pcs', '9/25/49/81p'], fr: ['2/4/6/8 tuiles', '9/25/49/81p'], de: ['2/4/6/8 Plättchen', '9/25/49/81p'] },
+                full: {
+                    ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)',
+                    en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², even counts keep previous tier)',
+                    fr: 'Score (N+1)² aux paliers pairs : 9/25/49/81 points pour 2/4/6/8 tuiles (1 tuile = 0 pt, les nombres impairs conservent le palier précédent)',
+                    de: '(N+1)²-Wertung für gerade Stapel: 9/25/49/81 Punkte bei 2/4/6/8 Plättchen (1 Plättchen = 0, ungerade behalten Vorstufe)'
+                }
             }
         },
         square: {
             icon: '■',
             color: '#4ade80',
             A: {
-                short: { ko: '개수 × 콤보p', en: 'Count × Combos p' },
-                boardLines: { ko: ['개수 × 콤보', '(콤보당 1p)'], en: ['Count ×', 'Combos (1p)'] },
-                full: { ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)', en: '1 VP per COMBO for each square tile' }
+                short: { ko: '개수 × 콤보p', en: 'Count × Combos p', fr: 'Nb tuiles × Combos p', de: 'Anzahl × Kombos p' },
+                boardLines: { ko: ['개수 × 콤보', '(콤보당 1p)'], en: ['Count ×', 'Combos (1p)'], fr: ['Tuiles ×', 'Combos (1p)'], de: ['Anzahl ×', 'Kombos (1p)'] },
+                full: {
+                    ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)',
+                    en: '1 VP per COMBO for each square tile',
+                    fr: '1 point par tuile COMBO pour chaque carré possédé',
+                    de: '1 Punkt pro KOMBO-Plättchen für jedes Quadrat'
+                }
             },
             B: {
-                short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p' },
-                boardLines: { ko: ['개수 × 중복', '× 3p'], en: ['Count × Dupl', '× 3p'] },
-                full: { ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점', en: '3 VP per DUPLICATE tile for each square tile' }
+                short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p', fr: 'Nb tuiles × Doublons × 3p', de: 'Anzahl × Doppelt × 3p' },
+                boardLines: { ko: ['개수 × 중복', '× 3p'], en: ['Count × Dupl', '× 3p'], fr: ['Tuiles × Doubl.', '× 3p'], de: ['Anzahl × Doppel', '× 3p'] },
+                full: {
+                    ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점',
+                    en: '3 VP per DUPLICATE tile for each square tile',
+                    fr: '3 points par tuile DOUBLON pour chaque carré possédé',
+                    de: '3 Punkte pro DOPPELTES Plättchen für jedes Quadrat'
+                }
             }
         },
         circle: {
             icon: '●',
             color: '#c084fc',
             A: {
-                short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color' },
-                boardLines: { ko: ['개수 ×', '최다 색상 수'], en: ['Count ×', 'Max Color'] },
-                full: { ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점', en: 'Points per circle = count of tiles in most collected color' }
+                short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color', fr: 'Nb tuiles × Coul. max', de: 'Anzahl × Meiste Farbe' },
+                boardLines: { ko: ['개수 ×', '최다 색상 수'], en: ['Count ×', 'Max Color'], fr: ['Tuiles ×', 'Coul. max'], de: ['Anzahl ×', 'Meiste Farbe'] },
+                full: {
+                    ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점',
+                    en: 'Points per circle = count of tiles in most collected color',
+                    fr: '1 point par cercle multiplié par le nombre total de tuiles de votre couleur la plus fréquente',
+                    de: 'Punkte pro Kreis = Anzahl der Plättchen deiner am häufigsten gesammelten Farbe'
+                }
             },
             B: {
-                short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col' },
-                boardLines: { ko: ['개수 ×', '1번째 열 수'], en: ['Count ×', '1st Col Count'] },
-                full: { ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점', en: 'Points per circle = count of tiles in leftmost 1st column' }
+                short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col', fr: 'Nb tuiles × 1ère colonne', de: 'Anzahl × 1. Spalte' },
+                boardLines: { ko: ['개수 ×', '1번째 열 수'], en: ['Count ×', '1st Col Count'], fr: ['Tuiles ×', '1ère colonne'], de: ['Anzahl ×', '1. Spalte'] },
+                full: {
+                    ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점',
+                    en: 'Points per circle = count of tiles in leftmost 1st column',
+                    fr: '1 point par cercle multiplié par le nombre de tuiles dans la 1ère colonne de votre plateau',
+                    de: 'Punkte pro Kreis = Anzahl der Plättchen in der 1. (ganz linken) Spalte deines Spielertableaus'
+                }
             }
         },
         star: {
             icon: '★',
             color: '#facc15',
             A: {
-                short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)' },
-                boardLines: { ko: ['단독 40p', '(동점 20p)'], en: ['Sole 40p', '(Tie 20p)'] },
-                full: { ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)', en: '40 VP for sole most stars (20 VP each if tied for most)' }
+                short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)', fr: 'Unique 40p (Égalité 20p)', de: 'Allein 40p (Gleich 20p)' },
+                boardLines: { ko: ['단독 40p', '(동점 20p)'], en: ['Sole 40p', '(Tie 20p)'], fr: ['Unique 40p', '(Égalité 20p)'], de: ['Allein 40p', '(Gleich 20p)'] },
+                full: {
+                    ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)',
+                    en: '40 VP for sole most stars (20 VP each if tied for most)',
+                    fr: "40 points si vous avez strictement le plus d'étoiles (20 points chacun en cas d'égalité en tête)",
+                    de: '40 Punkte für alleinige meiste Sterne (je 20 Punkte bei Gleichstand an der Spitze)'
+                }
             },
             B: {
-                short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p' },
-                boardLines: { ko: ['최소 아니면', '25p'], en: ['Not Fewest:', '25p'] },
-                full: { ko: '최소 보유자가 아니면 25점', en: '25 VP if you are not the player with the fewest stars' }
+                short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p', fr: 'Pas le moins : 25p', de: 'Nicht Letzter: 25p' },
+                boardLines: { ko: ['최소 아니면', '25p'], en: ['Not Fewest:', '25p'], fr: ['Pas le moins :', '25p'], de: ['Nicht Letzter:', '25p'] },
+                full: {
+                    ko: '최소 보유자가 아니면 25점',
+                    en: '25 VP if you are not the player with the fewest stars',
+                    fr: "25 points si vous n'êtes pas le joueur avec le moins d'étoiles",
+                    de: '25 Punkte, wenn du nicht die wenigsten Sterne aller Spieler hast'
+                }
             }
         },
         hexagon: {
             icon: '⬢',
             color: '#f43f5e',
             A: {
-                short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p' },
-                boardLines: { ko: ['3/4/5개', '15/30/50p'], en: ['3/4/5+ pcs', '15/30/50p'] },
-                full: { ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)', en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)' }
+                short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p', fr: '3/4/5+ tuiles : 15/30/50p', de: '3/4/5+ Plättchen: 15/30/50p' },
+                boardLines: { ko: ['3/4/5개', '15/30/50p'], en: ['3/4/5+ pcs', '15/30/50p'], fr: ['3/4/5+ tuiles', '15/30/50p'], de: ['3/4/5+ Plättchen', '15/30/50p'] },
+                full: {
+                    ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)',
+                    en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)',
+                    fr: "Paliers d'hexagones : 3 tuiles (15p) / 4 tuiles (30p) / 5 tuiles ou plus (50p)",
+                    de: 'Stufen für Sechsecke: 3 Plättchen (15p) / 4 Plättchen (30p) / 5+ Plättchen (50p)'
+                }
             },
             B: {
-                short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile' },
-                boardLines: { ko: ['최다 아니면', '개당 6p'], en: ['Not Leader:', '6p / tile'] },
-                full: { ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)', en: '6 VP per tile if not the leader (leader gets 0 VP)' }
+                short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile', fr: 'Pas le plus : 6p / tuile', de: 'Nicht Erster: 6p / Plättchen' },
+                boardLines: { ko: ['최다 아니면', '개당 6p'], en: ['Not Leader:', '6p / tile'], fr: ['Pas le leader :', '6p / tile'], de: ['Nicht Erster:', '6p / Plättchen'] },
+                full: {
+                    ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)',
+                    en: '6 VP per tile if not the leader (leader gets 0 VP)',
+                    fr: "6 points par hexagone si vous n'êtes pas le joueur qui en possède le plus (le leader marque 0 pt)",
+                    de: '6 Punkte pro Sechseck, wenn du nicht die meisten hast (der Führende erhält 0 Punkte)'
+                }
             }
         }
     };
+
+    const I18N_STRINGS = {
+        title: {
+            ko: "헤븐스 도어 (Heaven's Door) | 환상적인 게임즈",
+            en: "Heaven's Door | Hwantastic Games",
+            fr: "Heaven's Door | Hwantastic Games",
+            de: "Heaven's Door | Hwantastic Games"
+        },
+        youPlayer: {
+            ko: '나 (플레이어)',
+            en: 'You (Player)',
+            fr: 'Vous (Joueur)',
+            de: 'Du (Spieler)'
+        },
+        turn: {
+            ko: (cur, max) => `턴 ${cur}/${max}`,
+            en: (cur, max) => `Turn ${cur}/${max}`,
+            fr: (cur, max) => `Tour ${cur}/${max}`,
+            de: (cur, max) => `Zug ${cur}/${max}`
+        },
+        yourTurn: {
+            ko: '내 차례',
+            en: 'Your Turn',
+            fr: 'Votre tour',
+            de: 'Du bist am Zug'
+        },
+        aiThinking: {
+            ko: name => `${name} 생각 중...`,
+            en: name => `${name} Thinking...`,
+            fr: name => `${name} réfléchit...`,
+            de: name => `${name} denkt nach...`
+        },
+        gameOverPrompt: {
+            ko: '<i class="fa-solid fa-flag-checkered"></i> 게임이 종료되었습니다!',
+            en: '<i class="fa-solid fa-flag-checkered"></i> Game Over!',
+            fr: '<i class="fa-solid fa-flag-checkered"></i> Partie terminée !',
+            de: '<i class="fa-solid fa-flag-checkered"></i> Spiel beendet!'
+        },
+        aiEvaluatingPrompt: {
+            ko: '<i class="fa-solid fa-robot"></i> AI가 최적의 조합을 선택하고 있습니다...',
+            en: '<i class="fa-solid fa-robot"></i> AI is evaluating the best pair...',
+            fr: '<i class="fa-solid fa-robot"></i> L\'IA évalue la meilleure paire...',
+            de: '<i class="fa-solid fa-robot"></i> KI wählt das beste Paar aus...'
+        },
+        pickFirstPrompt: {
+            ko: '<i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)',
+            en: '<i class="fa-solid fa-hand-pointer"></i> Select your first tile (Exposed face-up tile)',
+            fr: '<i class="fa-solid fa-hand-pointer"></i> Choisissez votre première tuile (visible en bordure)',
+            de: '<i class="fa-solid fa-hand-pointer"></i> Erstes Plättchen wählen (offen am Rand liegend)'
+        },
+        pickSecondPrompt: {
+            ko: (c, s) => `<i class="fa-solid fa-check-double"></i> 두 번째 타일을 선택하세요 (${c} 색상 또는 ${s} 기호 일치)`,
+            en: (c, s) => `<i class="fa-solid fa-check-double"></i> Select your second tile (Matching ${c} or ${s})`,
+            fr: (c, s) => `<i class="fa-solid fa-check-double"></i> Choisissez la deuxième tuile (de couleur ${c} ou symbole ${s})`,
+            de: (c, s) => `<i class="fa-solid fa-check-double"></i> Zweites Plättchen wählen (passend zu ${c} oder ${s})`
+        },
+        firstOrderTitle: {
+            ko: '첫 배치 순서 결정',
+            en: 'First Symbol Order Choice',
+            fr: 'Ordre de placement initial',
+            de: 'Reihenfolge der ersten Symbole'
+        },
+        firstOrderDesc: {
+            ko: '획득한 2개 타일의 기호가 다릅니다. 어떤 기호를 먼저(좌측) 배치할지 선택하세요.',
+            en: 'The 2 drafted tiles have different symbols. Choose which one to place first (on the left column).',
+            fr: 'Les 2 tuiles choisies ont des symboles différents. Choisissez lequel placer en premier (à gauche).',
+            de: 'Die 2 gezogenen Plättchen haben verschiedene Symbole. Wähle, welches zuerst (links) platziert wird.'
+        },
+        leftSubtext: {
+            ko: '(좌측)',
+            en: '(Left)',
+            fr: '(Gauche)',
+            de: '(Links)'
+        },
+        ruleChoiceTitle: {
+            ko: (icon, name) => `[${icon} ${name}] 점수 규칙 면 선택`,
+            en: (icon, name) => `Choose Scoring Rule for [${icon} ${name}]`,
+            fr: (icon, name) => `Choisir la règle pour [${icon} ${name}]`,
+            de: (icon, name) => `Wertungsregel für [${icon} ${name}] wählen`
+        },
+        ruleChoiceDesc: {
+            ko: '새로운 기호를 처음 획득했습니다. 이번 게임에서 적용할 규칙 면을 선택하세요.',
+            en: 'You acquired a new symbol! Choose which scoring rule side to apply for this symbol.',
+            fr: 'Nouveau symbole acquis ! Choisissez la face de score à appliquer pour cette partie.',
+            de: 'Neues Symbol erworben! Wähle die Wertungsseite für dieses Symbol in diesem Spiel.'
+        },
+        victoryTitle: {
+            ko: (name, score) => `🎉 ${name} 승리! (${score}점)`,
+            en: (name, score) => `🎉 ${name} Wins! (${score} VP)`,
+            fr: (name, score) => `🎉 ${name} gagne ! (${score} PV)`,
+            de: (name, score) => `🎉 ${name} gewinnt! (${score} SP)`
+        },
+        breakdownSymbols: { ko: '기호', en: 'Symbols', fr: 'Symboles', de: 'Symbole' },
+        breakdownSet: { ko: '세트', en: 'Set', fr: 'Série', de: 'Set' },
+        breakdownCombo: { ko: '콤보', en: 'Combo', fr: 'Combo', de: 'Kombo' },
+        breakdownDupl: { ko: '중복', en: 'Dupl', fr: 'Doublon', de: 'Doppelt' },
+        faceDownTile: { ko: '뒷면 타일', en: 'Face-down tile', fr: 'Tuile face cachée', de: 'Verdecktes Plättchen' },
+        flipHintTitle: {
+            ko: (type, desc) => `클릭하여 A/B 규칙 면 뒤집기 (현재 ${type}형)\n${desc}`,
+            en: (type, desc) => `Click to flip A/B side (Current Type ${type})\n${desc}`,
+            fr: (type, desc) => `Cliquez pour retourner la face A/B (Actuel Type ${type})\n${desc}`,
+            de: (type, desc) => `Klicken zum Wenden der A/B-Seite (Aktuell Typ ${type})\n${desc}`
+        },
+        flipHintShort: { ko: 'A/B 뒤집기', en: 'Flip side', fr: 'Retourner face', de: 'Seite wenden' }
+    };
+
+    const SUPPORTED_LANGS = ['ko', 'en', 'fr', 'de'];
+    const LANG_BUTTON_TEXT = { ko: 'KO', en: 'EN', fr: 'FR', de: 'DE' };
+    const LANG_SWITCH_HEADER = { ko: '한국어', en: 'EN', fr: 'FR', de: 'DE' };
 
     const SET_BONUSES = [0, 0, 0, 0, 5, 15, 30]; // 0 to 6 distinct symbols
 
@@ -223,7 +396,7 @@
             const isHuman = (i === 0);
             state.players.push({
                 id: i,
-                name: isHuman ? (state.lang === 'ko' ? '나 (플레이어)' : 'You (Player)') : `AI ${i}`,
+                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko) : `AI ${i}`,
                 isHuman,
                 // Board columns: ordered list of symbol placements { symbol, ruleType: 'A'|'B', tiles: [] }
                 columns: [],
@@ -801,20 +974,19 @@
             return;
         }
 
-        const isKo = (state.lang === 'ko');
-        document.getElementById('choiceModalTitle').textContent = isKo ? '첫 배치 순서 결정' : 'First Symbol Order Choice';
-        document.getElementById('choiceModalDesc').textContent = isKo ? 
-            '새로운 두 종류의 기호가 동시에 획득되었습니다. 개인 보드의 왼쪽에 먼저 놓을 기호를 선택하세요.' :
-            'Two new symbols were acquired simultaneously. Choose which symbol to place to the left on your board.';
+        const lang = state.lang || 'ko';
+        document.getElementById('choiceModalTitle').textContent = I18N_STRINGS.firstOrderTitle[lang] || I18N_STRINGS.firstOrderTitle.ko;
+        document.getElementById('choiceModalDesc').textContent = I18N_STRINGS.firstOrderDesc[lang] || I18N_STRINGS.firstOrderDesc.ko;
+        const subtext = I18N_STRINGS.leftSubtext[lang] || I18N_STRINGS.leftSubtext.ko;
 
         container.innerHTML = `
             <button type="button" class="btn-choice" id="btnOrder1">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile1.symbol].color};">${SYMBOL_ICONS[tile1.symbol]}</span>
-                <span>${SYMBOL_NAMES[state.lang][tile1.symbol]} (좌측)</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile1.symbol]} ${subtext}</span>
             </button>
             <button type="button" class="btn-choice" id="btnOrder2">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile2.symbol].color};">${SYMBOL_ICONS[tile2.symbol]}</span>
-                <span>${SYMBOL_NAMES[state.lang][tile2.symbol]} (좌측)</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile2.symbol]} ${subtext}</span>
             </button>
         `;
 
@@ -843,31 +1015,27 @@
         }
 
         const rule = SYMBOL_RULES[symbol];
-        const name = SYMBOL_NAMES[state.lang][symbol];
-        const isKo = (state.lang === 'ko');
+        const lang = state.lang || 'ko';
+        const name = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[symbol];
 
         document.getElementById('ruleChoiceSymbolIcon').innerHTML = `<span style="color:${rule.color};">${rule.icon}</span>`;
-        document.getElementById('ruleChoiceModalTitle').textContent = isKo ? 
-            `[${rule.icon} ${name}] 점수 규칙 면 선택` : 
-            `Choose Scoring Rule for [${rule.icon} ${name}]`;
-        document.getElementById('ruleChoiceModalDesc').textContent = isKo ? 
-            `새로운 기호를 처음 획득했습니다. 이번 게임에서 적용할 규칙 면을 선택하세요.` : 
-            `You acquired a new symbol! Choose which scoring rule side to apply for this symbol.`;
+        document.getElementById('ruleChoiceModalTitle').textContent = (I18N_STRINGS.ruleChoiceTitle[lang] || I18N_STRINGS.ruleChoiceTitle.ko)(rule.icon, name);
+        document.getElementById('ruleChoiceModalDesc').textContent = I18N_STRINGS.ruleChoiceDesc[lang] || I18N_STRINGS.ruleChoiceDesc.ko;
 
         container.innerHTML = `
             <button type="button" class="btn-choice rule-select-btn type-a" id="btnRuleChoiceA" style="padding:16px 14px; text-align:left; border-top:4px solid #38bdf8; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-a" style="font-size:0.75rem; padding:2px 8px;">Type A</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[state.lang]}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[state.lang]}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[lang] || rule.A.short.ko}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[lang] || rule.A.full.ko}</div>
             </button>
             <button type="button" class="btn-choice rule-select-btn type-b" id="btnRuleChoiceB" style="padding:16px 14px; text-align:left; border-top:4px solid #f472b6; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-b" style="font-size:0.75rem; padding:2px 8px;">Type B</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[state.lang]}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[state.lang]}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[lang] || rule.B.short.ko}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[lang] || rule.B.full.ko}</div>
             </button>
         `;
 
@@ -892,23 +1060,26 @@
         const list = document.getElementById('victoryScoresList');
         if (!modal || !list) return;
 
-        const isKo = (state.lang === 'ko');
+        const lang = state.lang || 'ko';
         const sorted = [...state.players].sort((a, b) => b.totalScore - a.totalScore);
         const winner = sorted[0];
 
-        document.getElementById('victoryWinnerTitle').textContent = isKo ? 
-            `🎉 ${winner.name} 승리! (${winner.totalScore}점)` :
-            `🎉 ${winner.name} Wins! (${winner.totalScore} pts)`;
+        document.getElementById('victoryWinnerTitle').textContent = (I18N_STRINGS.victoryTitle[lang] || I18N_STRINGS.victoryTitle.ko)(winner.name, winner.totalScore);
+
+        const lblSymbols = I18N_STRINGS.breakdownSymbols[lang] || I18N_STRINGS.breakdownSymbols.ko;
+        const lblSet = I18N_STRINGS.breakdownSet[lang] || I18N_STRINGS.breakdownSet.ko;
+        const lblCombo = I18N_STRINGS.breakdownCombo[lang] || I18N_STRINGS.breakdownCombo.ko;
+        const lblDupl = I18N_STRINGS.breakdownDupl[lang] || I18N_STRINGS.breakdownDupl.ko;
 
         list.innerHTML = sorted.map((p, idx) => `
             <div class="score-row ${idx === 0 ? 'winner' : ''}">
                 <div>
                     <strong style="font-size: 1.05rem; display:block;">${p.name}</strong>
                     <div class="score-breakdown-details">
-                        <span>${isKo ? '기호' : 'Symbols'}: ${p.scoreBreakdown.symbolPoints}pt</span>
-                        <span>${isKo ? '세트' : 'Set'}: ${p.scoreBreakdown.setBonus}pt</span>
-                        <span>${isKo ? '콤보' : 'Combo'}: ${p.scoreBreakdown.comboPts}pt</span>
-                        <span>${isKo ? '중복' : 'Dupl'}: ${p.scoreBreakdown.duplicatePts}pt</span>
+                        <span>${lblSymbols}: ${p.scoreBreakdown.symbolPoints}pt</span>
+                        <span>${lblSet}: ${p.scoreBreakdown.setBonus}pt</span>
+                        <span>${lblCombo}: ${p.scoreBreakdown.comboPts}pt</span>
+                        <span>${lblDupl}: ${p.scoreBreakdown.duplicatePts}pt</span>
                     </div>
                 </div>
                 <div style="font-size: 1.45rem; font-weight: 900; color: var(--gold);">${p.totalScore}</div>
@@ -941,13 +1112,17 @@
     function render() {
         const isKo = (state.lang === 'ko');
 
+        const lang = state.lang || 'ko';
+
         // Status bar
         const badge = document.getElementById('turnStatusBadge');
         const activeP = state.players[state.activePlayerIndex];
         if (badge && activeP) {
             badge.className = `status-badge ${activeP.isHuman ? '' : 'ai-turn'}`;
-            const turnText = isKo ? `턴 ${state.turn}/${state.maxTurns}` : `Turn ${state.turn}/${state.maxTurns}`;
-            const playerText = activeP.isHuman ? (isKo ? '내 차례' : 'Your Turn') : (isKo ? `${activeP.name} 생각 중...` : `${activeP.name} Thinking...`);
+            const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.ko)(state.turn, state.maxTurns);
+            const playerText = activeP.isHuman ? 
+                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.ko) : 
+                (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.ko)(activeP.name);
             badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${turnText} · ${playerText}`;
         }
 
@@ -955,17 +1130,15 @@
         const promptEl = document.getElementById('promptText');
         if (promptEl) {
             if (state.gameOver) {
-                promptEl.innerHTML = isKo ? '<i class="fa-solid fa-flag-checkered"></i> 게임이 종료되었습니다!' : '<i class="fa-solid fa-flag-checkered"></i> Game Over!';
+                promptEl.innerHTML = I18N_STRINGS.gameOverPrompt[lang] || I18N_STRINGS.gameOverPrompt.ko;
             } else if (!activeP.isHuman) {
-                promptEl.innerHTML = isKo ? '<i class="fa-solid fa-robot"></i> AI가 최적의 조합을 선택하고 있습니다...' : '<i class="fa-solid fa-robot"></i> AI is evaluating the best pair...';
+                promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.ko;
             } else if (!state.selectedTile) {
-                promptEl.innerHTML = isKo ? 
-                    '<i class="fa-solid fa-hand-pointer"></i> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)' :
-                    '<i class="fa-solid fa-hand-pointer"></i> Select your 1st tile (exposed border tile)';
+                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.ko;
             } else {
-                promptEl.innerHTML = isKo ? 
-                    `<i class="fa-solid fa-link"></i> 두 번째 타일을 선택하세요 (선택한 타일과 <strong>색상</strong> 또는 <strong>기호</strong>가 같은 타일)` :
-                    `<i class="fa-solid fa-link"></i> Select your 2nd tile (must match <strong>Color</strong> or <strong>Symbol</strong>)`;
+                const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.ko)[state.selectedTile.color] || state.selectedTile.color;
+                const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[state.selectedTile.symbol] || state.selectedTile.symbol;
+                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.ko)(matchC, matchS);
             }
         }
 
@@ -1054,7 +1227,7 @@
                     el.className = `hd-tile tile-color-${tile.color}`;
                     el.style.width = `${tileSize}px`;
                     el.style.height = `${tileSize}px`;
-                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (state.lang === 'ko' ? '뒷면 타일' : 'Face-down tile');
+                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (I18N_STRINGS.faceDownTile[state.lang] || I18N_STRINGS.faceDownTile.ko);
 
                     if (!tile.faceUp) {
                         el.classList.add('face-down');
@@ -1123,11 +1296,11 @@
                     colsHtml += `
                         <div class="pb-symbol-col">
                             <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()} ${p.isHuman ? 'clickable-tile' : ''}" 
-                                 title="${p.isHuman ? (state.lang === 'ko' ? '클릭하여 A/B 규칙 면 뒤집기 (현재 ' + col.ruleType + '형)\n' + ruleData.full[state.lang] : 'Click to flip A/B side (Current Type ' + col.ruleType + ')\n' + ruleData.full[state.lang]) : ruleData.full[state.lang]}"
+                                 title="${p.isHuman ? (I18N_STRINGS.flipHintTitle[state.lang] || I18N_STRINGS.flipHintTitle.ko)(col.ruleType, (ruleData.full[state.lang] || ruleData.full.ko)) : (ruleData.full[state.lang] || ruleData.full.ko)}"
                                  ${p.isHuman ? `onclick="window.flipPlayerScoringTile(${p.id}, '${col.symbol}')"` : ''}>
                                 <div class="pb-tile-top">
                                     <span class="pb-rule-badge">${col.ruleType}</span>
-                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${state.lang === 'ko' ? 'A/B 뒤집기' : 'Flip side'}"><i class="fa-solid fa-repeat"></i></span>` : ''}
+                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${I18N_STRINGS.flipHintShort[state.lang] || I18N_STRINGS.flipHintShort.ko}"><i class="fa-solid fa-repeat"></i></span>` : ''}
                                     <span class="pb-col-score">${pts} pt</span>
                                 </div>
                                 <div class="pb-symbol-mark">${icon}</div>
@@ -1266,17 +1439,23 @@
             };
         }
 
+        function cycleLanguage() {
+            const idx = SUPPORTED_LANGS.indexOf(state.lang);
+            state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
+            if (state.players) {
+                state.players.forEach(p => {
+                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko;
+                });
+            }
+            updateStaticTexts();
+            render();
+        }
+
         // Entry page lang button
         const btnEntryLang = document.getElementById('btnEntryLang');
         const btnLang = document.getElementById('btnLangSwitch');
         if (btnEntryLang) {
-            btnEntryLang.onclick = () => {
-                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
-                if (btnLang) btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
-                btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
-                updateStaticTexts();
-                render();
-            };
+            btnEntryLang.onclick = cycleLanguage;
         }
 
         // Entry page sound button
@@ -1338,13 +1517,7 @@
 
         // Lang switch
         if (btnLang) {
-            btnLang.onclick = () => {
-                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
-                btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
-                if (btnEntryLang) btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
-                updateStaticTexts();
-                render();
-            };
+            btnLang.onclick = cycleLanguage;
         }
 
         // Sound switch
@@ -1358,15 +1531,22 @@
     }
 
     function updateStaticTexts() {
-        const isKo = (state.lang === 'ko');
-        document.title = isKo ? "헤븐스 도어 (Heaven's Door) | 환상적인 게임즈" : "Heaven's Door | Hwantastic Games";
+        const lang = state.lang || 'ko';
+        document.title = (I18N_STRINGS.title[lang] || I18N_STRINGS.title.ko);
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
-            el.innerHTML = isKo ? el.getAttribute('data-i18n-ko') : el.getAttribute('data-i18n-en');
+            const val = el.getAttribute(`data-i18n-${lang}`) || el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko');
+            if (val) el.innerHTML = val;
         });
         const btnEntryLang = document.getElementById('btnEntryLang');
-        if (btnEntryLang) btnEntryLang.textContent = isKo ? 'EN' : 'KO';
+        if (btnEntryLang) {
+            btnEntryLang.textContent = LANG_BUTTON_TEXT[lang] || lang.toUpperCase();
+            btnEntryLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
+        }
         const btnLang = document.getElementById('btnLangSwitch');
-        if (btnLang) btnLang.textContent = isKo ? 'EN' : '한국어';
+        if (btnLang) {
+            btnLang.textContent = LANG_SWITCH_HEADER[lang] || lang.toUpperCase();
+            btnLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
+        }
     }
 
     // Startup
