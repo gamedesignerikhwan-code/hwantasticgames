@@ -30,24 +30,24 @@
             icon: '▲',
             color: '#38bdf8',
             A: {
-                short: { ko: '홀수 (5/15/25/35p)', en: 'Odd (5/15/25/35p)' },
-                full: { ko: '홀수 개수마다 득점 증가: 5 / 5 / 15 / 15 / 25 / 25 / 35 / 35점', en: 'Score increases on odd counts: 5/5/15/15/25/25/35/35 VP' }
+                short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks' },
+                full: { ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)', en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)' }
             },
             B: {
-                short: { ko: '홀수 (N+1)² (4/16/36/64p)', en: 'Odd (N+1)² (4/16/36/64p)' },
-                full: { ko: '홀수 개수마다 (N+1)²: 4 / 4 / 16 / 16 / 36 / 36 / 64 / 64점', en: 'Odd counts scored as (N+1)²: 4/4/16/16/36/36/64/64 VP' }
+                short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks' },
+                full: { ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)', en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)' }
             }
         },
         trapezoid: {
             icon: '⏢',
             color: '#fb923c',
             A: {
-                short: { ko: '짝수 (10/20/30/40p)', en: 'Even (10/20/30/40p)' },
-                full: { ko: '짝수 개수마다 득점 증가: 0 / 10 / 10 / 20 / 20 / 30 / 30 / 40점', en: 'Score increases on even counts: 0/10/10/20/20/30/30/40 VP' }
+                short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks' },
+                full: { ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)' }
             },
             B: {
-                short: { ko: '짝수 (N+1)² (9/25/49/81p)', en: 'Even (N+1)² (9/25/49/81p)' },
-                full: { ko: '짝수 개수마다 (N+1)²: 0 / 9 / 9 / 25 / 25 / 49 / 49 / 81점', en: 'Even counts scored as (N+1)²: 0/9/9/25/25/49/49/81 VP' }
+                short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks' },
+                full: { ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², odd counts keep previous tier)' }
             }
         },
         square: {
@@ -1002,11 +1002,11 @@
                     <div class="guide-rules-wrap">
                         <div class="guide-rule-pill ${aActive ? 'active' : ''}" title="${rule.A.full[state.lang]}">
                             <span class="guide-rule-tag tag-a">A</span>
-                            <span>${rule.A.short[state.lang]}</span>
+                            <span class="guide-rule-text">${rule.A.short[state.lang]}</span>
                         </div>
                         <div class="guide-rule-pill ${bActive ? 'active' : ''}" title="${rule.B.full[state.lang]}">
                             <span class="guide-rule-tag tag-b">B</span>
-                            <span>${rule.B.short[state.lang]}</span>
+                            <span class="guide-rule-text">${rule.B.short[state.lang]}</span>
                         </div>
                     </div>
                 </div>

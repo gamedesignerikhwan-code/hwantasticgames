@@ -139,13 +139,13 @@
                         <tbody>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>▲ Triangle</strong></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Score increases only on ODD tile counts: 5/5/15/15/25/25/35/35 VP</span><span class="rb-content-ko" style="display:none;">홀수 개일 때만 득점 증가: 5 / 5 / 15 / 15 / 25 / 25 / 35 / 35 점</span></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Odd counts scored as (N+1)²: 4/4/16/16/36/36/64/64 VP</span><span class="rb-content-ko" style="display:none;">홀수 개일 때만 (N+1)² 득점: 4 / 4 / 16 / 16 / 36 / 36 / 64 / 64 점</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">5/15/25/35 VP per 1/3/5/7 stacks (odd counts)</span><span class="rb-content-ko" style="display:none;">1/3/5/7개 시 5/15/25/35점 (홀수 개수마다 증가)</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">4/16/36/64 VP per 1/3/5/7 stacks ((N+1)²)</span><span class="rb-content-ko" style="display:none;">1/3/5/7개 시 4/16/36/64점 (홀수마다 (N+1)²)</span></td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>⏢ Trapezoid</strong></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Score increases only on EVEN tile counts: 0/10/10/20/20/30/30/40 VP</span><span class="rb-content-ko" style="display:none;">짝수 개일 때만 득점 증가: 0 / 10 / 10 / 20 / 20 / 30 / 30 / 40 점</span></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Even counts scored as (N+1)²: 0/9/9/25/25/49/49/81 VP</span><span class="rb-content-ko" style="display:none;">짝수 개일 때만 (N+1)² 득점: 0 / 9 / 9 / 25 / 25 / 49 / 49 / 81 점</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">10/20/30/40 VP per 2/4/6/8 stacks (even counts)</span><span class="rb-content-ko" style="display:none;">2/4/6/8개 시 10/20/30/40점 (짝수 개수마다 증가)</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">9/25/49/81 VP per 2/4/6/8 stacks ((N+1)²)</span><span class="rb-content-ko" style="display:none;">2/4/6/8개 시 9/25/49/81점 (짝수마다 (N+1)²)</span></td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>■ Square</strong></td>
