@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>헤븐스 도어 (Heaven's Door) | 환상적인 게임즈</title>
+<title>Heaven's Door | Hwantastic Games</title>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -1649,10 +1649,6 @@ body {
 <div class="entry-page-inner">
 <!-- Top brand bar -->
 <div class="entry-brand-bar">
-<a class="entry-back-link" href="/proto">
-<i class="fa-solid fa-arrow-left"></i>
-<span data-i18n-de="Prototypen-Übersicht" data-i18n-en="Prototypes Hub" data-i18n-fr="Accueil Prototypes" data-i18n-ko="프로토타입 목록">프로토타입 목록</span>
-</a>
 <div class="entry-brand-logo">
 <span class="brand-subtag">HWANTASTIC GAMES · ORIGINAL PROTOTYPE</span>
 </div>
@@ -2417,9 +2413,9 @@ body {
         flipHintShort: { ko: 'A/B 뒤집기', en: 'Flip side', fr: 'Retourner face', de: 'Seite wenden' }
     };
 
-    const SUPPORTED_LANGS = ['ko', 'en', 'fr', 'de'];
-    const LANG_BUTTON_TEXT = { ko: 'KO', en: 'EN', fr: 'FR', de: 'DE' };
-    const LANG_SWITCH_HEADER = { ko: '한국어', en: 'EN', fr: 'FR', de: 'DE' };
+    const SUPPORTED_LANGS = ['en', 'fr', 'de', 'ko'];
+    const LANG_BUTTON_TEXT = { en: 'EN', fr: 'FR', de: 'DE', ko: 'KO' };
+    const LANG_SWITCH_HEADER = { en: 'EN', fr: 'FR', de: 'DE', ko: '한국어' };
 
     const SET_BONUSES = [0, 0, 0, 0, 5, 15, 30]; // 0 to 6 distinct symbols
 
@@ -2476,7 +2472,7 @@ body {
 
     // State
     const state = {
-        lang: 'ko',
+        lang: 'en',
         soundEnabled: true,
         playerCount: 2, // 2P (Player vs AI)
         scoringMode: 'mixed', // 'A', 'B', 'mixed', or 'custom'
@@ -2532,7 +2528,7 @@ body {
             const isHuman = (i === 0);
             state.players.push({
                 id: i,
-                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko) : `AI ${i}`,
+                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en) : `AI ${i}`,
                 isHuman,
                 // Board columns: ordered list of symbol placements { symbol, ruleType: 'A'|'B', tiles: [] }
                 columns: [],
@@ -3110,19 +3106,19 @@ body {
             return;
         }
 
-        const lang = state.lang || 'ko';
-        document.getElementById('choiceModalTitle').textContent = I18N_STRINGS.firstOrderTitle[lang] || I18N_STRINGS.firstOrderTitle.ko;
-        document.getElementById('choiceModalDesc').textContent = I18N_STRINGS.firstOrderDesc[lang] || I18N_STRINGS.firstOrderDesc.ko;
-        const subtext = I18N_STRINGS.leftSubtext[lang] || I18N_STRINGS.leftSubtext.ko;
+        const lang = state.lang || 'en';
+        document.getElementById('choiceModalTitle').textContent = I18N_STRINGS.firstOrderTitle[lang] || I18N_STRINGS.firstOrderTitle.en;
+        document.getElementById('choiceModalDesc').textContent = I18N_STRINGS.firstOrderDesc[lang] || I18N_STRINGS.firstOrderDesc.en;
+        const subtext = I18N_STRINGS.leftSubtext[lang] || I18N_STRINGS.leftSubtext.en;
 
         container.innerHTML = `
             <button type="button" class="btn-choice" id="btnOrder1">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile1.symbol].color};">${SYMBOL_ICONS[tile1.symbol]}</span>
-                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile1.symbol]} ${subtext}</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[tile1.symbol]} ${subtext}</span>
             </button>
             <button type="button" class="btn-choice" id="btnOrder2">
                 <span style="font-size: 1.8rem; color:${SYMBOL_RULES[tile2.symbol].color};">${SYMBOL_ICONS[tile2.symbol]}</span>
-                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[tile2.symbol]} ${subtext}</span>
+                <span>${(SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[tile2.symbol]} ${subtext}</span>
             </button>
         `;
 
@@ -3151,27 +3147,27 @@ body {
         }
 
         const rule = SYMBOL_RULES[symbol];
-        const lang = state.lang || 'ko';
-        const name = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[symbol];
+        const lang = state.lang || 'en';
+        const name = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[symbol];
 
         document.getElementById('ruleChoiceSymbolIcon').innerHTML = `<span style="color:${rule.color};">${rule.icon}</span>`;
-        document.getElementById('ruleChoiceModalTitle').textContent = (I18N_STRINGS.ruleChoiceTitle[lang] || I18N_STRINGS.ruleChoiceTitle.ko)(rule.icon, name);
-        document.getElementById('ruleChoiceModalDesc').textContent = I18N_STRINGS.ruleChoiceDesc[lang] || I18N_STRINGS.ruleChoiceDesc.ko;
+        document.getElementById('ruleChoiceModalTitle').textContent = (I18N_STRINGS.ruleChoiceTitle[lang] || I18N_STRINGS.ruleChoiceTitle.en)(rule.icon, name);
+        document.getElementById('ruleChoiceModalDesc').textContent = I18N_STRINGS.ruleChoiceDesc[lang] || I18N_STRINGS.ruleChoiceDesc.en;
 
         container.innerHTML = `
             <button type="button" class="btn-choice rule-select-btn type-a" id="btnRuleChoiceA" style="padding:16px 14px; text-align:left; border-top:4px solid #38bdf8; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-a" style="font-size:0.75rem; padding:2px 8px;">Type A</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[lang] || rule.A.short.ko}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[lang] || rule.A.full.ko}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[lang] || rule.A.short.en}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[lang] || rule.A.full.en}</div>
             </button>
             <button type="button" class="btn-choice rule-select-btn type-b" id="btnRuleChoiceB" style="padding:16px 14px; text-align:left; border-top:4px solid #f472b6; background:rgba(15, 23, 42, 0.85);">
                 <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-b" style="font-size:0.75rem; padding:2px 8px;">Type B</span>
                 </div>
-                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[lang] || rule.B.short.ko}</div>
-                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[lang] || rule.B.full.ko}</div>
+                <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[lang] || rule.B.short.en}</div>
+                <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[lang] || rule.B.full.en}</div>
             </button>
         `;
 
@@ -3196,16 +3192,16 @@ body {
         const list = document.getElementById('victoryScoresList');
         if (!modal || !list) return;
 
-        const lang = state.lang || 'ko';
+        const lang = state.lang || 'en';
         const sorted = [...state.players].sort((a, b) => b.totalScore - a.totalScore);
         const winner = sorted[0];
 
-        document.getElementById('victoryWinnerTitle').textContent = (I18N_STRINGS.victoryTitle[lang] || I18N_STRINGS.victoryTitle.ko)(winner.name, winner.totalScore);
+        document.getElementById('victoryWinnerTitle').textContent = (I18N_STRINGS.victoryTitle[lang] || I18N_STRINGS.victoryTitle.en)(winner.name, winner.totalScore);
 
-        const lblSymbols = I18N_STRINGS.breakdownSymbols[lang] || I18N_STRINGS.breakdownSymbols.ko;
-        const lblSet = I18N_STRINGS.breakdownSet[lang] || I18N_STRINGS.breakdownSet.ko;
-        const lblCombo = I18N_STRINGS.breakdownCombo[lang] || I18N_STRINGS.breakdownCombo.ko;
-        const lblDupl = I18N_STRINGS.breakdownDupl[lang] || I18N_STRINGS.breakdownDupl.ko;
+        const lblSymbols = I18N_STRINGS.breakdownSymbols[lang] || I18N_STRINGS.breakdownSymbols.en;
+        const lblSet = I18N_STRINGS.breakdownSet[lang] || I18N_STRINGS.breakdownSet.en;
+        const lblCombo = I18N_STRINGS.breakdownCombo[lang] || I18N_STRINGS.breakdownCombo.en;
+        const lblDupl = I18N_STRINGS.breakdownDupl[lang] || I18N_STRINGS.breakdownDupl.en;
 
         list.innerHTML = sorted.map((p, idx) => `
             <div class="score-row ${idx === 0 ? 'winner' : ''}">
@@ -3248,17 +3244,17 @@ body {
     function render() {
         const isKo = (state.lang === 'ko');
 
-        const lang = state.lang || 'ko';
+        const lang = state.lang || 'en';
 
         // Status bar
         const badge = document.getElementById('turnStatusBadge');
         const activeP = state.players[state.activePlayerIndex];
         if (badge && activeP) {
             badge.className = `status-badge ${activeP.isHuman ? '' : 'ai-turn'}`;
-            const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.ko)(state.turn, state.maxTurns);
+            const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.en)(state.turn, state.maxTurns);
             const playerText = activeP.isHuman ? 
-                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.ko) : 
-                (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.ko)(activeP.name);
+                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.en) : 
+                (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.en)(activeP.name);
             badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${turnText} · ${playerText}`;
         }
 
@@ -3266,15 +3262,15 @@ body {
         const promptEl = document.getElementById('promptText');
         if (promptEl) {
             if (state.gameOver) {
-                promptEl.innerHTML = I18N_STRINGS.gameOverPrompt[lang] || I18N_STRINGS.gameOverPrompt.ko;
+                promptEl.innerHTML = I18N_STRINGS.gameOverPrompt[lang] || I18N_STRINGS.gameOverPrompt.en;
             } else if (!activeP.isHuman) {
-                promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.ko;
+                promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.en;
             } else if (!state.selectedTile) {
-                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.ko;
+                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.en;
             } else {
-                const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.ko)[state.selectedTile.color] || state.selectedTile.color;
-                const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.ko)[state.selectedTile.symbol] || state.selectedTile.symbol;
-                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.ko)(matchC, matchS);
+                const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.en)[state.selectedTile.color] || state.selectedTile.color;
+                const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[state.selectedTile.symbol] || state.selectedTile.symbol;
+                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.en)(matchC, matchS);
             }
         }
 
@@ -3363,7 +3359,7 @@ body {
                     el.className = `hd-tile tile-color-${tile.color}`;
                     el.style.width = `${tileSize}px`;
                     el.style.height = `${tileSize}px`;
-                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[tile.symbol] || tile.symbol}` : (I18N_STRINGS.faceDownTile[state.lang] || I18N_STRINGS.faceDownTile.ko);
+                    el.title = tile.faceUp ? `${(COLOR_NAMES[state.lang] || COLOR_NAMES.en)[tile.color] || tile.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.en)[tile.symbol] || tile.symbol}` : (I18N_STRINGS.faceDownTile[state.lang] || I18N_STRINGS.faceDownTile.en);
 
                     if (!tile.faceUp) {
                         el.classList.add('face-down');
@@ -3426,17 +3422,17 @@ body {
                     const count = col.tiles.length;
                     const pts = col.currentScore || 0;
                     const ruleData = SYMBOL_RULES[col.symbol][col.ruleType];
-                    const lines = ruleData.boardLines ? (ruleData.boardLines[state.lang] || ruleData.boardLines.ko) : [ruleData.short[state.lang]];
+                    const lines = ruleData.boardLines ? (ruleData.boardLines[state.lang] || ruleData.boardLines.en) : [ruleData.short[state.lang]];
                     const descHtml = lines.map(line => `<span class="pb-rule-line">${line}</span>`).join('');
 
                     colsHtml += `
                         <div class="pb-symbol-col">
                             <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()} ${p.isHuman ? 'clickable-tile' : ''}" 
-                                 title="${p.isHuman ? (I18N_STRINGS.flipHintTitle[state.lang] || I18N_STRINGS.flipHintTitle.ko)(col.ruleType, (ruleData.full[state.lang] || ruleData.full.ko)) : (ruleData.full[state.lang] || ruleData.full.ko)}"
+                                 title="${p.isHuman ? (I18N_STRINGS.flipHintTitle[state.lang] || I18N_STRINGS.flipHintTitle.en)(col.ruleType, (ruleData.full[state.lang] || ruleData.full.en)) : (ruleData.full[state.lang] || ruleData.full.en)}"
                                  ${p.isHuman ? `onclick="window.flipPlayerScoringTile(${p.id}, '${col.symbol}')"` : ''}>
                                 <div class="pb-tile-top">
                                     <span class="pb-rule-badge">${col.ruleType}</span>
-                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${I18N_STRINGS.flipHintShort[state.lang] || I18N_STRINGS.flipHintShort.ko}"><i class="fa-solid fa-repeat"></i></span>` : ''}
+                                    ${p.isHuman ? `<span class="pb-flip-hint" title="${I18N_STRINGS.flipHintShort[state.lang] || I18N_STRINGS.flipHintShort.en}"><i class="fa-solid fa-repeat"></i></span>` : ''}
                                     <span class="pb-col-score">${pts} pt</span>
                                 </div>
                                 <div class="pb-symbol-mark">${icon}</div>
@@ -3445,7 +3441,7 @@ body {
                             <span class="pb-bonus-indicator">+${setVal} VP</span>
                             <div class="pb-tile-stack">
                                 ${col.tiles.map(t => `
-                                    <div class="mini-tile tile-color-${t.color}" title="${(COLOR_NAMES[state.lang] || COLOR_NAMES.ko)[t.color] || t.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.ko)[col.symbol] || col.symbol}">
+                                    <div class="mini-tile tile-color-${t.color}" title="${(COLOR_NAMES[state.lang] || COLOR_NAMES.en)[t.color] || t.color} ${(SYMBOL_NAMES[state.lang] || SYMBOL_NAMES.en)[col.symbol] || col.symbol}">
                                         ${renderSymbolSvg(t.symbol)}
                                     </div>
                                 `).join('')}
@@ -3580,7 +3576,7 @@ body {
             state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
             if (state.players) {
                 state.players.forEach(p => {
-                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.ko;
+                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en;
                 });
             }
             updateStaticTexts();
@@ -3667,8 +3663,9 @@ body {
     }
 
     function updateStaticTexts() {
-        const lang = state.lang || 'ko';
-        document.title = (I18N_STRINGS.title[lang] || I18N_STRINGS.title.ko);
+        const lang = state.lang || 'en';
+        document.title = (I18N_STRINGS.title[lang] || I18N_STRINGS.title.en);
+        if (document.documentElement) document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
             const val = el.getAttribute(`data-i18n-${lang}`) || el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko');
             if (val) el.innerHTML = val;

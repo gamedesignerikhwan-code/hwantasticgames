@@ -15,10 +15,10 @@
                 </div>
                 <div class="rulebook-header-actions">
                     <div class="rb-lang-toggle" role="group" aria-label="Rulebook language toggle">
-                        <button type="button" class="rb-lang-btn active" data-rb-lang="ko" onclick="setRulebookLanguage('ko', '${MODAL_ID}')">KO</button>
-                        <button type="button" class="rb-lang-btn" data-rb-lang="en" onclick="setRulebookLanguage('en', '${MODAL_ID}')">EN</button>
+                        <button type="button" class="rb-lang-btn active" data-rb-lang="en" onclick="setRulebookLanguage('en', '${MODAL_ID}')">EN</button>
                         <button type="button" class="rb-lang-btn" data-rb-lang="fr" onclick="setRulebookLanguage('fr', '${MODAL_ID}')">FR</button>
                         <button type="button" class="rb-lang-btn" data-rb-lang="de" onclick="setRulebookLanguage('de', '${MODAL_ID}')">DE</button>
+                        <button type="button" class="rb-lang-btn" data-rb-lang="ko" onclick="setRulebookLanguage('ko', '${MODAL_ID}')">KO</button>
                     </div>
                     <button type="button" class="proto-modal-close" onclick="closeModal('${MODAL_ID}')" aria-label="Close rulebook modal">
                         <i class="fa-solid fa-xmark"></i>
