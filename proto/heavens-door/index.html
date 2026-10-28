@@ -1248,70 +1248,100 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     position: relative;
-    padding: 2px 0 0;
+    padding: 0;
+}
+
+.entry-hero-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 14px;
+}
+
+.entry-hero-brand-col {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.entry-hero-title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 0;
+    text-align: left;
 }
 
 .entry-hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 3px 12px;
+    padding: 2px 10px;
     background: rgba(45, 212, 191, 0.12);
     border: 1px solid rgba(45, 212, 191, 0.35);
     border-radius: 999px;
     color: #a7f3d0;
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .entry-hero-title {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2px;
+    align-items: flex-start;
+    gap: 1px;
 }
 
 .entry-hero-title .title-main {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 1.95rem;
     font-weight: 900;
     letter-spacing: 0.03em;
     background: linear-gradient(135deg, #ffffff 15%, #e5b869 55%, #2dd4bf 95%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 25px rgba(45, 212, 191, 0.3);
-    line-height: 1.05;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 .entry-hero-title .title-sub {
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--gold);
     opacity: 0.9;
     letter-spacing: 0.14em;
     font-family: 'Noto Serif KR', serif;
+    white-space: nowrap;
 }
 
 .entry-hero-pitch {
-    max-width: 580px;
-    font-size: 0.8rem;
-    line-height: 1.35;
+    max-width: 760px;
+    font-size: 0.78rem;
+    line-height: 1.3;
     color: #94a3b8;
-    margin: 1px 0 2px;
+    margin: 2px 0 0;
+    text-align: center;
     word-break: keep-all;
 }
 
-/* Animated Floating Tiles & Pyramid Artwork Motif (Compact ~70px) */
+/* Animated Floating Tiles & Pyramid Artwork Motif (Compact ~66px) */
 .entry-pyramid-preview {
     position: relative;
-    width: 220px;
-    height: 68px;
-    margin: 2px 0;
+    width: 200px;
+    height: 66px;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .entry-pyramid-art {
@@ -1376,19 +1406,13 @@ body {
     100% { transform: translateY(-4px) rotate(4deg); }
 }
 
-/* Specs Row (Compact 4-column bar) */
+/* Specs Row (2x2 grid placed on right side of title & art) */
 .entry-specs-row {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
-    width: 100%;
-    margin-top: 2px;
-}
-
-@media (max-width: 680px) {
-    .entry-specs-row {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    flex: 0 0 340px;
+    margin-top: 0;
 }
 
 .entry-spec-pill {
@@ -1408,6 +1432,7 @@ body {
     color: var(--gold);
     width: 18px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .entry-spec-pill strong {
@@ -1420,6 +1445,28 @@ body {
     font-size: 0.66rem;
     color: var(--text-muted);
     white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+    .entry-hero-main-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .entry-hero-brand-col {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .entry-hero-title-group {
+        align-items: center;
+        text-align: center;
+    }
+    .entry-hero-title {
+        align-items: center;
+    }
+    .entry-specs-row {
+        flex: 1 1 100%;
+        width: 100%;
+    }
 }
 
 /* Setup Card Section */
@@ -1846,6 +1893,9 @@ body {
 </div>
 <!-- Hero Section -->
 <div class="entry-hero-section">
+<div class="entry-hero-main-row">
+<div class="entry-hero-brand-col">
+<div class="entry-hero-title-group">
 <div class="entry-hero-badge">
 <i class="fa-solid fa-cloud-moon" style="color:var(--jade);"></i>
 <span data-i18n-de="3D-Pyramiden-Plättchendraft &amp; Set-Sammlung mit variabler Wertung" data-i18n-en="3D Stepped Pyramid Tile Drafting &amp; Variable Scoring" data-i18n-fr="Draft de tuiles en pyramide 3D &amp; Collection de séries à score variable" data-i18n-ko="3D 피라미드 타일 드래프트 &amp; 가변 점수 세트 컬렉션">3D 피라미드 타일 드래프트 &amp; 가변 점수 세트 컬렉션</span>
@@ -1854,9 +1904,7 @@ body {
 <h1 class="title-main">Heaven's Door</h1>
 <span class="title-sub">天門 · CELESTIAL JADE PYRAMID</span>
 </div>
-<p class="entry-hero-pitch" data-i18n-de="Ziehe passende Plättchenpaare aus der 3D-Stufenpyramide, baue persönliche Wertungsleisten, passe Typ A- und B-Regeln an und erziele die höchste himmlische Punktzahl!" data-i18n-en="Draft matching tile pairs from the 3D stepped pyramid, build personal scoring tracks, customize Type A &amp; B rules, and achieve the highest celestial score!" data-i18n-fr="Draftez des paires de tuiles correspondantes dans la pyramide 3D à degrés, développez vos pistes de score, personnalisez vos règles A/B et atteignez le plus haut score céleste !" data-i18n-ko="계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.">
-                    계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.
-                </p>
+</div>
 <!-- Key Visual / Animated Pyramid Preview -->
 <div class="entry-pyramid-preview">
 <div class="entry-floating-tile t-1">▲</div>
@@ -1882,7 +1930,8 @@ body {
 <div class="entry-floating-tile t-5">★</div>
 <div class="entry-floating-tile t-6">⬢</div>
 </div>
-<!-- Spec Meta Chips -->
+</div>
+<!-- Spec Meta Chips (Right side 2x2 grid) -->
 <div class="entry-specs-row">
 <div class="entry-spec-pill">
 <i class="fa-solid fa-users"></i>
@@ -1913,6 +1962,11 @@ body {
 </div>
 </div>
 </div>
+</div>
+<!-- Pitch Description -->
+<p class="entry-hero-pitch" data-i18n-de="Ziehe passende Plättchenpaare aus der 3D-Stufenpyramide, baue persönliche Wertungsleisten, passe Typ A- und B-Regeln an und erziele die höchste himmlische Punktzahl!" data-i18n-en="Draft matching tile pairs from the 3D stepped pyramid, build personal scoring tracks, customize Type A &amp; B rules, and achieve the highest celestial score!" data-i18n-fr="Draftez des paires de tuiles correspondantes dans la pyramide 3D à degrés, développez vos pistes de score, personnalisez vos règles A/B et atteignez le plus haut score céleste !" data-i18n-ko="계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.">
+    계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.
+</p>
 </div>
 <!-- Setup & Customization Controls -->
 <div class="entry-setup-section">
