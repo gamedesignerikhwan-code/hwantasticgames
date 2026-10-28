@@ -844,17 +844,15 @@
 
         container.innerHTML = `
             <button type="button" class="btn-choice rule-select-btn type-a" id="btnRuleChoiceA" style="padding:16px 14px; text-align:left; border-top:4px solid #38bdf8; background:rgba(15, 23, 42, 0.85);">
-                <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-a" style="font-size:0.75rem; padding:2px 8px;">Type A</span>
-                    <span style="font-size:0.75rem; color:#38bdf8; font-weight:700;">${isKo ? '기본/밸런스' : 'Standard'}</span>
                 </div>
                 <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.A.short[state.lang]}</div>
                 <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.A.full[state.lang]}</div>
             </button>
             <button type="button" class="btn-choice rule-select-btn type-b" id="btnRuleChoiceB" style="padding:16px 14px; text-align:left; border-top:4px solid #f472b6; background:rgba(15, 23, 42, 0.85);">
-                <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+                <div style="display:flex; align-items:center; margin-bottom:4px;">
                     <span class="guide-rule-tag tag-b" style="font-size:0.75rem; padding:2px 8px;">Type B</span>
-                    <span style="font-size:0.75rem; color:#f472b6; font-weight:700;">${isKo ? '전략/고득점' : 'Tactical'}</span>
                 </div>
                 <div style="font-size:1rem; font-weight:800; color:#fff; margin:8px 0 4px 0;">${rule.B.short[state.lang]}</div>
                 <div style="font-size:0.76rem; color:#94a3b8; line-height:1.4; word-break:keep-all;">${rule.B.full[state.lang]}</div>
