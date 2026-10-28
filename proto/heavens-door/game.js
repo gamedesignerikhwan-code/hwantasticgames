@@ -1187,13 +1187,102 @@
             closeRules.onclick = () => modalRules.classList.remove('active');
         }
 
-        // New game settings modal
+        // Entry page setup & interactions
+        const entryPage = document.getElementById('gameEntryPage');
+        const entryState = {
+            playerCount: 2,
+            scoringMode: 'mixed'
+        };
+
+        // Player count cards in entry page
+        document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.playerCount = parseInt(card.dataset.players, 10) || 2;
+                playSound('select');
+            };
+        });
+
+        // Scoring mode cards in entry page
+        document.querySelectorAll('#entryScoringModePicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryScoringModePicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.scoringMode = card.dataset.mode || 'mixed';
+                playSound('select');
+            };
+        });
+
+        // Start game button on entry page
+        const btnEntryStart = document.getElementById('btnEntryStartGame');
+        if (btnEntryStart && entryPage) {
+            btnEntryStart.onclick = () => {
+                playSound('match');
+                initGame({ playerCount: entryState.playerCount, scoringMode: entryState.scoringMode });
+                entryPage.classList.add('hidden');
+            };
+        }
+
+        // Open Rulebook from entry page
+        const btnEntryRulebook = document.getElementById('btnEntryOpenRulebook');
+        if (btnEntryRulebook && modalRules) {
+            btnEntryRulebook.onclick = () => modalRules.classList.add('active');
+        }
+
+        // Return to entry page (Lobby buttons)
+        const btnEntryLobby = document.getElementById('btnEntryLobby');
+        const btnTitleLobby = document.getElementById('btnTitleLobby');
+        if (btnEntryLobby && entryPage) {
+            btnEntryLobby.onclick = () => {
+                playSound('select');
+                entryPage.classList.remove('hidden');
+            };
+        }
+        if (btnTitleLobby && entryPage) {
+            btnTitleLobby.onclick = () => {
+                playSound('select');
+                entryPage.classList.remove('hidden');
+            };
+        }
+
+        // Entry page lang button
+        const btnEntryLang = document.getElementById('btnEntryLang');
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnEntryLang) {
+            btnEntryLang.onclick = () => {
+                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
+                if (btnLang) btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
+                btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
+                updateStaticTexts();
+                render();
+            };
+        }
+
+        // Entry page sound button
+        const btnEntrySound = document.getElementById('btnEntrySound');
+        const btnSound = document.getElementById('btnSoundSwitch');
+        if (btnEntrySound) {
+            btnEntrySound.onclick = () => {
+                state.soundEnabled = !state.soundEnabled;
+                btnEntrySound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+                if (btnSound) btnSound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            };
+        }
+
+        // New game button -> opens entry page for re-setup
         const btnNew = document.getElementById('btnNewGame');
         const modalNew = document.getElementById('newGameModal');
         const closeNew = document.getElementById('closeNewGameModal');
         const btnStart = document.getElementById('btnStartNewGame');
 
-        if (btnNew && modalNew) btnNew.onclick = () => modalNew.classList.add('active');
+        if (btnNew) {
+            btnNew.onclick = () => {
+                playSound('select');
+                if (entryPage) entryPage.classList.remove('hidden');
+                else if (modalNew) modalNew.classList.add('active');
+            };
+        }
         if (closeNew && modalNew) closeNew.onclick = () => modalNew.classList.remove('active');
 
         if (btnStart && modalNew) {
@@ -1211,7 +1300,8 @@
         if (btnAgain && victoryModal) {
             btnAgain.onclick = () => {
                 victoryModal.classList.remove('active');
-                initGame({ playerCount: state.playerCount, scoringMode: state.scoringMode });
+                if (entryPage) entryPage.classList.remove('hidden');
+                else initGame({ playerCount: state.playerCount, scoringMode: state.scoringMode });
             };
         }
 
@@ -1227,22 +1317,22 @@
         });
 
         // Lang switch
-        const btnLang = document.getElementById('btnLangSwitch');
         if (btnLang) {
             btnLang.onclick = () => {
                 state.lang = (state.lang === 'ko' ? 'en' : 'ko');
                 btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
+                if (btnEntryLang) btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
                 updateStaticTexts();
                 render();
             };
         }
 
         // Sound switch
-        const btnSound = document.getElementById('btnSoundSwitch');
         if (btnSound) {
             btnSound.onclick = () => {
                 state.soundEnabled = !state.soundEnabled;
                 btnSound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+                if (btnEntrySound) btnEntrySound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
             };
         }
     }
@@ -1253,6 +1343,10 @@
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
             el.innerHTML = isKo ? el.getAttribute('data-i18n-ko') : el.getAttribute('data-i18n-en');
         });
+        const btnEntryLang = document.getElementById('btnEntryLang');
+        if (btnEntryLang) btnEntryLang.textContent = isKo ? 'EN' : 'KO';
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnLang) btnLang.textContent = isKo ? 'EN' : '한국어';
     }
 
     // Startup
@@ -1260,6 +1354,12 @@
         setupModalEvents();
         updateStaticTexts();
         initGame({ playerCount: 2, scoringMode: 'mixed' });
+
+        // Auto-skip entry page if URL has #play or ?play=1
+        if (window.location.hash.includes('play') || window.location.search.includes('play=1')) {
+            const entryPage = document.getElementById('gameEntryPage');
+            if (entryPage) entryPage.classList.add('hidden');
+        }
     });
 
 })();

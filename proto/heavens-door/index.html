@@ -1097,9 +1097,761 @@ body {
     }
 }
 
+/* ==========================================================================
+   Heaven's Door Game Entry / Landing Page (진입 화면)
+   ========================================================================== */
+.game-entry-page {
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    background: radial-gradient(circle at 50% 12%, #1e293b 0%, #0b1120 65%, #030712 100%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px 48px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.game-entry-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.entry-page-inner {
+    max-width: 880px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+}
+
+/* Top bar */
+.entry-brand-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entry-back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+.entry-back-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--gold);
+}
+
+.brand-subtag {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: var(--gold);
+    opacity: 0.9;
+}
+
+.entry-top-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-entry-tool {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-entry-tool:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--gold);
+}
+
+/* Hero Section */
+.entry-hero-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    padding: 10px 0 6px;
+}
+
+.entry-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 999px;
+    color: #fde68a;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.entry-hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.entry-hero-title .title-main {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 20%, #fde047 65%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
+    line-height: 1.1;
+}
+
+.entry-hero-title .title-sub {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    opacity: 0.85;
+}
+
+.entry-hero-pitch {
+    max-width: 620px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin: 4px 0 6px;
+    word-break: keep-all;
+}
+
+/* Animated Floating Tiles & Pyramid Artwork Motif */
+.entry-pyramid-preview {
+    position: relative;
+    width: 290px;
+    height: 135px;
+    margin: 8px 0 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry-pyramid-art {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    perspective: 500px;
+}
+
+.entry-pyramid-tier {
+    display: flex;
+    gap: 6px;
+    transform: rotateX(20deg);
+}
+
+.tile-chip {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 900;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+.tile-chip.gold-star { background: linear-gradient(135deg, #fef08a, #eab308); color: #713f12; border: 2px solid #fef9c3; box-shadow: 0 0 16px rgba(234, 179, 8, 0.7); }
+.tile-chip.tc-blue { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #fff; }
+.tile-chip.tc-green { background: linear-gradient(135deg, #4ade80, #16a34a); color: #fff; }
+.tile-chip.tc-purple { background: linear-gradient(135deg, #c084fc, #9333ea); color: #fff; }
+.tile-chip.tc-orange { background: linear-gradient(135deg, #fb923c, #ea580c); color: #fff; }
+.tile-chip.tc-red { background: linear-gradient(135deg, #f87171, #dc2626); color: #fff; }
+.tile-chip.tc-rose { background: linear-gradient(135deg, #fb7185, #e11d48); color: #fff; }
+.tile-chip.tc-yellow { background: linear-gradient(135deg, #fde047, #ca8a04); color: #713f12; }
+
+/* Floating satellite chips */
+.entry-floating-tile {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 800;
+    background: rgba(30, 41, 59, 0.85);
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    animation: floatAnim 3.5s ease-in-out infinite alternate;
+}
+.entry-floating-tile.t-1 { top: 0px; left: 10px; color: #38bdf8; animation-delay: 0s; }
+.entry-floating-tile.t-2 { top: 50px; left: -10px; color: #fb923c; animation-delay: 0.6s; }
+.entry-floating-tile.t-3 { bottom: 0px; left: 20px; color: #4ade80; animation-delay: 1.2s; }
+.entry-floating-tile.t-4 { top: 0px; right: 10px; color: #c084fc; animation-delay: 0.4s; }
+.entry-floating-tile.t-5 { top: 50px; right: -10px; color: #facc15; animation-delay: 1s; }
+.entry-floating-tile.t-6 { bottom: 0px; right: 20px; color: #f43f5e; animation-delay: 1.6s; }
+
+@keyframes floatAnim {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(6deg); }
+}
+
+/* Specs Row */
+.entry-specs-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.entry-spec-pill {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    backdrop-filter: blur(8px);
+}
+
+.entry-spec-pill i {
+    font-size: 1.25rem;
+    color: var(--gold);
+    width: 26px;
+    text-align: center;
+}
+
+.entry-spec-pill strong {
+    display: block;
+    font-size: 0.86rem;
+    color: #fff;
+}
+.entry-spec-pill span {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* Setup Card Section */
+.entry-setup-section {
+    background: rgba(30, 41, 59, 0.75);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+.entry-section-heading {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 10px;
+}
+
+.entry-picker-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.entry-picker-label {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.entry-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+}
+
+.entry-choice-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 2px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    user-select: none;
+}
+
+.entry-choice-card:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    background: rgba(15, 23, 42, 0.95);
+    transform: translateY(-2px);
+}
+
+.entry-choice-card.active {
+    border-color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.card-radio-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border-glass);
+    margin-top: 2px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.entry-choice-card.active .card-radio-circle {
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+}
+.entry-choice-card.active .card-radio-circle::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #0f172a;
+}
+
+.entry-choice-card .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.entry-choice-card .card-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.card-rec-badge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #eab308, #d97706);
+    color: #000;
+}
+
+.entry-choice-card .card-desc {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+    word-break: keep-all;
+}
+
+/* 30-Second Rules Summary */
+.entry-rules-summary {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rules-summary-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rules-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.rule-step-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #000;
+    font-weight: 900;
+    font-size: 0.76rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.step-body strong {
+    display: block;
+    font-size: 0.82rem;
+    color: #fff;
+    margin-bottom: 2px;
+}
+.step-body p {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+/* CTA Bar */
+.entry-cta-bar {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 6px;
+}
+
+.btn-entry-primary {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 60%, #d97706 100%);
+    color: #0f172a;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 15px 40px;
+    font-size: 1.12rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-entry-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.65);
+}
+
+.btn-entry-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-glass);
+    color: #fff;
+    border-radius: var(--radius-md);
+    padding: 15px 26px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+.btn-entry-secondary:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.entry-footer {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding-top: 6px;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 640px) {
+    .entry-hero-title .title-main {
+        font-size: 2.2rem;
+    }
+    .entry-hero-title .title-sub {
+        font-size: 0.95rem;
+    }
+    .entry-setup-section {
+        padding: 16px;
+    }
+    .btn-entry-primary {
+        width: 100%;
+        justify-content: center;
+    }
+    .btn-entry-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
     </style>
 </head>
 <body>
+
+    <!-- Heaven's Door Game Entry / Landing Page (진입 화면) -->
+    <div class="game-entry-page" id="gameEntryPage">
+        <div class="entry-page-inner">
+            <!-- Top brand bar -->
+            <div class="entry-brand-bar">
+                <a href="/proto" class="entry-back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span data-i18n-ko="프로토타입 목록" data-i18n-en="Prototypes Hub">프로토타입 목록</span>
+                </a>
+                <div class="entry-brand-logo">
+                    <span class="brand-subtag">HWANTASTIC GAMES · ORIGINAL PROTOTYPE</span>
+                </div>
+                <div class="entry-top-actions">
+                    <button type="button" class="btn-entry-tool" id="btnEntrySound" title="Sound Toggle">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button type="button" class="btn-entry-tool" id="btnEntryLang">EN</button>
+                </div>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="entry-hero-section">
+                <div class="entry-hero-badge">
+                    <i class="fa-solid fa-sparkles" style="color:var(--gold);"></i>
+                    <span data-i18n-ko="3D 피라미드 타일 드래프트 & 가변 점수 세트 컬렉션" data-i18n-en="3D Stepped Pyramid Tile Drafting & Variable Scoring">3D 피라미드 타일 드래프트 & 가변 점수 세트 컬렉션</span>
+                </div>
+
+                <div class="entry-hero-title">
+                    <h1 class="title-main">Heaven's Door</h1>
+                    <span class="title-sub">헤븐스 도어</span>
+                </div>
+
+                <p class="entry-hero-pitch" data-i18n-ko="계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요." data-i18n-en="Draft matching tile pairs from the 3D stepped pyramid, build personal scoring tracks, customize Type A & B rules, and achieve the highest celestial score!">
+                    계단식 3D 피라미드에서 일치하는 타일 쌍을 드래프트하고, 6가지 심볼의 A/B 점수 공식을 조합하여 나만의 천국의 문을 완성하세요.
+                </p>
+
+                <!-- Key Visual / Animated Pyramid Preview -->
+                <div class="entry-pyramid-preview">
+                    <div class="entry-floating-tile t-1">▲</div>
+                    <div class="entry-floating-tile t-2">⏢</div>
+                    <div class="entry-floating-tile t-3">■</div>
+                    <div class="entry-pyramid-art">
+                        <div class="entry-pyramid-tier">
+                            <span class="tile-chip gold-star">★</span>
+                        </div>
+                        <div class="entry-pyramid-tier">
+                            <span class="tile-chip tc-blue">▲</span>
+                            <span class="tile-chip tc-green">■</span>
+                            <span class="tile-chip tc-purple">●</span>
+                        </div>
+                        <div class="entry-pyramid-tier">
+                            <span class="tile-chip tc-orange">⏢</span>
+                            <span class="tile-chip tc-red">★</span>
+                            <span class="tile-chip tc-rose">⬢</span>
+                            <span class="tile-chip tc-yellow">■</span>
+                        </div>
+                    </div>
+                    <div class="entry-floating-tile t-4">●</div>
+                    <div class="entry-floating-tile t-5">★</div>
+                    <div class="entry-floating-tile t-6">⬢</div>
+                </div>
+
+                <!-- Spec Meta Chips -->
+                <div class="entry-specs-row">
+                    <div class="entry-spec-pill">
+                        <i class="fa-solid fa-users"></i>
+                        <div>
+                            <strong data-i18n-ko="2~4인 플레이" data-i18n-en="2–4 Players">2~4인 플레이</strong>
+                            <span data-i18n-ko="나 vs AI 대전" data-i18n-en="You vs Smart AIs">나 vs AI 대전</span>
+                        </div>
+                    </div>
+                    <div class="entry-spec-pill">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                        <div>
+                            <strong data-i18n-ko="30분 진행" data-i18n-en="30 Mins">30분 진행</strong>
+                            <span data-i18n-ko="총 10턴 (인당 20타일)" data-i18n-en="10 Turns (20 Tiles)">총 10턴 (인당 20타일)</span>
+                        </div>
+                    </div>
+                    <div class="entry-spec-pill">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <div>
+                            <strong data-i18n-ko="3D 피라미드" data-i18n-en="3D Stepped Pyramid">3D 피라미드</strong>
+                            <span data-i18n-ko="2~3층 입체 드래프트" data-i18n-en="Layered Drafting">2~3층 입체 드래프트</span>
+                        </div>
+                    </div>
+                    <div class="entry-spec-pill">
+                        <i class="fa-solid fa-sliders"></i>
+                        <div>
+                            <strong data-i18n-ko="가변 점수 공식" data-i18n-en="Variable Scoring">가변 점수 공식</strong>
+                            <span data-i18n-ko="6개 심볼 A/B면 선택" data-i18n-en="Type A & B Dual Sides">6개 심볼 A/B면 선택</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setup & Customization Controls -->
+            <div class="entry-setup-section">
+                <h2 class="entry-section-heading">
+                    <i class="fa-solid fa-gamepad" style="color:var(--gold);"></i>
+                    <span data-i18n-ko="게임 설정 선택" data-i18n-en="Game Setup Options">게임 설정 선택</span>
+                </h2>
+
+                <!-- Player Count Picker -->
+                <div class="entry-picker-group">
+                    <label class="entry-picker-label" data-i18n-ko="플레이어 수 (인간 vs AI 대전)" data-i18n-en="Player Count (Human vs AI)">플레이어 수 (인간 vs AI 대전)</label>
+                    <div class="entry-cards-grid" id="entryPlayerCountPicker">
+                        <div class="entry-choice-card active" data-players="2">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span data-i18n-ko="2인 플레이" data-i18n-en="2 Players">2인 플레이</span>
+                                    <span class="card-rec-badge" data-i18n-ko="기본 추천" data-i18n-en="Standard">기본 추천</span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="나 vs AI 1명 · 2개 층 (50타일)" data-i18n-en="You vs 1 AI · 2 Layers (50 Tiles)">나 vs AI 1명 · 2개 층 (50타일)</div>
+                            </div>
+                        </div>
+                        <div class="entry-choice-card" data-players="3">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span data-i18n-ko="3인 플레이" data-i18n-en="3 Players">3인 플레이</span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="나 vs AI 2명 · 2개 층 (72타일)" data-i18n-en="You vs 2 AIs · 2 Layers (72 Tiles)">나 vs AI 2명 · 2개 층 (72타일)</div>
+                            </div>
+                        </div>
+                        <div class="entry-choice-card" data-players="4">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span data-i18n-ko="4인 플레이" data-i18n-en="4 Players">4인 플레이</span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="나 vs AI 3명 · 3개 층 (92타일)" data-i18n-en="You vs 3 AIs · 3 Layers (92 Tiles)">나 vs AI 3명 · 3개 층 (92타일)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scoring Mode Picker -->
+                <div class="entry-picker-group">
+                    <label class="entry-picker-label" data-i18n-ko="점수 조건 타일 모드" data-i18n-en="Scoring Condition Mode">점수 조건 타일 모드</label>
+                    <div class="entry-cards-grid" id="entryScoringModePicker">
+                        <div class="entry-choice-card active" data-mode="mixed">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span>🎲 <span data-i18n-ko="직접 선택 모드" data-i18n-en="Choose Dynamically">직접 선택 모드</span></span>
+                                    <span class="card-rec-badge" data-i18n-ko="최고 전략" data-i18n-en="Recommended">최고 전략</span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="새 기호를 얻을 때마다 A면/B면을 직접 선택하여 나만의 점수 조합 빌딩" data-i18n-en="Choose Type A or B dynamically each time you discover a new symbol">새 기호를 얻을 때마다 A면/B면을 직접 선택하여 나만의 점수 조합 빌딩</div>
+                            </div>
+                        </div>
+                        <div class="entry-choice-card" data-mode="A">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span>⚡ <span data-i18n-ko="Type A 표준 모드" data-i18n-en="Type A Standard">Type A 표준 모드</span></span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="모든 6개 기호를 직관적인 A면 공식으로 고정 (균형 잡힌 입문 추천)" data-i18n-en="All symbols use Standard Type A rules (Balanced, ideal for beginners)">모든 6개 기호를 직관적인 A면 공식으로 고정 (균형 잡힌 입문 추천)</div>
+                            </div>
+                        </div>
+                        <div class="entry-choice-card" data-mode="B">
+                            <div class="card-radio-circle"></div>
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <span>🧠 <span data-i18n-ko="Type B 전략 모드" data-i18n-en="Type B Tactical">Type B 전략 모드</span></span>
+                                </div>
+                                <div class="card-desc" data-i18n-ko="모든 6개 기호를 공격적인 B면 공식으로 고정 (제곱 득점, 고난도 노림수)" data-i18n-en="All symbols use Tactical Type B rules (Exponential scoring & high risk)">모든 6개 기호를 공격적인 B면 공식으로 고정 (제곱 득점, 고난도 노림수)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 30-Second How to Play Guide -->
+            <div class="entry-rules-summary">
+                <h3 class="rules-summary-title">
+                    <i class="fa-solid fa-compass" style="color:var(--gold);"></i>
+                    <span data-i18n-ko="30초 핵심 룰 안내" data-i18n-en="Quick How to Play (30-Sec Guide)">30초 핵심 룰 안내</span>
+                </h3>
+                <div class="rules-steps-grid">
+                    <div class="rule-step-item">
+                        <div class="step-num">1</div>
+                        <div class="step-body">
+                            <strong data-i18n-ko="일치하는 외곽 타일 2장 드래프트" data-i18n-en="Draft 2 Matching Tiles">일치하는 외곽 타일 2장 드래프트</strong>
+                            <p data-i18n-ko="피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다." data-i18n-en="Take 2 exposed tiles from the pyramid that match in Color or Symbol.">피라미드 외곽에 노출된 앞면 타일 중 색상 또는 기호가 일치하는 2장을 가져옵니다.</p>
+                        </div>
+                    </div>
+                    <div class="rule-step-item">
+                        <div class="step-num">2</div>
+                        <div class="step-body">
+                            <strong data-i18n-ko="보드 배치 & 콤보 / 중복" data-i18n-en="Place Tiles & Trigger Combos">보드 배치 & 콤보 / 중복</strong>
+                            <p data-i18n-ko="새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!" data-i18n-en="Stack tiles in order. Identical pairs give [COMBO +7p], duplicate colors give [DUPLICATE +2p]!">새 기호는 왼쪽부터 열에 쌓입니다. 완전 일치 쌍은 [COMBO 7점], 중복 색상은 [DUPLICATE 2점]!</p>
+                        </div>
+                    </div>
+                    <div class="rule-step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-body">
+                            <strong data-i18n-ko="10턴 진행 후 세트 보너스 & 승리" data-i18n-en="Score Points & Victory">10턴 진행 후 세트 보너스 & 승리</strong>
+                            <p data-i18n-ko="10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!" data-i18n-en="After 10 turns (20 tiles), sum symbol points, set bonus (up to +30p), and combo points to crown the winner!">10턴(20장) 후 심볼 점수 + 6종 세트 보너스(최대 +30점) + 콤보 점수 합산 1위가 승리!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action Buttons -->
+            <div class="entry-cta-bar">
+                <button type="button" class="btn-entry-primary" id="btnEntryStartGame">
+                    <i class="fa-solid fa-play"></i>
+                    <span data-i18n-ko="게임 시작하기" data-i18n-en="Start Game">게임 시작하기</span>
+                </button>
+                <button type="button" class="btn-entry-secondary" id="btnEntryOpenRulebook">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span data-i18n-ko="전체 규칙서" data-i18n-en="Full Rulebook">전체 규칙서</span>
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <div class="entry-footer">
+                <p>&copy; 2026 Hwantastic Games. Designed by Ikhwan Kwon. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Header Navigation -->
     <header class="game-header">
@@ -1108,7 +1860,7 @@ body {
                 <i class="fa-solid fa-arrow-left"></i>
                 <span data-i18n-ko="프로토타입 목록" data-i18n-en="Prototypes">프로토타입 목록</span>
             </a>
-            <div class="game-title-group">
+            <div class="game-title-group" id="btnTitleLobby" style="cursor:pointer;" title="진입 화면으로 이동">
                 <h1>
                     <span>Heaven's Door</span>
                     <span style="font-size:0.95rem; opacity:0.8; font-weight:600;">(헤븐스 도어)</span>
@@ -1124,6 +1876,10 @@ body {
         </div>
 
         <div class="header-actions">
+            <button type="button" class="btn-header" id="btnEntryLobby" title="게임 진입 화면 / 설정">
+                <i class="fa-solid fa-house"></i>
+                <span data-i18n-ko="진입 화면" data-i18n-en="Home">진입 화면</span>
+            </button>
             <button type="button" class="btn-header" id="btnSoundSwitch" title="Sound Toggle">
                 <i class="fa-solid fa-volume-high"></i>
             </button>
@@ -2592,13 +3348,102 @@ body {
             closeRules.onclick = () => modalRules.classList.remove('active');
         }
 
-        // New game settings modal
+        // Entry page setup & interactions
+        const entryPage = document.getElementById('gameEntryPage');
+        const entryState = {
+            playerCount: 2,
+            scoringMode: 'mixed'
+        };
+
+        // Player count cards in entry page
+        document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.playerCount = parseInt(card.dataset.players, 10) || 2;
+                playSound('select');
+            };
+        });
+
+        // Scoring mode cards in entry page
+        document.querySelectorAll('#entryScoringModePicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryScoringModePicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.scoringMode = card.dataset.mode || 'mixed';
+                playSound('select');
+            };
+        });
+
+        // Start game button on entry page
+        const btnEntryStart = document.getElementById('btnEntryStartGame');
+        if (btnEntryStart && entryPage) {
+            btnEntryStart.onclick = () => {
+                playSound('match');
+                initGame({ playerCount: entryState.playerCount, scoringMode: entryState.scoringMode });
+                entryPage.classList.add('hidden');
+            };
+        }
+
+        // Open Rulebook from entry page
+        const btnEntryRulebook = document.getElementById('btnEntryOpenRulebook');
+        if (btnEntryRulebook && modalRules) {
+            btnEntryRulebook.onclick = () => modalRules.classList.add('active');
+        }
+
+        // Return to entry page (Lobby buttons)
+        const btnEntryLobby = document.getElementById('btnEntryLobby');
+        const btnTitleLobby = document.getElementById('btnTitleLobby');
+        if (btnEntryLobby && entryPage) {
+            btnEntryLobby.onclick = () => {
+                playSound('select');
+                entryPage.classList.remove('hidden');
+            };
+        }
+        if (btnTitleLobby && entryPage) {
+            btnTitleLobby.onclick = () => {
+                playSound('select');
+                entryPage.classList.remove('hidden');
+            };
+        }
+
+        // Entry page lang button
+        const btnEntryLang = document.getElementById('btnEntryLang');
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnEntryLang) {
+            btnEntryLang.onclick = () => {
+                state.lang = (state.lang === 'ko' ? 'en' : 'ko');
+                if (btnLang) btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
+                btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
+                updateStaticTexts();
+                render();
+            };
+        }
+
+        // Entry page sound button
+        const btnEntrySound = document.getElementById('btnEntrySound');
+        const btnSound = document.getElementById('btnSoundSwitch');
+        if (btnEntrySound) {
+            btnEntrySound.onclick = () => {
+                state.soundEnabled = !state.soundEnabled;
+                btnEntrySound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+                if (btnSound) btnSound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+            };
+        }
+
+        // New game button -> opens entry page for re-setup
         const btnNew = document.getElementById('btnNewGame');
         const modalNew = document.getElementById('newGameModal');
         const closeNew = document.getElementById('closeNewGameModal');
         const btnStart = document.getElementById('btnStartNewGame');
 
-        if (btnNew && modalNew) btnNew.onclick = () => modalNew.classList.add('active');
+        if (btnNew) {
+            btnNew.onclick = () => {
+                playSound('select');
+                if (entryPage) entryPage.classList.remove('hidden');
+                else if (modalNew) modalNew.classList.add('active');
+            };
+        }
         if (closeNew && modalNew) closeNew.onclick = () => modalNew.classList.remove('active');
 
         if (btnStart && modalNew) {
@@ -2616,7 +3461,8 @@ body {
         if (btnAgain && victoryModal) {
             btnAgain.onclick = () => {
                 victoryModal.classList.remove('active');
-                initGame({ playerCount: state.playerCount, scoringMode: state.scoringMode });
+                if (entryPage) entryPage.classList.remove('hidden');
+                else initGame({ playerCount: state.playerCount, scoringMode: state.scoringMode });
             };
         }
 
@@ -2632,22 +3478,22 @@ body {
         });
 
         // Lang switch
-        const btnLang = document.getElementById('btnLangSwitch');
         if (btnLang) {
             btnLang.onclick = () => {
                 state.lang = (state.lang === 'ko' ? 'en' : 'ko');
                 btnLang.textContent = (state.lang === 'ko' ? 'EN' : '한국어');
+                if (btnEntryLang) btnEntryLang.textContent = (state.lang === 'ko' ? 'EN' : 'KO');
                 updateStaticTexts();
                 render();
             };
         }
 
         // Sound switch
-        const btnSound = document.getElementById('btnSoundSwitch');
         if (btnSound) {
             btnSound.onclick = () => {
                 state.soundEnabled = !state.soundEnabled;
                 btnSound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
+                if (btnEntrySound) btnEntrySound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
             };
         }
     }
@@ -2658,6 +3504,10 @@ body {
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
             el.innerHTML = isKo ? el.getAttribute('data-i18n-ko') : el.getAttribute('data-i18n-en');
         });
+        const btnEntryLang = document.getElementById('btnEntryLang');
+        if (btnEntryLang) btnEntryLang.textContent = isKo ? 'EN' : 'KO';
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnLang) btnLang.textContent = isKo ? 'EN' : '한국어';
     }
 
     // Startup
@@ -2665,6 +3515,12 @@ body {
         setupModalEvents();
         updateStaticTexts();
         initGame({ playerCount: 2, scoringMode: 'mixed' });
+
+        // Auto-skip entry page if URL has #play or ?play=1
+        if (window.location.hash.includes('play') || window.location.search.includes('play=1')) {
+            const entryPage = document.getElementById('gameEntryPage');
+            if (entryPage) entryPage.classList.add('hidden');
+        }
     });
 
 })();
