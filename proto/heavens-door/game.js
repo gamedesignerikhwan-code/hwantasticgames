@@ -1495,9 +1495,9 @@
             };
         }
 
-        function cycleLanguage() {
-            const idx = SUPPORTED_LANGS.indexOf(state.lang);
-            state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
+        function setLanguage(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) return;
+            state.lang = lang;
             if (state.players) {
                 state.players.forEach(p => {
                     if (state.gameMode === 'local') {
@@ -1510,14 +1510,41 @@
             }
             updateStaticTexts();
             render();
+
+            // Close all dropdowns
+            document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
         }
 
-        // Entry page lang button
-        const btnEntryLang = document.getElementById('btnEntryLang');
-        const btnLang = document.getElementById('btnLangSwitch');
-        if (btnEntryLang) {
-            btnEntryLang.onclick = cycleLanguage;
-        }
+        // Setup Language Dropdowns (목록 선택식)
+        document.querySelectorAll('.lang-dropdown-wrap').forEach(wrap => {
+            const btn = wrap.querySelector('.lang-dropdown-btn');
+            if (btn) {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const isOpen = wrap.classList.contains('open');
+                    document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
+                    if (!isOpen) {
+                        wrap.classList.add('open');
+                        playSound('select');
+                    }
+                };
+            }
+        });
+
+        document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+            item.onclick = (e) => {
+                e.stopPropagation();
+                const targetLang = item.dataset.lang;
+                if (targetLang) {
+                    setLanguage(targetLang);
+                    playSound('select');
+                }
+            };
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
+        });
 
         // Entry page sound button
         const btnEntrySound = document.getElementById('btnEntrySound');
@@ -1576,10 +1603,7 @@
             };
         });
 
-        // Lang switch
-        if (btnLang) {
-            btnLang.onclick = cycleLanguage;
-        }
+        // (Lang switch is handled by dropdown menu items)
 
         // Sound switch
         if (btnSound) {
@@ -1599,16 +1623,13 @@
             const val = el.getAttribute(`data-i18n-${lang}`) || el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko');
             if (val) el.innerHTML = val;
         });
-        const btnEntryLang = document.getElementById('btnEntryLang');
-        if (btnEntryLang) {
-            btnEntryLang.textContent = LANG_BUTTON_TEXT[lang] || lang.toUpperCase();
-            btnEntryLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
-        }
-        const btnLang = document.getElementById('btnLangSwitch');
-        if (btnLang) {
-            btnLang.textContent = LANG_SWITCH_HEADER[lang] || lang.toUpperCase();
-            btnLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
-        }
+        // Update language dropdown labels and active checkmarks
+        document.querySelectorAll('.lang-code-text').forEach(el => {
+            el.textContent = lang.toUpperCase();
+        });
+        document.querySelectorAll('.lang-dropdown-item').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
     }
 
     // Startup

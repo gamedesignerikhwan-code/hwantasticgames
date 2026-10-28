@@ -1689,6 +1689,115 @@ body {
     }
 }
 
+/* Language Dropdown Menu (선택식 언어 드롭다운) */
+.lang-dropdown-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-dropdown-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.lang-dropdown-btn .lang-chevron {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.lang-dropdown-wrap.open .lang-chevron {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 500;
+    min-width: 150px;
+    background: rgba(13, 22, 25, 0.98);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(45, 212, 191, 0.15);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    pointer-events: none;
+}
+
+.lang-dropdown-wrap.open .lang-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.lang-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+    width: 100%;
+}
+
+.lang-dropdown-item:hover {
+    background: rgba(45, 212, 191, 0.12);
+    color: var(--jade);
+}
+
+.lang-dropdown-item.active {
+    background: rgba(229, 184, 105, 0.14);
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.lang-item-name {
+    flex: 1;
+}
+
+.lang-item-code {
+    font-size: 0.68rem;
+    opacity: 0.6;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-dropdown-item.active .lang-item-code {
+    background: rgba(229, 184, 105, 0.2);
+    color: var(--gold);
+    opacity: 1;
+}
+
+.lang-item-check {
+    font-size: 0.72rem;
+    opacity: 0;
+    color: var(--gold);
+}
+
+.lang-dropdown-item.active .lang-item-check {
+    opacity: 1;
+}
+
 </style>
 </head>
 <body>
@@ -1704,7 +1813,35 @@ body {
 <button class="btn-entry-tool" id="btnEntrySound" title="Sound Toggle" type="button">
 <i class="fa-solid fa-volume-high"></i>
 </button>
-<button class="btn-entry-tool" id="btnEntryLang" type="button">EN</button>
+<div class="lang-dropdown-wrap" id="entryLangDropdownWrap">
+<button class="btn-entry-tool lang-dropdown-btn" id="btnEntryLang" title="Language / 언어 선택" type="button">
+<i class="fa-solid fa-globe"></i>
+<span class="lang-code-text">EN</span>
+<i class="fa-solid fa-chevron-down lang-chevron"></i>
+</button>
+<div class="lang-dropdown-menu" id="entryLangDropdownMenu">
+<button class="lang-dropdown-item active" data-lang="en" type="button">
+<span class="lang-item-name">English</span>
+<span class="lang-item-code">EN</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="ko" type="button">
+<span class="lang-item-name">한국어</span>
+<span class="lang-item-code">KO</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="fr" type="button">
+<span class="lang-item-name">Français</span>
+<span class="lang-item-code">FR</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="de" type="button">
+<span class="lang-item-name">Deutsch</span>
+<span class="lang-item-code">DE</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+</div>
+</div>
 </div>
 </div>
 <!-- Hero Section -->
@@ -1962,7 +2099,35 @@ body {
 <i class="fa-solid fa-rotate-right"></i>
 <span data-i18n-de="Neues Spiel" data-i18n-en="New Game" data-i18n-fr="Nouvelle partie" data-i18n-ko="새 게임">새 게임</span>
 </button>
-<button class="btn-header" id="btnLangSwitch" type="button">EN</button>
+<div class="lang-dropdown-wrap" id="headerLangDropdownWrap">
+<button class="btn-header lang-dropdown-btn" id="btnLangSwitch" title="Language / 언어 선택" type="button">
+<i class="fa-solid fa-globe"></i>
+<span class="lang-code-text">EN</span>
+<i class="fa-solid fa-chevron-down lang-chevron"></i>
+</button>
+<div class="lang-dropdown-menu" id="headerLangDropdownMenu">
+<button class="lang-dropdown-item active" data-lang="en" type="button">
+<span class="lang-item-name">English</span>
+<span class="lang-item-code">EN</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="ko" type="button">
+<span class="lang-item-name">한국어</span>
+<span class="lang-item-code">KO</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="fr" type="button">
+<span class="lang-item-name">Français</span>
+<span class="lang-item-code">FR</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+<button class="lang-dropdown-item" data-lang="de" type="button">
+<span class="lang-item-name">Deutsch</span>
+<span class="lang-item-code">DE</span>
+<i class="fa-solid fa-check lang-item-check"></i>
+</button>
+</div>
+</div>
 </div>
 </header>
 <!-- Main Game Container -->
@@ -3703,9 +3868,9 @@ body {
             };
         }
 
-        function cycleLanguage() {
-            const idx = SUPPORTED_LANGS.indexOf(state.lang);
-            state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
+        function setLanguage(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) return;
+            state.lang = lang;
             if (state.players) {
                 state.players.forEach(p => {
                     if (state.gameMode === 'local') {
@@ -3718,14 +3883,41 @@ body {
             }
             updateStaticTexts();
             render();
+
+            // Close all dropdowns
+            document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
         }
 
-        // Entry page lang button
-        const btnEntryLang = document.getElementById('btnEntryLang');
-        const btnLang = document.getElementById('btnLangSwitch');
-        if (btnEntryLang) {
-            btnEntryLang.onclick = cycleLanguage;
-        }
+        // Setup Language Dropdowns (목록 선택식)
+        document.querySelectorAll('.lang-dropdown-wrap').forEach(wrap => {
+            const btn = wrap.querySelector('.lang-dropdown-btn');
+            if (btn) {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const isOpen = wrap.classList.contains('open');
+                    document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
+                    if (!isOpen) {
+                        wrap.classList.add('open');
+                        playSound('select');
+                    }
+                };
+            }
+        });
+
+        document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+            item.onclick = (e) => {
+                e.stopPropagation();
+                const targetLang = item.dataset.lang;
+                if (targetLang) {
+                    setLanguage(targetLang);
+                    playSound('select');
+                }
+            };
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown-wrap').forEach(w => w.classList.remove('open'));
+        });
 
         // Entry page sound button
         const btnEntrySound = document.getElementById('btnEntrySound');
@@ -3784,10 +3976,7 @@ body {
             };
         });
 
-        // Lang switch
-        if (btnLang) {
-            btnLang.onclick = cycleLanguage;
-        }
+        // (Lang switch is handled by dropdown menu items)
 
         // Sound switch
         if (btnSound) {
@@ -3807,16 +3996,13 @@ body {
             const val = el.getAttribute(`data-i18n-${lang}`) || el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko');
             if (val) el.innerHTML = val;
         });
-        const btnEntryLang = document.getElementById('btnEntryLang');
-        if (btnEntryLang) {
-            btnEntryLang.textContent = LANG_BUTTON_TEXT[lang] || lang.toUpperCase();
-            btnEntryLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
-        }
-        const btnLang = document.getElementById('btnLangSwitch');
-        if (btnLang) {
-            btnLang.textContent = LANG_SWITCH_HEADER[lang] || lang.toUpperCase();
-            btnLang.title = `Language: ${lang.toUpperCase()} (Click to switch)`;
-        }
+        // Update language dropdown labels and active checkmarks
+        document.querySelectorAll('.lang-code-text').forEach(el => {
+            el.textContent = lang.toUpperCase();
+        });
+        document.querySelectorAll('.lang-dropdown-item').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
     }
 
     // Startup
