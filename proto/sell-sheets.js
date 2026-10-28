@@ -44,6 +44,81 @@
     };
 
     const SHEETS = {
+        'past-lives': {
+            mark: '⏳',
+            name: { en: "Past Lives", ko: "패스트 라이브즈" },
+            specs: [['2–5', 'players'], ['10+', 'ages'], ['25', 'minutes'], ['8', 'rounds']],
+            tags: {
+                en: ['Sealed Bidding', 'Set Collection', 'Directional Special Cards', 'Secret Gift Exchange'],
+                ko: ['비공개 동시 입찰', '세트 컬렉션', '방향성 특수 카드', '최종 비밀 선물 교환']
+            },
+            hero: {
+                en: {
+                    h: 'A sealed bidding timeline of past karmic connections.',
+                    p: 'Bid secretly to claim 2-card era sets, arrange positive and negative connections along your numerical timeline, and face a dramatic final secret gift exchange where rivals bestow karmic debts upon one another.'
+                },
+                ko: {
+                    h: '시간과 인연의 비밀 경매 & 생애 타임라인.',
+                    p: '비공개 입찰로 2장들이 세트를 획득해 오름차순으로 생애를 엮어가고, 8라운드 종료 후 남은 인연을 상대에게 비밀리에 선물하는 치열한 심리전 카드 게임입니다.'
+                }
+            },
+            points: {
+                en: [
+                    '<strong>Pure Sealed Bidding without Inflation:</strong> Lowest bids get first choice of central card sets, with bid cards ascending to form the next round’s top floor.',
+                    '<strong>Directional Special Cards (# ←, → #, 2*# ←, → 2*#):</strong> Strategically cancel out enemy curses or double up lovers and friends in your life ribbon.',
+                    '<strong>Dramatic Final Secret Gift Exchange:</strong> In the final phase, players secretly pass their remaining cards to rivals — gifting devastating wars or unexpected salvation.'
+                ],
+                ko: [
+                    '<strong>인플레이션 없는 깔끔한 동시 비공개 입찰:</strong> 가장 낮은 번호의 카드를 낸 사람이 1번 세트를 선점하고, 입찰 카드들이 다음 라운드의 바닥 세트로 이어지는 유기적인 순환 구조.',
+                    '<strong>방향성 특수 카드의 전술적 콤보:</strong> 좌우 무효화 및 2배 카드로 전쟁과 갈등을 지우거나 연인·친구 점수를 극대화합니다.',
+                    '<strong>최종 비밀 인연 교환의 대역전 드라마:</strong> 8라운드 후 손에 남은 카드를 상대방에게 비밀리에 1장씩 선물하여 승부를 뒤집는 강렬한 인터랙션.'
+                ]
+            },
+            steps: {
+                en: [
+                    ['Sealed Bid', 'Simultaneously reveal 1 card from hand. Lowest card number chooses first from the available 2-card floor sets.'],
+                    ['Play 1, Keep 1', 'From your claimed set, place 1 card in ascending order onto your life timeline and add the other to your hand.'],
+                    ['Sort Next Round', 'Current round bid cards are sorted ascending to become the top row of the next round; new cards fill the bottom row.'],
+                    ['Special Card Resolution', 'Directional arrows modify adjacent cards (cancel out or double count; facing specials nullify each other).'],
+                    ['Secret Gift Exchange', 'After 8 rounds, secretly gift remaining cards to rivals, adding them directly to their final timeline scoring.'],
+                    ['Score Connections & Eras', 'Score positive connections (Lover, Friend, Colleague), subtract negative connections (War, Steal, Conflict), and earn +10 VP for each era majority!']
+                ],
+                ko: [
+                    ['동시 비공개 입찰', '손패에서 1장을 뒷면으로 낸 뒤 동시 공개. 가장 작은 번호부터 바닥 세트를 우선 선택합니다.'],
+                    ['1장 배치, 1장 손패', '획득한 2장 중 1장을 내 생애 타임라인에 오름차순으로 배치하고, 남은 1장은 손패에 챙깁니다.'],
+                    ['다음 라운드 바닥 구성', '이번 라운드 입찰 카드가 다음 라운드 세트 상단이 되고, 덱에서 카드를 뽑아 하단 세트를 채웁니다.'],
+                    ['특수 카드 효과 적용', '화살표 방향에 따라 인접 카드를 무효화하거나 2배로 계산하며, 마주보는 특수 카드는 서로 상쇄됩니다.'],
+                    ['최종 비밀 선물 교환', '8라운드 후 손에 남은 카드를 다른 플레이어들에게 비밀리에 1장씩 선물하여 타임라인에 추가합니다.'],
+                    ['인연 & 시대 점수 계산', '긍정적 인연(연인·친구·동료) 득점, 부정적 인연(전쟁·도둑·갈등) 감점, 7개 각 시대별 최다 보유자에게 시대당 +10점 보너스를 부여합니다!']
+                ]
+            },
+            scoring: {
+                single: {
+                    en: '⏳ Lover (+12~50) + Friend (+7~30) + Colleague (+5~20) - War (-10~-40) - Steal (-6~-25) - Conflict (-3~-15) + Era Majorities (+10 VP each)',
+                    ko: '⏳ 연인(+12~50점) + 친구(+7~30점) + 동료(+5~20점) - 전쟁(-10~-40점) - 도둑(-6~-25점) - 갈등(-3~-15점) + 시대별 최다 보너스(각 10점)'
+                },
+                note: {
+                    en: 'Carefully curate your timeline numbers and connections while anticipating the hidden cards rivals will pass to you in the final exchange.',
+                    ko: '오름차순 번호 규칙 속에서 인연의 균형을 맞추고, 마지막 비밀 교환에서 상대가 건넬 카드를 예측하여 승리를 쟁취하세요.'
+                }
+            },
+            components: {
+                en: [['70', 'Timeline Cards (7 Eras × 10 cards)', 'fa-clone'], ['30', 'Positive Connection Cards', 'fa-heart'], ['30', 'Negative Connection Cards', 'fa-skull-crossbones'], ['10', 'Directional Special Cards', 'fa-wand-magic-sparkles']],
+                ko: [['70', '타임라인 카드 (7개 시대 × 10장)', 'fa-clone'], ['30', '긍정적 인연 카드', 'fa-heart'], ['30', '부정적 인연 카드', 'fa-skull-crossbones'], ['10', '방향성 특수 카드', 'fa-wand-magic-sparkles']]
+            },
+            figure: {
+                src: { en: '/proto/assets/tangent-code-table.webp', ko: '/proto/assets/tangent-code-table.webp' },
+                alt: {
+                    en: 'Past Lives sealed bidding and life timeline prototype.',
+                    ko: '패스트 라이브즈 비공개 입찰 및 생애 타임라인 프로토타입.'
+                },
+                caption: {
+                    en: 'Experience the 8-round tension and the dramatic final secret gift exchange in the online prototype.',
+                    ko: '8라운드의 치열한 비딩과 드라마틱한 최종 비밀 인연 교환을 온라인 프로토타입에서 직접 즐겨보세요.'
+                }
+            },
+            play: '/proto/past-lives/'
+        },
         'heavens-door': {
             mark: '🚪',
             name: { en: "Heaven's Door", ko: "헤븐스 도어" },

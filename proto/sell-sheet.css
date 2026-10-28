@@ -35,6 +35,12 @@
 }
 
 
+.sell-sheet-card.ss-past-lives {
+    --ss-accent: #f59e0b;
+    --ss-accent-dark: #b45309;
+    --ss-accent-soft: #fef3c7;
+}
+
 .sell-sheet-card.ss-heavens-door {
     --ss-accent: #f59e0b;
     --ss-accent-dark: #b45309;

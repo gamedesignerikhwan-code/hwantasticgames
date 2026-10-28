@@ -8,6 +8,10 @@
     { "source": "/proto/heavens-door/", "destination": "/proto/heavens-door/index.html" },
     { "source": "/proto/heavens-door/game.css", "destination": "/proto/heavens-door/game.css" },
     { "source": "/proto/heavens-door/game.js", "destination": "/proto/heavens-door/game.js" },
+    { "source": "/proto/past-lives", "destination": "/proto/past-lives/index.html" },
+    { "source": "/proto/past-lives/", "destination": "/proto/past-lives/index.html" },
+    { "source": "/proto/past-lives/game.css", "destination": "/proto/past-lives/game.css" },
+    { "source": "/proto/past-lives/game.js", "destination": "/proto/past-lives/game.js" },
     { "source": "/proto/game.css", "destination": "/proto/heavens-door/game.css" },
     { "source": "/proto/game.js", "destination": "/proto/heavens-door/game.js" },
     { "source": "/proto.css", "destination": "/proto/proto.css" }
