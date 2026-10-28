@@ -50,6 +50,16 @@
         56: 'CONFLICT', 57: 'STEAL', 58: 'FRIEND', 59: 'WAR', 60: 'COLLEAGUE'
     };
 
+    
+    function renderSymbolContent(card) {
+        if (!card || !card.symInfo) return '';
+        if (card.symInfo.type === 'special') {
+            return `<span class="special-sym-txt">${renderSymbolContent(card)}</span>`;
+        }
+        const symKey = card.symbol.toLowerCase();
+        return `<img src="/proto/past-lives-60/icons/${symKey}.png" class="card-symbol-img" alt="${card.symInfo.name.ko}">`;
+    }
+
     const SCORING_TABLE = {
         LOVER: { 3: 12, 4: 25, 5: 50 },
         FRIEND: { 3: 7, 4: 15, 5: 30 },
@@ -413,7 +423,7 @@
         const renderMiniCard = (c) => `
             <div class="pl-card" style="pointer-events:none;">
                 <div class="card-symbol-top ${c.symInfo.type === 'special' ? 'sym-special' : 'sym-' + c.symbol.toLowerCase()}">
-                    ${c.symInfo.icon}
+                    ${renderSymbolContent(c)}
                 </div>
                 <div class="card-order-bottom">
                     <span class="card-order-num" style="color:${c.eraColor};">${c.orderStr}</span>
@@ -503,7 +513,7 @@
                                 <div style="display:flex; flex-direction:column; align-items:center; gap:4px; background:rgba(255,255,255,0.04); padding:6px; border-radius:6px; border:1px solid var(--border-glass);">
                                     <div class="pl-card" style="pointer-events:none;">
                                         <div class="card-symbol-top ${c.symInfo.type === 'special' ? 'sym-special' : 'sym-' + c.symbol.toLowerCase()}">
-                                            ${c.symInfo.icon}
+                                            ${renderSymbolContent(c)}
                                         </div>
                                         <div class="card-order-bottom">
                                             <span class="card-order-num" style="color:${c.eraColor};">${c.orderStr}</span>
@@ -913,7 +923,7 @@
             return `
                 <div class="pl-card selectable ${isSelected ? 'selected' : ''}" data-order="${card.order}">
                     <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                        ${card.symInfo.icon}
+                        ${renderSymbolContent(card)}
                     </div>
                     <div class="card-order-bottom">
                         <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
@@ -982,7 +992,7 @@
                                 return `
                                     <div class="played-mini-card ${specialClass}" title="${card.symInfo.name[state.lang]} (#${card.orderStr}) - ${ERA_NAMES[state.lang][card.era]}">
                                         <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                                            ${card.symInfo.icon}
+                                            ${renderSymbolContent(card)}
                                         </div>
                                         <div class="card-order-bottom">
                                             <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
@@ -1003,7 +1013,7 @@
         return `
             <div class="pl-card" title="${card.symInfo.name[state.lang]} (#${card.orderStr})">
                 <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                    ${card.symInfo.icon}
+                    ${renderSymbolContent(card)}
                 </div>
                 <div class="card-order-bottom">
                     <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
