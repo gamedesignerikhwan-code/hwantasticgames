@@ -54,12 +54,12 @@
             icon: '■',
             color: '#4ade80',
             A: {
-                short: { ko: '개수 × 콤보 × 2p', en: 'Count × Combos × 2p' },
-                full: { ko: '정사각형 1장당 나의 콤보 수 × 2점', en: '2 VP per COMBO for each square tile' }
+                short: { ko: '개수 × 콤보p', en: 'Count × Combos p' },
+                full: { ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)', en: '1 VP per COMBO for each square tile' }
             },
             B: {
-                short: { ko: '개수 × (콤보 × 중복)p', en: 'Count × (Combos × Dupl)p' },
-                full: { ko: '정사각형 1장당 (콤보 수 × 중복 수)점', en: 'Points per square = (Combos × Duplicates)' }
+                short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p' },
+                full: { ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점', en: '3 VP per DUPLICATE tile for each square tile' }
             }
         },
         circle: {
@@ -70,16 +70,16 @@
                 full: { ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점', en: 'Points per circle = count of tiles in most collected color' }
             },
             B: {
-                short: { ko: '개수 × 6번째 열 수', en: 'Count × Rightmost Col' },
-                full: { ko: '원 1장당 개인 보드 맨 오른쪽 6번째 열의 타일 수 점', en: 'Points per circle = count of tiles in rightmost 6th column' }
+                short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col' },
+                full: { ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점', en: 'Points per circle = count of tiles in leftmost 1st column' }
             }
         },
         star: {
             icon: '★',
             color: '#facc15',
             A: {
-                short: { ko: '단독 최다 시 50p', en: 'Sole Most: 50p' },
-                full: { ko: '동점 없는 단독 최다 별 보유 시 50점 (동점 시 0점)', en: '50 VP for strictly most stars without ties (0 VP if tied)' }
+                short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)' },
+                full: { ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)', en: '40 VP for sole most stars (20 VP each if tied for most)' }
             },
             B: {
                 short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p' },
@@ -90,8 +90,8 @@
             icon: '⬢',
             color: '#f43f5e',
             A: {
-                short: { ko: '4+/5+/6+ 달성 시 44/55/66p', en: '4+/5+/6+ Goal: 44/55/66p' },
-                full: { ko: '2인 4개+(44점) / 3인 5개+(55점) / 4인 6개+(66점)', en: 'Threshold: 4+ (44p in 2P) / 5+ (55p in 3P) / 6+ (66p in 4P)' }
+                short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p' },
+                full: { ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)', en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)' }
             },
             B: {
                 short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile' },
@@ -700,9 +700,9 @@
                     }
                 } else if (col.symbol === 'square') {
                     if (isTypeA) {
-                        pts = 2 * count * p.combos.length;
+                        pts = count * p.combos.length;
                     } else {
-                        pts = count * (p.combos.length * p.duplicates.length);
+                        pts = count * p.duplicates.length * 3;
                     }
                 } else if (col.symbol === 'circle') {
                     if (isTypeA) {
@@ -716,17 +716,21 @@
                         const maxColorCount = Math.max(0, ...Object.values(colorCounts));
                         pts = count * maxColorCount;
                     } else {
-                        // Tiles in rightmost column (col index 5, or last col)
-                        const lastCol = p.columns[p.columns.length - 1];
-                        const rightColCount = lastCol ? lastCol.tiles.length : 0;
-                        pts = count * rightColCount;
+                        // Tiles in leftmost 1st column
+                        const firstCol = p.columns[0];
+                        const firstColCount = firstCol ? firstCol.tiles.length : 0;
+                        pts = count * firstColCount;
                     }
                 } else if (col.symbol === 'star') {
                     const myStars = starCounts[pIdx];
                     if (isTypeA) {
-                        // Sole majority
+                        // Sole majority 40p, tied majority 20p
                         const tied = starCounts.filter(s => s === maxStars).length > 1;
-                        pts = (myStars === maxStars && !tied && myStars > 0) ? 50 : 0;
+                        if (myStars === maxStars && myStars > 0) {
+                            pts = tied ? 20 : 40;
+                        } else {
+                            pts = 0;
+                        }
                     } else {
                         // Not the fewest
                         const isFewest = (myStars === minStars);
@@ -735,9 +739,16 @@
                 } else if (col.symbol === 'hexagon') {
                     const myHex = hexCounts[pIdx];
                     if (isTypeA) {
-                        const threshold = (state.playerCount === 2 ? 4 : (state.playerCount === 3 ? 5 : 6));
-                        const targetPts = (state.playerCount === 2 ? 44 : (state.playerCount === 3 ? 55 : 66));
-                        pts = (myHex >= threshold) ? targetPts : 0;
+                        // 3/4/5+: 15/30/50p
+                        if (myHex >= 5) {
+                            pts = 50;
+                        } else if (myHex >= 4) {
+                            pts = 30;
+                        } else if (myHex >= 3) {
+                            pts = 15;
+                        } else {
+                            pts = 0;
+                        }
                     } else {
                         // If not the leader
                         pts = (myHex < maxHex) ? (myHex * 6) : 0;

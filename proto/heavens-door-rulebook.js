@@ -149,22 +149,22 @@
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>■ Square</strong></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">2 VP per COMBO achieved for every square tile.</span><span class="rb-content-ko" style="display:none;">정사각형 1장당 나의 콤보 수 × 2점</span></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Points per square = (COMBO count × DUPLICATE count).</span><span class="rb-content-ko" style="display:none;">정사각형 1장당 (콤보 수 × 중복 타일 수) 점</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">1 VP per COMBO achieved for every square tile.</span><span class="rb-content-ko" style="display:none;">정사각형 1장당 나의 콤보 수 점 (1점/콤보)</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">3 VP per DUPLICATE tile for every square tile.</span><span class="rb-content-ko" style="display:none;">정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점</span></td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>● Circle</strong></td>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Points per circle = count of tiles in your most collected color.</span><span class="rb-content-ko" style="display:none;">원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점</span></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Points per circle = count of tiles in your rightmost 6th column.</span><span class="rb-content-ko" style="display:none;">원 1장당 내 개인 보드의 맨 오른쪽(6번째) 열 타일 수 점</span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">Points per circle = count of tiles in your leftmost 1st column.</span><span class="rb-content-ko" style="display:none;">원 1장당 내 개인 보드의 맨 왼쪽(1번째) 열 타일 수 점</span></td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>★ Star</strong></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">50 VP if you have the strictly most stars (no ties).</span><span class="rb-content-ko" style="display:none;">동점 없는 단독 최다 별 보유 시 <strong>50점</strong></span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">40 VP for sole most stars (20 VP each if tied for most).</span><span class="rb-content-ko" style="display:none;">동점 없는 단독 최다 별 보유 시 <strong>40점</strong> (동점 최다 시 전원 20점)</span></td>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">25 VP if you are NOT the player with the fewest stars.</span><span class="rb-content-ko" style="display:none;">최소 보유자가 아니면 <strong>25점</strong></span></td>
                             </tr>
                             <tr>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><strong>⬢ Hexagon</strong></td>
-                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">66 / 55 / 44 VP if you collected 6+ / 5+ / 4+ hexagons (for 4/3/2 players).</span><span class="rb-content-ko" style="display:none;">2인 4개+ / 3인 5개+ / 4인 6개+ 육각형 보유 시 <strong>44 / 55 / 66점</strong></span></td>
+                                <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">50 / 30 / 15 VP for 5+ / 4 / 3 hexagons collected.</span><span class="rb-content-ko" style="display:none;">육각형 3개(15점) / 4개(30점) / 5개 이상 <strong>50점</strong></span></td>
                                 <td style="padding:8px 10px; border:1px solid var(--border-glass);"><span class="rb-content-en">If NOT the player with the most hexagons, earn 6 VP per hexagon.</span><span class="rb-content-ko" style="display:none;">최다 보유자가 아니라면 육각형 1장당 <strong>6점</strong> (최다는 0점)</span></td>
                             </tr>
                         </tbody>
