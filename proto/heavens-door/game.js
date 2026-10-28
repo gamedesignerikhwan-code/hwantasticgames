@@ -31,10 +31,12 @@
             color: '#38bdf8',
             A: {
                 short: { ko: '1/3/5/7개: 5/15/25/35p', en: '5/15/25/35p per 1/3/5/7 stacks' },
+                boardLines: { ko: ['1/3/5/7개', '5/15/25/35p'], en: ['1/3/5/7 pcs', '5/15/25/35p'] },
                 full: { ko: '홀수 스택마다 점수: 1/3/5/7개 시 5/15/25/35점 (짝수 개수는 직전 점수 유지)', en: '5/15/25/35 VP per 1/3/5/7 stacks (even counts keep previous tier)' }
             },
             B: {
                 short: { ko: '1/3/5/7개: 4/16/36/64p', en: '4/16/36/64p per 1/3/5/7 stacks' },
+                boardLines: { ko: ['1/3/5/7개', '4/16/36/64p'], en: ['1/3/5/7 pcs', '4/16/36/64p'] },
                 full: { ko: '홀수 스택마다 (N+1)² 점수: 1/3/5/7개 시 4/16/36/64점 (짝수 개수는 직전 점수 유지)', en: '4/16/36/64 VP per 1/3/5/7 stacks ((N+1)², even counts keep previous tier)' }
             }
         },
@@ -43,10 +45,12 @@
             color: '#fb923c',
             A: {
                 short: { ko: '2/4/6/8개: 10/20/30/40p', en: '10/20/30/40p per 2/4/6/8 stacks' },
+                boardLines: { ko: ['2/4/6/8개', '10/20/30/40p'], en: ['2/4/6/8 pcs', '10/20/30/40p'] },
                 full: { ko: '짝수 스택마다 점수: 2/4/6/8개 시 10/20/30/40점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '10/20/30/40 VP per 2/4/6/8 stacks (1 tile = 0 VP, odd counts keep previous tier)' }
             },
             B: {
                 short: { ko: '2/4/6/8개: 9/25/49/81p', en: '9/25/49/81p per 2/4/6/8 stacks' },
+                boardLines: { ko: ['2/4/6/8개', '9/25/49/81p'], en: ['2/4/6/8 pcs', '9/25/49/81p'] },
                 full: { ko: '짝수 스택마다 (N+1)² 점수: 2/4/6/8개 시 9/25/49/81점 (1개 0점, 홀수 개수는 직전 점수 유지)', en: '9/25/49/81 VP per 2/4/6/8 stacks ((N+1)², odd counts keep previous tier)' }
             }
         },
@@ -55,10 +59,12 @@
             color: '#4ade80',
             A: {
                 short: { ko: '개수 × 콤보p', en: 'Count × Combos p' },
+                boardLines: { ko: ['개수 × 콤보', '(콤보당 1p)'], en: ['Count ×', 'Combos (1p)'] },
                 full: { ko: '정사각형 1장당 나의 콤보 수 점 (1점/콤보)', en: '1 VP per COMBO for each square tile' }
             },
             B: {
                 short: { ko: '개수 × 중복 × 3p', en: 'Count × Dupl × 3p' },
+                boardLines: { ko: ['개수 × 중복', '× 3p'], en: ['Count × Dupl', '× 3p'] },
                 full: { ko: '정사각형 1장당 나의 중복(DUPLICATE) 타일 수 × 3점', en: '3 VP per DUPLICATE tile for each square tile' }
             }
         },
@@ -67,10 +73,12 @@
             color: '#c084fc',
             A: {
                 short: { ko: '개수 × 최다 색상 수', en: 'Count × Max Color' },
+                boardLines: { ko: ['개수 ×', '최다 색상 수'], en: ['Count ×', 'Max Color'] },
                 full: { ko: '원 1장당 내가 가장 많이 모은 단일 색상의 총 타일 수 점', en: 'Points per circle = count of tiles in most collected color' }
             },
             B: {
                 short: { ko: '개수 × 1번째 열 수', en: 'Count × 1st Col' },
+                boardLines: { ko: ['개수 ×', '1번째 열 수'], en: ['Count ×', '1st Col Count'] },
                 full: { ko: '원 1장당 개인 보드 맨 왼쪽 1번째 열의 타일 수 점', en: 'Points per circle = count of tiles in leftmost 1st column' }
             }
         },
@@ -79,10 +87,12 @@
             color: '#facc15',
             A: {
                 short: { ko: '단독 40p (동점 20p)', en: 'Sole 40p (Tie 20p)' },
+                boardLines: { ko: ['단독 40p', '(동점 20p)'], en: ['Sole 40p', '(Tie 20p)'] },
                 full: { ko: '동점 없는 단독 최다 별 보유 시 40점 (동점 최다 시 전원 20점)', en: '40 VP for sole most stars (20 VP each if tied for most)' }
             },
             B: {
                 short: { ko: '최소 아니면 25p', en: 'Not Fewest: 25p' },
+                boardLines: { ko: ['최소 아니면', '25p'], en: ['Not Fewest:', '25p'] },
                 full: { ko: '최소 보유자가 아니면 25점', en: '25 VP if you are not the player with the fewest stars' }
             }
         },
@@ -91,10 +101,12 @@
             color: '#f43f5e',
             A: {
                 short: { ko: '3/4/5개: 15/30/50p', en: '3/4/5+: 15/30/50p' },
+                boardLines: { ko: ['3/4/5개', '15/30/50p'], en: ['3/4/5+ pcs', '15/30/50p'] },
                 full: { ko: '육각형 3개(15점) / 4개(30점) / 5개 이상(50점)', en: 'Thresholds: 3 tiles (15p) / 4 tiles (30p) / 5+ tiles (50p)' }
             },
             B: {
                 short: { ko: '최다 아니면 개당 6p', en: 'Not Most: 6p / tile' },
+                boardLines: { ko: ['최다 아니면', '개당 6p'], en: ['Not Leader:', '6p / tile'] },
                 full: { ko: '최다 보유자가 아니면 개당 6점 (최다 보유자는 0점)', en: '6 VP per tile if not the leader (leader gets 0 VP)' }
             }
         }
@@ -1104,11 +1116,14 @@
                     const icon = SYMBOL_ICONS[col.symbol];
                     const count = col.tiles.length;
                     const pts = col.currentScore || 0;
+                    const ruleData = SYMBOL_RULES[col.symbol][col.ruleType];
+                    const lines = ruleData.boardLines ? (ruleData.boardLines[state.lang] || ruleData.boardLines.ko) : [ruleData.short[state.lang]];
+                    const descHtml = lines.map(line => `<span class="pb-rule-line">${line}</span>`).join('');
 
                     colsHtml += `
                         <div class="pb-symbol-col">
                             <div class="pb-scoring-tile type-${col.ruleType.toLowerCase()} ${p.isHuman ? 'clickable-tile' : ''}" 
-                                 title="${p.isHuman ? (state.lang === 'ko' ? '클릭하여 A/B 규칙 면 뒤집기 (현재 ' + col.ruleType + '형)\n' + SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang] : 'Click to flip A/B side (Current Type ' + col.ruleType + ')\n' + SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]) : SYMBOL_RULES[col.symbol][col.ruleType].full[state.lang]}"
+                                 title="${p.isHuman ? (state.lang === 'ko' ? '클릭하여 A/B 규칙 면 뒤집기 (현재 ' + col.ruleType + '형)\n' + ruleData.full[state.lang] : 'Click to flip A/B side (Current Type ' + col.ruleType + ')\n' + ruleData.full[state.lang]) : ruleData.full[state.lang]}"
                                  ${p.isHuman ? `onclick="window.flipPlayerScoringTile(${p.id}, '${col.symbol}')"` : ''}>
                                 <div class="pb-tile-top">
                                     <span class="pb-rule-badge">${col.ruleType}</span>
@@ -1116,7 +1131,7 @@
                                     <span class="pb-col-score">${pts} pt</span>
                                 </div>
                                 <div class="pb-symbol-mark">${icon}</div>
-                                <div class="pb-rule-desc">${SYMBOL_RULES[col.symbol][col.ruleType].short[state.lang]}</div>
+                                <div class="pb-rule-desc">${descHtml}</div>
                             </div>
                             <span class="pb-bonus-indicator">+${setVal} VP</span>
                             <div class="pb-tile-stack">
