@@ -1063,7 +1063,7 @@ body {
 /* Two-column Game Play Area: Left = Pyramid Board, Right = Scoring Rules */
 .game-play-area {
     display: grid;
-    grid-template-columns: minmax(360px, 1.15fr) minmax(320px, 0.85fr);
+    grid-template-columns: minmax(400px, 1.25fr) minmax(300px, 0.75fr);
     gap: 12px;
     align-items: stretch;
     width: 100%;
@@ -1217,8 +1217,8 @@ body {
                 </ul>
                 <h4 data-i18n-ko="피라미드 적재 셋업" data-i18n-en="Pyramid Setup">피라미드 적재 셋업</h4>
                 <ul>
-                    <li data-i18n-ko="<strong>2인 게임</strong>: 2개 층 (1층 6×5=30개 / 2층 5×4=20개)" data-i18n-en="<strong>2-Player Game</strong>: 2 layers (Layer 1: 6×5 / Layer 2: 5×4)"><strong>2인 게임</strong>: 2개 층 (1층 6×5=30개 / 2층 5×4=20개)</li>
-                    <li data-i18n-ko="<strong>3인 게임</strong>: 2개 층 (1층 7×6=42개 / 2층 6×5=30개)" data-i18n-en="<strong>3-Player Game</strong>: 2 layers (Layer 1: 7×6 / Layer 2: 6×5)"><strong>3인 게임</strong>: 2개 층 (1층 7×6=42개 / 2층 6×5=30개)</li>
+                    <li data-i18n-ko="<strong>2인 게임</strong>: 2개 층 (1층 가로 6 × 세로 5 = 30개 / 2층 가로 5 × 세로 4 = 20개)" data-i18n-en="<strong>2-Player Game</strong>: 2 layers (Layer 1: 6×5 / Layer 2: 5×4)"><strong>2인 게임</strong>: 2개 층 (1층 6×5=30개 / 2층 5×4=20개)</li>
+                    <li data-i18n-ko="<strong>3인 게임</strong>: 2개 층 (1층 가로 7 × 세로 6 = 42개 / 2층 가로 6 × 세로 5 = 30개)" data-i18n-en="<strong>3-Player Game</strong>: 2 layers (Layer 1: 7×6 / Layer 2: 6×5)"><strong>3인 게임</strong>: 2개 층 (1층 7×6=42개 / 2층 6×5=30개)</li>
                     <li data-i18n-ko="<strong>4인 게임</strong>: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)" data-i18n-en="<strong>4-Player Game</strong>: 3 layers (Layer 1: 7×6 / Layer 2: 6×5 / Layer 3: 5×4)"><strong>4인 게임</strong>: 3개 층 (1층 7×6 / 2층 6×5 / 3층 5×4)</li>
                     <li data-i18n-ko="최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다." data-i18n-en="Topmost layer tiles are placed face-up; lower layer tiles placed randomly face-up or face-down.">최상층 타일은 모두 앞면으로 놓으며, 아래층 타일들은 무작위로 앞면 또는 뒷면으로 배치합니다.</li>
                 </ul>
@@ -1606,26 +1606,26 @@ body {
 
         const deck = createTileDeck();
 
-        // Stacking Setup based on player count
-        // 2P: Layer 0 (6x5, 30 tiles), Layer 1 (5x4, 20 tiles)
-        // 3P: Layer 0 (7x6, 42 tiles), Layer 1 (6x5, 30 tiles)
-        // 4P: Layer 0 (7x6, 42 tiles), Layer 1 (6x5, 30 tiles), Layer 2 (5x4, 20 tiles)
+        // Stacking Setup based on player count (Landscape / 가로형 피라미드)
+        // 2P: Layer 0 (가로 6 x 세로 5 = 30장), Layer 1 (가로 5 x 세로 4 = 20장)
+        // 3P: Layer 0 (가로 7 x 세로 6 = 42장), Layer 1 (가로 6 x 세로 5 = 30장)
+        // 4P: Layer 0 (가로 7 x 세로 6 = 42장), Layer 1 (가로 6 x 세로 5 = 30장), Layer 2 (가로 5 x 세로 4 = 20장)
         let layerConfigs;
         if (state.playerCount === 2) {
             layerConfigs = [
-                { rows: 6, cols: 5 }, // Layer 0
-                { rows: 5, cols: 4 }  // Layer 1 (Top)
+                { rows: 5, cols: 6 }, // Layer 0: 가로 6 x 세로 5
+                { rows: 4, cols: 5 }  // Layer 1: 가로 5 x 세로 4 (Top)
             ];
         } else if (state.playerCount === 3) {
             layerConfigs = [
-                { rows: 7, cols: 6 },
-                { rows: 6, cols: 5 }
+                { rows: 6, cols: 7 }, // Layer 0: 가로 7 x 세로 6
+                { rows: 5, cols: 6 }  // Layer 1: 가로 6 x 세로 5 (Top)
             ];
         } else {
             layerConfigs = [
-                { rows: 7, cols: 6 },
-                { rows: 6, cols: 5 },
-                { rows: 5, cols: 4 }
+                { rows: 6, cols: 7 }, // Layer 0: 가로 7 x 세로 6
+                { rows: 5, cols: 6 }, // Layer 1: 가로 6 x 세로 5
+                { rows: 4, cols: 5 }  // Layer 2: 가로 5 x 세로 4 (Top)
             ];
         }
 

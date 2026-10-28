@@ -223,26 +223,26 @@
 
         const deck = createTileDeck();
 
-        // Stacking Setup based on player count
-        // 2P: Layer 0 (6x5, 30 tiles), Layer 1 (5x4, 20 tiles)
-        // 3P: Layer 0 (7x6, 42 tiles), Layer 1 (6x5, 30 tiles)
-        // 4P: Layer 0 (7x6, 42 tiles), Layer 1 (6x5, 30 tiles), Layer 2 (5x4, 20 tiles)
+        // Stacking Setup based on player count (Landscape / 가로형 피라미드)
+        // 2P: Layer 0 (가로 6 x 세로 5 = 30장), Layer 1 (가로 5 x 세로 4 = 20장)
+        // 3P: Layer 0 (가로 7 x 세로 6 = 42장), Layer 1 (가로 6 x 세로 5 = 30장)
+        // 4P: Layer 0 (가로 7 x 세로 6 = 42장), Layer 1 (가로 6 x 세로 5 = 30장), Layer 2 (가로 5 x 세로 4 = 20장)
         let layerConfigs;
         if (state.playerCount === 2) {
             layerConfigs = [
-                { rows: 6, cols: 5 }, // Layer 0
-                { rows: 5, cols: 4 }  // Layer 1 (Top)
+                { rows: 5, cols: 6 }, // Layer 0: 가로 6 x 세로 5
+                { rows: 4, cols: 5 }  // Layer 1: 가로 5 x 세로 4 (Top)
             ];
         } else if (state.playerCount === 3) {
             layerConfigs = [
-                { rows: 7, cols: 6 },
-                { rows: 6, cols: 5 }
+                { rows: 6, cols: 7 }, // Layer 0: 가로 7 x 세로 6
+                { rows: 5, cols: 6 }  // Layer 1: 가로 6 x 세로 5 (Top)
             ];
         } else {
             layerConfigs = [
-                { rows: 7, cols: 6 },
-                { rows: 6, cols: 5 },
-                { rows: 5, cols: 4 }
+                { rows: 6, cols: 7 }, // Layer 0: 가로 7 x 세로 6
+                { rows: 5, cols: 6 }, // Layer 1: 가로 6 x 세로 5
+                { rows: 4, cols: 5 }  // Layer 2: 가로 5 x 세로 4 (Top)
             ];
         }
 
