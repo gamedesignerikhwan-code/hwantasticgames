@@ -1019,9 +1019,9 @@
         if (!stage) return;
         stage.innerHTML = '';
 
-        const tileSize = window.innerWidth <= 768 ? 34 : 44;
-        const tileGap = window.innerWidth <= 768 ? 3 : 5;
-        const stride = tileSize + tileGap;
+        const tileSize = window.innerWidth <= 768 ? 36 : 46;
+        const tileGap = 0; // Seamless tight fit with zero gap, so lower tiles are not visible through cracks
+        const stride = tileSize;
 
         // Base layer offset
         const baseRows = state.boardLayers[0].rows;
@@ -1052,6 +1052,7 @@
                         el.innerHTML = renderSymbolSvg(tile.symbol);
                     }
 
+                    if (tile.covered) el.classList.add('covered-tile');
                     if (tile.acquirable) el.classList.add('acquirable');
 
                     // Selection classes
@@ -1071,6 +1072,12 @@
                     el.style.left = `${leftPx}px`;
                     // Higher layer gets higher z-index
                     el.style.zIndex = lIdx * 10 + 1;
+
+                    if (lIdx > 0) {
+                        el.style.boxShadow = '0 6px 14px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25)';
+                    } else {
+                        el.style.boxShadow = 'inset 0 0 0 1px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25)';
+                    }
 
                     el.onclick = () => handleTileClick(tile);
 

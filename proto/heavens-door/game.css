@@ -11,8 +11,8 @@
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
-    --tile-size: 44px;
-    --tile-gap: 5px;
+    --tile-size: 46px;
+    --tile-gap: 0px;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Noto Sans KR', sans-serif;
 }
@@ -256,14 +256,14 @@ body {
 .hd-tile {
     width: var(--tile-size);
     height: var(--tile-size);
-    border-radius: 8px;
+    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: default;
     position: absolute;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, opacity 0.25s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .hd-tile.face-down {

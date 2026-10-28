@@ -34,8 +34,8 @@
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
-    --tile-size: 44px;
-    --tile-gap: 5px;
+    --tile-size: 46px;
+    --tile-gap: 0px;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Noto Sans KR', sans-serif;
 }
@@ -279,14 +279,14 @@ body {
 .hd-tile {
     width: var(--tile-size);
     height: var(--tile-size);
-    border-radius: 8px;
+    border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: default;
     position: absolute;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, opacity 0.25s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .hd-tile.face-down {
@@ -3180,9 +3180,9 @@ body {
         if (!stage) return;
         stage.innerHTML = '';
 
-        const tileSize = window.innerWidth <= 768 ? 34 : 44;
-        const tileGap = window.innerWidth <= 768 ? 3 : 5;
-        const stride = tileSize + tileGap;
+        const tileSize = window.innerWidth <= 768 ? 36 : 46;
+        const tileGap = 0; // Seamless tight fit with zero gap, so lower tiles are not visible through cracks
+        const stride = tileSize;
 
         // Base layer offset
         const baseRows = state.boardLayers[0].rows;
@@ -3213,6 +3213,7 @@ body {
                         el.innerHTML = renderSymbolSvg(tile.symbol);
                     }
 
+                    if (tile.covered) el.classList.add('covered-tile');
                     if (tile.acquirable) el.classList.add('acquirable');
 
                     // Selection classes
@@ -3232,6 +3233,12 @@ body {
                     el.style.left = `${leftPx}px`;
                     // Higher layer gets higher z-index
                     el.style.zIndex = lIdx * 10 + 1;
+
+                    if (lIdx > 0) {
+                        el.style.boxShadow = '0 6px 14px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25)';
+                    } else {
+                        el.style.boxShadow = 'inset 0 0 0 1px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25)';
+                    }
 
                     el.onclick = () => handleTileClick(tile);
 
