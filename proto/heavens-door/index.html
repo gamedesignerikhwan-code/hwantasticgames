@@ -480,6 +480,22 @@ body {
     background: linear-gradient(135deg, #e5b869, #b45309);
     box-shadow: 0 2px 8px rgba(229, 184, 105, 0.4);
 }
+.player-avatar.human.p-0 {
+    background: linear-gradient(135deg, #e5b869, #b45309);
+    box-shadow: 0 2px 8px rgba(229, 184, 105, 0.4);
+}
+.player-avatar.human.p-1 {
+    background: linear-gradient(135deg, #2dd4bf, #0d9488);
+    box-shadow: 0 2px 8px rgba(45, 212, 191, 0.4);
+}
+.player-avatar.human.p-2 {
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+}
+.player-avatar.human.p-3 {
+    background: linear-gradient(135deg, #c084fc, #7e22ce);
+    box-shadow: 0 2px 8px rgba(192, 132, 252, 0.4);
+}
 .player-avatar.ai {
     background: linear-gradient(135deg, #0d9488, #044e46);
     box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4);
@@ -1759,9 +1775,37 @@ body {
 <i class="fa-solid fa-gamepad" style="color:var(--gold);"></i>
 <span data-i18n-de="Spieleinstellungen" data-i18n-en="Game Setup Options" data-i18n-fr="Options de configuration" data-i18n-ko="게임 설정 선택">게임 설정 선택</span>
 </h2>
+<!-- Game Mode Picker (인간 vs AI / 사람 vs 사람 로컬 대전) -->
+<div class="entry-picker-group">
+<label class="entry-picker-label" data-i18n-de="Spielmodus" data-i18n-en="Game Mode" data-i18n-fr="Mode de jeu" data-i18n-ko="대전 방식">대전 방식</label>
+<div class="entry-cards-grid" id="entryGameModePicker">
+<div class="entry-choice-card active" data-mode="ai">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<i class="fa-solid fa-robot" style="color:var(--jade);"></i>
+<span data-i18n-de="Mensch vs. KI" data-i18n-en="Human vs AI" data-i18n-fr="Humain vs IA" data-i18n-ko="인간 vs AI 대전">인간 vs AI 대전</span>
+<span class="card-rec-badge" data-i18n-de="Solo" data-i18n-en="Solo" data-i18n-fr="Solo" data-i18n-ko="기본 추천">기본 추천</span>
+</div>
+<div class="card-desc" data-i18n-de="Spiele allein gegen smarte KI-Gegner." data-i18n-en="Play solo against smart AI opponents." data-i18n-fr="Jouez seul contre des adversaires IA." data-i18n-ko="혼자서 스마트한 AI를 상대로 플레이합니다.">혼자서 스마트한 AI를 상대로 플레이합니다.</div>
+</div>
+</div>
+<div class="entry-choice-card" data-mode="local">
+<div class="card-radio-circle"></div>
+<div class="card-content">
+<div class="card-title">
+<i class="fa-solid fa-users" style="color:var(--gold);"></i>
+<span data-i18n-de="Pass &amp; Play (Lokal)" data-i18n-en="Human vs Human (Pass &amp; Play)" data-i18n-fr="Humain vs Humain (Pass &amp; Play)" data-i18n-ko="사람 vs 사람 (로컬 패스앤플레이)">사람 vs 사람 (로컬 패스앤플레이)</span>
+<span class="card-rec-badge" style="background:linear-gradient(135deg, #2dd4bf, #0d9488); color:#080d0f;" data-i18n-de="Serverlos" data-i18n-en="No Server" data-i18n-fr="Sans serveur" data-i18n-ko="서버 불필요">서버 불필요</span>
+</div>
+<div class="card-desc" data-i18n-de="2–4 Menschen wechseln sich an diesem Bildschirm ab. Perfekt zum Testen!" data-i18n-en="2–4 human players take turns on this same screen. Perfect for testing!" data-i18n-fr="2 à 4 joueurs humains jouent à tour de rôle sur cet écran. Idéal pour tester !" data-i18n-ko="동일한 화면에서 2~4명의 사람이 번갈아가며 턴을 진행합니다. (서버 없이 즉시 테스트)">동일한 화면에서 2~4명의 사람이 번갈아가며 턴을 진행합니다. (서버 없이 즉시 테스트)</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Player Count Picker -->
 <div class="entry-picker-group">
-<label class="entry-picker-label" data-i18n-de="Spieleranzahl (Mensch vs. KI)" data-i18n-en="Player Count (Human vs AI)" data-i18n-fr="Nombre de joueurs (Humain vs IA)" data-i18n-ko="플레이어 수 (인간 vs AI 대전)">플레이어 수 (인간 vs AI 대전)</label>
+<label class="entry-picker-label" data-i18n-de="Spieleranzahl (2–4 Spieler)" data-i18n-en="Player Count (2–4 Players)" data-i18n-fr="Nombre de joueurs (2 à 4 joueurs)" data-i18n-ko="플레이어 수 (2~4인)">플레이어 수 (2~4인)</label>
 <div class="entry-cards-grid" id="entryPlayerCountPicker">
 <div class="entry-choice-card active" data-players="2">
 <div class="card-radio-circle"></div>
@@ -1770,7 +1814,7 @@ body {
 <span data-i18n-de="2 Spieler" data-i18n-en="2 Players" data-i18n-fr="2 joueurs" data-i18n-ko="2인 플레이">2인 플레이</span>
 <span class="card-rec-badge" data-i18n-de="Standard" data-i18n-en="Standard" data-i18n-fr="Recommandé" data-i18n-ko="기본 추천">기본 추천</span>
 </div>
-<div class="card-desc" data-i18n-de="Du vs. 1 KI · 2 Ebenen (50 Plättchen)" data-i18n-en="You vs 1 AI · 2 Layers (50 Tiles)" data-i18n-fr="Vous vs 1 IA · 2 niveaux (50 tuiles)" data-i18n-ko="나 vs AI 1명 · 2개 층 (50타일)">나 vs AI 1명 · 2개 층 (50타일)</div>
+<div class="card-desc" data-i18n-de="2 Spieler · 2 Ebenen (50 Plättchen)" data-i18n-en="2 Players · 2 Layers (50 Tiles)" data-i18n-fr="2 joueurs · 2 niveaux (50 tuiles)" data-i18n-ko="2인 플레이 · 2개 층 (50타일)">2인 플레이 · 2개 층 (50타일)</div>
 </div>
 </div>
 <div class="entry-choice-card" data-players="3">
@@ -1779,7 +1823,7 @@ body {
 <div class="card-title">
 <span data-i18n-de="3 Spieler" data-i18n-en="3 Players" data-i18n-fr="3 joueurs" data-i18n-ko="3인 플레이">3인 플레이</span>
 </div>
-<div class="card-desc" data-i18n-de="Du vs. 2 KIs · 2 Ebenen (72 Plättchen)" data-i18n-en="You vs 2 AIs · 2 Layers (72 Tiles)" data-i18n-fr="Vous vs 2 IA · 2 niveaux (72 tuiles)" data-i18n-ko="나 vs AI 2명 · 2개 층 (72타일)">나 vs AI 2명 · 2개 층 (72타일)</div>
+<div class="card-desc" data-i18n-de="3 Spieler · 2 Ebenen (72 Plättchen)" data-i18n-en="3 Players · 2 Layers (72 Tiles)" data-i18n-fr="3 joueurs · 2 niveaux (72 tuiles)" data-i18n-ko="3인 플레이 · 2개 층 (72타일)">3인 플레이 · 2개 층 (72타일)</div>
 </div>
 </div>
 <div class="entry-choice-card" data-players="4">
@@ -1788,7 +1832,7 @@ body {
 <div class="card-title">
 <span data-i18n-de="4 Spieler" data-i18n-en="4 Players" data-i18n-fr="4 joueurs" data-i18n-ko="4인 플레이">4인 플레이</span>
 </div>
-<div class="card-desc" data-i18n-de="Du vs. 3 KIs · 3 Ebenen (92 Plättchen)" data-i18n-en="You vs 3 AIs · 3 Layers (92 Tiles)" data-i18n-fr="Vous vs 3 IA · 3 niveaux (92 tuiles)" data-i18n-ko="나 vs AI 3명 · 3개 층 (92타일)">나 vs AI 3명 · 3개 층 (92타일)</div>
+<div class="card-desc" data-i18n-de="4 Spieler · 3 Ebenen (92 Plättchen)" data-i18n-en="4 Players · 3 Layers (92 Tiles)" data-i18n-fr="4 joueurs · 3 niveaux (92 tuiles)" data-i18n-ko="4인 플레이 · 3개 층 (92타일)">4인 플레이 · 3개 층 (92타일)</div>
 </div>
 </div>
 </div>
@@ -2339,6 +2383,30 @@ body {
             fr: "Heaven's Door | Hwantastic Games",
             de: "Heaven's Door | Hwantastic Games"
         },
+        playerPrefix: {
+            ko: '플레이어',
+            en: 'Player',
+            fr: 'Joueur',
+            de: 'Spieler'
+        },
+        playerTurn: {
+            ko: name => `${name} 차례`,
+            en: name => `${name}'s Turn`,
+            fr: name => `Tour de ${name}`,
+            de: name => `${name} ist am Zug`
+        },
+        pickFirstPlayerPrompt: {
+            ko: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)`,
+            en: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Select your first tile (Exposed face-up tile)`,
+            fr: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Choisissez votre première tuile (visible en bordure)`,
+            de: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Erstes Plättchen wählen (offen am Rand)`
+        },
+        pickSecondPlayerPrompt: {
+            ko: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> 두 번째 타일을 선택하세요 (${c} 색상 또는 ${s} 기호 일치)`,
+            en: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Select your second tile (Matching ${c} or ${s})`,
+            fr: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Choisissez la 2e tuile (${c} ou symbole ${s})`,
+            de: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Zweites Plättchen wählen (passend zu ${c} 또는 ${s})`
+        },
         youPlayer: {
             ko: '나 (플레이어)',
             en: 'You (Player)',
@@ -2546,13 +2614,22 @@ body {
         state.gameOver = false;
         state.pendingDraft = null;
 
+        state.gameMode = options.gameMode || 'ai'; // 'ai' (인간 vs AI) or 'local' (사람 vs 사람 로컬 패스앤플레이)
+
         // Players initialization
         state.players = [];
         for (let i = 0; i < state.playerCount; i++) {
-            const isHuman = (i === 0);
+            const isHuman = (state.gameMode === 'local') ? true : (i === 0);
+            let name = '';
+            if (state.gameMode === 'local') {
+                const prefix = I18N_STRINGS.playerPrefix[state.lang] || I18N_STRINGS.playerPrefix.en;
+                name = `${prefix} ${i + 1}`;
+            } else {
+                name = isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en) : `AI ${i}`;
+            }
             state.players.push({
                 id: i,
-                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en) : `AI ${i}`,
+                name,
                 isHuman,
                 // Board columns: ordered list of symbol placements { symbol, ruleType: 'A'|'B', tiles: [] }
                 columns: [],
@@ -3274,10 +3351,10 @@ body {
         const badge = document.getElementById('turnStatusBadge');
         const activeP = state.players[state.activePlayerIndex];
         if (badge && activeP) {
-            badge.className = `status-badge ${activeP.isHuman ? '' : 'ai-turn'}`;
+            badge.className = `status-badge ${activeP.isHuman ? (state.gameMode === 'local' ? `p-${activeP.id}` : '') : 'ai-turn'}`;
             const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.en)(state.turn, state.maxTurns);
             const playerText = activeP.isHuman ? 
-                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.en) : 
+                (state.gameMode === 'local' ? (I18N_STRINGS.playerTurn[lang] || I18N_STRINGS.playerTurn.en)(activeP.name) : (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.en)) : 
                 (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.en)(activeP.name);
             badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${turnText} · ${playerText}`;
         }
@@ -3290,11 +3367,19 @@ body {
             } else if (!activeP.isHuman) {
                 promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.en;
             } else if (!state.selectedTile) {
-                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.en;
+                if (state.gameMode === 'local') {
+                    promptEl.innerHTML = (I18N_STRINGS.pickFirstPlayerPrompt[lang] || I18N_STRINGS.pickFirstPlayerPrompt.en)(activeP.name);
+                } else {
+                    promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.en;
+                }
             } else {
                 const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.en)[state.selectedTile.color] || state.selectedTile.color;
                 const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[state.selectedTile.symbol] || state.selectedTile.symbol;
-                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.en)(matchC, matchS);
+                if (state.gameMode === 'local') {
+                    promptEl.innerHTML = (I18N_STRINGS.pickSecondPlayerPrompt[lang] || I18N_STRINGS.pickSecondPlayerPrompt.en)(activeP.name, matchC, matchS);
+                } else {
+                    promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.en)(matchC, matchS);
+                }
             }
         }
 
@@ -3486,7 +3571,7 @@ body {
                 <div class="personal-board-card ${isActive ? 'active-turn' : ''}">
                     <div class="pb-header">
                         <div class="player-info">
-                            <div class="player-avatar ${p.isHuman ? 'human' : 'ai'}">${p.isHuman ? 'P' : 'AI'}</div>
+                            <div class="player-avatar ${p.isHuman ? ('human p-' + p.id) : 'ai'}">${state.gameMode === 'local' ? `P${p.id + 1}` : (p.isHuman ? 'P' : `AI${p.id}`)}</div>
                             <span class="player-name">${p.name}</span>
                         </div>
                         <div class="player-score-tag">
@@ -3539,9 +3624,20 @@ body {
         // Entry page setup & interactions
         const entryPage = document.getElementById('gameEntryPage');
         const entryState = {
+            gameMode: 'ai',
             playerCount: 2,
             scoringMode: 'mixed'
         };
+
+        // Game mode cards in entry page (인간 vs AI / 사람 vs 사람 로컬 패스앤플레이)
+        document.querySelectorAll('#entryGameModePicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryGameModePicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.gameMode = card.dataset.mode || 'ai';
+                playSound('select');
+            };
+        });
 
         // Player count cards in entry page
         document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(card => {
@@ -3568,7 +3664,11 @@ body {
         if (btnEntryStart && entryPage) {
             btnEntryStart.onclick = () => {
                 playSound('match');
-                initGame({ playerCount: entryState.playerCount, scoringMode: entryState.scoringMode });
+                initGame({
+                    gameMode: entryState.gameMode,
+                    playerCount: entryState.playerCount,
+                    scoringMode: entryState.scoringMode
+                });
                 entryPage.classList.add('hidden');
             };
         }
@@ -3600,7 +3700,12 @@ body {
             state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
             if (state.players) {
                 state.players.forEach(p => {
-                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en;
+                    if (state.gameMode === 'local') {
+                        const prefix = I18N_STRINGS.playerPrefix[state.lang] || I18N_STRINGS.playerPrefix.en;
+                        p.name = `${prefix} ${p.id + 1}`;
+                    } else {
+                        if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en;
+                    }
                 });
             }
             updateStaticTexts();

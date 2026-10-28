@@ -183,6 +183,30 @@
             fr: "Heaven's Door | Hwantastic Games",
             de: "Heaven's Door | Hwantastic Games"
         },
+        playerPrefix: {
+            ko: '플레이어',
+            en: 'Player',
+            fr: 'Joueur',
+            de: 'Spieler'
+        },
+        playerTurn: {
+            ko: name => `${name} 차례`,
+            en: name => `${name}'s Turn`,
+            fr: name => `Tour de ${name}`,
+            de: name => `${name} ist am Zug`
+        },
+        pickFirstPlayerPrompt: {
+            ko: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> 첫 번째 타일을 선택하세요 (외곽에 노출된 앞면 타일)`,
+            en: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Select your first tile (Exposed face-up tile)`,
+            fr: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Choisissez votre première tuile (visible en bordure)`,
+            de: name => `<i class="fa-solid fa-hand-pointer"></i> <strong>[${name}]</strong> Erstes Plättchen wählen (offen am Rand)`
+        },
+        pickSecondPlayerPrompt: {
+            ko: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> 두 번째 타일을 선택하세요 (${c} 색상 또는 ${s} 기호 일치)`,
+            en: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Select your second tile (Matching ${c} or ${s})`,
+            fr: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Choisissez la 2e tuile (${c} ou symbole ${s})`,
+            de: (name, c, s) => `<i class="fa-solid fa-check-double"></i> <strong>[${name}]</strong> Zweites Plättchen wählen (passend zu ${c} 또는 ${s})`
+        },
         youPlayer: {
             ko: '나 (플레이어)',
             en: 'You (Player)',
@@ -390,13 +414,22 @@
         state.gameOver = false;
         state.pendingDraft = null;
 
+        state.gameMode = options.gameMode || 'ai'; // 'ai' (인간 vs AI) or 'local' (사람 vs 사람 로컬 패스앤플레이)
+
         // Players initialization
         state.players = [];
         for (let i = 0; i < state.playerCount; i++) {
-            const isHuman = (i === 0);
+            const isHuman = (state.gameMode === 'local') ? true : (i === 0);
+            let name = '';
+            if (state.gameMode === 'local') {
+                const prefix = I18N_STRINGS.playerPrefix[state.lang] || I18N_STRINGS.playerPrefix.en;
+                name = `${prefix} ${i + 1}`;
+            } else {
+                name = isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en) : `AI ${i}`;
+            }
             state.players.push({
                 id: i,
-                name: isHuman ? (I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en) : `AI ${i}`,
+                name,
                 isHuman,
                 // Board columns: ordered list of symbol placements { symbol, ruleType: 'A'|'B', tiles: [] }
                 columns: [],
@@ -1118,10 +1151,10 @@
         const badge = document.getElementById('turnStatusBadge');
         const activeP = state.players[state.activePlayerIndex];
         if (badge && activeP) {
-            badge.className = `status-badge ${activeP.isHuman ? '' : 'ai-turn'}`;
+            badge.className = `status-badge ${activeP.isHuman ? (state.gameMode === 'local' ? `p-${activeP.id}` : '') : 'ai-turn'}`;
             const turnText = (I18N_STRINGS.turn[lang] || I18N_STRINGS.turn.en)(state.turn, state.maxTurns);
             const playerText = activeP.isHuman ? 
-                (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.en) : 
+                (state.gameMode === 'local' ? (I18N_STRINGS.playerTurn[lang] || I18N_STRINGS.playerTurn.en)(activeP.name) : (I18N_STRINGS.yourTurn[lang] || I18N_STRINGS.yourTurn.en)) : 
                 (I18N_STRINGS.aiThinking[lang] || I18N_STRINGS.aiThinking.en)(activeP.name);
             badge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${turnText} · ${playerText}`;
         }
@@ -1134,11 +1167,19 @@
             } else if (!activeP.isHuman) {
                 promptEl.innerHTML = I18N_STRINGS.aiEvaluatingPrompt[lang] || I18N_STRINGS.aiEvaluatingPrompt.en;
             } else if (!state.selectedTile) {
-                promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.en;
+                if (state.gameMode === 'local') {
+                    promptEl.innerHTML = (I18N_STRINGS.pickFirstPlayerPrompt[lang] || I18N_STRINGS.pickFirstPlayerPrompt.en)(activeP.name);
+                } else {
+                    promptEl.innerHTML = I18N_STRINGS.pickFirstPrompt[lang] || I18N_STRINGS.pickFirstPrompt.en;
+                }
             } else {
                 const matchC = (COLOR_NAMES[lang] || COLOR_NAMES.en)[state.selectedTile.color] || state.selectedTile.color;
                 const matchS = (SYMBOL_NAMES[lang] || SYMBOL_NAMES.en)[state.selectedTile.symbol] || state.selectedTile.symbol;
-                promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.en)(matchC, matchS);
+                if (state.gameMode === 'local') {
+                    promptEl.innerHTML = (I18N_STRINGS.pickSecondPlayerPrompt[lang] || I18N_STRINGS.pickSecondPlayerPrompt.en)(activeP.name, matchC, matchS);
+                } else {
+                    promptEl.innerHTML = (I18N_STRINGS.pickSecondPrompt[lang] || I18N_STRINGS.pickSecondPrompt.en)(matchC, matchS);
+                }
             }
         }
 
@@ -1330,7 +1371,7 @@
                 <div class="personal-board-card ${isActive ? 'active-turn' : ''}">
                     <div class="pb-header">
                         <div class="player-info">
-                            <div class="player-avatar ${p.isHuman ? 'human' : 'ai'}">${p.isHuman ? 'P' : 'AI'}</div>
+                            <div class="player-avatar ${p.isHuman ? ('human p-' + p.id) : 'ai'}">${state.gameMode === 'local' ? `P${p.id + 1}` : (p.isHuman ? 'P' : `AI${p.id}`)}</div>
                             <span class="player-name">${p.name}</span>
                         </div>
                         <div class="player-score-tag">
@@ -1383,9 +1424,20 @@
         // Entry page setup & interactions
         const entryPage = document.getElementById('gameEntryPage');
         const entryState = {
+            gameMode: 'ai',
             playerCount: 2,
             scoringMode: 'mixed'
         };
+
+        // Game mode cards in entry page (인간 vs AI / 사람 vs 사람 로컬 패스앤플레이)
+        document.querySelectorAll('#entryGameModePicker .entry-choice-card').forEach(card => {
+            card.onclick = () => {
+                document.querySelectorAll('#entryGameModePicker .entry-choice-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                entryState.gameMode = card.dataset.mode || 'ai';
+                playSound('select');
+            };
+        });
 
         // Player count cards in entry page
         document.querySelectorAll('#entryPlayerCountPicker .entry-choice-card').forEach(card => {
@@ -1412,7 +1464,11 @@
         if (btnEntryStart && entryPage) {
             btnEntryStart.onclick = () => {
                 playSound('match');
-                initGame({ playerCount: entryState.playerCount, scoringMode: entryState.scoringMode });
+                initGame({
+                    gameMode: entryState.gameMode,
+                    playerCount: entryState.playerCount,
+                    scoringMode: entryState.scoringMode
+                });
                 entryPage.classList.add('hidden');
             };
         }
@@ -1444,7 +1500,12 @@
             state.lang = SUPPORTED_LANGS[(idx + 1) % SUPPORTED_LANGS.length];
             if (state.players) {
                 state.players.forEach(p => {
-                    if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en;
+                    if (state.gameMode === 'local') {
+                        const prefix = I18N_STRINGS.playerPrefix[state.lang] || I18N_STRINGS.playerPrefix.en;
+                        p.name = `${prefix} ${p.id + 1}`;
+                    } else {
+                        if (p.isHuman) p.name = I18N_STRINGS.youPlayer[state.lang] || I18N_STRINGS.youPlayer.en;
+                    }
                 });
             }
             updateStaticTexts();

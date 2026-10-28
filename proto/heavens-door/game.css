@@ -461,6 +461,22 @@ body {
     background: linear-gradient(135deg, #e5b869, #b45309);
     box-shadow: 0 2px 8px rgba(229, 184, 105, 0.4);
 }
+.player-avatar.human.p-0 {
+    background: linear-gradient(135deg, #e5b869, #b45309);
+    box-shadow: 0 2px 8px rgba(229, 184, 105, 0.4);
+}
+.player-avatar.human.p-1 {
+    background: linear-gradient(135deg, #2dd4bf, #0d9488);
+    box-shadow: 0 2px 8px rgba(45, 212, 191, 0.4);
+}
+.player-avatar.human.p-2 {
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+}
+.player-avatar.human.p-3 {
+    background: linear-gradient(135deg, #c084fc, #7e22ce);
+    box-shadow: 0 2px 8px rgba(192, 132, 252, 0.4);
+}
 .player-avatar.ai {
     background: linear-gradient(135deg, #0d9488, #044e46);
     box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4);
