@@ -760,7 +760,367 @@ body {
     padding-left: 20px;
 }
 
-    </style>
+/* ============================================================
+   Interactive Tutorial Modal Styles - Slaves, Arise!
+   ============================================================ */
+.tut-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+}
+
+.tut-modal-overlay.active {
+    display: flex;
+}
+
+.tut-card-container {
+    background: linear-gradient(145deg, #181b24, #10121a);
+    border: 1px solid rgba(217, 119, 6, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(217, 119, 6, 0.15);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    animation: saTutFadeIn 0.25s ease-out;
+}
+
+@keyframes saTutFadeIn {
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.tut-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 22px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(24, 27, 36, 0.8);
+}
+
+.tut-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tut-badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+}
+
+.tut-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: -0.3px;
+}
+
+.tut-step-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    background: rgba(217, 119, 6, 0.2);
+    border: 1px solid rgba(217, 119, 6, 0.45);
+    color: #fbbf24;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.tut-close-btn {
+    background: transparent;
+    border: none;
+    color: #a8a29e;
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.15s;
+}
+.tut-close-btn:hover {
+    color: #f8fafc;
+}
+
+/* Progress Step Tracker Bar */
+.tut-progress-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 22px;
+    background: rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tut-step-bar-item {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tut-step-bar-item.active {
+    background: #f59e0b;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.65);
+}
+
+.tut-step-bar-item.completed {
+    background: #10b981;
+}
+
+/* Body / Slide Content */
+.tut-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #e7e5e4;
+}
+
+.tut-slide-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #fbbf24;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+}
+
+.tut-slide-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #d6d3d1;
+}
+
+.tut-highlight {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.tut-key-box {
+    background: rgba(30, 34, 46, 0.7);
+    border-left: 4px solid #d97706;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #f5f5f4;
+}
+
+/* Visual Demonstration Box */
+.tut-visual-box {
+    background: rgba(16, 18, 25, 0.85);
+    border: 1px solid rgba(120, 113, 108, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 4px 0;
+}
+
+.tut-visual-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Interactive 3D Card for Dual-ended demonstration */
+.sa-tut-card-demo {
+    width: 86px;
+    height: 128px;
+    border-radius: 10px;
+    background: #232734;
+    border: 2px solid #d97706;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    position: relative;
+    user-select: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+.sa-tut-card-demo.flipped {
+    transform: rotate(180deg);
+}
+
+.sa-tut-card-demo .tut-card-num-top {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #f59e0b;
+    line-height: 1;
+}
+
+.sa-tut-card-demo .tut-card-class-badge {
+    align-self: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(217, 119, 6, 0.2);
+    color: #fcd34d;
+    border: 1px solid rgba(217, 119, 6, 0.4);
+}
+
+.sa-tut-card-demo .tut-card-num-bot {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #78716c;
+    line-height: 1;
+    transform: rotate(180deg);
+    align-self: flex-end;
+}
+
+.tut-interactive-btn {
+    padding: 8px 16px;
+    background: rgba(217, 119, 6, 0.22);
+    border: 1px solid #d97706;
+    color: #fbbf24;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.tut-interactive-btn:hover {
+    background: #d97706;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+}
+
+/* Footer / Controls */
+.tut-footer {
+    padding: 14px 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(24, 27, 36, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.tut-nav-btn {
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tut-nav-btn.prev {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #d6d3d1;
+}
+.tut-nav-btn.prev:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+}
+.tut-nav-btn.prev:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.tut-nav-btn.next {
+    background: linear-gradient(135deg, #d97706, #b45309);
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
+}
+.tut-nav-btn.next:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.tut-nav-btn.finish {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.tut-step-dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tut-step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tut-step-dot.active {
+    background: #fbbf24;
+    transform: scale(1.3);
+}
+
+.btn-tutorial-proto {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 8px;
+    background: rgba(217, 119, 6, 0.18);
+    border: 1px solid rgba(217, 119, 6, 0.45);
+    color: #fcd34d;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.btn-tutorial-proto:hover {
+    background: rgba(217, 119, 6, 0.35);
+    border-color: #f59e0b;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+</style>
 </head>
 <body>
     <!-- Top Header -->
@@ -784,6 +1144,10 @@ body {
                 <i class="fa-solid fa-volume-high"></i>
             </button>
             <button class="btn-header" id="btnLangSwitch">EN</button>
+            <button class="btn-header" id="btnTutorial" title="튜토리얼">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span data-i18n-ko="튜토리얼" data-i18n-en="Tutorial">튜토리얼</span>
+            </button>
             <button class="btn-header" id="btnRulebook">
                 <i class="fa-solid fa-book-open"></i>
                 <span data-i18n-ko="규칙서" data-i18n-en="Rulebook">규칙서</span>
@@ -1456,7 +1820,7 @@ body {
 
         addLog(
             `패자 뒤집기: 트릭에서 진 플레이어들은 각자 손패 1장을 뒤집습니다.`,
-            `Losers' Flip: Players who lost the trick flip 1 card in their hand.`
+            `The Losers Flip: Players who lost the trick flip 1 card in their hand.`
         );
 
         render();
@@ -2031,17 +2395,491 @@ body {
                 state.lang = (state.lang === 'ko') ? 'en' : 'ko';
                 btnLang.textContent = (state.lang === 'ko') ? 'EN' : 'KO';
                 render();
+
+                // Translate all data-i18n attributes
+                document.querySelectorAll('[data-i18n-ko]').forEach(el => {
+                    const txt = (state.lang === 'ko') ? el.getAttribute('data-i18n-ko') : (el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko'));
+                    if (txt) el.textContent = txt;
+                });
+                if (document.getElementById('tutorialModal')?.classList.contains('active')) {
+                    renderTutorialSlideSA();
+                }
             };
         }
     }
 
+    
+    // ============================================================
+    // Interactive Tutorial System - Slaves, Arise!
+    // ============================================================
+    const TUTORIAL_STEPS_SA = [
+        {
+            step: 1,
+            title: { ko: '1. 게임 목표 & 신분 상승 대결', en: '1. Goal & The Struggle for Nobility' },
+            desc: {
+                ko: '<strong>노비여, 일어나라! (Slaves, Arise!)</strong>는 조선 후기 신분제 질서를 뒤흔드는 통쾌한 클라이밍 카드 게임입니다.<br>플레이어들은 각자 12장의 손패를 받고 시작합니다. <span class="tut-highlight">가장 먼저 손패 12장을 모두 털어내는(Shedding) 사람</span>이 즉시 게임에서 승리하여 양반으로 등극합니다!',
+                en: 'In <strong>Slaves, Arise!</strong>, you battle to overthrow the rigid Joseon caste hierarchy in an electrifying trick-taking / climbing game.<br>Players start with 12 cards in hand. <span class="tut-highlight">The first player to shed all 12 cards</span> wins immediately and ascends to the noble Yangban class!'
+            },
+            keyBox: {
+                ko: '• <strong>승리 조건:</strong> 손패 0장을 만드는 즉시 게임 종료 & 승리!<br>• <strong>양반 등극:</strong> 손패의 운명을 바꾸고 상대를 제압하여 조선 최고의 가문으로 우뚝 서세요.',
+                en: '• <strong>Win Condition:</strong> Shed all 12 cards to achieve immediate victory!<br>• <strong>Ascension:</strong> Manipulate your card orientations and outwit opponents to rise from servitude to supreme prestige!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-crown"></i> ${isKo ? '신분 상승 로드맵' : 'Road to Nobility'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:16px;">
+                        <div style="text-align:center; padding:10px 16px; border-radius:10px; background:rgba(30,34,46,0.8); border:1px solid #78716c;">
+                            <div style="font-size:0.75rem; color:#a8a29e;">${isKo ? '시작 신분: 노비/평민' : 'Starting Class: Servitude'}</div>
+                            <div style="font-size:1.2rem; font-weight:900; color:#cbd5e1; margin-top:2px;">손패 12장</div>
+                        </div>
+
+                        <div style="font-size:1.4rem; color:#f59e0b;"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <div style="text-align:center; padding:10px 16px; border-radius:10px; background:linear-gradient(135deg, rgba(217,119,6,0.25), rgba(245,158,11,0.1)); border:2px solid #f59e0b; box-shadow:0 0 15px rgba(245,158,11,0.25);">
+                            <div style="font-size:0.75rem; color:#fbbf24; font-weight:700;">${isKo ? '최종 목표: 양반 등극!' : 'Goal: Noble Yangban!'}</div>
+                            <div style="font-size:1.2rem; font-weight:900; color:#fbbf24; margin-top:2px;">손패 0장 (즉시 승리!)</div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-circle-check"></i> ${isKo ? '점수 계산 없이, 가장 먼저 손을 비운 사람이 그 즉시 판을 끝냅니다.' : 'No complicated point counting: the first player to empty their hand wins on the spot.'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 2,
+            title: { ko: '2. 상하 반전 카드 (180° Dual-ended)', en: '2. Dual-ended Cards & 180° Inversion' },
+            desc: {
+                ko: '덱의 72장 모든 카드는 <strong>위아래에 서로 다른 숫자</strong>가 적힌 양면 카드입니다!<br>• <strong>상단 숫자 (정방향)</strong>: 지금 낼 수 있는 <span class="tut-highlight">현재 유효 숫자</span>입니다.<br>• <strong>하단 숫자 (역방향)</strong>: 거꾸로 뒤집힌 잠재적 숫자입니다.<br>• 한쪽 끝은 <strong>낮은 숫자 (1~4, 노비/평민)</strong>, 다른 쪽 끝은 <strong>높은 숫자 (5~9, 0, 양반/관직)</strong>로 구성됩니다.<br>• <span class="tut-highlight">절대 주의</span>: 플레이어는 임의로 카드를 뒤집을 수 없습니다!',
+                en: 'All 72 cards feature <strong>different numbers on opposite ends</strong>!<br>• <strong>Top Number (Upright)</strong>: The <span class="tut-highlight">currently active, playable number</span>.<br>• <strong>Bottom Number (Inverted)</strong>: The upside-down latent number.<br>• One end is <strong>Low (1~4, Slave/Peasant)</strong>, opposite is <strong>High (5~9, 0, Noble/Official)</strong>.<br>• <span class="tut-highlight">Strict Rule</span>: You cannot voluntarily flip cards in your hand!'
+            },
+            keyBox: {
+                ko: '<strong>직접 카드를 돌려보세요:</strong> 아래 [🔄 카드 180° 뒤집기] 버튼을 누르면 카드가 3D 회전하며 상단 숫자가 [3]에서 강력한 [8]로 바뀝니다!',
+                en: '<strong>Interactive 3D Demo:</strong> Click the button below to flip the card 180°. Watch how a humble [3] transforms into a powerful [8]!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-arrows-spin"></i> ${isKo ? '상하 반전 3D 카드 체험' : '3D Dual-ended Card Demo'}
+                    </div>
+                    <div class="tut-visual-row">
+                        <div class="sa-tut-card-demo" id="saDemoCard">
+                            <div class="tut-card-num-top" id="saDemoTopNum">3</div>
+                            <div class="tut-card-class-badge" id="saDemoClassBadge">${isKo ? '평민' : 'Peasant'}</div>
+                            <div class="tut-card-num-bot" id="saDemoBotNum">8</div>
+                        </div>
+                    </div>
+                    <button type="button" class="tut-interactive-btn" id="btnToggleSaCardFlip">
+                        <i class="fa-solid fa-rotate"></i> ${isKo ? '🔄 카드 180° 뒤집기 체험 (클릭)' : '🔄 Flip Card 180° (Click)'}
+                    </button>
+                    <div class="tut-interactive-note" id="saDemoFlipDesc">
+                        <i class="fa-solid fa-circle-info"></i> ${isKo ? '현재 활성 숫자: [3] (하단의 [8]은 뒤집히기 전까지 쓸 수 없음)' : 'Currently active: [3] (the bottom [8] is dormant until flipped)'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 3,
+            title: { ko: '3. 카드 내기 & 클라이밍 규칙', en: '3. Card Playing & Climbing' },
+            desc: {
+                ko: '트릭의 선 플레이어는 상단 숫자가 같은 카드 <strong>1장(싱글), 2장(페어), 또는 3장(트리플)</strong>을 출패합니다.<br>다음 플레이어들은 순서대로:<br>1. 앞사람이 낸 것과 <strong>동일한 장수</strong>이면서,<br>2. <strong>더 높은 숫자</strong>를 내야 합니다!<br>낼 수 없거나 카드를 아끼고 싶다면 <strong>[패스(Pass)]</strong>합니다. 전원 패스하면 마지막 출패자가 트릭을 승리하고 다음 선이 됩니다.',
+                en: 'The lead player plays <strong>1 card (Single), 2 cards (Pair), or 3 cards (Triple)</strong> of matching numbers.<br>Next players must:<br>1. Match the <strong>exact same quantity</strong> of cards, AND<br>2. Play a <strong>strictly higher number</strong>!<br>If unable or unwilling to play, you <strong>Pass</strong>. When all opponents pass, the last player wins the trick and leads the next.'
+            },
+            keyBox: {
+                ko: '• <strong>예시:</strong> 선이 페어 [4, 4]를 냄 ➔ 다음 사람이 페어 [7, 7]로 밟음 ➔ 나머지는 [8, 8] 이상이 없어서 패스 ➔ 페어 [7, 7]을 낸 플레이어 승리!',
+                en: '• <strong>Example:</strong> Lead plays Pair [4, 4] ➔ Next player beats with Pair [7, 7] ➔ Others pass ➔ Pair [7, 7] player wins the trick!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-stairs"></i> ${isKo ? '클라이밍 흐름 예시' : 'Climbing Sequence Example'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:18px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#a8a29e; margin-bottom:4px;">선 (Lead)</div>
+                            <div style="padding:6px 12px; border-radius:6px; background:#232734; border:1px solid #78716c; color:#d97706; font-weight:800; font-size:1.1rem;">
+                                페어 [4, 4]
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.2rem; color:#f59e0b;"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#38bdf8; font-weight:700; margin-bottom:4px;">뒷사람 (Beat!)</div>
+                            <div style="padding:6px 12px; border-radius:6px; background:#232734; border:2px solid #38bdf8; color:#38bdf8; font-weight:800; font-size:1.1rem; box-shadow:0 0 10px rgba(56,189,248,0.25);">
+                                페어 [7, 7]
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.2rem; color:#f59e0b;"><i class="fa-solid fa-arrow-right"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#ef4444; margin-bottom:4px;">나머지 플레이어</div>
+                            <div style="padding:6px 12px; border-radius:6px; background:#232734; border:1px dashed #ef4444; color:#f87171; font-weight:700; font-size:0.9rem;">
+                                패스 (Pass)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-check"></i> ${isKo ? '페어 [7, 7]을 낸 플레이어가 트릭을 따내고 다음 선을 잡습니다!' : 'The player who played Pair [7, 7] takes the trick and leads the next one!'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 4,
+            title: { ko: '4. 필살 0 on 9 규칙 (Super 10 on 9)', en: '4. The Ultimate Weapon: 0 on 9' },
+            desc: {
+                ko: '숫자 0은 평소에는 가장 약하거나 특수하지만, <span class="tut-highlight">바닥에 9가 나와 있을 때 0을 내면 10(천하무적)으로 취급</span>됩니다!<br>• 바닥에 싱글 9가 나왔을 때 ➔ 싱글 0을 내면 10!<br>• 바닥에 페어 9가 나왔을 때 ➔ 페어 0을 내면 더블 10!<br>• <span class="tut-highlight">필살 효과</span>: 0을 내는 즉시 트릭이 종료되며 0을 낸 플레이어가 승리하고 선을 획득합니다!',
+                en: 'The number 0 is normally modest, but <span class="tut-highlight">when played onto a 9, 0 counts as a 10 (Invincible)!</span><br>• Single 9 on table ➔ Play 0 as 10!<br>• Pair 9 on table ➔ Play Pair 0 as Double 10!<br>• <span class="tut-highlight">Instant Win</span>: Playing 0 on 9 terminates the trick immediately, awarding you the victory and next lead!'
+            },
+            keyBox: {
+                ko: '• <strong>역전의 비책:</strong> 상대가 강력한 9를 내어 트릭을 굳히려고 할 때, 품고 있던 0을 내어 판을 뒤집어버리세요!',
+                en: '• <strong>Turning the Tables:</strong> When an opponent plays a dominant 9, drop your hidden 0 to snatch the trick away instantly!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-bolt"></i> ${isKo ? '0 on 9 필살 발동 연출' : 'Super 10 on 9 Execution'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:16px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#a8a29e; margin-bottom:4px;">바닥 카드</div>
+                            <div style="width:60px; height:80px; border-radius:8px; background:#232734; border:2px solid #ef4444; display:flex; align-items:center; justify-content:center; font-size:1.8rem; font-weight:900; color:#ef4444;">
+                                9
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.5rem; color:#fbbf24;"><i class="fa-solid fa-bolt-lightning"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#fbbf24; font-weight:700; margin-bottom:4px;">0 출패!</div>
+                            <div style="width:60px; height:80px; border-radius:8px; background:linear-gradient(135deg, #b45309, #d97706); border:2px solid #fbbf24; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:900; color:#fff; box-shadow:0 0 16px rgba(251,191,36,0.5);">
+                                <div style="font-size:0.65rem; color:#fde68a;">변신!</div>
+                                <div style="font-size:1.6rem; line-height:1;">10</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.5rem; color:#10b981;"><i class="fa-solid fa-trophy"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.7rem; color:#10b981; font-weight:700; margin-bottom:4px;">즉시 승리!</div>
+                            <div style="padding:6px 10px; border-radius:6px; background:rgba(16,185,129,0.2); border:1px solid #10b981; color:#34d399; font-weight:800; font-size:0.85rem;">
+                                트릭 종료 & 선 획득
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-crown"></i> ${isKo ? '9가 깔렸을 때 0은 어떤 카드도 이길 수 없는 궁극의 무기입니다.' : 'Against a 9, 0 is utterly unbeatable.'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 5,
+            title: { ko: "5. 패자 뒤집기 (The Losers Flip - 핵심 메카닉)", en: "5. The Losers Flip: Rising From Defeat" },
+            desc: {
+                ko: '트릭이 끝났을 때, <span class="tut-highlight">트릭에서 패배한 모든 플레이어(승자 제외)는 자신의 손패 중 1장을 골라 180도 뒤집습니다!</span><br>• 손에 남아 있는 약한 숫자(1, 2, 3, 4)를 강력한 높은 숫자(5, 6, 7, 8, 9, 0)로 업그레이드할 절호의 기회!<br>• 트릭을 져도 카드를 뒤집어 다음 기회를 준비할 수 있는 것이 이 게임의 가장 큰 반전 묘미입니다.',
+                en: 'Whenever a trick finishes, <span class="tut-highlight">every player who lost the trick (everyone except the trick winner) chooses 1 card in hand and flips it 180°!</span><br>• Upgrade sluggish low cards (1, 2, 3, 4) into mighty high numbers (5, 6, 7, 8, 9, 0)!<br>• Losing a trick is never wasted—it gives you the strategic fuel to engineer your next trick victory.'
+            },
+            keyBox: {
+                ko: '• <strong>전략적 패배:</strong> 당장 이길 수 없다면 패배를 수용하고 [패자 뒤집기]로 페어나 트리플을 완성하세요!',
+                en: '• <strong>Strategic Loss:</strong> If you cannot win the trick, gracefully accept defeat and use the The Losers Flip to forge potent pairs or triples!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-hand-fist"></i> ${isKo ? '패배자의 대반전 업그레이드' : 'The The Losers Upgrade'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:20px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#94a3b8; margin-bottom:4px;">${isKo ? '패배 전: 약한 카드' : 'Before: Weak Card'}</div>
+                            <div style="width:68px; height:96px; border-radius:8px; background:#232734; border:1px solid #78716c; display:flex; flex-direction:column; justify-content:space-between; padding:6px; margin:0 auto;">
+                                <div style="font-size:1.2rem; font-weight:900; color:#d97706;">2</div>
+                                <div style="font-size:0.6rem; color:#78716c; text-align:center;">노비</div>
+                                <div style="font-size:0.9rem; color:#57534e; transform:rotate(180deg); align-self:flex-end;">9</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.5rem; color:#f59e0b;"><i class="fa-solid fa-arrows-spin"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#10b981; font-weight:700; margin-bottom:4px;">${isKo ? '뒤집은 후: 강력한 9!' : 'After Flip: Mighty 9!'}</div>
+                            <div style="width:68px; height:96px; border-radius:8px; background:#232734; border:2px solid #10b981; display:flex; flex-direction:column; justify-content:space-between; padding:6px; margin:0 auto; box-shadow:0 0 12px rgba(16,185,129,0.3);">
+                                <div style="font-size:1.3rem; font-weight:900; color:#10b981;">9</div>
+                                <div style="font-size:0.6rem; color:#10b981; text-align:center;">양반</div>
+                                <div style="font-size:0.9rem; color:#57534e; transform:rotate(180deg); align-self:flex-end;">2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-arrow-trend-up"></i> ${isKo ? '패배할 때마다 핸드가 점점 더 강력해집니다!' : 'Every defeat crafts a stronger, deadlier hand for future tricks!'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 6,
+            title: { ko: '6. 특수 능력 카드 (1, 5, 8)', en: '6. Special Ability Numbers (1, 5, 8)' },
+            desc: {
+                ko: '특정 숫자를 낼 때 발동하는 강력한 특수 능력들:<br>• <strong>[1번 (나눔/양도)]</strong>: 내 손패 1장을 상대방 1명에게 떠넘깁니다! <span class="tut-highlight">내 손패가 1장 줄어들어</span> 승리에 결정적 기여!<br>• <strong>[5번 (혼란)]</strong>: 지목한 상대 1명의 <span class="tut-highlight">손패 전체를 180도 뒤집어버립니다!</span> (상대의 빌드업을 와해)<br>• <strong>[8번 (자체 반전)]</strong>: 내 손패 중 1장을 즉시 180도 뒤집습니다!',
+                en: 'Special abilities trigger whenever these numbers are played:<br>• <strong>[1 (Giving)]</strong>: Pass 1 card from hand to an opponent! <span class="tut-highlight">Shrinks your hand by 1</span>, rushing you to victory!<br>• <strong>[5 (Flip All)]</strong>: Target an opponent and <span class="tut-highlight">flip their ENTIRE hand 180°!</span> (Shatters their prepared combos!)<br>• <strong>[8 (Self Flip)]</strong>: Immediately flip 1 card of your choice in your own hand!'
+            },
+            keyBox: {
+                ko: '🎉 <strong>튜토리얼 완료!</strong> 이제 운명을 뒤집고 양반으로 등극할 모든 준비가 끝났습니다. 아래 [게임 시작하기]를 눌러 승부를 겨뤄보세요!',
+                en: '🎉 <strong>Tutorial Complete!</strong> You are ready to manipulate your destiny and claim nobility. Click [Start Game] below to play!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box" style="background:linear-gradient(135deg, rgba(217,119,6,0.12), rgba(16,185,129,0.12)); border-color:rgba(217,119,6,0.4);">
+                    <div class="tut-visual-row" style="gap:12px;">
+                        <div style="text-align:center; padding:8px 10px; border-radius:8px; background:rgba(30,34,46,0.8); border:1px solid #d97706;">
+                            <div style="font-size:1.2rem; font-weight:900; color:#fbbf24;">1</div>
+                            <div style="font-size:0.7rem; color:#d6d3d1; margin-top:2px;">${isKo ? '손패 1장 선물' : 'Pass 1 Card'}</div>
+                        </div>
+                        <div style="text-align:center; padding:8px 10px; border-radius:8px; background:rgba(30,34,46,0.8); border:1px solid #d97706;">
+                            <div style="font-size:1.2rem; font-weight:900; color:#fbbf24;">5</div>
+                            <div style="font-size:0.7rem; color:#d6d3d1; margin-top:2px;">${isKo ? '상대 손패 전체 뒤집기' : 'Flip All Hand'}</div>
+                        </div>
+                        <div style="text-align:center; padding:8px 10px; border-radius:8px; background:rgba(30,34,46,0.8); border:1px solid #d97706;">
+                            <div style="font-size:1.2rem; font-weight:900; color:#fbbf24;">8</div>
+                            <div style="font-size:0.7rem; color:#d6d3d1; margin-top:2px;">${isKo ? '내 손패 1장 즉시 반전' : 'Self 1 Card Flip'}</div>
+                        </div>
+                    </div>
+                    <button type="button" class="tut-nav-btn finish" id="btnTutStartGameNowSA" style="padding:10px 24px; font-size:0.95rem; margin-top:4px;">
+                        <i class="fa-solid fa-play"></i> ${isKo ? '지금 바로 게임 시작하기' : 'Start Playing Now'}
+                    </button>
+                </div>
+            `
+        }
+    ];
+
+    let currentTutStepSA = 1;
+    let demoCardFlippedSA = false;
+
+    function openTutorialSA(step = 1) {
+        currentTutStepSA = Math.max(1, Math.min(step, TUTORIAL_STEPS_SA.length));
+        const modal = document.getElementById('tutorialModal');
+        if (modal) {
+            modal.classList.add('active');
+            renderTutorialSlideSA();
+        }
+    }
+
+    function closeTutorialSA() {
+        const modal = document.getElementById('tutorialModal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+    }
+
+    function renderTutorialSlideSA() {
+        const isKo = (state.lang === 'ko');
+        const data = TUTORIAL_STEPS_SA[currentTutStepSA - 1];
+        if (!data) return;
+
+        // Step Badge
+        const stepBadge = document.getElementById('tutStepBadge');
+        if (stepBadge) {
+            stepBadge.textContent = `Step ${currentTutStepSA} / ${TUTORIAL_STEPS_SA.length}`;
+        }
+
+        // Progress Bar
+        const barItems = document.querySelectorAll('#tutProgressBar .tut-step-bar-item');
+        barItems.forEach((item, idx) => {
+            const stepNum = idx + 1;
+            item.classList.remove('active', 'completed');
+            if (stepNum === currentTutStepSA) item.classList.add('active');
+            else if (stepNum < currentTutStepSA) item.classList.add('completed');
+        });
+
+        // Body Content
+        const body = document.getElementById('tutBody');
+        if (body) {
+            body.innerHTML = `
+                <div class="tut-slide-title">
+                    <i class="fa-solid fa-scroll" style="color:var(--gold);"></i> ${data.title[isKo ? 'ko' : 'en']}
+                </div>
+                <div class="tut-slide-desc">
+                    ${data.desc[isKo ? 'ko' : 'en']}
+                </div>
+                ${data.renderDemo(isKo)}
+                <div class="tut-key-box">
+                    ${data.keyBox[isKo ? 'ko' : 'en']}
+                </div>
+            `;
+        }
+
+        // Dots
+        const dots = document.getElementById('tutDots');
+        if (dots) {
+            dots.innerHTML = TUTORIAL_STEPS_SA.map((_, idx) => `
+                <div class="tut-step-dot ${idx + 1 === currentTutStepSA ? 'active' : ''}" data-step="${idx + 1}"></div>
+            `).join('');
+            dots.querySelectorAll('.tut-step-dot').forEach(d => {
+                d.onclick = () => {
+                    currentTutStepSA = parseInt(d.getAttribute('data-step'), 10);
+                    renderTutorialSlideSA();
+                };
+            });
+        }
+
+        // Prev Button
+        const btnPrev = document.getElementById('btnTutPrev');
+        if (btnPrev) {
+            btnPrev.disabled = (currentTutStepSA === 1);
+            btnPrev.onclick = () => {
+                if (currentTutStepSA > 1) {
+                    currentTutStepSA--;
+                    renderTutorialSlideSA();
+                }
+            };
+        }
+
+        // Next Button
+        const btnNext = document.getElementById('btnTutNext');
+        if (btnNext) {
+            if (currentTutStepSA === TUTORIAL_STEPS_SA.length) {
+                btnNext.className = 'tut-nav-btn finish';
+                btnNext.innerHTML = `<i class="fa-solid fa-play"></i> <span>${isKo ? '게임 시작하기' : 'Start Playing'}</span>`;
+                btnNext.onclick = () => {
+                    closeTutorialSA();
+                };
+            } else {
+                btnNext.className = 'tut-nav-btn next';
+                btnNext.innerHTML = `<span>${isKo ? '다음' : 'Next'}</span> <i class="fa-solid fa-arrow-right"></i>`;
+                btnNext.onclick = () => {
+                    if (currentTutStepSA < TUTORIAL_STEPS_SA.length) {
+                        currentTutStepSA++;
+                        renderTutorialSlideSA();
+                    }
+                };
+            }
+        }
+
+        // Hook up 3D card flip toggle in Step 2
+        const btnFlip = document.getElementById('btnToggleSaCardFlip');
+        const demoCard = document.getElementById('saDemoCard');
+        const flipAction = () => {
+            demoCardFlippedSA = !demoCardFlippedSA;
+            if (demoCard) {
+                if (demoCardFlippedSA) demoCard.classList.add('flipped');
+                else demoCard.classList.remove('flipped');
+            }
+            const desc = document.getElementById('saDemoFlipDesc');
+            if (desc) {
+                desc.innerHTML = demoCardFlippedSA ?
+                    `<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> ${isKo ? '뒤집힌 활성 숫자: <strong>[8] (강력한 양반 카드!)</strong>' : 'Flipped active number: <strong>[8] (Mighty Noble Card!)</strong>'}` :
+                    `<i class="fa-solid fa-circle-info"></i> ${isKo ? '현재 활성 숫자: [3] (하단의 [8]은 뒤집히기 전까지 쓸 수 없음)' : 'Currently active: [3] (bottom [8] is dormant until flipped)'}`;
+            }
+        };
+
+        if (btnFlip) btnFlip.onclick = flipAction;
+        if (demoCard) demoCard.onclick = flipAction;
+
+        // Hook up Start Game Now button in step 6
+        const btnStartNow = document.getElementById('btnTutStartGameNowSA');
+        if (btnStartNow) {
+            btnStartNow.onclick = () => {
+                closeTutorialSA();
+            };
+        }
+    }
+
+    function setupTutorialEventsSA() {
+        const btnTut = document.getElementById('btnTutorial');
+        if (btnTut) {
+            btnTut.onclick = () => openTutorialSA(1);
+        }
+
+        const btnTutModal = document.getElementById('btnOpenTutorialFromModal');
+        if (btnTutModal) {
+            btnTutModal.onclick = () => {
+                const modalNew = document.getElementById('newGameModal');
+                if (modalNew) modalNew.classList.remove('active');
+                openTutorialSA(1);
+            };
+        }
+
+        const closeBtn = document.getElementById('closeTutorialModal');
+        if (closeBtn) {
+            closeBtn.onclick = closeTutorialSA;
+        }
+
+        // Progress bar click
+        const barItems = document.querySelectorAll('#tutProgressBar .tut-step-bar-item');
+        barItems.forEach(item => {
+            item.onclick = () => {
+                const s = parseInt(item.getAttribute('data-step'), 10);
+                if (s) {
+                    currentTutStepSA = s;
+                    renderTutorialSlideSA();
+                }
+            };
+        });
+
+        // Auto-open via URL parameter ?tutorial=1
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('tutorial') === '1' || urlParams.get('t') === '1') {
+                setTimeout(() => openTutorialSA(1), 350);
+            }
+        } catch (e) {}
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         setupEvents();
+        setupTutorialEventsSA();
         initGame({ playerCount: 4, gameMode: 'ai' });
     });
 
 })();
 
-    </script>
+</script>
+
+    <!-- Interactive Tutorial Modal -->
+    <div class="tut-modal-overlay" id="tutorialModal">
+        <div class="tut-card-container">
+            <div class="tut-header">
+                <div class="tut-title-wrap">
+                    <div class="tut-badge-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div>
+                        <div class="tut-title" data-i18n-ko="노비여, 일어나라! 튜토리얼" data-i18n-en="Slaves, Arise! Interactive Tutorial">노비여, 일어나라! 튜토리얼</div>
+                        <div style="font-size:0.75rem; color:#a8a29e;" data-i18n-ko="상하 반전과 클라이밍 핵심 규칙을 빠르게 익혀보세요" data-i18n-en="Learn dual-ended cards and climbing rules step by step">상하 반전과 클라이밍 핵심 규칙을 빠르게 익혀보세요</div>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span class="tut-step-tag" id="tutStepBadge">Step 1 / 6</span>
+                    <button class="tut-close-btn" id="closeTutorialModal" title="닫기">&times;</button>
+                </div>
+            </div>
+
+            <!-- Step Tracker Bar -->
+            <div class="tut-progress-bar" id="tutProgressBar">
+                <div class="tut-step-bar-item active" data-step="1"></div>
+                <div class="tut-step-bar-item" data-step="2"></div>
+                <div class="tut-step-bar-item" data-step="3"></div>
+                <div class="tut-step-bar-item" data-step="4"></div>
+                <div class="tut-step-bar-item" data-step="5"></div>
+                <div class="tut-step-bar-item" data-step="6"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="tut-body" id="tutBody"></div>
+
+            <!-- Footer Controls -->
+            <div class="tut-footer">
+                <button class="tut-nav-btn prev" id="btnTutPrev" disabled>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n-ko="이전" data-i18n-en="Previous">이전</span>
+                </button>
+                <div class="tut-step-dots" id="tutDots"></div>
+                <button class="tut-nav-btn next" id="btnTutNext">
+                    <span data-i18n-ko="다음" data-i18n-en="Next">다음</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

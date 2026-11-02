@@ -1156,6 +1156,15 @@
 
     // Update Banner Prompt & Static Texts
     function updateStaticTexts() {
+        // Translate all data-i18n attributes
+        document.querySelectorAll('[data-i18n-ko]').forEach(el => {
+            const txt = isKo ? el.getAttribute('data-i18n-ko') : (el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko'));
+            if (txt) el.textContent = txt;
+        });
+        if (document.getElementById('tutorialModal')?.classList.contains('active')) {
+            renderTutorialSlidePL();
+        }
+    
         const prompt = document.getElementById('promptText');
         const turnStatus = document.getElementById('turnStatusBadge');
         const isKo = (state.lang === 'ko');
@@ -1267,9 +1276,447 @@
         }
     }
 
+    
+    // ============================================================
+    // Interactive Tutorial System - Past Lives
+    // ============================================================
+    const TUTORIAL_STEPS_PL = [
+        {
+            step: 1,
+            title: { ko: '1. 게임 목표 & 7가지 인연', en: '1. Overview & Karmic Connections' },
+            desc: {
+                ko: '<strong>Past Lives</strong>는 시대를 넘나들며 전생의 인연을 엮어 타임라인을 완성하는 전략 카드 게임입니다.<br>7개 시대(원시~미래)의 카드를 모아 <span class="tut-highlight">긍정 인연은 극대화</span>하고, <span class="tut-highlight">악연과 빚은 지혜롭게 방어</span>하세요! 10라운드 후 총점이 가장 높은 플레이어가 승리합니다.',
+                en: 'In <strong>Past Lives</strong>, you reincarnate through 7 distinct eras to weave your karmic timeline.<br>Draft connection cards to <span class="tut-highlight">maximize virtues</span> while <span class="tut-highlight">neutralizing bitter debts</span>! The player with highest karmic score after 10 rounds wins.'
+            },
+            keyBox: {
+                ko: '• <strong>덕망 (긍정 인연)</strong>: 연인 ❤ (+15), 스승 📜 (+12), 친구 🤝 (+10), 조력자 🛡 (+8) — 기준 개수 이상 모으면 대량 득점!<br>• <strong>악업 (부정 인연)</strong>: 라이벌 ⚡ (-8), 빚 💰 (-10), 배신 🗡 (-15) — 타임라인에 남으면 치명적 감점!',
+                en: '• <strong>Virtues (Positive)</strong>: Lover ❤ (+15), Teacher 📜 (+12), Friend 🤝 (+10), Helper 🛡 (+8) — big points if set goals are met!<br>• <strong>Debts (Negative)</strong>: Rival ⚡ (-8), Debt 💰 (-10), Betrayal 🗡 (-15) — painful penalties unless mitigated!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-shapes"></i> ${isKo ? '7가지 인연 상징 & 점수 기대치' : '7 Karmic Connection Types & Scoring'}
+                    </div>
+                    <div class="tut-visual-row">
+                        <div class="tut-demo-card" style="border-color:#f43f5e;">
+                            <div class="tut-card-era">고대</div>
+                            <div class="tut-card-sym" style="color:#f43f5e;">❤</div>
+                            <div class="tut-card-val" style="color:#f43f5e;">+15 VP</div>
+                            <div style="font-size:0.6rem; text-align:center; color:#94a3b8;">${isKo ? '연인 (3장)' : 'Lover (3x)'}</div>
+                        </div>
+                        <div class="tut-demo-card" style="border-color:#fbbf24;">
+                            <div class="tut-card-era">중세</div>
+                            <div class="tut-card-sym" style="color:#fbbf24;">📜</div>
+                            <div class="tut-card-val" style="color:#fbbf24;">+12 VP</div>
+                            <div style="font-size:0.6rem; text-align:center; color:#94a3b8;">${isKo ? '스승 (3장)' : 'Teacher (3x)'}</div>
+                        </div>
+                        <div class="tut-demo-card" style="border-color:#10b981;">
+                            <div class="tut-card-era">근대</div>
+                            <div class="tut-card-sym" style="color:#10b981;">🤝</div>
+                            <div class="tut-card-val" style="color:#10b981;">+10 VP</div>
+                            <div style="font-size:0.6rem; text-align:center; color:#94a3b8;">${isKo ? '친구 (4장)' : 'Friend (4x)'}</div>
+                        </div>
+                        <div class="tut-demo-card" style="border-color:#ef4444;">
+                            <div class="tut-card-era">미래</div>
+                            <div class="tut-card-sym" style="color:#ef4444;">🗡</div>
+                            <div class="tut-card-val" style="color:#ef4444;">-15 VP</div>
+                            <div style="font-size:0.6rem; text-align:center; color:#f87171;">${isKo ? '배신 (악연)' : 'Betrayal'}</div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-circle-info"></i> ${isKo ? '손패와 타임라인의 카드를 합산하여 세트 점수를 달성합니다.' : 'Hand and timeline cards together contribute toward set thresholds.'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 2,
+            title: { ko: '2. 비공개 동시 입찰 (낮은 번호 우선)', en: '2. Sealed Ascending Bids' },
+            desc: {
+                ko: '매 라운드 바닥에는 인원수만큼 <strong>[2장 1세트]</strong>가 깔립니다. 플레이어들은 손패 4장 중 1장을 비공개로 골라 동시에 공개합니다.<br>이 게임의 가장 독특한 점: <span class="tut-highlight">가장 낮은 번호(이른 연도)를 낸 플레이어가 1순위</span>로 바닥 세트를 선택합니다!',
+                en: 'Each round, sets of 2 cards are dealt to the floor. All players choose 1 card from hand secretly and reveal simultaneously.<br>Core twist: <span class="tut-highlight">The player with the lowest card number picks first</span> from the floor sets!'
+            },
+            keyBox: {
+                ko: '• 입찰에 낸 카드는 바닥으로 이동하여 다음 세트 부품이 됩니다.<br>• 원하는 바닥 세트를 먼저 낚아채려면 낮은 번호 카드를 전략적으로 아끼거나 베팅해야 합니다!',
+                en: '• Cards used for bidding move to the floor to replenish subsequent sets.<br>• Sacrificing low numbers guarantees you grab the best floor sets before opponents!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-gavel"></i> ${isKo ? '동시 입찰 결과 예시' : 'Simultaneous Bidding Example'}
+                    </div>
+                    <div class="tut-visual-row">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#10b981; font-weight:700; margin-bottom:4px;">
+                                <i class="fa-solid fa-crown"></i> ${isKo ? '내 입찰 (1순위 선택권!)' : 'Your Bid (1st Pick!)'}
+                            </div>
+                            <div class="tut-demo-card winner" style="border-color:#10b981; margin:0 auto;">
+                                <div class="tut-card-era">원시</div>
+                                <div class="tut-card-sym" style="color:#10b981;">🤝</div>
+                                <div class="tut-card-val" style="color:#fbbf24; font-size:1.1rem;"># 14</div>
+                                <div style="font-size:0.6rem; text-align:center; color:#34d399;">낮은 번호!</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.3rem; color:#64748b; font-weight:bold;">VS</div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#94a3b8; font-weight:600; margin-bottom:4px;">
+                                ${isKo ? '상대 입찰 (2순위)' : 'Opponent Bid (2nd Pick)'}
+                            </div>
+                            <div class="tut-demo-card" style="opacity:0.75; margin:0 auto;">
+                                <div class="tut-card-era">근대</div>
+                                <div class="tut-card-sym" style="color:#fbbf24;">📜</div>
+                                <div class="tut-card-val" style="color:#cbd5e1; font-size:1.1rem;"># 58</div>
+                                <div style="font-size:0.6rem; text-align:center; color:#94a3b8;">높은 번호</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-check"></i> ${isKo ? '#14가 #58보다 작으므로 내가 바닥의 최고 세트를 먼저 가져옵니다!' : '#14 is lower than #58, so you pick your favorite 2-card set first!'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 3,
+            title: { ko: '3. 세트 분배: [1장 타임라인 배치] & [1장 손패]', en: '3. Draft: 1 to Timeline, 1 to Hand' },
+            desc: {
+                ko: '바닥에서 2장 세트를 가져왔다면:<br>1. <strong>1장은 내 생애 타임라인에 즉시 배치</strong>합니다.<br>2. <strong>다른 1장은 내 손패로 보관</strong>합니다 (손패는 항상 4장으로 유지).<br>타임라인에 카드를 놓을 때는 기본적으로 왼쪽에서 오른쪽으로 <strong>연도가 커지는 오름차순</strong>이어야 합니다!',
+                en: 'From your picked 2-card set:<br>1. <strong>Place 1 card immediately into your Karmic Timeline</strong>.<br>2. <strong>Add the other card into your Hand</strong> (maintaining 4 cards in hand).<br>Cards placed on your timeline must be ordered in <strong>strictly ascending order</strong> from left to right!'
+            },
+            keyBox: {
+                ko: '• <strong>생애 타임라인 예시:</strong> [#08 원시] ➔ [#24 중세] ➔ [#42 르네상스] ➔ [#65 현대]<br>• 번호가 맞지 않으면 특수 카드를 쓰거나 손패에 킵해야 하므로 신중하게 세트를 선택하세요!',
+                en: '• <strong>Timeline Example:</strong> [#08 Ancient] ➔ [#24 Medieval] ➔ [#42 Renaissance] ➔ [#65 Modern]<br>• If a number does not fit ascending order, you must save it in hand or utilize directional cards!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-code-fork"></i> ${isKo ? '획득한 2장 세트의 운명' : 'Destiny of your 2-card Set'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:20px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#38bdf8; font-weight:700; margin-bottom:4px;">
+                                <i class="fa-solid fa-arrow-down"></i> ${isKo ? '타임라인에 오름차순 배치' : 'Place to Timeline'}
+                            </div>
+                            <div class="tut-demo-card" style="border-color:#38bdf8; margin:0 auto;">
+                                <div class="tut-card-era">중세</div>
+                                <div class="tut-card-sym" style="color:#fbbf24;">📜</div>
+                                <div class="tut-card-val" style="color:#38bdf8;"># 26</div>
+                                <div style="font-size:0.6rem; text-align:center; color:#38bdf8;">타임라인</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.4rem; color:#f59e0b;">+</div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#a855f7; font-weight:700; margin-bottom:4px;">
+                                <i class="fa-solid fa-hand"></i> ${isKo ? '손패로 킵 (다음 입찰용)' : 'Keep to Hand (for next bid)'}
+                            </div>
+                            <div class="tut-demo-card" style="border-color:#a855f7; margin:0 auto;">
+                                <div class="tut-card-era">원시</div>
+                                <div class="tut-card-sym" style="color:#f43f5e;">❤</div>
+                                <div class="tut-card-val" style="color:#a855f7;"># 09</div>
+                                <div style="font-size:0.6rem; text-align:center; color:#a855f7;">손패 보관</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-circle-check"></i> ${isKo ? '1장은 영구 기록, 1장은 손패에 보관하여 유연하게 전략을 운영합니다.' : '1 locks into your timeline, 1 enriches your hand for future bidding.'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 4,
+            title: { ko: '4. 특수 방향 카드 (무효화 & 2배 폭발!)', en: '4. Special Directional Cards (Null & 2x)' },
+            desc: {
+                ko: '타임라인에는 숫자 대신 화살표가 있는 특수 카드가 존재합니다! 점수를 뒤집는 최고의 전략 요소입니다.<br>• <strong>`# ←` / `→ #` (무효화)</strong>: 이웃한 카드의 점수를 <strong>0점</strong>으로 만듭니다! 치명적인 감점(배신, 빚)을 지우는 완벽한 방패!<br>• <strong>`2*# ←` / `→ 2*#` (2배 증폭)</strong>: 이웃한 카드의 점수를 <strong>2배</strong>로 증폭합니다!',
+                en: 'Special cards bear directional arrows instead of raw numbers! They offer incredible tactical reversals:<br>• <strong>`# ←` / `→ #` (Nullify)</strong>: Nullifies neighbor score to <strong>0 VP</strong>! Shield yourself against painful Betrayals or Debts!<br>• <strong>`2*# ←` / `→ 2*#` (Double)</strong>: Multiplies neighbor score by <strong>2x</strong>! Turn high-tier Virtues into jackpot scores!'
+            },
+            keyBox: {
+                ko: '<strong>직접 체험해보세요:</strong> 아래 [🔄 무효화 카드 효과 토글] 버튼을 눌러보세요. 오른쪽의 [# ←] 카드가 왼쪽의 [-15점 배신]을 0점으로 완벽히 무력화하는 모습을 볼 수 있습니다!',
+                en: '<strong>Interactive Playground:</strong> Click the toggle button below. Watch how the [# ←] card completely neutralizes the -15 VP Betrayal penalty into 0 VP!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> ${isKo ? '무효화 카드 실시간 작동 체험' : 'Interactive Nullification Demonstration'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:14px;" id="plTutDirectionalRow">
+                        <div class="tut-demo-card nullified" id="demoBetrayalCard" style="border-color:#ef4444;">
+                            <div class="tut-card-era">중세</div>
+                            <div class="tut-card-sym" style="color:#ef4444;">🗡</div>
+                            <div class="tut-card-val" id="demoBetrayalVal" style="color:#94a3b8; font-size:0.8rem;">0 VP</div>
+                            <div style="font-size:0.58rem; text-align:center; color:#38bdf8;" id="demoBetrayalBadge">${isKo ? '방어 성공!' : 'Nullified!'}</div>
+                        </div>
+
+                        <div style="font-size:1.2rem; color:#38bdf8;"><i class="fa-solid fa-shield-halved"></i></div>
+
+                        <div class="tut-demo-card" style="border-color:#38bdf8;">
+                            <div class="tut-card-era">특수</div>
+                            <div class="tut-card-sym" style="color:#38bdf8; font-size:1.1rem; font-weight:900;"># ←</div>
+                            <div class="tut-card-dir">좌측 무효화</div>
+                            <div style="font-size:0.58rem; text-align:center; color:#94a3b8;">${isKo ? '화살표 카드' : 'Arrow Card'}</div>
+                        </div>
+                    </div>
+                    <button type="button" class="tut-interactive-btn" id="btnToggleNullifyDemo">
+                        <i class="fa-solid fa-arrows-rotate"></i> ${isKo ? '🔄 무효화 카드 효과 켜기/끄기 토글' : '🔄 Toggle Nullification On/Off'}
+                    </button>
+                </div>
+            `
+        },
+        {
+            step: 5,
+            title: { ko: '5. 10R 덱 소진 & 마지막 [비밀 인연 교환]', en: '5. Round 10: Final Secret Karma Exchange' },
+            desc: {
+                ko: '10라운드가 끝나 덱이 모두 바닥나면 최종 결전이 시작됩니다!<br>이때 모든 플레이어는 손패에 정확히 2장씩을 쥐고 있습니다.<br>플레이어들은 손패 2장 중:<br>• <strong>1장은 상대방에게 비공개로 전달(선물)</strong>하고,<br>• <strong>1장은 자신이 킵</strong>하여 최종 타임라인에 배치합니다!',
+                en: 'When the deck depletes at the end of Round 10, the climax begins!<br>At this point, every player holds exactly 2 cards in hand.<br>From your remaining 2 cards:<br>• <strong>Pass 1 card secretly to your opponent</strong>, and<br>• <strong>Keep 1 card for your own final timeline placement</strong>!'
+            },
+            keyBox: {
+                ko: '• <strong>악연 떠넘기기 & 방해 공작:</strong> 상대에게 치명적인 감점 카드나 상대 타임라인의 오름차순을 파괴할 카드를 선물하세요! 반대로 상대가 나에게 보낸 카드가 내 타임라인에 맞지 않으면 불이익이 생길 수 있습니다.',
+                en: '• <strong>Sabotage & Deception:</strong> Saddle your opponent with a disastrous penalty card or disrupt their ascending order! Stay alert until the very last card is revealed.'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box">
+                    <div style="font-size:0.8rem; font-weight:700; color:#fbbf24; margin-bottom:4px;">
+                        <i class="fa-solid fa-gift"></i> ${isKo ? '마지막 비밀 교환의 순간' : 'The Climax: Secret Karma Exchange'}
+                    </div>
+                    <div class="tut-visual-row" style="gap:24px;">
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#cbd5e1; margin-bottom:4px;">${isKo ? '나의 선택' : 'Your Action'}</div>
+                            <div style="padding:10px; border-radius:8px; background:rgba(30,41,59,0.7); border:1px dashed #64748b;">
+                                <div style="font-size:0.75rem; color:#ef4444; font-weight:700;">${isKo ? '1장 ➔ 상대에게 비밀 전달' : '1 Card ➔ Pass to Opponent'}</div>
+                                <div style="font-size:0.75rem; color:#10b981; font-weight:700; margin-top:4px;">${isKo ? '1장 ➔ 내 타임라인에 킵' : '1 Card ➔ Keep for Timeline'}</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size:1.5rem; color:#fbbf24;"><i class="fa-solid fa-right-left"></i></div>
+
+                        <div style="text-align:center;">
+                            <div style="font-size:0.75rem; color:#cbd5e1; margin-bottom:4px;">${isKo ? '상대의 선택' : 'Opponent Action'}</div>
+                            <div style="padding:10px; border-radius:8px; background:rgba(30,41,59,0.7); border:1px dashed #64748b;">
+                                <div style="font-size:0.75rem; color:#fbbf24; font-weight:700;">${isKo ? '1장 ➔ 나에게 비밀 선물' : '1 Card ➔ Secret Gift to You'}</div>
+                                <div style="font-size:0.75rem; color:#38bdf8; font-weight:700; margin-top:4px;">${isKo ? '1장 ➔ 상대 타임라인에 킵' : '1 Card ➔ Keep in Timeline'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tut-interactive-note">
+                        <i class="fa-solid fa-user-secret"></i> ${isKo ? '비밀 인연 교환으로 마지막 순간 승패가 뒤집힐 수 있습니다!' : 'Secret exchanges create thrilling last-second comebacks!'}
+                    </div>
+                </div>
+            `
+        },
+        {
+            step: 6,
+            title: { ko: '6. 점수 계산 & 시대 최다 보유 보너스', en: '6. Scoring & Era Dominance' },
+            desc: {
+                ko: '게임 종료 시 타임라인과 손패의 모든 카드를 종합하여 최종 승자를 가립니다:<br>1. <strong>인연별 점수</strong>: 충족된 세트는 고득점(+15, +12 등), 미달된 부정 인연은 감점.<br>2. <strong>특수 효과 계산</strong>: 2배 증폭 및 좌우 무효화 적용.<br>3. <strong>시대 최다 보유 보너스 (+10 VP)</strong>: 7개 시대 중 단일 시대에서 가장 많은 카드를 모은 자에게 수여!<br>총점이 가장 높은 플레이어가 승리합니다!',
+                en: 'At game end, all cards from both timeline and hand are tallied:<br>1. <strong>Connection Sets</strong>: Fulfill set requirements for massive points; unmet debts deduct points.<br>2. <strong>Directional Multipliers</strong>: 2x boosts and nullifications resolved.<br>3. <strong>Era Majority Bonus (+10 VP)</strong>: The player holding the most cards from any single era wins +10 VP!<br>Highest karmic total claims victory!'
+            },
+            keyBox: {
+                ko: '🎉 <strong>튜토리얼 완료!</strong> 이제 전생의 인연을 엮으러 떠날 준비가 되었습니다. 아래 [게임 시작하기]를 눌러 AI 대전 또는 패스앤플레이를 즐겨보세요!',
+                en: '🎉 <strong>Tutorial Complete!</strong> You are ready to weave your karmic destiny. Click [Start Game] below to jump right into action!'
+            },
+            renderDemo: (isKo) => `
+                <div class="tut-visual-box" style="background:linear-gradient(135deg, rgba(245,158,11,0.1), rgba(16,185,129,0.1)); border-color:rgba(245,158,11,0.35);">
+                    <div style="font-size:0.95rem; font-weight:800; color:#fbbf24;">
+                        <i class="fa-solid fa-trophy"></i> ${isKo ? '준비 완료! 영혼의 완성을 향해!' : 'Ready! Strive for Enlightenment!'}
+                    </div>
+                    <p style="font-size:0.85rem; color:#e2e8f0; text-align:center; max-width:480px; margin:0;">
+                        ${isKo ? '낮은 번호로 바닥 세트를 선점하고, 타임라인을 완성하며, 마지막 심리전까지 승리하세요.' : 'Snatch prime floor sets with low bids, craft an exquisite timeline, and win the psychological endgame.'}
+                    </p>
+                    <button type="button" class="tut-nav-btn finish" id="btnTutStartGameNow" style="padding:10px 24px; font-size:0.95rem;">
+                        <i class="fa-solid fa-play"></i> ${isKo ? '지금 바로 게임 시작하기' : 'Start Playing Now'}
+                    </button>
+                </div>
+            `
+        }
+    ];
+
+    let currentTutStepPL = 1;
+    let nullifyDemoActivePL = true;
+
+    function openTutorialPL(step = 1) {
+        currentTutStepPL = Math.max(1, Math.min(step, TUTORIAL_STEPS_PL.length));
+        const modal = document.getElementById('tutorialModal');
+        if (modal) {
+            modal.classList.add('active');
+            renderTutorialSlidePL();
+        }
+    }
+
+    function closeTutorialPL() {
+        const modal = document.getElementById('tutorialModal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+    }
+
+    function renderTutorialSlidePL() {
+        const isKo = (state.lang === 'ko');
+        const data = TUTORIAL_STEPS_PL[currentTutStepPL - 1];
+        if (!data) return;
+
+        // Step Badge
+        const stepBadge = document.getElementById('tutStepBadge');
+        if (stepBadge) {
+            stepBadge.textContent = `Step ${currentTutStepPL} / ${TUTORIAL_STEPS_PL.length}`;
+        }
+
+        // Progress Bar
+        const barItems = document.querySelectorAll('#tutProgressBar .tut-step-bar-item');
+        barItems.forEach((item, idx) => {
+            const stepNum = idx + 1;
+            item.classList.remove('active', 'completed');
+            if (stepNum === currentTutStepPL) item.classList.add('active');
+            else if (stepNum < currentTutStepPL) item.classList.add('completed');
+        });
+
+        // Body Content
+        const body = document.getElementById('tutBody');
+        if (body) {
+            body.innerHTML = `
+                <div class="tut-slide-title">
+                    <i class="fa-solid fa-compass" style="color:var(--gold);"></i> ${data.title[isKo ? 'ko' : 'en']}
+                </div>
+                <div class="tut-slide-desc">
+                    ${data.desc[isKo ? 'ko' : 'en']}
+                </div>
+                ${data.renderDemo(isKo)}
+                <div class="tut-key-box">
+                    ${data.keyBox[isKo ? 'ko' : 'en']}
+                </div>
+            `;
+        }
+
+        // Dots
+        const dots = document.getElementById('tutDots');
+        if (dots) {
+            dots.innerHTML = TUTORIAL_STEPS_PL.map((_, idx) => `
+                <div class="tut-step-dot ${idx + 1 === currentTutStepPL ? 'active' : ''}" data-step="${idx + 1}"></div>
+            `).join('');
+            dots.querySelectorAll('.tut-step-dot').forEach(d => {
+                d.onclick = () => {
+                    currentTutStepPL = parseInt(d.getAttribute('data-step'), 10);
+                    renderTutorialSlidePL();
+                };
+            });
+        }
+
+        // Prev Button
+        const btnPrev = document.getElementById('btnTutPrev');
+        if (btnPrev) {
+            btnPrev.disabled = (currentTutStepPL === 1);
+            btnPrev.onclick = () => {
+                if (currentTutStepPL > 1) {
+                    currentTutStepPL--;
+                    renderTutorialSlidePL();
+                }
+            };
+        }
+
+        // Next Button
+        const btnNext = document.getElementById('btnTutNext');
+        if (btnNext) {
+            if (currentTutStepPL === TUTORIAL_STEPS_PL.length) {
+                btnNext.className = 'tut-nav-btn finish';
+                btnNext.innerHTML = `<i class="fa-solid fa-play"></i> <span>${isKo ? '게임 시작하기' : 'Start Playing'}</span>`;
+                btnNext.onclick = () => {
+                    closeTutorialPL();
+                };
+            } else {
+                btnNext.className = 'tut-nav-btn next';
+                btnNext.innerHTML = `<span>${isKo ? '다음' : 'Next'}</span> <i class="fa-solid fa-arrow-right"></i>`;
+                btnNext.onclick = () => {
+                    if (currentTutStepPL < TUTORIAL_STEPS_PL.length) {
+                        currentTutStepPL++;
+                        renderTutorialSlidePL();
+                    }
+                };
+            }
+        }
+
+        // Hook up interactive toggle in step 4
+        const btnToggle = document.getElementById('btnToggleNullifyDemo');
+        if (btnToggle) {
+            btnToggle.onclick = () => {
+                nullifyDemoActivePL = !nullifyDemoActivePL;
+                const card = document.getElementById('demoBetrayalCard');
+                const val = document.getElementById('demoBetrayalVal');
+                const badge = document.getElementById('demoBetrayalBadge');
+                if (card && val && badge) {
+                    if (nullifyDemoActivePL) {
+                        card.classList.add('nullified');
+                        val.textContent = '0 VP';
+                        val.style.color = '#94a3b8';
+                        badge.textContent = isKo ? '방어 성공!' : 'Nullified!';
+                        badge.style.color = '#38bdf8';
+                    } else {
+                        card.classList.remove('nullified');
+                        val.textContent = '-15 VP';
+                        val.style.color = '#ef4444';
+                        badge.textContent = isKo ? '감점 발생!' : 'Penalty Active!';
+                        badge.style.color = '#ef4444';
+                    }
+                }
+            };
+        }
+
+        // Hook up Start Game Now button in step 6
+        const btnStartNow = document.getElementById('btnTutStartGameNow');
+        if (btnStartNow) {
+            btnStartNow.onclick = () => {
+                closeTutorialPL();
+            };
+        }
+    }
+
+    function setupTutorialEventsPL() {
+        const btnTut = document.getElementById('btnTutorial');
+        if (btnTut) {
+            btnTut.onclick = () => openTutorialPL(1);
+        }
+
+        const btnTutModal = document.getElementById('btnOpenTutorialFromModal');
+        if (btnTutModal) {
+            btnTutModal.onclick = () => {
+                const modalNew = document.getElementById('newGameModal');
+                if (modalNew) modalNew.classList.remove('active');
+                openTutorialPL(1);
+            };
+        }
+
+        const closeBtn = document.getElementById('closeTutorialModal');
+        if (closeBtn) {
+            closeBtn.onclick = closeTutorialPL;
+        }
+
+        // Progress bar click
+        const barItems = document.querySelectorAll('#tutProgressBar .tut-step-bar-item');
+        barItems.forEach(item => {
+            item.onclick = () => {
+                const s = parseInt(item.getAttribute('data-step'), 10);
+                if (s) {
+                    currentTutStepPL = s;
+                    renderTutorialSlidePL();
+                }
+            };
+        });
+
+        // Auto-open via URL parameter ?tutorial=1
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('tutorial') === '1' || urlParams.get('t') === '1') {
+                setTimeout(() => openTutorialPL(1), 350);
+            }
+        } catch (e) {}
+    }
+
     // DOM Ready Initialization
     document.addEventListener('DOMContentLoaded', () => {
         setupModalEvents();
+        setupTutorialEventsPL();
         initGame({ playerCount: 3, gameMode: 'ai' });
     });
 

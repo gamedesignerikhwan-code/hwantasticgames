@@ -2609,3 +2609,17 @@ html[lang="ko"] .proto-modal-title {
     color: #a8a29e;
     transform: rotate(180deg);
 }
+
+.btn-tutorial-link {
+    cursor: pointer;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.28) !important;
+}
+
+.btn-tutorial-link:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%) !important;
+    box-shadow: 0 5px 14px rgba(79, 70, 229, 0.42) !important;
+}
