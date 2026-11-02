@@ -87,10 +87,10 @@
 
                     <h4 class="rb-section-title"><i class="fa-solid fa-users"></i> <span class="rb-content-en">Setup by Player Count</span><span class="rb-content-ko" style="display:none;">인원별 덱 세팅</span></h4>
                     <ul>
-                        <li><span class="rb-content-en"><strong>5 Players:</strong> All 70 cards used. Deal 5 cards to each player. Remaining 45 cards form the deck.</span><span class="rb-content-ko" style="display:none;"><strong>5인 플레이:</strong> 70장 전체 사용. 각 플레이어에게 5장씩 분배. 남은 45장으로 덱 구성.</span></li>
-                        <li><span class="rb-content-en"><strong>4 Players:</strong> 52 cards used (Era 1–5 + #51, #52). Deal 4 cards each. 36 cards form the deck.</span><span class="rb-content-ko" style="display:none;"><strong>4인 플레이:</strong> 52장 사용 (1~5시대 + 51, 52번). 각 4장 분배. 36장으로 덱 구성.</span></li>
-                        <li><span class="rb-content-en"><strong>3 Players:</strong> 39 cards used (Era 1–3 + #31~#39). Deal 4 cards each. 27 cards form the deck.</span><span class="rb-content-ko" style="display:none;"><strong>3인 플레이:</strong> 39장 사용 (1~3시대 + 31~39번). 각 4장 분배. 27장으로 덱 구성.</span></li>
-                        <li><span class="rb-content-en"><strong>2 Players:</strong> 26 cards used (Era 1–2 + #21~#26). Deal 4 cards each. 18 cards form the deck.</span><span class="rb-content-ko" style="display:none;"><strong>2인 플레이:</strong> 26장 사용 (1~2시대 + 21~26번). 각 4장 분배. 18장으로 덱 구성.</span></li>
+                        <li><span class="rb-content-en"><strong>5 Players:</strong> All 70 cards used (0 removed). Deal 5 cards to each player (8 rounds total). Remaining 45 cards form the floor/deck.</span><span class="rb-content-ko" style="display:none;"><strong>5인 플레이:</strong> 70장 전 카드 사용 (0장 제거). 각 플레이어에게 5장씩 분배 (총 8라운드). 남은 45장으로 바닥/덱 구성.</span></li>
+                        <li><span class="rb-content-en"><strong>4 Players:</strong> 56 cards used (14 cards removed randomly). Deal 4 cards each (9 rounds total). Remaining 40 cards form the floor/deck.</span><span class="rb-content-ko" style="display:none;"><strong>4인 플레이:</strong> 56장 사용 (14장 무작위 제거). 각 플레이어에게 4장씩 분배 (총 9라운드). 남은 40장으로 바닥/덱 구성.</span></li>
+                        <li><span class="rb-content-en"><strong>3 Players:</strong> 45 cards used (25 cards removed randomly). Deal 4 cards each (10 rounds total). Remaining 33 cards form the floor/deck.</span><span class="rb-content-ko" style="display:none;"><strong>3인 플레이:</strong> 45장 사용 (25장 무작위 제거). 각 플레이어에게 4장씩 분배 (총 10라운드). 남은 33장으로 바닥/덱 구성.</span></li>
+                        <li><span class="rb-content-en"><strong>2 Players:</strong> 32 cards used (38 cards removed randomly). Deal 4 cards each (11 rounds total). Remaining 24 cards form the floor/deck.</span><span class="rb-content-ko" style="display:none;"><strong>2인 플레이:</strong> 32장 사용 (38장 무작위 제거). 각 플레이어에게 4장씩 분배 (총 11라운드). 남은 24장으로 바닥/덱 구성.</span></li>
                     </ul>
                 </section>
 

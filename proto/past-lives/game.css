@@ -832,3 +832,171 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
 }
+
+/* ==========================================================
+   ENHANCED ICONS, SPECIAL BADGES & PASS-AND-PLAY STYLES
+   ========================================================== */
+
+/* Symbol Image in Cards */
+.card-symbol-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+    display: block;
+    margin: 0 auto;
+}
+
+.played-mini-card .card-symbol-img {
+    width: 20px;
+    height: 20px;
+}
+
+.fallback-sym-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Special Directional Symbol Typography */
+.sym-special {
+    font-family: 'Outfit', -apple-system, sans-serif;
+    font-weight: 900;
+    font-size: 0.92rem;
+    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.sym-hash-red {
+    color: #ef4444;
+    font-weight: 900;
+}
+
+.sym-arrow-green {
+    color: #10b981;
+    font-weight: 900;
+    font-size: 1.05rem;
+}
+
+.sym-double-green {
+    color: #10b981;
+    font-weight: 900;
+}
+
+/* Timeline Interactive Multiplier & Ignored Badges */
+.card-doubled {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.6) !important;
+}
+
+.badge-doubled {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #ffffff;
+    font-size: 0.62rem;
+    font-weight: 900;
+    padding: 1px 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    z-index: 5;
+    letter-spacing: 0.5px;
+}
+
+.card-ignored {
+    opacity: 0.38 !important;
+    filter: grayscale(0.85);
+}
+
+.badge-ignored {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    background: rgba(220, 38, 38, 0.9);
+    color: #ffffff;
+    font-size: 0.52rem;
+    font-weight: 900;
+    padding: 2px 4px;
+    border-radius: 3px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 5;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+/* Mode Selection in New Game Modal */
+.mode-toggle-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px 8px;
+    background: #1e293b;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.mode-btn i {
+    font-size: 1.1rem;
+}
+
+.mode-btn:hover {
+    background: #334155;
+    color: #fff;
+}
+
+.mode-btn.active {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+/* Pass Curtain Modal */
+.curtain-modal-card {
+    background: #0f172a;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    margin: auto;
+}
+
+.curtain-icon {
+    font-size: 2.8rem;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+
+/* Choice Modal Subtext & Badges */
+.choice-action-badge {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 6px;
+}
+
+.choice-subtext {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}

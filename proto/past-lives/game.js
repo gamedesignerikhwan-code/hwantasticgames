@@ -16,13 +16,13 @@
     };
 
     const ERA_COLORS = {
-        1: '#ef4444',
-        2: '#f59e0b',
-        3: '#10b981',
-        4: '#3b82f6',
-        5: '#a855f7',
-        6: '#64748b',
-        7: '#38bdf8'
+        1: '#ef4444', // Red (01~10)
+        2: '#f59e0b', // Amber/Yellow (11~20)
+        3: '#10b981', // Emerald Green (21~30)
+        4: '#3b82f6', // Royal Blue (31~40)
+        5: '#a855f7', // Purple/Violet (41~50)
+        6: '#475569', // Dark Slate/Steel (51~60)
+        7: '#06b6d4'  // Cyan/Light Blue (61~70)
     };
 
     const ERA_NAMES = {
@@ -30,6 +30,7 @@
         en: { 1: 'Era 1 (01~10)', 2: 'Era 2 (11~20)', 3: 'Era 3 (21~30)', 4: 'Era 4 (31~40)', 5: 'Era 5 (41~50)', 6: 'Era 6 (51~60)', 7: 'Era 7 (61~70)' }
     };
 
+    // Full 70 Card Database exactly matching PDF 2
     const CARDS_MAP = {
         1: 'COLLEAGUE', 2: 'CONFLICT', 3: 'STEAL', 4: 'CONFLICT', 5: 'COLLEAGUE',
         6: 'STEAL', 7: 'CONFLICT', 8: 'FRIEND', 9: 'CONFLICT', 10: 'COLLEAGUE',
@@ -47,6 +48,7 @@
         66: 'COLLEAGUE', 67: 'CONFLICT', 68: 'STEAL', 69: 'CONFLICT', 70: 'COLLEAGUE'
     };
 
+    // Scoring reference card (PDF 1 Page 8 & PDF 2 Page 8)
     const SCORING_TABLE = {
         LOVER: { 3: 12, 4: 25, 5: 50 },
         FRIEND: { 3: 7, 4: 15, 5: 30 },
@@ -54,6 +56,18 @@
         WAR: { 2: -10, 3: -20, 4: -40 },
         STEAL: { 2: -6, 3: -12, 4: -25 },
         CONFLICT: { 2: -3, 3: -7, 4: -15 }
+    };
+
+    // Setup configuration matching PDF 2 Page 1
+    // 5P: 70 cards (0 removed), start hand 5
+    // 4P: 56 cards (14 removed), start hand 4
+    // 3P: 45 cards (25 removed), start hand 4
+    // 2P: 32 cards (38 removed), start hand 4
+    const PLAYER_SETUP_CONFIG = {
+        2: { totalCards: 32, removedCards: 38, handSize: 4, rounds: 11 },
+        3: { totalCards: 45, removedCards: 25, handSize: 4, rounds: 10 },
+        4: { totalCards: 56, removedCards: 14, handSize: 4, rounds: 9 },
+        5: { totalCards: 70, removedCards: 0,  handSize: 5, rounds: 8 }
     };
 
     function buildMasterDeck() {
@@ -73,7 +87,7 @@
         return deck;
     }
 
-    // Audio SFX
+    // Audio SFX Synthesizer
     let audioCtx = null;
     function getAudioContext() {
         if (!audioCtx) {
@@ -98,106 +112,114 @@
             gainNode.connect(ctx.destination);
             osc.start();
             osc.stop(ctx.currentTime + duration);
-        } catch (e) {}
+        } catch (e) {
+            // Audio ignore
+        }
     }
 
     function playSound(type) {
         if (!state.soundEnabled) return;
-        if (type === 'select') {
-            playTone(520, 'sine', 0.08, 0.08);
-        } else if (type === 'bid') {
-            playTone(440, 'triangle', 0.12, 0.1);
-            setTimeout(() => playTone(660, 'triangle', 0.16, 0.1), 80);
-        } else if (type === 'reveal') {
-            [330, 440, 550, 660].forEach((f, i) => {
-                setTimeout(() => playTone(f, 'sine', 0.18, 0.08), i * 70);
-            });
-        } else if (type === 'play') {
-            playTone(600, 'sine', 0.1, 0.08);
-            setTimeout(() => playTone(800, 'sine', 0.15, 0.08), 70);
-        } else if (type === 'special') {
-            [587, 740, 880, 1174].forEach((f, i) => {
-                setTimeout(() => playTone(f, 'triangle', 0.22, 0.1), i * 90);
-            });
-        } else if (type === 'win') {
-            [523, 659, 784, 1046, 1318].forEach((f, i) => {
-                setTimeout(() => playTone(f, 'sine', 0.35, 0.12), i * 110);
-            });
+        switch (type) {
+            case 'deal':
+                playTone(320, 'triangle', 0.08, 0.08);
+                break;
+            case 'bid':
+                playTone(440, 'sine', 0.12, 0.1);
+                setTimeout(() => playTone(660, 'sine', 0.15, 0.1), 80);
+                break;
+            case 'reveal':
+                playTone(523.25, 'triangle', 0.15, 0.12);
+                setTimeout(() => playTone(659.25, 'triangle', 0.15, 0.12), 120);
+                setTimeout(() => playTone(783.99, 'triangle', 0.25, 0.15), 240);
+                break;
+            case 'play':
+                playTone(587.33, 'sine', 0.18, 0.1);
+                break;
+            case 'special':
+                playTone(880, 'sine', 0.12, 0.12);
+                setTimeout(() => playTone(1174.66, 'sine', 0.25, 0.12), 100);
+                break;
+            case 'win':
+                [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+                    setTimeout(() => playTone(f, 'triangle', 0.25, 0.15), i * 140);
+                });
+                break;
         }
     }
 
-    // State
+    // Utility: Array Shuffle
+    function shuffle(arr) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+    }
+
+    // Global Game State
     const state = {
         lang: 'ko',
         soundEnabled: true,
         playerCount: 3,
+        gameMode: 'ai', // 'ai' = Solo vs AI, 'pvp' = Pass & Play (Local Multi-player)
+        currentPvpBidIndex: 0, // For Pass & Play bidding sequence
+        currentPvpAwardIndex: 0, // For Pass & Play set claim sequence
+        currentPvpExchangeIndex: 0, // For Pass & Play exchange sequence
+        pvpPendingAwards: [],
+        pvpExchangeStore: {}, // playerId -> assignments
         round: 1,
-        totalRounds: 8,
-        phase: 'bid', // 'bid', 'set_choice', 'exchange', 'game_over'
-        deck: [],
-        floorSets: [], // Array of { topCard, bottomCard, awardedToPlayerId }
-        prevBids: [],  // To become next round's top cards
-        players: [],
+        totalRounds: 10,
+        phase: 'bid', // 'bid', 'curtain_bid', 'reveal', 'curtain_claim', 'exchange', 'curtain_exchange', 'game_over'
         selectedBidCard: null,
-        pendingSetChoice: null, // { player, set, topCard, bottomCard }
-        exchangeData: null
+        pendingSetChoice: null,
+        prevBids: [],
+        deck: [],
+        floorSets: [],
+        players: []
     };
 
-    // Shuffling
-    function shuffle(arr) {
-        const a = [...arr];
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-    }
-
-    // Game Setup
+    // Initialize Game
     function initGame(options = {}) {
         state.playerCount = options.playerCount || 3;
+        state.gameMode = options.gameMode || 'ai';
         state.round = 1;
-        state.totalRounds = 8;
         state.phase = 'bid';
         state.selectedBidCard = null;
         state.pendingSetChoice = null;
         state.prevBids = [];
+        state.currentPvpBidIndex = 0;
+        state.currentPvpAwardIndex = 0;
+        state.currentPvpExchangeIndex = 0;
+        state.pvpPendingAwards = [];
+        state.pvpExchangeStore = {};
 
-        // Player count rules:
-        // 5P: 70 cards (0 removed), hand 5
-        // 4P: 52 cards (18 removed), hand 4
-        // 3P: 39 cards (31 removed), hand 4
-        // 2P: 26 cards (44 removed), hand 4
-        let totalCardsUsing = 70;
-        let startHandSize = 5;
-
-        if (state.playerCount === 2) {
-            totalCardsUsing = 26;
-            startHandSize = 4;
-        } else if (state.playerCount === 3) {
-            totalCardsUsing = 39;
-            startHandSize = 4;
-        } else if (state.playerCount === 4) {
-            totalCardsUsing = 52;
-            startHandSize = 4;
-        } else {
-            totalCardsUsing = 70;
-            startHandSize = 5;
-        }
+        const cfg = PLAYER_SETUP_CONFIG[state.playerCount] || PLAYER_SETUP_CONFIG[3];
+        const totalCardsUsing = cfg.totalCards;
+        const startHandSize = cfg.handSize;
+        state.totalRounds = cfg.rounds;
 
         const master = shuffle(buildMasterDeck());
+        // Randomly remove cards as per rulebook and PDF 2 setup
         const gameDeck = master.slice(0, totalCardsUsing);
 
         // Initialize Players
         state.players = [];
         for (let i = 0; i < state.playerCount; i++) {
-            const isHuman = (i === 0);
+            const isHuman = (state.gameMode === 'pvp') ? true : (i === 0);
+            let pName = '';
+            if (state.gameMode === 'pvp') {
+                pName = (state.lang === 'ko') ? `플레이어 ${i + 1}` : `Player ${i + 1}`;
+            } else {
+                pName = (i === 0) ? ((state.lang === 'ko') ? '나 (플레이어)' : 'You (Player)') : `AI ${i}`;
+            }
+
             const hand = gameDeck.splice(0, startHandSize);
             hand.sort((a, b) => a.order - b.order);
 
             state.players.push({
                 id: i,
-                name: isHuman ? (state.lang === 'ko' ? '나 (플레이어)' : 'You (Player)') : `AI ${i}`,
+                name: pName,
                 isHuman,
                 hand,
                 played: [], // Array of played cards (sorted ascending)
@@ -211,10 +233,14 @@
         // Setup Round 1 Floor SETs
         setupFloorRound1();
 
+        // Render UI
         render();
+        playSound('deal');
     }
 
-    // Round 1 Floor: N top cards (sorted ascending), N bottom cards (random)
+    // Floor Setup Round 1:
+    // Top row = N cards from deck (sorted ascending)
+    // Bottom row = N cards from deck (random)
     function setupFloorRound1() {
         const N = state.playerCount;
         const topCards = state.deck.splice(0, N);
@@ -233,7 +259,7 @@
         }
     }
 
-    // Subsequent Rounds Floor:
+    // Subsequent Rounds Floor Setup:
     // Top row = previous round's bids (sorted ascending)
     // Bottom row = N new cards from deck
     function setupFloorNextRound() {
@@ -277,62 +303,112 @@
             return { idx, val };
         });
 
-        // Lowest index gets Set with lowest top card (idx 0)
-        // If Set 0 is best, AI wants lowest card in hand!
-        // If Set N-1 is best, AI wants highest card in hand!
-        setScores.sort((a, b) => b.val - a.val);
-        const desiredSetRank = setScores[0].idx; // 0 to N-1
+        // Best set index
+        let bestSetIdx = 0;
+        let maxVal = -999;
+        setScores.forEach(ss => {
+            if (ss.val > maxVal) {
+                maxVal = ss.val;
+                bestSetIdx = ss.idx;
+            }
+        });
 
-        const ratio = desiredSetRank / Math.max(1, state.playerCount - 1);
-        const handSorted = [...ai.hand].sort((a, b) => a.order - b.order);
-        let targetIndex = Math.round(ratio * (handSorted.length - 1));
-        // Add minor randomness
-        if (Math.random() < 0.3) {
-            targetIndex = Math.max(0, Math.min(handSorted.length - 1, targetIndex + (Math.random() < 0.5 ? 1 : -1)));
-        }
+        // Pick bid card closest to rank
+        const sortedHand = [...ai.hand].sort((a, b) => a.order - b.order);
+        const targetPercent = state.playerCount <= 1 ? 0 : bestSetIdx / (state.playerCount - 1);
+        const targetHandIdx = Math.min(Math.floor(targetPercent * sortedHand.length), sortedHand.length - 1);
 
-        return handSorted[targetIndex];
+        return sortedHand[targetHandIdx];
     }
 
-    // AI Play vs Keep Choice
-    function chooseAiPlayCard(ai, c1, c2) {
-        // Evaluate which card is better to play into played line vs keep in hand
-        function evalCardForPlay(c) {
-            let score = 0;
-            const sym = c.symbol;
-            if (sym === 'LOVER') score += 10;
-            else if (sym === 'FRIEND') score += 7;
-            else if (sym === 'COLLEAGUE') score += 5;
-            else if (sym === 'WAR') score -= 8;
-            else if (sym === 'STEAL') score -= 6;
-            else if (sym === 'CONFLICT') score -= 4;
-            else if (sym.startsWith('DOUBLE')) score += 6;
-            else if (sym.startsWith('IGNORE')) score += 4;
-            return score;
-        }
-
-        return evalCardForPlay(c1) >= evalCardForPlay(c2) ? c1 : c2;
+    // AI Card Play Choice Heuristic
+    function chooseAiPlayCard(ai, cTop, cBottom) {
+        const scoreTop = evalCardForPlay(ai, cTop);
+        const scoreBottom = evalCardForPlay(ai, cBottom);
+        return (scoreTop >= scoreBottom) ? cTop : cBottom;
     }
 
-    // Submit Human Bid
+    function evalCardForPlay(player, card) {
+        if (!card) return 0;
+        const sym = card.symbol;
+        if (sym === 'LOVER') return 10;
+        if (sym === 'FRIEND') return 7;
+        if (sym === 'COLLEAGUE') return 5;
+        if (sym === 'WAR') return -8;
+        if (sym === 'STEAL') return -5;
+        if (sym === 'CONFLICT') return -3;
+        if (sym.startsWith('DOUBLE')) return 8;
+        if (sym.startsWith('IGNORE')) return 6;
+        return 0;
+    }
+
+    // Bidding: Submit Bid
     function submitHumanBid() {
         if (!state.selectedBidCard) return;
 
-        const human = state.players[0];
-        human.bidCard = state.selectedBidCard;
-        human.hand = human.hand.filter(c => c.order !== state.selectedBidCard.order);
-        state.selectedBidCard = null;
+        if (state.gameMode === 'ai') {
+            const human = state.players[0];
+            human.bidCard = state.selectedBidCard;
+            human.hand = human.hand.filter(c => c.order !== state.selectedBidCard.order);
+            state.selectedBidCard = null;
 
-        // AI Bids
-        for (let i = 1; i < state.playerCount; i++) {
-            const ai = state.players[i];
-            const bid = chooseAiBidCard(ai);
-            ai.bidCard = bid;
-            ai.hand = ai.hand.filter(c => c.order !== bid.order);
+            // AI Bids
+            for (let i = 1; i < state.playerCount; i++) {
+                const ai = state.players[i];
+                const bid = chooseAiBidCard(ai);
+                ai.bidCard = bid;
+                ai.hand = ai.hand.filter(c => c.order !== bid.order);
+            }
+
+            playSound('bid');
+            resolveBidsAndAwardSets();
+        } else {
+            // Pass & Play Mode: sequential secret bidding
+            const curPlayer = state.players[state.currentPvpBidIndex];
+            curPlayer.bidCard = state.selectedBidCard;
+            curPlayer.hand = curPlayer.hand.filter(c => c.order !== state.selectedBidCard.order);
+            state.selectedBidCard = null;
+
+            playSound('bid');
+
+            if (state.currentPvpBidIndex + 1 < state.playerCount) {
+                // Next human player needs to bid privately
+                state.currentPvpBidIndex++;
+                showPassCurtainModal(
+                    (state.lang === 'ko') ? `${curPlayer.name}님의 입찰 완료!` : `${curPlayer.name}'s Bid Submitted!`,
+                    (state.lang === 'ko') ? `기기를 ${state.players[state.currentPvpBidIndex].name}님에게 건네주세요.` : `Pass the device to ${state.players[state.currentPvpBidIndex].name}.`,
+                    (state.lang === 'ko') ? `${state.players[state.currentPvpBidIndex].name} 차례 시작` : `Start ${state.players[state.currentPvpBidIndex].name}'s Turn`,
+                    () => {
+                        state.phase = 'bid';
+                        render();
+                    }
+                );
+            } else {
+                // All players have bid! Reveal!
+                state.currentPvpBidIndex = 0;
+                resolveBidsAndAwardSets();
+            }
+        }
+    }
+
+    // Pass & Play Device Curtain Modal
+    function showPassCurtainModal(titleText, descText, btnText, onReadyCallback) {
+        const modal = document.getElementById('passCurtainModal');
+        if (!modal) {
+            if (onReadyCallback) onReadyCallback();
+            return;
         }
 
-        playSound('bid');
-        resolveBidsAndAwardSets();
+        document.getElementById('passCurtainTitle').textContent = titleText;
+        document.getElementById('passCurtainDesc').textContent = descText;
+        const btn = document.getElementById('btnPassCurtainReady');
+        btn.textContent = btnText;
+        btn.onclick = () => {
+            modal.classList.remove('active');
+            if (onReadyCallback) onReadyCallback();
+        };
+
+        modal.classList.add('active');
     }
 
     // Reveal Bids & Award SETs
@@ -362,37 +438,73 @@
             });
         });
 
-        // Trigger Play/Keep modal for Human
-        const humanAward = awards.find(a => a.player.isHuman);
-        const aiAwards = awards.filter(a => !a.player.isHuman);
+        if (state.gameMode === 'ai') {
+            const humanAward = awards.find(a => a.player.isHuman);
+            const aiAwards = awards.filter(a => !a.player.isHuman);
 
-        // AI resolves immediately
-        aiAwards.forEach(a => {
-            const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
-            const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
+            // AI resolves immediately
+            aiAwards.forEach(a => {
+                const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
+                const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
 
-            a.player.played.push(cToPlay);
-            a.player.played.sort((x, y) => x.order - y.order);
-            a.player.hand.push(cToKeep);
-            a.player.hand.sort((x, y) => x.order - y.order);
-        });
+                a.player.played.push(cToPlay);
+                a.player.played.sort((x, y) => x.order - y.order);
+                a.player.hand.push(cToKeep);
+                a.player.hand.sort((x, y) => x.order - y.order);
+            });
 
-        render();
+            render();
 
-        // Prompt human
-        showSetChoiceModal(humanAward.set, (playedCard, keptCard) => {
-            humanAward.player.played.push(playedCard);
-            humanAward.player.played.sort((x, y) => x.order - y.order);
-            humanAward.player.hand.push(keptCard);
-            humanAward.player.hand.sort((x, y) => x.order - y.order);
+            // Prompt human
+            showSetChoiceModal(humanAward.player, humanAward.set, (playedCard, keptCard) => {
+                humanAward.player.played.push(playedCard);
+                humanAward.player.played.sort((x, y) => x.order - y.order);
+                humanAward.player.hand.push(keptCard);
+                humanAward.player.hand.sort((x, y) => x.order - y.order);
 
-            playSound('play');
+                playSound('play');
+                completeRound();
+            });
+        } else {
+            // Pass & Play: Prompt each human player in order of rank
+            state.pvpPendingAwards = awards;
+            state.currentPvpAwardIndex = 0;
+            render();
+            processNextPvpSetChoice();
+        }
+    }
+
+    function processNextPvpSetChoice() {
+        if (state.currentPvpAwardIndex >= state.pvpPendingAwards.length) {
             completeRound();
-        });
+            return;
+        }
+
+        const award = state.pvpPendingAwards[state.currentPvpAwardIndex];
+        const curPlayer = award.player;
+
+        showPassCurtainModal(
+            (state.lang === 'ko') ? `${curPlayer.name}님의 세트 획득!` : `${curPlayer.name}'s SET Claim!`,
+            (state.lang === 'ko') ? `획득한 세트에서 타임라인에 배치할 카드와 손으로 가져갈 카드를 선택해 주세요.` : `Choose which card from your won set to play and keep.`,
+            (state.lang === 'ko') ? `${curPlayer.name} 카드 선택` : `Select Card as ${curPlayer.name}`,
+            () => {
+                showSetChoiceModal(curPlayer, award.set, (playedCard, keptCard) => {
+                    curPlayer.played.push(playedCard);
+                    curPlayer.played.sort((x, y) => x.order - y.order);
+                    curPlayer.hand.push(keptCard);
+                    curPlayer.hand.sort((x, y) => x.order - y.order);
+
+                    playSound('play');
+                    state.currentPvpAwardIndex++;
+                    render();
+                    processNextPvpSetChoice();
+                });
+            }
+        );
     }
 
     // Modal: Choose which card to Play vs Keep
-    function showSetChoiceModal(set, callback) {
+    function showSetChoiceModal(player, set, callback) {
         const modal = document.getElementById('setChoiceModal');
         const container = document.getElementById('setChoiceCardsContainer');
         if (!modal || !container) {
@@ -401,33 +513,24 @@
         }
 
         const isKo = (state.lang === 'ko');
-        document.getElementById('setChoiceModalTitle').textContent = isKo ? '세트 획득! 배치할 카드 선택' : 'SET Claimed! Choose Card to Play';
+        const pName = player ? player.name : '';
+        document.getElementById('setChoiceModalTitle').textContent = isKo ? 
+            `${pName} 세트 획득! 배치할 카드 선택` : 
+            `${pName}: SET Claimed! Choose Card to Play`;
         document.getElementById('setChoiceModalDesc').textContent = isKo ? 
-            '획득한 2장 중 1장을 내 배치 영역(Play)에 놓고, 다른 1장은 손(Hand)으로 가져옵니다.' :
-            'Choose 1 card to PLAY into your scoring area. The other returns to your hand.';
-
-        const renderMiniCard = (c) => `
-            <div class="pl-card" style="pointer-events:none;">
-                <div class="card-symbol-top ${c.symInfo.type === 'special' ? 'sym-special' : 'sym-' + c.symbol.toLowerCase()}">
-                    ${c.symInfo.icon}
-                </div>
-                <div class="card-order-bottom">
-                    <span class="card-order-num" style="color:${c.eraColor};">${c.orderStr}</span>
-                    <span class="card-era-pip" style="background:${c.eraColor};"></span>
-                </div>
-            </div>
-        `;
+            '획득한 2장 중 1장을 내 생애 타임라인(Play)에 놓고, 다른 1장은 손패(Hand)로 가져옵니다.' :
+            'Choose 1 card to PLAY into your life timeline. The other returns to your hand.';
 
         container.innerHTML = `
             <button type="button" class="set-choice-btn" id="btnChooseTop">
-                ${renderMiniCard(set.topCard)}
-                <div style="font-weight:800; font-size:0.85rem; color:var(--gold);">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
-                <div style="font-size:0.7rem; color:var(--text-muted);">${set.topCard.symInfo.name[state.lang]} (#${set.topCard.orderStr})</div>
+                ${renderCardMarkup(set.topCard, { mini: true, nonClickable: true })}
+                <div class="choice-action-badge">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
+                <div class="choice-subtext">${(set.topCard.symInfo.name[state.lang] || set.topCard.symInfo.name.ko)} (#${set.topCard.orderStr})</div>
             </button>
             <button type="button" class="set-choice-btn" id="btnChooseBottom">
-                ${renderMiniCard(set.bottomCard)}
-                <div style="font-weight:800; font-size:0.85rem; color:var(--gold);">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
-                <div style="font-size:0.7rem; color:var(--text-muted);">${set.bottomCard.symInfo.name[state.lang]} (#${set.bottomCard.orderStr})</div>
+                ${renderCardMarkup(set.bottomCard, { mini: true, nonClickable: true })}
+                <div class="choice-action-badge">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
+                <div class="choice-subtext">${(set.bottomCard.symInfo.name[state.lang] || set.bottomCard.symInfo.name.ko)} (#${set.bottomCard.orderStr})</div>
             </button>
         `;
 
@@ -444,7 +547,7 @@
         modal.classList.add('active');
     }
 
-    // Complete Round
+    // Complete Round & Check End
     function completeRound() {
         // Reset player bids
         state.players.forEach(p => p.bidCard = null);
@@ -460,169 +563,225 @@
         }
     }
 
-    // Secret Exchange Phase (End Game Step 5)
-    // Each player secretly gives 1 card to each opponent and keeps 1 card.
+    // Final Phase: Secret Connection Exchange
     function startExchangePhase() {
         state.phase = 'exchange';
         playSound('special');
-        showExchangeModal();
+
+        if (state.gameMode === 'ai') {
+            showExchangeModal(state.players[0], (humanAssignments) => {
+                resolveExchange({ 0: humanAssignments });
+            });
+        } else {
+            // Pass & Play: sequential private exchange for all players
+            state.pvpExchangeStore = {};
+            state.currentPvpExchangeIndex = 0;
+            processNextPvpExchange();
+        }
         render();
     }
 
-    function showExchangeModal() {
+    function processNextPvpExchange() {
+        if (state.currentPvpExchangeIndex >= state.playerCount) {
+            resolveExchange(state.pvpExchangeStore);
+            return;
+        }
+
+        const curPlayer = state.players[state.currentPvpExchangeIndex];
+        showPassCurtainModal(
+            (state.lang === 'ko') ? `${curPlayer.name}님의 최종 인연 교환` : `${curPlayer.name}'s Final Connection Exchange`,
+            (state.lang === 'ko') ? `손에 남은 카드들을 다른 플레이어들에게 은밀히 전달하고 1장을 보관합니다.` : `Secretly gift cards to rivals and keep 1 for your timeline.`,
+            (state.lang === 'ko') ? `${curPlayer.name} 교환 시작` : `Start Exchange as ${curPlayer.name}`,
+            () => {
+                showExchangeModal(curPlayer, (assignments) => {
+                    state.pvpExchangeStore[curPlayer.id] = assignments;
+                    state.currentPvpExchangeIndex++;
+                    processNextPvpExchange();
+                });
+            }
+        );
+    }
+
+    function showExchangeModal(player, onConfirmCallback) {
         const modal = document.getElementById('exchangeModal');
         const container = document.getElementById('exchangeAssignmentsContainer');
         if (!modal || !container) {
-            resolveExchange([]);
+            onConfirmCallback({});
             return;
         }
 
         const isKo = (state.lang === 'ko');
-        const human = state.players[0];
-        const opponents = state.players.slice(1);
+        const opponents = state.players.filter(p => p.id !== player.id);
 
-        document.getElementById('exchangeModalTitle').textContent = isKo ? '마지막 비밀 인연 교환' : 'Final Secret Connection Exchange';
+        document.getElementById('exchangeModalTitle').textContent = isKo ? 
+            `${player.name}: 최종 비밀 인연 교환` : 
+            `${player.name}: Final Secret Connection Exchange`;
         document.getElementById('exchangeModalDesc').textContent = isKo ?
-            `손에 남은 카드(${human.hand.length}장) 중 각 상대 플레이어에게 1장씩 건네고, 1장은 자신이 가집니다.` :
-            `Secretly give 1 card to each opponent, and keep 1 card for yourself.`;
+            `손패(${player.hand.length}장) 중 각 상대에게 정확히 1장씩 비밀 선물하고, 1장은 내 생애에 보관합니다.${player.hand.length > (opponents.length + 1) ? ' 남은 카드는 게임에서 제외됩니다.' : ''}` :
+            `Secretly gift 1 card to each opponent, keep 1 card for yourself.${player.hand.length > (opponents.length + 1) ? ' Leftover cards are discarded.' : ''}`;
 
-        // Render cards and assignment dropdowns/buttons
-        const assignments = {}; // cardOrder -> target: 'keep' or opponent.id
+        // Track assignments: cardOrder -> 'keep' | opponentId | 'discard'
+        const assignments = {};
+        // Default assignment: first card keep, next cards to opponents
+        player.hand.forEach((c, idx) => {
+            if (idx === 0) {
+                assignments[c.order] = 'keep';
+            } else if (idx <= opponents.length) {
+                assignments[c.order] = opponents[idx - 1].id;
+            } else {
+                assignments[c.order] = 'discard';
+            }
+        });
 
         function renderExchangeUI() {
             container.innerHTML = `
-                <div style="display:flex; flex-direction:column; gap:12px; width:100%;">
-                    <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
-                        ${human.hand.map(c => {
-                            const currentTarget = assignments[c.order] !== undefined ? assignments[c.order] : 'keep';
+                <div style="display:flex; flex-direction:column; gap:16px; width:100%;">
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                        ${player.hand.map(c => {
+                            const curTarget = assignments[c.order] !== undefined ? assignments[c.order] : 'discard';
                             return `
-                                <div style="display:flex; flex-direction:column; align-items:center; gap:4px; background:rgba(255,255,255,0.04); padding:6px; border-radius:6px; border:1px solid var(--border-glass);">
-                                    <div class="pl-card" style="pointer-events:none;">
-                                        <div class="card-symbol-top ${c.symInfo.type === 'special' ? 'sym-special' : 'sym-' + c.symbol.toLowerCase()}">
-                                            ${c.symInfo.icon}
-                                        </div>
-                                        <div class="card-order-bottom">
-                                            <span class="card-order-num" style="color:${c.eraColor};">${c.orderStr}</span>
-                                            <span class="card-era-pip" style="background:${c.eraColor};"></span>
-                                        </div>
-                                    </div>
-                                    <select class="exchange-assign-select" data-card="${c.order}" style="font-size:0.75rem; padding:3px; background:#0f172a; color:#fff; border:1px solid var(--border-glass); border-radius:4px;">
-                                        <option value="keep" ${currentTarget === 'keep' ? 'selected' : ''}>${isKo ? '내 배치 (Keep)' : 'Keep for Self'}</option>
+                                <div class="exchange-card-wrapper" style="display:flex; flex-direction:column; align-items:center; gap:6px; background:rgba(255,255,255,0.04); padding:8px; border-radius:8px; border:1px solid var(--border-glass);">
+                                    ${renderCardMarkup(c, { mini: true, nonClickable: true })}
+                                    <select class="exchange-assign-select" data-card="${c.order}" style="font-size:0.8rem; padding:4px 6px; background:#0f172a; color:#fff; border:1px solid var(--border-gold); border-radius:4px; font-weight:700;">
+                                        <option value="keep" ${curTarget === 'keep' ? 'selected' : ''}>★ ${isKo ? '내 타임라인 보관' : 'Keep for Self'}</option>
                                         ${opponents.map(o => `
-                                            <option value="${o.id}" ${currentTarget === o.id ? 'selected' : ''}>${o.name}에게 주기</option>
+                                            <option value="${o.id}" ${curTarget === o.id ? 'selected' : ''}>🎁 ${o.name}에게 선물</option>
                                         `).join('')}
-                                        <option value="discard" ${currentTarget === 'discard' ? 'selected' : ''}>${isKo ? '버리기 (Discard)' : 'Discard'}</option>
+                                        ${(player.hand.length > opponents.length + 1) ? `<option value="discard" ${curTarget === 'discard' ? 'selected' : ''}>🗑 ${isKo ? '제외 (Discard)' : 'Discard'}</option>` : ''}
                                     </select>
                                 </div>
                             `;
                         }).join('')}
                     </div>
-                    <button type="button" class="btn-play-again" id="btnConfirmExchange" style="margin-top:10px;">${isKo ? '인연 교환 확정' : 'Confirm Exchange'}</button>
+                    <div id="exchangeValidationMsg" style="font-size:0.8rem; color:#ef4444; text-align:center; min-height:1.2rem;"></div>
+                    <button type="button" class="btn-play-again" id="btnConfirmExchange">${isKo ? '인연 교환 확정' : 'Confirm Exchange'}</button>
                 </div>
             `;
+
+            const btnConfirm = document.getElementById('btnConfirmExchange');
+            const msgEl = document.getElementById('exchangeValidationMsg');
+
+            function validateAssignments() {
+                // Check that exactly 1 keep is selected
+                const keepCount = Object.values(assignments).filter(v => v === 'keep').length;
+                // Check that each opponent gets exactly 1 card
+                const missingOpponents = opponents.filter(o => !Object.values(assignments).includes(o.id));
+
+                if (keepCount !== 1) {
+                    msgEl.textContent = isKo ? '내 타임라인에 보관할 카드를 정확히 1장 지정해야 합니다.' : 'You must choose exactly 1 card to Keep.';
+                    btnConfirm.disabled = true;
+                    btnConfirm.style.opacity = '0.5';
+                    return false;
+                }
+                if (missingOpponents.length > 0) {
+                    msgEl.textContent = isKo ? `${missingOpponents[0].name}님에게 보낼 선물이 지정되지 않았습니다.` : `Must gift 1 card to ${missingOpponents[0].name}.`;
+                    btnConfirm.disabled = true;
+                    btnConfirm.style.opacity = '0.5';
+                    return false;
+                }
+
+                msgEl.textContent = '';
+                btnConfirm.disabled = false;
+                btnConfirm.style.opacity = '1';
+                return true;
+            }
 
             container.querySelectorAll('.exchange-assign-select').forEach(sel => {
                 sel.onchange = () => {
                     const cOrder = parseInt(sel.getAttribute('data-card'), 10);
                     const val = sel.value;
                     assignments[cOrder] = (val === 'keep' || val === 'discard') ? val : parseInt(val, 10);
+                    validateAssignments();
                 };
             });
 
-            document.getElementById('btnConfirmExchange').onclick = () => {
+            validateAssignments();
+
+            btnConfirm.onclick = () => {
+                if (!validateAssignments()) return;
                 modal.classList.remove('active');
-                resolveExchange(assignments);
+                onConfirmCallback(assignments);
             };
         }
-
-        // Initialize default assignment
-        human.hand.forEach((c, i) => {
-            if (i < opponents.length) {
-                assignments[c.order] = opponents[i].id;
-            } else if (i === opponents.length) {
-                assignments[c.order] = 'keep';
-            } else {
-                assignments[c.order] = 'discard';
-            }
-        });
 
         renderExchangeUI();
         modal.classList.add('active');
     }
 
-    // Resolve Secret Exchange & Score
-    function resolveExchange(humanAssignments) {
-        // Collect cards to distribute
-        // Human player distribution
-        const human = state.players[0];
-        const humanCardsToOpponents = {};
-        let humanKeep = null;
+    // Resolve Final Exchange & Merge into Timelines
+    function resolveExchange(allHumanAssignments) {
+        // Collect AI distributions if in AI mode
+        const allDistributions = {};
 
-        human.hand.forEach(c => {
-            const dest = humanAssignments[c.order];
-            if (dest === 'keep') {
-                humanKeep = c;
-            } else if (typeof dest === 'number') {
-                humanCardsToOpponents[dest] = c;
+        state.players.forEach(p => {
+            if (p.isHuman && allHumanAssignments[p.id]) {
+                const userAssign = allHumanAssignments[p.id];
+                let keepCard = null;
+                const giftCards = {};
+
+                p.hand.forEach(c => {
+                    const dest = userAssign[c.order];
+                    if (dest === 'keep') {
+                        keepCard = c;
+                    } else if (typeof dest === 'number') {
+                        giftCards[dest] = c;
+                    }
+                });
+
+                if (!keepCard && p.hand.length > 0) keepCard = p.hand[0];
+
+                allDistributions[p.id] = {
+                    keep: keepCard,
+                    give: giftCards
+                };
+            } else {
+                // AI distribution heuristic
+                const sortedHand = [...p.hand].sort((a, b) => {
+                    // negative cards first (give away bad cards to enemies!)
+                    const getPrio = (c) => (c.symInfo.type === 'negative' ? -10 : 10);
+                    return getPrio(a) - getPrio(b);
+                });
+
+                const otherPlayers = state.players.filter(op => op.id !== p.id);
+                const gifts = {};
+                otherPlayers.forEach((op, opIdx) => {
+                    if (opIdx < sortedHand.length) {
+                        gifts[op.id] = sortedHand[opIdx];
+                    }
+                });
+
+                allDistributions[p.id] = {
+                    keep: sortedHand[sortedHand.length - 1], // keep best card
+                    give: gifts
+                };
             }
         });
 
-        if (!humanKeep && human.hand.length > 0) humanKeep = human.hand[0];
-
-        // AI distributions
-        const aiDistributions = {};
-        for (let i = 1; i < state.playerCount; i++) {
-            const ai = state.players[i];
-            const sortedHand = [...ai.hand].sort((a, b) => {
-                // negative cards first (give away bad cards!)
-                const getPrio = (c) => (c.symInfo.type === 'negative' ? -10 : 10);
-                return getPrio(a) - getPrio(b);
-            });
-
-            const otherPlayers = state.players.filter(p => p.id !== ai.id);
-            aiDistributions[ai.id] = {
-                give: {},
-                keep: sortedHand[sortedHand.length - 1] // keep best positive card
-            };
-
-            otherPlayers.forEach((op, opIdx) => {
-                aiDistributions[ai.id].give[op.id] = sortedHand[opIdx];
-            });
-        }
-
-        // Merge all exchanged cards into players' played lines
-        // 1. Human receives from AI opponents + keeps 1
-        human.played.push(humanKeep);
-        for (let i = 1; i < state.playerCount; i++) {
-            const givenCard = aiDistributions[i].give[human.id];
-            if (givenCard) human.played.push(givenCard);
-        }
-        human.played.sort((a, b) => a.order - b.order);
-
-        // 2. AI players receive from Human and other AIs + keep 1
-        for (let i = 1; i < state.playerCount; i++) {
-            const ai = state.players[i];
-            ai.played.push(aiDistributions[ai.id].keep);
-            if (humanCardsToOpponents[ai.id]) {
-                ai.played.push(humanCardsToOpponents[ai.id]);
+        // Add kept card + gifts into played lines
+        state.players.forEach(p => {
+            const dist = allDistributions[p.id];
+            if (dist && dist.keep) {
+                p.played.push(dist.keep);
             }
-            // from other AIs
-            for (let j = 1; j < state.playerCount; j++) {
-                if (j !== i && aiDistributions[j].give[ai.id]) {
-                    ai.played.push(aiDistributions[j].give[ai.id]);
+            // Gifts received from other players
+            state.players.forEach(otherP => {
+                if (otherP.id !== p.id) {
+                    const otherDist = allDistributions[otherP.id];
+                    if (otherDist && otherDist.give && otherDist.give[p.id]) {
+                        p.played.push(otherDist.give[p.id]);
+                    }
                 }
-            }
-            ai.played.sort((a, b) => a.order - b.order);
-        }
+            });
 
-        // Empty all hands
-        state.players.forEach(p => p.hand = []);
+            p.played.sort((a, b) => a.order - b.order);
+            p.hand = []; // Clear hands
+        });
 
-        // Step 5 & 6: Resolve Special Cards & Final Scoring
+        // Resolve special cards and calculate final scores
         resolveFinalScoring();
     }
 
-    // Special Cards Resolution Engine
+    // Special Cards Resolution Engine (PDF 1 Page 8 & 9)
     function resolveSpecialCards(playedCards) {
         const line = playedCards.map(c => ({ ...c }));
         line.sort((a, b) => a.order - b.order);
@@ -630,13 +789,14 @@
         const SPECIAL_TYPES = new Set(['IGNORE_LEFT', 'IGNORE_RIGHT', 'DOUBLE_LEFT', 'DOUBLE_RIGHT']);
 
         // Step 1: Remove special cards pointing to another special card or out of bounds
+        // (As per rulebook: "Check the special cards and remove a card if the special card is indicating a special card by ascending order.")
         let changed = true;
         while (changed) {
             changed = false;
             for (let i = 0; i < line.length; i++) {
                 const sym = line[i].symbol;
                 if (SPECIAL_TYPES.has(sym)) {
-                    let targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
+                    const targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
                     if (targetIdx < 0 || targetIdx >= line.length || SPECIAL_TYPES.has(line[targetIdx].symbol)) {
                         line.splice(i, 1);
                         changed = true;
@@ -654,7 +814,7 @@
         for (let i = 0; i < line.length; i++) {
             const sym = line[i].symbol;
             if (SPECIAL_TYPES.has(sym)) {
-                let targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
+                const targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
                 if (targetIdx >= 0 && targetIdx < line.length && !SPECIAL_TYPES.has(line[targetIdx].symbol)) {
                     if (sym === 'IGNORE_LEFT' || sym === 'IGNORE_RIGHT') {
                         ignoredIndices.add(targetIdx);
@@ -674,7 +834,7 @@
             const card = line[i];
             if (SPECIAL_TYPES.has(card.symbol) || ignoredIndices.has(i)) continue;
 
-            const mult = multipliers[i];
+            const mult = multipliers[i] || 1;
             symbolCounts[card.symbol] = (symbolCounts[card.symbol] || 0) + mult;
             eraCounts[card.era] = (eraCounts[card.era] || 0) + mult;
             activeCards.push({ ...card, effectiveCount: mult });
@@ -683,11 +843,11 @@
         return { symbolCounts, eraCounts, activeCards, line, ignoredIndices, multipliers };
     }
 
-    // Final Scoring
+    // Final Scoring Resolution
     function resolveFinalScoring() {
         state.phase = 'game_over';
 
-        // 1. Calculate symbol scores
+        // 1. Calculate symbol scores for all players
         const playerResults = state.players.map(p => {
             const res = resolveSpecialCards(p.played);
             let score = 0;
@@ -746,7 +906,7 @@
             pr.player.score = pr.totalScore;
         });
 
-        // Sort descending
+        // Sort descending by total score
         playerResults.sort((a, b) => b.totalScore - a.totalScore);
 
         render();
@@ -754,7 +914,7 @@
         showVictoryModal(playerResults);
     }
 
-    // Victory Screen
+    // Victory Screen Modal
     function showVictoryModal(results) {
         const modal = document.getElementById('victoryModal');
         const list = document.getElementById('victoryScoresList');
@@ -763,243 +923,92 @@
 
         const isKo = (state.lang === 'ko');
         const winner = results[0];
-        const isHumanWinner = winner.player.isHuman;
 
-        title.textContent = isHumanWinner ? 
-            (isKo ? '🎉 승리! 전생의 좋은 인연이 맺어졌습니다!' : '🎉 Victory! Beautiful Past Connections Reunited!') :
-            (isKo ? `👑 ${winner.player.name} 승리!` : `👑 ${winner.player.name} Won!`);
+        title.innerHTML = `🎉 ${winner.player.name} ${isKo ? '최종 승리!' : 'Wins the Game!'}`;
 
-        list.innerHTML = `
+        let html = `
+            <div style="margin-bottom:16px; text-align:center;">
+                <span style="font-size:1.1rem; font-weight:800; color:var(--gold);">
+                    ${isKo ? '최종 점수: ' : 'Final Score: '}${winner.totalScore} VP
+                </span>
+            </div>
             <table class="scores-comparison">
                 <thead>
                     <tr>
                         <th>${isKo ? '순위' : 'Rank'}</th>
                         <th>${isKo ? '플레이어' : 'Player'}</th>
-                        <th>${isKo ? '길연 (연·친·동)' : 'Positive'}</th>
-                        <th>${isKo ? '악연 (전·도·갈)' : 'Negative'}</th>
-                        <th>${isKo ? '시대 보너스' : 'Era Bonus'}</th>
+                        <th>${isKo ? '인연 점수' : 'Cards VP'}</th>
+                        <th>${isKo ? '동일시대 보너스' : 'Era Bonus'}</th>
                         <th>${isKo ? '총점' : 'Total'}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${results.map((r, rank) => {
-                        let pos = 0;
-                        let neg = 0;
-                        ['LOVER', 'FRIEND', 'COLLEAGUE'].forEach(s => {
-                            if (r.breakdown[s]) pos += r.breakdown[s].pts;
-                        });
-                        ['WAR', 'STEAL', 'CONFLICT'].forEach(s => {
-                            if (r.breakdown[s]) neg += r.breakdown[s].pts;
-                        });
-
-                        return `
-                            <tr style="${r.player.isHuman ? 'background:rgba(245,158,11,0.12); font-weight:800;' : ''}">
-                                <td>#${rank + 1}</td>
-                                <td>${r.player.name}</td>
-                                <td style="color:#34d399;">+${pos}p</td>
-                                <td style="color:#f87171;">${neg}p</td>
-                                <td style="color:${r.hasEraBonus ? 'var(--gold)' : 'var(--text-muted)'}; font-weight:${r.hasEraBonus ? '900' : '400'};">
-                                    ${r.hasEraBonus ? '+10p' : '0p'}
-                                </td>
-                                <td style="font-size:0.95rem; font-weight:900; color:var(--gold);">${r.totalScore} pt</td>
-                            </tr>
-                        `;
-                    }).join('')}
+                    ${results.map((r, i) => `
+                        <tr style="${i === 0 ? 'background:rgba(245,158,11,0.15); font-weight:bold;' : ''}">
+                            <td>${i === 0 ? '🥇 1위' : (i === 1 ? '🥈 2위' : (i === 2 ? '🥉 3위' : `${i + 1}위`))}</td>
+                            <td>${r.player.name}</td>
+                            <td>${r.rawScore} VP</td>
+                            <td style="${r.hasEraBonus ? 'color:#10b981; font-weight:bold;' : 'color:var(--text-muted);'}">
+                                ${r.hasEraBonus ? `+10 VP (${ERA_NAMES[state.lang][r.bestEra]} ×${r.maxEraCount})` : '-'}
+                            </td>
+                            <td style="color:var(--gold); font-size:1rem; font-weight:900;">${r.totalScore} VP</td>
+                        </tr>
+                    `).join('')}
                 </tbody>
             </table>
         `;
 
+        list.innerHTML = html;
         modal.classList.add('active');
     }
 
-    // Render Function
-    function render() {
-        const isKo = (state.lang === 'ko');
+    // Symbol Content Renderer with Crisp Icons
+    function renderSymbolContent(card) {
+        if (!card || !card.symInfo) return '';
+        const sym = card.symbol;
 
-        // Update Turn Status
-        const statusBadge = document.getElementById('turnStatusBadge');
-        if (statusBadge) {
-            if (state.phase === 'exchange') {
-                statusBadge.className = 'status-badge phase-exchange';
-                statusBadge.innerHTML = `<i class="fa-solid fa-arrows-split-up-and-left"></i> ${isKo ? '비밀 인연 교환 단계' : 'Secret Exchange Phase'}`;
-            } else if (state.phase === 'game_over') {
-                statusBadge.className = 'status-badge';
-                statusBadge.innerHTML = `<i class="fa-solid fa-trophy"></i> ${isKo ? '게임 종료 및 정산' : 'Game Over'}`;
-            } else {
-                statusBadge.className = 'status-badge';
-                statusBadge.innerHTML = `<i class="fa-solid fa-hourglass-half"></i> ${isKo ? `라운드 ${state.round}/${state.totalRounds}` : `Round ${state.round}/${state.totalRounds}`}`;
-            }
+        if (sym === 'IGNORE_LEFT') {
+            return `<span class="sym-hash-red">#</span> <span class="sym-arrow-green">←</span>`;
+        }
+        if (sym === 'IGNORE_RIGHT') {
+            return `<span class="sym-arrow-green">→</span> <span class="sym-hash-red">#</span>`;
+        }
+        if (sym === 'DOUBLE_LEFT') {
+            return `<span class="sym-double-green">2*# ←</span>`;
+        }
+        if (sym === 'DOUBLE_RIGHT') {
+            return `<span class="sym-double-green">→ 2*#</span>`;
         }
 
-        // Update Prompt Banner
-        const promptText = document.getElementById('promptText');
-        if (promptText) {
-            if (state.phase === 'bid') {
-                promptText.innerHTML = isKo ? 
-                    `<i class="fa-solid fa-hand-pointer"></i> 손에서 이번 라운드에 입찰할 카드 1장을 선택하세요.` : 
-                    `<i class="fa-solid fa-hand-pointer"></i> Select 1 card from your hand to bid for this round.`;
-            } else if (state.phase === 'exchange') {
-                promptText.innerHTML = isKo ?
-                    `<i class="fa-solid fa-gift"></i> 각 상대에게 줄 1장과 내가 가질 1장을 배분하세요.` :
-                    `<i class="fa-solid fa-gift"></i> Assign 1 card to each opponent and keep 1 for yourself.`;
-            } else if (state.phase === 'game_over') {
-                promptText.innerHTML = isKo ?
-                    `<i class="fa-solid fa-flag-checkered"></i> 게임이 종료되었습니다. 최종 점수를 확인하세요.` :
-                    `<i class="fa-solid fa-flag-checkered"></i> Game over! Check the final relationship scores.`;
-            }
-        }
-
-        // Deck Badge
-        const deckBadge = document.getElementById('deckCountBadge');
-        if (deckBadge) {
-            deckBadge.textContent = isKo ? `남은 덱: ${state.deck.length}장` : `Deck: ${state.deck.length}`;
-        }
-
-        // Render Floor SETs
-        renderFloorSets();
-
-        // Render Human Hand
-        renderHumanHand();
-
-        // Render Players' Played Boards
-        renderPlayerBoards();
-    }
-
-    // Render Floor SETs Grid
-    function renderFloorSets() {
-        const grid = document.getElementById('floorSetsGrid');
-        if (!grid) return;
-
-        const isKo = (state.lang === 'ko');
-
-        grid.innerHTML = state.floorSets.map((set, idx) => {
-            const isAwarded = (set.awardedPlayerId !== null);
-            const awardedPlayer = isAwarded ? state.players.find(p => p.id === set.awardedPlayerId) : null;
-
-            return `
-                <div class="set-column ${isAwarded ? 'awarded' : ''}">
-                    <div class="set-rank-badge">
-                        <span>#${idx + 1}</span>
-                        <span>${isAwarded ? (awardedPlayer ? awardedPlayer.name : '') : (isKo ? (idx === 0 ? '최저가 획득' : `${idx + 1}번째`) : `Rank ${idx + 1}`)}</span>
-                    </div>
-                    <div class="set-cards-pair">
-                        <div class="set-card-slot slot-top">
-                            ${renderCardMarkup(set.topCard)}
-                        </div>
-                        <div class="set-card-slot slot-bottom">
-                            ${renderCardMarkup(set.bottomCard)}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    // Render Human Hand
-    function renderHumanHand() {
-        const container = document.getElementById('handCardsRow');
-        const btnBid = document.getElementById('btnSubmitBid');
-        if (!container) return;
-
-        const human = state.players[0];
-        if (!human) return;
-
-        container.innerHTML = human.hand.map(card => {
-            const isSelected = (state.selectedBidCard && state.selectedBidCard.order === card.order);
-            return `
-                <div class="pl-card selectable ${isSelected ? 'selected' : ''}" data-order="${card.order}">
-                    <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                        ${card.symInfo.icon}
-                    </div>
-                    <div class="card-order-bottom">
-                        <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
-                        <span class="card-era-pip" style="background:${card.eraColor};"></span>
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        container.querySelectorAll('.pl-card').forEach(el => {
-            el.onclick = () => {
-                if (state.phase !== 'bid') return;
-                const order = parseInt(el.getAttribute('data-order'), 10);
-                const card = human.hand.find(c => c.order === order);
-                if (state.selectedBidCard && state.selectedBidCard.order === order) {
-                    state.selectedBidCard = null;
-                } else {
-                    state.selectedBidCard = card;
-                    playSound('select');
-                }
-                renderHumanHand();
-            };
-        });
-
-        if (btnBid) {
-            btnBid.disabled = (state.phase !== 'bid' || !state.selectedBidCard);
-            btnBid.onclick = () => submitHumanBid();
-        }
-    }
-
-    // Render Player Boards (Horizontal Ribbon of Played Cards)
-    function renderPlayerBoards() {
-        const area = document.getElementById('playersArea');
-        if (!area) return;
-
-        const isKo = (state.lang === 'ko');
-
-        area.innerHTML = state.players.map(p => {
-            const isHuman = p.isHuman;
-            const res = (state.phase === 'game_over') ? resolveSpecialCards(p.played) : null;
-
-            return `
-                <div class="player-card-board">
-                    <div class="pb-header">
-                        <div class="player-info">
-                            <div class="player-avatar ${isHuman ? 'human' : 'ai'}">${isHuman ? '나' : p.id}</div>
-                            <span class="player-name">${p.name}</span>
-                            ${p.bidCard ? `<span class="bid-status-pill ready">${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : ''}
-                        </div>
-                        <div class="total-score-badge">
-                            <i class="fa-solid fa-trophy"></i>
-                            <span>${p.score} pt</span>
-                        </div>
-                    </div>
-                    <div class="played-cards-strip">
-                        ${p.played.length === 0 ? 
-                            `<span style="color:var(--text-muted); font-size:0.75rem; padding-left:4px;">${isKo ? '아직 배치된 카드가 없습니다.' : 'No played cards yet.'}</span>` : 
-                            p.played.map((card, cIdx) => {
-                                let specialClass = '';
-                                if (res && res.ignoredIndices && res.ignoredIndices.has(cIdx)) {
-                                    specialClass = 'card-ignored';
-                                } else if (res && res.multipliers && res.multipliers[cIdx] > 1) {
-                                    specialClass = 'card-doubled';
-                                }
-
-                                return `
-                                    <div class="played-mini-card ${specialClass}" title="${card.symInfo.name[state.lang]} (#${card.orderStr}) - ${ERA_NAMES[state.lang][card.era]}">
-                                        <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                                            ${card.symInfo.icon}
-                                        </div>
-                                        <div class="card-order-bottom">
-                                            <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
-                                            <span class="card-era-pip" style="background:${card.eraColor};"></span>
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('')}
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    // Helper: Card Markup
-    function renderCardMarkup(card) {
-        if (!card) return '<div class="pl-card empty" style="opacity:0.2;"></div>';
+        const symKey = sym.toLowerCase();
         return `
-            <div class="pl-card" title="${card.symInfo.name[state.lang]} (#${card.orderStr})">
+            <img src="/proto/past-lives/icons/${symKey}.png" class="card-symbol-img" alt="${card.symInfo.name.ko}" onerror="this.onerror=null; this.outerHTML='<span class=\\'fallback-sym-icon\\'>${card.symInfo.icon}</span>';">
+        `;
+    }
+
+    // Card HTML Markup
+    function renderCardMarkup(card, options = {}) {
+        if (!card) return '<div class="pl-card empty"></div>';
+
+        const isSelected = options.isSelected || false;
+        const isMini = options.mini || false;
+        const isInteractive = !options.nonClickable;
+        const isDoubled = options.isDoubled || false;
+        const isIgnored = options.isIgnored || false;
+
+        let extraClasses = '';
+        if (isSelected) extraClasses += ' selected';
+        if (isMini) extraClasses += ' played-mini-card';
+        if (isInteractive) extraClasses += ' selectable';
+        if (isDoubled) extraClasses += ' card-doubled';
+        if (isIgnored) extraClasses += ' card-ignored';
+
+        return `
+            <div class="pl-card ${extraClasses}" data-order="${card.order}" style="border-top-color:${card.eraColor};">
+                ${isDoubled ? '<span class="badge-doubled">×2</span>' : ''}
+                ${isIgnored ? '<span class="badge-ignored">CANCEL</span>' : ''}
                 <div class="card-symbol-top ${card.symInfo.type === 'special' ? 'sym-special' : 'sym-' + card.symbol.toLowerCase()}">
-                    ${card.symInfo.icon}
+                    ${renderSymbolContent(card)}
                 </div>
                 <div class="card-order-bottom">
                     <span class="card-order-num" style="color:${card.eraColor};">${card.orderStr}</span>
@@ -1009,29 +1018,202 @@
         `;
     }
 
-    // Static text update (i18n)
-    function updateStaticTexts() {
+    // Render Floor SETs
+    function renderFloorSets() {
+        const grid = document.getElementById('floorSetsGrid');
+        if (!grid) return;
+
         const isKo = (state.lang === 'ko');
-        document.title = isKo ? "패스트 라이브즈 (Past Lives) | 환상적인 게임즈" : "Past Lives | Hwantastic Games";
-        document.querySelectorAll('[data-i18n-ko]').forEach(el => {
-            el.innerHTML = isKo ? el.getAttribute('data-i18n-ko') : el.getAttribute('data-i18n-en');
+        grid.innerHTML = '';
+
+        state.floorSets.forEach((set, idx) => {
+            const setCol = document.createElement('div');
+            setCol.className = 'floor-set-col';
+
+            const awardedPlayer = (set.awardedPlayerId !== null) ? state.players[set.awardedPlayerId] : null;
+
+            setCol.innerHTML = `
+                <div class="set-col-header">
+                    <span class="set-rank-badge">${isKo ? `${idx + 1}위 세트` : `SET #${idx + 1}`}</span>
+                    ${awardedPlayer ? `<span class="set-claimed-tag">✔ ${awardedPlayer.name}</span>` : ''}
+                </div>
+                <div class="set-cards-pair">
+                    <div class="floor-card-slot slot-top">
+                        <span class="slot-label">${isKo ? '상단' : 'Top'}</span>
+                        ${renderCardMarkup(set.topCard, { nonClickable: true })}
+                    </div>
+                    <div class="floor-card-slot slot-bottom">
+                        <span class="slot-label">${isKo ? '하단' : 'Bottom'}</span>
+                        ${renderCardMarkup(set.bottomCard, { nonClickable: true })}
+                    </div>
+                </div>
+            `;
+            grid.appendChild(setCol);
+        });
+
+        // Update Deck Count Badge
+        const deckBadge = document.getElementById('deckCountBadge');
+        if (deckBadge) {
+            deckBadge.innerHTML = `<i class="fa-solid fa-layer-group"></i> ${isKo ? '남은 덱: ' : 'Deck: '}<strong>${state.deck.length}</strong>${isKo ? '장' : ' cards'}`;
+        }
+    }
+
+    // Render Active Player's Hand
+    function renderHumanHand() {
+        const handRow = document.getElementById('handCardsRow');
+        const btnBid = document.getElementById('btnSubmitBid');
+        if (!handRow || !btnBid) return;
+
+        const isKo = (state.lang === 'ko');
+        handRow.innerHTML = '';
+
+        // In AI mode, active is player 0. In Pass & Play, active is currentPvpBidIndex
+        const activePlayer = (state.gameMode === 'pvp') ? 
+            state.players[state.currentPvpBidIndex] : 
+            state.players[0];
+
+        if (!activePlayer || !activePlayer.hand || activePlayer.hand.length === 0) {
+            handRow.innerHTML = `<div style="color:var(--text-muted); font-size:0.85rem; padding:12px;">${isKo ? '손패가 비어 있습니다.' : 'No cards in hand.'}</div>`;
+            btnBid.disabled = true;
+            return;
+        }
+
+        activePlayer.hand.forEach(c => {
+            const isSel = (state.selectedBidCard && state.selectedBidCard.order === c.order);
+            const cardEl = document.createElement('div');
+            cardEl.innerHTML = renderCardMarkup(c, { isSelected: isSel, isInteractive: (state.phase === 'bid') });
+
+            const innerCard = cardEl.firstElementChild;
+            if (state.phase === 'bid') {
+                innerCard.onclick = () => {
+                    if (state.selectedBidCard && state.selectedBidCard.order === c.order) {
+                        state.selectedBidCard = null;
+                    } else {
+                        state.selectedBidCard = c;
+                    }
+                    renderHumanHand();
+                };
+            }
+            handRow.appendChild(innerCard);
+        });
+
+        if (state.selectedBidCard && state.phase === 'bid') {
+            btnBid.disabled = false;
+            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> ${isKo ? `#${state.selectedBidCard.orderStr}번 카드로 입찰 확정` : `Confirm Bid (#${state.selectedBidCard.orderStr})`}`;
+        } else {
+            btnBid.disabled = true;
+            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> ${isKo ? '손패에서 입찰할 카드 선택' : 'Select Card to Bid'}`;
+        }
+    }
+
+    // Render Player Timelines / Boards
+    function renderPlayerBoards() {
+        const area = document.getElementById('playersArea');
+        if (!area) return;
+
+        const isKo = (state.lang === 'ko');
+        area.innerHTML = '';
+
+        state.players.forEach(p => {
+            const board = document.createElement('div');
+            board.className = `player-board ${p.isHuman ? 'human' : 'ai'}`;
+
+            // Resolve special cards for active visual indicators
+            const res = resolveSpecialCards(p.played);
+
+            board.innerHTML = `
+                <div class="pb-header">
+                    <div class="player-info">
+                        <span class="player-name">${p.name}</span>
+                        <span class="player-role-badge">${p.isHuman ? 'Human' : 'AI'}</span>
+                        <span class="player-cards-count">${isKo ? `배치 ${p.played.length}장 / 손패 ${p.hand.length}장` : `Played: ${p.played.length} / Hand: ${p.hand.length}`}</span>
+                    </div>
+                    <div class="pb-bid-status">
+                        ${p.bidCard ? `<span class="bid-placed-tag">✔ ${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : `<span class="bid-waiting-tag">${isKo ? '입찰 대기중' : 'Thinking...'}</span>`}
+                    </div>
+                </div>
+                <div class="pb-timeline-row">
+                    ${p.played.length === 0 ? `
+                        <div class="timeline-empty-hint">${isKo ? '아직 배치된 카드가 없습니다. 세트에서 1장을 골라 타임라인을 만듭니다.' : 'No cards played yet.'}</div>
+                    ` : p.played.map((c, i) => {
+                        const isDoubled = (res.multipliers[i] && res.multipliers[i] > 1);
+                        const isIgnored = res.ignoredIndices && res.ignoredIndices.has(i);
+                        return renderCardMarkup(c, { mini: true, nonClickable: true, isDoubled, isIgnored });
+                    }).join('')}
+                </div>
+            `;
+            area.appendChild(board);
         });
     }
 
-    // Modal Setups
-    function setupModalEvents() {
-        // Rulebook modal
-        const btnRulebook = document.getElementById('btnRulebook');
-        const modalRulebook = document.getElementById('rulebookModal');
-        const closeRulebook = document.getElementById('closeRulebookModal');
-        if (btnRulebook && modalRulebook) {
-            btnRulebook.onclick = () => modalRulebook.classList.add('active');
-        }
-        if (closeRulebook && modalRulebook) {
-            closeRulebook.onclick = () => modalRulebook.classList.remove('active');
+    // Master Render Function
+    function render() {
+        renderFloorSets();
+        renderHumanHand();
+        renderPlayerBoards();
+        updateStaticTexts();
+    }
+
+    // Update Banner Prompt & Static Texts
+    function updateStaticTexts() {
+        const prompt = document.getElementById('promptText');
+        const turnStatus = document.getElementById('turnStatusBadge');
+        const isKo = (state.lang === 'ko');
+
+        if (turnStatus) {
+            turnStatus.textContent = isKo ? 
+                `라운드 ${state.round} / ${state.totalRounds}` : 
+                `Round ${state.round} of ${state.totalRounds}`;
         }
 
-        // New game modal
+        if (prompt) {
+            if (state.phase === 'bid') {
+                if (state.gameMode === 'pvp') {
+                    const curP = state.players[state.currentPvpBidIndex];
+                    prompt.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--gold);"></i> ${isKo ? `<strong>${curP.name}</strong>님의 차례: 바닥의 세트를 확인하고 손패에서 입찰할 카드 1장을 선택하세요.` : `<strong>${curP.name}</strong>'s Turn: Choose 1 card from your hand to bid secretly.`}`;
+                } else {
+                    prompt.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--gold);"></i> ${isKo ? '바닥의 세트를 확인하고, 손패에서 이번 라운드에 입찰할 카드 1장을 선택하세요.' : 'Inspect the floor SETs and choose 1 card from your hand to bid.'}`;
+                }
+            } else if (state.phase === 'reveal') {
+                prompt.innerHTML = `<i class="fa-solid fa-award" style="color:var(--gold);"></i> ${isKo ? '모든 입찰이 공개되었습니다! 낮은 번호부터 차례대로 세트를 가져옵니다.' : 'All bids revealed! SETs are awarded in ascending order of bids.'}`;
+            } else if (state.phase === 'exchange') {
+                prompt.innerHTML = `<i class="fa-solid fa-handshake" style="color:var(--gold);"></i> ${isKo ? '최종 인연 교환 단계: 손패를 각 상대에게 비밀 선물하고 1장을 보관합니다.' : 'Final Karma Exchange: Secretly gift hand cards to rivals and keep 1 for your life timeline.'}`;
+            } else if (state.phase === 'game_over') {
+                prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '게임 종료! 최종 점수를 확인하세요.' : 'Game Over! Inspect your final relationship scores.'}`;
+            }
+        }
+    }
+
+    // Setup Modal & Header Events
+    function setupModalEvents() {
+        // Sound Switch
+        const btnSound = document.getElementById('btnSoundSwitch');
+        if (btnSound) {
+            btnSound.onclick = () => {
+                state.soundEnabled = !state.soundEnabled;
+                btnSound.innerHTML = state.soundEnabled ? 
+                    '<i class="fa-solid fa-volume-high"></i>' : 
+                    '<i class="fa-solid fa-volume-xmark"></i>';
+            };
+        }
+
+        // Language Switch
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnLang) {
+            btnLang.onclick = () => {
+                state.lang = (state.lang === 'ko') ? 'en' : 'ko';
+                btnLang.textContent = (state.lang === 'ko') ? 'EN' : 'KO';
+                render();
+            };
+        }
+
+        // Bid Button
+        const btnBid = document.getElementById('btnSubmitBid');
+        if (btnBid) {
+            btnBid.onclick = submitHumanBid;
+        }
+
+        // New Game Modal
         const btnNew = document.getElementById('btnNewGame');
         const modalNew = document.getElementById('newGameModal');
         const closeNew = document.getElementById('closeNewGameModal');
@@ -1042,57 +1224,53 @@
         if (closeNew && modalNew) {
             closeNew.onclick = () => modalNew.classList.remove('active');
         }
+
+        // Mode buttons inside newGameModal
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        let selectedMode = 'ai';
+        modeBtns.forEach(b => {
+            b.onclick = () => {
+                modeBtns.forEach(x => x.classList.remove('active'));
+                b.classList.add('active');
+                selectedMode = b.getAttribute('data-mode') || 'ai';
+            };
+        });
+
         if (btnStart && modalNew) {
             btnStart.onclick = () => {
-                const count = parseInt(document.getElementById('selectPlayers').value, 10);
+                const sel = document.getElementById('selectPlayers');
+                const pCount = sel ? parseInt(sel.value, 10) : 3;
                 modalNew.classList.remove('active');
-                initGame({ playerCount: count });
+                initGame({ playerCount: pCount, gameMode: selectedMode });
             };
         }
 
-        // Play again in victory modal
+        // Rulebook Modal
+        const btnRb = document.getElementById('btnRulebook');
+        const modalRb = document.getElementById('rulebookModal');
+        const closeRb = document.getElementById('closeRulebookModal');
+        if (btnRb && modalRb) {
+            btnRb.onclick = () => modalRb.classList.add('active');
+        }
+        if (closeRb && modalRb) {
+            closeRb.onclick = () => modalRb.classList.remove('active');
+        }
+
+        // Play Again from Victory
         const btnPlayAgain = document.getElementById('btnPlayAgain');
-        const modalVictory = document.getElementById('victoryModal');
-        if (btnPlayAgain && modalVictory) {
+        const modalVic = document.getElementById('victoryModal');
+        if (btnPlayAgain && modalVic) {
             btnPlayAgain.onclick = () => {
-                modalVictory.classList.remove('active');
-                initGame({ playerCount: state.playerCount });
+                modalVic.classList.remove('active');
+                initGame({ playerCount: state.playerCount, gameMode: state.gameMode });
             };
         }
-
-        // Lang switch
-        const btnLang = document.getElementById('btnLangSwitch');
-        if (btnLang) {
-            btnLang.onclick = () => {
-                state.lang = (state.lang === 'ko') ? 'en' : 'ko';
-                btnLang.textContent = (state.lang === 'ko') ? 'EN' : '한국어';
-                updateStaticTexts();
-                render();
-            };
-        }
-
-        // Sound switch
-        const btnSound = document.getElementById('btnSoundSwitch');
-        if (btnSound) {
-            btnSound.onclick = () => {
-                state.soundEnabled = !state.soundEnabled;
-                btnSound.innerHTML = state.soundEnabled ? '<i class="fa-solid fa-volume-high"></i>' : '<i class="fa-solid fa-volume-xmark"></i>';
-            };
-        }
-
-        // Close on backdrop
-        window.onclick = (e) => {
-            if (e.target.classList.contains('game-modal-overlay') && !e.target.id.includes('setChoice') && !e.target.id.includes('exchange')) {
-                e.target.classList.remove('active');
-            }
-        };
     }
 
-    // Startup
-    window.addEventListener('DOMContentLoaded', () => {
+    // DOM Ready Initialization
+    document.addEventListener('DOMContentLoaded', () => {
         setupModalEvents();
-        updateStaticTexts();
-        initGame({ playerCount: 3 });
+        initGame({ playerCount: 3, gameMode: 'ai' });
     });
 
 })();
