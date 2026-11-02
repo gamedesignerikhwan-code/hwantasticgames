@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노비여, 일어나라! (Slaves, Arise!) | 환상적인 게임들</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Base URL for safe asset resolution -->
+    <base href="/proto/slaves-arise/">
+
+    <!-- External Fallback Stylesheet -->
+    <link rel="stylesheet" href="/proto/slaves-arise/game.css">
+
+    <!-- Embedded Direct Stylesheet: Guarantees 100% styled rendering -->
+    <style>
+/* ==========================================================================
+   Slaves, Arise! (노비여, 일어나라!) Official Stylesheet
+   Theme: Late Joseon Dynasty / Hanji Parchment / Lacquer Wood / Gold
+   ========================================================================== */
+
+:root {
+    --bg-page: #0d0a08;
+    --bg-board: radial-gradient(circle at 50% 30%, #1e1610 0%, #0a0705 100%);
+    --bg-card: #fdfaf2;
+    --border-glass: rgba(217, 119, 6, 0.25);
+    --border-gold: #d97706;
+    --gold: #f59e0b;
+    --gold-glow: rgba(245, 158, 11, 0.4);
+    --crimson: #b91c1c;
+    --jade: #059669;
+    --ink: #1c1917;
+    --text-main: #f8fafc;
+    --text-muted: #a8a29e;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --font-heading: 'Outfit', 'Noto Sans KR', sans-serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-board);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+/* Header */
+.game-header {
+    background: rgba(18, 13, 9, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    color: #fff;
+    background: rgba(217, 119, 6, 0.2);
+    border-color: var(--gold);
+}
+
+.game-title h1 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.game-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-badge {
+    background: rgba(217, 119, 6, 0.15);
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.btn-header {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-header:hover {
+    background: rgba(217, 119, 6, 0.25);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* Prompt Banner */
+.prompt-banner {
+    background: linear-gradient(90deg, rgba(217,119,6,0.15) 0%, rgba(185,28,28,0.15) 100%);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #fef3c7;
+    font-weight: 600;
+}
+
+/* Arena Layout */
+.game-arena {
+    max-width: 1300px;
+    margin: 18px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+}
+
+/* Center Table: Trick Area */
+.trick-table-card {
+    background: rgba(25, 18, 13, 0.85);
+    border: 1.5px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+}
+
+.trick-empty-placeholder {
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.trick-plays-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.trick-play-slot {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.trick-play-slot.latest {
+    border-color: var(--gold);
+    background: rgba(245, 158, 11, 0.1);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+    transform: scale(1.04);
+}
+
+.play-slot-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.play-player-name {
+    color: var(--gold);
+}
+
+.super-ten-tag {
+    background: var(--gold);
+    color: #000;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-weight: 900;
+}
+
+.play-cards-group {
+    display: flex;
+    gap: 6px;
+}
+
+/* ==========================================================================
+   Dual-Ended Card Styling (Top Right-Side Up, Bottom Inverted 180deg)
+   ========================================================================== */
+
+.slave-card {
+    width: 78px;
+    height: 124px;
+    background: #fbf8f0;
+    border: 2px solid #854d0e;
+    border-radius: 8px;
+    color: #1c1917;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px 4px;
+    user-select: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+
+.slave-card.mini-card {
+    width: 60px;
+    height: 96px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.slave-card.interactive {
+    cursor: pointer;
+}
+
+.slave-card.interactive:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.7);
+    border-color: var(--gold);
+}
+
+.slave-card.selected {
+    transform: translateY(-16px) scale(1.08);
+    box-shadow: 0 16px 30px var(--gold-glow);
+    border-color: var(--gold);
+    outline: 2px solid var(--gold);
+}
+
+.slave-card.flip-highlight {
+    animation: flipGlow 1.5s infinite ease-in-out;
+    cursor: pointer;
+}
+
+@keyframes flipGlow {
+    0%, 100% { border-color: #ec4899; box-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
+    50% { border-color: #f43f5e; box-shadow: 0 0 20px rgba(244, 63, 94, 0.8); transform: translateY(-4px); }
+}
+
+/* Card Sides */
+.card-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.card-num-main {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.mini-card .card-num-main {
+    font-size: 1.2rem;
+}
+
+.card-num-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+.mini-card .card-num-sub {
+    font-size: 0.95rem;
+}
+
+/* Inverted Bottom: Flipped 180 degrees */
+.side-bottom {
+    transform: rotate(180deg);
+}
+
+/* Card Middle Divider with Flip Icon */
+.card-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #a8a29e;
+    font-size: 0.65rem;
+    opacity: 0.7;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: #d6d3d1;
+}
+
+/* Card Number Colors & Special Badges */
+.num-1 .card-num-main, .num-1 .card-num-sub { color: #d97706; }
+.num-2 .card-num-main, .num-2 .card-num-sub { color: #1e293b; }
+.num-3 .card-num-main, .num-3 .card-num-sub { color: #2563eb; }
+.num-4 .card-num-main, .num-4 .card-num-sub { color: #7c3aed; }
+.num-5 .card-num-main, .num-5 .card-num-sub { color: #059669; }
+.num-6 .card-num-main, .num-6 .card-num-sub { color: #0891b2; }
+.num-7 .card-num-main, .num-7 .card-num-sub { color: #4f46e5; }
+.num-8 .card-num-main, .num-8 .card-num-sub { color: #db2777; }
+.num-9 .card-num-main, .num-9 .card-num-sub { color: #dc2626; }
+.num-0 .card-num-main, .num-0 .card-num-sub { color: #ca8a04; }
+
+.card-badge-special {
+    font-size: 0.75rem;
+    color: var(--crimson);
+}
+
+.card-sub-special {
+    font-size: 0.65rem;
+    color: var(--crimson);
+}
+
+/* Hand Section */
+.hand-section {
+    background: rgba(18, 13, 9, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+}
+
+.section-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.section-title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title-left h2 {
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.hand-cards-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 20px 4px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-gold) transparent;
+}
+
+.hand-cards-row::-webkit-scrollbar {
+    height: 6px;
+}
+.hand-cards-row::-webkit-scrollbar-thumb {
+    background: var(--border-gold);
+    border-radius: 999px;
+}
+
+/* Hand Controls */
+.hand-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-glass);
+}
+
+.btn-action {
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-play {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+
+.btn-play:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.6);
+}
+
+.btn-pass {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    border: 1px solid var(--border-glass);
+}
+
+.btn-pass:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: #ef4444;
+    color: #fff;
+}
+
+.btn-action:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Right Sidebar: Other Players & Logs */
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.players-status-card {
+    background: rgba(18, 13, 9, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+}
+
+.player-status-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.player-status-card.active-turn {
+    border-color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+.player-status-card.targetable {
+    border-color: #ec4899;
+    background: rgba(236, 72, 153, 0.15);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+}
+
+.player-status-card.targetable:hover {
+    transform: scale(1.02);
+    border-color: #f43f5e;
+}
+
+.psc-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.psc-name {
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.psc-pass-badge {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+
+.psc-rank-badge {
+    background: var(--gold);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.psc-cards-count {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.psc-mini-hand {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.psc-card-pip {
+    width: 18px;
+    height: 24px;
+    background: #fbf8f0;
+    border: 1px solid #78350f;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 900;
+}
+
+.btn-target-select {
+    width: 100%;
+    margin-top: 8px;
+    padding: 4px;
+    background: #ec4899;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+/* History Logs */
+.history-logs-card {
+    background: rgba(18, 13, 9, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 14px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.log-item {
+    font-size: 0.75rem;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    gap: 6px;
+}
+
+.log-time {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.68rem;
+    flex-shrink: 0;
+}
+
+.log-msg {
+    color: var(--text-muted);
+}
+
+/* Modals */
+.game-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.game-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-modal-card {
+    background: #140e0a;
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+.game-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.game-modal-header h2 {
+    font-size: 1.25rem;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.game-modal-close:hover {
+    color: #fff;
+}
+
+.btn-play-again {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: none;
+    border-radius: 999px;
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    margin-top: 16px;
+}
+
+.btn-play-again:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.6);
+}
+
+/* Pass Curtain Modal */
+.curtain-modal-card {
+    background: #140e0a;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+}
+
+.curtain-icon {
+    font-size: 2.8rem;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+
+/* Mode Selection Buttons */
+.mode-toggle-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px 8px;
+    background: #1e1610;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.mode-btn:hover {
+    background: #2b1f17;
+    color: #fff;
+}
+
+.mode-btn.active {
+    background: rgba(245, 158, 11, 0.18);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* Rulebook Content */
+.rb-dialog-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #e7e5e4;
+}
+
+.rb-dialog-content h3 {
+    color: var(--gold);
+    margin: 14px 0 6px;
+    font-size: 1rem;
+}
+
+.rb-dialog-content ol, .rb-dialog-content ul {
+    padding-left: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="game-header">
+        <div class="brand-section">
+            <a href="/proto" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span data-i18n-ko="목록으로" data-i18n-en="Back to Prototypes">목록으로</span>
+            </a>
+            <div class="game-title">
+                <h1>Slaves, Arise!</h1>
+                <span class="game-subtitle" data-i18n-ko="노비여, 일어나라! | 운명을 뒤집어 양반이 되는 클라이밍 카드 게임" data-i18n-en="Shedding & Hand Manipulation Card Game">노비여, 일어나라! | 운명을 뒤집어 양반이 되는 클라이밍 카드 게임</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <div class="status-badge" id="turnStatusBadge">
+                <i class="fa-solid fa-crown" style="color:var(--gold);"></i> 72장 덱 대전
+            </div>
+            <button class="btn-header" id="btnSoundSwitch" title="소리 토글">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <button class="btn-header" id="btnLangSwitch">EN</button>
+            <button class="btn-header" id="btnRulebook">
+                <i class="fa-solid fa-book-open"></i>
+                <span data-i18n-ko="규칙서" data-i18n-en="Rulebook">규칙서</span>
+            </button>
+            <button class="btn-header" id="btnNewGame">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span data-i18n-ko="새 게임" data-i18n-en="New Game">새 게임</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Instructions / Prompt Banner -->
+    <section class="prompt-banner">
+        <div id="promptBannerText">
+            게임을 시작합니다. 바닥에 나온 카드보다 더 높은 숫자를 내거나 패스하세요.
+        </div>
+    </section>
+
+    <!-- Main Game Arena -->
+    <main class="game-arena">
+        <!-- Left: Center Trick Table & Active Player Hand -->
+        <div class="game-main-col">
+            <!-- Center Table (Trick Plays Area) -->
+            <section class="trick-table-card">
+                <div class="section-title-bar" style="margin-bottom:10px;">
+                    <div class="section-title-left">
+                        <i class="fa-solid fa-table-cells" style="color:var(--gold);"></i>
+                        <h2 data-i18n-ko="현재 바닥에 나온 카드 (Current Trick)" data-i18n-en="Current Trick on Table">현재 바닥에 나온 카드 (Current Trick)</h2>
+                    </div>
+                </div>
+                <div id="trickTableArea">
+                    <!-- Dynamically rendered trick plays -->
+                </div>
+            </section>
+
+            <!-- Active Player Hand Area -->
+            <section class="hand-section">
+                <div class="section-title-bar">
+                    <div class="section-title-left">
+                        <i class="fa-solid fa-hand-holding-hand" style="color:var(--gold);"></i>
+                        <h2 data-i18n-ko="내 손패 (상단 숫자가 현재 낼 수 있는 숫자)" data-i18n-en="Your Hand (Top numbers are playable)">내 손패 (상단 숫자가 현재 낼 수 있는 숫자)</h2>
+                    </div>
+                    <div id="playActionInfo" style="font-size:0.85rem; font-weight:700;">
+                        <!-- Action info text -->
+                    </div>
+                </div>
+
+                <div class="hand-cards-row" id="handCardsRow">
+                    <!-- Dynamically rendered hand cards -->
+                </div>
+
+                <div class="hand-controls-bar">
+                    <div style="font-size:0.75rem; color:var(--text-muted);">
+                        💡 <span data-i18n-ko="같은 숫자 1~3장을 선택해 내세요. (0은 9 위에 내면 10으로 취급되어 즉시 승리!)" data-i18n-en="Play 1~3 matching numbers. (0 on 9 counts as 10 and wins trick!)">같은 숫자 1~3장을 선택해 내세요. (0은 9 위에 내면 10으로 취급되어 즉시 승리!)</span>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-action btn-pass" id="btnPassTurn" disabled>
+                            <i class="fa-solid fa-forward"></i>
+                            <span data-i18n-ko="패스 (Pass)" data-i18n-en="Pass">패스 (Pass)</span>
+                        </button>
+                        <button type="button" class="btn-action btn-play" id="btnPlayCards" disabled>
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n-ko="카드 내기 (Play)" data-i18n-en="Play Cards">카드 내기 (Play)</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right: Other Players & Battle Log -->
+        <aside class="game-sidebar">
+            <div class="players-status-card">
+                <div class="section-title-bar" style="margin-bottom:10px;">
+                    <div class="section-title-left">
+                        <i class="fa-solid fa-users" style="color:var(--gold);"></i>
+                        <h2 data-i18n-ko="플레이어 현황" data-i18n-en="Players Status">플레이어 현황</h2>
+                    </div>
+                </div>
+                <div id="otherPlayersList">
+                    <!-- Dynamically rendered player cards -->
+                </div>
+            </div>
+
+            <div class="history-logs-card">
+                <div class="section-title-bar" style="margin-bottom:6px;">
+                    <div class="section-title-left">
+                        <i class="fa-solid fa-scroll" style="color:var(--gold);"></i>
+                        <h2 style="font-size:0.9rem;" data-i18n-ko="진행 기록 (Log)" data-i18n-en="Game Log">진행 기록 (Log)</h2>
+                    </div>
+                </div>
+                <div id="historyLogsList">
+                    <!-- Dynamically rendered logs -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal: New Game Settings -->
+    <div class="game-modal-overlay" id="newGameModal">
+        <div class="game-modal-card" style="max-width:440px;">
+            <div class="game-modal-header">
+                <h2><i class="fa-solid fa-gamepad" style="color:var(--gold);"></i> <span data-i18n-ko="새 게임 설정" data-i18n-en="New Game Settings">새 게임 설정</span></h2>
+                <button class="game-modal-close" id="closeNewGameModal">&times;</button>
+            </div>
+            
+            <!-- Game Mode -->
+            <div style="margin-bottom:18px;">
+                <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:6px;" data-i18n-ko="대전 방식 선택:" data-i18n-en="Game Mode:">대전 방식 선택:</label>
+                <div class="mode-toggle-group">
+                    <button type="button" class="mode-btn active" data-mode="ai">
+                        <i class="fa-solid fa-robot"></i>
+                        <span data-i18n-ko="1인 vs AI 대전" data-i18n-en="Solo vs AI">1인 vs AI 대전</span>
+                    </button>
+                    <button type="button" class="mode-btn" data-mode="pvp">
+                        <i class="fa-solid fa-users"></i>
+                        <span data-i18n-ko="사람 vs 사람 (Pass & Play)" data-i18n-en="Pass & Play (Local)">사람 vs 사람 (Pass & Play)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Player Count -->
+            <div style="margin-bottom:20px;">
+                <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:6px;" data-i18n-ko="인원수 선택 (2~6인, 각 12장 분배):" data-i18n-en="Player Count (2~6 Players, 12 cards each):">인원수 선택 (2~6인, 각 12장 분배):</label>
+                <select id="selectPlayers" style="width:100%;padding:10px 12px;background:#1e1610;border:1px solid var(--border-glass);border-radius:6px;color:#fff;font-size:0.95rem;font-weight:700;">
+                    <option value="2">2인 대전 (각 12장 분배)</option>
+                    <option value="3">3인 대전 (각 12장 분배)</option>
+                    <option value="4" selected>4인 대전 (각 12장 분배 / 추천)</option>
+                    <option value="5">5인 대전 (각 12장 분배)</option>
+                    <option value="6">6인 대전 (각 12장 / 72장 전 카드 사용)</option>
+                </select>
+            </div>
+
+            <button class="btn-play-again" id="btnStartNewGame">
+                <span data-i18n-ko="게임 시작" data-i18n-en="Start Game">게임 시작</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal: Pass & Play Device Curtain -->
+    <div class="game-modal-overlay" id="passCurtainModal">
+        <div class="curtain-modal-card">
+            <div class="curtain-icon"><i class="fa-solid fa-user-secret"></i></div>
+            <h2 id="passCurtainTitle" style="font-size:1.25rem;margin-bottom:10px;color:#fff;">차례 교체</h2>
+            <p id="passCurtainDesc" style="color:var(--text-muted);font-size:0.9rem;margin-bottom:24px;line-height:1.5;">기기를 다음 플레이어에게 건네주세요.</p>
+            <button type="button" class="btn-play-again" id="btnPassCurtainReady">준비 완료</button>
+        </div>
+    </div>
+
+    <!-- Modal: Rulebook -->
+    <div class="game-modal-overlay" id="rulebookModal">
+        <div class="game-modal-card" style="max-width:700px;">
+            <div class="game-modal-header">
+                <h2><i class="fa-solid fa-book-open" style="color:var(--gold);"></i> <span data-i18n-ko="노비여, 일어나라! 전체 규칙서" data-i18n-en="Slaves, Arise! Full Rulebook">노비여, 일어나라! 전체 규칙서</span></h2>
+                <button class="game-modal-close" id="closeRulebookModal">&times;</button>
+            </div>
+            <div class="rb-dialog-content">
+                <h3><i class="fa-solid fa-scroll"></i> 게임 배경 (Theme)</h3>
+                <p>
+                    조선 후기, 신분제 질서가 동요하던 시기. 돈이 있으면 신분의 굴레를 벗어날 수 있었고, 평민과 노비들은 좋은 족보를 사들여 양반이 되려 했습니다. 
+                    카드의 상하를 전략적으로 뒤집어 운명을 바꾸고, 손패 12장을 가장 먼저 모두 털어내어 양반으로 등극하세요!
+                </p>
+
+                <h3><i class="fa-solid fa-layer-group"></i> 카드 구성 (Components: 72장)</h3>
+                <ul>
+                    <li>모든 카드는 상단과 하단에 서로 다른 숫자가 적혀 있는 양면(Dual-ended) 카드입니다.</li>
+                    <li>한쪽 끝은 <strong>낮은 숫자 (1, 2, 3, 4)</strong>, 다른 쪽 끝은 <strong>높은 숫자 (5, 6, 7, 8, 9, 0)</strong>로 구성됩니다.</li>
+                    <li>24개 고유 조합 × 각 3장 = <strong>총 72장</strong>.</li>
+                    <li>게임을 시작할 때 각자 무작위로 12장씩 받으며, <strong>받은 카드의 상하 방향을 임의로 바꿀 수 없습니다</strong>.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-gamepad"></i> 게임 진행 (How to Play)</h3>
+                <ol>
+                    <li><strong>선 플레이어의 카드 내기:</strong> 현재 손패의 상단에 보이는 숫자 기준으로 <strong>같은 숫자 1~3장</strong>의 조합(싱글, 페어, 트리플)을 냅니다.</li>
+                    <li><strong>다음 플레이어:</strong> 선이 낸 것과 <strong>정확히 같은 장수</strong>이면서 <strong>더 높은 숫자</strong>를 내야 합니다. 낼 수 없거나 내기 싫으면 패스합니다.</li>
+                    <li><strong>특수 0 규칙:</strong> 9가 기본적으로 가장 높은 숫자이지만, <strong>9 위에 0을 내면 10으로 취급</strong>되어 가장 높은 카드가 됩니다! <strong>9 위에 0이 나오는 순간 그 즉시 해당 트릭의 승리자</strong>가 되며 다른 플레이어는 카드를 낼 수 없습니다.</li>
+                    <li><strong>트릭 종료 및 패자 뒤집기:</strong> 한 플레이어가 카드를 내고 나머지 모든 플레이어가 연속 패스하거나 9 위에 0이 나오면, 그 플레이어가 트릭의 승리자가 됩니다. <strong>승리자를 제외한 모든 패자들은 자신의 손패에서 카드 1장을 골라 180도 뒤집습니다!</strong> (이것이 핸드를 개선하는 핵심 기믹입니다).</li>
+                    <li><strong>승리자 선:</strong> 트릭 승리자가 바닥 카드를 치우고 다음 새 트릭을 시작합니다.</li>
+                </ol>
+
+                <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 특수 능력 카드 (Special Abilities)</h3>
+                <ul>
+                    <li><strong>1 [양도]:</strong> 자신의 손패 1장을 다른 플레이어에게 넘길 수 있습니다.</li>
+                    <li><strong>5 [전원 반전]:</strong> 원하는 플레이어 1명을 지목하여 그 플레이어의 손패 전체를 뒤집게 합니다.</li>
+                    <li><strong>8 [자가 반전]:</strong> 자신의 손패 중 1장을 즉시 뒤집을 수 있습니다.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-trophy"></i> 승리 조건 (Victory)</h3>
+                <p>
+                    자신의 손패를 <strong>가장 먼저 모두 털어낸 플레이어(0장)가 최종 승리</strong>하며 즉시 게임이 종료됩니다!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Victory Screen -->
+    <div class="game-modal-overlay" id="victoryModal">
+        <div class="game-modal-card" style="max-width:480px;">
+            <div id="victoryModalBody">
+                <!-- Dynamically rendered victory rankings -->
+            </div>
+            <button class="btn-play-again" id="btnPlayAgain">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span data-i18n-ko="새 게임 플레이" data-i18n-en="Play Again">새 게임 플레이</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Embedded Direct Game Logic: Guarantees 100% executable functioning -->
+    <script>
+(function () {
+    'use strict';
+
+    // Slaves, Arise! (노비여, 일어나라!)
+    // Dual-ended cards: Low [1, 2, 3, 4] <-> High [5, 6, 7, 8, 9, 0]
+    // 24 unique pairs x 3 copies = 72 cards
+
+    const LOW_NUMS = [1, 2, 3, 4];
+    const HIGH_NUMS = [5, 6, 7, 8, 9, 0];
+
+    const SPECIAL_INFO = {
+        1: { name: { ko: '양도 (Give)', en: 'Give Card' }, desc: { ko: '내 손패 1장을 다른 플레이어에게 넘길 수 있습니다.', en: 'Give 1 card from hand to another player.' }, icon: 'fa-arrow-up' },
+        5: { name: { ko: '전원 반전 (Flip All)', en: 'Flip All' }, desc: { ko: '지목한 플레이어의 손패 전체를 뒤집습니다.', en: 'Target player flips all cards in hand.' }, icon: 'fa-rotate' },
+        8: { name: { ko: '자가 반전 (Flip One)', en: 'Flip One' }, desc: { ko: '내 손패 1장을 즉시 뒤집을 수 있습니다.', en: 'Flip 1 card in your own hand.' }, icon: 'fa-repeat' },
+        0: { name: { ko: '필살 10 (Beats 9)', en: 'Beats 9 as 10' }, desc: { ko: '9 위에 내면 10으로 취급되며 트릭을 즉시 승리합니다.', en: 'Beats 9 as 10 and immediately wins trick.' }, icon: 'fa-bolt' }
+    };
+
+    function buildMasterDeck() {
+        const deck = [];
+        let idCounter = 1;
+        for (let copy = 0; copy < 3; copy++) {
+            for (const low of LOW_NUMS) {
+                for (const high of HIGH_NUMS) {
+                    // Random 50% initial orientation
+                    const flip = Math.random() < 0.5;
+                    const top = flip ? high : low;
+                    const bottom = flip ? low : high;
+                    deck.push({
+                        id: idCounter++,
+                        top,
+                        bottom,
+                        low,
+                        high
+                    });
+                }
+            }
+        }
+        return deck;
+    }
+
+    // Audio SFX
+    let audioCtx = null;
+    function getAudioContext() {
+        if (!audioCtx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        return audioCtx;
+    }
+
+    function playTone(freq, type = 'sine', duration = 0.15, gain = 0.1) {
+        try {
+            const ctx = getAudioContext();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gainNode = ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            gainNode.gain.setValueAtTime(gain, ctx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+            osc.connect(gainNode);
+            gainNode.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + duration);
+        } catch (e) {}
+    }
+
+    function playSound(type) {
+        if (!state.soundEnabled) return;
+        switch (type) {
+            case 'play':
+                playTone(440, 'sine', 0.1, 0.12);
+                setTimeout(() => playTone(660, 'sine', 0.12, 0.1), 60);
+                break;
+            case 'flip':
+                playTone(350, 'triangle', 0.08, 0.15);
+                setTimeout(() => playTone(500, 'triangle', 0.1, 0.12), 50);
+                break;
+            case 'pass':
+                playTone(280, 'sine', 0.12, 0.08);
+                break;
+            case 'super_ten':
+                playTone(523.25, 'square', 0.15, 0.15);
+                setTimeout(() => playTone(783.99, 'square', 0.2, 0.15), 100);
+                setTimeout(() => playTone(1046.50, 'square', 0.35, 0.18), 200);
+                break;
+            case 'special':
+                playTone(600, 'sine', 0.1, 0.12);
+                setTimeout(() => playTone(900, 'sine', 0.18, 0.12), 80);
+                break;
+            case 'win':
+                [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+                    setTimeout(() => playTone(f, 'triangle', 0.25, 0.15), i * 140);
+                });
+                break;
+        }
+    }
+
+    function shuffle(arr) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+    }
+
+    // Global Game State
+    const state = {
+        lang: 'ko',
+        soundEnabled: true,
+        playerCount: 4,
+        gameMode: 'ai', // 'ai' or 'pvp'
+        players: [],
+        currentTurnPlayerId: 0,
+        currentTrick: {
+            leadPlayerId: 0,
+            currentWinnerId: null,
+            cardCount: 0,      // 1, 2, or 3
+            currentValue: -1,  // 0 to 10
+            plays: []
+        },
+        selectedCardIds: new Set(),
+        phase: 'play', // 'play', 'special_1_give', 'special_5_target', 'special_8_flip', 'loser_flip', 'curtain', 'game_over'
+        pendingLoserFlips: [],
+        winnerRanks: [],
+        historyLogs: []
+    };
+
+    function addLog(msgKo, msgEn) {
+        state.historyLogs.unshift({
+            ko: msgKo,
+            en: msgEn,
+            time: new Date().toLocaleTimeString()
+        });
+        if (state.historyLogs.length > 20) state.historyLogs.pop();
+    }
+
+    function initGame(options = {}) {
+        state.playerCount = options.playerCount || 4;
+        state.gameMode = options.gameMode || 'ai';
+        state.selectedCardIds.clear();
+        state.phase = 'play';
+        state.pendingLoserFlips = [];
+        state.winnerRanks = [];
+        state.historyLogs = [];
+
+        const master = shuffle(buildMasterDeck());
+        state.players = [];
+
+        for (let i = 0; i < state.playerCount; i++) {
+            const isHuman = (state.gameMode === 'pvp') ? true : (i === 0);
+            let name = '';
+            if (state.gameMode === 'pvp') {
+                name = (state.lang === 'ko') ? `플레이어 ${i + 1}` : `Player ${i + 1}`;
+            } else {
+                name = (i === 0) ? ((state.lang === 'ko') ? '나 (노비 탈출자)' : 'You') : `AI ${i}`;
+            }
+
+            // Deal exactly 12 cards as per rulebook
+            const hand = master.splice(0, 12);
+
+            state.players.push({
+                id: i,
+                name,
+                isHuman,
+                hand,
+                passed: false,
+                rank: null
+            });
+        }
+
+        // Random starting player
+        state.currentTurnPlayerId = Math.floor(Math.random() * state.playerCount);
+        resetTrick(state.currentTurnPlayerId);
+
+        addLog(
+            `새 게임이 시작되었습니다! ${state.players[state.currentTurnPlayerId].name}부터 선(Lead)으로 카드를 냅니다.`,
+            `New game started! ${state.players[state.currentTurnPlayerId].name} leads the first trick.`
+        );
+
+        render();
+        playSound('play');
+
+        checkAiTurn();
+    }
+
+    function resetTrick(leaderId) {
+        state.currentTrick = {
+            leadPlayerId: leaderId,
+            currentWinnerId: null,
+            cardCount: 0,
+            currentValue: -1,
+            plays: []
+        };
+        state.players.forEach(p => p.passed = false);
+        state.currentTurnPlayerId = leaderId;
+    }
+
+    // Card Flip Utility
+    function flipCard(card) {
+        const temp = card.top;
+        card.top = card.bottom;
+        card.bottom = temp;
+    }
+
+    // Validation: Can player play selected cards?
+    function getSelectedCards(player) {
+        return player.hand.filter(c => state.selectedCardIds.has(c.id));
+    }
+
+    function canPlayCombination(cards) {
+        if (!cards || cards.length < 1 || cards.length > 3) return false;
+
+        // All selected cards must have the exact same top number
+        const topNum = cards[0].top;
+        if (!cards.every(c => c.top === topNum)) return false;
+
+        const count = cards.length;
+        const trick = state.currentTrick;
+
+        // If leading trick (no cards played yet)
+        if (trick.cardCount === 0) {
+            return true; // Any single, pair, or triple
+        }
+
+        // Must match exact card count of the current trick
+        if (count !== trick.cardCount) return false;
+
+        // Special 0 played after 9 rule (PDF 1 Page 3)
+        // If current top play is 9, 0 is treated as 10 (highest card)
+        if (trick.currentValue === 9 && topNum === 0) {
+            return true; // Beats 9 as Super Ten!
+        }
+
+        // Normal play: top number must be strictly higher than current trick value
+        return topNum > trick.currentValue;
+    }
+
+    // Play action
+    function executePlay(player, cards) {
+        const count = cards.length;
+        const topNum = cards[0].top;
+        const isSuperTen = (state.currentTrick.currentValue === 9 && topNum === 0);
+        const playVal = isSuperTen ? 10 : topNum;
+
+        // Remove from hand
+        const cardIds = new Set(cards.map(c => c.id));
+        player.hand = player.hand.filter(c => !cardIds.has(c.id));
+        state.selectedCardIds.clear();
+
+        // Update trick
+        state.currentTrick.cardCount = count;
+        state.currentTrick.currentValue = playVal;
+        state.currentTrick.currentWinnerId = player.id;
+        state.currentTrick.plays.push({
+            playerId: player.id,
+            cards: [...cards],
+            value: playVal,
+            isSuperTen
+        });
+
+        playSound(isSuperTen ? 'super_ten' : 'play');
+
+        const cardName = isSuperTen ? 
+            ((state.lang === 'ko') ? `필살 0 (10으로 변환!)` : `Super 0 (Beats 9 as 10!)`) : 
+            `${topNum}번`;
+
+        addLog(
+            `${player.name}님이 ${cardName} ${count}장을 냈습니다.`,
+            `${player.name} played ${count}x #${cardName}.`
+        );
+
+        // Check if player emptied hand
+        if (player.hand.length === 0 && player.rank === null) {
+            player.rank = state.winnerRanks.length + 1;
+            state.winnerRanks.push(player.id);
+            addLog(
+                `🎉 ${player.name}님이 손패를 모두 털어내고 탈출에 성공했습니다! (${player.rank}등)`,
+                `🎉 ${player.name} emptied their hand and escaped! (${player.rank}th place)`
+            );
+            playSound('win');
+
+            // First player to shed all cards wins!
+            state.phase = 'game_over';
+            render();
+            showVictoryModal();
+            return;
+        }
+
+        // Immediate trick win by 0 on 9!
+        if (isSuperTen) {
+            addLog(
+                `⚡ 9 위에 0이 나와 즉시 트릭 승리자가 되었습니다!`,
+                `⚡ 0 played on 9! Instant trick victory!`
+            );
+            handleTrickEnd(player.id);
+            return;
+        }
+
+        // Check Special Abilities of played number (PDF 1 Page 3 Item 4)
+        if (topNum === 1 || topNum === 5 || topNum === 8) {
+            triggerSpecialAbility(player, topNum);
+            return;
+        }
+
+        advanceTurn();
+    }
+
+    function executePass(player) {
+        player.passed = true;
+        playSound('pass');
+        addLog(
+            `${player.name}님이 패스했습니다.`,
+            `${player.name} passed.`
+        );
+
+        // Check if trick is won (all other active players passed)
+        const unpassed = state.players.filter(p => !p.passed && p.hand.length > 0);
+        if (unpassed.length <= 1) {
+            const winnerId = state.currentTrick.currentWinnerId !== null ? 
+                state.currentTrick.currentWinnerId : 
+                state.currentTrick.leadPlayerId;
+            handleTrickEnd(winnerId);
+        } else {
+            advanceTurn();
+        }
+    }
+
+    function advanceTurn() {
+        let nextId = (state.currentTurnPlayerId + 1) % state.playerCount;
+        let loops = 0;
+        while ((state.players[nextId].passed || state.players[nextId].hand.length === 0) && loops < state.playerCount) {
+            nextId = (nextId + 1) % state.playerCount;
+            loops++;
+        }
+
+        if (loops >= state.playerCount || nextId === state.currentTrick.currentWinnerId) {
+            handleTrickEnd(state.currentTrick.currentWinnerId);
+            return;
+        }
+
+        state.currentTurnPlayerId = nextId;
+        render();
+
+        if (state.gameMode === 'pvp' && state.players[nextId].isHuman) {
+            showPassCurtainModal(
+                `${state.players[nextId].name}님의 차례입니다.`,
+                (state.lang === 'ko') ? `기기를 건네받은 후 [준비 완료]를 눌러주세요.` : `Pass device and click Ready.`,
+                () => checkAiTurn()
+            );
+        } else {
+            checkAiTurn();
+        }
+    }
+
+    // Trigger Special Abilities (1, 5, 8)
+    function triggerSpecialAbility(player, num) {
+        if (num === 1) {
+            // Give 1 card from hand to an opponent
+            if (player.hand.length === 0) {
+                advanceTurn();
+                return;
+            }
+            if (player.isHuman) {
+                state.phase = 'special_1_give';
+                addLog(
+                    `[특수능력 1] 상대에게 넘겨줄 카드와 상대를 선택하세요.`,
+                    `[Ability 1] Choose a card and target to give away.`
+                );
+                render();
+            } else {
+                // AI chooses worst card (lowest value) and gives to leading/strongest opponent
+                const sorted = [...player.hand].sort((a, b) => a.top - b.top);
+                const cardToGive = sorted[0];
+                const opponents = state.players.filter(p => p.id !== player.id && p.hand.length > 0);
+                opponents.sort((a, b) => a.hand.length - b.hand.length); // target with least cards
+                const target = opponents[0] || state.players[0];
+
+                player.hand = player.hand.filter(c => c.id !== cardToGive.id);
+                target.hand.push(cardToGive);
+                playSound('special');
+                addLog(
+                    `[특수능력 1] ${player.name}님이 ${target.name}님에게 카드 1장을 양도했습니다!`,
+                    `[Ability 1] ${player.name} gave 1 card to ${target.name}!`
+                );
+                advanceTurn();
+            }
+        } else if (num === 5) {
+            // Choose a player to flip ALL their hand cards
+            if (player.isHuman) {
+                state.phase = 'special_5_target';
+                addLog(
+                    `[특수능력 5] 손패 전체를 뒤집을 대상 플레이어를 선택하세요.`,
+                    `[Ability 5] Choose a target player to flip all their hand cards.`
+                );
+                render();
+            } else {
+                // AI targets opponent with lowest hand count or human
+                const opponents = state.players.filter(p => p.id !== player.id && p.hand.length > 0);
+                opponents.sort((a, b) => a.hand.length - b.hand.length);
+                const target = opponents[0] || state.players[0];
+
+                target.hand.forEach(flipCard);
+                playSound('special');
+                addLog(
+                    `[특수능력 5] ${player.name}님이 ${target.name}님의 손패 전체를 뒤집었습니다!`,
+                    `[Ability 5] ${player.name} flipped ALL hand cards of ${target.name}!`
+                );
+                advanceTurn();
+            }
+        } else if (num === 8) {
+            // Flip 1 card in own hand
+            if (player.hand.length === 0) {
+                advanceTurn();
+                return;
+            }
+            if (player.isHuman) {
+                state.phase = 'special_8_flip';
+                addLog(
+                    `[특수능력 8] 내 손패 중 뒤집을 카드 1장을 클릭하세요.`,
+                    `[Ability 8] Click 1 card in your hand to flip it.`
+                );
+                render();
+            } else {
+                // AI flips lowest card
+                const sorted = [...player.hand].sort((a, b) => a.top - b.top);
+                flipCard(sorted[0]);
+                playSound('flip');
+                addLog(
+                    `[특수능력 8] ${player.name}님이 자신의 손패 카드 1장을 뒤집었습니다.`,
+                    `[Ability 8] ${player.name} flipped 1 card in their hand.`
+                );
+                advanceTurn();
+            }
+        }
+    }
+
+    // Trick Resolution & Loser Flips (PDF 1 Page 3 Item 3)
+    function handleTrickEnd(winnerId) {
+        const winner = state.players[winnerId];
+        addLog(
+            `🏆 ${winner.name}님이 트릭을 승리했습니다!`,
+            `🏆 ${winner.name} won the trick!`
+        );
+
+        // Losers eligible to flip 1 card
+        const losers = state.players.filter(p => p.id !== winnerId && p.hand.length > 0);
+
+        if (losers.length === 0) {
+            resetTrick(winnerId);
+            render();
+            checkAiTurn();
+            return;
+        }
+
+        // Trigger loser flip phase
+        state.phase = 'loser_flip';
+        state.pendingLoserFlips = losers.map(l => l.id);
+
+        addLog(
+            `패자 뒤집기: 트릭에서 진 플레이어들은 각자 손패 1장을 뒤집습니다.`,
+            `Losers' Flip: Players who lost the trick flip 1 card in their hand.`
+        );
+
+        render();
+        processNextLoserFlip(winnerId);
+    }
+
+    function processNextLoserFlip(trickWinnerId) {
+        if (state.pendingLoserFlips.length === 0) {
+            // All flips resolved, winner leads next trick!
+            state.phase = 'play';
+            resetTrick(trickWinnerId);
+            render();
+            checkAiTurn();
+            return;
+        }
+
+        const nextLoserId = state.pendingLoserFlips[0];
+        const loser = state.players[nextLoserId];
+
+        if (loser.isHuman) {
+            // Prompt human to pick a card to flip
+            render();
+        } else {
+            // AI chooses best card to flip (flip low numbers to high)
+            const sorted = [...loser.hand].sort((a, b) => a.top - b.top);
+            flipCard(sorted[0]);
+            playSound('flip');
+            addLog(
+                `패자 뒤집기: ${loser.name}님이 카드 1장을 뒤집었습니다.`,
+                `Loser Flip: ${loser.name} flipped a card.`
+            );
+            state.pendingLoserFlips.shift();
+            processNextLoserFlip(trickWinnerId);
+        }
+    }
+
+    // AI Heuristic Turn Decision
+    function checkAiTurn() {
+        if (state.phase !== 'play') return;
+
+        const curPlayer = state.players[state.currentTurnPlayerId];
+        if (!curPlayer || curPlayer.isHuman || curPlayer.hand.length === 0) return;
+
+        setTimeout(() => {
+            if (state.phase !== 'play') return;
+            aiDecidePlay(curPlayer);
+        }, 600);
+    }
+
+    function aiDecidePlay(ai) {
+        const trick = state.currentTrick;
+        const hand = ai.hand;
+
+        // Group cards by top number
+        const groups = {};
+        hand.forEach(c => {
+            groups[c.top] = groups[c.top] || [];
+            groups[c.top].push(c);
+        });
+
+        // 1. If leading
+        if (trick.cardCount === 0) {
+            // Prefer playing pairs or triples first, or lowest single
+            const availableNums = Object.keys(groups).map(Number).sort((a, b) => a - b);
+
+            // Find best combo
+            let chosenCards = null;
+            // Check for triple
+            for (const n of availableNums) {
+                if (groups[n].length >= 3) {
+                    chosenCards = groups[n].slice(0, 3);
+                    break;
+                }
+            }
+            // Check for pair
+            if (!chosenCards) {
+                for (const n of availableNums) {
+                    if (groups[n].length >= 2) {
+                        chosenCards = groups[n].slice(0, 2);
+                        break;
+                    }
+                }
+            }
+            // Otherwise single lowest (skip 0 unless only choice)
+            if (!chosenCards) {
+                const nonZero = availableNums.filter(n => n !== 0);
+                const pickNum = nonZero.length > 0 ? nonZero[0] : availableNums[0];
+                chosenCards = [groups[pickNum][0]];
+            }
+
+            executePlay(ai, chosenCards);
+            return;
+        }
+
+        // 2. Following play: must match trick.cardCount and beat trick.currentValue
+        const count = trick.cardCount;
+        const curVal = trick.currentValue;
+
+        // Check if we can play 0 as 10 on 9
+        if (curVal === 9 && groups[0] && groups[0].length >= count) {
+            executePlay(ai, groups[0].slice(0, count));
+            return;
+        }
+
+        // Find candidate numbers strictly higher than curVal
+        const validNums = Object.keys(groups)
+            .map(Number)
+            .filter(n => n > curVal && groups[n].length >= count)
+            .sort((a, b) => a - b);
+
+        if (validNums.length > 0) {
+            // Play lowest valid match
+            const pickNum = validNums[0];
+            executePlay(ai, groups[pickNum].slice(0, count));
+        } else {
+            // Pass
+            executePass(ai);
+        }
+    }
+
+    // Render Helpers
+    function renderCardMarkup(card, options = {}) {
+        const isSelected = options.isSelected || false;
+        const isInteractive = options.interactive || false;
+        const isMini = options.mini || false;
+        const isLoserFlipTarget = (state.phase === 'loser_flip' && options.canLoserFlip);
+        const isSpecialTarget = (state.phase === 'special_8_flip' && options.canSpecialFlip);
+
+        let classes = 'slave-card';
+        if (isSelected) classes += ' selected';
+        if (isInteractive) classes += ' interactive';
+        if (isMini) classes += ' mini-card';
+        if (isLoserFlipTarget || isSpecialTarget) classes += ' flip-highlight';
+
+        const topSpecial = SPECIAL_INFO[card.top];
+        const bottomSpecial = SPECIAL_INFO[card.bottom];
+
+        return `
+            <div class="${classes}" data-card-id="${card.id}">
+                <!-- Top active number -->
+                <div class="card-side side-top num-${card.top}">
+                    <span class="card-num-main">${card.top}</span>
+                    ${topSpecial ? `<span class="card-badge-special"><i class="fa-solid ${topSpecial.icon}"></i></span>` : ''}
+                </div>
+                <!-- Card middle divider with flip indicator -->
+                <div class="card-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-icon"><i class="fa-solid fa-arrows-up-down"></i></span>
+                    <span class="divider-line"></span>
+                </div>
+                <!-- Bottom inactive number (upside down) -->
+                <div class="card-side side-bottom num-${card.bottom}">
+                    <span class="card-num-sub">${card.bottom}</span>
+                    ${bottomSpecial ? `<span class="card-sub-special"><i class="fa-solid ${bottomSpecial.icon}"></i></span>` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    function renderTrickArea() {
+        const area = document.getElementById('trickTableArea');
+        if (!area) return;
+
+        const isKo = (state.lang === 'ko');
+        const trick = state.currentTrick;
+
+        let content = '';
+        if (trick.plays.length === 0) {
+            const leader = state.players[trick.leadPlayerId];
+            content = `
+                <div class="trick-empty-placeholder">
+                    <i class="fa-solid fa-hand-holding" style="font-size:2rem; color:var(--text-muted); margin-bottom:8px;"></i>
+                    <p>${leader ? leader.name : ''}${isKo ? '님이 새로운 트릭을 시작할 카드를 냅니다 (1~3장).' : ' leads a new trick (1~3 cards).'}</p>
+                </div>
+            `;
+        } else {
+            content = `
+                <div class="trick-plays-row">
+                    ${trick.plays.map((p, idx) => {
+                        const player = state.players[p.playerId];
+                        const isLatest = (idx === trick.plays.length - 1);
+                        return `
+                            <div class="trick-play-slot ${isLatest ? 'latest' : ''}">
+                                <div class="play-slot-header">
+                                    <span class="play-player-name">${player.name}</span>
+                                    ${p.isSuperTen ? `<span class="super-ten-tag">★ 필살 10</span>` : ''}
+                                </div>
+                                <div class="play-cards-group">
+                                    ${p.cards.map(c => renderCardMarkup(c, { mini: true })).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        area.innerHTML = content;
+    }
+
+    function renderHand() {
+        const handContainer = document.getElementById('handCardsRow');
+        const btnPlay = document.getElementById('btnPlayCards');
+        const btnPass = document.getElementById('btnPassTurn');
+        const actionInfo = document.getElementById('playActionInfo');
+        if (!handContainer || !btnPlay || !btnPass) return;
+
+        const isKo = (state.lang === 'ko');
+        const activePlayer = state.players[state.currentTurnPlayerId];
+
+        // Is it active player's turn to interact?
+        const isHumanTurn = activePlayer && activePlayer.isHuman && state.phase === 'play';
+        const isLoserFlipPhase = (state.phase === 'loser_flip' && state.pendingLoserFlips.length > 0 && state.players[state.pendingLoserFlips[0]].isHuman);
+        const isSpecialFlipPhase = (state.phase === 'special_8_flip');
+
+        const displayPlayer = (state.gameMode === 'pvp') ? 
+            (isLoserFlipPhase ? state.players[state.pendingLoserFlips[0]] : activePlayer) : 
+            state.players[0];
+
+        handContainer.innerHTML = '';
+
+        if (!displayPlayer || displayPlayer.hand.length === 0) {
+            handContainer.innerHTML = `<div style="color:var(--text-muted); padding:16px;">${isKo ? '손패를 모두 비웠습니다!' : 'Hand empty!'}</div>`;
+            btnPlay.disabled = true;
+            btnPass.disabled = true;
+            return;
+        }
+
+        displayPlayer.hand.forEach(c => {
+            const isSel = state.selectedCardIds.has(c.id);
+            const cardEl = document.createElement('div');
+            cardEl.innerHTML = renderCardMarkup(c, {
+                isSelected: isSel,
+                interactive: isHumanTurn || isLoserFlipPhase || isSpecialFlipPhase,
+                canLoserFlip: isLoserFlipPhase,
+                canSpecialFlip: isSpecialFlipPhase
+            });
+
+            const domCard = cardEl.firstElementChild;
+
+            // Click handling
+            domCard.onclick = () => {
+                if (isLoserFlipPhase) {
+                    // Execute loser flip on this card
+                    flipCard(c);
+                    playSound('flip');
+                    addLog(
+                        `패자 뒤집기: ${displayPlayer.name}님이 #${c.bottom}번 카드를 뒤집어 #${c.top}번으로 만들었습니다!`,
+                        `Loser Flip: ${displayPlayer.name} flipped card to #${c.top}!`
+                    );
+                    state.pendingLoserFlips.shift();
+                    processNextLoserFlip(state.currentTrick.currentWinnerId);
+                    return;
+                }
+
+                if (isSpecialFlipPhase) {
+                    flipCard(c);
+                    playSound('flip');
+                    addLog(
+                        `[특수능력 8] ${displayPlayer.name}님이 #${c.top}번 카드로 자가 반전했습니다!`,
+                        `[Ability 8] ${displayPlayer.name} flipped card to #${c.top}!`
+                    );
+                    state.phase = 'play';
+                    advanceTurn();
+                    return;
+                }
+
+                if (isHumanTurn) {
+                    if (state.selectedCardIds.has(c.id)) {
+                        state.selectedCardIds.delete(c.id);
+                    } else {
+                        // If selecting a card with a different top number than already selected, clear previous
+                        const selected = getSelectedCards(displayPlayer);
+                        if (selected.length > 0 && selected[0].top !== c.top) {
+                            state.selectedCardIds.clear();
+                        }
+                        // Max 3 cards
+                        if (state.selectedCardIds.size < 3) {
+                            state.selectedCardIds.add(c.id);
+                        }
+                    }
+                    renderHand();
+                }
+            };
+
+            handContainer.appendChild(domCard);
+        });
+
+        // Controls update
+        const selectedCards = getSelectedCards(displayPlayer);
+        const canPlay = isHumanTurn && canPlayCombination(selectedCards);
+
+        btnPlay.disabled = !canPlay;
+        // Cannot pass if leading a fresh trick
+        btnPass.disabled = !isHumanTurn || (state.currentTrick.cardCount === 0);
+
+        if (isLoserFlipPhase) {
+            actionInfo.innerHTML = `<span style="color:var(--gold); font-weight:bold;">${isKo ? '패자 뒤집기: 손패에서 뒤집을 카드 1장을 클릭하세요!' : 'Loser Flip: Click 1 card in hand to flip!'}</span>`;
+        } else if (isSpecialFlipPhase) {
+            actionInfo.innerHTML = `<span style="color:#ec4899; font-weight:bold;">${isKo ? '특수 8 반전: 뒤집을 카드 1장을 클릭하세요!' : 'Special 8: Click 1 card to flip!'}</span>`;
+        } else if (state.phase === 'special_5_target') {
+            actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? '특수 5 발동: 아래 플레이어 목록에서 대상 플레이어를 클릭하세요!' : 'Special 5: Choose a target player below to flip all cards!'}</span>`;
+        } else if (state.phase === 'special_1_give') {
+            actionInfo.innerHTML = `<span style="color:#f59e0b; font-weight:bold;">${isKo ? '특수 1 발동: 넘겨줄 카드 1장 선택 후 대상 플레이어를 클릭하세요!' : 'Special 1: Pick 1 card and click target player!'}</span>`;
+        } else if (isHumanTurn) {
+            if (canPlay) {
+                const isSuperTen = (state.currentTrick.currentValue === 9 && selectedCards[0].top === 0);
+                actionInfo.innerHTML = isSuperTen ? 
+                    `<span style="color:#fbbf24; font-weight:900;">★ 필살 10 발동 가능! (즉시 승리)</span>` : 
+                    `<span style="color:#10b981; font-weight:bold;">${selectedCards.length}장 (#${selectedCards[0].top}) 내기 가능</span>`;
+            } else if (selectedCards.length > 0) {
+                actionInfo.innerHTML = `<span style="color:#ef4444;">낼 수 없는 조합입니다 (같은 숫자 1~3장이거나 더 높은 숫자여야 함).</span>`;
+            } else {
+                actionInfo.innerHTML = isKo ? 
+                    `낼 카드(같은 숫자 1~3장)를 선택하거나 패스하세요.` : 
+                    `Select cards (1~3 matching numbers) or pass.`;
+            }
+        } else {
+            actionInfo.innerHTML = `<span style="color:var(--text-muted);">${state.players[state.currentTurnPlayerId].name}${isKo ? '님의 차례 진행 중...' : ' is thinking...'}</span>`;
+        }
+    }
+
+    function renderPlayers() {
+        const list = document.getElementById('otherPlayersList');
+        if (!list) return;
+
+        const isKo = (state.lang === 'ko');
+        list.innerHTML = '';
+
+        state.players.forEach(p => {
+            const isTurn = (p.id === state.currentTurnPlayerId && state.phase === 'play');
+            const isSpecialTargetable = (state.phase === 'special_5_target' || state.phase === 'special_1_give') && (p.id !== state.currentTurnPlayerId);
+
+            const cardEl = document.createElement('div');
+            cardEl.className = `player-status-card ${isTurn ? 'active-turn' : ''} ${p.passed ? 'passed' : ''} ${isSpecialTargetable ? 'targetable' : ''}`;
+
+            cardEl.innerHTML = `
+                <div class="psc-top">
+                    <span class="psc-name">${p.name} ${p.isHuman ? '<i class="fa-solid fa-user"></i>' : '<i class="fa-solid fa-robot"></i>'}</span>
+                    ${p.rank ? `<span class="psc-rank-badge">🏆 ${p.rank}등</span>` : (p.passed ? `<span class="psc-pass-badge">${isKo ? '패스' : 'Pass'}</span>` : '')}
+                </div>
+                <div class="psc-cards-count">
+                    <i class="fa-solid fa-layer-group"></i> ${isKo ? '남은 손패:' : 'Cards:'} <strong>${p.hand.length}</strong>${isKo ? '장' : ''}
+                </div>
+                <div class="psc-mini-hand">
+                    ${p.hand.map(c => `
+                        <div class="psc-card-pip num-${c.top}" title="${p.isHuman ? `Top: ${c.top} / Bottom: ${c.bottom}` : `Card #${c.top}`}">
+                            <span>${p.isHuman ? c.top : '·'}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                ${isSpecialTargetable ? `<button type="button" class="btn-target-select">${isKo ? '이 플레이어 선택' : 'Select Target'}</button>` : ''}
+            `;
+
+            if (isSpecialTargetable) {
+                cardEl.onclick = () => {
+                    if (state.phase === 'special_5_target') {
+                        p.hand.forEach(flipCard);
+                        playSound('special');
+                        addLog(
+                            `[특수능력 5] ${state.players[state.currentTurnPlayerId].name}님이 ${p.name}님의 손패 전체를 뒤집었습니다!`,
+                            `[Ability 5] ${state.players[state.currentTurnPlayerId].name} flipped all cards of ${p.name}!`
+                        );
+                        state.phase = 'play';
+                        advanceTurn();
+                    } else if (state.phase === 'special_1_give') {
+                        const giver = state.players[state.currentTurnPlayerId];
+                        const selected = getSelectedCards(giver);
+                        if (selected.length === 0) {
+                            alert(isKo ? '먼저 내 손패에서 넘겨줄 카드 1장을 선택해 주세요.' : 'Select 1 card from hand to give.');
+                            return;
+                        }
+                        const cardToGive = selected[0];
+                        giver.hand = giver.hand.filter(c => c.id !== cardToGive.id);
+                        p.hand.push(cardToGive);
+                        state.selectedCardIds.clear();
+                        playSound('special');
+                        addLog(
+                            `[특수능력 1] ${giver.name}님이 ${p.name}님에게 #${cardToGive.top}번 카드를 양도했습니다!`,
+                            `[Ability 1] ${giver.name} gave #${cardToGive.top} to ${p.name}!`
+                        );
+                        state.phase = 'play';
+                        advanceTurn();
+                    }
+                };
+            }
+
+            list.appendChild(cardEl);
+        });
+    }
+
+    function renderLogs() {
+        const container = document.getElementById('historyLogsList');
+        if (!container) return;
+        const isKo = (state.lang === 'ko');
+
+        container.innerHTML = state.historyLogs.map(l => `
+            <div class="log-item">
+                <span class="log-time">${l.time}</span>
+                <span class="log-msg">${isKo ? l.ko : l.en}</span>
+            </div>
+        `).join('');
+    }
+
+    function render() {
+        renderTrickArea();
+        renderHand();
+        renderPlayers();
+        renderLogs();
+
+        const bannerText = document.getElementById('promptBannerText');
+        const isKo = (state.lang === 'ko');
+        const active = state.players[state.currentTurnPlayerId];
+
+        if (bannerText) {
+            if (state.phase === 'play') {
+                bannerText.innerHTML = `${active.name}${isKo ? '님의 차례입니다. 바닥보다 더 높은 숫자를 내거나 패스하세요.' : '\'s turn. Play higher or pass.'}`;
+            } else if (state.phase === 'loser_flip') {
+                bannerText.innerHTML = isKo ? '패자 뒤집기 단계: 트릭에서 진 플레이어는 손패 1장을 뒤집습니다.' : 'Losers\' Flip Phase: Losers flip 1 card.';
+            } else if (state.phase === 'game_over') {
+                bannerText.innerHTML = isKo ? '🎉 게임 종료! 탈출에 성공한 양반이 탄생했습니다!' : '🎉 Game Over! A new Yangban emerged!';
+            }
+        }
+    }
+
+    // Modal Helpers
+    function showPassCurtainModal(title, desc, onReady) {
+        const modal = document.getElementById('passCurtainModal');
+        if (!modal) {
+            if (onReady) onReady();
+            return;
+        }
+        document.getElementById('passCurtainTitle').textContent = title;
+        document.getElementById('passCurtainDesc').textContent = desc;
+        const btn = document.getElementById('btnPassCurtainReady');
+        btn.onclick = () => {
+            modal.classList.remove('active');
+            if (onReady) onReady();
+        };
+        modal.classList.add('active');
+    }
+
+    function showVictoryModal() {
+        const modal = document.getElementById('victoryModal');
+        const body = document.getElementById('victoryModalBody');
+        if (!modal || !body) return;
+
+        const isKo = (state.lang === 'ko');
+        const winner = state.players[state.winnerRanks[0]];
+
+        body.innerHTML = `
+            <div style="text-align:center; margin-bottom:16px;">
+                <div style="font-size:3rem; margin-bottom:8px;">👑</div>
+                <h2 style="color:var(--gold); font-size:1.4rem;">${winner.name} ${isKo ? '최종 승리 (양반 등극)!' : 'Wins the Game!'}</h2>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-top:4px;">
+                    ${isKo ? '가장 먼저 운명의 굴레(손패 12장)를 모두 털어내고 신분 탈출에 성공했습니다!' : 'First player to shed all cards and escape servitude!'}
+                </p>
+            </div>
+            <table class="scores-table" style="width:100%; border-collapse:collapse; margin-top:14px; font-size:0.85rem;">
+                <thead>
+                    <tr style="background:rgba(255,255,255,0.06); color:var(--gold);">
+                        <th style="padding:6px;">${isKo ? '순위' : 'Rank'}</th>
+                        <th style="padding:6px;">${isKo ? '플레이어' : 'Player'}</th>
+                        <th style="padding:6px;">${isKo ? '남은 손패' : 'Remaining'}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${state.players.map((p, i) => `
+                        <tr style="text-align:center; border-bottom:1px solid var(--border-glass); ${p.id === winner.id ? 'background:rgba(245,158,11,0.15); font-weight:bold;' : ''}">
+                            <td style="padding:6px;">${p.id === winner.id ? '🥇 1위 (탈출)' : `${p.hand.length}장 남음`}</td>
+                            <td style="padding:6px;">${p.name}</td>
+                            <td style="padding:6px;">${p.hand.length}장</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+
+        modal.classList.add('active');
+    }
+
+    function setupEvents() {
+        // Play / Pass buttons
+        const btnPlay = document.getElementById('btnPlayCards');
+        const btnPass = document.getElementById('btnPassTurn');
+
+        if (btnPlay) {
+            btnPlay.onclick = () => {
+                const player = state.players[state.currentTurnPlayerId];
+                const selected = getSelectedCards(player);
+                if (canPlayCombination(selected)) {
+                    executePlay(player, selected);
+                }
+            };
+        }
+
+        if (btnPass) {
+            btnPass.onclick = () => {
+                const player = state.players[state.currentTurnPlayerId];
+                executePass(player);
+            };
+        }
+
+        // New Game Modal
+        const btnNew = document.getElementById('btnNewGame');
+        const modalNew = document.getElementById('newGameModal');
+        const closeNew = document.getElementById('closeNewGameModal');
+        const btnStart = document.getElementById('btnStartNewGame');
+
+        if (btnNew && modalNew) {
+            btnNew.onclick = () => modalNew.classList.add('active');
+        }
+        if (closeNew && modalNew) {
+            closeNew.onclick = () => modalNew.classList.remove('active');
+        }
+
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        let selectedMode = 'ai';
+        modeBtns.forEach(b => {
+            b.onclick = () => {
+                modeBtns.forEach(x => x.classList.remove('active'));
+                b.classList.add('active');
+                selectedMode = b.getAttribute('data-mode') || 'ai';
+            };
+        });
+
+        if (btnStart && modalNew) {
+            btnStart.onclick = () => {
+                const sel = document.getElementById('selectPlayers');
+                const pCount = sel ? parseInt(sel.value, 10) : 4;
+                modalNew.classList.remove('active');
+                initGame({ playerCount: pCount, gameMode: selectedMode });
+            };
+        }
+
+        // Rulebook Modal
+        const btnRb = document.getElementById('btnRulebook');
+        const modalRb = document.getElementById('rulebookModal');
+        const closeRb = document.getElementById('closeRulebookModal');
+        if (btnRb && modalRb) {
+            btnRb.onclick = () => modalRb.classList.add('active');
+        }
+        if (closeRb && modalRb) {
+            closeRb.onclick = () => modalRb.classList.remove('active');
+        }
+
+        // Victory Play Again
+        const btnPlayAgain = document.getElementById('btnPlayAgain');
+        const modalVic = document.getElementById('victoryModal');
+        if (btnPlayAgain && modalVic) {
+            btnPlayAgain.onclick = () => {
+                modalVic.classList.remove('active');
+                initGame({ playerCount: state.playerCount, gameMode: state.gameMode });
+            };
+        }
+
+        // Sound Switch
+        const btnSound = document.getElementById('btnSoundSwitch');
+        if (btnSound) {
+            btnSound.onclick = () => {
+                state.soundEnabled = !state.soundEnabled;
+                btnSound.innerHTML = state.soundEnabled ? 
+                    '<i class="fa-solid fa-volume-high"></i>' : 
+                    '<i class="fa-solid fa-volume-xmark"></i>';
+            };
+        }
+
+        // Language Switch
+        const btnLang = document.getElementById('btnLangSwitch');
+        if (btnLang) {
+            btnLang.onclick = () => {
+                state.lang = (state.lang === 'ko') ? 'en' : 'ko';
+                btnLang.textContent = (state.lang === 'ko') ? 'EN' : 'KO';
+                render();
+            };
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setupEvents();
+        initGame({ playerCount: 4, gameMode: 'ai' });
+    });
+
+})();
+
+    </script>
+</body>
+</html>

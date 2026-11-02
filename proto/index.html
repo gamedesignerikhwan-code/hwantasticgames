@@ -3466,7 +3466,60 @@
 
             
             <!-- PAST LIVES / 패스트 라이브즈 (Card Game) -->
-            <article class="proto-card-row" data-category="card-game" id="card-past-lives">
+                        <!-- SLAVES, ARISE! / 노비여, 일어나라! (Card Game) -->
+            <article class="proto-card-row" data-category="card-game" id="card-slaves-arise">
+                <!-- Left Thumbnail with Integrated Category Badge -->
+                <div class="proto-card-thumb thumb-slaves-arise">
+                    <div class="mini-slaves-arise-art">
+                        <div class="sa-thumb-card sa-c1">
+                            <span class="sa-thumb-num" style="color:#d97706;">1</span>
+                            <span class="sa-thumb-sub">5</span>
+                        </div>
+                        <div class="sa-thumb-card sa-c2">
+                            <span class="sa-thumb-num" style="color:#dc2626;">9</span>
+                            <span class="sa-thumb-sub">4</span>
+                        </div>
+                        <div class="sa-thumb-card sa-c3">
+                            <span class="sa-thumb-num" style="color:#ca8a04;">0</span>
+                            <span class="sa-thumb-sub">2</span>
+                        </div>
+                    </div>
+                    <span class="thumb-category-badge"><i class="fa-solid fa-layer-group"></i> Card Game</span>
+                </div>
+
+                <!-- Middle Content -->
+                <div class="proto-card-content">
+                    <div class="proto-card-title-line">
+                        <h2 class="proto-card-title">Slaves, Arise!</h2>
+                        <span class="proto-card-subtitle">Joseon Dynasty Shedding & Hand Manipulation Card Game</span>
+                    </div>
+                    <p class="proto-card-desc">
+                        Break free from the bonds of destiny! In late Joseon dynasty, slaves and commoners purchase family lineages to become Yangban nobility. Play 1~3 matching cards to climb the trick, unleash directional flips and special powers (1: Give, 5: Flip All, 8: Self Flip), play 0 on 9 as the ultimate 10, and flip your cards when you lose to create the winning hand!
+                    </p>
+                    <div class="proto-meta-chips">
+                        <span class="meta-chip"><i class="fa-solid fa-users"></i> 2–6 Players</span>
+                        <span class="meta-chip"><i class="fa-solid fa-clock"></i> 20 Mins</span>
+                        <span class="meta-chip"><i class="fa-solid fa-arrow-up-right-dots"></i> Climbing / Shedding</span>
+                        <span class="meta-chip"><i class="fa-solid fa-arrows-rotate"></i> Hand Manipulation</span>
+                        <span class="meta-chip"><i class="fa-solid fa-crown"></i> Joseon Dynasty Theme</span>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="proto-card-actions">
+                    <button type="button" class="btn-sell-sheet-proto" onclick="openModal('slavesAriseSellSheetModal')">
+                        <i class="fa-solid fa-file-lines"></i> Sell Sheet
+                    </button>
+                    <button type="button" class="btn-rulebook-proto" onclick="openModal('slavesAriseRulebookModal')" title="Slaves, Arise! Full Rulebook" aria-label="Slaves, Arise! Full Rulebook">
+                        <i class="fa-solid fa-book-open"></i> Rulebook
+                    </button>
+                    <a href="/proto/slaves-arise/" class="btn-play-proto">
+                        <i class="fa-solid fa-play"></i> Play
+                    </a>
+                </div>
+            </article>
+
+<article class="proto-card-row" data-category="card-game" id="card-past-lives">
                 <!-- Left Thumbnail with Integrated Category Badge -->
                 <div class="proto-card-thumb thumb-past-lives">
                     <div class="mini-past-lives-art">
@@ -7101,5 +7154,6 @@
     <script src="/proto/physical-games.js"></script>
     <script src="/proto/heavens-door-rulebook.js"></script>
 <script src="/proto/past-lives-rulebook.js"></script>
+<script src="/proto/slaves-arise-rulebook.js"></script>
 </body>
 </html>

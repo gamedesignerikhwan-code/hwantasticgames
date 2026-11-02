@@ -44,7 +44,49 @@
     };
 
     const SHEETS = {
-        'past-lives': {
+                'slaves-arise': {
+            mark: '📜',
+            name: { en: "Slaves, Arise!", ko: "노비여, 일어나라!" },
+            specs: [['2–6', 'players'], ['8+', 'ages'], ['20', 'minutes'], ['72', 'cards']],
+            tags: {
+                en: ['Climbing / Shedding', 'Hand Management', 'Dual-ended Flip Cards', 'Joseon Dynasty Theme'],
+                ko: ['클라이밍 / 셰딩', '핸드 매니지먼트', '양면 반전 카드', '조선 후기 신분 탈출']
+            },
+            hero: {
+                en: {
+                    h: 'Break the bonds of destiny and become the nobility.',
+                    p: 'Manage dual-ended cards, flip them strategically when you lose a trick, deploy special powers (Give, Flip All, Self Flip), and be the first to empty your hand!'
+                },
+                ko: {
+                    h: '운명의 굴레를 뒤집어 양반으로 거듭나라!',
+                    p: '상단과 하단 숫자가 다른 양면 카드를 1~3장씩 내며 겨루고, 트릭에서 질 때마다 카드를 뒤집어 최강의 족보를 완성하여 가장 먼저 손패를 털어내세요!'
+                }
+            },
+            features: [
+                {
+                    icon: 'fa-arrows-up-down',
+                    title: { en: 'Dual-Ended Cards (72 Cards)', ko: '상하 양면 72장 카드 구성' },
+                    desc: { en: 'Low numbers (1-4) on one end, High numbers (5-9, 0) on the other. Initial orientation is random and cannot be changed arbitrarily.', ko: '한쪽 끝은 낮은 숫자(1~4), 반대쪽은 높은 숫자(5~9, 0)로 구성되어 처음 받은 방향을 함부로 바꿀 수 없습니다.' }
+                },
+                {
+                    icon: 'fa-rotate',
+                    title: { en: 'Losers Flip (Catch-up Engine)', ko: '패자 뒤집기 (역전 엔진)' },
+                    desc: { en: 'Players who lose a trick get to flip 1 card in their hand, turning weak cards into powerhouses or building combos.', ko: '트릭에서 패배한 플레이어들은 손패 1장을 골라 180도 뒤집어 약한 카드를 필살 카드로 바꾸거나 조합을 만듭니다.' }
+                },
+                {
+                    icon: 'fa-bolt',
+                    title: { en: 'Super 10 Rule (0 on 9)', ko: '필살 10 규칙 (9 위의 0)' },
+                    desc: { en: '9 is the highest card, but playing a 0 on a 9 counts as 10 and immediately wins the trick with no further plays allowed!', ko: '9가 최고 숫자이지만, 9 위에 0을 내면 10으로 취급되어 그 즉시 트릭을 승리합니다!' }
+                },
+                {
+                    icon: 'fa-wand-magic-sparkles',
+                    title: { en: 'Special Number Abilities', ko: '숫자 특수 능력 (1, 5, 8)' },
+                    desc: { en: '1 lets you give away a card, 5 flips all cards of a targeted rival, and 8 flips a card in your own hand immediately.', ko: '1은 손패 1장 양도, 5는 상대 1명의 손패 전체 반전, 8은 내 손패 1장 즉시 반전 능력을 제공합니다.' }
+                }
+            ],
+            cta: '/proto/slaves-arise/'
+        },
+'past-lives': {
             mark: '⏳',
             name: { en: "Past Lives", ko: "패스트 라이브즈" },
             specs: [['2–5', 'players'], ['10+', 'ages'], ['25', 'minutes'], ['8', 'rounds']],

@@ -2,22 +2,89 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/proto", "destination": "/proto/index.html" },
-    { "source": "/proto/", "destination": "/proto/index.html" },
-    { "source": "/proto/heavens-door", "destination": "/proto/heavens-door/index.html" },
-    { "source": "/proto/heavens-door/", "destination": "/proto/heavens-door/index.html" },
-    { "source": "/proto/heavens-door/game.css", "destination": "/proto/heavens-door/game.css" },
-    { "source": "/proto/heavens-door/game.js", "destination": "/proto/heavens-door/game.js" },
-    { "source": "/proto/past-lives", "destination": "/proto/past-lives/index.html" },
-    { "source": "/proto/past-lives/", "destination": "/proto/past-lives/index.html" },
-    { "source": "/proto/past-lives/game.css", "destination": "/proto/past-lives/game.css" },
-    { "source": "/proto/past-lives/game.js", "destination": "/proto/past-lives/game.js" },
-    { "source": "/proto/past-lives-60", "destination": "/proto/past-lives-60/index.html" },
-    { "source": "/proto/past-lives-60/", "destination": "/proto/past-lives-60/index.html" },
-    { "source": "/proto/past-lives-60/game.css", "destination": "/proto/past-lives-60/game.css" },
-    { "source": "/proto/past-lives-60/game.js", "destination": "/proto/past-lives-60/game.js" },
-    { "source": "/proto/game.css", "destination": "/proto/heavens-door/game.css" },
-    { "source": "/proto/game.js", "destination": "/proto/heavens-door/game.js" },
-    { "source": "/proto.css", "destination": "/proto/proto.css" }
+    {
+      "source": "/proto",
+      "destination": "/proto/index.html"
+    },
+    {
+      "source": "/proto/",
+      "destination": "/proto/index.html"
+    },
+    {
+      "source": "/proto/heavens-door",
+      "destination": "/proto/heavens-door/index.html"
+    },
+    {
+      "source": "/proto/heavens-door/",
+      "destination": "/proto/heavens-door/index.html"
+    },
+    {
+      "source": "/proto/heavens-door/game.css",
+      "destination": "/proto/heavens-door/game.css"
+    },
+    {
+      "source": "/proto/heavens-door/game.js",
+      "destination": "/proto/heavens-door/game.js"
+    },
+    {
+      "source": "/proto/past-lives",
+      "destination": "/proto/past-lives/index.html"
+    },
+    {
+      "source": "/proto/past-lives/",
+      "destination": "/proto/past-lives/index.html"
+    },
+    {
+      "source": "/proto/past-lives/game.css",
+      "destination": "/proto/past-lives/game.css"
+    },
+    {
+      "source": "/proto/past-lives/game.js",
+      "destination": "/proto/past-lives/game.js"
+    },
+    {
+      "source": "/proto/past-lives-60",
+      "destination": "/proto/past-lives-60/index.html"
+    },
+    {
+      "source": "/proto/past-lives-60/",
+      "destination": "/proto/past-lives-60/index.html"
+    },
+    {
+      "source": "/proto/past-lives-60/game.css",
+      "destination": "/proto/past-lives-60/game.css"
+    },
+    {
+      "source": "/proto/past-lives-60/game.js",
+      "destination": "/proto/past-lives-60/game.js"
+    },
+    {
+      "source": "/proto/game.css",
+      "destination": "/proto/heavens-door/game.css"
+    },
+    {
+      "source": "/proto/game.js",
+      "destination": "/proto/heavens-door/game.js"
+    },
+    {
+      "source": "/proto.css",
+      "destination": "/proto/proto.css"
+    },
+    {
+      "source": "/proto/slaves-arise",
+      "destination": "/proto/slaves-arise/index.html"
+    },
+    {
+      "source": "/proto/slaves-arise/",
+      "destination": "/proto/slaves-arise/index.html"
+    },
+    {
+      "source": "/proto/slaves-arise/game.css",
+      "destination": "/proto/slaves-arise/game.css"
+    },
+    {
+      "source": "/proto/slaves-arise/game.js",
+      "destination": "/proto/slaves-arise/game.js"
+    }
   ]
 }

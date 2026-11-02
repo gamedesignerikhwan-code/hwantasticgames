@@ -2547,3 +2547,65 @@ html[lang="ko"] .proto-modal-title {
         white-space: nowrap;
     }
 }
+
+/* Slaves, Arise! Art */
+.thumb-slaves-arise {
+    background: radial-gradient(circle at 60% 40%, #451a03 0%, #0c0a09 100%);
+}
+
+.mini-slaves-arise-art {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.sa-thumb-card {
+    width: 28px;
+    height: 44px;
+    background: #fdfaf2;
+    border: 1.5px solid #854d0e;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.sa-thumb-card.sa-c1 { border-color: #d97706; }
+.sa-thumb-card.sa-c2 { border-color: #dc2626; transform: translateY(-4px) scale(1.08); z-index: 2; }
+.sa-thumb-card.sa-c3 { border-color: #ca8a04; }
+
+.proto-card-row:hover .sa-thumb-card.sa-c2 {
+    transform: translateY(-8px) scale(1.15);
+}
+.proto-card-row:hover .sa-thumb-card.sa-c1 {
+    transform: translate(-3px, 2px) rotate(-6deg);
+}
+.proto-card-row:hover .sa-thumb-card.sa-c3 {
+    transform: translate(3px, 2px) rotate(6deg);
+}
+
+.sa-thumb-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #1c1917;
+}
+
+.sa-thumb-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #a8a29e;
+    transform: rotate(180deg);
+}
