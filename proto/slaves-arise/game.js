@@ -160,6 +160,7 @@
 
             // Deal exactly 12 cards as per rulebook
             const hand = master.splice(0, 12);
+            sortHand(hand);
 
             state.players.push({
                 id: i,
@@ -196,6 +197,19 @@
         };
         state.players.forEach(p => p.passed = false);
         state.currentTurnPlayerId = leaderId;
+    }
+
+        // Card Sorting Comparator (Ascending by top, then ascending by bottom)
+    function sortCardComparator(a, b) {
+        if (a.top !== b.top) {
+            return a.top - b.top;
+        }
+        return a.bottom - b.bottom;
+    }
+
+    function sortHand(hand) {
+        if (!hand || !Array.isArray(hand)) return hand;
+        return hand.sort(sortCardComparator);
     }
 
     // Card Flip Utility
@@ -403,6 +417,7 @@
                 const target = opponents[0] || state.players[0];
 
                 target.hand.forEach(flipCard);
+            sortHand(target.hand);
                 playSound('special');
                 addLog(
                     `[특수능력 5] ${player.name}님이 ${target.name}님의 손패 전체를 뒤집었습니다!`,
@@ -488,6 +503,7 @@
             // AI chooses best card to flip (flip low numbers to high)
             const sorted = [...loser.hand].sort((a, b) => a.top - b.top);
             flipCard(sorted[0]);
+            sortHand(loser.hand);
             playSound('flip');
             addLog(
                 `패자 뒤집기: ${loser.name}님이 카드 1장을 뒤집었습니다.`,
@@ -681,6 +697,10 @@
             (isLoserFlipPhase ? state.players[state.pendingLoserFlips[0]] : activePlayer) : 
             state.players[0];
 
+        if (displayPlayer && displayPlayer.hand) {
+            sortHand(displayPlayer.hand);
+        }
+
         handContainer.innerHTML = '';
 
         if (!displayPlayer || displayPlayer.hand.length === 0) {
@@ -707,6 +727,7 @@
                 if (isLoserFlipPhase) {
                     // Execute loser flip on this card
                     flipCard(c);
+                    sortHand(displayPlayer.hand);
                     playSound('flip');
                     addLog(
                         `패자 뒤집기: ${displayPlayer.name}님이 #${c.bottom}번 카드를 뒤집어 #${c.top}번으로 만들었습니다!`,
@@ -719,6 +740,7 @@
 
                 if (isSpecialFlipPhase) {
                     flipCard(c);
+                    sortHand(displayPlayer.hand);
                     playSound('flip');
                     addLog(
                         `[특수능력 8] ${displayPlayer.name}님이 #${c.top}번 카드로 자가 반전했습니다!`,
@@ -820,6 +842,7 @@
                 cardEl.onclick = () => {
                     if (state.phase === 'special_5_target') {
                         p.hand.forEach(flipCard);
+                    sortHand(p.hand);
                         playSound('special');
                         addLog(
                             `[특수능력 5] ${state.players[state.currentTurnPlayerId].name}님이 ${p.name}님의 손패 전체를 뒤집었습니다!`,
