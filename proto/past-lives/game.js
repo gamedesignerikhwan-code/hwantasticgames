@@ -453,6 +453,8 @@
                 a.player.hand.sort((x, y) => x.order - y.order);
             });
 
+            state.phase = 'choose_set_card';
+            state.pendingHumanAward = humanAward;
             render();
 
             // Prompt human
@@ -462,6 +464,8 @@
                 humanAward.player.hand.push(keptCard);
                 humanAward.player.hand.sort((x, y) => x.order - y.order);
 
+                state.phase = 'bid';
+                state.pendingHumanAward = null;
                 playSound('play');
                 completeRound();
             });
@@ -505,6 +509,7 @@
 
     // Modal: Choose which card to Play vs Keep
     function showSetChoiceModal(player, set, callback) {
+        state.pendingSetCallback = callback;
         const modal = document.getElementById('setChoiceModal');
         const container = document.getElementById('setChoiceCardsContainer');
         if (!modal || !container) {
@@ -535,11 +540,13 @@
         `;
 
         document.getElementById('btnChooseTop').onclick = () => {
+            state.pendingSetCallback = null;
             modal.classList.remove('active');
             callback(set.topCard, set.bottomCard);
         };
 
         document.getElementById('btnChooseBottom').onclick = () => {
+            state.pendingSetCallback = null;
             modal.classList.remove('active');
             callback(set.bottomCard, set.topCard);
         };
@@ -1064,6 +1071,38 @@
                     </div>
                 </div>
             `;
+
+            // Make human's awarded set interactive during choose_set_card phase
+            if (state.phase === 'choose_set_card' && state.pendingHumanAward && state.pendingHumanAward.set === set) {
+                setCol.classList.add('pending-choice-set');
+                const slotTop = setCol.querySelector('.slot-top');
+                const slotBottom = setCol.querySelector('.slot-bottom');
+                if (slotTop) {
+                    slotTop.style.cursor = 'pointer';
+                    slotTop.onclick = () => {
+                        const modal = document.getElementById('setChoiceModal');
+                        if (modal) modal.classList.remove('active');
+                        if (state.pendingSetCallback) {
+                            const cb = state.pendingSetCallback;
+                            state.pendingSetCallback = null;
+                            cb(set.topCard, set.bottomCard);
+                        }
+                    };
+                }
+                if (slotBottom) {
+                    slotBottom.style.cursor = 'pointer';
+                    slotBottom.onclick = () => {
+                        const modal = document.getElementById('setChoiceModal');
+                        if (modal) modal.classList.remove('active');
+                        if (state.pendingSetCallback) {
+                            const cb = state.pendingSetCallback;
+                            state.pendingSetCallback = null;
+                            cb(set.bottomCard, set.topCard);
+                        }
+                    };
+                }
+            }
+
             grid.appendChild(setCol);
         });
 
@@ -1202,6 +1241,8 @@
                 }
             } else if (state.phase === 'reveal') {
                 prompt.innerHTML = `<i class="fa-solid fa-award" style="color:var(--gold);"></i> ${isKo ? '모든 입찰이 공개되었습니다! 낮은 번호부터 차례대로 세트를 가져옵니다.' : 'All bids revealed! SETs are awarded in ascending order of bids.'}`;
+            } else if (state.phase === 'choose_set_card') {
+                prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '<strong>세트 획득!</strong> 팝업창에서 타임라인에 배치할 카드를 선택하세요 (바닥의 내 세트 카드를 직접 클릭해도 됩니다).' : '<strong>SET Claimed!</strong> Select a card in the popup or directly click your set card on the floor to play.'}`;
             } else if (state.phase === 'exchange') {
                 prompt.innerHTML = `<i class="fa-solid fa-handshake" style="color:var(--gold);"></i> ${isKo ? '최종 인연 교환 단계: 손패를 각 상대에게 비밀 선물하고 1장을 보관합니다.' : 'Final Karma Exchange: Secretly gift hand cards to rivals and keep 1 for your life timeline.'}`;
             } else if (state.phase === 'game_over') {

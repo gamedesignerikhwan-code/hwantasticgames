@@ -1385,3 +1385,16 @@ body {
     color: #fff;
     transform: translateY(-1px);
 }
+
+/* Interactive Pending Choice Set on Board */
+.pending-choice-set {
+    border: 2px solid var(--gold) !important;
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6) !important;
+}
+.pending-choice-set .floor-card-slot {
+    transition: filter 0.15s ease;
+}
+.pending-choice-set .floor-card-slot:hover {
+    filter: brightness(1.2);
+}
