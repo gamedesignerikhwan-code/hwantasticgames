@@ -438,6 +438,20 @@ body {
     box-shadow: 0 6px 18px rgba(245, 158, 11, 0.6);
 }
 
+.btn-skip {
+    background: rgba(245, 158, 11, 0.16);
+    color: #fbbf24;
+    border: 1.5px solid #f59e0b;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+}
+
+.btn-skip:hover:not(:disabled) {
+    background: rgba(245, 158, 11, 0.32);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
 .btn-pass {
     background: rgba(255, 255, 255, 0.08);
     color: var(--text-muted);

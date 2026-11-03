@@ -1227,6 +1227,10 @@ body {
                         💡 <span data-i18n-ko="같은 숫자 1~3장을 선택해 내세요. (0은 9 위에 내면 10으로 취급되어 즉시 승리!)" data-i18n-en="Play 1~3 matching numbers. (0 on 9 counts as 10 and wins trick!)">같은 숫자 1~3장을 선택해 내세요. (0은 9 위에 내면 10으로 취급되어 즉시 승리!)</span>
                     </div>
                     <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-action btn-skip" id="btnSkipAction" style="display:none;">
+                            <i class="fa-solid fa-forward-step"></i>
+                            <span id="btnSkipActionLabel" data-i18n-ko="건너뛰기" data-i18n-en="Skip">건너뛰기</span>
+                        </button>
                         <button type="button" class="btn-action btn-pass" id="btnPassTurn" disabled>
                             <i class="fa-solid fa-forward"></i>
                             <span data-i18n-ko="패스 (Pass)" data-i18n-en="Pass">패스 (Pass)</span>
@@ -1763,7 +1767,7 @@ body {
                 state.phase = 'special_1_give';
                 state.selectedCardIds.clear();
                 addLog(
-                    `[특수능력 1] 상대에게 넘겨줄 손패 카드 1장을 선택한 후, 대상 플레이어를 클릭하세요.`,
+                    `[특수능력 1] 상대에게 넘겨줄 손패 카드 1장을 선택한 후 대상 플레이어를 클릭하세요. (양도하지 않으려면 [양도 건너뛰기] 클릭)`,
                     `[Ability 1] Choose 1 card from hand to give, then click the target player.`
                 );
                 render();
@@ -1804,7 +1808,7 @@ body {
             if (player.isHuman) {
                 state.phase = 'special_5_target';
                 addLog(
-                    `[특수능력 5] 손패 전체를 뒤집을 대상 플레이어를 선택하세요.`,
+                    `[특수능력 5] 손패 전체를 뒤집을 대상 플레이어를 선택하세요. (뒤집지 않으려면 [반전 건너뛰기] 클릭)`,
                     `[Ability 5] Choose a target player to flip all their hand cards.`
                 );
                 render();
@@ -1832,19 +1836,28 @@ body {
             if (player.isHuman) {
                 state.phase = 'special_8_flip';
                 addLog(
-                    `[특수능력 8] 내 손패 중 뒤집을 카드 1장을 클릭하세요.`,
-                    `[Ability 8] Click 1 card in your hand to flip it.`
+                    `[특수능력 8] 내 손패 중 뒤집을 카드 1장을 클릭하세요. (뒤집지 않으려면 [반전 건너뛰기] 클릭)`,
+                    `[Ability 8] Click 1 card in hand to flip, or click [Skip Flip Ability].`
                 );
                 render();
             } else {
-                // AI flips lowest card
-                const sorted = [...player.hand].sort((a, b) => a.top - b.top);
-                flipCard(sorted[0]);
-                playSound('flip');
-                addLog(
-                    `[특수능력 8] ${player.name}님이 자신의 손패 카드 1장을 뒤집었습니다.`,
-                    `[Ability 8] ${player.name} flipped 1 card in their hand.`
-                );
+                // AI flips lowest card if bottom > top, else skips
+                const canImprove = player.hand.filter(c => c.bottom > c.top);
+                if (canImprove.length > 0) {
+                    canImprove.sort((a, b) => (b.bottom - b.top) - (a.bottom - a.top));
+                    flipCard(canImprove[0]);
+                    sortHand(player.hand);
+                    playSound('flip');
+                    addLog(
+                        `[특수능력 8] ${player.name}님이 자신의 손패 카드 1장을 뒤집었습니다.`,
+                        `[Ability 8] ${player.name} flipped 1 card in their hand.`
+                    );
+                } else {
+                    addLog(
+                        `[특수능력 8] ${player.name}님은 카드를 뒤집지 않고 유지했습니다.`,
+                        `[Ability 8] ${player.name} chose not to flip any card in hand.`
+                    );
+                }
                 advanceTurn();
             }
         }
@@ -1895,18 +1908,26 @@ body {
         const loser = state.players[nextLoserId];
 
         if (loser.isHuman) {
-            // Prompt human to pick a card to flip
+            // Prompt human to pick a card to flip or skip
             render();
         } else {
-            // AI chooses best card to flip (flip low numbers to high)
-            const sorted = [...loser.hand].sort((a, b) => a.top - b.top);
-            flipCard(sorted[0]);
-            sortHand(loser.hand);
-            playSound('flip');
-            addLog(
-                `패자 뒤집기: ${loser.name}님이 카드 1장을 뒤집었습니다.`,
-                `Loser Flip: ${loser.name} flipped a card.`
-            );
+            // AI chooses best card to flip (only if bottom > top)
+            const canImprove = loser.hand.filter(c => c.bottom > c.top);
+            if (canImprove.length > 0) {
+                canImprove.sort((a, b) => (b.bottom - b.top) - (a.bottom - a.top));
+                flipCard(canImprove[0]);
+                sortHand(loser.hand);
+                playSound('flip');
+                addLog(
+                    `패자 뒤집기: ${loser.name}님이 카드 1장을 뒤집었습니다.`,
+                    `Loser Flip: ${loser.name} flipped a card.`
+                );
+            } else {
+                addLog(
+                    `패자 뒤집기: ${loser.name}님은 카드를 뒤집지 않고 유지했습니다.`,
+                    `Loser Flip: ${loser.name} chose to keep hand without flipping.`
+                );
+            }
             state.pendingLoserFlips.shift();
             processNextLoserFlip(trickWinnerId);
         }
@@ -2082,6 +2103,8 @@ body {
         const handContainer = document.getElementById('handCardsRow');
         const btnPlay = document.getElementById('btnPlayCards');
         const btnPass = document.getElementById('btnPassTurn');
+        const btnSkip = document.getElementById('btnSkipAction');
+        const btnSkipLabel = document.getElementById('btnSkipActionLabel');
         const actionInfo = document.getElementById('playActionInfo');
         if (!handContainer || !btnPlay || !btnPass) return;
 
@@ -2093,6 +2116,7 @@ body {
         const isLoserFlipPhase = (state.phase === 'loser_flip' && state.pendingLoserFlips.length > 0 && state.players[state.pendingLoserFlips[0]].isHuman);
         const isSpecialFlipPhase = (state.phase === 'special_8_flip' && activePlayer && activePlayer.isHuman);
         const isSpecialGivePhase = (state.phase === 'special_1_give' && activePlayer && activePlayer.isHuman);
+        const isSpecialTargetPhase = (state.phase === 'special_5_target' && activePlayer && activePlayer.isHuman);
 
         const displayPlayer = (state.gameMode === 'pvp') ? 
             (isLoserFlipPhase ? state.players[state.pendingLoserFlips[0]] : activePlayer) : 
@@ -2194,18 +2218,41 @@ body {
         // Cannot pass if leading a fresh trick
         btnPass.disabled = !isHumanTurn || (state.currentTrick.cardCount === 0);
 
+        if (btnSkip) {
+            if (isLoserFlipPhase) {
+                btnSkip.style.display = 'inline-flex';
+                btnSkip.disabled = false;
+                if (btnSkipLabel) btnSkipLabel.textContent = isKo ? '뒤집지 않고 건너뛰기' : 'Skip Flip (Keep Cards)';
+            } else if (isSpecialGivePhase) {
+                btnSkip.style.display = 'inline-flex';
+                btnSkip.disabled = false;
+                if (btnSkipLabel) btnSkipLabel.textContent = isKo ? '양도 건너뛰기' : 'Skip Give Ability';
+            } else if (isSpecialTargetPhase) {
+                btnSkip.style.display = 'inline-flex';
+                btnSkip.disabled = false;
+                if (btnSkipLabel) btnSkipLabel.textContent = isKo ? '반전 건너뛰기' : 'Skip Flip All Ability';
+            } else if (isSpecialFlipPhase) {
+                btnSkip.style.display = 'inline-flex';
+                btnSkip.disabled = false;
+                if (btnSkipLabel) btnSkipLabel.textContent = isKo ? '반전 건너뛰기' : 'Skip Flip Ability';
+            } else {
+                btnSkip.style.display = 'none';
+                btnSkip.disabled = true;
+            }
+        }
+
         if (isLoserFlipPhase) {
-            actionInfo.innerHTML = `<span style="color:var(--gold); font-weight:bold;">${isKo ? '패자 뒤집기: 손패에서 뒤집을 카드 1장을 클릭하세요!' : 'Loser Flip: Click 1 card in hand to flip!'}</span>`;
+            actionInfo.innerHTML = `<span style="color:var(--gold); font-weight:bold;">${isKo ? '패자 뒤집기: 손패에서 뒤집을 카드 1장을 클릭하거나, [뒤집지 않고 건너뛰기]를 누르세요!' : 'Loser Flip: Click 1 card in hand to flip, or click [Skip Flip] to keep cards!'}</span>`;
         } else if (isSpecialFlipPhase) {
-            actionInfo.innerHTML = `<span style="color:#ec4899; font-weight:bold;">${isKo ? '특수 8 반전: 뒤집을 카드 1장을 클릭하세요!' : 'Special 8: Click 1 card to flip!'}</span>`;
+            actionInfo.innerHTML = `<span style="color:#ec4899; font-weight:bold;">${isKo ? '특수 8 반전: 뒤집을 카드 1장을 클릭하거나, [반전 건너뛰기]를 누르세요!' : 'Special 8: Click 1 card to flip, or click [Skip Flip] to keep cards!'}</span>`;
         } else if (state.phase === 'special_5_target') {
-            actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? '특수 5 발동: 우측 플레이어 목록에서 대상 플레이어를 클릭하세요!' : 'Special 5: Choose a target player on the right to flip all cards!'}</span>`;
+            actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? '특수 5 발동: 우측에서 대상을 클릭하거나, [반전 건너뛰기]를 누르세요!' : 'Special 5: Choose a target player on the right, or click [Skip Flip All]!'}</span>`;
         } else if (state.phase === 'special_1_give') {
             const selected = getSelectedCards(displayPlayer);
             if (selected.length === 0) {
-                actionInfo.innerHTML = `<span style="color:#f59e0b; font-weight:bold;">${isKo ? '🎁 특수 1 발동: 넘겨줄 손패 카드 1장을 먼저 클릭해 선택하세요!' : '🎁 Special 1: Click 1 card in your hand to select!'}</span>`;
+                actionInfo.innerHTML = `<span style="color:#f59e0b; font-weight:bold;">${isKo ? '🎁 특수 1 발동: 넘겨줄 손패 카드를 선택 후 대상을 클릭하거나, [양도 건너뛰기]를 누르세요.' : '🎁 Special 1: Click 1 card in hand to give, or click [Skip Give]!'}</span>`;
             } else {
-                actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? `🎁 #${selected[0].top}번 카드 선택됨! 우측 플레이어를 클릭하여 넘겨주세요.` : `🎁 Card #${selected[0].top} selected! Click target player on the right to give.`}</span>`;
+                actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? `🎁 #${selected[0].top}번 카드 선택됨! 우측 대상을 클릭하거나 [양도 건너뛰기]를 누르세요.` : `🎁 Card #${selected[0].top} selected! Click target player or [Skip Give].`}</span>`;
             }
         } else if (isHumanTurn) {
             if (canPlay) {
@@ -2349,18 +2396,18 @@ body {
             if (state.phase === 'play') {
                 bannerText.innerHTML = `${active.name}${isKo ? '님의 차례입니다. 바닥보다 더 높은 숫자를 내거나 패스하세요.' : '\'s turn. Play higher or pass.'}`;
             } else if (state.phase === 'loser_flip') {
-                bannerText.innerHTML = isKo ? '패자 뒤집기 단계: 트릭에서 진 플레이어는 손패 1장을 뒤집습니다.' : 'Losers\' Flip Phase: Losers flip 1 card.';
+                bannerText.innerHTML = isKo ? '패자 뒤집기 단계: 손패 카드 1장을 뒤집거나 [뒤집지 않고 건너뛰기]를 선택하세요.' : 'Losers\' Flip Phase: Losers may flip 1 card or click [Skip Flip].';
             } else if (state.phase === 'special_1_give') {
                 const selected = getSelectedCards(active);
                 if (selected.length === 0) {
-                    bannerText.innerHTML = isKo ? '🎁 특수능력 1: 넘겨줄 손패 카드 1장을 먼저 클릭해 선택하세요!' : '🎁 Special Ability 1: Click 1 card in hand to give away!';
+                    bannerText.innerHTML = isKo ? '🎁 특수능력 1: 넘겨줄 손패 카드를 선택 후 대상을 클릭하거나 [양도 건너뛰기]를 누르세요.' : '🎁 Special Ability 1: Click 1 card in hand to give or click [Skip Give]!';
                 } else {
-                    bannerText.innerHTML = isKo ? `🎁 특수능력 1: #${selected[0].top}번 카드가 선택되었습니다. 우측 플레이어 현황에서 넘겨줄 대상을 클릭하세요!` : `🎁 Special Ability 1: Card #${selected[0].top} selected. Click target player on the right to give!`;
+                    bannerText.innerHTML = isKo ? `🎁 특수능력 1: #${selected[0].top}번 카드가 선택되었습니다. 우측 대상을 클릭하거나 [양도 건너뛰기]를 누르세요.` : `🎁 Special Ability 1: Card #${selected[0].top} selected. Click target or [Skip Give]!`;
                 }
             } else if (state.phase === 'special_5_target') {
-                bannerText.innerHTML = isKo ? '⚡ 특수능력 5: 손패 전체를 뒤집을 대상 플레이어를 우측 목록에서 클릭하세요!' : '⚡ Special Ability 5: Click a target player in the status list to flip all their cards!';
+                bannerText.innerHTML = isKo ? '⚡ 특수능력 5: 손패 전체를 뒤집을 대상을 클릭하거나 [반전 건너뛰기]를 누르세요.' : '⚡ Special Ability 5: Choose a target player or click [Skip Flip All]!';
             } else if (state.phase === 'special_8_flip') {
-                bannerText.innerHTML = isKo ? '🔄 특수능력 8: 내 손패에서 뒤집을 카드 1장을 클릭하세요!' : '🔄 Special Ability 8: Click 1 card in your hand to flip it!';
+                bannerText.innerHTML = isKo ? '🔄 특수능력 8: 내 손패에서 뒤집을 카드 1장을 클릭하거나 [반전 건너뛰기]를 누르세요.' : '🔄 Special Ability 8: Click 1 card in hand to flip or click [Skip Flip]!';
             } else if (state.phase === 'game_over') {
                 bannerText.innerHTML = isKo ? '🎉 게임 종료! 탈출에 성공한 양반이 탄생했습니다!' : '🎉 Game Over! A new Yangban emerged!';
             }
@@ -2424,9 +2471,10 @@ body {
     }
 
     function setupEvents() {
-        // Play / Pass buttons
+        // Play / Pass / Skip buttons
         const btnPlay = document.getElementById('btnPlayCards');
         const btnPass = document.getElementById('btnPassTurn');
+        const btnSkip = document.getElementById('btnSkipAction');
 
         if (btnPlay) {
             btnPlay.onclick = () => {
@@ -2442,6 +2490,61 @@ body {
             btnPass.onclick = () => {
                 const player = state.players[state.currentTurnPlayerId];
                 executePass(player);
+            };
+        }
+
+        if (btnSkip) {
+            btnSkip.onclick = () => {
+                if (state.phase === 'loser_flip') {
+                    if (state.pendingLoserFlips.length === 0) return;
+                    const loserId = state.pendingLoserFlips[0];
+                    const loser = state.players[loserId];
+                    addLog(
+                        `패자 뒤집기: ${loser.name}님이 카드를 뒤집지 않고 유지했습니다.`,
+                        `Loser Flip: ${loser.name} chose to keep hand without flipping.`
+                    );
+                    playSound('pass');
+                    state.pendingLoserFlips.shift();
+                    processNextLoserFlip(state.currentTrick.currentWinnerId);
+                    return;
+                }
+
+                if (state.phase === 'special_1_give') {
+                    const p = state.players[state.currentTurnPlayerId];
+                    state.selectedCardIds.clear();
+                    addLog(
+                        `[특수능력 1] ${p.name}님이 카드 양도 능력을 건너뛰었습니다.`,
+                        `[Ability 1] ${p.name} skipped the Give ability.`
+                    );
+                    playSound('pass');
+                    state.phase = 'play';
+                    advanceTurn();
+                    return;
+                }
+
+                if (state.phase === 'special_5_target') {
+                    const p = state.players[state.currentTurnPlayerId];
+                    addLog(
+                        `[특수능력 5] ${p.name}님이 상대 뒤집기 능력을 건너뛰었습니다.`,
+                        `[Ability 5] ${p.name} skipped the Flip All ability.`
+                    );
+                    playSound('pass');
+                    state.phase = 'play';
+                    advanceTurn();
+                    return;
+                }
+
+                if (state.phase === 'special_8_flip') {
+                    const p = state.players[state.currentTurnPlayerId];
+                    addLog(
+                        `[특수능력 8] ${p.name}님이 자가 뒤집기 능력을 건너뛰었습니다.`,
+                        `[Ability 8] ${p.name} skipped the Self Flip ability.`
+                    );
+                    playSound('pass');
+                    state.phase = 'play';
+                    advanceTurn();
+                    return;
+                }
             };
         }
 
@@ -2953,6 +3056,7 @@ body {
         setupEvents();
         setupTutorialEventsSA();
         initGame({ playerCount: 4, gameMode: 'ai' });
+        window.__sa_game = { state, handleTrickEnd, triggerSpecialAbility, render, processNextLoserFlip };
     });
 
 })();
