@@ -379,9 +379,10 @@
             }
             if (player.isHuman) {
                 state.phase = 'special_1_give';
+                state.selectedCardIds.clear();
                 addLog(
-                    `[특수능력 1] 상대에게 넘겨줄 카드와 상대를 선택하세요.`,
-                    `[Ability 1] Choose a card and target to give away.`
+                    `[특수능력 1] 상대에게 넘겨줄 손패 카드 1장을 선택한 후, 대상 플레이어를 클릭하세요.`,
+                    `[Ability 1] Choose 1 card from hand to give, then click the target player.`
                 );
                 render();
             } else {
@@ -394,11 +395,26 @@
 
                 player.hand = player.hand.filter(c => c.id !== cardToGive.id);
                 target.hand.push(cardToGive);
+                sortHand(player.hand);
+                sortHand(target.hand);
                 playSound('special');
                 addLog(
                     `[특수능력 1] ${player.name}님이 ${target.name}님에게 카드 1장을 양도했습니다!`,
                     `[Ability 1] ${player.name} gave 1 card to ${target.name}!`
                 );
+                if (player.hand.length === 0 && player.rank === null) {
+                    player.rank = state.winnerRanks.length + 1;
+                    state.winnerRanks.push(player.id);
+                    addLog(
+                        `🎉 ${player.name}님이 손패를 모두 털어내고 탈출에 성공했습니다! (${player.rank}등)`,
+                        `🎉 ${player.name} emptied their hand and escaped! (${player.rank}th place)`
+                    );
+                    playSound('win');
+                    state.phase = 'game_over';
+                    render();
+                    showVictoryModal();
+                    return;
+                }
                 advanceTurn();
             }
         } else if (num === 5) {
@@ -605,12 +621,14 @@
         const isMini = options.mini || false;
         const isLoserFlipTarget = (state.phase === 'loser_flip' && options.canLoserFlip);
         const isSpecialTarget = (state.phase === 'special_8_flip' && options.canSpecialFlip);
+        const isSpecialGiveTarget = (state.phase === 'special_1_give' && options.canSpecialGive);
 
         let classes = 'slave-card';
         if (isSelected) classes += ' selected';
         if (isInteractive) classes += ' interactive';
         if (isMini) classes += ' mini-card';
         if (isLoserFlipTarget || isSpecialTarget) classes += ' flip-highlight';
+        if (isSpecialGiveTarget) classes += ' give-highlight';
 
         const topSpecial = SPECIAL_INFO[card.top];
         const bottomSpecial = SPECIAL_INFO[card.bottom];
@@ -691,7 +709,8 @@
         // Is it active player's turn to interact?
         const isHumanTurn = activePlayer && activePlayer.isHuman && state.phase === 'play';
         const isLoserFlipPhase = (state.phase === 'loser_flip' && state.pendingLoserFlips.length > 0 && state.players[state.pendingLoserFlips[0]].isHuman);
-        const isSpecialFlipPhase = (state.phase === 'special_8_flip');
+        const isSpecialFlipPhase = (state.phase === 'special_8_flip' && activePlayer && activePlayer.isHuman);
+        const isSpecialGivePhase = (state.phase === 'special_1_give' && activePlayer && activePlayer.isHuman);
 
         const displayPlayer = (state.gameMode === 'pvp') ? 
             (isLoserFlipPhase ? state.players[state.pendingLoserFlips[0]] : activePlayer) : 
@@ -715,9 +734,10 @@
             const cardEl = document.createElement('div');
             cardEl.innerHTML = renderCardMarkup(c, {
                 isSelected: isSel,
-                interactive: isHumanTurn || isLoserFlipPhase || isSpecialFlipPhase,
+                interactive: isHumanTurn || isLoserFlipPhase || isSpecialFlipPhase || isSpecialGivePhase,
                 canLoserFlip: isLoserFlipPhase,
-                canSpecialFlip: isSpecialFlipPhase
+                canSpecialFlip: isSpecialFlipPhase,
+                canSpecialGive: isSpecialGivePhase
             });
 
             const domCard = cardEl.firstElementChild;
@@ -748,6 +768,18 @@
                     );
                     state.phase = 'play';
                     advanceTurn();
+                    return;
+                }
+
+                if (isSpecialGivePhase) {
+                    if (state.selectedCardIds.has(c.id)) {
+                        state.selectedCardIds.delete(c.id);
+                    } else {
+                        state.selectedCardIds.clear();
+                        state.selectedCardIds.add(c.id);
+                    }
+                    playSound('play');
+                    render();
                     return;
                 }
 
@@ -785,9 +817,14 @@
         } else if (isSpecialFlipPhase) {
             actionInfo.innerHTML = `<span style="color:#ec4899; font-weight:bold;">${isKo ? '특수 8 반전: 뒤집을 카드 1장을 클릭하세요!' : 'Special 8: Click 1 card to flip!'}</span>`;
         } else if (state.phase === 'special_5_target') {
-            actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? '특수 5 발동: 아래 플레이어 목록에서 대상 플레이어를 클릭하세요!' : 'Special 5: Choose a target player below to flip all cards!'}</span>`;
+            actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? '특수 5 발동: 우측 플레이어 목록에서 대상 플레이어를 클릭하세요!' : 'Special 5: Choose a target player on the right to flip all cards!'}</span>`;
         } else if (state.phase === 'special_1_give') {
-            actionInfo.innerHTML = `<span style="color:#f59e0b; font-weight:bold;">${isKo ? '특수 1 발동: 넘겨줄 카드 1장 선택 후 대상 플레이어를 클릭하세요!' : 'Special 1: Pick 1 card and click target player!'}</span>`;
+            const selected = getSelectedCards(displayPlayer);
+            if (selected.length === 0) {
+                actionInfo.innerHTML = `<span style="color:#f59e0b; font-weight:bold;">${isKo ? '🎁 특수 1 발동: 넘겨줄 손패 카드 1장을 먼저 클릭해 선택하세요!' : '🎁 Special 1: Click 1 card in your hand to select!'}</span>`;
+            } else {
+                actionInfo.innerHTML = `<span style="color:#10b981; font-weight:bold;">${isKo ? `🎁 #${selected[0].top}번 카드 선택됨! 우측 플레이어를 클릭하여 넘겨주세요.` : `🎁 Card #${selected[0].top} selected! Click target player on the right to give.`}</span>`;
+            }
         } else if (isHumanTurn) {
             if (canPlay) {
                 const isSuperTen = (state.currentTrick.currentValue === 9 && selectedCards[0].top === 0);
@@ -813,12 +850,24 @@
         const isKo = (state.lang === 'ko');
         list.innerHTML = '';
 
+        const activePlayer = state.players[state.currentTurnPlayerId];
+        const selectedForGive = (state.phase === 'special_1_give') ? getSelectedCards(activePlayer) : [];
+        const hasSelectedCard = selectedForGive.length > 0;
+
         state.players.forEach(p => {
             const isTurn = (p.id === state.currentTurnPlayerId && state.phase === 'play');
             const isSpecialTargetable = (state.phase === 'special_5_target' || state.phase === 'special_1_give') && (p.id !== state.currentTurnPlayerId);
+            const isReadyTarget = isSpecialTargetable && (state.phase === 'special_5_target' || (state.phase === 'special_1_give' && hasSelectedCard));
 
             const cardEl = document.createElement('div');
-            cardEl.className = `player-status-card ${isTurn ? 'active-turn' : ''} ${p.passed ? 'passed' : ''} ${isSpecialTargetable ? 'targetable' : ''}`;
+            cardEl.className = `player-status-card ${isTurn ? 'active-turn' : ''} ${p.passed ? 'passed' : ''} ${isSpecialTargetable ? 'targetable' : ''} ${isReadyTarget ? 'ready-target' : ''}`;
+
+            let buttonLabel = isKo ? '이 플레이어 선택' : 'Select Target';
+            if (state.phase === 'special_1_give') {
+                buttonLabel = hasSelectedCard ? 
+                    (isKo ? `이 플레이어에게 #${selectedForGive[0].top} 넘겨주기` : `Give #${selectedForGive[0].top} to this player`) : 
+                    (isKo ? '카드 선택 후 클릭' : 'Select card first');
+            }
 
             cardEl.innerHTML = `
                 <div class="psc-top">
@@ -835,14 +884,14 @@
                         </div>
                     `).join('')}
                 </div>
-                ${isSpecialTargetable ? `<button type="button" class="btn-target-select">${isKo ? '이 플레이어 선택' : 'Select Target'}</button>` : ''}
+                ${isSpecialTargetable ? `<button type="button" class="btn-target-select">${buttonLabel}</button>` : ''}
             `;
 
             if (isSpecialTargetable) {
                 cardEl.onclick = () => {
                     if (state.phase === 'special_5_target') {
                         p.hand.forEach(flipCard);
-                    sortHand(p.hand);
+                        sortHand(p.hand);
                         playSound('special');
                         addLog(
                             `[특수능력 5] ${state.players[state.currentTurnPlayerId].name}님이 ${p.name}님의 손패 전체를 뒤집었습니다!`,
@@ -854,18 +903,33 @@
                         const giver = state.players[state.currentTurnPlayerId];
                         const selected = getSelectedCards(giver);
                         if (selected.length === 0) {
-                            alert(isKo ? '먼저 내 손패에서 넘겨줄 카드 1장을 선택해 주세요.' : 'Select 1 card from hand to give.');
+                            alert(isKo ? '먼저 내 손패에서 넘겨줄 카드 1장을 클릭해 선택해 주세요.' : 'Please click and select 1 card from your hand first.');
                             return;
                         }
                         const cardToGive = selected[0];
                         giver.hand = giver.hand.filter(c => c.id !== cardToGive.id);
                         p.hand.push(cardToGive);
+                        sortHand(giver.hand);
+                        sortHand(p.hand);
                         state.selectedCardIds.clear();
                         playSound('special');
                         addLog(
                             `[특수능력 1] ${giver.name}님이 ${p.name}님에게 #${cardToGive.top}번 카드를 양도했습니다!`,
                             `[Ability 1] ${giver.name} gave #${cardToGive.top} to ${p.name}!`
                         );
+                        if (giver.hand.length === 0 && giver.rank === null) {
+                            giver.rank = state.winnerRanks.length + 1;
+                            state.winnerRanks.push(giver.id);
+                            addLog(
+                                `🎉 ${giver.name}님이 손패를 모두 털어내고 탈출에 성공했습니다! (${giver.rank}등)`,
+                                `🎉 ${giver.name} emptied their hand and escaped! (${giver.rank}th place)`
+                            );
+                            playSound('win');
+                            state.phase = 'game_over';
+                            render();
+                            showVictoryModal();
+                            return;
+                        }
                         state.phase = 'play';
                         advanceTurn();
                     }
@@ -904,6 +968,17 @@
                 bannerText.innerHTML = `${active.name}${isKo ? '님의 차례입니다. 바닥보다 더 높은 숫자를 내거나 패스하세요.' : '\'s turn. Play higher or pass.'}`;
             } else if (state.phase === 'loser_flip') {
                 bannerText.innerHTML = isKo ? '패자 뒤집기 단계: 트릭에서 진 플레이어는 손패 1장을 뒤집습니다.' : 'Losers\' Flip Phase: Losers flip 1 card.';
+            } else if (state.phase === 'special_1_give') {
+                const selected = getSelectedCards(active);
+                if (selected.length === 0) {
+                    bannerText.innerHTML = isKo ? '🎁 특수능력 1: 넘겨줄 손패 카드 1장을 먼저 클릭해 선택하세요!' : '🎁 Special Ability 1: Click 1 card in hand to give away!';
+                } else {
+                    bannerText.innerHTML = isKo ? `🎁 특수능력 1: #${selected[0].top}번 카드가 선택되었습니다. 우측 플레이어 현황에서 넘겨줄 대상을 클릭하세요!` : `🎁 Special Ability 1: Card #${selected[0].top} selected. Click target player on the right to give!`;
+                }
+            } else if (state.phase === 'special_5_target') {
+                bannerText.innerHTML = isKo ? '⚡ 특수능력 5: 손패 전체를 뒤집을 대상 플레이어를 우측 목록에서 클릭하세요!' : '⚡ Special Ability 5: Click a target player in the status list to flip all their cards!';
+            } else if (state.phase === 'special_8_flip') {
+                bannerText.innerHTML = isKo ? '🔄 특수능력 8: 내 손패에서 뒤집을 카드 1장을 클릭하세요!' : '🔄 Special Ability 8: Click 1 card in your hand to flip it!';
             } else if (state.phase === 'game_over') {
                 bannerText.innerHTML = isKo ? '🎉 게임 종료! 탈출에 성공한 양반이 탄생했습니다!' : '🎉 Game Over! A new Yangban emerged!';
             }
