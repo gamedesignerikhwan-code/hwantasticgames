@@ -839,17 +839,28 @@ body {
 
 /* Symbol Image in Cards */
 .card-symbol-img {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) brightness(1.1);
     display: block;
     margin: 0 auto;
 }
 
 .played-mini-card .card-symbol-img {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+}
+
+.special-sym-svg {
+    display: block;
+    max-width: 90%;
+    height: auto;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.played-mini-card .special-sym-svg {
+    max-width: 86%;
 }
 
 .fallback-sym-icon {

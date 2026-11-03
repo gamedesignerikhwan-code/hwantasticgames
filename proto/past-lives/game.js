@@ -9,8 +9,8 @@
         WAR: { id: 'WAR', icon: '⚔', name: { ko: '전쟁', en: 'War' }, color: '#ef4444', type: 'negative' },
         STEAL: { id: 'STEAL', icon: '🥷', name: { ko: '도둑', en: 'Steal' }, color: '#6366f1', type: 'negative' },
         CONFLICT: { id: 'CONFLICT', icon: '⚡', name: { ko: '갈등', en: 'Conflict' }, color: '#eab308', type: 'negative' },
-        IGNORE_LEFT: { id: 'IGNORE_LEFT', icon: '# ←', name: { ko: '좌측 무효화', en: 'Ignore Left' }, color: '#14b8a6', type: 'special' },
-        IGNORE_RIGHT: { id: 'IGNORE_RIGHT', icon: '→ #', name: { ko: '우측 무효화', en: 'Ignore Right' }, color: '#06b6d4', type: 'special' },
+        IGNORE_LEFT: { id: 'IGNORE_LEFT', icon: '#[✕] ←', name: { ko: '좌측 무효화', en: 'Ignore Left' }, color: '#14b8a6', type: 'special' },
+        IGNORE_RIGHT: { id: 'IGNORE_RIGHT', icon: '→ #[✕]', name: { ko: '우측 무효화', en: 'Ignore Right' }, color: '#06b6d4', type: 'special' },
         DOUBLE_LEFT: { id: 'DOUBLE_LEFT', icon: '2*# ←', name: { ko: '좌측 2배', en: 'Double Left' }, color: '#ec4899', type: 'special' },
         DOUBLE_RIGHT: { id: 'DOUBLE_RIGHT', icon: '→ 2*#', name: { ko: '우측 2배', en: 'Double Right' }, color: '#8b5cf6', type: 'special' }
     };
@@ -968,16 +968,32 @@
         const sym = card.symbol;
 
         if (sym === 'IGNORE_LEFT') {
-            return `<span class="sym-hash-red">#</span> <span class="sym-arrow-green">←</span>`;
+            return `<svg class="special-sym-svg" viewBox="0 0 62 26" width="58" height="24">
+                    <text x="16" y="21" text-anchor="middle" font-family="'Outfit', 'Arial Black', sans-serif" font-weight="900" font-size="24" fill="#10b981">#</text>
+                    <line x1="7" y1="5" x2="25" y2="21" stroke="#ff2244" stroke-width="4.5" stroke-linecap="round"/>
+                    <line x1="25" y1="5" x2="7" y2="21" stroke="#ff2244" stroke-width="4.5" stroke-linecap="round"/>
+                    <path d="M58 13 L38 13 M45 6 L38 13 L45 20" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>`;
         }
         if (sym === 'IGNORE_RIGHT') {
-            return `<span class="sym-arrow-green">→</span> <span class="sym-hash-red">#</span>`;
+            return `<svg class="special-sym-svg" viewBox="0 0 62 26" width="58" height="24">
+                    <path d="M4 13 L24 13 M17 6 L24 13 L17 20" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <text x="46" y="21" text-anchor="middle" font-family="'Outfit', 'Arial Black', sans-serif" font-weight="900" font-size="24" fill="#10b981">#</text>
+                    <line x1="37" y1="5" x2="55" y2="21" stroke="#ff2244" stroke-width="4.5" stroke-linecap="round"/>
+                    <line x1="55" y1="5" x2="37" y2="21" stroke="#ff2244" stroke-width="4.5" stroke-linecap="round"/>
+                </svg>`;
         }
         if (sym === 'DOUBLE_LEFT') {
-            return `<span class="sym-double-green">2*# ←</span>`;
+            return `<svg class="special-sym-svg" viewBox="0 0 74 26" width="62" height="24">
+                    <text x="24" y="21" text-anchor="middle" font-family="'Outfit', 'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#10b981">2*#</text>
+                    <path d="M70 13 L50 13 M57 6 L50 13 L57 20" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>`;
         }
         if (sym === 'DOUBLE_RIGHT') {
-            return `<span class="sym-double-green">→ 2*#</span>`;
+            return `<svg class="special-sym-svg" viewBox="0 0 74 26" width="62" height="24">
+                    <path d="M4 13 L24 13 M17 6 L24 13 L17 20" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    <text x="50" y="21" text-anchor="middle" font-family="'Outfit', 'Arial Black', sans-serif" font-weight="900" font-size="20" fill="#10b981">2*#</text>
+                </svg>`;
         }
 
         const symKey = sym.toLowerCase();
@@ -1156,6 +1172,8 @@
 
     // Update Banner Prompt & Static Texts
     function updateStaticTexts() {
+        const isKo = (state.lang === 'ko');
+
         // Translate all data-i18n attributes
         document.querySelectorAll('[data-i18n-ko]').forEach(el => {
             const txt = isKo ? el.getAttribute('data-i18n-ko') : (el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko'));
@@ -1167,7 +1185,6 @@
     
         const prompt = document.getElementById('promptText');
         const turnStatus = document.getElementById('turnStatusBadge');
-        const isKo = (state.lang === 'ko');
 
         if (turnStatus) {
             turnStatus.textContent = isKo ? 
@@ -1429,14 +1446,14 @@
         },
         {
             step: 4,
-            title: { ko: '4. 특수 방향 카드 (무효화 & 2배 폭발!)', en: '4. Special Directional Cards (Null & 2x)' },
+            title: { ko: '4. 특수 방향 카드 (이웃 카드 효과 제거 & 2배 증폭!)', en: '4. Special Directional Cards (Cancel & 2x Multiplier)' },
             desc: {
-                ko: '타임라인에는 숫자 대신 화살표가 있는 특수 카드가 존재합니다! 점수를 뒤집는 최고의 전략 요소입니다.<br>• <strong>`# ←` / `→ #` (무효화)</strong>: 이웃한 카드의 점수를 <strong>0점</strong>으로 만듭니다! 치명적인 감점(배신, 빚)을 지우는 완벽한 방패!<br>• <strong>`2*# ←` / `→ 2*#` (2배 증폭)</strong>: 이웃한 카드의 점수를 <strong>2배</strong>로 증폭합니다!',
-                en: 'Special cards bear directional arrows instead of raw numbers! They offer incredible tactical reversals:<br>• <strong>`# ←` / `→ #` (Nullify)</strong>: Nullifies neighbor score to <strong>0 VP</strong>! Shield yourself against painful Betrayals or Debts!<br>• <strong>`2*# ←` / `→ 2*#` (Double)</strong>: Multiplies neighbor score by <strong>2x</strong>! Turn high-tier Virtues into jackpot scores!'
+                ko: '타임라인에는 숫자 대신 화살표가 있는 특수 카드가 존재합니다! 점수를 뒤집는 최고의 전략 요소입니다.<br>• <strong>`#[✕] ←` / `→ #[✕]` (이웃 카드 효과 제거 6장)</strong>: 화살표 방향 바로 이웃한 카드의 효과와 점수를 <strong>완전 무효화(0점 처리)</strong>합니다! 치명적인 감점(배신, 빚)을 지우는 완벽한 방패!<br>• <strong>`2*# ←` / `→ 2*#` (2배 증폭 4장)</strong>: 이웃한 카드의 점수와 심볼/시대 카운트를 <strong>2배</strong>로 증폭합니다!',
+                en: 'Special cards bear directional arrows instead of raw numbers! They offer incredible tactical reversals:<br>• <strong>`#[✕] ←` / `→ #[✕]` (Cancel Neighbor Card)</strong>: Completely nullifies neighbor card score and effect to <strong>0 VP</strong>! Shield yourself against painful debts or wars!<br>• <strong>`2*# ←` / `→ 2*#` (Double Multiplier)</strong>: Multiplies neighbor card value and counts by <strong>2x</strong>!'
             },
             keyBox: {
-                ko: '<strong>직접 체험해보세요:</strong> 아래 [🔄 무효화 카드 효과 토글] 버튼을 눌러보세요. 오른쪽의 [# ←] 카드가 왼쪽의 [-15점 배신]을 0점으로 완벽히 무력화하는 모습을 볼 수 있습니다!',
-                en: '<strong>Interactive Playground:</strong> Click the toggle button below. Watch how the [# ←] card completely neutralizes the -15 VP Betrayal penalty into 0 VP!'
+                ko: '<strong>직접 체험해보세요:</strong> 아래 [🔄 무효화 카드 효과 토글] 버튼을 눌러보세요. 오른쪽의 [#[✕] ←] 카드가 왼쪽의 [-15점 배신]을 0점으로 완벽히 무력화하는 모습을 볼 수 있습니다!',
+                en: '<strong>Interactive Playground:</strong> Click the toggle button below. Watch how the [#[✕] ←] card completely neutralizes the -15 VP Betrayal penalty into 0 VP!'
             },
             renderDemo: (isKo) => `
                 <div class="tut-visual-box">
@@ -1455,7 +1472,7 @@
 
                         <div class="tut-demo-card" style="border-color:#38bdf8;">
                             <div class="tut-card-era">특수</div>
-                            <div class="tut-card-sym" style="color:#38bdf8; font-size:1.1rem; font-weight:900;"># ←</div>
+                            <div class="tut-card-sym" style="color:#38bdf8; font-size:1.1rem; font-weight:900;">#[✕] ←</div>
                             <div class="tut-card-dir">좌측 무효화</div>
                             <div style="font-size:0.58rem; text-align:center; color:#94a3b8;">${isKo ? '화살표 카드' : 'Arrow Card'}</div>
                         </div>
