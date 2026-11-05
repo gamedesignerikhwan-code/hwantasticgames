@@ -3256,66 +3256,58 @@ body {
         resolveFinalScoring();
     }
 
-    // Special Cards Resolution Engine (PDF 1 Page 8 & 9)
+    // Special Cards Resolution Engine (Measured at game over on final sorted timeline)
     function resolveSpecialCards(playedCards) {
-        const line = playedCards.map(c => ({ ...c }));
+        const line = [...playedCards];
         line.sort((a, b) => a.order - b.order);
 
         const SPECIAL_TYPES = new Set(['IGNORE_LEFT', 'IGNORE_RIGHT', 'DOUBLE_LEFT', 'DOUBLE_RIGHT']);
 
-        // Step 1: Remove special cards pointing to another special card or out of bounds
-        // (As per rulebook: "Check the special cards and remove a card if the special card is indicating a special card by ascending order.")
-        let changed = true;
-        while (changed) {
-            changed = false;
-            for (let i = 0; i < line.length; i++) {
-                const sym = line[i].symbol;
-                if (SPECIAL_TYPES.has(sym)) {
-                    const targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
-                    if (targetIdx < 0 || targetIdx >= line.length || SPECIAL_TYPES.has(line[targetIdx].symbol)) {
-                        line.splice(i, 1);
-                        changed = true;
-                        break;
-                    }
-                }
-            }
-        }
+        // Initialize status for all cards by card.order
+        const cardStatus = {};
+        line.forEach(c => {
+            cardStatus[c.order] = { multiplier: 1, isIgnored: false };
+        });
 
-        // Step 2: Apply valid special cards to adjacent regular cards
-        const ignoredIndices = new Set();
-        const multipliers = {};
-        for (let i = 0; i < line.length; i++) multipliers[i] = 1;
-
+        // Apply special cards to immediately adjacent regular cards
         for (let i = 0; i < line.length; i++) {
-            const sym = line[i].symbol;
-            if (SPECIAL_TYPES.has(sym)) {
-                const targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
-                if (targetIdx >= 0 && targetIdx < line.length && !SPECIAL_TYPES.has(line[targetIdx].symbol)) {
-                    if (sym === 'IGNORE_LEFT' || sym === 'IGNORE_RIGHT') {
-                        ignoredIndices.add(targetIdx);
-                    } else if (sym === 'DOUBLE_LEFT' || sym === 'DOUBLE_RIGHT') {
-                        multipliers[targetIdx] *= 2;
-                    }
-                }
+            const card = line[i];
+            const sym = card.symbol;
+            if (!SPECIAL_TYPES.has(sym)) continue;
+
+            const targetIdx = (sym === 'IGNORE_LEFT' || sym === 'DOUBLE_LEFT') ? i - 1 : i + 1;
+            if (targetIdx < 0 || targetIdx >= line.length) continue;
+
+            const targetCard = line[targetIdx];
+            // Special cards only affect regular cards
+            if (SPECIAL_TYPES.has(targetCard.symbol)) continue;
+
+            if (sym === 'IGNORE_LEFT' || sym === 'IGNORE_RIGHT') {
+                cardStatus[targetCard.order].isIgnored = true;
+            } else if (sym === 'DOUBLE_LEFT' || sym === 'DOUBLE_RIGHT') {
+                cardStatus[targetCard.order].multiplier *= 2;
             }
         }
 
-        // Step 3: Count symbols and eras
+        // Count symbols and eras for active regular cards
         const symbolCounts = {};
         const eraCounts = {};
         const activeCards = [];
 
         for (let i = 0; i < line.length; i++) {
             const card = line[i];
-            if (SPECIAL_TYPES.has(card.symbol) || ignoredIndices.has(i)) continue;
+            if (SPECIAL_TYPES.has(card.symbol)) continue;
 
-            const mult = multipliers[i] || 1;
+            const st = cardStatus[card.order];
+            if (st.isIgnored) continue;
+
+            const mult = st.multiplier || 1;
             symbolCounts[card.symbol] = (symbolCounts[card.symbol] || 0) + mult;
             eraCounts[card.era] = (eraCounts[card.era] || 0) + mult;
             activeCards.push({ ...card, effectiveCount: mult });
         }
 
-        return { symbolCounts, eraCounts, activeCards, line, ignoredIndices, multipliers };
+        return { symbolCounts, eraCounts, activeCards, line, cardStatus };
     }
 
     // Final Scoring Resolution
@@ -3762,8 +3754,9 @@ body {
             // Guarantee horizontal ascending order for timeline cards
             p.played.sort((a, b) => a.order - b.order);
 
-            // Resolve special cards for active visual indicators
-            const res = resolveSpecialCards(p.played);
+            // Special cards are only measured when the game is completely over!
+            const isGameOver = (state.phase === 'game_over');
+            const res = isGameOver ? resolveSpecialCards(p.played) : null;
 
             board.innerHTML = `
                 <div class="pb-header">
@@ -3783,9 +3776,9 @@ body {
                 <div class="pb-timeline-row">
                     ${p.played.length === 0 ? `
                         <div class="timeline-empty-hint">${isKo ? '아직 배치된 카드가 없습니다. 세트에서 1장을 골라 타임라인을 만듭니다.' : 'No cards played yet.'}</div>
-                    ` : p.played.map((c, i) => {
-                        const isDoubled = (res.multipliers[i] && res.multipliers[i] > 1);
-                        const isIgnored = res.ignoredIndices && res.ignoredIndices.has(i);
+                    ` : p.played.map((c) => {
+                        const isDoubled = isGameOver && res && res.cardStatus[c.order] && res.cardStatus[c.order].multiplier > 1;
+                        const isIgnored = isGameOver && res && res.cardStatus[c.order] && res.cardStatus[c.order].isIgnored;
                         return renderCardMarkup(c, { mini: true, nonClickable: true, isDoubled, isIgnored });
                     }).join('')}
                 </div>
