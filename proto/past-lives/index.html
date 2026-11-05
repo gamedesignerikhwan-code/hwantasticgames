@@ -2131,13 +2131,75 @@ body {
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 8px !important;
+    gap: 4px !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
-    padding: 6px 4px 8px !important;
-    min-height: 86px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(245, 158, 11, 0.3) transparent;
+    padding: 4px 2px !important;
+    min-height: 72px !important;
+    scrollbar-width: none !important; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none !important; /* Hide scrollbar IE/Edge */
+}
+
+.pb-timeline-row::-webkit-scrollbar,
+.played-cards-strip::-webkit-scrollbar,
+.hand-cards-row::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.played-cards-strip,
+.hand-cards-row {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+/* Compact sizing so all 8-9 cards fit naturally on one row */
+.played-mini-card {
+    width: 42px !important;
+    height: 64px !important;
+    background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 4px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 3px 2px !important;
+    position: relative;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s;
+}
+
+.played-mini-card .card-symbol-top {
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.played-mini-card .card-symbol-img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+}
+
+.played-mini-card .card-order-bottom {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 2px !important;
+}
+
+.played-mini-card .card-order-num {
+    font-size: 0.8rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+}
+
+.played-mini-card .card-era-pip {
+    width: 5px !important;
+    height: 5px !important;
 }
 
 .pb-timeline-row .pl-card.played-mini-card {
