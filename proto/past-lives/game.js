@@ -951,12 +951,77 @@
         // Sort descending by total score
         playerResults.sort((a, b) => b.totalScore - a.totalScore);
 
+        state.finalResults = playerResults;
+
         render();
         playSound('win');
-        showVictoryModal(playerResults);
+        // Do NOT show victoryModal popup; results are rendered in-page so timelines remain 100% visible
     }
 
-    // Victory Screen Modal
+    // In-Page Final Results Renderer (No blocking modal, player boards fully visible below)
+    function renderFinalResults() {
+        const resultsSection = document.getElementById('finalResultsSection');
+        if (!resultsSection) return;
+
+        if (state.phase !== 'game_over' || !state.finalResults) {
+            resultsSection.style.display = 'none';
+            return;
+        }
+
+        resultsSection.style.display = 'block';
+        const isKo = (state.lang === 'ko');
+        const results = state.finalResults;
+        const winner = results[0];
+
+        const titleEl = document.getElementById('finalWinnerTitle');
+        const scoreEl = document.getElementById('finalWinnerScore');
+        const tableWrap = document.getElementById('finalScoresTableWrap');
+
+        if (titleEl) {
+            titleEl.innerHTML = `🎉 ${winner.player.name} ${isKo ? '최종 승리!' : 'Wins the Game!'}`;
+        }
+        if (scoreEl) {
+            scoreEl.innerHTML = `${isKo ? '최종 점수: ' : 'Final Score: '}<strong>${winner.totalScore} VP</strong>`;
+        }
+
+        if (tableWrap) {
+            tableWrap.innerHTML = `
+                <table class="scores-comparison">
+                    <thead>
+                        <tr>
+                            <th>${isKo ? '순위' : 'Rank'}</th>
+                            <th>${isKo ? '플레이어' : 'Player'}</th>
+                            <th>${isKo ? '인연 점수' : 'Cards VP'}</th>
+                            <th>${isKo ? '동일시대 보너스' : 'Era Bonus'}</th>
+                            <th>${isKo ? '총점' : 'Total'}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${results.map((r, i) => `
+                            <tr class="${i === 0 ? 'winner-row' : ''}">
+                                <td>${i === 0 ? '🥇 1위' : (i === 1 ? '🥈 2위' : (i === 2 ? '🥉 3위' : `${i + 1}위`))}</td>
+                                <td><strong>${r.player.name}</strong></td>
+                                <td>${r.rawScore} VP</td>
+                                <td style="${r.hasEraBonus ? 'color:#10b981; font-weight:bold;' : 'color:var(--text-muted);'}">
+                                    ${r.hasEraBonus ? `+10 VP (${ERA_NAMES[state.lang][r.bestEra]} ×${r.maxEraCount})` : '-'}
+                                </td>
+                                <td style="color:var(--gold); font-size:1.05rem; font-weight:900;">${r.totalScore} VP</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        const btnAgain = document.getElementById('btnPlayAgainInPage');
+        if (btnAgain) {
+            btnAgain.onclick = () => {
+                initGame({ playerCount: state.playerCount, gameMode: state.gameMode });
+            };
+        }
+    }
+
+    // Victory Screen Modal (Deprecated - rendered in-page)
     function showVictoryModal(results) {
         const modal = document.getElementById('victoryModal');
         const list = document.getElementById('victoryScoresList');
@@ -1278,10 +1343,15 @@
         const btnBid = document.getElementById('btnSubmitBid');
         if (!handRow || !btnBid) return;
 
-        if (state.phase === 'exchange') {
+        if (state.phase === 'game_over') {
+            if (handSection) handSection.style.display = 'none';
+            return;
+        } else if (state.phase === 'exchange') {
+            if (handSection) handSection.style.display = '';
             renderInPageExchangeUI(handSection, handRow, btnBid);
             return;
         } else {
+            if (handSection) handSection.style.display = '';
             btnBid.style.display = '';
             const guideEl = document.getElementById('exchangeGuideBanner');
             if (guideEl) guideEl.remove();
@@ -1360,19 +1430,29 @@
             // Special cards are only measured when the game is completely over!
             const isGameOver = (state.phase === 'game_over');
             const res = isGameOver ? resolveSpecialCards(p.played) : null;
+            const pr = (isGameOver && state.finalResults) ? state.finalResults.find(r => r.player.id === p.id) : null;
+            const rankIdx = (isGameOver && state.finalResults) ? state.finalResults.findIndex(r => r.player.id === p.id) : -1;
+            const rankBadge = rankIdx === 0 ? '🥇 1위' : (rankIdx === 1 ? '🥈 2위' : (rankIdx === 2 ? '🥉 3위' : (rankIdx > 2 ? `${rankIdx + 1}위` : '')));
 
             board.innerHTML = `
                 <div class="pb-header">
                     <div class="player-info">
+                        ${rankBadge ? `<span class="player-rank-tag" style="background:rgba(245,158,11,0.2); color:var(--gold); border:1px solid var(--border-gold); padding:2px 8px; border-radius:999px; font-weight:800; font-size:0.8rem;">${rankBadge}</span>` : ''}
                         <span class="player-name">${p.name}</span>
                         <span class="player-role-badge">${p.isHuman ? 'Human' : 'AI'}</span>
                         <span class="player-cards-count">${isKo ? `배치 ${p.played.length}장 / 손패 ${p.hand.length}장` : `Played: ${p.played.length} / Hand: ${p.hand.length}`}</span>
                     </div>
                     <div class="pb-bid-status">
-                        ${state.phase === 'bid' ? (
-                            p.bidCard ? `<span class="bid-placed-tag">✔ ${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : `<span class="bid-waiting-tag">${isKo ? '입찰 대기중' : 'Thinking...'}</span>`
-                        ) : (
-                            p.bidCard ? `<span class="bid-revealed-tag"><i class="fa-solid fa-gavel"></i> ${isKo ? `입찰 #${p.bidCard.orderStr}` : `Bid #${p.bidCard.orderStr}`}${p.roundBidRank ? ` (${p.roundBidRank}${isKo ? '위' : 'th'})` : ''}</span>` : ''
+                        ${isGameOver && pr ? `
+                            <span class="final-score-tag" style="background:rgba(245,158,11,0.18); border:1px solid var(--border-gold); padding:4px 10px; border-radius:6px; font-weight:900; color:var(--gold); font-size:0.95rem;">
+                                🏆 ${pr.totalScore} VP <span style="font-size:0.78rem; font-weight:600; color:#cbd5e1;">(${isKo ? '인연' : 'Cards'} ${pr.rawScore} ${pr.hasEraBonus ? `+ ${isKo ? '시대' : 'Era'} 10` : ''})</span>
+                            </span>
+                        ` : (
+                            state.phase === 'bid' ? (
+                                p.bidCard ? `<span class="bid-placed-tag">✔ ${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : `<span class="bid-waiting-tag">${isKo ? '입찰 대기중' : 'Thinking...'}</span>`
+                            ) : (
+                                p.bidCard ? `<span class="bid-revealed-tag"><i class="fa-solid fa-gavel"></i> ${isKo ? `입찰 #${p.bidCard.orderStr}` : `Bid #${p.bidCard.orderStr}`}${p.roundBidRank ? ` (${p.roundBidRank}${isKo ? '위' : 'th'})` : ''}</span>` : ''
+                            )
                         )}
                     </div>
                 </div>
@@ -1394,6 +1474,7 @@
     function render() {
         renderFloorSets();
         renderHumanHand();
+        renderFinalResults();
         renderPlayerBoards();
         updateStaticTexts();
     }
@@ -1447,7 +1528,7 @@
             } else if (state.phase === 'exchange') {
                 prompt.innerHTML = `<i class="fa-solid fa-gift" style="color:var(--gold);"></i> ${isKo ? '<strong>최종 비밀 인연 교환:</strong> 아래 상대들의 타임라인을 확인하고, 손패의 카드들을 누구에게 선물할지 지정하세요.' : '<strong>Final Secret Exchange:</strong> Inspect other players timelines below and choose gifts.'}`;
             } else if (state.phase === 'game_over') {
-                prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '게임 종료! 최종 점수를 확인하세요.' : 'Game Over! Inspect your final relationship scores.'}`;
+                prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '<strong>게임 종료:</strong> 아래에서 최종 순위와 각 플레이어의 생애 타임라인을 확인하세요.' : '<strong>Game Over:</strong> Review the final rankings and inspect every player\'s life timeline below.'}`;
             }
         }
     }
