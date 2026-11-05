@@ -1606,3 +1606,421 @@ body {
     align-items: center;
     gap: 4px;
 }
+
+/* ==========================================================================
+   Floor Set Cards & Underneath Played Bid Cards
+   ========================================================================== */
+.floor-sets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 12px;
+    align-items: start;
+    justify-content: center;
+    padding: 6px 2px;
+}
+
+.set-column {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.set-column.awarded {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.set-column.pending-choice-set {
+    border: 2px solid var(--gold) !important;
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.55), inset 0 0 10px rgba(245, 158, 11, 0.12) !important;
+    background: rgba(245, 158, 11, 0.08) !important;
+}
+
+.set-col-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.set-claimed-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.set-claimed-tag.claim-human-tag {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.25) 100%);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.floor-card-slot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+}
+
+.floor-card-slot .slot-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.floor-card-slot.interactive-choice {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px;
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.floor-card-slot.interactive-choice:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
+}
+
+.choice-action-overlay {
+    position: absolute;
+    inset: 18px 2px 2px 2px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0.96;
+    transition: opacity 0.15s, background 0.15s;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.floor-card-slot.interactive-choice:hover .choice-action-overlay {
+    background: rgba(15, 23, 42, 0.65);
+    opacity: 1;
+}
+
+.btn-play-choice {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.72rem;
+    border: none;
+    border-radius: 999px;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.choice-sub-hint {
+    font-size: 0.55rem;
+    color: #cbd5e1;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.choice-result-badge {
+    position: absolute;
+    top: 20px;
+    right: 2px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 999px;
+    z-index: 4;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.choice-result-badge.play-badge {
+    background: #10b981;
+    color: #fff;
+}
+
+.choice-result-badge.keep-badge {
+    background: #6366f1;
+    color: #fff;
+}
+
+/* Bid card placed underneath existing cards */
+.floor-bid-slot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(245, 158, 11, 0.35);
+    position: relative;
+}
+
+.bid-slot-header {
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 999px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.bid-card-wrapper {
+    display: flex;
+    justify-content: center;
+    transform: scale(0.95);
+    transform-origin: top center;
+}
+
+.floor-bid-slot.pending-bid {
+    border-top: 1px dashed rgba(148, 163, 184, 0.2);
+    padding: 8px 4px;
+}
+
+.bid-slot-empty-label {
+    font-size: 0.64rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ==========================================================================
+   Floor Set Cards & Underneath Played Bid Cards
+   ========================================================================== */
+.floor-sets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 12px;
+    align-items: start;
+    justify-content: center;
+    padding: 6px 2px;
+}
+
+.set-column {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.set-column.awarded {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.set-column.pending-choice-set {
+    border: 2px solid var(--gold) !important;
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.55), inset 0 0 10px rgba(245, 158, 11, 0.12) !important;
+    background: rgba(245, 158, 11, 0.08) !important;
+}
+
+.set-col-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.set-claimed-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.set-claimed-tag.claim-human-tag {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.25) 100%);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+.floor-card-slot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+}
+
+.floor-card-slot .slot-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.floor-card-slot.interactive-choice {
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 2px;
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.floor-card-slot.interactive-choice:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
+}
+
+.choice-action-overlay {
+    position: absolute;
+    inset: 18px 2px 2px 2px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0.96;
+    transition: opacity 0.15s, background 0.15s;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.floor-card-slot.interactive-choice:hover .choice-action-overlay {
+    background: rgba(15, 23, 42, 0.65);
+    opacity: 1;
+}
+
+.btn-play-choice {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.72rem;
+    border: none;
+    border-radius: 999px;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.choice-sub-hint {
+    font-size: 0.55rem;
+    color: #cbd5e1;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.choice-result-badge {
+    position: absolute;
+    top: 20px;
+    right: 2px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 999px;
+    z-index: 4;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.choice-result-badge.play-badge {
+    background: #10b981;
+    color: #fff;
+}
+
+.choice-result-badge.keep-badge {
+    background: #6366f1;
+    color: #fff;
+}
+
+/* Bid card placed underneath existing cards */
+.floor-bid-slot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(245, 158, 11, 0.35);
+    position: relative;
+}
+
+.bid-slot-header {
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 999px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.bid-card-wrapper {
+    display: flex;
+    justify-content: center;
+    transform: scale(0.95);
+    transform-origin: top center;
+}
+
+.floor-bid-slot.pending-bid {
+    border-top: 1px dashed rgba(148, 163, 184, 0.2);
+    padding: 8px 4px;
+}
+
+.bid-slot-empty-label {
+    font-size: 0.64rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

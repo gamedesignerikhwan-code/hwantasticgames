@@ -418,9 +418,9 @@
         modal.classList.add('active');
     }
 
-    // Reveal Bids & Award SETs
+    // Reveal Bids & Award SETs (No popups: revealed directly on floor)
     function resolveBidsAndAwardSets() {
-        state.phase = 'reveal';
+        state.phase = 'choose_set_card';
         playSound('reveal');
 
         // Sort all bids in ascending order
@@ -451,236 +451,124 @@
         state.roundAwards = awards;
         state.revealedBids = bidsWithPlayers;
 
-        // Render current state so board background reveals bids immediately
-        render();
+        if (state.gameMode === 'ai') {
+            const humanAward = awards.find(a => a.player.isHuman);
+            const aiAwards = awards.filter(a => !a.player.isHuman);
 
-        // Show brief reveal presentation before card choice modal
-        showBidRevealModal(bidsWithPlayers, awards, () => {
-            if (state.gameMode === 'ai') {
-                const humanAward = awards.find(a => a.player.isHuman);
-                const aiAwards = awards.filter(a => !a.player.isHuman);
+            // AI resolves choices immediately
+            aiAwards.forEach(a => {
+                const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
+                const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
 
-                // AI resolves choices
-                aiAwards.forEach(a => {
-                    const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
-                    const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
+                a.set.chosenPlayCard = cToPlay;
+                a.set.chosenKeepCard = cToKeep;
 
-                    a.player.played.push(cToPlay);
-                    a.player.played.sort((x, y) => x.order - y.order);
-                    a.player.hand.push(cToKeep);
-                    a.player.hand.sort((x, y) => x.order - y.order);
-                });
+                a.player.played.push(cToPlay);
+                a.player.played.sort((x, y) => x.order - y.order);
+                a.player.hand.push(cToKeep);
+                a.player.hand.sort((x, y) => x.order - y.order);
+            });
 
-                state.phase = 'choose_set_card';
-                state.pendingHumanAward = humanAward;
-                render();
-
-                // Prompt human
-                showSetChoiceModal(humanAward.player, humanAward.set, (playedCard, keptCard) => {
-                    humanAward.player.played.push(playedCard);
-                    humanAward.player.played.sort((x, y) => x.order - y.order);
-                    humanAward.player.hand.push(keptCard);
-                    humanAward.player.hand.sort((x, y) => x.order - y.order);
-
-                    state.pendingHumanAward = null;
-                    playSound('play');
-                    completeRound();
-                });
-            } else {
-                // Pass & Play: Prompt each human player in order of rank
-                state.pvpPendingAwards = awards;
-                state.currentPvpAwardIndex = 0;
-                render();
-                processNextPvpSetChoice();
-            }
-        });
+            state.pendingHumanAward = humanAward;
+            state.phase = 'choose_set_card';
+            render();
+        } else {
+            // Pass & Play: prompt each human player in order of rank
+            state.pvpPendingAwards = awards;
+            state.currentPvpAwardIndex = 0;
+            state.phase = 'choose_set_card';
+            render();
+        }
     }
 
-    // Modal: Show Bids Reveal presentation
+    // Direct On-Floor Selection: Human selects card to play into timeline
+    function resolveHumanSetChoice(set, playedCard, keptCard) {
+        if (state.choiceInProgress) return;
+        state.choiceInProgress = true;
+
+        playSound('play');
+
+        const humanAward = state.pendingHumanAward;
+        if (humanAward) {
+            humanAward.player.played.push(playedCard);
+            humanAward.player.played.sort((x, y) => x.order - y.order);
+            humanAward.player.hand.push(keptCard);
+            humanAward.player.hand.sort((x, y) => x.order - y.order);
+
+            set.chosenPlayCard = playedCard;
+            set.chosenKeepCard = keptCard;
+        }
+
+        state.phase = 'round_resolved';
+        render();
+
+        setTimeout(() => {
+            state.choiceInProgress = false;
+            state.pendingHumanAward = null;
+            completeRound();
+        }, 750);
+    }
+
+    // Direct On-Floor Selection: PVP Pass & Play
+    function resolvePvpSetChoice(set, playedCard, keptCard) {
+        if (state.choiceInProgress) return;
+        state.choiceInProgress = true;
+
+        playSound('play');
+
+        const award = state.pvpPendingAwards[state.currentPvpAwardIndex];
+        if (award) {
+            award.player.played.push(playedCard);
+            award.player.played.sort((x, y) => x.order - y.order);
+            award.player.hand.push(keptCard);
+            award.player.hand.sort((x, y) => x.order - y.order);
+
+            set.chosenPlayCard = playedCard;
+            set.chosenKeepCard = keptCard;
+        }
+
+        state.currentPvpAwardIndex++;
+        if (state.currentPvpAwardIndex >= state.pvpPendingAwards.length) {
+            state.phase = 'round_resolved';
+            render();
+            setTimeout(() => {
+                state.choiceInProgress = false;
+                completeRound();
+            }, 750);
+        } else {
+            state.choiceInProgress = false;
+            render();
+        }
+    }
+
+    // Backward compatibility helper
     function showBidRevealModal(bidsWithPlayers, awards, onDone) {
-        const modal = document.getElementById('bidRevealModal');
-        const grid = document.getElementById('revealBidsGrid');
-        const timerBadge = document.getElementById('revealTimerBadge');
-        const btnContinue = document.getElementById('btnContinueFromReveal');
-        if (!modal || !grid) {
-            if (onDone) onDone();
-            return;
-        }
-
-        const isKo = (state.lang === 'ko');
-        const titleEl = document.getElementById('bidRevealModalTitle');
-        const descEl = document.getElementById('bidRevealModalDesc');
-        const btnTextEl = document.getElementById('btnContinueFromRevealText');
-
-        if (titleEl) {
-            titleEl.innerHTML = `<i class="fa-solid fa-bullhorn" style="color:var(--gold);"></i> ${isKo ? '입찰 결과 공개!' : 'Bids Revealed!'}`;
-        }
-        if (descEl) {
-            descEl.textContent = isKo ? 
-                '모든 플레이어의 입찰 카드가 공개되었습니다. 숫자가 낮은 순서대로 세트를 획득합니다.' : 
-                'All bids are revealed! SETs are awarded in ascending order of bid numbers.';
-        }
-        if (btnTextEl) {
-            btnTextEl.textContent = isKo ? '카드 선택으로 진행' : 'Proceed to Card Choice';
-        }
-
-        grid.innerHTML = '';
-        bidsWithPlayers.forEach((bp, rankIdx) => {
-            const set = awards[rankIdx].set;
-            const rankNum = rankIdx + 1;
-            const rankSuffix = isKo ? '위' : (rankNum === 1 ? 'st' : (rankNum === 2 ? 'nd' : 'rd'));
-            const col = document.createElement('div');
-            col.className = `reveal-bid-col rank-${rankNum} ${bp.player.isHuman ? 'is-human' : 'is-ai'}`;
-
-            col.innerHTML = `
-                <div class="reveal-rank-badge rank-${rankNum}">
-                    <i class="fa-solid fa-medal"></i> ${rankNum}${rankSuffix}
-                </div>
-                <div class="reveal-player-header">
-                    <span class="reveal-player-name">${bp.player.name}</span>
-                    <span class="player-role-badge">${bp.player.isHuman ? 'Human' : 'AI'}</span>
-                </div>
-                <div class="reveal-card-wrap">
-                    <div style="font-size:0.68rem; color:var(--text-muted); margin-bottom:2px;">
-                        ${isKo ? '제출한 입찰 카드' : 'Bid Card'}
-                    </div>
-                    ${renderCardMarkup(bp.bidCard, { nonClickable: true })}
-                </div>
-                <div class="reveal-award-box">
-                    <div class="reveal-award-title">➔ ${isKo ? `${rankNum}위 세트 획득` : `Won SET #${rankNum}`}</div>
-                    <div class="reveal-award-preview">
-                        <span class="reveal-set-chip">${isKo ? '상단' : 'Top'} #${set.topCard.orderStr}</span>
-                        <span class="reveal-set-chip">${isKo ? '하단' : 'Btm'} #${set.bottomCard.orderStr}</span>
-                    </div>
-                </div>
-            `;
-            grid.appendChild(col);
-        });
-
-        modal.classList.add('active');
-
-        let remainingSec = 2.8;
-        if (timerBadge) {
-            timerBadge.innerHTML = `<i class="fa-regular fa-clock"></i> ${remainingSec.toFixed(1)}s`;
-        }
-
-        let isCompleted = false;
-        function finishReveal() {
-            if (isCompleted) return;
-            isCompleted = true;
-            if (state.revealTimer) {
-                clearInterval(state.revealTimer);
-                state.revealTimer = null;
-            }
-            modal.classList.remove('active');
-            if (onDone) onDone();
-        }
-
-        if (btnContinue) {
-            btnContinue.onclick = finishReveal;
-        }
-
-        modal.onclick = (e) => {
-            if (e.target === modal) finishReveal();
-        };
-
-        const intervalMs = 100;
-        state.revealTimer = setInterval(() => {
-            remainingSec -= (intervalMs / 1000);
-            if (timerBadge) {
-                timerBadge.innerHTML = `<i class="fa-regular fa-clock"></i> ${Math.max(0, remainingSec).toFixed(1)}s`;
-            }
-            if (remainingSec <= 0) {
-                finishReveal();
-            }
-        }, intervalMs);
+        if (onDone) onDone();
     }
 
     function processNextPvpSetChoice() {
         if (state.currentPvpAwardIndex >= state.pvpPendingAwards.length) {
             completeRound();
-            return;
+        } else {
+            render();
         }
-
-        const award = state.pvpPendingAwards[state.currentPvpAwardIndex];
-        const curPlayer = award.player;
-
-        showPassCurtainModal(
-            (state.lang === 'ko') ? `${curPlayer.name}님의 세트 획득!` : `${curPlayer.name}'s SET Claim!`,
-            (state.lang === 'ko') ? `획득한 세트에서 타임라인에 배치할 카드와 손으로 가져갈 카드를 선택해 주세요.` : `Choose which card from your won set to play and keep.`,
-            (state.lang === 'ko') ? `${curPlayer.name} 카드 선택` : `Select Card as ${curPlayer.name}`,
-            () => {
-                showSetChoiceModal(curPlayer, award.set, (playedCard, keptCard) => {
-                    curPlayer.played.push(playedCard);
-                    curPlayer.played.sort((x, y) => x.order - y.order);
-                    curPlayer.hand.push(keptCard);
-                    curPlayer.hand.sort((x, y) => x.order - y.order);
-
-                    playSound('play');
-                    state.currentPvpAwardIndex++;
-                    render();
-                    processNextPvpSetChoice();
-                });
-            }
-        );
     }
 
-    // Modal: Choose which card to Play vs Keep
     function showSetChoiceModal(player, set, callback) {
-        state.pendingSetCallback = callback;
-        const modal = document.getElementById('setChoiceModal');
-        const container = document.getElementById('setChoiceCardsContainer');
-        if (!modal || !container) {
-            callback(set.topCard, set.bottomCard);
-            return;
-        }
-
-        const isKo = (state.lang === 'ko');
-        const pName = player ? player.name : '';
-        document.getElementById('setChoiceModalTitle').textContent = isKo ? 
-            `${pName} 세트 획득! 배치할 카드 선택` : 
-            `${pName}: SET Claimed! Choose Card to Play`;
-        document.getElementById('setChoiceModalDesc').textContent = isKo ? 
-            '획득한 2장 중 1장을 내 생애 타임라인(Play)에 놓고, 다른 1장은 손패(Hand)로 가져옵니다.' :
-            'Choose 1 card to PLAY into your life timeline. The other returns to your hand.';
-
-        container.innerHTML = `
-            <button type="button" class="set-choice-btn" id="btnChooseTop">
-                ${renderCardMarkup(set.topCard, { mini: true, nonClickable: true })}
-                <div class="choice-action-badge">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
-                <div class="choice-subtext">${(set.topCard.symInfo.name[state.lang] || set.topCard.symInfo.name.ko)} (#${set.topCard.orderStr})</div>
-            </button>
-            <button type="button" class="set-choice-btn" id="btnChooseBottom">
-                ${renderCardMarkup(set.bottomCard, { mini: true, nonClickable: true })}
-                <div class="choice-action-badge">${isKo ? '이 카드 배치 (Play)' : 'Play this card'}</div>
-                <div class="choice-subtext">${(set.bottomCard.symInfo.name[state.lang] || set.bottomCard.symInfo.name.ko)} (#${set.bottomCard.orderStr})</div>
-            </button>
-        `;
-
-        document.getElementById('btnChooseTop').onclick = () => {
-            state.pendingSetCallback = null;
-            modal.classList.remove('active');
-            callback(set.topCard, set.bottomCard);
-        };
-
-        document.getElementById('btnChooseBottom').onclick = () => {
-            state.pendingSetCallback = null;
-            modal.classList.remove('active');
-            callback(set.bottomCard, set.topCard);
-        };
-
-        modal.classList.add('active');
+        if (callback && set) callback(set.topCard, set.bottomCard);
     }
 
     // Complete Round & Check End
     function completeRound() {
-        // Reset player bids
+        // Reset player bids & set choice markers
         state.players.forEach(p => {
             p.bidCard = null;
             p.roundBidRank = null;
         });
         state.floorSets.forEach(s => {
             s.awardedBidCard = null;
+            s.chosenPlayCard = null;
+            s.chosenKeepCard = null;
         });
 
         if (state.deck.length === 0 || state.round >= state.totalRounds) {
@@ -1165,7 +1053,7 @@
         `;
     }
 
-    // Render Floor SETs
+    // Render Floor SETs (Cards played under existing cards, direct interactive choice)
     function renderFloorSets() {
         const grid = document.getElementById('floorSetsGrid');
         if (!grid) return;
@@ -1173,56 +1061,144 @@
         const isKo = (state.lang === 'ko');
         grid.innerHTML = '';
 
+        const isChoosingPhase = (state.phase === 'choose_set_card');
+        const activeHumanSet = (isChoosingPhase && state.pendingHumanAward) ? state.pendingHumanAward.set : null;
+        
+        let pvpActiveSet = null;
+        let pvpActivePlayer = null;
+        if (isChoosingPhase && state.gameMode === 'pvp' && state.pvpPendingAwards && state.pvpPendingAwards[state.currentPvpAwardIndex]) {
+            pvpActiveSet = state.pvpPendingAwards[state.currentPvpAwardIndex].set;
+            pvpActivePlayer = state.pvpPendingAwards[state.currentPvpAwardIndex].player;
+        }
+
         state.floorSets.forEach((set, idx) => {
             const setCol = document.createElement('div');
-            setCol.className = 'floor-set-col';
+            setCol.className = 'set-column floor-set-col';
 
             const awardedPlayer = (set.awardedPlayerId !== null) ? state.players[set.awardedPlayerId] : null;
-            const awardedBidText = set.awardedBidCard ? ` (#${set.awardedBidCard.orderStr})` : '';
+            const isPendingHumanChoice = (set === activeHumanSet);
+            const isPendingPvpChoice = (set === pvpActiveSet);
+            const isInteractive = (isPendingHumanChoice || isPendingPvpChoice) && !state.choiceInProgress;
+
+            if (awardedPlayer) {
+                setCol.classList.add('awarded');
+            }
+            if (isPendingHumanChoice || isPendingPvpChoice) {
+                setCol.classList.add('pending-choice-set');
+            }
+
+            const headerBadgeText = isKo ? `${idx + 1}위 세트` : `SET #${idx + 1}`;
+            let claimTagHtml = '';
+            if (awardedPlayer) {
+                if (isPendingHumanChoice) {
+                    claimTagHtml = `<span class="set-claimed-tag claim-human-tag"><i class="fa-solid fa-sparkles"></i> ${isKo ? '내 획득 세트' : 'Your Won SET'}</span>`;
+                } else if (isPendingPvpChoice) {
+                    claimTagHtml = `<span class="set-claimed-tag claim-human-tag"><i class="fa-solid fa-user-check"></i> ${pvpActivePlayer ? pvpActivePlayer.name : ''}</span>`;
+                } else {
+                    claimTagHtml = `<span class="set-claimed-tag">✔ ${awardedPlayer.name}</span>`;
+                }
+            }
+
+            // Top & Bottom card badges (e.g. for AI choices or after selection)
+            let topChoiceBadge = '';
+            let bottomChoiceBadge = '';
+            if (set.chosenPlayCard && set.chosenKeepCard) {
+                if (set.chosenPlayCard.order === set.topCard.order) {
+                    topChoiceBadge = `<span class="choice-result-badge play-badge"><i class="fa-solid fa-play"></i> ${isKo ? '배치' : 'Played'}</span>`;
+                    bottomChoiceBadge = `<span class="choice-result-badge keep-badge"><i class="fa-solid fa-hand"></i> ${isKo ? '손패' : 'To Hand'}</span>`;
+                } else {
+                    topChoiceBadge = `<span class="choice-result-badge keep-badge"><i class="fa-solid fa-hand"></i> ${isKo ? '손패' : 'To Hand'}</span>`;
+                    bottomChoiceBadge = `<span class="choice-result-badge play-badge"><i class="fa-solid fa-play"></i> ${isKo ? '배치' : 'Played'}</span>`;
+                }
+            }
+
+            // Interactive choice overlay for human
+            const choiceOverlayTop = isInteractive ? `
+                <div class="choice-action-overlay">
+                    <button type="button" class="btn-play-choice">
+                        <i class="fa-solid fa-play"></i>
+                        <span>${isKo ? '배치 (Play)' : 'Play'}</span>
+                    </button>
+                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
+                </div>
+            ` : '';
+
+            const choiceOverlayBottom = isInteractive ? `
+                <div class="choice-action-overlay">
+                    <button type="button" class="btn-play-choice">
+                        <i class="fa-solid fa-play"></i>
+                        <span>${isKo ? '배치 (Play)' : 'Play'}</span>
+                    </button>
+                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
+                </div>
+            ` : '';
+
+            // Bid card markup underneath existing floor cards
+            let bidSlotHtml = '';
+            if (set.awardedBidCard) {
+                const ownerName = awardedPlayer ? awardedPlayer.name : '';
+                bidSlotHtml = `
+                    <div class="floor-bid-slot revealed">
+                        <div class="bid-slot-header">
+                            <i class="fa-solid fa-gavel"></i>
+                            <span>${ownerName} ${isKo ? '낸 카드' : 'Bid Card'}</span>
+                        </div>
+                        <div class="bid-card-wrapper">
+                            ${renderCardMarkup(set.awardedBidCard, { nonClickable: true })}
+                        </div>
+                    </div>
+                `;
+            } else if (state.phase === 'bid') {
+                bidSlotHtml = `
+                    <div class="floor-bid-slot pending-bid">
+                        <span class="bid-slot-empty-label"><i class="fa-solid fa-hourglass-half"></i> ${isKo ? '입찰 대기' : 'Awaiting Bids'}</span>
+                    </div>
+                `;
+            }
 
             setCol.innerHTML = `
                 <div class="set-col-header">
-                    <span class="set-rank-badge">${isKo ? `${idx + 1}위 세트` : `SET #${idx + 1}`}</span>
-                    ${awardedPlayer ? `<span class="set-claimed-tag">✔ ${awardedPlayer.name}${awardedBidText}</span>` : ''}
+                    <span class="set-rank-badge">${headerBadgeText}</span>
+                    ${claimTagHtml}
                 </div>
                 <div class="set-cards-pair">
-                    <div class="floor-card-slot slot-top">
-                        <span class="slot-label">${isKo ? '상단' : 'Top'}</span>
+                    <div class="floor-card-slot slot-top ${isInteractive ? 'interactive-choice' : ''}" title="${isInteractive ? (isKo ? '클릭하여 타임라인에 배치' : 'Click to Play') : ''}">
+                        <span class="slot-label">${isKo ? '상단 카드' : 'Top Card'}</span>
                         ${renderCardMarkup(set.topCard, { nonClickable: true })}
+                        ${topChoiceBadge}
+                        ${choiceOverlayTop}
                     </div>
-                    <div class="floor-card-slot slot-bottom">
-                        <span class="slot-label">${isKo ? '하단' : 'Bottom'}</span>
+                    <div class="floor-card-slot slot-bottom ${isInteractive ? 'interactive-choice' : ''}" title="${isInteractive ? (isKo ? '클릭하여 타임라인에 배치' : 'Click to Play') : ''}">
+                        <span class="slot-label">${isKo ? '하단 카드' : 'Bottom Card'}</span>
                         ${renderCardMarkup(set.bottomCard, { nonClickable: true })}
+                        ${bottomChoiceBadge}
+                        ${choiceOverlayBottom}
                     </div>
                 </div>
+                ${bidSlotHtml}
             `;
 
-            // Make human's awarded set interactive during choose_set_card phase
-            if (state.phase === 'choose_set_card' && state.pendingHumanAward && state.pendingHumanAward.set === set) {
-                setCol.classList.add('pending-choice-set');
+            // Bind click handlers for interactive choice
+            if (isInteractive) {
                 const slotTop = setCol.querySelector('.slot-top');
                 const slotBottom = setCol.querySelector('.slot-bottom');
                 if (slotTop) {
-                    slotTop.style.cursor = 'pointer';
-                    slotTop.onclick = () => {
-                        const modal = document.getElementById('setChoiceModal');
-                        if (modal) modal.classList.remove('active');
-                        if (state.pendingSetCallback) {
-                            const cb = state.pendingSetCallback;
-                            state.pendingSetCallback = null;
-                            cb(set.topCard, set.bottomCard);
+                    slotTop.onclick = (e) => {
+                        e.stopPropagation();
+                        if (isPendingHumanChoice) {
+                            resolveHumanSetChoice(set, set.topCard, set.bottomCard);
+                        } else if (isPendingPvpChoice) {
+                            resolvePvpSetChoice(set, set.topCard, set.bottomCard);
                         }
                     };
                 }
                 if (slotBottom) {
-                    slotBottom.style.cursor = 'pointer';
-                    slotBottom.onclick = () => {
-                        const modal = document.getElementById('setChoiceModal');
-                        if (modal) modal.classList.remove('active');
-                        if (state.pendingSetCallback) {
-                            const cb = state.pendingSetCallback;
-                            state.pendingSetCallback = null;
-                            cb(set.bottomCard, set.topCard);
+                    slotBottom.onclick = (e) => {
+                        e.stopPropagation();
+                        if (isPendingHumanChoice) {
+                            resolveHumanSetChoice(set, set.bottomCard, set.topCard);
+                        } else if (isPendingPvpChoice) {
+                            resolvePvpSetChoice(set, set.bottomCard, set.topCard);
                         }
                     };
                 }
@@ -1277,12 +1253,15 @@
             handRow.appendChild(innerCard);
         });
 
-        if (state.selectedBidCard && state.phase === 'bid') {
+        if (state.phase === 'choose_set_card') {
+            btnBid.disabled = true;
+            btnBid.innerHTML = `<i class="fa-solid fa-hand-pointer" style="color:var(--gold);"></i> <span>${isKo ? '바닥의 내 세트에서 배치할 카드를 클릭하세요' : 'Click a card on the floor to play'}</span>`;
+        } else if (state.selectedBidCard && state.phase === 'bid') {
             btnBid.disabled = false;
-            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> ${isKo ? `#${state.selectedBidCard.orderStr}번 카드로 입찰 확정` : `Confirm Bid (#${state.selectedBidCard.orderStr})`}`;
+            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> <span>${isKo ? `#${state.selectedBidCard.orderStr}번 카드로 입찰 확정` : `Confirm Bid (#${state.selectedBidCard.orderStr})`}</span>`;
         } else {
             btnBid.disabled = true;
-            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> ${isKo ? '손패에서 입찰할 카드 선택' : 'Select Card to Bid'}`;
+            btnBid.innerHTML = `<i class="fa-solid fa-gavel"></i> <span>${isKo ? '손패에서 입찰할 카드 선택' : 'Select Card to Bid'}</span>`;
         }
     }
 
@@ -1375,7 +1354,15 @@
             } else if (state.phase === 'reveal') {
                 prompt.innerHTML = `<i class="fa-solid fa-award" style="color:var(--gold);"></i> ${isKo ? '모든 입찰이 공개되었습니다! 낮은 번호부터 차례대로 세트를 가져옵니다.' : 'All bids revealed! SETs are awarded in ascending order of bids.'}`;
             } else if (state.phase === 'choose_set_card') {
-                prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '<strong>세트 획득!</strong> 팝업창에서 타임라인에 배치할 카드를 선택하세요 (바닥의 내 세트 카드를 직접 클릭해도 됩니다).' : '<strong>SET Claimed!</strong> Select a card in the popup or directly click your set card on the floor to play.'}`;
+                if (state.gameMode === 'pvp') {
+                    const curP = state.pvpPendingAwards && state.pvpPendingAwards[state.currentPvpAwardIndex] ? state.pvpPendingAwards[state.currentPvpAwardIndex].player : null;
+                    const pName = curP ? curP.name : '';
+                    prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? `<strong>${pName} 세트 획득!</strong> 바닥의 내 세트(2장) 중 <strong>타임라인에 배치할 카드를 직접 클릭</strong>하세요.` : `<strong>${pName}'s SET Claimed!</strong> Click 1 card from your won set on the floor to <strong>PLAY</strong>.`}`;
+                } else {
+                    prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '<strong>세트 획득!</strong> 바닥에 표시된 내 세트(2장) 중 <strong>타임라인에 배치할 카드를 직접 클릭</strong>하세요. (남은 카드는 손패로 획득)' : '<strong>SET Claimed!</strong> Click one of your 2 cards on the floor to <strong>PLAY to timeline</strong>. (The other goes to hand)'}`;
+                }
+            } else if (state.phase === 'round_resolved') {
+                prompt.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> ${isKo ? '카드 배치가 완료되었습니다! 다음 라운드로 진행합니다...' : 'Card placed! Preparing next round...'}`;
             } else if (state.phase === 'exchange') {
                 prompt.innerHTML = `<i class="fa-solid fa-handshake" style="color:var(--gold);"></i> ${isKo ? '최종 인연 교환 단계: 손패를 각 상대에게 비밀 선물하고 1장을 보관합니다.' : 'Final Karma Exchange: Secretly gift hand cards to rivals and keep 1 for your life timeline.'}`;
             } else if (state.phase === 'game_over') {
