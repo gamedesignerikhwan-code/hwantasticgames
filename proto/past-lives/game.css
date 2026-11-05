@@ -2191,3 +2191,97 @@ body {
     font-style: italic;
     padding: 8px 4px;
 }
+
+/* ==========================================================================
+   In-Page Exchange Interface (No Modal, Timelines Fully Visible)
+   ========================================================================== */
+.exchange-guide-text {
+    font-size: 0.84rem;
+    color: #cbd5e1;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    line-height: 1.45;
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid var(--gold);
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.exchange-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-glass);
+    transition: all 0.2s ease;
+}
+
+.exchange-card-wrapper:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.exchange-assign-select {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+    background: #0f172a;
+    color: var(--gold);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.15s ease;
+    max-width: 150px;
+}
+
+.exchange-assign-select:focus {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.exchange-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.exchange-val-msg {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #ef4444;
+}
+
+.btn-confirm-exchange {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.92rem;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-confirm-exchange:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+}
+
+.btn-confirm-exchange:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}

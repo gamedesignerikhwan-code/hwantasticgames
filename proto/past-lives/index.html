@@ -2215,6 +2215,100 @@ body {
     padding: 8px 4px;
 }
 
+/* ==========================================================================
+   In-Page Exchange Interface (No Modal, Timelines Fully Visible)
+   ========================================================================== */
+.exchange-guide-text {
+    font-size: 0.84rem;
+    color: #cbd5e1;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    line-height: 1.45;
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid var(--gold);
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.exchange-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 10px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-glass);
+    transition: all 0.2s ease;
+}
+
+.exchange-card-wrapper:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.exchange-assign-select {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+    background: #0f172a;
+    color: var(--gold);
+    border: 1.5px solid var(--border-gold);
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.15s ease;
+    max-width: 150px;
+}
+
+.exchange-assign-select:focus {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.exchange-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.exchange-val-msg {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #ef4444;
+}
+
+.btn-confirm-exchange {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 0.92rem;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-confirm-exchange:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+}
+
+.btn-confirm-exchange:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 </style>
 </head>
 <body>
@@ -3100,149 +3194,180 @@ body {
         }
     }
 
-    // Final Phase: Secret Connection Exchange
+    // Final Phase: Secret Connection Exchange (In-page, NO POPUP, other players' timelines fully visible!)
     function startExchangePhase() {
         state.phase = 'exchange';
         playSound('special');
 
-        if (state.gameMode === 'ai') {
-            showExchangeModal(state.players[0], (humanAssignments) => {
-                resolveExchange({ 0: humanAssignments });
-            });
-        } else {
-            // Pass & Play: sequential private exchange for all players
+        const curPlayer = (state.gameMode === 'pvp') ? state.players[state.currentPvpExchangeIndex || 0] : state.players[0];
+        const opponents = state.players.filter(p => p.id !== curPlayer.id);
+
+        state.exchangeAssignments = {};
+        curPlayer.hand.forEach((c, idx) => {
+            if (idx === 0) {
+                state.exchangeAssignments[c.order] = 'keep';
+            } else if (idx <= opponents.length) {
+                state.exchangeAssignments[c.order] = opponents[idx - 1].id;
+            } else {
+                state.exchangeAssignments[c.order] = 'discard';
+            }
+        });
+
+        if (state.gameMode === 'pvp') {
             state.pvpExchangeStore = {};
             state.currentPvpExchangeIndex = 0;
-            processNextPvpExchange();
         }
+
         render();
     }
 
     function processNextPvpExchange() {
         if (state.currentPvpExchangeIndex >= state.playerCount) {
             resolveExchange(state.pvpExchangeStore);
-            return;
+        } else {
+            state.exchangeAssignments = null;
+            render();
         }
-
-        const curPlayer = state.players[state.currentPvpExchangeIndex];
-        showPassCurtainModal(
-            (state.lang === 'ko') ? `${curPlayer.name}님의 최종 인연 교환` : `${curPlayer.name}'s Final Connection Exchange`,
-            (state.lang === 'ko') ? `손에 남은 카드들을 다른 플레이어들에게 은밀히 전달하고 1장을 보관합니다.` : `Secretly gift cards to rivals and keep 1 for your timeline.`,
-            (state.lang === 'ko') ? `${curPlayer.name} 교환 시작` : `Start Exchange as ${curPlayer.name}`,
-            () => {
-                showExchangeModal(curPlayer, (assignments) => {
-                    state.pvpExchangeStore[curPlayer.id] = assignments;
-                    state.currentPvpExchangeIndex++;
-                    processNextPvpExchange();
-                });
-            }
-        );
     }
 
     function showExchangeModal(player, onConfirmCallback) {
-        const modal = document.getElementById('exchangeModal');
-        const container = document.getElementById('exchangeAssignmentsContainer');
-        if (!modal || !container) {
-            onConfirmCallback({});
-            return;
+        // Modal deprecated: all exchange happens directly in page
+        if (onConfirmCallback) onConfirmCallback(state.exchangeAssignments || {});
+    }
+
+    // In-Page Exchange UI Renderer (replaces hand area, keeps all timelines visible below)
+    function renderInPageExchangeUI(handSection, handRow, btnBid) {
+        const isKo = (state.lang === 'ko');
+        const curPlayer = (state.gameMode === 'pvp') ? state.players[state.currentPvpExchangeIndex || 0] : state.players[0];
+        const opponents = state.players.filter(p => p.id !== curPlayer.id);
+
+        if (!state.exchangeAssignments) {
+            state.exchangeAssignments = {};
+            curPlayer.hand.forEach((c, idx) => {
+                if (idx === 0) {
+                    state.exchangeAssignments[c.order] = 'keep';
+                } else if (idx <= opponents.length) {
+                    state.exchangeAssignments[c.order] = opponents[idx - 1].id;
+                } else {
+                    state.exchangeAssignments[c.order] = 'discard';
+                }
+            });
         }
 
-        const isKo = (state.lang === 'ko');
-        const opponents = state.players.filter(p => p.id !== player.id);
+        if (btnBid) btnBid.style.display = 'none';
 
-        document.getElementById('exchangeModalTitle').textContent = isKo ? 
-            `${player.name}: 최종 비밀 인연 교환` : 
-            `${player.name}: Final Secret Connection Exchange`;
-        document.getElementById('exchangeModalDesc').textContent = isKo ?
-            `손패(${player.hand.length}장) 중 각 상대에게 정확히 1장씩 비밀 선물하고, 1장은 내 생애에 보관합니다.${player.hand.length > (opponents.length + 1) ? ' 남은 카드는 게임에서 제외됩니다.' : ''}` :
-            `Secretly gift 1 card to each opponent, keep 1 card for yourself.${player.hand.length > (opponents.length + 1) ? ' Leftover cards are discarded.' : ''}`;
+        const titleEl = handSection.querySelector('.section-title-left');
+        if (titleEl) {
+            titleEl.innerHTML = `
+                <i class="fa-solid fa-gift" style="color:var(--gold);"></i>
+                <h2 style="color:#fff;">${curPlayer.name}: ${isKo ? '최종 비밀 인연 교환' : 'Final Secret Connection Exchange'}</h2>
+            `;
+        }
 
-        // Track assignments: cardOrder -> 'keep' | opponentId | 'discard'
-        const assignments = {};
-        // Default assignment: first card keep, next cards to opponents
-        player.hand.forEach((c, idx) => {
-            if (idx === 0) {
-                assignments[c.order] = 'keep';
-            } else if (idx <= opponents.length) {
-                assignments[c.order] = opponents[idx - 1].id;
-            } else {
-                assignments[c.order] = 'discard';
+        let guideEl = document.getElementById('exchangeGuideBanner');
+        if (!guideEl) {
+            guideEl = document.createElement('div');
+            guideEl.id = 'exchangeGuideBanner';
+            guideEl.className = 'exchange-guide-text';
+            const titleBar = handSection.querySelector('.section-title-bar');
+            if (titleBar && titleBar.nextSibling) {
+                handSection.insertBefore(guideEl, titleBar.nextSibling);
             }
+        }
+        guideEl.innerHTML = `
+            <span>${isKo ? `손패(${curPlayer.hand.length}장) 중 각 상대에게 정확히 1장씩 비밀 선물하고, 1장은 내 생애에 보관합니다. <strong>아래에 표시된 모든 플레이어들의 타임라인을 확인하면서 신중하게 선택하세요.</strong>` : `Gift 1 card to each rival and keep 1 card for your timeline. <strong>Inspect all players' timelines below while making your decisions.</strong>`}</span>
+        `;
+
+        handRow.innerHTML = '';
+        curPlayer.hand.forEach(c => {
+            const cardWrap = document.createElement('div');
+            cardWrap.className = 'exchange-card-wrapper';
+
+            const curTarget = state.exchangeAssignments[c.order] !== undefined ? state.exchangeAssignments[c.order] : 'discard';
+
+            cardWrap.innerHTML = `
+                ${renderCardMarkup(c, { mini: false, nonClickable: true })}
+                <select class="exchange-assign-select" data-card="${c.order}">
+                    <option value="keep" ${curTarget === 'keep' ? 'selected' : ''}>★ ${isKo ? '내 타임라인 보관' : 'Keep for Timeline'}</option>
+                    ${opponents.map(o => `
+                        <option value="${o.id}" ${curTarget === o.id ? 'selected' : ''}>${isKo ? `🎁 ${o.name}에게 선물` : `🎁 Gift to ${o.name}`}</option>
+                    `).join('')}
+                    ${(curPlayer.hand.length > opponents.length + 1) ? `<option value="discard" ${curTarget === 'discard' ? 'selected' : ''}>🗑 ${isKo ? '제외 (Discard)' : 'Discard'}</option>` : ''}
+                </select>
+            `;
+            handRow.appendChild(cardWrap);
         });
 
-        function renderExchangeUI() {
-            container.innerHTML = `
-                <div style="display:flex; flex-direction:column; gap:16px; width:100%;">
-                    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
-                        ${player.hand.map(c => {
-                            const curTarget = assignments[c.order] !== undefined ? assignments[c.order] : 'discard';
-                            return `
-                                <div class="exchange-card-wrapper" style="display:flex; flex-direction:column; align-items:center; gap:6px; background:rgba(255,255,255,0.04); padding:8px; border-radius:8px; border:1px solid var(--border-glass);">
-                                    ${renderCardMarkup(c, { mini: true, nonClickable: true })}
-                                    <select class="exchange-assign-select" data-card="${c.order}" style="font-size:0.8rem; padding:4px 6px; background:#0f172a; color:#fff; border:1px solid var(--border-gold); border-radius:4px; font-weight:700;">
-                                        <option value="keep" ${curTarget === 'keep' ? 'selected' : ''}>★ ${isKo ? '내 타임라인 보관' : 'Keep for Self'}</option>
-                                        ${opponents.map(o => `
-                                            <option value="${o.id}" ${curTarget === o.id ? 'selected' : ''}>🎁 ${o.name}에게 선물</option>
-                                        `).join('')}
-                                        ${(player.hand.length > opponents.length + 1) ? `<option value="discard" ${curTarget === 'discard' ? 'selected' : ''}>🗑 ${isKo ? '제외 (Discard)' : 'Discard'}</option>` : ''}
-                                    </select>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                    <div id="exchangeValidationMsg" style="font-size:0.8rem; color:#ef4444; text-align:center; min-height:1.2rem;"></div>
-                    <button type="button" class="btn-play-again" id="btnConfirmExchange">${isKo ? '인연 교환 확정' : 'Confirm Exchange'}</button>
-                </div>
+        let controlsBar = document.getElementById('exchangeControlsBar');
+        if (!controlsBar) {
+            controlsBar = document.createElement('div');
+            controlsBar.id = 'exchangeControlsBar';
+            controlsBar.className = 'exchange-controls-bar';
+            controlsBar.innerHTML = `
+                <div id="exchangeValidationMsg" class="exchange-val-msg"></div>
+                <button type="button" class="btn-confirm-exchange" id="btnConfirmExchange">
+                    <i class="fa-solid fa-gift"></i>
+                    <span>${isKo ? '인연 교환 확정' : 'Confirm Exchange'}</span>
+                </button>
             `;
-
-            const btnConfirm = document.getElementById('btnConfirmExchange');
-            const msgEl = document.getElementById('exchangeValidationMsg');
-
-            function validateAssignments() {
-                // Check that exactly 1 keep is selected
-                const keepCount = Object.values(assignments).filter(v => v === 'keep').length;
-                // Check that each opponent gets exactly 1 card
-                const missingOpponents = opponents.filter(o => !Object.values(assignments).includes(o.id));
-
-                if (keepCount !== 1) {
-                    msgEl.textContent = isKo ? '내 타임라인에 보관할 카드를 정확히 1장 지정해야 합니다.' : 'You must choose exactly 1 card to Keep.';
-                    btnConfirm.disabled = true;
-                    btnConfirm.style.opacity = '0.5';
-                    return false;
-                }
-                if (missingOpponents.length > 0) {
-                    msgEl.textContent = isKo ? `${missingOpponents[0].name}님에게 보낼 선물이 지정되지 않았습니다.` : `Must gift 1 card to ${missingOpponents[0].name}.`;
-                    btnConfirm.disabled = true;
-                    btnConfirm.style.opacity = '0.5';
-                    return false;
-                }
-
-                msgEl.textContent = '';
-                btnConfirm.disabled = false;
-                btnConfirm.style.opacity = '1';
-                return true;
-            }
-
-            container.querySelectorAll('.exchange-assign-select').forEach(sel => {
-                sel.onchange = () => {
-                    const cOrder = parseInt(sel.getAttribute('data-card'), 10);
-                    const val = sel.value;
-                    assignments[cOrder] = (val === 'keep' || val === 'discard') ? val : parseInt(val, 10);
-                    validateAssignments();
-                };
-            });
-
-            validateAssignments();
-
-            btnConfirm.onclick = () => {
-                if (!validateAssignments()) return;
-                modal.classList.remove('active');
-                onConfirmCallback(assignments);
-            };
+            handSection.appendChild(controlsBar);
         }
 
-        renderExchangeUI();
-        modal.classList.add('active');
+        const btnConfirm = document.getElementById('btnConfirmExchange');
+        const msgEl = document.getElementById('exchangeValidationMsg');
+
+        function validateAssignments() {
+            const keepCount = Object.values(state.exchangeAssignments).filter(v => v === 'keep').length;
+
+            if (keepCount !== 1) {
+                if (msgEl) msgEl.textContent = isKo ? '내 타임라인에 보관할 카드를 정확히 1장 지정해야 합니다.' : 'You must choose exactly 1 card to Keep.';
+                if (btnConfirm) btnConfirm.disabled = true;
+                return false;
+            }
+
+            for (const opp of opponents) {
+                const count = Object.values(state.exchangeAssignments).filter(v => v === opp.id).length;
+                if (count !== 1) {
+                    if (msgEl) msgEl.textContent = isKo ? `${opp.name}님에게 정확히 1장의 카드를 선물해야 합니다.` : `Must gift exactly 1 card to ${opp.name}.`;
+                    if (btnConfirm) btnConfirm.disabled = true;
+                    return false;
+                }
+            }
+
+            if (msgEl) msgEl.textContent = '';
+            if (btnConfirm) btnConfirm.disabled = false;
+            return true;
+        }
+
+        handRow.querySelectorAll('.exchange-assign-select').forEach(sel => {
+            sel.onchange = () => {
+                const cOrder = parseInt(sel.getAttribute('data-card'), 10);
+                const val = sel.value;
+                state.exchangeAssignments[cOrder] = (val === 'keep' || val === 'discard') ? val : parseInt(val, 10);
+                validateAssignments();
+            };
+        });
+
+        validateAssignments();
+
+        if (btnConfirm) {
+            btnConfirm.onclick = () => {
+                if (!validateAssignments()) return;
+
+                if (state.gameMode === 'ai') {
+                    resolveExchange({ 0: state.exchangeAssignments });
+                } else {
+                    state.pvpExchangeStore[curPlayer.id] = state.exchangeAssignments;
+                    state.currentPvpExchangeIndex++;
+                    if (state.currentPvpExchangeIndex >= state.playerCount) {
+                        resolveExchange(state.pvpExchangeStore);
+                    } else {
+                        state.exchangeAssignments = null;
+                        render();
+                    }
+                }
+            };
+        }
     }
 
     // Resolve Final Exchange & Merge into Timelines
@@ -3566,7 +3691,15 @@ body {
     // Render Floor SETs (Cards played under existing cards, direct interactive choice)
     function renderFloorSets() {
         const grid = document.getElementById('floorSetsGrid');
+        const floorSection = document.querySelector('.floor-section');
         if (!grid) return;
+
+        if (state.phase === 'exchange') {
+            if (floorSection) floorSection.style.display = 'none';
+            return;
+        } else {
+            if (floorSection) floorSection.style.display = '';
+        }
 
         const isKo = (state.lang === 'ko');
         grid.innerHTML = '';
@@ -3752,9 +3885,29 @@ body {
 
     // Render Active Player's Hand
     function renderHumanHand() {
+        const handSection = document.querySelector('.hand-section');
         const handRow = document.getElementById('handCardsRow');
         const btnBid = document.getElementById('btnSubmitBid');
         if (!handRow || !btnBid) return;
+
+        if (state.phase === 'exchange') {
+            renderInPageExchangeUI(handSection, handRow, btnBid);
+            return;
+        } else {
+            btnBid.style.display = '';
+            const guideEl = document.getElementById('exchangeGuideBanner');
+            if (guideEl) guideEl.remove();
+            const controlsBar = document.getElementById('exchangeControlsBar');
+            if (controlsBar) controlsBar.remove();
+            const titleEl = handSection.querySelector('.section-title-left');
+            if (titleEl) {
+                const isKo = (state.lang === 'ko');
+                titleEl.innerHTML = `
+                    <i class="fa-solid fa-hand-sparkles" style="color:var(--gold);"></i>
+                    <h2 data-i18n-ko="내 손패 (Hand)" data-i18n-en="Your Hand">${isKo ? '내 손패 (Hand)' : 'Your Hand'}</h2>
+                `;
+            }
+        }
 
         const isKo = (state.lang === 'ko');
         handRow.innerHTML = '';
@@ -3904,7 +4057,7 @@ body {
             } else if (state.phase === 'round_resolved') {
                 prompt.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> ${isKo ? '카드 배치가 완료되었습니다! 다음 라운드로 진행합니다...' : 'Card placed! Preparing next round...'}`;
             } else if (state.phase === 'exchange') {
-                prompt.innerHTML = `<i class="fa-solid fa-handshake" style="color:var(--gold);"></i> ${isKo ? '최종 인연 교환 단계: 손패를 각 상대에게 비밀 선물하고 1장을 보관합니다.' : 'Final Karma Exchange: Secretly gift hand cards to rivals and keep 1 for your life timeline.'}`;
+                prompt.innerHTML = `<i class="fa-solid fa-gift" style="color:var(--gold);"></i> ${isKo ? '<strong>최종 비밀 인연 교환:</strong> 아래 상대들의 타임라인을 확인하고, 손패의 카드들을 누구에게 선물할지 지정하세요.' : '<strong>Final Secret Exchange:</strong> Inspect other players timelines below and choose gifts.'}`;
             } else if (state.phase === 'game_over') {
                 prompt.innerHTML = `<i class="fa-solid fa-trophy" style="color:var(--gold);"></i> ${isKo ? '게임 종료! 최종 점수를 확인하세요.' : 'Game Over! Inspect your final relationship scores.'}`;
             }
