@@ -1112,24 +1112,22 @@
                 }
             }
 
-            // Interactive choice overlay for human
-            const choiceOverlayTop = isInteractive ? `
-                <div class="choice-action-overlay">
-                    <button type="button" class="btn-play-choice">
+            // Interactive choice button for human (placed UNDER the card, never covering card content!)
+            const choiceBtnTop = isInteractive ? `
+                <div class="card-choice-btn-wrap">
+                    <button type="button" class="btn-card-choose-play">
                         <i class="fa-solid fa-play"></i>
                         <span>${isKo ? '배치 (Play)' : 'Play'}</span>
                     </button>
-                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
                 </div>
             ` : '';
 
-            const choiceOverlayBottom = isInteractive ? `
-                <div class="choice-action-overlay">
-                    <button type="button" class="btn-play-choice">
+            const choiceBtnBottom = isInteractive ? `
+                <div class="card-choice-btn-wrap">
+                    <button type="button" class="btn-card-choose-play">
                         <i class="fa-solid fa-play"></i>
                         <span>${isKo ? '배치 (Play)' : 'Play'}</span>
                     </button>
-                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
                 </div>
             ` : '';
 
@@ -1166,22 +1164,50 @@
                         <span class="slot-label">${isKo ? '상단 카드' : 'Top Card'}</span>
                         ${renderCardMarkup(set.topCard, { nonClickable: true })}
                         ${topChoiceBadge}
-                        ${choiceOverlayTop}
+                        ${choiceBtnTop}
                     </div>
                     <div class="floor-card-slot slot-bottom ${isInteractive ? 'interactive-choice' : ''}" title="${isInteractive ? (isKo ? '클릭하여 타임라인에 배치' : 'Click to Play') : ''}">
                         <span class="slot-label">${isKo ? '하단 카드' : 'Bottom Card'}</span>
                         ${renderCardMarkup(set.bottomCard, { nonClickable: true })}
                         ${bottomChoiceBadge}
-                        ${choiceOverlayBottom}
+                        ${choiceBtnBottom}
                     </div>
                 </div>
+                ${isInteractive ? `
+                    <div class="choice-pair-hint">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>${isKo ? '선택 카드 배치, 남은 1장 손패로' : 'Chosen to timeline, other to hand'}</span>
+                    </div>
+                ` : ''}
                 ${bidSlotHtml}
             `;
 
-            // Bind click handlers for interactive choice
+            // Bind click and hover handlers for interactive choice
             if (isInteractive) {
                 const slotTop = setCol.querySelector('.slot-top');
                 const slotBottom = setCol.querySelector('.slot-bottom');
+                const btnTopText = slotTop ? slotTop.querySelector('.btn-card-choose-play span') : null;
+                const btnBottomText = slotBottom ? slotBottom.querySelector('.btn-card-choose-play span') : null;
+
+                if (slotTop && slotBottom) {
+                    slotTop.onmouseenter = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '✔ 배치 (Play)' : '✔ Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '➔ 손패 (Hand)' : '➔ Hand';
+                    };
+                    slotTop.onmouseleave = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '배치 (Play)' : 'Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '배치 (Play)' : 'Play';
+                    };
+                    slotBottom.onmouseenter = () => {
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '✔ 배치 (Play)' : '✔ Play';
+                        if (btnTopText) btnTopText.textContent = isKo ? '➔ 손패 (Hand)' : '➔ Hand';
+                    };
+                    slotBottom.onmouseleave = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '배치 (Play)' : 'Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '배치 (Play)' : 'Play';
+                    };
+                }
+
                 if (slotTop) {
                     slotTop.onclick = (e) => {
                         e.stopPropagation();

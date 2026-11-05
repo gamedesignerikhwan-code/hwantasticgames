@@ -1726,48 +1726,66 @@ body {
     box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
 }
 
-.choice-action-overlay {
-    position: absolute;
-    inset: 18px 2px 2px 2px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 6px;
+.card-choice-btn-wrap {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    opacity: 0.96;
-    transition: opacity 0.15s, background 0.15s;
-    pointer-events: none;
-    z-index: 6;
+    margin-top: 4px;
 }
 
-.floor-card-slot.interactive-choice:hover .choice-action-overlay {
-    background: rgba(15, 23, 42, 0.65);
-    opacity: 1;
-}
-
-.btn-play-choice {
+.btn-card-choose-play {
+    width: 100%;
+    max-width: 86px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     border: none;
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
 }
 
-.choice-sub-hint {
-    font-size: 0.55rem;
-    color: #cbd5e1;
-    font-weight: 600;
+.floor-card-slot.interactive-choice .pl-card {
+    border-color: rgba(245, 158, 11, 0.55) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    transform: translateY(-2px);
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6) !important;
+}
+
+.floor-card-slot.interactive-choice:hover .btn-card-choose-play {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.7);
+}
+
+.choice-pair-hint {
+    font-size: 0.58rem;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 4px;
+    padding: 3px 6px;
     text-align: center;
-    line-height: 1.1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 3px;
+    font-weight: 600;
 }
 
 .choice-result-badge {
@@ -1935,48 +1953,66 @@ body {
     box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
 }
 
-.choice-action-overlay {
-    position: absolute;
-    inset: 18px 2px 2px 2px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 6px;
+.card-choice-btn-wrap {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    opacity: 0.96;
-    transition: opacity 0.15s, background 0.15s;
-    pointer-events: none;
-    z-index: 6;
+    margin-top: 4px;
 }
 
-.floor-card-slot.interactive-choice:hover .choice-action-overlay {
-    background: rgba(15, 23, 42, 0.65);
-    opacity: 1;
-}
-
-.btn-play-choice {
+.btn-card-choose-play {
+    width: 100%;
+    max-width: 86px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     border: none;
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
 }
 
-.choice-sub-hint {
-    font-size: 0.55rem;
-    color: #cbd5e1;
-    font-weight: 600;
+.floor-card-slot.interactive-choice .pl-card {
+    border-color: rgba(245, 158, 11, 0.55) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    transform: translateY(-2px);
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6) !important;
+}
+
+.floor-card-slot.interactive-choice:hover .btn-card-choose-play {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.7);
+}
+
+.choice-pair-hint {
+    font-size: 0.58rem;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 4px;
+    padding: 3px 6px;
     text-align: center;
-    line-height: 1.1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 3px;
+    font-weight: 600;
 }
 
 .choice-result-badge {
@@ -3463,24 +3499,22 @@ body {
                 }
             }
 
-            // Interactive choice overlay for human
-            const choiceOverlayTop = isInteractive ? `
-                <div class="choice-action-overlay">
-                    <button type="button" class="btn-play-choice">
+            // Interactive choice button for human (placed UNDER the card, never covering card content!)
+            const choiceBtnTop = isInteractive ? `
+                <div class="card-choice-btn-wrap">
+                    <button type="button" class="btn-card-choose-play">
                         <i class="fa-solid fa-play"></i>
                         <span>${isKo ? '배치 (Play)' : 'Play'}</span>
                     </button>
-                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
                 </div>
             ` : '';
 
-            const choiceOverlayBottom = isInteractive ? `
-                <div class="choice-action-overlay">
-                    <button type="button" class="btn-play-choice">
+            const choiceBtnBottom = isInteractive ? `
+                <div class="card-choice-btn-wrap">
+                    <button type="button" class="btn-card-choose-play">
                         <i class="fa-solid fa-play"></i>
                         <span>${isKo ? '배치 (Play)' : 'Play'}</span>
                     </button>
-                    <span class="choice-sub-hint">${isKo ? '손패로 1장 이동' : 'Other to Hand'}</span>
                 </div>
             ` : '';
 
@@ -3517,22 +3551,50 @@ body {
                         <span class="slot-label">${isKo ? '상단 카드' : 'Top Card'}</span>
                         ${renderCardMarkup(set.topCard, { nonClickable: true })}
                         ${topChoiceBadge}
-                        ${choiceOverlayTop}
+                        ${choiceBtnTop}
                     </div>
                     <div class="floor-card-slot slot-bottom ${isInteractive ? 'interactive-choice' : ''}" title="${isInteractive ? (isKo ? '클릭하여 타임라인에 배치' : 'Click to Play') : ''}">
                         <span class="slot-label">${isKo ? '하단 카드' : 'Bottom Card'}</span>
                         ${renderCardMarkup(set.bottomCard, { nonClickable: true })}
                         ${bottomChoiceBadge}
-                        ${choiceOverlayBottom}
+                        ${choiceBtnBottom}
                     </div>
                 </div>
+                ${isInteractive ? `
+                    <div class="choice-pair-hint">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>${isKo ? '선택 카드 배치, 남은 1장 손패로' : 'Chosen to timeline, other to hand'}</span>
+                    </div>
+                ` : ''}
                 ${bidSlotHtml}
             `;
 
-            // Bind click handlers for interactive choice
+            // Bind click and hover handlers for interactive choice
             if (isInteractive) {
                 const slotTop = setCol.querySelector('.slot-top');
                 const slotBottom = setCol.querySelector('.slot-bottom');
+                const btnTopText = slotTop ? slotTop.querySelector('.btn-card-choose-play span') : null;
+                const btnBottomText = slotBottom ? slotBottom.querySelector('.btn-card-choose-play span') : null;
+
+                if (slotTop && slotBottom) {
+                    slotTop.onmouseenter = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '✔ 배치 (Play)' : '✔ Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '➔ 손패 (Hand)' : '➔ Hand';
+                    };
+                    slotTop.onmouseleave = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '배치 (Play)' : 'Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '배치 (Play)' : 'Play';
+                    };
+                    slotBottom.onmouseenter = () => {
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '✔ 배치 (Play)' : '✔ Play';
+                        if (btnTopText) btnTopText.textContent = isKo ? '➔ 손패 (Hand)' : '➔ Hand';
+                    };
+                    slotBottom.onmouseleave = () => {
+                        if (btnTopText) btnTopText.textContent = isKo ? '배치 (Play)' : 'Play';
+                        if (btnBottomText) btnBottomText.textContent = isKo ? '배치 (Play)' : 'Play';
+                    };
+                }
+
                 if (slotTop) {
                     slotTop.onclick = (e) => {
                         e.stopPropagation();

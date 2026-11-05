@@ -1703,48 +1703,66 @@ body {
     box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
 }
 
-.choice-action-overlay {
-    position: absolute;
-    inset: 18px 2px 2px 2px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 6px;
+.card-choice-btn-wrap {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    opacity: 0.96;
-    transition: opacity 0.15s, background 0.15s;
-    pointer-events: none;
-    z-index: 6;
+    margin-top: 4px;
 }
 
-.floor-card-slot.interactive-choice:hover .choice-action-overlay {
-    background: rgba(15, 23, 42, 0.65);
-    opacity: 1;
-}
-
-.btn-play-choice {
+.btn-card-choose-play {
+    width: 100%;
+    max-width: 86px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     border: none;
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
 }
 
-.choice-sub-hint {
-    font-size: 0.55rem;
-    color: #cbd5e1;
-    font-weight: 600;
+.floor-card-slot.interactive-choice .pl-card {
+    border-color: rgba(245, 158, 11, 0.55) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    transform: translateY(-2px);
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6) !important;
+}
+
+.floor-card-slot.interactive-choice:hover .btn-card-choose-play {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.7);
+}
+
+.choice-pair-hint {
+    font-size: 0.58rem;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 4px;
+    padding: 3px 6px;
     text-align: center;
-    line-height: 1.1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 3px;
+    font-weight: 600;
 }
 
 .choice-result-badge {
@@ -1912,48 +1930,66 @@ body {
     box-shadow: 0 0 16px rgba(245, 158, 11, 0.5) !important;
 }
 
-.choice-action-overlay {
-    position: absolute;
-    inset: 18px 2px 2px 2px;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 6px;
+.card-choice-btn-wrap {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
-    opacity: 0.96;
-    transition: opacity 0.15s, background 0.15s;
-    pointer-events: none;
-    z-index: 6;
+    margin-top: 4px;
 }
 
-.floor-card-slot.interactive-choice:hover .choice-action-overlay {
-    background: rgba(15, 23, 42, 0.65);
-    opacity: 1;
-}
-
-.btn-play-choice {
+.btn-card-choose-play {
+    width: 100%;
+    max-width: 86px;
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     border: none;
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
 }
 
-.choice-sub-hint {
-    font-size: 0.55rem;
-    color: #cbd5e1;
-    font-weight: 600;
+.floor-card-slot.interactive-choice .pl-card {
+    border-color: rgba(245, 158, 11, 0.55) !important;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.floor-card-slot.interactive-choice:hover .pl-card {
+    transform: translateY(-2px);
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.6) !important;
+}
+
+.floor-card-slot.interactive-choice:hover .btn-card-choose-play {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.7);
+}
+
+.choice-pair-hint {
+    font-size: 0.58rem;
+    color: var(--gold);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 4px;
+    padding: 3px 6px;
     text-align: center;
-    line-height: 1.1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 3px;
+    font-weight: 600;
 }
 
 .choice-result-badge {
