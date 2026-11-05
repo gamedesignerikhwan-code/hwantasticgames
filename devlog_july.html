@@ -73,7 +73,6 @@
                     Welcome to the third development log for <strong>Hearts Extreme</strong>! July was a pivotal month where the game transitioned from experimental prototype to a robust, feature-complete production. Here is a look behind the curtain at the technical challenges, level balancing decisions, and publishing milestones we tackled.
                 </p>
 
-                <h3>1. The Subtle Glow Dilemma & Tool Transitions</h3>
                 <p>
                     After transitioning to Claude, one particular problem remains vividly etched in my memory.
                 </p>
@@ -93,12 +92,15 @@
                     I tried fixing it in Antigravity, but the tool struggled to decouple the inverted index transform from the CSS glow coordinate system. I exhausted my daily token quota that day, and the next day's attempts hit a similar wall. I almost resigned myself to abandoning the fix. However, when I brought the task to Claude, it grasped the coordinate nuance and resolved it cleanly within a single working session. Moments like this made me realize that investing in premium AI tools pays for itself many times over by eliminating hours of exhausting trial and error.
                 </p>
 
-                <div style="margin: 28px 0; text-align: center;">
-                    <img src="assets/store_assets/screenshot_3_gameplay_4p.png" alt="Card Display & UI Polish" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Ensuring visual consistency across every card index and suit glow.</p>
+                <h3 style="margin-top: 32px; color: var(--accent-coral);">[Antigravity와의 사투의 흔적]</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -8px; margin-bottom: 16px;"><em>(Traces of the Struggle with Antigravity)</em></p>
+
+                <div style="margin: 24px 0 36px 0; text-align: center;">
+                    <img src="assets/july_doc_glow_struggle.png" alt="[Antigravity와의 사투의 흔적] Traces of the Struggle with Antigravity" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">The debugging notes from the attempt to synchronize suit glow angles across inverted indexes.</p>
                 </div>
 
-                <h3>2. Going Global: 16-Language Localization</h3>
+                <h3>Going Global: 16-Language Localization</h3>
                 <p>
                     As July began, I judged that the core gameplay mechanics were sufficiently mature, so I turned my focus toward multilingual localization.
                 </p>
@@ -109,12 +111,12 @@
                     Consequently, July involved not only fixing edge-case bugs across various game modes, but also spending dozens of hours inspecting, testing, and formatting localized text across 16 languages. Ensuring that German compound words didn't overflow buttons, Japanese and Chinese characters rendered with crisp typography, and right-to-left layout nuances were respected required meticulous care, but it was worth every minute.
                 </p>
 
-                <div style="margin: 28px 0; text-align: center;">
-                    <img src="assets/store_assets/screenshot_1_title.png" alt="Hearts Extreme Title Screen & Multi-Language Support" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">Hearts Extreme features full localization across 16 languages.</p>
+                <div style="margin: 24px 0 36px 0; text-align: center;">
+                    <img src="assets/hearts_extreme_multilingual_modal.png" alt="Hearts Extreme In-Game Multi-Language Selection" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">The in-game language selection overlay supporting 16 languages across the globe.</p>
                 </div>
 
-                <h3>3. Mid-July Level Restructuring & Progressive Learning Curve</h3>
+                <h3>Mid-July Level Restructuring & Progressive Learning Curve</h3>
                 <p>
                     Through extensive testing in mid-July, I made another major design decision: moving the <em>"Win tricks with designated mission cards"</em> challenge from Level 2 up to Level 4, while shifting the former Level 3 and Level 4 missions down to Levels 2 and 3.
                 </p>
@@ -136,7 +138,7 @@
                     In addition to this level restructuring, I spent countless hours fine-tuning deck unlock criteria and stage completion thresholds to find that elusive sweet spot between challenge and flow.
                 </p>
 
-                <h3>4. Ranked Backend & Custom Analytics Dashboards</h3>
+                <h3>Ranked Backend & Custom Analytics Dashboards</h3>
                 <p>
                     With release on the horizon, July also saw heavy engineering on backend server connectivity for Daily Ranked Mode and telemetry analytics integration.
                 </p>
@@ -147,12 +149,12 @@
                     Ultimately, I tore down the generated views and rebuilt the analytics screens from the ground up to match the data visualizations I was personally comfortable with. Once the data was presented in a familiar, actionable format, a wave of relief washed over me. While a game's commercial success depends fundamentally on its core fun, having robust telemetry creates an invaluable foundation—it gives a solo developer the clarity to observe player trends, diagnose balance issues, and continuously refine the experience.
                 </p>
 
-                <div style="margin: 28px 0; text-align: center;">
-                    <img src="assets/store_assets/screenshot_5_rank_dashboard.png" alt="Daily Ranked Mode Dashboard" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">The Daily Ranked dashboard provides synchronized global competition.</p>
+                <div style="margin: 24px 0 36px 0; text-align: center;">
+                    <img src="assets/july_doc_posthog_telemetry.png" alt="Hearts Extreme Core Metrics & Telemetry Dashboard" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">The rebuilt custom telemetry dashboard monitoring daily active users, retention, and play session data.</p>
                 </div>
 
-                <h3>5. Steam Registration & Community Playtests</h3>
+                <h3>Steam Registration & Community Playtests</h3>
                 <p>
                     Finally, Hearts Extreme officially achieved registration on Steam!
                 </p>
