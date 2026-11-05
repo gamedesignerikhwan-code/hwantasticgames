@@ -2749,5 +2749,244 @@ body.dreamhome-theme::before {
 }
 
 
+/* ==========================================================================
+   Hearts Extreme Steam Launch & Homepage Showcase Renovations
+   ========================================================================== */
 
+/* 1. Launch Badge */
+.badge-tag.badge-launch {
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    color: #10b981;
+    font-weight: 700;
+}
 
+.badge-tag.badge-launch .launch-dot {
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981;
+    animation: launchPulse 1.8s infinite;
+}
+
+@keyframes launchPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* 2. Gameplay Features 3-Card Grid */
+.feature-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 40px 0 32px;
+}
+
+.feature-card {
+    padding: 32px 24px;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(180, 165, 140, 0.2);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(232, 115, 74, 0.12);
+    color: var(--accent-coral);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.feature-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.feature-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #64748b;
+    margin: 0;
+}
+
+/* 3. Demo Spotlight Banner */
+.demo-spotlight-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 32px 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(232, 115, 74, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+    border: 2px solid rgba(232, 115, 74, 0.25);
+    margin: 32px 0 20px;
+}
+
+.demo-spotlight-content {
+    flex: 1;
+}
+
+.demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-coral);
+    margin-bottom: 8px;
+}
+
+.demo-spotlight-content h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.demo-spotlight-content p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.demo-spotlight-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* 4. Heritage & Social Proof */
+.heritage-banner {
+    padding: 36px 40px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    border: 1px solid rgba(180, 165, 140, 0.2);
+    margin: 20px 0;
+}
+
+.heritage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(234, 179, 8, 0.15);
+    border: 1px solid rgba(234, 179, 8, 0.4);
+    color: #b45309;
+    margin-bottom: 14px;
+}
+
+.heritage-banner h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.heritage-banner p {
+    max-width: 800px;
+    margin: 0 auto 28px;
+    color: #64748b;
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+.heritage-stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid rgba(180, 165, 140, 0.2);
+}
+
+.h-stat-item strong {
+    display: block;
+    font-size: 2rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    color: var(--accent-coral);
+    line-height: 1.1;
+}
+
+.h-stat-item span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* 5. Press & Media Hub Card */
+.press-hub-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 28px 36px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(180, 165, 140, 0.2);
+}
+
+.press-hub-text h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.press-hub-text p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.press-hub-actions {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .feature-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .demo-spotlight-card,
+    .press-hub-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .demo-spotlight-actions,
+    .press-hub-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    .heritage-stats-row {
+        gap: 24px;
+    }
+}
