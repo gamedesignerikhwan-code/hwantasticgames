@@ -193,6 +193,13 @@
         state.currentPvpExchangeIndex = 0;
         state.pvpPendingAwards = [];
         state.pvpExchangeStore = {};
+        if (state.revealTimer) {
+            clearInterval(state.revealTimer);
+            state.revealTimer = null;
+        }
+        const revModal = document.getElementById('bidRevealModal');
+        if (revModal) revModal.classList.remove('active');
+        state.revealedBids = [];
 
         const cfg = PLAYER_SETUP_CONFIG[state.playerCount] || PLAYER_SETUP_CONFIG[3];
         const totalCardsUsing = cfg.totalCards;
@@ -431,51 +438,162 @@
         bidsWithPlayers.forEach((bp, rankIdx) => {
             const set = state.floorSets[rankIdx];
             set.awardedPlayerId = bp.player.id;
+            set.awardedBidCard = bp.bidCard;
+            bp.player.roundBidRank = rankIdx + 1;
             awards.push({
                 player: bp.player,
                 set,
-                rankIdx
+                rankIdx,
+                bidCard: bp.bidCard
             });
         });
 
-        if (state.gameMode === 'ai') {
-            const humanAward = awards.find(a => a.player.isHuman);
-            const aiAwards = awards.filter(a => !a.player.isHuman);
+        state.roundAwards = awards;
+        state.revealedBids = bidsWithPlayers;
 
-            // AI resolves immediately
-            aiAwards.forEach(a => {
-                const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
-                const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
+        // Render current state so board background reveals bids immediately
+        render();
 
-                a.player.played.push(cToPlay);
-                a.player.played.sort((x, y) => x.order - y.order);
-                a.player.hand.push(cToKeep);
-                a.player.hand.sort((x, y) => x.order - y.order);
-            });
+        // Show brief reveal presentation before card choice modal
+        showBidRevealModal(bidsWithPlayers, awards, () => {
+            if (state.gameMode === 'ai') {
+                const humanAward = awards.find(a => a.player.isHuman);
+                const aiAwards = awards.filter(a => !a.player.isHuman);
 
-            state.phase = 'choose_set_card';
-            state.pendingHumanAward = humanAward;
-            render();
+                // AI resolves choices
+                aiAwards.forEach(a => {
+                    const cToPlay = chooseAiPlayCard(a.player, a.set.topCard, a.set.bottomCard);
+                    const cToKeep = (cToPlay.order === a.set.topCard.order) ? a.set.bottomCard : a.set.topCard;
 
-            // Prompt human
-            showSetChoiceModal(humanAward.player, humanAward.set, (playedCard, keptCard) => {
-                humanAward.player.played.push(playedCard);
-                humanAward.player.played.sort((x, y) => x.order - y.order);
-                humanAward.player.hand.push(keptCard);
-                humanAward.player.hand.sort((x, y) => x.order - y.order);
+                    a.player.played.push(cToPlay);
+                    a.player.played.sort((x, y) => x.order - y.order);
+                    a.player.hand.push(cToKeep);
+                    a.player.hand.sort((x, y) => x.order - y.order);
+                });
 
-                state.phase = 'bid';
-                state.pendingHumanAward = null;
-                playSound('play');
-                completeRound();
-            });
-        } else {
-            // Pass & Play: Prompt each human player in order of rank
-            state.pvpPendingAwards = awards;
-            state.currentPvpAwardIndex = 0;
-            render();
-            processNextPvpSetChoice();
+                state.phase = 'choose_set_card';
+                state.pendingHumanAward = humanAward;
+                render();
+
+                // Prompt human
+                showSetChoiceModal(humanAward.player, humanAward.set, (playedCard, keptCard) => {
+                    humanAward.player.played.push(playedCard);
+                    humanAward.player.played.sort((x, y) => x.order - y.order);
+                    humanAward.player.hand.push(keptCard);
+                    humanAward.player.hand.sort((x, y) => x.order - y.order);
+
+                    state.pendingHumanAward = null;
+                    playSound('play');
+                    completeRound();
+                });
+            } else {
+                // Pass & Play: Prompt each human player in order of rank
+                state.pvpPendingAwards = awards;
+                state.currentPvpAwardIndex = 0;
+                render();
+                processNextPvpSetChoice();
+            }
+        });
+    }
+
+    // Modal: Show Bids Reveal presentation
+    function showBidRevealModal(bidsWithPlayers, awards, onDone) {
+        const modal = document.getElementById('bidRevealModal');
+        const grid = document.getElementById('revealBidsGrid');
+        const timerBadge = document.getElementById('revealTimerBadge');
+        const btnContinue = document.getElementById('btnContinueFromReveal');
+        if (!modal || !grid) {
+            if (onDone) onDone();
+            return;
         }
+
+        const isKo = (state.lang === 'ko');
+        const titleEl = document.getElementById('bidRevealModalTitle');
+        const descEl = document.getElementById('bidRevealModalDesc');
+        const btnTextEl = document.getElementById('btnContinueFromRevealText');
+
+        if (titleEl) {
+            titleEl.innerHTML = `<i class="fa-solid fa-bullhorn" style="color:var(--gold);"></i> ${isKo ? '입찰 결과 공개!' : 'Bids Revealed!'}`;
+        }
+        if (descEl) {
+            descEl.textContent = isKo ? 
+                '모든 플레이어의 입찰 카드가 공개되었습니다. 숫자가 낮은 순서대로 세트를 획득합니다.' : 
+                'All bids are revealed! SETs are awarded in ascending order of bid numbers.';
+        }
+        if (btnTextEl) {
+            btnTextEl.textContent = isKo ? '카드 선택으로 진행' : 'Proceed to Card Choice';
+        }
+
+        grid.innerHTML = '';
+        bidsWithPlayers.forEach((bp, rankIdx) => {
+            const set = awards[rankIdx].set;
+            const rankNum = rankIdx + 1;
+            const rankSuffix = isKo ? '위' : (rankNum === 1 ? 'st' : (rankNum === 2 ? 'nd' : 'rd'));
+            const col = document.createElement('div');
+            col.className = `reveal-bid-col rank-${rankNum} ${bp.player.isHuman ? 'is-human' : 'is-ai'}`;
+
+            col.innerHTML = `
+                <div class="reveal-rank-badge rank-${rankNum}">
+                    <i class="fa-solid fa-medal"></i> ${rankNum}${rankSuffix}
+                </div>
+                <div class="reveal-player-header">
+                    <span class="reveal-player-name">${bp.player.name}</span>
+                    <span class="player-role-badge">${bp.player.isHuman ? 'Human' : 'AI'}</span>
+                </div>
+                <div class="reveal-card-wrap">
+                    <div style="font-size:0.68rem; color:var(--text-muted); margin-bottom:2px;">
+                        ${isKo ? '제출한 입찰 카드' : 'Bid Card'}
+                    </div>
+                    ${renderCardMarkup(bp.bidCard, { nonClickable: true })}
+                </div>
+                <div class="reveal-award-box">
+                    <div class="reveal-award-title">➔ ${isKo ? `${rankNum}위 세트 획득` : `Won SET #${rankNum}`}</div>
+                    <div class="reveal-award-preview">
+                        <span class="reveal-set-chip">${isKo ? '상단' : 'Top'} #${set.topCard.orderStr}</span>
+                        <span class="reveal-set-chip">${isKo ? '하단' : 'Btm'} #${set.bottomCard.orderStr}</span>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(col);
+        });
+
+        modal.classList.add('active');
+
+        let remainingSec = 2.8;
+        if (timerBadge) {
+            timerBadge.innerHTML = `<i class="fa-regular fa-clock"></i> ${remainingSec.toFixed(1)}s`;
+        }
+
+        let isCompleted = false;
+        function finishReveal() {
+            if (isCompleted) return;
+            isCompleted = true;
+            if (state.revealTimer) {
+                clearInterval(state.revealTimer);
+                state.revealTimer = null;
+            }
+            modal.classList.remove('active');
+            if (onDone) onDone();
+        }
+
+        if (btnContinue) {
+            btnContinue.onclick = finishReveal;
+        }
+
+        modal.onclick = (e) => {
+            if (e.target === modal) finishReveal();
+        };
+
+        const intervalMs = 100;
+        state.revealTimer = setInterval(() => {
+            remainingSec -= (intervalMs / 1000);
+            if (timerBadge) {
+                timerBadge.innerHTML = `<i class="fa-regular fa-clock"></i> ${Math.max(0, remainingSec).toFixed(1)}s`;
+            }
+            if (remainingSec <= 0) {
+                finishReveal();
+            }
+        }, intervalMs);
     }
 
     function processNextPvpSetChoice() {
@@ -557,7 +675,13 @@
     // Complete Round & Check End
     function completeRound() {
         // Reset player bids
-        state.players.forEach(p => p.bidCard = null);
+        state.players.forEach(p => {
+            p.bidCard = null;
+            p.roundBidRank = null;
+        });
+        state.floorSets.forEach(s => {
+            s.awardedBidCard = null;
+        });
 
         if (state.deck.length === 0 || state.round >= state.totalRounds) {
             // Deck is depleted! Enter Final Round: Secret Connection Exchange
@@ -1054,11 +1178,12 @@
             setCol.className = 'floor-set-col';
 
             const awardedPlayer = (set.awardedPlayerId !== null) ? state.players[set.awardedPlayerId] : null;
+            const awardedBidText = set.awardedBidCard ? ` (#${set.awardedBidCard.orderStr})` : '';
 
             setCol.innerHTML = `
                 <div class="set-col-header">
                     <span class="set-rank-badge">${isKo ? `${idx + 1}위 세트` : `SET #${idx + 1}`}</span>
-                    ${awardedPlayer ? `<span class="set-claimed-tag">✔ ${awardedPlayer.name}</span>` : ''}
+                    ${awardedPlayer ? `<span class="set-claimed-tag">✔ ${awardedPlayer.name}${awardedBidText}</span>` : ''}
                 </div>
                 <div class="set-cards-pair">
                     <div class="floor-card-slot slot-top">
@@ -1184,7 +1309,11 @@
                         <span class="player-cards-count">${isKo ? `배치 ${p.played.length}장 / 손패 ${p.hand.length}장` : `Played: ${p.played.length} / Hand: ${p.hand.length}`}</span>
                     </div>
                     <div class="pb-bid-status">
-                        ${p.bidCard ? `<span class="bid-placed-tag">✔ ${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : `<span class="bid-waiting-tag">${isKo ? '입찰 대기중' : 'Thinking...'}</span>`}
+                        ${state.phase === 'bid' ? (
+                            p.bidCard ? `<span class="bid-placed-tag">✔ ${isKo ? '입찰 완료' : 'Bid Placed'}</span>` : `<span class="bid-waiting-tag">${isKo ? '입찰 대기중' : 'Thinking...'}</span>`
+                        ) : (
+                            p.bidCard ? `<span class="bid-revealed-tag"><i class="fa-solid fa-gavel"></i> ${isKo ? `입찰 #${p.bidCard.orderStr}` : `Bid #${p.bidCard.orderStr}`}${p.roundBidRank ? ` (${p.roundBidRank}${isKo ? '위' : 'th'})` : ''}</span>` : ''
+                        )}
                     </div>
                 </div>
                 <div class="pb-timeline-row">
@@ -1220,6 +1349,10 @@
         });
         if (document.getElementById('tutorialModal')?.classList.contains('active')) {
             renderTutorialSlidePL();
+        }
+        const btnRevealText = document.getElementById('btnContinueFromRevealText');
+        if (btnRevealText) {
+            btnRevealText.textContent = isKo ? '카드 선택으로 진행' : 'Proceed to Card Choice';
         }
     
         const prompt = document.getElementById('promptText');
