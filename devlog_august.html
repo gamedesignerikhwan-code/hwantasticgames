@@ -73,86 +73,38 @@
                     August ended up being a month where far more unfolded than I had ever anticipated.
                 </p>
                 <p>
-                    Back in July, I genuinely believed the game was practically finished and that August would be dedicated entirely to promotional outreach and community building. However, my very first post on Reddit—meant to introduce the game to strategy fans—met with an immediate, stinging reality check.
+                    In fact, I thought development was almost finished in July, and I planned to start promoting the game in August. However, my very first post on Reddit to promote the game was met with harsh reactions.
                 </p>
                 <p>
-                    When I initially brought the game to life, I was genuinely satisfied with the original UI and artwork generated through Antigravity. To my eyes, it felt functional and cohesive.
-                </p>
-                <p>
-                    The online gaming community, however, saw things very differently. Commenters bluntly characterized the visuals as looking like generic "AI slop." Beyond those harsh reactions, there was virtually no positive engagement with the core design.
+                    When I first started turning the game idea into reality, I actually liked the initial UI and artwork created by Antigravity, and I was satisfied with everything built on top of it. But people judged the result as looking like "AI slop," and I couldn't get any positive feedback beyond that.
                 </p>
 
                 <h3 style="margin-top: 32px; color: var(--accent-coral);">[AI slop의 표본]</h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -8px; margin-bottom: 16px;"><em>(An Example of "AI Slop")</em></p>
 
                 <div style="margin: 24px 0 36px 0; text-align: center;">
-                    <img src="assets/august_doc_ai_slop.png" alt="[AI slop의 표본] Early Hearts Extreme Prototype UI" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">The early prototype UI that met blunt community criticism on Reddit.</p>
+                    <img src="assets/august_doc_ai_slop.png" alt="[AI slop의 표본]" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
                 </div>
 
-                <h3>A Solo Developer's Blindspot: Designer vs. Director</h3>
                 <p>
-                    After absorbing that sting, I spent long hours in self-reflection. I had to ask myself: <em>To what extent had I truly acted as the creative director of this game?</em>
+                    Looking back on myself after that, I started reflecting on how much I had truly made this game with the awareness of being a director. It made sense in hindsight—making a video game all by myself for the first time, I realized I was still approaching development from the mindset of a board game designer. Especially when creating board games, once a publisher likes the idea, they handle the art direction and produce a beautiful final product. Used to that environment, I had spent over a month developing the video game while only focusing on the core gameplay mechanics.
                 </p>
                 <p>
-                    As someone building a digital video game entirely solo for the first time, I realized I had approached production wearing only my familiar board game designer's hat. In the tabletop publishing world, when a publisher licenses your game prototype, their in-house team takes over the visual direction, hiring professional illustrators and graphic designers to package the product beautifully. Accustomed to that division of labor, I had spent over a month concentrating solely on the mathematical elegance of the game mechanics, assuming the raw visuals would suffice.
+                    In the midst of that, thanks to some acquaintances who stepped in to playtest, I realized that a major overhaul of the game systems was also needed. When I started development, my goal was to combine a card game with roguelike elements, but there came a moment when I judged that this wouldn't work with the current gameplay. So I decided to overhaul the game structure completely.
                 </p>
                 <p>
-                    In solo indie video game development, however, you cannot outsource aesthetic responsibility. You are not merely the systems designer—you are the game director responsible for every pixel and player impression.
-                </p>
-
-                <h3>Major Architectural Pivot & Scrapping the Roguelike Framework</h3>
-                <p>
-                    Around that same time, insightful feedback from close playtesters surfaced a deeper systemic problem.
+                    All of this happened in early August. Just when I thought the game was nearly finished, the moment arrived where I had to tear down and rebuild both the game's structure and all of its artwork. I had thought there was plenty of time left until Steam Next Fest in October, but suddenly I was in a situation where I had to remake the entire game. On top of that, when I asked AI for an estimated timeline for this scope of work, it projected that it would take several months. Interestingly, when you simply ask an AI for an estimate like this, it calculates and responds based on human working speed. So when I asked how fast it could do it if it handled the work itself, a fairly realistic number came out.
                 </p>
                 <p>
-                    When I began development, I had ambitious plans to blend trick-taking with roguelike run mechanics. But seeing real players interact with the game revealed an inescapable conclusion: the roguelike progression was actively clashing with the pure, deterministic deductive puzzle experience I wanted to create.
+                    Around this time, fortunately, my wife wanted to subscribe to ChatGPT for fitness tracking, so I ended up using three AI tools simultaneously: Claude, Antigravity, and Codex. This allowed me to speed up the work. Honestly, once I started using Claude, I hadn't been using Antigravity much for video game development. But with the urgent situation, I had to use it as well. Although it was an urgent time, I still remember this as the most interesting period of developing a game with AI—what is known as orchestration. Testing the performance of all three tools, I began assigning tasks based on what each did best: ultimately, Claude performed best, so it took the lead conductor role; Codex did much of the actual heavy lifting in restructuring the game code; and Antigravity was deployed for simulations and miscellaneous background tasks. The artwork overhaul also moved forward: we created multiple proposals for the new visual style, picked the one I liked best, and reworked all the art based on it. Since Claude had established the winning proposal, Claude ended up solving most of it.
                 </p>
                 <p>
-                    All of this converged in early August. I had believed the finish line was in sight, but suddenly I faced the reality that both the game's core architecture and its entire visual presentation needed to be completely rebuilt. With Steam Next Fest scheduled for October, the pressure was immense.
-                </p>
-                <p>
-                    Interestingly, when I initially asked AI to estimate the schedule for this massive rework, it projected several months of work—calculating based on standard human developer velocity. When I asked how fast it could accomplish the tasks under my direct steering and prompt architecture, a realistic and achievable timeline emerged.
-                </p>
-
-                <h3>Multi-AI Orchestration: Claude, Codex, and Antigravity</h3>
-                <p>
-                    Around this time, a fortunate coincidence occurred: my wife decided to subscribe to ChatGPT to track her fitness routines, giving me simultaneous access to three distinct AI development tools—<strong>Claude</strong>, <strong>Codex</strong>, and <strong>Antigravity</strong>.
-                </p>
-                <p>
-                    While the situation was urgent, navigating this period became one of the most fascinating creative experiences of my development journey: what is now broadly termed <em>AI orchestration</em>.
-                </p>
-                <p>
-                    I benchmarked the distinct strengths of each tool and systematically assigned them specific roles within the pipeline:
-                </p>
-                <ul>
-                    <li><strong>Claude (Lead Conductor & Art Director):</strong> Demonstrated superior high-level reasoning and creative intuition. Claude took charge of structural architectural decisions and generated the primary visual draft proposals.</li>
-                    <li><strong>Codex (Heavy Engineering):</strong> Excelled at systematic, large-scale code refactoring and executing deep structural modifications to game logic.</li>
-                    <li><strong>Antigravity (Simulation & Background Ops):</strong> Deployed for automated simulations, playtest balance verification, and repetitive background scripts.</li>
-                </ul>
-                <p>
-                    For the visual overhaul, Claude drafted several distinct artistic directions. I selected the cleanest, most minimalist candidate, and Claude systematically guided the replacement of the entire asset catalog.
-                </p>
-
-                <h3>Aesthetics That Serve the Deductive Puzzle</h3>
-                <p>
-                    The outcome of that intense August sprint is the visual identity Hearts Extreme showcases today, and I am genuinely proud of it.
-                </p>
-                <p>
-                    A minimalist aesthetic might still lead some to perceive it as having a "web game" feel, but I firmly believe this clean, understated approach is the ideal match for a pure card game. It eliminates visual noise so that players can immerse themselves entirely in tactical calculations, reading opponents' open hands, and finding the winning play.
-                </p>
-                <p>
-                    I hope you enjoy playing Hearts Extreme as much as I enjoyed the journey of bringing it to life. That said, I have already promised myself one thing: for my next title, I will explore an entirely different visual realm!
+                    The result is what you see today, and I am satisfied with it. This kind of simple artwork matches my personal taste, and while some people might still feel that being overly simple gives it a "web game" look, I believe this design suits a card game very well. I hope you like it too. That said, I've decided to avoid this kind of design for my next project if possible.
                 </p>
 
                 <div style="margin: 24px 0 36px 0; text-align: center;">
-                    <img src="assets/august_doc_revamped_ui.png" alt="Hearts Extreme Overhauled Minimalist UI" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">The redesigned dark-felt minimalist interface balancing clarity, focus, and elegance.</p>
+                    <img src="assets/august_doc_revamped_ui.png" alt="Hearts Extreme Overhauled UI" style="max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
                 </div>
-
-                <p style="font-style: italic; color: var(--text-muted); margin-top: 32px;">
-                    Thank you for reading and following along with the making of Hearts Extreme!
-                </p>
             </div>
 
             <div style="margin-top: 48px; border-top: 1px solid var(--glass-border); padding-top: 24px;">
