@@ -2990,3 +2990,68 @@ body.dreamhome-theme::before {
         gap: 24px;
     }
 }
+
+
+/* Upcoming Project Spotlight (Boomside Wishlist) */
+.upcoming-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(27, 40, 56, 0.95) 0%, rgba(20, 25, 35, 0.98) 100%);
+    border: 1px solid rgba(102, 192, 244, 0.35);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+    color: #e2e8f0;
+}
+.upcoming-thumb {
+    flex: 0 0 260px;
+    max-width: 260px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.upcoming-thumb img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.upcoming-thumb:hover img {
+    transform: scale(1.03);
+}
+.upcoming-body {
+    flex: 1;
+}
+.upcoming-title {
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    font-family: var(--font-heading);
+}
+.upcoming-desc {
+    color: #94a3b8;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.upcoming-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+@media (max-width: 900px) {
+    .upcoming-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 20px;
+    }
+    .upcoming-thumb {
+        max-width: 100%;
+        width: 100%;
+    }
+    .upcoming-actions {
+        justify-content: center;
+    }
+}
