@@ -2084,6 +2084,75 @@ body {
     gap: 4px;
 }
 
+/* ==========================================================================
+   Horizontal Ascending Timeline Layout for Played Cards
+   ========================================================================== */
+.players-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.player-board {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.player-board.human {
+    border-color: rgba(245, 158, 11, 0.45);
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.15);
+}
+
+.player-board.ai {
+    background: rgba(15, 23, 42, 0.7);
+}
+
+.pb-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pb-timeline-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 6px 4px 8px !important;
+    min-height: 86px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(245, 158, 11, 0.3) transparent;
+}
+
+.pb-timeline-row .pl-card.played-mini-card {
+    display: flex !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+
+.timeline-empty-hint {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-style: italic;
+    padding: 8px 4px;
+}
+
 </style>
 </head>
 <body>
@@ -3689,6 +3758,9 @@ body {
         state.players.forEach(p => {
             const board = document.createElement('div');
             board.className = `player-board ${p.isHuman ? 'human' : 'ai'}`;
+
+            // Guarantee horizontal ascending order for timeline cards
+            p.played.sort((a, b) => a.order - b.order);
 
             // Resolve special cards for active visual indicators
             const res = resolveSpecialCards(p.played);

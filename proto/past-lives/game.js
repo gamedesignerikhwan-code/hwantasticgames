@@ -1303,6 +1303,9 @@
             const board = document.createElement('div');
             board.className = `player-board ${p.isHuman ? 'human' : 'ai'}`;
 
+            // Guarantee horizontal ascending order for timeline cards
+            p.played.sort((a, b) => a.order - b.order);
+
             // Resolve special cards for active visual indicators
             const res = resolveSpecialCards(p.played);
 
