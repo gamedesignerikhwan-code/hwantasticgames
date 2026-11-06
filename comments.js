@@ -9,144 +9,6 @@
 (function () {
     'use strict';
 
-    // Seed / Initial comments for each devlog article
-    const SEED_COMMENTS = {
-        devlog_august: [
-            {
-                id: 'c_august_1',
-                author: '인디게임지망생',
-                password: 'pass',
-                text: '레딧 피드백을 맞고 좌절하기보다, 자신이 디렉터로서 무엇을 놓쳤는지 객관적으로 돌아보신 점이 정말 인상적입니다. Claude-Codex-Antigravity 3중 오케스트레이션 과정도 1인 인디 개발자에게 아주 실질적인 팁이네요!',
-                createdAt: Date.now() - 1000 * 60 * 60 * 28, // 28 hours ago
-                likes: 8,
-                isAuthor: false,
-                replies: [
-                    {
-                        id: 'r_august_1_1',
-                        author: 'Hwantastic Games',
-                        password: 'pass',
-                        text: '좋게 봐주셔서 감사합니다! 당시엔 아침에 레딧 열어보고 머리가 하얘졌지만, 지금 돌이켜보면 그때 솔직한 피드백을 맞은 게 천운이었던 것 같습니다. 계속 다듬어 나가겠습니다!',
-                        createdAt: Date.now() - 1000 * 60 * 60 * 20,
-                        likes: 5,
-                        isAuthor: true
-                    }
-                ]
-            },
-            {
-                id: 'c_august_2',
-                author: '보드게이머',
-                password: 'pass',
-                text: '바뀐 아트워크가 훨씬 깔끔하고 게임의 본질인 카드 퍼즐성에 집중하기 좋아 보입니다. 스팀 넥스트 페스트 데모 기대하겠습니다!',
-                createdAt: Date.now() - 1000 * 60 * 60 * 14,
-                likes: 4,
-                isAuthor: false,
-                replies: []
-            }
-        ],
-        devlog_july: [
-            {
-                id: 'c_july_1',
-                author: '카드게임마니아',
-                password: 'pass',
-                text: '16개 언어 로컬라이징이라니 혼자서 대단하십니다... 스팀 개발자 등록 축하드려요!',
-                createdAt: Date.now() - 1000 * 60 * 60 * 36,
-                likes: 6,
-                isAuthor: false,
-                replies: [
-                    {
-                        id: 'r_july_1_1',
-                        author: 'Hwantastic Games',
-                        password: 'pass',
-                        text: '감사합니다! AI 툴들 덕분에 방대한 언어 지원도 혼자서 해낼 수 있었습니다. 번역 퀄리티도 데모 기간 동안 꼼꼼히 점검할 예정입니다.',
-                        createdAt: Date.now() - 1000 * 60 * 60 * 24,
-                        likes: 4,
-                        isAuthor: true
-                    }
-                ]
-            }
-        ],
-        devlog_june: [
-            {
-                id: 'c_june_1',
-                author: '트릭테이킹팬',
-                password: 'pass',
-                text: '10년 동안 보드게임을 만드신 분이 디지털 인디 게임으로 도전하시는 거군요. 룰 메커니즘이 탄탄할 수밖에 없겠습니다.',
-                createdAt: Date.now() - 1000 * 60 * 60 * 48,
-                likes: 7,
-                isAuthor: false,
-                replies: [
-                    {
-                        id: 'r_june_1_1',
-                        author: 'Hwantastic Games',
-                        password: 'pass',
-                        text: '보드게임에서 쌓은 오픈 핸드 디터미니즘 감각을 비디오 게임에 녹여내는 중입니다. 응원 감사합니다!',
-                        createdAt: Date.now() - 1000 * 60 * 60 * 30,
-                        likes: 5,
-                        isAuthor: true
-                    }
-                ]
-            }
-        ],
-        devlog_website: [
-            {
-                id: 'c_web_1',
-                author: '웹디자이너',
-                password: 'pass',
-                text: '메가크릿(Mega Crit) 사이트 느낌의 따뜻한 베이지 톤앤매너가 너무 예쁩니다. 개발 일지 계속 올려주세요!',
-                createdAt: Date.now() - 1000 * 60 * 60 * 52,
-                likes: 5,
-                isAuthor: false,
-                replies: [
-                    {
-                        id: 'r_web_1_1',
-                        author: 'Hwantastic Games',
-                        password: 'pass',
-                        text: '웹사이트 분위기 마음에 들어해 주셔서 기쁩니다! 개발 과정과 고민들을 솔직하게 기록해 둘게요.',
-                        createdAt: Date.now() - 1000 * 60 * 60 * 40,
-                        likes: 3,
-                        isAuthor: true
-                    }
-                ]
-            }
-        ],
-        devlog_balancing: [
-            {
-                id: 'c_bal_1',
-                author: '퍼즐러',
-                password: 'pass',
-                text: '10개 덱마다 고유 특수 카드가 들어가는 거면 밸런스 잡기가 정말 까다로우셨을 텐데 대단합니다.',
-                createdAt: Date.now() - 1000 * 60 * 60 * 42,
-                likes: 4,
-                isAuthor: false,
-                replies: []
-            }
-        ],
-        devlog_concept: [
-            {
-                id: 'c_con_1',
-                author: '전략게이머',
-                password: 'pass',
-                text: '트릭테이킹에 완전 공개 정보 퍼즐을 결합한 아이디어가 신선하네요.',
-                createdAt: Date.now() - 1000 * 60 * 60 * 45,
-                likes: 3,
-                isAuthor: false,
-                replies: []
-            }
-        ],
-        devlog_steam: [
-            {
-                id: 'c_stm_1',
-                author: '스팀유저',
-                password: 'pass',
-                text: '스팀 클라우드 세이브와 업적 연동 완료 축하드립니다!',
-                createdAt: Date.now() - 1000 * 60 * 60 * 40,
-                likes: 5,
-                isAuthor: false,
-                replies: []
-            }
-        ]
-    };
-
     // Color palette for user avatar circles based on string hash
     const AVATAR_COLORS = [
         ['#e8734a', '#ffffff'],
@@ -232,16 +94,29 @@
             const raw = localStorage.getItem(key);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed)) return parsed;
+                if (Array.isArray(parsed)) {
+                    // Filter out any legacy sample/seed comments so only genuine user comments remain
+                    const cleaned = parsed.filter(c => {
+                        const id = String(c.id || '');
+                        return !id.startsWith('c_august_') && 
+                               !id.startsWith('c_july_') && 
+                               !id.startsWith('c_june_') && 
+                               !id.startsWith('c_web_') && 
+                               !id.startsWith('c_bal_') && 
+                               !id.startsWith('c_con_') && 
+                               !id.startsWith('c_stm_');
+                    });
+                    if (cleaned.length !== parsed.length) {
+                        saveComments(postId, cleaned);
+                    }
+                    return cleaned;
+                }
             }
         } catch (e) {
             console.warn('Failed to parse comments from localStorage:', e);
         }
 
-        // Return seed comments if available, or empty array
-        const seeds = SEED_COMMENTS[postId] ? JSON.parse(JSON.stringify(SEED_COMMENTS[postId])) : [];
-        saveComments(postId, seeds);
-        return seeds;
+        return [];
     }
 
     function saveComments(postId, comments) {
