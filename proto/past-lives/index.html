@@ -2402,6 +2402,12 @@ body {
     box-shadow: 0 6px 22px rgba(245, 158, 11, 0.6);
 }
 
+.exchange-assign-select.swapped-highlight {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.7) !important;
+    transform: scale(1.05);
+}
+
 </style>
 </head>
 <body>
@@ -3454,8 +3460,30 @@ body {
         handRow.querySelectorAll('.exchange-assign-select').forEach(sel => {
             sel.onchange = () => {
                 const cOrder = parseInt(sel.getAttribute('data-card'), 10);
-                const val = sel.value;
-                state.exchangeAssignments[cOrder] = (val === 'keep' || val === 'discard') ? val : parseInt(val, 10);
+                const rawVal = sel.value;
+                const newTargetVal = (rawVal === 'keep' || rawVal === 'discard') ? rawVal : parseInt(rawVal, 10);
+                const oldTargetVal = state.exchangeAssignments[cOrder];
+
+                if (newTargetVal === oldTargetVal) return;
+
+                // Find another card that currently has this target assignment (to swap automatically)
+                const otherCardOrderStr = Object.keys(state.exchangeAssignments).find(
+                    k => parseInt(k, 10) !== cOrder && state.exchangeAssignments[k] === newTargetVal
+                );
+
+                state.exchangeAssignments[cOrder] = newTargetVal;
+
+                if (otherCardOrderStr !== undefined && oldTargetVal !== undefined) {
+                    const otherCardOrder = parseInt(otherCardOrderStr, 10);
+                    state.exchangeAssignments[otherCardOrder] = oldTargetVal;
+                    const otherSel = handRow.querySelector(`.exchange-assign-select[data-card="${otherCardOrder}"]`);
+                    if (otherSel) {
+                        otherSel.value = String(oldTargetVal);
+                        otherSel.classList.add('swapped-highlight');
+                        setTimeout(() => otherSel.classList.remove('swapped-highlight'), 600);
+                    }
+                }
+
                 validateAssignments();
             };
         });

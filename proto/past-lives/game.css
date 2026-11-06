@@ -2378,3 +2378,9 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 22px rgba(245, 158, 11, 0.6);
 }
+
+.exchange-assign-select.swapped-highlight {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.7) !important;
+    transform: scale(1.05);
+}
