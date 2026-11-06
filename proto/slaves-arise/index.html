@@ -461,6 +461,20 @@ body {
     box-shadow: 0 6px 18px rgba(245, 158, 11, 0.6);
 }
 
+.btn-skip {
+    background: rgba(245, 158, 11, 0.16);
+    color: #fbbf24;
+    border: 1.5px solid #f59e0b;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+}
+
+.btn-skip:hover:not(:disabled) {
+    background: rgba(245, 158, 11, 0.32);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+}
+
 .btn-pass {
     background: rgba(255, 255, 255, 0.08);
     color: var(--text-muted);
@@ -1142,7 +1156,7 @@ body {
     transform: translateY(-1px);
 }
 
-    </style>
+</style>
 </head>
 <body>
     <!-- Top Header -->
@@ -1165,7 +1179,7 @@ body {
             <button class="btn-header" id="btnSoundSwitch" title="소리 토글">
                 <i class="fa-solid fa-volume-high"></i>
             </button>
-            <button class="btn-header" id="btnLangSwitch">EN</button>
+            <button class="btn-header" id="btnLangSwitch">KO</button>
             <button class="btn-header" id="btnTutorial" title="튜토리얼">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <span data-i18n-ko="튜토리얼" data-i18n-en="Tutorial">튜토리얼</span>
@@ -1494,7 +1508,7 @@ body {
 
     // Global Game State
     const state = {
-        lang: 'ko',
+        lang: 'en',
         soundEnabled: true,
         playerCount: 4,
         gameMode: 'ai', // 'ai' or 'pvp'
@@ -2388,6 +2402,12 @@ body {
         renderPlayers();
         renderLogs();
 
+        // Translate all data-i18n attributes
+        document.querySelectorAll('[data-i18n-ko]').forEach(el => {
+            const txt = (state.lang === 'ko') ? el.getAttribute('data-i18n-ko') : (el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko'));
+            if (txt) el.textContent = txt;
+        });
+
         const bannerText = document.getElementById('promptBannerText');
         const isKo = (state.lang === 'ko');
         const active = state.players[state.currentTurnPlayerId];
@@ -3061,7 +3081,7 @@ body {
 
 })();
 
-    </script>
+</script>
 
     <!-- Interactive Tutorial Modal -->
     <div class="tut-modal-overlay" id="tutorialModal">

@@ -159,7 +159,7 @@
 
     // Global Game State
     const state = {
-        lang: 'ko',
+        lang: 'en',
         soundEnabled: true,
         playerCount: 3,
         gameMode: 'ai', // 'ai' = Solo vs AI, 'pvp' = Pass & Play (Local Multi-player)

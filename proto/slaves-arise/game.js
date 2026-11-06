@@ -108,7 +108,7 @@
 
     // Global Game State
     const state = {
-        lang: 'ko',
+        lang: 'en',
         soundEnabled: true,
         playerCount: 4,
         gameMode: 'ai', // 'ai' or 'pvp'
@@ -1001,6 +1001,12 @@
         renderHand();
         renderPlayers();
         renderLogs();
+
+        // Translate all data-i18n attributes
+        document.querySelectorAll('[data-i18n-ko]').forEach(el => {
+            const txt = (state.lang === 'ko') ? el.getAttribute('data-i18n-ko') : (el.getAttribute('data-i18n-en') || el.getAttribute('data-i18n-ko'));
+            if (txt) el.textContent = txt;
+        });
 
         const bannerText = document.getElementById('promptBannerText');
         const isKo = (state.lang === 'ko');
