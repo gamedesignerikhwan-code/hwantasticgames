@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!rawId) return 'home';
         const id = rawId.toLowerCase();
         if (id === 'home') return 'home';
-        if (id === 'games' || id === 'videogames' || id === 'video-games') return 'videogames';
+        if (id === 'boomside' || id === 'games' || id === 'videogames' || id === 'video-games') return 'boomside';
+        if (id === 'hearts-extreme' || id === 'heartsextreme' || id === 'hearts') return 'hearts-extreme';
         if (id === 'community') return 'contact';
         return id;
     }
@@ -348,11 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (previewKeyForm) {
         previewKeyForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const gameTitle = previewKeyForm.dataset.game || 'Hearts Extreme';
             const name = document.getElementById('pkName').value.trim();
             const email = document.getElementById('pkEmail').value.trim();
             const typeElem = document.getElementById('pkType');
             const typeText = typeElem ? typeElem.options[typeElem.selectedIndex].text : 'Media Coverage';
-            const channelElem = document.getElementById('pkChannel');
+            const channelElem = document.getElementById('pkChannel') || document.getElementById('pkUrl');
             const channel = channelElem ? channelElem.value.trim() : '';
 
             const submitBtn = previewKeyForm.querySelector('button[type="submit"]');
@@ -373,18 +375,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         email: email,
                         coverage_type: typeText,
                         channel_link: channel,
-                        _subject: `[Hearts Extreme Preview Key Request] ${name} (${typeText})`
+                        _subject: `[${gameTitle} Press / Creator Inquiry] ${name} (${typeText})`
                     })
                 });
             } catch (err) {
                 console.warn('FormSubmit background dispatch note:', err);
             }
 
-            const mailtoSubject = encodeURIComponent(`[Preview Key Request] Hearts Extreme - ${name}`);
-            const mailtoBody = encodeURIComponent(`Preview Key Request Details:\nOutlet / Name: ${name}\nEmail: ${email}\nCoverage Type: ${typeText}\nChannel: ${channel}`);
+            const mailtoSubject = encodeURIComponent(`[Press / Creator Inquiry] ${gameTitle} - ${name}`);
+            const mailtoBody = encodeURIComponent(`Inquiry Details (${gameTitle}):\nOutlet / Name: ${name}\nEmail: ${email}\nCoverage Type: ${typeText}\nChannel: ${channel}`);
             const mailtoUrl = `mailto:hwantasticgames@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
-            showToast(`🔑 Thank you ${name}! Opening mail app to send preview key request to hwantasticgames@gmail.com...`);
+            showToast(`🔑 Thank you ${name}! Opening mail app to send inquiry to hwantasticgames@gmail.com...`);
             
             setTimeout(() => {
                 window.location.href = mailtoUrl;
