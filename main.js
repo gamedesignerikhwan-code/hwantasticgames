@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Activate target tab panel
         targetPanel.classList.add('active');
 
+        // Apply Boomside pixel-window theme on Home and Boomside tabs; keep warm parchment elsewhere
+        const isBoomsideTab = tabId === 'home' || tabId === 'boomside';
+        document.body.classList.toggle('theme-boomside', isBoomsideTab);
+
         // Update active class on navigation links
         document.querySelectorAll('.primary-menu .nav-link').forEach(link => {
             const dataTab = link.getAttribute('data-tab');
