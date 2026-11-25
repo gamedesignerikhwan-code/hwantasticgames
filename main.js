@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Activate target tab panel
         targetPanel.classList.add('active');
 
-        // Apply Boomside pixel-window theme on Home and Boomside tabs; keep warm parchment elsewhere
-        const isBoomsideTab = tabId === 'home' || tabId === 'boomside';
+        // Apply Boomside pixel-window theme everywhere except when Hearts Extreme is chosen
+        const isBoomsideTab = tabId !== 'hearts-extreme';
         document.body.classList.toggle('theme-boomside', isBoomsideTab);
 
         // Update active class on navigation links
