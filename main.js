@@ -362,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const channel = channelElem ? channelElem.value.trim() : '';
 
             const submitBtn = previewKeyForm.querySelector('button[type="submit"]');
+            const submitLabel = submitBtn ? submitBtn.innerHTML : '';
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting Request...';
@@ -390,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mailtoBody = encodeURIComponent(`Inquiry Details (${gameTitle}):\nOutlet / Name: ${name}\nEmail: ${email}\nCoverage Type: ${typeText}\nChannel: ${channel}`);
             const mailtoUrl = `mailto:hwantasticgames@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
-            showToast(`🔑 Thank you ${name}! Opening mail app to send inquiry to hwantasticgames@gmail.com...`);
+            showToast(`✉️ Thank you ${name}! Opening mail app to send inquiry to hwantasticgames@gmail.com...`);
             
             setTimeout(() => {
                 window.location.href = mailtoUrl;
@@ -398,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fa-solid fa-key"></i> Request Preview Key';
+                submitBtn.innerHTML = submitLabel;
             }
             previewKeyForm.reset();
         });
